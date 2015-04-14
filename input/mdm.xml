@@ -6,7 +6,7 @@
       <PPTitle>Protection Profile for Mobile Device Management</PPTitle>
       <PPVersion>2.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2015-04-13</PPPubDate>
+      <PPPubDate>2015-04-14</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 2.0</CCVersion>
       <Keywords>Mobile Device Management; MDM</Keywords>
@@ -16,7 +16,7 @@
       </entry>
     </ReferenceTable>
   </PPReference>
-  <RevisionHistory>
+  <RevisionHistory role="release">
     <entry>
       <version>v 1.0</version>
       <date>2013-10-21</date>
@@ -298,6 +298,7 @@
       </usecases>
     </section>
   </chapter>
+  
   <chapter title="Conformance Claims" id="ccl">
     <cclaims>
       <cclaim id="Conformance Statement">
@@ -312,10 +313,9 @@
       </cclaim>
     </cclaims>
   </chapter>
-  <chapter id="securityProblemDefinition" title="Security Problem Description">Appendix A presents
-    the Security Problem Description (SPD) in a more “traditional” form. The following sections
-    detail the problems that compliant TOEs will address; references to the “traditional” statements
-    in Appendix A are included. 
+  
+  <chapter id="securityProblemDefinition" title="Security Problem Description">The following sections
+    detail the problems that compliant TOEs will address.
     <section id="treats" title="Threats">
       <threats>
         <threat id="T.MALICIOUS_APPS">
@@ -329,24 +329,8 @@
             Flawed apps may give an attacker access to perform network-based or physical attacks that
             otherwise would have been prevented
           </description>
-          <objective-refer ref="">
-            <rationale>The threat T.MALICIOUS_APPS is countered by
-            </rationale>
-          </objective-refer>
-        </threat>
-        <threat id="T.MALICIOUS_APPS">
-          <description>Malicious or flawed
-            application (app) threats exist because apps loaded onto a Mobile Device may include
-            malicious or exploitable code. This code could be included unwittingly by its developer,
-            perhaps as part of a software library. Malicious apps may attempt to exfiltrate data to
-            which they have access. Malicious apps may be able to control the device's sensors
-            (geolocation, camera, microphone, etc.) to gather intelligence about the user's surroundings
-            even when those activities do not involve data resident or transmitted from the device.
-            Flawed apps may give an attacker access to perform network-based or physical attacks that
-            otherwise would have been prevented
-          </description>
-          <objective-refer ref="">
-            <rationale>The threat T.MALICIOUS_APPS is countered by
+          <objective-refer ref="O.APPLY_POLICY">
+            <rationale>The threat T.MALICIOUS_APPS is countered by O.APPLY_POLICY and O.INTEGRITY
             </rationale>
           </objective-refer>
         </threat>
@@ -357,8 +341,8 @@
             communication between elements of the operating environment and other endpoints. By altering
             this communication, the attacker may be able to spoof endpoints such as the MDM Agent or
             administrative computers.</description>
-          <objective-refer ref="">
-            <rationale>The threat T.NETWORK_ATTACK is countered by
+          <objective-refer ref="O.DATA_PROTECTION_TRANSIT">
+            <rationale>The threat T.NETWORK_ATTACK is countered by O.DATA_PROTECTION_TRANSIT
             </rationale>
           </objective-refer>
         </threat>
@@ -406,7 +390,7 @@
             specifically to provide MDM services, employing features such as a host-based
             firewall, which limits its network role to providing MDM functionality.
           </description>
-          <objective-refer ref="">
+          <objective-refer ref="OE.MOBILE_DEVICE_PLATFORM">
             <rationale>The operational environment objective OE.MOBILE_DEVICE_PLATFORM is realized through
               A.MOBILE_DEVICE_PLATFORM.</rationale>
           </objective-refer>
@@ -477,6 +461,7 @@
       </OSPs>
     </section>
   </chapter>
+ 
   <chapter id="securityObjectives" title="Security Objectives">
     <section id="securityObjectivesTOE" title="Security Objectives for the TOE">Compliant TOEs will
       provide security functionality to address threats to it and to implement policies that address
@@ -575,27 +560,62 @@
       </SOs>
     </section>
     <section id="operationalEnvironment" title="Security Objectives for the Operational Environment">
-      The objectives that are required to be met by the TOE’s operational environment are defined in
-      Appendix A.2.2: Security Objectives for the Operational Environment. </section>
+      The following security objectives for the operational
+      environment assist the <abbr linkend="TOE"/> in correctly providing its security
+      functionality. These track with the assumptions about the environment. <SOEs>
+        <SOE id="OE.IT_ENTERPRISE">
+          <description>The Enterprise IT infrastructure provides security for a
+            network that is available to the TOE and mobile devices that
+            prevents unauthorized access.</description>
+        </SOE>
+        <SOE id="OE.MDM_SERVER_PLATFORM ">
+          <description>The MDM Server relies upon a trustworthy platform and local
+            network from which it provides administrative capabilities.</description>
+        </SOE>
+        <SOE id="OE.PROPER_ADMIN">
+          <description>TOE Administrators are trusted to follow and apply all administrator guidance
+            in a trusted manner.</description>
+        </SOE>
+        <SOE id="OE.PROPER_USER">
+          <description>Users of the mobile device are trained to securely use the mobile device and
+            apply all guidance in a trusted manner.</description>
+        </SOE>
+        <SOE id="OE.WIRELESS_NETWORK">
+          <description>A wireless network will be available to the mobile devices.</description>
+        </SOE>
+        <SOE id="OE.TIMESTAMP">
+          <description>Reliable timestamp is provided by the operational
+            environment for the TOE.</description>
+        </SOE>
+      </SOEs>
+    </section>
+    <section title="Security Objectives Rationale" id="SOR">This section describes how the
+      assumptions, threats, and organizational security policies map to the security objectives.
+      <InsertSPDCorrespondence/>
+    </section>
   </chapter>
-  <chapter id="sfr" title="Security Functional Requirements">The Security Functional Requirements
-    included in this section are derived from Part 2 of the <i>Common Criteria for Information
-      Technology Security Evaluation, Version 3.1, Revision 4</i>, with additional extended
-    functional components. <section id="Conventions" name="Conventions"> The CC defines operations
-      on Security Functional Requirements: assignments, selections, assignments within selections
-      and refinements. This document uses the following font conventions to identify the operations
-      defined by the CC: <ul>
-        <li>Assignment: Indicated with <i>italicized</i> text</li>
-        <li>Refinement made by PP author: Indicated by the word “Refinement” in <b>bold text</b>
-          after the element number with additional text in <b>bold text</b> and deletions with
-          strikethroughs, if necessary</li>
-        <li>Selection: Indicated with <u>underlined text</u></li>
-        <li>Assignment within a Selection: Indicated with <i><u>italicized and underlined</u></i>
-          text</li>
-        <li>Iteration: Indicated by appending the iteration number in parenthesis, e.g., (1), (2),
-          (3)</li>
-      </ul> Explicitly stated SFRs are identified by having a label ‘EXT’ after the requirement name
-      for TOE SFRs. </section>
+  
+  <chapter id="req" title="Security Requirements">This chapter describes the security requirements
+    which have to be fulfilled by the <abbr linkend="TOE"/>. Those requirements comprise functional
+    components from Part 2 and assurance components from Part 3 of <cite linkend="bibCC"/>. The
+    following notations are used: <ul>
+      <li>
+        <b>Refinement</b> operation (denoted by <b>bold text</b>): is used to add details to a
+        requirement, and thus further restricts a requirement.</li>
+      <li>
+        <b>Selection</b> (denoted by <i>italicized text</i>): is used to select one or more options
+        provided by the [CC] in stating a requirement.</li>
+      <li>
+        <b>Assignment</b> operation (denoted by <i>italicized text</i>): is used to assign a
+        specific value to an unspecified parameter, such as the length of a password. Showing the
+        value in square brackets indicates assignment.</li>
+      <li>
+        <b>Iteration</b> operation: are identified with a number inside parentheses (e.g.
+        "(1)")</li>
+      <li>Extended SFRs are identified by having a label ‘EXT’ after the requirement name for TOE
+        SFRs.</li>
+    </ul>
+    
     <section id="testEnviron" title="Test Environment for Assurance Activities"> As described in the
       assurance activities below, the ST for an MDM system is required to list all the supported MDM
       Agents/MD platforms with which an MDM Server operates. The identified assurance activities for
@@ -606,7 +626,8 @@
       appropriately applies the policy to the device), as that is accounted for in the Assurance
       Activities in the Mobile Device Fundamentals PP or the Extended Package for Mobile Device
       Management Agents. </section>
-    <section id="TOEsfr" title="TOE Security Functional Requirements">
+    
+    <section id="sfr1" title="TOE Security Functional Requirements">
       <subsection id="fau" title="Security Audit (FAU)">
         <f-component id="FAU_ALT_EXT.1" name="Server Alerts">
           <f-element id="FAU_ALT_EXT.1.1">
@@ -1356,7 +1377,7 @@
         shall include FPT_ITT.1(2). If the TOE interoperates with an evaluated MDM Agent built into
         a mobile device, the ST author shall include FTP_ITC.1(2). </subsection>
     </section>
-    <section id="TOEsfr2" title="TOE or Platform Security Functional Requirements">This section
+    <section id="sfr2" title="TOE or Platform Security Functional Requirements">This section
       identifies the SFRs that must be performed by the MDM Server or by the MDM Server’s platform.
       Each requirement includes a selection for the ST author to indicate whether the MDM Server or
       the MDM Server’s platform performs the functionality in the requirement. The assurance
@@ -2939,605 +2960,530 @@
         </f-component>
       </subsection>
     </section>
-  </chapter>
-  <chapter id="sars" title="Security Assurance Requirements"> The Security Objectives for the TOE in
-    Section 3 were constructed to address threats identified in Section 2.1. The Security Functional
-    Requirements (SFRs) in Section 4 are a formal instantiation of the Security Objectives. The PP
-    identifies the Security Assurance Requirements (SARs) to frame the extent to which the evaluator
-    assesses the documentation applicable for the evaluation and performs independent testing.<br/>
-    This section lists the set of SARs from CC part 3 that are required in evaluations against this
-    PP. Individual Assurance Activities (Assurance Activities) to be performed are specified both in
-    Section 4 as well as in this section.<br/> The general model for evaluation of TOEs against STs
-    written to conform to this PP is as follows:<br/> After the ST has been approved for evaluation,
-    the ITSEF will obtain the TOE, supporting environmental IT, and the administrative/user guides
-    for the TOE. The ITSEF is expected to perform actions mandated by the Common Evaluation
-    Methodology (CEM) for the ASE and ALC SARs. The ITSEF also performs the Assurance Activities
-    contained within Section 4, which are intended to be an interpretation of the other CEM
-    assurance requirements as they apply to the specific technology instantiated in the TOE. The
-    Assurance Activities that are captured in Section 4 also provide clarification as to what the
-    developer needs to provide to demonstrate the TOE is compliant with the PP.<br/> The TOE
-    security assurance requirements are identified in Table 2. <!-- HERE table -->
-    <center><hr>Table 2 Security Assurance Requirements</hr></center>
-    <table>
-      <tr class="header">
-        <TH>Assurance Class</TH>
-        <TH>Assurance Components</TH>
-      </tr>
-      <TR>
-        <TD>Security Target (ASE)</TD>
-        <TD>
-          <table>
-            <TR><TD>ST introduction (ASE_INT.1)</TD></TR>
-            <TR><TD>Conformance claims (ASE_CCL.1)</TD></TR>
-            <TR><TD>Security objectives for the operational environment (ASE_OBJ.1)</TD></TR>
-            <TR><TD>Extended components definition (ASE_ECD.1)</TD></TR>
-            <TR><TD>Stated security requirements (ASE_REQ.1)</TD></TR>
-            <TR><TD>TOE summary specification (ASE_TSS.1)</TD></TR>
-          </table>
-        </TD>
-      </TR>
-      <TR>
-        <TD>Development (ADV)</TD>
-        <TD>Basic functional specification (ADV_FSP.1)</TD>
-      </TR>
-      <TR>
-        <TD>Guidance documents (AGD)</TD>
-        <TD>
-          <Table>
-            <TR><TD>Operational user guidance (AGD_OPE.1)</TD></TR>
-            <TR><TD>Preparative procedures (AGD_PRE.1)</TD></TR>
-          </Table>
-        </TD>
-      </TR>
-      <TR>
-        <TD>Life cycle support (ALC)</TD>
-        <TD>
-          <Table>
-            <TR><TD>Labeling of the TOE (ALC_CMC.1)</TD></TR>
-            <TR><TD>TOE CM coverage (ALC_CMS.1)</TD></TR>
-          </Table>
-        </TD>
-      </TR>
-      <TR>
-        <TD>Tests (ATE)</TD>
-        <TD>Independent testing – sample (ATE_IND.1)</TD>
-      </TR>
-      <TR>
-        <TD>Vulnerability assessment (AVA)</TD>
-        <TD>Vulnerability survey (AVA_VAN.1)</TD>
-      </TR>
-    </table>
-    <section id="classASE" name="Class ASE: Security Target"> The ST is evaluated as per ASE
-      activities defined in the CEM. In addition, there may be Assurance Activities specified within
-      Section 4 that call for necessary descriptions to be included in the TSS that are specific to
-      the TOE technology type. </section>
-    <section id="classADV" name="Class ADV: Development"> The design information about the TOE is
-      contained in the guidance documentation available to the end user as well as the TSS portion
-      of the ST, and any additional information required by this PP that is not to be made public
-      (e.g., Entropy Essay). <subsection id="adv_fsp"
-        name="Basic Functional Specification (ADV_FSP)"> The functional specification describes the
-        Target Security Functions Interfaces (TSFIs). It is not necessary to have a formal or
-        complete specification of these interfaces. Additionally, because TOEs conforming to this PP
-        will necessarily have interfaces to the Operational Environment that are not directly
-        invokable by TOE users, there is little point specifying that such interfaces be described
-        in and of themselves since only indirect testing of such interfaces may be possible. For
-        this PP, the activities for this family should focus on understanding the interfaces
-        presented in the TSS in response to the functional requirements and the interfaces presented
-        in the AGD documentation. No additional “functional specification” documentation is
-        necessary to satisfy the assurance activities specified.<br/> The interfaces that need to be
-        evaluated are characterized through the information needed to perform the assurance
-        activities listed, rather than as an independent, abstract list.<br/>
-        <h4>Developer action elements:</h4>
-        <f-element id="ADV_FSP.1.1D">
-          <title>The developer shall provide a functional specification.</title>
-        </f-element>
-        <f-element id="ADV_FSP.1.2D">
-          <title>The developer shall provide a tracing from the functional specification to the
-            SFRs.</title>
-          <note role="application"> As indicated in the introduction to this section, the functional
-            specification is comprised of the information contained in the AGD_OPE and AGD_PRE
-            documentation.<br/> The developer may reference a website accessible to application
-            developers and the evaluator.<br/> The assurance activities in the functional
-            requirements point to evidence that should exist in the documentation and TSS section;
-            since these are directly associated with the SFRs, the tracing in element ADV_FSP.1.2D
-            is implicitly already done and no additional documentation is necessary. </note>
-        </f-element>
-        <h4>Content and presentation elements:</h4>
-        <f-element id="ADV_FSP.1.1C">
-          <title>The functional specification shall describe the purpose and method of use for each
-            SFR-enforcing and SFR-supporting TSFI.</title>
-        </f-element>
-        <f-element id="ADV_FSP.1.2C">
-          <title>The functional specification shall identify all parameters associated with each
-            SFR-enforcing and SFR-supporting TSFI.</title>
-        </f-element><f-element id="ADV_FSP.1.3C">
-          <title>The functional specification shall provide rationale for the implicit
-            categorization of interfaces as SFR-non-interfering.</title>
-        </f-element><f-element id="ADV_FSP.1.4C">
-          <title>The tracing shall demonstrate that the SFRs trace to TSFIs in the functional
-            specification.</title>
-        </f-element>
-        <h4>Evaluator action elements:</h4>
-        <f-element id="ADV_ FSP.1.1E">
-          <title>The evaluator shall confirm that the information provided meets all requirements
-            for content and presentation of evidence.</title>
-        </f-element>
-        <f-element id="ADV_ FSP.1.2E">
-          <title>The evaluator shall determine that the functional specification is an accurate and
-            complete instantiation of the SFRs.</title>
-          <aactivity> There are no specific assurance activities associated with these SARs, except
-            ensuring the information is provided. The functional specification documentation is
-            provided to support the evaluation activities described in Sections 4.2, 4.3, and 4.4,
-            and other activities described for AGD, ATE, and AVA SARs. The requirements on the
-            content of the functional specification information is implicitly assessed by virtue of
-            the other assurance activities being performed; if the evaluator is unable to perform an
-            activity because the there is insufficient interface information, then an adequate
-            functional specification has not been provided. </aactivity>
-        </f-element>
-      </subsection>
-    </section>
-    <section id="classAGD" name="Class AGD: Guidance Documentation"> The guidance documents will be
-      provided with the ST. Guidance must include a description of how the IT personnel verifies
-      that the Operational Environment can fulfill its role for the security functionality. The
-      documentation should be in an informal style and readable by the IT personnel.<br/> Guidance
-      must be provided for every operational environment that the product supports as claimed in the
-      ST. This guidance includes:<br/>
-      <ul>
-        <li>instructions to successfully install the TSF in that environment</li>
-        <li>instructions to manage the security of the TSF as a product and as a component of the
-          larger operational environment</li>
-        <li>instructions to provide a protected administrative capability</li>
-      </ul> Guidance pertaining to particular security functionality must also be provided;
-      requirements on such guidance are contained in the assurance activities specified with each
-      requirement. <subsection id="agd_ope" name="Operational User Guidance (AGD_OPE)">
-        <h4>Developer action elements:</h4>
-        <f-element id="AGD_OPE.1.1D">
-          <title>The developer shall provide operational user guidance.</title>
-          <note role="application"> The operation user guidance does not have to be contained in a
-            single document. Guidance to users, administrators and application developers can be
-            spread among documents or web pages. Where appropriate, the guidance documentation is
-            expressed in the eXtensible Configuration Checklist Description Format (XCCDF) to
-            support security automation.<br/> Rather than repeat information here, the developer
-            should review the assurance activities for this component to ascertain the specifics of
-            the guidance that the evaluator will be checking for. This will provide the necessary
-            information for the preparation of acceptable guidance. </note>
-        </f-element>
-        <h4>Content and presentation elements:</h4>
-        <f-element id="AGD_OPE.1.1C">
-          <title>The operational user guidance shall describe, for each user role, the
-            user-accessible functions and privileges that should be controlled in a secure
-            processing environment, including appropriate warnings.</title>
-          <note role="application"> User and administrator are to be considered in the definition of
-            user role. </note>
-        </f-element>
-        <f-element id="AGD_OPE.1.2C">
-          <title>The operational user guidance shall describe, for each user role, how to use the
-            available interfaces provided by the TOE in a secure manner.</title>
-        </f-element>
-        <f-element id="AGD_OPE.1.3C">
-          <title>The operational user guidance shall describe, for each user role, the available
-            functions and interfaces, in particular all security parameters under the control of the
-            user, indicating secure values as appropriate.</title>
-        </f-element>
-        <f-element id="AGD_OPE.1.4C">
-          <title>The operational user guidance shall, for each user role, clearly present each type
-            of security-relevant event relative to the user-accessible functions that need to be
-            performed, including changing the security characteristics of entities under the control
-            of the TSF.</title>
-        </f-element>
-        <f-element id="AGD_OPE.1.5C">
-          <title>The operational user guidance shall identify all possible modes of operation of the
-            TOE (including operation following failure or operational error), their consequences,
-            and implications for maintaining secure operation.</title>
-        </f-element>
-        <f-element id="AGD_OPE.1.6C">
-          <title>The operational user guidance shall, for each user role, describe the security
-            measures to be followed in order to fulfill the security objectives for the operational
-            environment as described in the ST.</title>
-        </f-element>
-        <f-element id="AGD_OPE.1.7C">
-          <title>The operational user guidance shall be clear and reasonable.</title>
-        </f-element>
-        <h4>Evaluator action elements:</h4>
-        <f-element id="AGD_OPE.1.1E">
-          <title>The evaluator shall confirm that the information provided meets all requirements
-            for content and presentation of evidence.</title>
-          <note role="application"> Some of the contents of the operational guidance will be
-            verified by the assurance activities in Sections 4.2, 4.3, and 4.4and evaluation of the
-            TOE according to the CEM. The following additional information is also required.<br/> If
-            cryptographic functions are provided by the TOE, the operational guidance shall contain
-            instructions for configuring the cryptographic engine associated with the evaluated
-            configuration of the TOE. It shall provide a warning to the administrator that use of
-            other cryptographic engines was not evaluated nor tested during the CC evaluation of the
-            TOE.<br/> The documentation must describe the process for verifying updates to the TOE
-            by verifying a digital signature – this may be done by the TOE or the underlying
-            platform. The evaluator shall verify that this process includes the following
-            steps:<br/> Instructions for obtaining the update itself. This should include
-            instructions for making the update accessible to the TOE (e.g., placement in a specific
-            directory).<br/> Instructions for initiating the update process, as well as discerning
-            whether the process was successful or unsuccessful. This includes generation of the
-            hash/digital signature.<br/> The TOE will likely contain security functionality that
-            does not fall in the scope of evaluation under this PP. The operational guidance shall
-            make it clear to an administrator which security functionality is covered by the
-            evaluation activities.<br/>
-          </note>
-        </f-element>
-      </subsection>
-      <subsection id="agd_pre" name="Preparative Procedures (AGD_PRE)">
-        <h4>Developer action elements:</h4>
-        <f-element id="AGD_PRE.1.1D">
-          <title>The developer shall provide the TOE, including its preparative procedures.</title>
-          <note role="application"> As with the operational guidance, the developer should look to
-            the assurance activities to determine the required content with respect to preparative
-            procedures. </note>
-        </f-element>
-        <h4>Content and presentation elements:</h4>
-        <f-element id="AGD_ PRE.1.1C">
-          <title>The preparative procedures shall describe all the steps necessary for secure
-            acceptance of the delivered TOE in accordance with the developer's delivery
-            procedures.</title>
-        </f-element>
-        <f-element id="AGD_ PRE.1.2C">
-          <title>The preparative procedures shall describe all the steps necessary for secure
-            installation of the TOE and for the secure preparation of the operational environment in
-            accordance with the security objectives for the operational environment as described in
-            the ST.</title>
-        </f-element>
-        <h4>Evaluator action elements:</h4>
-        <f-element id="AGD_ PRE.1.1E">
-          <title>The evaluator shall confirm that the information provided meets all requirements
-            for content and presentation of evidence.</title>
-        </f-element>
-        <f-element id="AGD_ PRE.1.2E">
-          <title>The evaluator shall apply the preparative procedures to confirm that the TOE can be
-            prepared securely for operation.</title>
-          <aactivity> As indicated in the introduction above, there are significant expectations
-            with respect to the documentation—especially when configuring the operational
-            environment to support TOE functional requirements. The evaluator shall check to ensure
-            that the guidance provided for the TOE adequately addresses all platforms claimed for
-            the TOE in the ST. </aactivity>
-        </f-element>
-      </subsection>
-    </section>
-    <section id="classALC" name="Class ALC: Life-cycle Support">At the assurance level provided for
-      TOEs conformant to this PP, life-cycle support is limited to end-user-visible aspects of the
-      life-cycle, rather than an examination of the TOE vendor’s development and configuration
-      management process. This is not meant to diminish the critical role that a developer’s
-      practices play in contributing to the overall trustworthiness of a product; rather, it’s a
-      reflection on the information to be made available for evaluation at this assurance level.
-        <subsection id="alc_cmc" name="Labeling of the TOE (ALC_CMC)"> This component is targeted at
-        identifying the TOE such that it can be distinguished from other products or versions from
-        the same vendor and can be easily specified when being procured by an end user.
-          <h4>Developer action elements:</h4>
-        <f-element id="ALC_CMC.1.1D">
-          <title>The developer shall provide the TOE and a reference for the TOE.</title>
-        </f-element>
-        <h4>Content and presentation elements:</h4>
-        <f-element id="ALC_CMC.1.1C">
-          <title>The TOE shall be labeled with its unique reference.</title>
-        </f-element>
-        <h4>Evaluator action elements:</h4>
-        <f-element id="ALC_CMC.1.1E">
-          <title>The evaluator shall confirm that the information provided meets all requirements
-            for content and presentation of evidence.</title>
-          <aactivity>The evaluator shall check the ST to ensure that it contains an identifier (such
-            as a product name/version number) that specifically identifies the version that meets
-            the requirements of the ST. Further, the evaluator shall check the AGD guidance and TOE
-            samples received for testing to ensure that the version number is consistent with that
-            in the ST. If the vendor maintains a web site advertising the TOE, the evaluator shall
-            examine the information on the web site to ensure that the information in the ST is
-            sufficient to distinguish the product.</aactivity>
-        </f-element>
-      </subsection>
-      <subsection id="alc_cms" name="TOE CM Coverage (ALC_CMS)"> Given the scope of the TOE and its
-        associated evaluation evidence requirements, this component’s assurance activities are
-        covered by the assurance activities listed for ALC_CMC.1. <h4>Developer action
+
+  <section title="Security Assurance Requirements" id="SARs">The Security Objectives for the <abbr
+        linkend="TOE"/> in <secref linkend="req"/> were constructed to address threats identified in
+      <secref linkend="threats"/>. The Security Functional Requirements (<abbr linkend="SFR"/>s)
+      in <secref linkend="SFRs"/> are a formal
+      instantiation of the Security Objectives. The PP identifies the Security Assurance Requirements
+      (<abbr linkend="SAR"/>s) to frame the
+      extent to which the evaluator assesses the documentation applicable for the evaluation and
+      performs independent testing.
+      <br/>
+      This section lists the set of <abbr linkend="SAR"/>s from CC part 3 that are required in
+      evaluations against this
+      PP. Individual Assurance Activities (AAs) to be performed are specified both
+      in <secref linkend="req"/> as well as in this section.
+      <br/>
+      The general model for evaluation of <abbr linkend="TOE"/>s against STs written to conform to
+      this PP is as follows:
+      <br/>
+      After the <abbr linkend="ST"/> has been approved for evaluation, the <abbr class="expanded"
+      title="Information Technology Security Evaluation Facility">ITSEF</abbr> will obtain the
+      <abbr linkend="TOE"/>, supporting
+      environmental IT, and the administrative/user guides for the TOE. The ITSEF is expected to
+      perform actions mandated by the Common Evaluation Methodology (CEM) for the ASE and
+      ALC SARs. The ITSEF also performs the Assurance Activities contained within <secref linkend="req"/>,
+      which are intended to be an interpretation of the other CEM assurance requirements as they
+      apply to the specific technology instantiated in the TOE. The Assurance Activities that are
+      captured in <secref linkend="req"/> also provide clarification as to what the developer needs
+      to provide to demonstrate the TOE is compliant with the PP.
+     
+      <subsection title="Class ASE: Security Target" id="ase">As per ASE activities defined in <cite
+          linkend="bibCEM"/>.</subsection>
+      <subsection title="Class ADV: Development" id="adv">The information about the <abbr
+          linkend="TOE"/> is contained in the guidance documentation available to the end user as
+        well as the <abbr linkend="TSS"/> portion of the <abbr linkend="ST"/>. The <abbr linkend="TOE"/> developer 
+        must concur with the description of the product that is contained in the TSS as it relates 
+        to the functional requirements. The Assurance Activities contained in 
+        <secref linkend="SFRs"/> should provide the <abbr linkend="ST"/> authors with sufficient information to 
+        determine the appropriate content for the TSS section. 
+        <a-component id="adv_fsp.1" name="Basic Functional Specification (ADV_FSP.1)">The functional
+          specification describes the <abbr title="TSF Interface">TSFI</abbr>s. It is not necessary
+          to have a formal or complete specification of these interfaces. Additionally, because
+            <abbr linkend="TOE"/>s conforming to this PP will necessarily have interfaces to the
+          Operational Environment that are not directly invokable by <abbr linkend="TOE"/> users, 
+          there is little point specifying that such interfaces be described in and of themselves 
+          since only indirect testing of such interfaces may be possible. For this PP, the 
+          activities for this family should focus on understanding the interfaces presented in the 
+          <abbr linkend="TSS"/> in response to the functional requirements and the interfaces 
+          presented in the AGD documentation. No additional “functional specification” documentation 
+          is necessary to satisfy the assurance activities specified. The interfaces that need to be 
+          evaluated are characterized through the information needed to perform the assurance 
+          activities listed, rather than as an independent, abstract list. <h4>Developer action 
           elements:</h4>
-        <f-element id="ALC_CMS.1.1D">
-          <title>The developer shall provide a configuration list for the TOE.</title>
-        </f-element>
-        <h4>Content and presentation elements:</h4>
-        <f-element id="ALC_CMS.1.1C">
-          <title>The configuration list shall include the following: the TOE itself; and the
-            evaluation evidence required by the SARs.</title>
-        </f-element>
-        <f-element id="ALC_CMS.1.2C">
-          <title>The configuration list shall uniquely identify the configuration items.</title>
-        </f-element>
-        <h4>Evaluator action elements:</h4>
-        <f-element id="ALC_CMS.1.1E">
-          <title>The evaluator shall confirm that the information provided meets all requirements
-            for content and presentation of evidence.</title>
-          <aactivity> The “evaluation evidence required by the SARs” in this PP is limited to the
-            information in the ST coupled with the guidance provided to administrators and users
-            under the AGD requirements. By ensuring that the TOE is specifically identified and that
-            this identification is consistent in the ST and in the AGD guidance (as done in the
-            assurance activity for ALC_CMC.1), the evaluator implicitly confirms the information
-            required by this component.<br/> Life-cycle support is targeted aspects of the
-            developer’s life-cycle and instructions to providers of applications for the developer’s
-            devices, rather than an in-depth examination of the TSF manufacturer’s development and
-            configuration management process. This is not meant to diminish the critical role that a
-            developer’s practices play in contributing to the overall trustworthiness of a product;
-            rather, it’s a reflection on the information to be made available for evaluation. </aactivity>
-          <aactivity> The evaluator shall ensure that the developer has identified (in public-facing
-            developmen../AdobeXII-prerelease2013/pp_mobility_mdm_agent_ep_v2.0_FINAL.pdft
-            documentation for their platform) one or more development environments appropriate for
-            use in developing applications for the developer’s platform. For each of these
-            development environments, the developer shall provide information on how to configure
-            the environment to ensure that buffer overflow protection mechanisms in the
-            environment(s) are invoked (e.g., compiler flags). The evaluator shall ensure that this
-            documentation also includes an indication of whether such protections are on by default,
-            or have to be specifically enabled.<br/> The evaluator shall ensure that the TSF is
-            uniquely identified (with respect to other products from the TSF vendor), and that
-            documentation provided by the developer in association with the requirements in the ST
-            is associated with the TSF using this unique identification. </aactivity>
-        </f-element>
+          <a-element id="ADV_FSP.1.1D">
+            <title>The developer shall provide a functional specification.</title>
+          </a-element>
+          <a-element id="ADV_FSP.1.2D">
+            <title>The developer shall provide a tracing from the functional specification to the
+              SFRs.</title>
+            <note role="application">As indicated in the introduction to this section, the
+              functional specification is comprised of the information contained in the AGD_OPE and
+              AGD_PRE documentation. The developer may reference a website accessible to application
+              developers and the evaluator. The assurance activities in the functional requirements
+              point to evidence that should exist in the documentation and <abbr linkend="TSS"/>
+              section; since these are directly associated with the SFRs, the tracing in element
+              ADV_FSP.1.2D is implicitly already done and no additional documentation is
+              necessary.</note>
+          </a-element>
+          <h4>Content and presentation elements:</h4>
+          <a-element id="ADV_FSP.1.1C">
+            <title>The functional specification shall describe the purpose and method of use for
+              each SFR-enforcing and SFR-supporting <abbr title="TSF Interface">TSFI</abbr>.</title>
+          </a-element>
+          <a-element id="ADV_FSP.1.2C">
+            <title>The functional specification shall identify all parameters associated with each
+              SFR-enforcing and SFR-supporting <abbr title="TSF Interface">TSFI</abbr>.</title>
+          </a-element>
+          <a-element id="ADV_FSP.1.3C">
+            <title>The functional specification shall provide rationale for the implicit
+              categorization of interfaces as SFR-non-interfering.</title>
+          </a-element>
+          <a-element id="ADV_FSP.1.4C">
+            <title>The tracing shall demonstrate that the SFRs trace to <abbr title="TSF Interface"
+                >TSFI</abbr>s in the functional specification.</title>
+          </a-element>
+          <h4>Evaluator action elements:</h4>
+          <a-element id="ADV_FSP.1.1E">
+            <title>The evaluator shall confirm that the information provided meets all requirements
+              for content and presentation of evidence.</title>
+          </a-element>
+          <a-element id="ADV_FSP.1.2E">
+            <title>The evaluator shall determine that the functional specification is an accurate
+              and complete instantiation of the SFRs.</title>
+          </a-element>
+          <aactivity>There are no specific assurance activities associated with these SARs, except
+            ensuring the information is provided. The functional specification documentation is
+            provided to support the evaluation activities described in <secref linkend="SFRs"/>, and
+            other activities described for AGD, ATE, and AVA SARs. The requirements on the content
+            of the functional specification information is implicitly assessed by virtue of the
+            other assurance activities being performed; if the evaluator is unable to perform an
+            activity because there is insufficient interface information, then an adequate
+            functional specification has not been provided.</aactivity>
+        </a-component>
       </subsection>
-      <subsection id="classATE" name="Class ATE: Tests"> Testing is specified for functional aspects
-        of the system as well as aspects that take advantage of design or implementation weaknesses.
+      <subsection id="agd" title="Class AGD: Guidance Documentation">The guidance documents will be
+        provided with the <abbr linkend="ST"/>. Guidance must include a description of how the IT personnel verifies
+        that the Operational Environment can fulfill its role for the security functionality. The
+        documentation should be in an informal style and readable by the IT personnel. Guidance must
+        be provided for every operational environment that the product supports as claimed in the
+        <abbr linkend="ST"/>. This guidance includes instructions to successfully install the <abbr linkend="TSF"/> in
+        that environment; and Instructions to manage the security of the <abbr linkend="TSF"/> as a 
+        product and as a component of the larger operational environment. Guidance pertaining to 
+        particular security functionality is also provided; requirements on such guidance are 
+        contained in the assurance activities specified with each requirement. 
+        <a-component id="agd_ope.1" name="Operational User Guidance (AGD_OPE.1)">
+          <h4>Developer action elements:</h4>
+          <a-element id="AGD_OPE.1.1D">
+            <title>The developer shall provide operational user guidance.</title>
+            <note role="application">The operation user guidance does not have to be contained in a
+              single document. Guidance to users, administrators and application developers can be
+              spread among documents or web pages. Where appropriate, the guidance documentation is
+              expressed in the eXtensible Configuration Checklist Description Format (XCCDF) to
+              support security automation. Rather than repeat information here, the developer should
+              review the assurance activities for this component to ascertain the specifics of the
+              guidance that the evaluator will be checking for. This will provide the necessary
+              information for the preparation of acceptable guidance.</note>
+          </a-element>
+          <h4>Content and presentation elements:</h4>
+          <a-element id="AGD_OPE.1.1C">
+            <title>The operational user guidance shall describe, for each user role, the
+              user-accessible functions and privileges that should be controlled in a secure
+              processing environment, including appropriate warnings.</title>
+            <note role="application">User and administrator are to be considered in the definition
+              of user role.</note>
+          </a-element>
+          <a-element id="AGD_OPE.1.2C">
+            <title>The operational user guidance shall describe, for each user role, how to use the
+              available interfaces provided by the <abbr linkend="TOE"/> in a secure manner.</title>
+          </a-element>
+          <a-element id="AGD_OPE.1.3C">
+            <title>The operational user guidance shall describe, for each user role, the available
+              functions and interfaces, in particular all security parameters under the control of
+              the user, indicating secure values as appropriate.</title>
+          </a-element>
+          <a-element id="AGD_OPE.1.4C">
+            <title>The operational user guidance shall, for each user role, clearly present each
+              type of security-relevant event relative to the user-accessible functions that need to
+              be performed, including changing the security characteristics of entities under the
+              control of the <abbr linkend="TSF"/>.</title>
+          </a-element>
+          <a-element id="AGD_OPE.1.5C">
+            <title>The operational user guidance shall identify all possible modes of operation of
+              the <abbr linkend="TOE"/> (including operation following failure or operational
+              error), their consequences, and implications for maintaining secure operation.</title>
+          </a-element>
+          <a-element id="AGD_OPE.1.6C">
+            <title>The operational user guidance shall, for each user role, describe the security
+              measures to be followed in order to fulfill the security objectives for the
+              operational environment as described in the <abbr linkend="ST"/>.</title>
+          </a-element>
+          <a-element id="AGD_OPE.1.7C">
+            <title>The operational user guidance shall be clear and reasonable.</title>
+          </a-element>
+          <h4>Evaluator action elements:</h4>
+          <a-element id="AGD_OPE.1.1E">
+            <title>The evaluator shall confirm that the information provided meets all requirements
+              for content and presentation of evidence.</title>
+            <aactivity>Some of the contents of the operational guidance will be verified by the
+              assurance activities in <secref linkend="SFRs"/> and evaluation of the <abbr
+                linkend="TOE"/> according to the <cite linkend="bibCEM"/>. The following additional
+              information is also required. If cryptographic functions are provided by the 
+              <abbr linkend="TOE"/>, the operational guidance shall contain instructions for 
+              configuring the cryptographic engine associated with the evaluated configuration of 
+              the <abbr linkend="TOE"/>. It shall provide a warning to the administrator that use of 
+              other cryptographic engines was not evaluated nor tested during the CC evaluation of 
+              the <abbr linkend="TOE"/>. The documentation must describe the process for verifying 
+              updates to the <abbr linkend="TOE"/> by verifying a digital signature – this may
+              be done by the <abbr linkend="TOE"/> or the underlying platform. The evaluator shall 
+              verify that this process includes the following steps: Instructions for obtaining the 
+              update itself. This should include instructions for making the update accessible to 
+              the <abbr linkend="TOE"/> (e.g., placement in a specific directory). Instructions for 
+              initiating the update process, as well as discerning whether the process was 
+              successful or unsuccessful. This includes generation of the hash/digital signature. 
+              The <abbr linkend="TOE"/> will likely contain security functionality that does not 
+              fall in the scope of evaluation under this PP. The operational guidance shall make it 
+              clear to an administrator which security functionality is covered by the evaluation 
+              activities.</aactivity>
+          </a-element>
+        </a-component>
+        <a-component id="agd_pre.1" name="Preparative Procedures (AGD_PRE.1)">
+          <h4>Developer action elements:</h4>
+          <a-element id="AGD_PRE.1.1D">
+            <title>The developer shall provide the <abbr linkend="TOE"/>, including its preparative
+              procedures.</title>
+            <note role="application">As with the operational guidance, the developer should look to
+              the assurance activities to determine the required content with respect to preparative
+              procedures.</note>
+          </a-element>
+          <h4>Content and presentation elements:</h4>
+          <a-element id="AGD_PRE.1.1C">
+            <title>The preparative procedures shall describe all the steps necessary for secure
+              acceptance of the delivered <abbr linkend="TOE"/> in accordance with the developer's
+              delivery procedures.</title>
+          </a-element>
+          <a-element id="AGD_PRE.1.2C">
+            <title>The preparative procedures shall describe all the steps necessary for secure
+              installation of the <abbr linkend="TOE"/> and for the secure preparation of the
+              operational environment in accordance with the security objectives for the operational
+              environment as described in the <abbr linkend="ST"/>.</title>
+          </a-element>
+          <h4>Evaluator action elements:</h4>
+          <a-element id="AGD_PRE.1.1E">
+            <title>The evaluator shall confirm that the information provided meets all requirements
+              for content and presentation of evidence.</title>
+          </a-element>
+          <a-element id="AGD_PRE.1.2E">
+            <title>The evaluator shall apply the preparative procedures to confirm that the <abbr
+                linkend="TOE"/> can be prepared securely for operation.</title>
+            <aactivity>As indicated in the introduction above, there are significant expectations
+              with respect to the documentation—especially when configuring the operational
+              environment to support <abbr linkend="TOE"/> functional requirements. The evaluator 
+              shall check to ensure that the guidance provided for the <abbr linkend="TOE"/> 
+              adequately addresses all platforms claimed for the <abbr linkend="TOE"/> in the <abbr linkend="ST"/>.
+            </aactivity>
+          </a-element>
+        </a-component>
+      </subsection>
+      <subsection id="alc" title="Class ALC: Life-cycle Support">
+        At the assurance level provided for TOEs conformant to this PP, life-cycle support is limited
+        to end-user-visible aspects of the life-cycle, rather than an examination of the TOE vendor’s
+        development and configuration management process. This is not meant to diminish the
+        critical role that a developer’s practices play in contributing to the overall trustworthiness of a
+        product; rather, it is a reflection on the information to be made available for evaluation at this
+        assurance level.
+        <a-component id="alc_cmc.1" name="Labeling of the TOE (ALC_CMC.1)">This component is
+          targeted at identifying the <abbr linkend="TOE"/> such that it can be distinguished from
+          other products or versions from the same vendor and can be easily specified when being
+          procured by an end user. <h4>Developer action elements:</h4>
+          <a-element id="alc_cmc.1.1d">
+            <title>The developer shall provide the <abbr linkend="TOE"/> and a reference for the
+              <abbr linkend="TOE"/>.</title>
+          </a-element>
+          <h4>Content and presentation elements:</h4>
+          <a-element id="alc_cmc.1.1c">
+            <title>The <abbr linkend="TOE"/> shall be labeled with a unique reference.</title>
+            <note role="application">Unique reference information includes:
+			  <ul>
+			    <li>Application Name</li>
+			    <li>Application Version</li>
+			    <li>Application Description</li>
+			    <li>Platform on which Application Runs</li>
+			    <li>Software Identification (SWID) tags, if available</li>
+			   </ul>
+            </note>
+          </a-element>
+          <h4>Evaluator action elements:</h4>
+          <a-element id="alc_cmc.1.1e">
+            <title>The evaluator shall confirm that the information provided meets all
+              requirements for content and presentation of evidence.</title>
+            <aactivity>The evaluator shall check the <abbr linkend="ST"/> to ensure that it contains an identifier
+              (such as a product name/version number) that specifically identifies the version that
+              meets the requirements of the <abbr linkend="ST"/>. Further, the evaluator shall check the AGD guidance
+              and <abbr linkend="TOE"/> samples received for testing to ensure that the version
+              number is consistent with that in the <abbr linkend="ST"/>. If the vendor maintains a web site
+              advertising the <abbr linkend="TOE"/>, the evaluator shall examine the information on 
+              the web site to ensure that the information in the <abbr linkend="ST"/> is sufficient to distinguish the
+              product.</aactivity>
+          </a-element>
+        </a-component>
+        <a-component id="alc_cms.1" name="TOE CM Coverage (ALC_CMS.1)">Given the scope of the <abbr
+            linkend="TOE"/> and its associated evaluation evidence requirements, this component’s
+          assurance activities are covered by the assurance activities listed for ALC_CMC.1.
+            <h4>Developer action elements:</h4>
+          <a-element id="alc_cms.1.1d">
+            <title>The developer shall provide a configuration list for the <abbr linkend="TOE"
+              />.</title>
+          </a-element>
+          <h4>Content and presentation elements:</h4>
+          <a-element id="alc_cms.1.1c">
+            <title>The configuration list shall include the following: the <abbr linkend="TOE"/>
+              itself; and the evaluation evidence required by the SARs.</title>
+          </a-element>
+          <a-element id="alc_cms.1.2c">
+            <title>The configuration list shall uniquely identify the configuration items.</title>
+          </a-element>
+          <h4>Evaluator action elements:</h4>
+          <a-element id="alc_cms.1.1e">
+            <title>The evaluator shall confirm that the information provided meets all requirements
+              for content and presentation of evidence.</title>
+            <aactivity>The "evaluation evidence required by the SARs" in this PP is limited to the
+              information in the <abbr linkend="ST"/> coupled with the guidance provided to administrators and users
+              under the AGD requirements. By ensuring that the <abbr linkend="TOE"/> is specifically
+              identified and that this identification is consistent in the <abbr linkend="ST"/> and in the AGD
+              guidance (as done in the assurance activity for ALC_CMC.1), the evaluator implicitly
+              confirms the information required by this component. Life-cycle support is targeted
+              aspects of the developer’s life-cycle and instructions to providers of applications
+              for the developer’s devices, rather than an in-depth examination of the <abbr
+                linkend="TSF"/> manufacturer’s development and configuration management process.
+              This is not meant to diminish the critical role that a developer’s practices play in
+              contributing to the overall trustworthiness of a product; rather, it’s a reflection on
+              the information to be made available for evaluation. <br/> The evaluator shall ensure
+              that the developer has identified (in guidance documentation for application
+              developers concerning the targeted platform) one or more development environments
+              appropriate for use in developing applications for the developer’s platform. For each
+              of these development environments, the developer shall provide information on how to
+              configure the environment to ensure that buffer overflow protection mechanisms in the
+              environment(s) are invoked (e.g., compiler flags). The evaluator shall ensure that
+              this documentation also includes an indication of whether such protections are on by
+              default, or have to be specifically enabled. The evaluator shall ensure that the 
+              <abbr linkend="TSF"/> is uniquely identified (with respect to other products from the 
+              <abbr linkend="TSF"/> vendor), and that documentation provided by the developer in 
+              association with the requirements in the <abbr linkend="ST"/> is associated with the 
+              <abbr linkend="TSF"/> using this unique identification.</aactivity>
+          </a-element>
+        </a-component>
+        <a-component id="alc_tsu_ext.1" name="Timely Security Updates">
+          This component requires the TOE developer, in conjunction with any other necessary parties,
+          to provide information as to how the end-user devices are updated to address security issues
+          in a timely manner. The documentation describes the process of providing updates to the
+          public from the time a security flaw is reported/discovered, to the time an update is released.
+          This description includes the parties involved (e.g., the developer, carriers(s)) and the steps
+          that are performed (e.g., developer testing, carrier testing), including worst case time periods,
+          before an update is made available to the public.
+          <h4>Developer action elements:</h4>
+          <a-element id="alc_tsu_ext.1.1d">
+            <title>The developer shall provide a description in the TSS of how timely
+              security updates are made to the <abbr linkend="TOE"/>.</title>
+            <note>
+              Application developers must support updates to their products for purposes of
+              fixing security vulnerabilities.
+            </note>
+          </a-element>
+          <a-element id="alc_tsu_ext.1.2d">
+            <title>
+              The developer shall provide a description in the TSS of how users are notified when 
+              updates change security properties or the configuration of the product.
+            </title>
+          </a-element>
+          <h4>Content and presentation elements:</h4>
+          <a-element id="alc_tsu_ext.1.1c">
+            <title>The description shall include the process for creating and deploying
+              security updates for the <abbr linkend="TOE"/> software.</title>
+          </a-element>
+          <a-element id="alc_tsu_ext.1.2c">
+            <title>The description shall express the time window as the length of time, 
+              in days, between public disclosure of a vulnerability and the public availability
+              of security updates to the <abbr linkend="TOE"/>.</title>
+          </a-element>
+          <a-element id="alc_tsu_ext.1.3c">
+            <title>The description shall include the mechanisms publicly available for
+              reporting security issues pertaining to the <abbr linkend="TOE"/>.</title>
+            <note>
+              The reporting mechanism could include web sites, email addresses, as
+              well as a means to protect the sensitive nature of the report (e.g., public keys that could be
+              used to encrypt the details of a proof-of-concept exploit).
+            </note>
+          </a-element>
+          <h4>Evaluator action elements:</h4>
+          <a-element id="alc_tsu_ext.2.1e">
+            <title>The evaluator <i>shall confirm</i> that the information provided meets all
+              requirements for content and presentation of evidence.</title>
+            <aactivity>
+              The evaluator shall verify that the TSS contains a description of the timely security update
+              process used by the developer to create and deploy security updates. The evaluator shall
+              verify that this description addresses the entire application. The evaluator shall also
+              verify that, in addition to the TOE developer’s process, any
+              third-party processes are also addressed in the description. The evaluator shall
+              also verify that each mechanism for deployment of security updates is described.
+              <br/>
+              The evaluator shall verify that, for each deployment mechanism described for the update
+              process, the TSS lists a time between public disclosure of a vulnerability and public
+              availability of the security update to the TOE patching this vulnerability, to include any third-party
+              or carrier delays in deployment. The evaluator shall verify that this time is expressed in
+              a number or range of days.
+              <br/>
+              The evaluator shall verify that this description includes the publicly available mechanisms
+              (including either an email address or website) for reporting security issues related to the TOE.
+              The evaluator shall verify that the description of this mechanism includes a method for
+              protecting the report either using a public key for encrypting email or a trusted channel for a
+              website.
+            </aactivity>
+          </a-element>
+        </a-component>
+      </subsection>
+      <subsection id="ate" title="Class ATE: Tests">Testing is specified for functional aspects of
+        the system as well as aspects that take advantage of design or implementation weaknesses.
         The former is done through the ATE_IND family, while the latter is through the AVA_VAN
         family. At the assurance level specified in this PP, testing is based on advertised
         functionality and interfaces with dependency on the availability of design information. One
         of the primary outputs of the evaluation process is the test report as specified in the
-        following requirements.<br/> Since many of the APIs are not exposed at the user interface
-        (e.g., touch screen), the ability to stimulate the necessary interfaces requires a
-        developer’s test environment. This test environment will allow the evaluator, for example,
-        to access APIs and view file system information that is not available on consumer mobile
-        devices. </subsection>
-      <subsection id="ate_ind" name="Independent Testing – Conformance (ATE_IND)"> Testing is
-        performed to confirm the functionality described in the TSS as well as the administrative
-        (including configuration and operational) documentation provided. The focus of the testing
-        is to confirm that the requirements specified in Sections 4.2, 4.3, and 4.4 being met,
-        although some additional testing is specified for SARs in Section 4.5. The Assurance
-        Activities identify the additional testing activities associated with these components. The
-        evaluator produces a test report documenting the plan for and results of testing, as well as
-        coverage arguments focused on the platform/TOE combinations that are claiming conformance to
-        this PP. <h4>Developer action elements:</h4>
-        <f-element id="ATE_IND.1.1D">
-          <title>The developer shall provide the TOE for testing.</title>
-        </f-element>
-        <h4>Content and presentation elements:</h4>
-        <f-element id="ATE_IND.1.1C">
-          <title>The TOE shall be suitable for testing.</title>
-        </f-element>
-        <h4>Evaluator action elements:</h4>
-        <f-element id="ATE_IND.1.1E">
-          <title>The evaluator shall confirm that the information provided meets all requirements
-            for content and presentation of evidence.</title>
-        </f-element>
-        <f-element id="ATE_IND.1.2E">
-          <title>The evaluator shall test a subset of the TSF to confirm that the TSF operates as
-            specified.</title>
-          <aactivity>The evaluator shall prepare a test plan and report documenting the testing
-            aspects of the system. The test plan covers all of the testing actions contained in the
-            CEM and the body of this PP’s Assurance Activities. While it is not necessary to have
-            one test case per test listed in an Assurance Activity, the evaluator must document in
-            the test plan that each applicable testing requirement in the ST is covered.<br/> The
-            test plan identifies the platforms to be tested, and for those platforms not included in
-            the test plan but included in the ST, the test plan provides a justification for not
-            testing the platforms. This justification must address the differences between the
-            tested platforms and the untested platforms, and make an argument that the differences
-            do not affect the testing to be performed. It is not sufficient to merely assert that
-            the differences have no affect; rationale must be provided. If all platforms claimed in
-            the ST are tested, then no rationale is necessary.<br/> The test plan describes the
-            composition of each platform to be tested, and any setup that is necessary beyond what
-            is contained in the AGD documentation. It should be noted that the evaluator is expected
-            to follow the AGD documentation for installation and setup of each platform either as
-            part of a test or as a standard pre-test condition. This may include special test
-            drivers or tools. For each driver or tool, an argument (not just an assertion) should be
-            provided that the driver or tool will not adversely affect the performance of the
-            functionality by the TOE and its platform. This also includes the configuration of the
-            cryptographic engine to be used. The cryptographic algorithms implemented by this engine
-            are those specified by this PP and used by the cryptographic protocols being evaluated
-            (IPsec, TLS/HTTPS, SSH).<br/> The test plan identifies high-level test objectives as
-            well as the test procedures to be followed to achieve those objectives. These procedures
-            include expected results. The test report (which could just be an annotated version of
-            the test plan) details the activities that took place when the test procedures were
-            executed, and includes the actual results of the tests. This shall be a cumulative
-            account, so if there was a test run that resulted in a failure; a fix installed; and
-            then a successful re-run of the test, the report would show a “fail” and “pass” result
-            (and the supporting details), and not just the “pass” result.</aactivity>
-        </f-element>
+        following requirements. <a-component id="ate_ind.1"
+          name="Independent Testing – Conformance (ATE_IND.1)"> Testing is performed to confirm the
+          functionality described in the <abbr linkend="TSS"/> as well as the administrative
+          (including configuration and operational) documentation provided. The focus of the testing
+          is to confirm that the requirements specified in <secref linkend="SFRs"/> being met,
+          although some additional testing is specified for SARs in <secref linkend="SARs"/>. The
+          Assurance Activities identify the additional testing activities associated with these
+          components. The evaluator produces a test report documenting the plan for and results of
+          testing, as well as coverage arguments focused on the platform/<abbr linkend="TOE"/>
+          combinations that are claiming conformance to this PP. Given the scope of the 
+          <abbr linkend="TOE"/> and its associated evaluation evidence requirements, this 
+          component’s assurance activities are covered by the assurance activities listed for 
+          ALC_CMC.1. <h4>Developer action elements:</h4>
+          <a-element id="ate_ind.1.1d">
+            <title>The developer shall provide the <abbr linkend="TOE"/> for testing.</title>
+          </a-element>
+          <h4>Content and presentation elements:</h4>
+          <a-element id="ate_ind.1.1c">
+            <title>The <abbr linkend="TOE"/> shall be suitable for testing.</title>
+          </a-element>
+          <h4>Evaluator action elements:</h4>
+          <a-element id="ate_ind.1.1e">
+            <title>The evaluator <i>shall confirm</i> that the information provided meets all
+              requirements for content and presentation of evidence.</title>
+          </a-element>
+          <a-element id="ate_ind.1.2e">
+            <title>The evaluator shall test a subset of the <abbr linkend="TSF"/> to confirm
+              that the <abbr linkend="TSF"/> operates as specified.</title>
+            <note role="application">The evaluator shall test the application on the most current
+              fully patched version of the platform.</note>
+            <aactivity>The evaluator shall prepare a test plan and report documenting the testing
+              aspects of the system, including any application crashes during testing. The evaluator
+              shall determine the root cause of any application crashes and include that information
+              in the report. The test plan covers all of the testing actions contained in
+              the <cite linkend="bibCEM"/> and the body of this PP’s Assurance Activities. 
+              <br/>
+              While it
+              is not necessary to have one test case per test listed in an Assurance Activity, the
+              evaluator must document in the test plan that each applicable testing requirement in
+              the <abbr linkend="ST"/> is covered. The test plan identifies the platforms to be tested, and for those
+              platforms not included in the test plan but included in the <abbr linkend="ST"/>, the test plan provides
+              a justification for not testing the platforms. This justification must address the
+              differences between the tested platforms and the untested platforms, and make an
+              argument that the differences do not affect the testing to be performed. It is not
+              sufficient to merely assert that the differences have no affect; rationale must be
+              provided. If all platforms claimed in the <abbr linkend="ST"/> are tested, then no rationale is
+              necessary. The test plan describes the composition of each platform to be tested, and
+              any setup that is necessary beyond what is contained in the AGD documentation. It
+              should be noted that the evaluator is expected to follow the AGD documentation for
+              installation and setup of each platform either as part of a test or as a standard
+              pre-test condition. This may include special test drivers or tools. For each driver or
+              tool, an argument (not just an assertion) should be provided that the driver or tool
+              will not adversely affect the performance of the functionality by the <abbr
+                linkend="TOE"/> and its platform. 
+              <br/>
+              This also includes the configuration of the
+              cryptographic engine to be used. The cryptographic algorithms implemented by this
+              engine are those specified by this PP and used by the cryptographic protocols being
+              evaluated (IPsec, TLS, SSH). The test plan identifies high-level test objectives
+              as well as the test procedures to be followed to achieve those objectives. These
+              procedures include expected results. 
+              <br/>
+              The test report (which could just be an annotated
+              version of the test plan) details the activities that took place when the test
+              procedures were executed, and includes the actual results of the tests. This shall be
+              a cumulative account, so if there was a test run that resulted in a failure; a fix
+              installed; and then a successful re-run of the test, the report would show a “fail”
+              and “pass” result (and the supporting details), and not just the “pass”
+              result.</aactivity>
+          </a-element>
+        </a-component>
+      </subsection>
+      <subsection id="ava" title="Class AVA: Vulnerability Assessment">For the first generation of
+        this protection profile, the evaluation lab is expected to survey open sources to discover
+        what vulnerabilities have been discovered in these types of products. In most cases, these
+        vulnerabilities will require sophistication beyond that of a basic attacker. Until
+        penetration tools are created and uniformly distributed to the evaluation labs, the
+        evaluator will not be expected to test for these vulnerabilities in the <abbr linkend="TOE"
+        />. The labs will be expected to comment on the likelihood of these vulnerabilities given
+        the documentation provided by the vendor. This information will be used in the development
+        of penetration testing tools and for the development of future protection profiles.
+          <a-component id="ava_van.1" name="Vulnerability Survey (AVA_VAN.1)">
+          <h4>Developer action elements:</h4>
+          <a-element id="ava_van.1.1d">
+            <title>The developer shall provide the <abbr linkend="TOE"/> for testing.</title>
+          </a-element>
+          <h4>Content and presentation elements:</h4>
+          <a-element id="ava_van.1.1c">
+            <title>The <abbr linkend="TOE"/> shall be suitable for testing.</title>
+            <note role="application">Suitability for testing means not being obfuscated or
+              packaged in such a way as to disrupt either static or dyanmic analysis by the
+			  evaluator.</note>
+          </a-element>
+          <h4>Evaluator action elements:</h4>
+          <a-element id="ava_van.1.1e">
+            <title>The evaluator shall confirm that the information provided meets all requirements
+              for content and presentation of evidence.</title>
+          </a-element>
+          <a-element id="ava_van.1.2e">
+            <title>The evaluator shall perform a search of public domain sources to identify
+              potential vulnerabilities in the <abbr linkend="TOE"/>.</title>
+            <note role="application">Public domain sources include the Common Vulnerabilities 
+			and Exposures (CVE) dictionary for publicly-known vulnerabilities.  Public domain
+			sources also include sites which provide free checking of files for viruses.</note>
+			<!-- their Usage statement does not permit us to mention VirusTotal by name without permission -->
+          </a-element>
+          <a-element id="ava_van.1.3e">
+            <title>The evaluator shall conduct penetration testing, based on the identified
+              potential vulnerabilities, to determine that the <abbr linkend="TOE"/> is resistant to
+              attacks performed by an attacker possessing Basic attack potential.</title>
+            <aactivity>The evaluator shall generate a report to document their
+              findings with respect to this requirement. This report could physically be part of the
+              overall test report mentioned in ATE_IND, or a separate document. The evaluator
+              performs a search of public information to find vulnerabilities that have been found
+              in similar applications with a particular focus on network protocols the application
+              uses and document formats it parses. 
+	          The evaluator shall also run a virus scanner with the most current virus 
+	          definitions against the application files and verify that no files are flagged as malicious.
+              The evaluator documents the sources consulted and
+              the vulnerabilities found in the report. 
+              <br/>
+              For each vulnerability found, the evaluator
+              either provides a rationale with respect to its non-applicability, or the evaluator
+              formulates a test (using the guidelines provided in ATE_IND) to confirm the
+              vulnerability, if suitable. Suitability is determined by assessing the attack vector
+              needed to take advantage of the vulnerability. If exploiting the vulnerability
+              requires expert skills and an electron microscope, for instance, then a test would not
+              be suitable and an appropriate justification would be formulated.</aactivity>
+          </a-element>
+        </a-component>
       </subsection>
     </section>
-    <section id="classAVA" name="Class AVA: Vulnerability Assessment"> For the first generation of
-      this protection profile, the evaluation lab is expected to survey open sources to discover
-      what vulnerabilities have been discovered in these types of products. In most cases, these
-      vulnerabilities will require sophistication beyond that of a basic attacker. Until penetration
-      tools are created and uniformly distributed to the evaluation labs, the evaluator will not be
-      expected to test for these vulnerabilities in the TOE. The labs will be expected to comment on
-      the likelihood of these vulnerabilities given the documentation provided by the vendor. This
-      information will be used in the development of penetration testing tools and for the
-      development of future protection profiles. <subsection id="ava_van"
-        name="Vulnerability Survey (AVA_VAN)">
-        <h4>Developer action elements:</h4>
-        <f-element id="AVA_VAN.1.1D">
-          <title>The developer shall provide the TOE for testing.</title>
-        </f-element>
-        <h4>Content and presentation elements:</h4>
-        <f-element id="AVA_VAN.1.1C">
-          <title>The TOE shall be suitable for testing.</title>
-        </f-element>
-        <h4>Evaluator action elements:</h4>
-        <f-element id="AVA_VAN.1.1E">
-          <title>The evaluator shall confirm that the information provided meets all requirements
-            for content and presentation of evidence.</title>
-        </f-element>
-        <f-element id="AVA_VAN.1.2E">
-          <title>The evaluator shall perform a search of public domain sources to identify potential
-            vulnerabilities in the TOE.</title>
-        </f-element>
-        <f-element id="AVA_VAN.1.3E">
-          <title>The evaluator shall conduct penetration testing, based on the identified potential
-            vulnerabilities, to determine that the TOE is resistant to attacks performed by an
-            attacker possessing Basic attack potential.</title>
-          <aactivity> As with ATE_IND, the evaluator shall generate a report to document their
-            findings with respect to this requirement. This report could physically be part of the
-            overall test report mentioned in ATE_IND, or a separate document. The evaluator performs
-            a search of public information to determine the vulnerabilities that have been found in
-            network infrastructure devices and the implemented communication protocols in general,
-            as well as those that pertain to the particular TOE. The evaluator documents the sources
-            consulted and the vulnerabilities found in the report. For each vulnerability found, the
-            evaluator either provides a rationale with respect to its non-applicability, or the
-            evaluator formulates a test (using the guidelines provided in ATE_IND) to confirm the
-            vulnerability, if suitable. Suitability is determined by assessing the attack vector
-            needed to take advantage of the vulnerability. If exploiting the vulnerability requires
-            expert skills and an electron microscope, for instance, then a test would not be
-            suitable and an appropriate justification would be formulated. </aactivity>
-        </f-element>
-      </subsection>
-    </section>
+    
   </chapter>
-  <appendix id="RATIONALE" title="RATIONALE">In this Protection Profile, the focus in the initial
-    sections of the document is to use a narrative presentation in an attempt to increase the
-    overall understandability of the threats to MDM systems; the methods used to mitigate those
-    threats; and the extent of the mitigation achieved by compliant TOEs. This presentation style
-    does not readily lend itself to a formalized evaluation activity, so this Appendix contains the
-    tabular artifacts that can be used for the evaluation activities associated with this document.
-      
-    <section id="objectives" title="Security Obejctives">
-      <subsection id="Security Objectives For the TOE">The following table identifies security
-        objectives for the Mobile Device Management system. <center><h4>Table 6: Security Objectives
-            for the TOE</h4></center>
-        <table>
-          <tr class="header">
-            <TH>Objective</TH>
-            <TH>Objective Description</TH>
-          </tr>
-          <TR>
-            <TD>O.APPLY_POLICY</TD>
-            <TD>The TOE must facilitate configuration and enforcement of enterprise security
-              policies on mobile devices via interaction with the MDM Agent. This will include the
-              initial enrollment of the device into management, through its lifecycle including
-              policy updates and through its possible unenrollment from management services.</TD>
-          </TR>
-          <TR>
-            <TD>O.ACCOUNTABILITY</TD>
-            <TD>The TOE must provide logging facilities which record management actions undertaken
-              by its administrators</TD>
-          </TR>
-          <TR>
-            <TD>O.DATA_PROTECTION_TRANSIT</TD>
-            <TD>Data exchanged between the MDM Server and the MDM Agent and between the MDM Server
-              and its operating environment must be protected from being monitored, accessed and
-              altered.</TD>
-          </TR>
-          <TR>
-            <TD>O.MANAGEMENT</TD>
-            <TD>The TOE provides access controls around its management functionality.</TD>
-          </TR>
-          <TR>
-            <TD>O.INTEGRITY</TD>
-            <TD>The TOE will provide the capability to perform self-tests to ensure the integrity of
-              critical functionality, software/firmware and data has been maintained. The TOE will
-              also provide a means to verify the integrity of downloaded updates.</TD>
-          </TR>
-        </table>
-      </subsection>
-      <subsection id="Security Objectives for the Operational Environment">The following table
-        contains objectives for the Operational Environment. <center><h4>Table 7: Security
-            Objectives for the Operational Environment</h4></center>
-        <table>
-          <tr class="header">
-            <TH>Objective</TH>
-            <TH>Objective Description</TH>
-          </tr>
-          <TR>
-            <TD>OE.IT_ENTERPRISE</TD>
-            <TD>The Enterprise IT infrastructure provides security for a network that is available
-              to the TOE and mobile devices that prevents unauthorized access.</TD>
-          </TR>
-          <TR>
-            <TD>OE.MDM_SERVER_PLATFORM</TD>
-            <TD>The MDM Server relies upon a trustworthy platform and local network from which it
-              provides administrative capabilities.</TD>
-          </TR>
-          <TR>
-            <TD>OE.PROPER_ADMIN</TD>
-            <TD>TOE Administrators are trusted to follow and apply all administrator guidance in a
-              trusted manner.</TD>
-          </TR>
-          <TR>
-            <TD>OE.PROPER_USER</TD>
-            <TD>Users of the mobile device are trained to securely use the mobile device and apply
-              all guidance in a trusted manner.</TD>
-          </TR>
-          <TR>
-            <TD>OE.WIRELESS_NETWORK</TD>
-            <TD>A wireless network will be available to the mobile devices.</TD>
-          </TR>
-          <TR>
-            <TD>OE.TIMESTAMP</TD>
-            <TD>Reliable timestamp is provided by the operational environment for the TOE.</TD>
-          </TR>
-        </table>
-      </subsection>
-    </section>
-    <section id="Correspondence1" title="Correspondence">
-      <subsection id="Security Problem Definition Correspondence">The following table serves to map
-        the threats and assumptions defined in this PP to the security objectives also defined or
-        identified in this PP. <center><h4>Table 8: Security Problem Definition
-          Correspondence</h4></center>
-        <table>
-          <tr class="header">
-            <TH>Threat or Assumption</TH>
-            <TH>Security Objective</TH>
-          </tr>
-          <TR>
-            <TD>A.CONNECTIVITY</TD>
-            <TD>OE.WIRELESS_NETWORK</TD>
-          </TR>
-          <TR>
-            <TD>A.MDM_SERVER_PLATFORM</TD>
-            <TD>OE.MDM_SERVER_PLATFORM, OE.TIMESTAMP</TD>
-          </TR>
-          <TR>
-            <TD>A.PROPER_ADMIN</TD>
-            <TD>OE.PROPER_ADMIN,</TD>
-          </TR>
-          <TR>
-            <TD>A.PROPER_USER</TD>
-            <TD>OE.PROPER_USER</TD>
-          </TR>
-          <TR>
-            <TD>T.MALICIOUS_APPS</TD>
-            <TD>O.APPLY_POLICY, O.INTEGRITY</TD>
-          </TR>
-          <TR>
-            <TD>T.NETWORK_ATTACK</TD>
-            <TD>O.DATA_PROTECTION_TRANSIT</TD>
-          </TR>
-          <TR>
-            <TD>T.NETWORK_EAVESDROP</TD>
-            <TD>O.DATA_PROTECTION_TRANSIT</TD>
-          </TR>
-          <TR>
-            <TD>T.PHYSICAL_ACCESS</TD>
-            <TD>O.APPLY_POLICY</TD>
-          </TR>
-          <TR>
-            <TD>P.ADMIN</TD>
-            <TD>OE.PROPER_ADMIN, O.MANAGEMENT</TD>
-          </TR>
-          <TR>
-            <TD>P.DEVICE_ENROLL</TD>
-            <TD>O.MANAGEMENT, OE.IT_ENTERPRISE</TD>
-          </TR>
-          <TR>
-            <TD>P.NOTIFY</TD>
-            <TD>OE.PROPER_USER</TD>
-          </TR>
-          <TR>
-            <TD>P.ACCOUNTABILITY</TD>
-            <TD>O.ACCOUNTABILITY</TD>
-          </TR>
-        </table>
-      </subsection>
-      <subsection id="Security Objective Correspondence">The correspondence between the Security
-        Functional Requirements (SFRs) and the Security Objectives identified or defined in the PP
-        is provided in Section 3.1 </subsection>
-    </section>
-  </appendix>
+  
   <appendix id="optreqs" title="OPTIONAL REQUIREMENTS"> As indicated in the introduction to this PP,
     the baseline requirements (those that must be performed by the TOE or its underlying platform)
     are contained in the body of this PP. Additionally, there are three other types of requirements
@@ -6162,6 +6108,7 @@
     </section>
     
   </appendix>
+  
   <appendix id="initVectorreqs" title="Initialization Vector Requirements">
     <center>
       <h4>Table 9: References and IV Requirements for NIST-approved Cipher Modes</h4>
@@ -6231,6 +6178,7 @@
       </TR>
     </table>
   </appendix>
+  
   <appendix id="biblio" title="References">
     <bibliography>
       <entry id="bibCC">
@@ -6256,43 +6204,16 @@
       </entry>
     </bibliography>
   </appendix>
+  
   <appendix title="Acronyms" id="acronyms">
     <acronyms>
-     <entry>
-        <term>AEAD</term>
-        <description>Authenticated Encryption with Associated Data</description>
-      </entry>
        <entry>
         <term>AES</term>
         <description>Advanced Encryption Standard</description>
-      </entry>
-        <entry>
-        <term>AES</term>
-        <description>Advanced Encryption Standard</description>
-      </entry>
-      <entry>
-        <term>ANSI</term>
-        <description>American National Standards Institute</description>
-      </entry>
-       <entry>
-        <term>AP</term>
-        <description>Application Processor</description>
       </entry>
       <entry>
         <term>API</term>
         <description>Application Programming Interface</description>
-      </entry>
-      <entry>
-        <term>ASLR</term>
-        <description>Address Space Layout Randomization</description>
-      </entry>
-      <entry>
-        <term>BP</term>
-        <description>Baseband Processor</description>
-      </entry>
-       <entry>
-        <term>BR/EDR</term>
-        <description>(Bluetooth) Basic Rate/Enhanced Data Rate</description>
       </entry>
       <entry>
         <term>MD</term>
