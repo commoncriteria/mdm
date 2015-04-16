@@ -649,9 +649,9 @@
               Failure to properly install policy updates does not affect the enrollment status of
               the mobile device. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS and verify that it describes how the
+              <tss>The evaluator shall examine the TSS and verify that it describes how the
               alert system is implemented. The evaluator shall also verify that a description of
-              each assigned event is provided in the TSS. <h4>Tests</h4> For each MDM Agent/platform
+              each assigned event is provided in the TSS.</tss> <tests> For each MDM Agent/platform
               listed as supported in the ST: <testlist>
                 <test>The evaluator shall enroll a device and ensure that the MDM server alerts the
                   administrator of the change in enrollment status. The evaluator shall unenroll
@@ -671,7 +671,7 @@
                   alerts the administrator about the failed application of the policy.</test>
                 <test>(Conditional) The evaluator shall trigger each of the events listed and ensure
                   that the MDM Server alerts the administrator.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -702,9 +702,9 @@
               Objective Requirements, the ST author should include the appropriate auditable events
               from Table 1 in the ST for the requirements selected. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the TSS and ensure that it lists all of the
+              <tss>The evaluator shall check the TSS and ensure that it lists all of the
               auditable events. The evaluator shall check to make sure that every audit event type
-              mandated by the PP is described in the TSS. <h4>Guidance</h4> The evaluator shall
+              mandated by the PP is described in the TSS. </tss><guidance> The evaluator shall
               check the administrative guide and ensure that it lists all of the auditable events.
               The evaluator shall check to make sure that every audit event type mandated by the PP
               is described.<br/> The evaluator shall also make a determination of the administrative
@@ -716,7 +716,7 @@
               document the methodology or approach taken while determining which actions in the
               administrative guide are security relevant with respect to this PP. The evaluator may
               perform this activity as part of the activities associated with ensuring the AGD_OPE
-              guidance satisfies the requirements. <h4>Tests</h4> The evaluator shall test the TOE’s
+              guidance satisfies the requirements.</guidance><tests> The evaluator shall test the TOE’s
               ability to correctly generate audit records by having the TOE generate audit records
               for the events listed in the provided table and administrative actions. This should
               include all instances of an event. The evaluator shall test that audit records are
@@ -947,7 +947,7 @@
                   <TD>Initiation and termination of the trusted channel.</TD>
                   <TD>Trusted channel protocol.</TD>
                 </TR>
-              </table>
+              </table></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -960,15 +960,15 @@
             FAU_ALT_EXT.2.1 in the MDM Agent EP. This status may be determined using “polls” from
             the MDM Server which the Agent is required to respond to or using scheduled periodic
             notifications of connectivity initiated by the MDM Agent. <aactivity>
-              <h4>TSS</h4>The evaluator ensures that the TSS describes how reachability events are
+              <tss>The evaluator ensures that the TSS describes how reachability events are
               implemented, for each supported mobile platform. The evaluator verifies that this
               description clearly indicates who (MDM Agent or MDM Server) initiates reachability
-              events. <h4>Guidance</h4>The evaluator shall verify that the guidance instructs
+              events. </tss><guidance>The evaluator shall verify that the guidance instructs
               administrators on the method of determining the network connectivity status of an
-              enrolled agent. <h4>Tests</h4> For each MDM Agent/platform listed as supported in the
+              enrolled agent.</guidance><tests> For each MDM Agent/platform listed as supported in the
               ST:<br/> The evaluator shall configure the MDM Agent/platform to perform a network
               reachability test, both with and without such connectivity and shall ensure that by
-              following the guidance, the evaluator can determine results that reflect both.
+              following the guidance, the evaluator can determine results that reflect both.</tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -987,14 +987,14 @@
               or the platform maintains the audit record. For the ST author, the assignment is used
               to list any additional criteria or “none”.</note>
             <aactivity>
-              <h4>Guidance</h4>The evaluator shall review the administrative guidance to ensure that
+              <guidance>The evaluator shall review the administrative guidance to ensure that
               the guidance itemizes all event types, as well as describes all attributes that are to
               be selectable in accordance with the requirement, to include those attributes listed
               in the assignment. The administrative guidance shall also contain instructions on how
               to set the pre-selection as well as explain the syntax (if present) for multi-value
               pre-selection. The administrative guidance shall also identify those audit records
               that are always recorded, regardless of the selection criteria currently being
-              enforced. <h4>Tests</h4>The evaluator shall also perform the following tests: <testlist>
+              enforced.</guidance><tests>The evaluator shall also perform the following tests: <testlist>
                 <test>For each attribute listed in the requirement, the evaluator shall devise a
                   test to show that selecting the attribute causes only audit events with that
                   attribute (or those that are always recorded, as identified in the administrative
@@ -1005,7 +1005,7 @@
                   correctly implemented. The evaluator shall also, in the test plan, provide a short
                   narrative justifying the set of tests as representative and sufficient to exercise
                   the capability.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -1020,13 +1020,13 @@
               successful receipt of an application or update on a managed mobile device, and
               failures can be inferred from the absence of such alerts.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the TSS and ensure that it provides a format for
-              audit records. <h4>Guidance</h4>The evaluator shall check the administrative guide and
+              <tss>The evaluator shall check the TSS and ensure that it provides a format for
+                audit records.</tss><guidance>The evaluator shall check the administrative guide and
               ensure that it provides a format for audit records. Each audit record format type must
-              be covered, along with a brief description of each field. <h4>Tests</h4>The evaluator
+              be covered, along with a brief description of each field.</guidance><tests>The evaluator
               shall verify that when an application or update push fails, that the audit records
               generated match the format specified in the guidance and that the fields in each audit
-              record have the proper entries. </aactivity>
+              record have the proper entries. </tests></aactivity>
           </f-element>
           <f-element id="FAU_GEN.1.2(2) Refinement" status="optional">
             <title>The <selectables>
@@ -1045,13 +1045,13 @@
               shall identify in the TSS which information of the audit record that is performed by
               the TSF and that which is performed by the TOE platform.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the TSS and ensure that it provides a format for
+              <tss>The evaluator shall check the TSS and ensure that it provides a format for
               audit records. Each audit record format type must be covered, along with a brief
-              description of each field. <h4>Guidance</h4>The evaluator shall check the
+              description of each field.</tss> <guidance>The evaluator shall check the
               administrative guide and ensure that it provides a format for audit records. Each
               audit record format type must be covered, along with a brief description of each
               field. The evaluator shall check to make sure that the description of the fields
-              contains the information required in FAU_GEN.1.2. <h4>Tests</h4> When verifying the
+              contains the information required in FAU_GEN.1.2.</guidance> <tests> When verifying the
               test results from FAU_GEN.1.1, the evaluator shall ensure the audit records generated
               during testing match the format specified in the administrative guide, and that the
               fields in each audit record have the proper entries.<br/> Note that the testing here
@@ -1059,7 +1059,7 @@
               directly. For example, testing performed to ensure that the administrative guidance
               provided is correct verifies that AGD_OPE.1 is satisfied and should address the
               invocation of the administrative actions that are needed to verify the audit records
-              are generated as expected.<br/>
+              are generated as expected.<br/></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -1085,9 +1085,9 @@
               protected. The ST author also ensures that the supporting protocol requirement
               matching the selection is included in the ST.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to ensure it describes the means by
+              <tss>The evaluator shall examine the TSS to ensure it describes the means by
               which the audit data are transferred to the external audit server, and how the trusted
-              channel is provided. <h4>Guidance</h4>The evaluator shall also examine the operational
+              channel is provided. </tss><guidance>The evaluator shall also examine the operational
               guidance to determine that it describes the relationship between the local audit data
               and the audit data that are sent to the audit log server. For example, when an audit
               event is generated, is it simultaneously sent to the external server and the local
@@ -1096,7 +1096,7 @@
               guidance to ensure it describes how to establish the trusted channel to the audit
               server, as well as describe any requirements on the audit server (particular audit
               server protocol, version of the protocol required, etc.), as well as configuration of
-              the TOE needed to communicate with the audit server. <h4>Tests</h4> Testing of the
+              the TOE needed to communicate with the audit server.</guidance> <tests> Testing of the
               trusted channel mechanism will be performed as specified in the associated assurance
               activities for the particular trusted channel mechanism.<br/> The evaluator shall
               perform the following test for this requirement:<br/>
@@ -1109,7 +1109,7 @@
                 successfully received by the audit server. The evaluator shall record the
                 particular software (name, version) used on the audit server during
                 testing.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -1151,16 +1151,16 @@
               requirement will evolve in future versions of this Protection Profile as standards
               efforts mature.</note>
             <aactivity>
-              <h4>Guidance</h4>The evaluator shall check to ensure that the operational guidance
+              <guidance>The evaluator shall check to ensure that the operational guidance
               contains instructions on how to access the MDM Server’s compliance reporting
-              interface. <h4>Tests</h4>
+              interface.</guidance><tests>
               <testlist>
                 <test>Using the operational guidance, the evaluator shall demonstrate the ability to
                   access the compliance reporting interface from an authorized entity and
                   successfully obtain information about enrolled devices.</test>
                 <test>The evaluator shall attempt to access the compliance reporting interface from
                   an unauthorized entity and demonstrate that the attempt is denied.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -1174,12 +1174,12 @@
               to perform the authentication decision for users performing the remote enrollment of a
               mobile device.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS and verify that it describes the
+              <tss>The evaluator shall examine the TSS and verify that it describes the
               process of enrollment for each MDM Agent/platform listed as supported in the ST. This
               description shall include the trusted path used for enrollment (FTP_TRP.1(2)), the
               method of user authentication (username/password, token, etc.), the method of
               authentication decision (local or remote authentication services), and the actions
-              performed on the MDM Server upon successful authentication. <h4>Tests</h4>For each MDM
+              performed on the MDM Server upon successful authentication.</tss><tests>For each MDM
               Agent/platform listed as supported in the ST:<br/> The evaluator shall perform the
               following tests: <testlist>
                 <test>The evaluator shall attempt to enroll a device without providing correct
@@ -1188,7 +1188,7 @@
                 <test>The evaluator shall attempt to enroll the device providing correct
                   credentials. The evaluator shall verify that the device is enrolled and that the
                   described enrollment actions are taken.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FIA_ENR_EXT.1.2">
@@ -1201,18 +1201,18 @@
             <note role="application">This requirement is designed to permit the enterprise to
               restrict users’ enrollment of devices.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS and verify that it implements a policy
-              to limit the user’s enrollment of devices. <h4>Guidance</h4>The evaluator shall ensure
+              <tss>The evaluator shall examine the TSS and verify that it implements a policy
+              to limit the user’s enrollment of devices.</tss><guidance>The evaluator shall ensure
               that the administrative guidance describes the method(s) of restricting user
-              enrollment and that it instructs the administrator how to configure the restrictions.
-                <h4>Tests</h4>For each type of policy selected, the evaluator shall perform the
+              enrollment and that it instructs the administrator how to configure the restrictions.</guidance>
+                <tests>For each type of policy selected, the evaluator shall perform the
               following test: <testlist>
                 <test>The evaluator shall attempt to configure the MDM Server according to the
                   administrative guidance in order to prevent enrollment. The evaluator shall verify
                   that the user cannot enroll a device outside of the configured limitation. (For
                   example, the evaluator may try to enroll a disallowed device, or may try to enroll
                   additional devices beyond the number allowed.)</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -1231,13 +1231,13 @@
               listed in FMT_SMF.1(1). It also includes functions necessary to maintain and configure
               the MDM Server itself.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS and user documents to ensure that it
+              <tss>The evaluator shall examine the TSS and user documents to ensure that it
               describes what security management functions are restricted to the administrator and
               what actions can be taken for each management function. The evaluator shall verify
               that the security management functions are restricted to authorized administrators and
-              the administrator is only able to take the actions as described in the user documents.
-                <h4>Tests</h4>The evaluator shall attempt to access the functions and policies in
-              FMT_SMF.1(1) as an unauthorized user and verify that the attempt fails. </aactivity>
+              the administrator is only able to take the actions as described in the user documents.</tss>
+                <tests>The evaluator shall attempt to access the functions and policies in
+                  FMT_SMF.1(1) as an unauthorized user and verify that the attempt fails. </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FMT_MOF.1" name="Management of Enrollment Function">
@@ -1251,9 +1251,9 @@
               enroll mobile devices when they are in the possession of the administrator, for
               example, before distributing the mobile devices to the users.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS and verify that it describes how
-              unauthorized users are prevented from enrolling in the MDM services. <h4>Tests</h4>The
-              test of this function is performed in conjunction with FIA_ENR_EXT.1. </aactivity>
+              <tss>The evaluator shall examine the TSS and verify that it describes how
+              unauthorized users are prevented from enrolling in the MDM services. </tss><tests>The
+                test of this function is performed in conjunction with FIA_ENR_EXT.1. </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FMT_SMF.1"
@@ -1447,7 +1447,7 @@
               audit server according to FAU_STG_EXT.1. The MDM Server is not expected to retain
               those logs.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to ensure that it describes each
+              <tss>The evaluator shall examine the TSS to ensure that it describes each
               management function listed. The evaluator shall examine the TSS to verify that any
               differences between management functions and policies for each supported MDM
               Agent/platform listed. The evaluator shall also examine the ST of the claimed Mobile
@@ -1455,12 +1455,12 @@
               the TSS do not exceed the capabilities of the supported MD.<br/> The evaluator shall
               examine the TSS to ensure that it identifies the management functions implemented for
               each supported MDM Agent/platform, which are likely to be subsets of the all of the
-              management functions available to the administrator on the MDM Server.
-                <h4>Guidance</h4>
-              <h4>Tests</h4>For each MDM Agent/platform listed as supported in the ST: <testlist>
+              management functions available to the administrator on the MDM Server.</tss>
+              
+              <tests>For each MDM Agent/platform listed as supported in the ST: <testlist>
                 <test>The evaluator shall verify the ability to command each MDM Agent functional
                   capability and configure each MDM Agent policy listed above.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -1496,10 +1496,10 @@
               such as daily, basis in order to ensure freshness of log data and to minimize loss of
               audit logs.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to ensure that it describes each
-              management function listed. <h4>Guidance</h4>The evaluator shall verify the AGD
+              <tss>The evaluator shall examine the TSS to ensure that it describes each
+              management function listed.</tss> <guidance>The evaluator shall verify the AGD
               guidance includes detailed instructions of what options are available and how to
-              configure each management functional capability listed. <h4>Tests</h4>The test of
+              configure each management functional capability listed.</guidance><tests>The test of
               functions b, c, and d are performed in conjunction with the use of the function. The
               evaluator shall perform the following test: <testlist>
                 <test>The evaluator shall configure the TSF authentication certificate(s) and verify
@@ -1511,7 +1511,7 @@
                 <test>(conditional) The evaluator shall design and perform tests to demonstrate that
                   the assigned function may be configured and that the intended behavior of the
                   function is enacted by the MDM Server.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -1530,18 +1530,18 @@
               The MD user role is used for enrollment of mobile devices to the MDM according to
               FIA_ENR_EXT.1.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to verify that it describes the
-              administrator role and the powers granted to and limitations of the role.
-                <h4>Guidance</h4>The evaluator shall review the operational guidance to ensure that
-              it contains instructions for administering the TOE and which interfaces are supported.
-                <h4>Tests</h4>In the course of performing the testing activities for the evaluation,
+              <tss>The evaluator shall examine the TSS to verify that it describes the
+              administrator role and the powers granted to and limitations of the role.</tss>
+                <guidance>The evaluator shall review the operational guidance to ensure that
+                  it contains instructions for administering the TOE and which interfaces are supported.</guidance>
+                <tests>In the course of performing the testing activities for the evaluation,
               the evaluator shall use all supported interfaces, although it is not necessary to
               repeat each test involving an administrative action with each interface. The evaluator
               shall ensure, however, that each supported method of administering the TOE that
               conforms to the requirements of this PP be tested; for instance, if the TOE can be
               administered through a local hardware interface or TLS/HTTPS then both methods of
               administration must be exercised during the evaluation team’s test activities.
-            </aactivity>
+                </tests> </aactivity>
           </f-element>
         </f-component>
         <f-component id="FPT_TUD_EXT.1" name="Trusted Update">
@@ -1550,11 +1550,11 @@
               current version of the MDM Server software.</title>
             <note role="application"/>
             <aactivity>
-              <h4>Guidance</h4>The evaluator shall ensure that the administrator guidance includes
-              instructions for determining the current version of the TOE. <h4>Tests</h4>The
+              <guidance>The evaluator shall ensure that the administrator guidance includes
+                instructions for determining the current version of the TOE.</guidance> <tests>The
               evaluator shall query the TSF for the current version of the software according to the
               AGD guidance and shall verify that the current version matches that of the documented
-              and installed version. </aactivity>
+              and installed version.</tests> </aactivity>
           </f-element>
         </f-component>
           <f-component id="FMT_MOF.1" name="Management of Functions in MAS Server">
@@ -1567,16 +1567,16 @@
                 with the MDM Server (if separate server) to determine which applications the user can
                 access.</note>
               <aactivity>
-                <h4>TSS</h4>The evaluator shall examine the TSS to determine if the MAS Server creates
-                its own groups or relies on the groups specified by the MDM Server.
-                <h4>Guidance</h4>The evaluator shall confirm that the operational guidance contains
+                <tss>The evaluator shall examine the TSS to determine if the MAS Server creates
+                its own groups or relies on the groups specified by the MDM Server.</tss>
+                <guidance>The evaluator shall confirm that the operational guidance contains
                 how to create and define user groups and how to specify which applications are
-                accessible by which group. <h4>Tests</h4>The evaluator shall ensure that the MAS
+                accessible by which group. </guidance><tests>The evaluator shall ensure that the MAS
                 client can only access the applications specified for the group they are enrolled in.
                 The evaluator shall create a user group and do not define the user to be part of the
                 group. Verify that an application accessible to that group cannot be accessed. The
                 evaluator shall include the user in the group and assure that the application can be
-                accessed. </aactivity>
+                accessed. </tests></aactivity>
             </f-element>
           </f-component>
           <f-component id="FMT_MOF.1" name="Management of Download Function in MAS Server">
@@ -1586,15 +1586,15 @@
                 the application access group.</title>
               <note role="application"/>
               <aactivity>
-                <h4>TSS</h4>The evaluator shall examine the TSS to determine that all methods of
-                initiating an application download or update push are specified. <h4>Guidance</h4>The
+                <tss>The evaluator shall examine the TSS to determine that all methods of
+                initiating an application download or update push are specified.</tss> <guidance>The
                 evaluator shall confirm that the operational guidance contains how to initiate an
-                application download or update push. <h4>Tests</h4>The evaluator shall ensure that the
+                application download or update push.</guidance><tests>The evaluator shall ensure that the
                 MAS Server verifies that the mobile device is enrolled in the MDM Server and is in a
                 compliant state. The evaluator shall verify that an application cannot be downloaded
                 from the MAS Server prior to enrolling the device with the MDM. The evaluator shall
                 partially enroll the mobile device, so the device is connected to the MDM Server, but
-                is not complaint and verify that applications cannot be downloaded. </aactivity>
+                is not complaint and verify that applications cannot be downloaded.</tests> </aactivity>
             </f-element>
           </f-component>
           <f-component id="FMT_SMF.1" name="Specification of Management Functions (MAS Server)">
@@ -1614,12 +1614,12 @@
                 in the MAS Server to configure the underlying MAS Server. The ST author can add more
                 commands and configuration policies by completing the assignment statement.</note>
               <aactivity>
-                <h4>TSS</h4>The evaluator shall examine the TSS to ensure that it describes each
-                management function listed. <h4>Guidance</h4>The evaluator shall verify the AGD
+                <tss>The evaluator shall examine the TSS to ensure that it describes each
+                management function listed.</tss> <guidance>The evaluator shall verify the AGD
                 guidance includes detailed instructions of what options are available and how to
-                configure each management functional capability listed. <h4>Tests</h4>The test of the
+                configure each management functional capability listed.</guidance><tests>The test of the
                 functions are performed in conjunction with the restriction of the function in
-                FMT_MOF.1. </aactivity>
+                FMT_MOF.1. </tests></aactivity>
             </f-element>
           </f-component>
           <f-component id="FMT_SMR.1" name="Security Management Roles">
@@ -1637,17 +1637,17 @@
                 The MD user role is used for enrollment of mobile devices to the MAS according to
                 FIA_ENR_EXT.1.</note>
               <aactivity>
-                <h4>TSS</h4>The evaluator shall examine the TSS to verify that it describes the
-                administrator role and the powers granted to and limitations of the role.
-                <h4>Guidance</h4>The evaluator shall review the operational guidance to ensure that
-                it contains instructions for administering the TOE and which interfaces are supported.
-                <h4>Tests</h4>In the course of performing the testing activities for the evaluation,
+                <tss>The evaluator shall examine the TSS to verify that it describes the
+                administrator role and the powers granted to and limitations of the role.</tss>
+                <guidance>The evaluator shall review the operational guidance to ensure that
+                  it contains instructions for administering the TOE and which interfaces are supported.</guidance>
+                <tests>In the course of performing the testing activities for the evaluation,
                 the evaluator shall use all supported interfaces, although it is not necessary to
                 repeat each test involving an administrative action with each interface. The evaluator
                 shall ensure, however, that each supported method of administering the TOE that
                 conforms to the requirements of this PP be tested; for instance, if the TOE can be
                 administered through a local hardware interface or TLS/HTTPS then both methods of
-                administration must be exercised during the evaluation team’s test activities.
+                administration must be exercised during the evaluation team’s test activities.</tests>
               </aactivity>
             </f-element>
           </f-component>
@@ -1660,15 +1660,15 @@
               transit (as they are already protected by FPT_ITT.1(2) or FTP_ITC.1(2)). This is
               especially critical for users who connect to multiple enterprises.</note>
             <aactivity>
-              <h4>TSS</h4>Policies must be digitally signed by the enterprise using the algorithms
+              <tss>Policies must be digitally signed by the enterprise using the algorithms
               in FCS_COP.1(1). The evaluator shall ensure that the TSS describes how policies are
-              digitally signed by the TSF. <h4>Guidance</h4>If applicable, the evaluator shall
+              digitally signed by the TSF.</tss><guidance>If applicable, the evaluator shall
               verify that the AGD guidance instructs administrators on configuring the Enterprise
               certificate to be used for signing policies or signing the policies before applying
-              them. <h4>Tests</h4>The evaluator shall perform a policy update in accordance with
+              them.</guidance> <tests>The evaluator shall perform a policy update in accordance with
               FMT_SMF.1(1). The evaluator shall examine the policy either at the MDM Server, in
               transmission, or at the MDM agent, and verify the TSF signs the update and provides it
-              to the MDM Agent. </aactivity>
+              to the MDM Agent. </tests></aactivity>
             </f-element>
           </f-component>
       </subsection>
@@ -1700,14 +1700,14 @@
               validation, algorithm, and similar services may be met with platform provided
               services. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to determine that for each supported
+              <tss>The evaluator shall examine the TSS to determine that for each supported
               Agent listed in the ST, the methods of Agent-Server communication are indicated, along
               with how those communications are protected. The evaluator shall also confirm that all
               protocols listed in the TSS in support of remote TOE administration are consistent
               with those specified in the requirement, and are included in the requirements in the
-              ST. <h4>Guidance</h4>The evaluator shall confirm that the operational guidance
+              ST.</tss> <guidance>The evaluator shall confirm that the operational guidance
               contains instructions for configuring the communication channel between each supported
-              MDM Agent and the MDM Server for each supported method. <h4>Tests</h4>For each
+              MDM Agent and the MDM Server for each supported method. </guidance><tests>For each
               supported MDM Agent/platform listed in the ST: <testlist>
                 <test>The evaluators shall ensure that communications using each specified (in the
                   operational guidance) Agent-Server communication method is tested during the
@@ -1716,7 +1716,7 @@
                 <test>The evaluator shall ensure, for each method of Agent-Server communication, the
                   channel data is not sent in plaintext.</test>
               </testlist> Further assurance activities are associated with the specific protocols.
-            </aactivity>
+              </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FPT_ITT.1"
@@ -1741,13 +1741,13 @@
               validation, algorithm, and similar services may be met with platform provided
               services. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to determine that the methods and
+              <tss>The evaluator shall examine the TSS to determine that the methods and
               protocols used to protect distributed TOE components are described. The evaluator
               shall also confirm that all protocols listed in the TSS in support of TOE
               administration are consistent with those specified in the requirement, and are
-              included in the requirements in the ST. <h4>Guidance</h4>The evaluator shall confirm
+              included in the requirements in the ST.</tss> <guidance>The evaluator shall confirm
               that the operational guidance contains instructions for establishing the communication
-              paths for each supported method. <h4>Tests</h4>
+              paths for each supported method. </guidance><tests>
               <testlist>
                 <test>The evaluators shall ensure that communications using each specified (in the
                   operational guidance) communication method is tested during the course of the
@@ -1756,7 +1756,7 @@
                 <test>The evaluator shall ensure, for each method of communication, the channel data
                   is not sent in plaintext.</test>
               </testlist> Further assurance activities are associated with the specific protocols.
-            </aactivity>
+              </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FPT_ITT.1" name="Basic Internal TSF Data Transfer Protection (MAS Server)">
@@ -1780,14 +1780,14 @@
               validation, algorithm, and similar services may be met with platform provided
               services. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to determine that for each supported
+              <tss>The evaluator shall examine the TSS to determine that for each supported
               Agent listed in the ST, the methods of Agent-Server communication are indicated, along
               with how those communications are protected. The evaluator shall also confirm that all
               protocols listed in the TSS in support of remote TOE administration are consistent
               with those specified in the requirement, and are included in the requirements in the
-              ST. <h4>Guidance</h4>The evaluator shall confirm that the operational guidance
+              ST.</tss> <guidance>The evaluator shall confirm that the operational guidance
               contains instructions for configuring the communication channel between each supported
-              MDM Agent and the MAS Server for each supported method. <h4>Tests</h4>For each
+              MDM Agent and the MAS Server for each supported method.</guidance><tests>For each
               supported MAS Agent/platform listed in the ST: <testlist>
                 <test>The evaluators shall ensure that communications using each specified (in the
                   operational guidance) Agent-Server communication method is tested during the
@@ -1796,7 +1796,7 @@
                 <test>The evaluator shall ensure, for each method of Agent-Server communication, the
                   channel data is not sent in plaintext.</test>
               </testlist> Further assurance activities are associated with the specific protocols.
-            </aactivity>
+              </tests></aactivity>
           </f-element>
         </f-component>
       </subsection>
@@ -1810,11 +1810,11 @@
               warning message regarding use of the TOE.</title>
             <note role="application"/>
             <aactivity>
-              <h4>TSS</h4>The TSS shall describe when the banner is displayed. The evaluator shall
-              also perform the following test: <h4>Tests</h4>The evaluator follows the operational
+              <tss>The TSS shall describe when the banner is displayed. The evaluator shall
+              also perform the following test:</tss> <tests>The evaluator follows the operational
               guidance to configure a notice and consent warning message. The evaluator shall then
               start up or unlock the TSF. The evaluator shall verify that the notice and consent
-              warning message is displayed in each instance described in the TSS. </aactivity>
+              warning message is displayed in each instance described in the TSS. </tests></aactivity>
           </f-element>
         </f-component>
       </subsection>
@@ -1866,14 +1866,14 @@
             <note role="application">If the TOE includes a separate MAS Server, this requirement
               also addresses the communication between the MAS Server and the MDM Agent.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to determine that the methods of
+              <tss>The evaluator shall examine the TSS to determine that the methods of
               Agent-Server communication are indicated, along with how those communications are
               protected. The evaluator shall also confirm that all protocols listed in the TSS in
               support of remote TOE administration are consistent with those specified in the
-              requirement, and are included in the requirements in the ST. <h4>Guidance</h4>The
+              requirement, and are included in the requirements in the ST.</tss> <guidance>The
               evaluator shall confirm that the operational guidance contains instructions for
               configuring the communication channel between the MDM Agent and the MDM Server for
-              each supported method. <h4>Tests</h4>
+              each supported method.</guidance><tests>
               <testlist>
                 <test>The evaluators shall ensure that communications using each specified (in the
                   operational guidance) Agent-Server communication method is tested during the
@@ -1885,7 +1885,7 @@
                   Server, that a protocol analyzer identifies the traffic as the protocol under
                   testing.</test>
               </testlist> Further assurance activities are associated with the specific protocols.
-            </aactivity>
+              </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FTP_ITC.1" name="Inter-TSF Trusted Channel (Authorized IT Entities)">
@@ -1948,12 +1948,12 @@
               communication, the ST author lists in the assignment for FTP_ITC.1.3 the services for
               which the TOE can initiate the communication with the authorized IT entity. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to determine that the methods of
+              <tss>The evaluator shall examine the TSS to determine that the methods of
               communication with authorized IT entities are indicated, along with how those
-              communications are protected. <h4>Guidance</h4>The evaluator shall confirm that the
+              communications are protected.</tss> <guidance>The evaluator shall confirm that the
               operational guidance contains instructions for configuring the communication channel
-              between the MAS Server and authorized IT entities for each supported method.
-              <h4>Tests</h4>
+              between the MAS Server and authorized IT entities for each supported method.</guidance>
+              <tests>
               <testlist>
                 <test>The evaluators shall ensure that communications using each specified (in the
                   operational guidance) communication method is tested during the course of the
@@ -1965,7 +1965,7 @@
                   Server, that a protocol analyzer identifies the traffic as the protocol under
                   testing.</test>
               </testlist> Further assurance activities are associated with the specific protocols.
-            </aactivity>
+              </tests></aactivity>
           </f-element>
         </f-component>
       </subsection>
@@ -1998,13 +1998,13 @@
               shall identify in the TSS which information of the audit record that is performed by
               the TSF and that which is performed by the TOE platform.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the TSS and ensure that it provides a format for
+              <tss>The evaluator shall check the TSS and ensure that it provides a format for
               audit records. Each audit record format type must be covered, along with a brief
-              description of each field. <h4>Guidance</h4>The evaluator shall check the
+              description of each field.</tss> <guidance>The evaluator shall check the
               administrative guide and ensure that it provides a format for audit records. Each
               audit record format type must be covered, along with a brief description of each
               field. The evaluator shall check to make sure that the description of the fields
-              contains the information required in FAU_GEN.1.2. <h4>Tests</h4>When verifying the
+              contains the information required in FAU_GEN.1.2.</guidance><tests>When verifying the
               test results from FAU_GEN.1.1, the evaluator shall ensure the audit records generated
               during testing match the format specified in the administrative guide, and that the
               fields in each audit record have the proper entries.<br/> Note that the testing here
@@ -2012,7 +2012,7 @@
               directly. For example, testing performed to ensure that the administrative guidance
               provided is correct verifies that AGD_OPE.1 is satisfied and should address the
               invocation of the administrative actions that are needed to verify the audit records
-              are generated as expected. </aactivity>
+              are generated as expected. </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FAU_STG_EXT.1" name="External Audit Trail Storage">
@@ -2037,9 +2037,9 @@
               protected. The ST author also ensures that the supporting protocol requirement
               matching the selection is included in the ST.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to ensure it describes the means by
+              <tss>The evaluator shall examine the TSS to ensure it describes the means by
               which the audit data are transferred to the external audit server, and how the trusted
-              channel is provided. <h4>Guidance</h4>The evaluator shall also examine the operational
+              channel is provided.</tss> <guidance>The evaluator shall also examine the operational
               guidance to determine that it describes the relationship between the local audit data
               and the audit data that are sent to the audit log server. For example, when an audit
               event is generated, is it simultaneously sent to the external server and the local
@@ -2048,7 +2048,7 @@
               guidance to ensure it describes how to establish the trusted channel to the audit
               server, as well as describe any requirements on the audit server (particular audit
               server protocol, version of the protocol required, etc.), as well as configuration of
-              the TOE needed to communicate with the audit server. <h4>Tests</h4>Testing of the
+              the TOE needed to communicate with the audit server.</guidance><tests>Testing of the
               trusted channel mechanism will be performed as specified in the associated assurance
               activities for the particular trusted channel mechanism.<br/> The evaluator shall
               perform the following test for this requirement: <testlist>
@@ -2062,7 +2062,7 @@
                   particular software (name, version) used on the audit server during
                   testing.</test>
               </testlist>
-            </aactivity>
+              </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FAU_SAR.1" name="Audit Review">
@@ -2083,12 +2083,12 @@
               administrator can view and interpret the audit records and to prevent unauthorized
               users from accessing the logs.</note>
             <aactivity>
-              <h4>Guidance</h4>The evaluator shall check the AGD guidance and ensure that it
+              <guidance>The evaluator shall check the AGD guidance and ensure that it
               describes how the administrator accesses the audit data and describes the format of
-              the audit record. <h4>Tests</h4>The evaluator shall attempt to view the audit record
+              the audit record.</guidance><tests>The evaluator shall attempt to view the audit record
               as the authorized administrator and verify that the action succeeds. The evaluator
               shall ensure the audit records generated during testing match the format specified in
-              the administrative guide. </aactivity>
+              the administrative guide. </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FAU_STG_EXT.2" name="Audit Event Storage">
@@ -2105,9 +2105,9 @@
               be saved. The TSF may rely on the underlying operating system for this functionality,
               and the first selection should be made appropriately.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall ensure that the TSS describes how the audit records
+              <tss>The evaluator shall ensure that the TSS describes how the audit records
               are protected from unauthorized modification or deletion. The evaluator shall ensure
-              that the TOE uses audit trail specific protection mechanisms. <h4>Tests</h4>The
+              that the TOE uses audit trail specific protection mechanisms.</tss> <tests>The
               evaluator shall perform the following tests: <testlist>
                 <test>The evaluator shall access the audit trail as an unauthorized user and attempt
                   to modify and delete the audit records. The evaluator shall verify that these
@@ -2117,7 +2117,7 @@
                   attempts succeed. The evaluator shall verify that only the records intended for
                   modification and deletion are modified and deleted.</test>
               </testlist>
-            </aactivity>
+              </tests></aactivity>
           </f-element>
         </f-component>
       </subsection>
@@ -2164,20 +2164,20 @@
               2015.</note>
             <aactivity>
               <h4>Requirement met by the platform</h4>
-              <h4>TSS</h4>For each platform listed in the ST, the evaluator shall examine the ST of
+              <tss>For each platform listed in the ST, the evaluator shall examine the ST of
               the platform to ensure that the key generation claimed in that platform's ST contains
               the key generation requirement in the MDM Server’s ST. The evaluator shall also
               examine the TSS of the MDM Server’s ST to verify that it describes (for each supported
               platform) how the key generation functionality is invoked (it should be noted that
               this may be through a mechanism that is not implemented by the MDM Server;
               nonetheless, that mechanism will be identified in the TSS as part of this assurance
-              activity). <h4>Requirement met by the TOE</h4>
-              <h4>TSS</h4>The evaluator shall ensure that the TSS identifies the key sizes supported
+              activity).</tss> <h4>Requirement met by the TOE</h4>
+              <tss>The evaluator shall ensure that the TSS identifies the key sizes supported
               by the TOE. If the ST specifies more than one scheme, the evaluator shall examine the
-              TSS to verify that it identifies the usage for each scheme. <h4>Guidance</h4>The
+              TSS to verify that it identifies the usage for each scheme.</tss><guidance>The
               evaluator shall verify that the AGD guidance instructs the administrator how to
               configure the TOE to use the selected key generation scheme(s) and key size(s) for all
-              uses defined in this PP. <h4>Tests</h4>
+              uses defined in this PP.</guidance><tests>
               <h4>Key Generation for FIPS PUB 186-4 RSA Schemes</h4> The evaluator shall verify the
               implementation of RSA Key Generation by the TOE using the Key Generation test. This
               test verifies the ability of the TSF to correctly produce values for the key
@@ -2275,7 +2275,7 @@
                 <li>q divides p-1</li>
                 <li>g^q mod p = 1</li>
                 <li>g^x mod p = y</li>
-              </ul> for each FFC parameter set and key pair. </aactivity>
+              </ul> for each FFC parameter set and key pair. </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FCS_CKM.2" name="Cryptographic Key Establishment">
@@ -2309,20 +2309,20 @@
               the key generation according to FCS_CKM.1.1.</note>
             <aactivity>
               <h4>Requirement met by the platform</h4>
-              <h4>TSS</h4>For each platform listed in the ST, the evaluator shall examine the ST of
+              <tss>For each platform listed in the ST, the evaluator shall examine the ST of
               the platform to ensure that the key establishment claimed in that platform's ST
               contains the key establishment requirement in the MDM Server’s ST. The evaluator shall
               also examine the TSS of the MDM Server’s ST to verify that it describes (for each
               supported platform) how the key establishment functionality is invoked (it should be
               noted that this may be through a mechanism that is not implemented by the MDM Server;
               nonetheless, that mechanism will be identified in the TSS as part of this assurance
-              activity). <h4>Requirement met by the TOE</h4>
-              <h4>TSS</h4>The evaluator shall ensure that the supported key establishment schemes
+              activity).</tss> <h4>Requirement met by the TOE</h4>
+              <tss>The evaluator shall ensure that the supported key establishment schemes
               correspond to the key generation schemes identified in FCS_CKM.1.1. If the ST
               specifies more than one scheme, the evaluator shall examine the TSS to verify that it
-              identifies the usage for each scheme. <h4>Guidance</h4>The evaluator shall verify that
+              identifies the usage for each scheme.</tss> <guidance>The evaluator shall verify that
               the AGD guidance instructs the administrator how to configure the TOE to use the
-              selected key establishment scheme(s). <h4>Tests</h4>The evaluator shall verify the
+              selected key establishment scheme(s).</guidance><tests>The evaluator shall verify the
               implementation of the key establishment schemes supported by the TOE using the
               applicable tests below. <h4>SP800-56A Key Establishment Schemes</h4> The evaluator
               shall verify a TOE's implementation of SP800-56A key agreement schemes using the
@@ -2421,7 +2421,7 @@
               values that trigger each of the three decryption error checks described in NIST
               Special Publication 800-56B section 7.2.3.3, ensure that each decryption attempt
               results in an error, and ensure that any outputted or logged error message is
-              identical for each.<br/>
+              identical for each.<br/></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -2476,13 +2476,13 @@
               FCS_CKM.4.1.</note>
             <aactivity>
               <h4>Requirement met by the TOE platform</h4>
-              <h4>TSS</h4>The evaluator shall check to ensure the TSS describes each of the secret
+              <tss>The evaluator shall check to ensure the TSS describes each of the secret
               keys (keys used for symmetric encryption), private keys, and CSPs used to generate key
               that are not otherwise covered by the FCS_CKM_EXT.4 requirement levied on the
               TOE.<br/> For each platform listed in the ST, the evaluator shall examine the TSS of
               the ST of the platform to ensure that each of the secret keys, private keys, and CSPs
-              used to generate key listed above are covered. <h4>Requirement met by TSF</h4>
-              <h4>TSS</h4>The evaluator shall check to ensure the TSS lists each type of plaintext
+              used to generate key listed above are covered.</tss> <h4>Requirement met by TSF</h4>
+              <tss>The evaluator shall check to ensure the TSS lists each type of plaintext
               key material and CSP (authentication data, authorization data, secret/private
               symmetric keys, data used to derive keys, etc.) and its origin and storage
               location.<br/> The evaluator shall verify that the TSS describes when each type of key
@@ -2497,8 +2497,8 @@
               times with a random pattern that is changed before each write"). For block erases, the
               evaluator shall also ensure that the block erase command used is listed and shall
               verify that the command used also addresses any copies of the plaintext key material
-              and that may be created in order to optimize the use of flash memory.
-              <h4>Tests</h4>For each software and firmware key clearing situation the evaluator
+              and that may be created in order to optimize the use of flash memory.</tss>
+              <tests>For each software and firmware key clearing situation the evaluator
               shall repeat the following tests. Note that at this time hardware-bound keys are
               explicitly excluded from testing. <testlist>
                 <test>The evaluator shall utilize appropriate combinations of specialized
@@ -2529,7 +2529,7 @@
                   shall utilize a simulator for the TOE on a general purpose operating system. The
                   evaluator shall provide a rationale explaining the instrumentation of the
                   simulated test environment and justifying the obtained test results.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -2559,7 +2559,7 @@
               entering evaluation after Quarter 3, 2015.</note>
             <aactivity>
               <h4>Requirement met by the platform</h4>
-              <h4>TSS</h4>For each platform listed in the ST, the evaluator shall examine the ST of
+              <tss>For each platform listed in the ST, the evaluator shall examine the ST of
               the platform to ensure that the encryption/decryption function(s) claimed in that
               platform's ST contains the encryption/decryption function(s) in the MDM Server’s ST.
               The evaluator shall also examine the TSS of the MDM Server’s ST to verify that it
@@ -2567,8 +2567,8 @@
               invoked for each mode and key size selected in the MDM Server’s ST (it should be noted
               that this may be through a mechanism that is not implemented by the MDM Server;
               nonetheless, that mechanism will be identified in the TSS as part of this assurance
-              activity). <h4>Requirement met by the MDM Server</h4>
-              <h4>Tests</h4>
+              activity).</tss> <h4>Requirement met by the MDM Server</h4>
+              <tests>
               <h4>AES-CBC Tests</h4>
               <u>AES-CBC Known Answer Tests</u><br/> There are four Known Answer Tests (KATs),
               described below. In all KATs, the plaintext, ciphertext, and IV values shall be
@@ -2727,7 +2727,7 @@
               </ul> The evaluator shall test the authenticated-decryption functionality of AES-KWP
               using the same test as for AES-KWP authenticated-encryption, replacing plaintext
               values with ciphertext values and AES-KWP authenticated-encryption with AES-KWP
-              authenticated-decryption. </aactivity>
+              authenticated-decryption. </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FCS_COP.1" name="Cryptographic Operation (Hashing)">
@@ -2758,15 +2758,15 @@
               algorithm used (for example, SHA 256 for 128-bit keys).</note>
             <aactivity>
               <h4>Requirement met by the TOE platform</h4>
-              <h4>TSS</h4>For each platform listed in the ST, the evaluator shall examine the ST of
+              <tss>For each platform listed in the ST, the evaluator shall examine the ST of
               the platform to ensure that the hash function(s) claimed in that platform's ST
               contains the hash function(s) in the MDM Server’s ST. The evaluator shall also examine
               the TSS of the MDM Server’s ST to verify that it describes (for each supported
               platform) how the hash functionality is invoked for each digest size selected in the
               MDM Server’s ST (it should be noted that this may be through a mechanism that is not
               implemented by the MDM Server; nonetheless, that mechanism will be identified in the
-              TSS as part of this assurance activity). <h4>Requirement met by the TSF</h4>
-              <h4>TSS</h4>The evaluator shall check that the association of the hash function with
+              TSS as part of this assurance activity).</tss> <h4>Requirement met by the TSF</h4>
+              <tss>The evaluator shall check that the association of the hash function with
               other TSF cryptographic functions (for example, the digital signature verification
               function) is documented in the TSS.The evaluator checks the AGD documents to determine
               that any configuration that is required to be done to configure the functionality for
@@ -2776,7 +2776,7 @@
               bits) of the message to be hashed is divisible by 8. The second mode is the
               bitoriented mode. In this mode the TSF hashes messages of arbitrary length. As there
               are different tests for each mode, an indication is given in the following sections
-              for the bitoriented vs. the byteoriented testmacs. <h4>Tests</h4>The evaluator shall
+              for the bitoriented vs. the byteoriented testmacs.</tss> <tests>The evaluator shall
               perform all of the following tests for each hash algorithm implemented by the TSF and
               used to satisfy the requirements of this PP. <u>Short Messages Test Bit-oriented
                 Mode</u><br/>The evaluators devise an input set consisting of m+1 messages, where m
@@ -2806,7 +2806,7 @@
               digest produced by the hash function to be tested. The evaluators then formulate a set
               of 100 messages and associated digests by following the algorithm provided in Figure 1
               of [SHAVS]. The evaluators then ensure that the correct result is produced when the
-              messages are provided to the TSF. </aactivity>
+              messages are provided to the TSF. </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FCS_COP.1" name="Cryptographic Operation (Digital Signature)">
@@ -2834,14 +2834,14 @@
               required for products entering evaluation after Quarter 3, 2015.</note>
             <aactivity>
               <h4>Requirement met by the TOE platform</h4>
-              <h4>TSS</h4>For each platform listed in the ST, the evaluator shall examine the ST of
+              <tss>For each platform listed in the ST, the evaluator shall examine the ST of
               the platform to ensure that the digital signature functions claimed in that platform's
               ST contains the digital signature functions in the MDM Server's ST. The evaluator
               shall also examine the TSS of the MDM Server’s ST to verify that it describes (for
               each supported platform) how the digital signature functionality is invoked for each
               operation they are used for in the MDM Server (it should be noted that this may be
               through a mechanism that is not implemented by the MDM Server; nonetheless, that
-              mechanism will be identified in the TSS as part of this assurance activity).
+              mechanism will be identified in the TSS as part of this assurance activity).</tss>
                 <h4>Requirement met by the TSF</h4>
               <h4>Test</h4>
               <h4>ECDSA Algorithm Tests</h4>
@@ -2903,23 +2903,23 @@
               consistent with the overall strength of the algorithm used for FCS_COP.1(3).</note>
             <aactivity>
               <h4>Requirement met by the TOE platform</h4>
-              <h4>TSS</h4>For each platform listed in the ST, the evaluator shall examine the ST of
+              <tss>For each platform listed in the ST, the evaluator shall examine the ST of
               the platform to ensure that the keyed-hash function(s) claimed in that platform's ST
               contains the keyed-hash function(s) in the MDM Server’s ST. The evaluator shall also
               examine the TSS of the MDM Server’s ST to verify that it describes (for each supported
               platform) how the keyed-hash functionality is invoked for each mode and key size
               selected in the MDM Server’s ST (it should be noted that this may be through a
               mechanism that is not implemented by the MDM Server; nonetheless, that mechanism will
-              be identified in the TSS as part of this assurance activity). <h4>Requirement met by
+              be identified in the TSS as part of this assurance activity).</tss> <h4>Requirement met by
                 the TSF</h4>
-              <h4>TSS</h4>The evaluator shall examine the TSS to ensure that it specifies the
+              <tss>The evaluator shall examine the TSS to ensure that it specifies the
               following values used by the HMAC function: key length, hash function used, block
-              size, and output MAC length used. <h4>Tests</h4>For each of the supported parameter
+              size, and output MAC length used.</tss> <tests>For each of the supported parameter
               sets, the evaluator shall compose 15 sets of test data. Each set shall consist of a
               key and message data. The evaluator shall have the TSF generate HMAC tags for these
               sets of test data. The resulting MAC tags shall be compared to the result of
               generating HMAC tags with the same key and IV using a known good implementation.
-            </aactivity>
+              </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FCS_RBG_EXT.1" name="Extended: Random Bit Generation">
@@ -2952,16 +2952,16 @@
               transitioning from this DRBG as soon as possible.</note>
             <aactivity>
               <h4>Requirement met by the TOE platform</h4>
-              <h4>TSS</h4>For each platform listed in the ST, the evaluator shall examine the ST of
+              <tss>For each platform listed in the ST, the evaluator shall examine the ST of
               the platform to ensure that the RBG functions claimed in that platform's ST contains
               the RBG functions in the MDM Server’s ST. The evaluator shall also examine the TSS of
               the MDM Server’s ST to verify that it describes (for each supported platform) how the
               RBG functionality is invoked for each operation they are used for in the MDM Server
               (it should be noted that this may be through a mechanism that is not implemented by
               the MDM Server; nonetheless, that mechanism will be identified in the TSS as part of
-              this assurance activity).<br/>
+              this assurance activity).<br/></tss>
               <h4>Requirement met by the TSF</h4>
-              <h4>Tests</h4>The evaluator shall perform the following tests, depending on the
+              <tests>The evaluator shall perform the following tests, depending on the
               standard to which the RBG conforms. <h4>Implementations Conforming to FIPS 140-2 Annex
                 C</h4> The reference for the tests contained in this section is The Random Number
               Generator Validation System (RNGVS). The evaluators shall conduct the following two
@@ -3026,7 +3026,7 @@
                   </blockquote>
                 </test>
               </testlist>
-            </aactivity>
+              </tests></aactivity>
           </f-element>
           <f-element id="FCS_RBG_EXT.1.2">
             <title>The deterministic RBG shall be seeded by an entropy source that accumulates
@@ -3076,7 +3076,7 @@
               is responsible for selecting the manner in which the keys are stored and where they
               are stored in the selections above. </note>
             <aactivity>
-              <h4>TSS</h4>Regardless of whether this requirement is met by the TSF or the TOE
+              <tss>Regardless of whether this requirement is met by the TSF or the TOE
               platform, the evaluator will check the TSS to ensure that it lists each persistent
               secret (credential, secret key) and private key needed to meet the requirements in the
               ST. For each of these items, the evaluator will confirm that the TSS lists for what
@@ -3088,7 +3088,7 @@
               <h4>Persistent secrets and private keys manipulated by the TSF</h4> The evaluator
               reviews the TSS to determine that it makes a case that, for each item listed as being
               manipulated by the TOE, it is not written unencrypted to persistent memory, and that
-              the item is stored by the platform.<br/>
+              the item is stored by the platform.<br/></tss>
             </aactivity>
           </f-element>
         </f-component>
@@ -3110,11 +3110,11 @@
               encryption rather than the platform-provided key storage.<br/> If this requirement is
               included in the ST, FCS_IV_EXT.1 must also be included. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to ensure it describes in detail how
+              <tss>The evaluator shall examine the TSS to ensure it describes in detail how
               user credentials, persistent secret and private keys are stored and encrypted. The
               evaluator shall review the TSS to determine that it makes a case that key material is
               not written unencrypted to persistent memory and that it identifies the mode of
-              encryption. </aactivity>
+              encryption.</tss> </aactivity>
           </f-element>
         </f-component>
         <f-component id="FCS_IV_EXT.1" name="Initialization Vector Generation">
@@ -3126,11 +3126,11 @@
               the protocol. Thus, this requirement addresses only IVs generated for key storage
               encryption.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to ensure that it details the
+              <tss>The evaluator shall examine the TSS to ensure that it details the
               encryption of user credentials, persistent secrets, and private keys and the
-              generation of the IVs used for that encryption. <h4>Tests</h4>The evaluator shall
+              generation of the IVs used for that encryption.</tss> <tests>The evaluator shall
               ensure that the generation of IVs for each key encrypted by the same KEK meets Table
-              9. </aactivity>
+              9. </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FCS_TLSC_EXT.1" name="TLS Client Protocol">
@@ -3188,13 +3188,13 @@
                 versions are standardized by the IETF.<br/> If any ciphersuites are selected using
                 ECDHE, then FCS_TLSC_EXT.1.5 is required. </note>
               <aactivity>
-                <h4>TSS</h4>The evaluator shall check the description of the implementation of this
+                <tss>The evaluator shall check the description of the implementation of this
                 protocol in the TSS to ensure that the ciphersuites supported are specified. The
                 evaluator shall check the TSS to ensure that the ciphersuites specified include those
                 listed for this component. The evaluator shall also check the operational guidance to
                 ensure that it contains instructions on configuring the TOE so that TLS conforms to
                 the description in the TSS. If the Agent supports multiple platforms, the ST shall
-                make clear any differences in the TLS implementation. <h4>Tests</h4>
+                make clear any differences in the TLS implementation.</tss> <tests>
                 <testlist>
                   <test>The evaluator shall establish a TLS connection using each of the ciphersuites
                     specified by the requirement. This connection may be established as part of the
@@ -3243,7 +3243,7 @@
                   </ul>
                   </test>
                 </testlist>
-              </aactivity>
+                </tests></aactivity>
             </f-element>
             <f-element id="FCS_TLSC_EXT.1.2" status="optional">
               <title>The <selectables>
@@ -3271,16 +3271,16 @@
                 follow the best practices regarding matching; these best practices are captured in the
                 assurance activity. </note>
               <aactivity>
-                <h4>TSS</h4>The evaluator shall ensure that the TSS describes the client’s method of
+                <tss>The evaluator shall ensure that the TSS describes the client’s method of
                 establishing all reference identifiers from the
                 user/administrator/application-configured reference identifier, including which types
                 of reference identifiers are supported (e.g Common Name, DNS Name, URI Name, Service
                 Name, or other application-specific Subject Alternative Names) and whether IP
                 addresses and wildcards are supported. The evaluator shall ensure that this
                 description identifies whether and the manner in which certificate pinning is
-                supported or used by the TOE. <h4>Guidance</h4>The evaluator shall verify that the AGD
+                supported or used by the TOE.</tss> <guidance>The evaluator shall verify that the AGD
                 guidance includes instructions for setting the reference identifier to be used for the
-                purposes of certificate validation in TLS. <h4>Tests</h4>The evaluator shall configure
+                purposes of certificate validation in TLS.</guidance><tests>The evaluator shall configure
                 the reference identifier according to the AGD guidance and perform the following tests
                 during a TLS connection: <testlist>
                   <test>The evaluator shall present a server certificate that does not contain an
@@ -3329,7 +3329,7 @@
                     a certificate that does not match the pinned certificate and verify that the
                     connection fails.</test>
                 </testlist>
-              </aactivity>
+                </tests></aactivity>
             </f-element>
             <f-element id="FCS_TLSC_EXT.1.3" status="optional">
               <title>The <selectables>
@@ -3343,7 +3343,7 @@
                 for FIA_X509_EXT.1.<br/> For TLS connections, this channel shall not be established if
                 the peer certificate is invalid.</note>
               <aactivity>
-                <h4>Tests</h4>The evaluator shall use TLS as a function to verify that the validation
+                <tests>The evaluator shall use TLS as a function to verify that the validation
                 rules in FIA_X509_EXT.1.1 are adhered to and shall perform the following additional
                 test: <testlist>
                   <test>The evaluator shall demonstrate that a peer using a certificate without a
@@ -3353,7 +3353,7 @@
                     connection succeeds. The evaluator then shall delete one of the CA certificates,
                     and show that the connection fails.</test>
                 </testlist>
-              </aactivity>
+                </tests></aactivity>
             </f-element>
             <f-element id="FCS_TLSC_EXT.1.4" status="optional">
               <title>The <selectables>
@@ -3365,18 +3365,18 @@
                 capable of presenting a certificate to a TLS server for TLS mutual
                 authentication.</note>
               <aactivity>
-                <h4>TSS</h4>The evaluator shall ensure that the TSS description required per
+                <tss>The evaluator shall ensure that the TSS description required per
                 FIA_X509_EXT.2.1 includes the use of client-side certificates for TLS mutual
-                authentication. <h4>Guidance</h4>The evaluator shall verify that the AGD guidance
+                authentication.</tss> <guidance>The evaluator shall verify that the AGD guidance
                 required per FIA_X509_EXT.2.1 includes instructions for configuring the client-side
-                certificates for TLS mutual authentication. <h4>Tests</h4>The evaluator shall perform
+                certificates for TLS mutual authentication.</guidance><tests>The evaluator shall perform
                 the following modification to the traffic: <ul>
                   <li>Configure the server to require mutual authentication and then modify a byte in
                     a CA field in the Server’s Certificate Request handshake message. The modified CA
                     field must not be the CA used to sign the client’s certificate. The evaluator
                     shall verify the connection is unsuccessful.</li>
                 </ul>
-              </aactivity>
+                </tests></aactivity>
             </f-element>
            <f-element id="FCS_TLSC_EXT.1.5" status="sel-based">
             <title>The <selectables>
@@ -3393,19 +3393,19 @@
               and FCS_CKM.2. This extension is required for clients supporting Elliptic Curve
               ciphersuites.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall verify that TSS describes the Supported Elliptic
+              <tss>The evaluator shall verify that TSS describes the Supported Elliptic
               Curves Extension and whether the required behavior is performed by default or may be
-              configured. <h4>Guidance</h4>If the TSS indicates that the Supported Elliptic Curves
+              configured.</tss> <guidance>If the TSS indicates that the Supported Elliptic Curves
               Extension must be configured to meet the requirement, the evaluator shall verify that
-              AGD guidance includes configuration of the Supported Elliptic Curves Extension.
-              <h4>Tests</h4>
+              AGD guidance includes configuration of the Supported Elliptic Curves Extension.</guidance>
+              <tests>
               <testlist>
                 <test>The evaluator shall configure the server to perform an ECDHE key exchange
                   message in the TLS connection using a non-supported ECDHE curve (for example,
                   P-192) and shall verify that the TOE disconnects after receiving the server's Key
                   Exchange handshake message.</test>
               </testlist>
-            </aactivity>
+              </tests></aactivity>
           </f-element>
           <f-element id="FCS_TLSC_EXT.1.6" status="objective">
             <title>The <selectables>
@@ -3423,16 +3423,16 @@
               the supported hashes for the purpose of digital signature generation by the server.
               The signature_algorithm extension is only supported by TLS 1.2.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall verify that TSS describes the signature_algorithm
+              <tss>The evaluator shall verify that TSS describes the signature_algorithm
               extension and whether the required behavior is performed by default or may be
-              configured. <h4>Guidance</h4>If the TSS indicates that the signature_algorithm
+              configured.</tss> <guidance>If the TSS indicates that the signature_algorithm
               extension must be configured to meet the requirement, the evaluator shall verify that
-              AGD guidance includes configuration of the signature_algorithm extension.
-              <h4>Tests</h4>The evaluator shall configure the server to send a certificate in the
+              AGD guidance includes configuration of the signature_algorithm extension.</guidance>
+              <tests>The evaluator shall configure the server to send a certificate in the
               TLS connection that is not supported according to the Client’s HashAlgorithm
               enumeration within the signature_algorithms extension (for example, send a certificate
               with a SHA-1 signature). The evaluator shall verify that the TOE disconnects after
-              receiving the server’s Certificate handshake message. </aactivity>
+              receiving the server’s Certificate handshake message. </tests></aactivity>
             <f-element id="FCS_TLSC_EXT.1.7">
               <title>The <selectables>
                 <selectable>TSF</selectable>
@@ -3454,7 +3454,7 @@
                 servers that don’t support the extension. It is recommended that client
                 implementations support both the ciphersuite and the extension. </note>
               <aactivity>
-                <h4>Tests</h4>
+                <tests>
                 <testlist>
                   <test>The evaluator shall use a network packet analyzer/sniffer to capture the
                     traffic between the two TLS endpoints. The evaluator shall verify that either
@@ -3471,7 +3471,7 @@
                     modify either the “client_verify_data” or “server_verify_data” value and verify
                     that the client terminates the connection.</test>
                 </testlist>
-              </aactivity>
+                </tests></aactivity>
             </f-element>
           </f-element>
           </f-component>
@@ -3536,15 +3536,15 @@
               versions are standardized by the IETF.<br/> If any ciphersuites are selected using DHE
               or ECDHE, then FCS_TLSS_EXT.1.6 is required. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the description of the implementation of this
+              <tss>The evaluator shall check the description of the implementation of this
               protocol in the TSS to ensure that the ciphersuites supported are specified. The
               evaluator shall check the TSS to ensure that the ciphersuites specified are identical
               to those listed for this component. The evaluator shall check the TSS to account for
-              all versions of TLS supported by an evaluated client. <h4>Guidance</h4>The evaluator
+              all versions of TLS supported by an evaluated client.</tss> <guidance>The evaluator
               shall also check the operational guidance to ensure that it contains instructions on
               configuring the TOE so that TLS conforms to the description in the TSS (for instance,
               the set of ciphersuites advertised by the TOE may have to be restricted to meet the
-              requirements). <h4>Tests</h4>The evaluator shall also perform the following tests: <testlist>
+              requirements). </guidance><tests>The evaluator shall also perform the following tests: <testlist>
                 <test>The evaluator shall establish a TLS connection using each of the ciphersuites
                   specified by the requirement. This connection may be established as part of the
                   establishment of a higher-level protocol, e.g., as part of an EAP session. It is
@@ -3585,7 +3585,7 @@
                 </ul>
                 </test>
               </testlist>
-            </aactivity>
+              </tests></aactivity>
           </f-element>
           <f-element id="FCS_TLSS_EXT.1.2" status="sel-based">
             <title>The <selectables>
@@ -3599,12 +3599,12 @@
               </selectables>.</title>
             <note role="application"/>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall verify that the TSS contains a description of the
+              <tss>The evaluator shall verify that the TSS contains a description of the
               denial of old SSL and TLS versions, and any configuration necessary to meet the
-              requirement must be contained in the AGD guidance. <h4>Tests</h4>The evaluator shall
+              requirement must be contained in the AGD guidance. </tss><tests>The evaluator shall
               send a Client Hello requesting a connection with version SSL 1.0 and verify that the
               server denies the connection. The evaluator shall repeat this test with SSL 2.0 and
-              SSL 3.0 and any selected TLS versions. </aactivity>
+              SSL 3.0 and any selected TLS versions. </tests></aactivity>
           </f-element>
           <f-element id="FCS_TLSS_EXT.1.3" status="sel-based">
             <title>The <selectables>
@@ -3626,11 +3626,11 @@
               with RFC 5280. Certificate validity shall be tested in accordance with testing
               performed for FIA_X509_EXT.1. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall ensure that the TSS description required per
+              <tss>The evaluator shall ensure that the TSS description required per
               FIA_X509_EXT.2.1 includes the use of client-side certificates for TLS mutual
-              authentication. <h4>Guidance</h4>The evaluator shall verify that the AGD guidance
+              authentication.</tss> <guidance>The evaluator shall verify that the AGD guidance
               required per FIA_X509_EXT.2.1 includes instructions for configuring the client-side
-              certificates for TLS mutual authentication. <h4>Tests</h4>The evaluator shall perform
+              certificates for TLS mutual authentication. </guidance><tests>The evaluator shall perform
               the following mutual authentication tests: <testlist>
                 <test>The evaluator shall configure the server to send a certificate request to the
                   client and shall attempt a connection without sending a certificate from the
@@ -3665,7 +3665,7 @@
                 </ul>
                 </test>
               </testlist>
-            </aactivity>
+              </tests></aactivity>
           </f-element>
           <f-element id="FCS_TLSS_EXT.1.5" status="sel-based">
             <title>The <selectables>
@@ -3681,25 +3681,25 @@
               address, username, or email address used by the peer, or may be passed to a directory
               server for comparison. Matching should be performed by a bit-wise comparison.</note>
             <aactivity>
-              <h4>TSS</h4>This requirement only applies to those TOEs performing
+              <tss>This requirement only applies to those TOEs performing
+              mutually-authenticated TLS (FCS_TLSS_EXT.1.4). The peer identifier may be in the
+              Subject field or the Subject Alternative Name extension of the certificate. The
+              expected identifier may either be configured, may be compared to the Domain Name, IP
+              address, username, or email address used by the peer, or may be passed to a directory
+              server for comparison. Matching should be performed by a bit-wise comparison.</tss>
+              <guidance>This requirement only applies to those TOEs performing
+              mutually-authenticated TLS (FCS_TLSS_EXT.1.4). The peer identifier may be in the
+              Subject field or the Subject Alternative Name extension of the certificate. The
+              expected identifier may either be configured, may be compared to the Domain Name, IP
+              address, username, or email address used by the peer, or may be passed to a directory
+              server for comparison. Matching should be performed by a bit-wise comparison.</guidance>
+              <tests>This requirement only applies to those TOEs performing
               mutually-authenticated TLS (FCS_TLSS_EXT.1.4). The peer identifier may be in the
               Subject field or the Subject Alternative Name extension of the certificate. The
               expected identifier may either be configured, may be compared to the Domain Name, IP
               address, username, or email address used by the peer, or may be passed to a directory
               server for comparison. Matching should be performed by a bit-wise comparison.
-              <h4>Guidance</h4>This requirement only applies to those TOEs performing
-              mutually-authenticated TLS (FCS_TLSS_EXT.1.4). The peer identifier may be in the
-              Subject field or the Subject Alternative Name extension of the certificate. The
-              expected identifier may either be configured, may be compared to the Domain Name, IP
-              address, username, or email address used by the peer, or may be passed to a directory
-              server for comparison. Matching should be performed by a bit-wise comparison.
-              <h4>Tests</h4>This requirement only applies to those TOEs performing
-              mutually-authenticated TLS (FCS_TLSS_EXT.1.4). The peer identifier may be in the
-              Subject field or the Subject Alternative Name extension of the certificate. The
-              expected identifier may either be configured, may be compared to the Domain Name, IP
-              address, username, or email address used by the peer, or may be passed to a directory
-              server for comparison. Matching should be performed by a bit-wise comparison.
-            </aactivity>
+              </tests></aactivity>
           </f-element>
           <f-element id="FCS_TLSS_EXT.1.6" status="sel-based">
             <title>The <selectables>
@@ -3721,15 +3721,15 @@
               FMT_SMF.1 requires the configuration of the key agreement parameters in order to
               establish the security strength of the TLS connection. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall verify that the TSS describes the key agreement
-              parameters of the server key exchange message. <h4>Guidance</h4>The evaluator shall
+              <tss>The evaluator shall verify that the TSS describes the key agreement
+                parameters of the server key exchange message. </tss><guidance>The evaluator shall
               verify that any configuration guidance necessary to meet the requirement must be
-              contained in the AGD guidance. <h4>Tests</h4>The evaluator shall attempt a connection
+              contained in the AGD guidance. </guidance><tests>The evaluator shall attempt a connection
               using an ECDHE ciphersuite and a configured curve and, using a packet analyzer, verify
               that the key agreement parameters in the Key Exchange message are the ones configured.
               (Determining that the size matches the expected size for the configured curve is
               sufficient.) The evaluator shall repeat this test for each supported NIST Elliptic
-              Curve and each supported Diffie-Hellman key size. </aactivity>
+              Curve and each supported Diffie-Hellman key size. </tests></aactivity>
           </f-element>
           <f-element id="FCS_TLSS_EXT.1.7" status="objective">
             <title>The <selectables>
@@ -3747,15 +3747,15 @@
               the supported hashes for the purpose of digital signature generation by the client.
               The supported_signature_algorithms is only supported by TLS 1.2.</note>
             <aactivity>
-              <h4>TSS</h4>(Conditional) The evaluator shall verify that TSS describes the
+              <tss>(Conditional) The evaluator shall verify that TSS describes the
               supported_signature_algorithms field of the Certificate Request and whether the
               required behavior is performed by default or may be configured. If the TSS indicates
               that the supported_signature_algorithms field must be configured to meet the
               requirement, the evaluator shall verify that AGD guidance includes configuration of
-              the supported_signature_algorithms field. <h4>Tests</h4>The evaluator shall configure
+              the supported_signature_algorithms field.</tss> <tests>The evaluator shall configure
               a client to send the signature_algorithms extension indicating that hash algorithm
               used by the server’s certificate is not supported. The evaluator shall attempt a
-              connection and verify that the server denies the client’s connection. </aactivity>
+              connection and verify that the server denies the client’s connection. </tests></aactivity>
           </f-element>
           <f-element id="FCS_TLSS_EXT.1.8" status="objective">
             <title>The <selectables>
@@ -3773,7 +3773,7 @@
             <note role="application">RFC 5746 defines an extension to TLS that binds renegotiation
               handshakes to the cryptography in the original handshake.</note>
             <aactivity>
-              <h4>Tests</h4>The following tests require connection with a client that supports
+              <tests>The following tests require connection with a client that supports
               secure renegotiation and the “renegotiation_info” extension. <testlist>
                 <test>The evaluator shall use a network packet analyzer/sniffer to capture the
                   traffic between the two TLS endpoints. The evaluator shall verify that the
@@ -3785,7 +3785,7 @@
                 <test>The evaluator shall modify the “client_verify_data” or “server_verify_data”
                   value in the ClientHello message received during secure renegotiation and verify
                   that the server terminates the connection.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -3819,7 +3819,7 @@
             <note role="application">Validity is determined by the certificate path, the expiration
               date, and the revocation status in accordance with RFC 5280.</note>
             <aactivity>
-              <h4>Tests</h4>
+              <tests>
               <testlist>
                 <test>The evaluator shall attempt to establish a connection with a DTLS server,
                   observe the traffic with a packet analyzer, and verify that the connection
@@ -3834,7 +3834,7 @@
                   Anchor Database needed to validate the certificate to be used in the function, and
                   demonstrate that the function succeeds. The evaluator then shall delete one of the
                   certificates, and show that the function fails.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -3863,7 +3863,7 @@
             <note role="application">Validity is determined by the certificate path, the expiration
               date, and the revocation status in accordance with RFC 5280.</note>
             <aactivity>
-              <h4>Tests</h4>
+              <tests>
               <testlist>
                 <test>The evaluator shall attempt to establish an HTTPS connection with a web
                   server, observe the traffic with a packet analyzer, and verify that the connection
@@ -3876,7 +3876,7 @@
                   shall then load a valid certificate and certification path, and demonstrate that
                   the function succeeds. The evaluator then shall delete one of the certificates,
                   and show that the selection listed in the ST occurs.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -3899,7 +3899,7 @@
               distinguish the IP packets and apply the rules accordingly. There may be multiple SPDs
               (one for each network interface), but this is not required.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS and determine that it describes what
+              <tss>The evaluator shall examine the TSS and determine that it describes what
               takes place when a packet is processed by the TOE, e.g., the algorithm used to process
               the packet. The TSS describes how the SPD is implemented and the rules for processing
               both inbound and outbound packets in terms of the IPsec policy. The TSS describes the
@@ -3915,7 +3915,7 @@
               sufficient to determine the action that will be applied, especially in the case where
               two different rules may apply. This description shall cover both the initial packets
               (that is, no SA is established on the interface or for that particular packet) as well
-              as packets that are part of an established SA. <h4>Guidance</h4>The evaluator shall
+              as packets that are part of an established SA.</tss> <guidance>The evaluator shall
               examine the operational guidance to verify it instructs the Administrator how to
               construct entries into the SPD that specify a rule for processing a packet. The
               description includes all three cases – a rule that ensures packets are
@@ -3924,7 +3924,7 @@
               consistent with the description in the TSS, and that the level of detail in the
               operational guidance is sufficient to allow the administrator to set up the SPD in an
               unambiguous fashion. This includes a discussion of how ordering of rules impacts the
-              processing of an IP packet. <h4>Tests</h4>The evaluator uses the operational guidance
+              processing of an IP packet. </guidance><tests>The evaluator uses the operational guidance
               to configure the TOE to carry out the following tests: <testlist>
                 <test>The evaluator shall configure the SPD such that there is a rule for dropping a
                   packet, encrypting a packet, and allowing a packet to flow in plaintext. The
@@ -3947,7 +3947,7 @@
                   shall verify, via the audit trail and packet captures, for each scenario that the
                   expected behavior is exhibited, and is consistent with both the TSS and the
                   operational guidance.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.2" status="sel-based">
@@ -3957,7 +3957,7 @@
               </selectables> shall have a nominal, final entry in the SPD that matches anything that
               is otherwise unmatched, and discards it.</title>
             <aactivity>
-              <h4>Tests</h4>The assurance activity for this element is performed in conjunction with
+              <tests>The assurance activity for this element is performed in conjunction with
               the activities for FCS_IPSEC_EXT.1.1.<br/> The evaluator uses the operational guidance
               to configure the TOE to carry out the following tests: <testlist>
                 <test>The evaluator shall configure the SPD such that there is a rule for dropping a
@@ -3971,7 +3971,7 @@
                   “TOE/platform created” final entry that discards packets that do not match any
                   previous entries). The evaluator sends the packet, and observes that the packet
                   was dropped.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.3" status="sel-based">
@@ -3983,11 +3983,11 @@
                 <selectable>no other mode</selectable>
               </selectables>.</title>
             <aactivity>
-              <h4>TSS</h4>The evaluator checks the TSS to ensure it states that the VPN can be
+              <tss>The evaluator checks the TSS to ensure it states that the VPN can be
               established to operate in tunnel mode and/or transport mode (as identified in
-              FCS_IPSEC_EXT.1.3). <h4>Guidance</h4>The evaluator shall confirm that the operational
+              FCS_IPSEC_EXT.1.3).</tss> <guidance>The evaluator shall confirm that the operational
               guidance contains instructions on how to configure the connection in each mode
-              selected. <h4>Tests</h4>The evaluator shall perform the following test(s) based on the
+              selected.</guidance> <tests>The evaluator shall perform the following test(s) based on the
               selections chosen: <testlist>
                 <test>The evaluator uses the operational guidance to configure the TOE/platform to
                   operate in transport mode and also configures a VPN peer to operate in transport
@@ -4006,7 +4006,7 @@
                   to the VPN peer. The evaluator observes (for example, in the audit trail and the
                   captured packets) that a successful connection was established using the tunnel
                   mode.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.4" status="sel-based">
@@ -4021,19 +4021,19 @@
                 <selectable>no other algorithms</selectable>
               </selectables>.</title>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to verify that the algorithms
+              <tss>The evaluator shall examine the TSS to verify that the algorithms
               AES-GCM-128 and AES-GCM-256 are implemented. If the ST author has selected either
               AES-CBC-128 or AES-CBC-256 in the requirement, then the evaluator verifies the TSS
               describes these as well. In addition, the evaluator ensures that the SHA-based HMAC
               algorithm conforms to the algorithms specified in FCS_COP.1(4) Cryptographic
-              Operations (for keyed-hash message authentication). <h4>Guidance</h4>The evaluator
+              Operations (for keyed-hash message authentication). </tss><guidance>The evaluator
               checks the operational guidance to ensure it provides instructions on how to configure
               the TOE/platform to use the AES-GCM-128, and AES-GCM-256 algorithms, and if either
               AES-CBC-128 or AES-CBC-256 have been selected the guidance instructs how to use these
-              as well. <h4>Tests</h4>The evaluator shall configure the TOE/platform as indicated in
+              as well. </guidance><tests>The evaluator shall configure the TOE/platform as indicated in
               the operational guidance configuring the TOE/platform to use each of the supported
               algorithms, attempt to establish a connection using ESP, and verify that the attempt
-              succeeds. </aactivity>
+              succeeds.</tests> </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.5" status="sel-based">
             <title>The <selectables>
@@ -4062,17 +4062,17 @@
               FCS_IPSEC_EXT.1.16 must also be included in the ST. IKEv2 will be required for those
               TOEs entering evaluation after Quarter 3, 2016.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to verify that IKEv1 and/or IKEv2 are
-              implemented. <h4>Guidance</h4>The evaluator shall check the operational guidance to
+              <tss>The evaluator shall examine the TSS to verify that IKEv1 and/or IKEv2 are
+                implemented.</tss> <guidance>The evaluator shall check the operational guidance to
               ensure it instructs the administrator how to configure the TOE/platform to use IKEv1
               and/or IKEv2 (as selected), and uses the guidance to configure the TOE/platform to
-              perform NAT traversal for the following test (if selected). <h4>Tests</h4>Tests are
+              perform NAT traversal for the following test (if selected).</guidance> <tests>Tests are
               performed in conjunction with the other IPsec evaluation activities. <testlist>
                 <test>(conditional) The evaluator shall configure the TOE/platform so that it will
                   perform NAT traversal processing as described in the TSS and RFC 5996, section
                   2.23. The evaluator shall initiate an IPsec connection and determine that the NAT
                   is successfully traversed.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.6" status="sel-based">
@@ -4093,18 +4093,18 @@
               FCS_IPSEC_EXT.1.4 for IPsec and FCS_IPSEC_EXT.1.6 for IKE mandate different AES
               modes.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall ensure the TSS identifies the algorithms used for
+              <tss>The evaluator shall ensure the TSS identifies the algorithms used for
               encrypting the IKEv1 and/or IKEv2 payload, and that the algorithms AES-CBC-128,
               AES-CBC-256 are specified, and if others are chosen in the selection of the
-              requirement, those are included in the TSS discussion. <h4>Guidance</h4>The evaluator
+              requirement, those are included in the TSS discussion.</tss> <guidance>The evaluator
               ensures that the operational guidance describes the configuration of the mandated
               algorithms, as well as any additional algorithms selected in the requirement. The
               guidance is then used to configure the TOE/platform to perform the following test for
-              each ciphersuite selected. <h4>Tests</h4>The evaluator shall configure the
+              each ciphersuite selected. </guidance><tests>The evaluator shall configure the
               TOE/platform to use the ciphersuite under test to encrypt the IKEv1 and/or IKEv2
               payload and establish a connection with a peer device, which is configured to only
               accept the payload encrypted using the indicated ciphersuite. The evaluator will
-              confirm the algorithm was that used in the negotiation. </aactivity>
+              confirm the algorithm was that used in the negotiation. </tests></aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.7" status="sel-based">
             <title> The <selectables>
@@ -4136,12 +4136,12 @@
               implementation, including lifetime of the SAs, should be included in the operational
               guidance generated for AGD_OPE.</note>
             <aactivity>
-              <h4>Guidance</h4>The evaluator shall verify that the values for SA lifetimes can be
+              <guidance>The evaluator shall verify that the values for SA lifetimes can be
               configured and that the instructions for doing so are located in the operational
               guidance. If time-based limits are supported, the evaluator ensures that the
               Administrator is able to configure SA values for 24 hours. Currently there are no
               values mandated for the number of packets or number of bytes, the evaluator just
-              ensures that this can be configured. <h4>Tests</h4>When testing this functionality,
+              ensures that this can be configured. </guidance><tests>When testing this functionality,
               the evaluator needs to ensure that both sides are configured appropriately. From the
               RFC “A difference between IKEv1 and IKEv2 is that in IKEv1 SA lifetimes were
               negotiated. In IKEv2, each end of the SA is responsible for enforcing its own lifetime
@@ -4166,7 +4166,7 @@
                   Phase 1 SA for 24 hours, and determine that once 24 hours has elapsed, a new Phase
                   1 SA is negotiated. The evaluator shall verify that the TOE initiates a Phase 1
                   negotiation.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.8" status="sel-based">
@@ -4198,12 +4198,12 @@
               implementation, including lifetime of the SAs, should be included in the operational
               guidance generated for AGD_OPE.</note>
             <aactivity>
-              <h4>Guidance</h4>The evaluator shall verify that the values for SA lifetimes can be
+              <guidance>The evaluator shall verify that the values for SA lifetimes can be
               configured and that the instructions for doing so are located in the operational
               guidance. If time-based limits are supported, the evaluator ensures that the
               Administrator is able to configure Phase 2/Child SA values for 8 hours. Currently
               there are no values mandated for the number of packets or number of bytes, the
-              evaluator just ensures that this can be configure. <h4>Tests</h4>When testing this
+              evaluator just ensures that this can be configure. </guidance><tests>When testing this
               functionality, the evaluator needs to ensure that both sides are configured
               appropriately. From the RFC “A difference between IKEv1 and IKEv2 is that in IKEv1 SA
               lifetimes were negotiated. In IKEv2, each end of the SA is responsible for enforcing
@@ -4229,7 +4229,7 @@
                   for 8 hours, and determine that once 8 hours has elapsed, a new Phase 2 SA is
                   negotiated. The evaluator shall verify that the TOE initiates a Phase 2
                   negotiation.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.9" status="sel-based">
@@ -4252,11 +4252,11 @@
               using NIST curve P-384). From Table 2, the bits of security value for group 14 is 112,
               and for group 20 it is 192 </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check to ensure that, for each DH group supported, the
+              <tss>The evaluator shall check to ensure that, for each DH group supported, the
               TSS describes the process for generating "x" (as defined in FCS_IPSEC_EXT.1.8). The
               evaluator shall verify that the TSS indicates that the random number generated that
               meets the requirements in this PP is used, and that the length of "x" meets the
-              stipulations in the requirement. </aactivity>
+              stipulations in the requirement. </tss></aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.10" status="sel-based">
             <title>The <selectables>
@@ -4286,7 +4286,7 @@
               exchanged before the DH group is negotiated, the nonce used should be large enough to
               support all TOE-chosen proposals in the exchange. </note>
             <aactivity>
-              <h4>TSS</h4>(conditional) If the first selection is chosen, the evaluator shall check
+              <tss>(conditional) If the first selection is chosen, the evaluator shall check
               to ensure that, for each DH group supported, the TSS describes the process for
               generating each nonce. The evaluator shall verify that the TSS indicates that the
               random number generated that meets the requirements in this PP is used, and that the
@@ -4295,7 +4295,7 @@
               hash supported, the TSS describes the process for generating each nonce. The evaluator
               shall verify that the TSS indicates that the random number generated that meets the
               requirements in this PP is used, and that the length of the nonces meet the
-              stipulations in the requirement. </aactivity>
+              stipulations in the requirement. </tss></aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.11" status="sel-based">
             <title>The <selectables>
@@ -4316,13 +4316,13 @@
               groups are specified, they must comply with the requirements (in terms of the
               ephemeral keys that are established) listed in FCS_CKM.1.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check to ensure that the DH groups specified in the
+              <tss>The evaluator shall check to ensure that the DH groups specified in the
               requirement are listed as being supported in the TSS. If there is more than one DH
               group supported, the evaluator checks to ensure the TSS describes how a particular DH
-              group is specified/negotiated with a peer. <h4>Tests</h4>For each supported DH group: <testlist>
+              group is specified/negotiated with a peer.</tss> <tests>For each supported DH group: <testlist>
                 <test>The evaluator shall test to ensure that all supported IKE protocols can be
                   successfully completed using that particular DH group.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.12" status="sel-based">
@@ -4346,14 +4346,14 @@
               configuration guidance in the AGD documentation) must enable this
               functionality.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check that the TSS describes the potential strengths
+              <tss>The evaluator shall check that the TSS describes the potential strengths
               (in terms of the number of bits in the symmetric key) of the algorithms that are
               allowed for the IKE and ESP exchanges. The TSS shall also describe the checks that are
               done when negotiating IKEv1 Phase 2 and/or IKEv2 CHILD_SA suites to ensure that the
               strength (in terms of the number of bits of key in the symmetric algorithm) of the
               negotiated algorithm is less than or equal to that of the IKE SA this is protecting
-              the negotiation. <h4>Guidance</h4>
-              <h4>Tests</h4>The evaluator simply follows the guidance to configure the TOE/platform
+              the negotiation.</tss> 
+              <tests>The evaluator simply follows the guidance to configure the TOE/platform
               to perform the following tests. <testlist>
                 <test>This test shall be performed for each version of IKE supported. The evaluator
                   shall successfully negotiate an IPsec connection using each of the supported
@@ -4371,7 +4371,7 @@
                   shall attempt to establish an SA for ESP (assumes the proper parameters where used
                   to establish the IKE SA) that selects an encryption algorithm that is not
                   identified in FCS_IPSEC_EXT.1.4. Such an attempt should fail.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.13" status="sel-based">
@@ -4395,7 +4395,7 @@
               described in the TSS). Peer authentication using ECDSA X.509v3 certificates will be
               required for TOEs entering evaluation after Quarter 3, 2015.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator ensures that the TSS identifies RSA and/or ECDSA as being
+              <tss>The evaluator ensures that the TSS identifies RSA and/or ECDSA as being
               used to perform peer authentication. The description must be consistent with the
               algorithms as specified in FCS_COP.1(2) Cryptographic Operations (for cryptographic
               signature).<br/> If pre-shared keys are chosen in the selection, the evaluator shall
@@ -4404,13 +4404,13 @@
               guidance describes how pre-shared keys are to be generated and established. The
               description in the TSS and the operational guidance shall also indicate how pre-shared
               key establishment is accomplished for TOEs that can generate a pre-shared key as well
-              as TOEs that simply use a pre-shared key. <h4>Guidance</h4>The evaluator ensures the
+              as TOEs that simply use a pre-shared key.</tss> <guidance>The evaluator ensures the
               operational guidance describes how to set up the TOE to use certificates with RSA
               and/or ECDSA signatures and public keys.<br/> In order to construct the environment
               and configure the TOE for the following tests, the evaluator will ensure that the
               operational guidance describes how to configure the TOE to connect to a trusted CA,
               and ensure a valid certificate for that CA is loaded into the TOE and marked
-              “trusted”. <h4>Tests</h4>For efficiency sake, the testing that is performed may be
+              “trusted”.</guidance> <tests>For efficiency sake, the testing that is performed may be
               combined with the testing for FIA_X509_EXT.1, FIA_X509_EXT.2 (for IPsec connections),
               and FCS_IPSEC_EXT.1.13. The following tests shall be repeated for each peer
               authentication selected in the FCS_IPSEC_EXT.1.12 selection above: <testlist>
@@ -4420,7 +4420,7 @@
                 <test>[conditional] The evaluator shall generate a pre-shared key off-TOE and use
                   it, as indicated in the operational guidance, to establish an IPsec connection
                   with the peer.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.14" status="sel-based">
@@ -4449,13 +4449,13 @@
               The expected DN for the peer is the configured name of the peer. Matching should be
               performed by a bit-wise comparison.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall verify that the TSS describes how the DN in the
-              certificate is compared to the expected DN. <h4>Guidance</h4>The evaluator shall
+              <tss>The evaluator shall verify that the TSS describes how the DN in the
+                certificate is compared to the expected DN.</tss> <guidance>The evaluator shall
               ensure that the operational guidance includes configuration of the expected DN for the
-              connection. <h4>Tests</h4>The evaluator shall, if necessary, configure the expected DN
+              connection.</guidance> <tests>The evaluator shall, if necessary, configure the expected DN
               according to the operational guidance. The evaluator shall send a peer certificate
               signed by a trusted CA with a DN that does not match an expected DN and verify that
-              the TOE denies the connection. </aactivity>
+              the TOE denies the connection. </tests></aactivity>
           </f-element>
           <f-element id="FCS_IPSEC_EXT.1.16" status="sel-based">
             <title>The <selectables>
@@ -4465,16 +4465,16 @@
             <note role="application">FCS_IPSEC_EXT.1.16 is only applicable if IKEv1 is selected in
               FCS_IPSEC_EXT.1.5.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to ensure that, in the description of
+              <tss>The evaluator shall examine the TSS to ensure that, in the description of
               the IPsec protocol, it states that aggressive mode is not used for IKEv1 Phase 1
               exchanges, and that only main mode is used. It may be that this is a configurable
-              option. <h4>Guidance</h4>If the mode requires configuration of the TOE/platform prior
+              option.</tss> <guidance>If the mode requires configuration of the TOE/platform prior
               to its operation, the evaluator shall check the operational guidance to ensure that
-              instructions for this configuration are contained within that guidance. <h4>Tests</h4>
+              instructions for this configuration are contained within that guidance. </guidance><tests>
               The evaluator shall configure the TOE/platform as indicated in the operational
               guidance, and attempt to establish a connection using an IKEv1 Phase 1 connection in
               aggressive mode. This attempt should fail. The evaluator should then show that main
-              mode exchanges are supported. </aactivity>
+              mode exchanges are supported. </tests></aactivity>
           </f-element>
         </f-component>
         <f-component id="FCS_SSHS_EXT.1" name="SSH Protocol">
@@ -4508,10 +4508,10 @@
               password-based.</title>
             <note role="application"/>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check to ensure that the TSS contains a description of
+              <tss>The evaluator shall check to ensure that the TSS contains a description of
               the public key algorithms that are acceptable for use for authentication, that this
               list conforms to FCS_SSHS_EXT.1.5, and ensure that password-based authentication
-              methods are also allowed. <h4>Tests</h4>The evaluator shall also perform the following
+              methods are also allowed.</tss> <tests>The evaluator shall also perform the following
               tests: <testlist>
                 <test>The evaluator shall, for each public key algorithm supported, show that the
                   TOE supports the use of that public key algorithm to authenticate a user
@@ -4528,7 +4528,7 @@
                   authenticator.</test>
                 <test>The evaluator shall use an SSH client, enter an incorrect password to attempt
                   to authenticate to the TOE, and demonstrate that the authentication fails.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_SSHS_EXT.1.3" status="sel-based">
@@ -4543,10 +4543,10 @@
               assignment should be filled in by the ST author with the maximum packet size accepted,
               thus defining “reasonable length” for the TOE.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check that the TSS describes how “large packets” in
-              terms of RFC 4253 are detected and handled. <h4>Tests</h4>The evaluator shall
+              <tss>The evaluator shall check that the TSS describes how “large packets” in
+                terms of RFC 4253 are detected and handled. </tss><tests>The evaluator shall
               demonstrate that if the TOE receives a packet larger than that specified in this
-              component, that packet is dropped. </aactivity>
+              component, that packet is dropped. </tests></aactivity>
           </f-element>
           <f-element id="FCS_SSHS_EXT.1.4" status="sel-based">
             <title>The <selectables>
@@ -4566,14 +4566,14 @@
               AES-GCM algorithms, or "no other algorithms" if AES-GCM is not supported. If AES-GCM
               is selected, there should be corresponding FCS_COP entries in the ST.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the description of the implementation of this
+              <tss>The evaluator shall check the description of the implementation of this
               protocol in the TSS to ensure that optional characteristics are specified, and the
               encryption algorithms supported are specified as well. The evaluator shall check the
               TSS to ensure that the encryption algorithms specified are identical to those listed
-              for this component. <h4>Guidance</h4>The evaluator shall also check the operational
+              for this component.</tss> <guidance>The evaluator shall also check the operational
               guidance to ensure that it contains instructions on configuring the TOE so that SSH
               conforms to the description in the TSS (for instance, the set of algorithms advertised
-              by the TOE may have to be restricted to meet the requirements). <h4>Tests</h4>The
+              by the TOE may have to be restricted to meet the requirements).</guidance> <tests>The
               evaluator shall also perform the following tests: <testlist>
                 <test>The evaluator shall establish a SSH connection using each of the encryption
                   algorithms specified by the requirement. It is sufficient to observe (on the wire)
@@ -4583,7 +4583,7 @@
                   encryption algorithm and no other encryption algorithms. The evaluator shall
                   attempt to establish an SSH connection from the SSH client to the TOE and observe
                   that the connection is rejected.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_SSHS_EXT.1.5" status="sel-based">
@@ -4605,14 +4605,14 @@
               as is recommended in NIST SP 800-131A. Future versions of this profile may remove
               ssh-rsa as a selection.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the description of the implementation of this
+              <tss>The evaluator shall check the description of the implementation of this
               protocol in the TSS to ensure that optional characteristics are specified, and the
               public key algorithms supported are specified as well. The evaluator shall check the
               TSS to ensure that the public key algorithms specified are identical to those listed
-              for this component. <h4>Guidance</h4>The evaluator shall also check the operational
+              for this component.</tss><guidance>The evaluator shall also check the operational
               guidance to ensure that it contains instructions on configuring the TOE so that SSH
               conforms to the description in the TSS (for instance, the set of algorithms advertised
-              by the TOE may have to be restricted to meet the requirements). <h4>Tests</h4>The
+              by the TOE may have to be restricted to meet the requirements).</guidance> <tests>The
               evaluator shall also perform the following test: <testlist>
                 <test>The evaluator shall establish a SSH connection using each of the public key
                   algorithms specified by the requirement to authenticate the TOE to an SSH client.
@@ -4622,7 +4622,7 @@
                   key algorithm and no other public key algorithms. The evaluator shall attempt to
                   establish an SSH connection from the SSH client to the TOE and observe that the
                   connection is rejected.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_SSHS_EXT.1.6" status="sel-based">
@@ -4645,12 +4645,12 @@
               used as the encryption algorithm. RFC 6668 specifies the use of the sha2 algorithms in
               SSH.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the TSS to ensure that it lists the supported
+              <tss>The evaluator shall check the TSS to ensure that it lists the supported
               data integrity algorithms, and that that list corresponds to the list in this
-              component. <h4>Guidance</h4>The evaluator shall also check the operational guidance to
+              component. </tss><guidance>The evaluator shall also check the operational guidance to
               ensure that it contains instructions to the administrator on how to ensure that only
               the allowed data integrity algorithms are used in SSH connections with the TOE
-              (specifically, that the “none” MAC algorithm is not allowed). <h4>Tests</h4>The
+              (specifically, that the “none” MAC algorithm is not allowed).</guidance> <tests>The
               evaluator shall also perform the following test: <testlist>
                 <test>The evaluator shall establish a SSH connection using each of the integrity
                   algorithms specified by the requirement. It is sufficient to observe (on the wire)
@@ -4662,7 +4662,7 @@
                 <test>The evaluator shall configure an SSH client to only allow the hmac-md5 MAC
                   algorithm. The evaluator shall attempt to connect from the SSH client to the TOE
                   and observe that the attempt fails.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_SSHS_EXT.1.7" status="sel-based">
@@ -4680,29 +4680,29 @@
               protocol.</title>
             <note role="application"/>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the TSS to ensure that it lists the supported
-              key exchange algorithms, and that that list corresponds to the list in this component.
-                <h4>Guidance</h4>The evaluator shall also check the operational guidance to ensure
+              <tss>The evaluator shall check the TSS to ensure that it lists the supported
+                key exchange algorithms, and that that list corresponds to the list in this component.</tss>
+                <guidance>The evaluator shall also check the operational guidance to ensure
               that it contains instructions to the administrator on how to ensure that only the
-              allowed key exchange algorithms are used in SSH connections with the TOE.
-                <h4>Tests</h4>The evaluator shall also perform the following tests: <testlist>
+              allowed key exchange algorithms are used in SSH connections with the TOE.</guidance>
+                <tests>The evaluator shall also perform the following tests: <testlist>
                 <test>The evaluator shall configure an SSH client to only allow the
                   diffie-hellman-group1-sha1 key exchange. The evaluator shall attempt to connect
                   from the SSH client to the TOE and observe that the attempt fails.</test>
                 <test>For each allowed key exchange method, the evaluator shall configure an SSH
                   client to only allow that method for key exchange, attempt to connect from the
                   client to the TOE, and observe that the attempt succeeds.</test>
-              </testlist>
+                </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FCS_SSHS_EXT.1.8" status="sel-based">
             <title>The MDM Server shall ensure that the SSH connection be rekeyed after no more than
               2^28 packets have been transmitted using that key.</title>
             <aactivity>
-              <h4>Tests</h4>The evaluator shall configure the TOE to create a log entry when a rekey
+              <tests>The evaluator shall configure the TOE to create a log entry when a rekey
               occurs. The evaluator shall connect to the TOE with an SSH client and cause 2^28
               packets to be transmitted from the client to the TOE, and subsequently review the
-              audit log to ensure that a rekey occurred. </aactivity>
+              audit log to ensure that a rekey occurred. </tests></aactivity>
           </f-element>
         </f-component>
      
@@ -4730,14 +4730,14 @@
               place before this authentication. The TSFTSF or TOETOE platform may utilize enterprise
               authentication to meet this requirement.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS and verify that it describes the
-              actions that can and cannot be performed before authentication. <h4>Tests</h4>
+              <tss>The evaluator shall examine the TSS and verify that it describes the
+                actions that can and cannot be performed before authentication.</tss> <tests>
               <testlist>The evaluator shall perform the following tests: <test>The evaluator shall
                   attempt to perform the prohibited actions before authentication. The evaluator
                   shall verify the actions cannot be performed.</test>
                 <test>The evaluator shall attempt to perform the prohibited actions after
                   authentication. The evaluator shall verify the actions can be performed.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -4785,9 +4785,9 @@
               platform, the validation is expected to end in a trusted root CA certificate in a root
               store managed by the platform. </note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall ensure the TSS describes where the check of validity
+              <tss>The evaluator shall ensure the TSS describes where the check of validity
               of the certificates takes place. The evaluator ensures the TSS also provides a
-              description of the certificate path validation algorithm. <h4>Tests</h4>The tests
+              description of the certificate path validation algorithm.</tss><tests>The tests
               described must be performed in conjunction with the other certificate services
               assurance activities, including each of the functions in FIA_X509_EXT.2.1. The tests
               for the extendedKeyUsage rules are performed in conjunction with the uses that require
@@ -4824,7 +4824,7 @@
                 <test>The evaluator shall modify any byte in the public key of the certificate and
                   demonstrate that the certificate fails to validate. (The signature on the
                   certificate will not validate.)</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FIA_X509_EXT.1.2">
@@ -4837,7 +4837,7 @@
               processed by the TOE or platform and restricts the certificates that may be added as
               trusted CA certificates.</note>
             <aactivity>
-              <h4>Tests</h4>The tests described must be performed in conjunction with the other
+              <tests>The tests described must be performed in conjunction with the other
               certificate services assurance activities, including the functions in
               FIA_X509_EXT.2.1. The evaluator shall create a chain of at least four certificates:
               the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA. <testlist>
@@ -4850,7 +4850,7 @@
                 <test>The evaluator shall construct a certificate path, such that the certificate of
                   the CA issuing the TOE’s certificate has the cA flag in the basicConstraints
                   extension set to TRUE. The validation of the certificate path succeeds.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -4903,16 +4903,16 @@
               FIA_X509_EXT.1. If the administrator-configured option is selected by the ST Author,
               the ST Author must also select function d in FMT_SMF.1(2).</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall check the TSS to ensure that it describes how the TOE
+              <tss>The evaluator shall check the TSS to ensure that it describes how the TOE
               chooses which certificates to use, and any necessary instructions in the
               administrative guidance for configuring the operating environment so that the TOE can
               use the certificates. The evaluator shall examine the TSS to confirm that it describes
               the behavior of the TOE when a connection cannot be established during the validity
               check of a certificate used in establishing a trusted channel. The evaluator shall
-              verify that any distinctions between trusted channels are described.
-              <h4>Guidance</h4>If the requirement that the administrator is able to specify the
+              verify that any distinctions between trusted channels are described.</tss>
+              <guidance>If the requirement that the administrator is able to specify the
               default action, then the evaluator shall ensure that the operational guidance contains
-              instructions on how this configuration action is performed. <h4>Tests</h4>The
+              instructions on how this configuration action is performed. </guidance><tests>The
               evaluator shall perform the following test for each trusted channel: <testlist>
                 <test>The evaluator shall demonstrate that using a valid certificate that requires
                   certificate validation checking to be performed in at least some part by
@@ -4922,7 +4922,7 @@
                   selected action is administrator-configurable, then the evaluator shall follow the
                   operational guidance to determine that all supported administrator-configurable
                   options behave in their documented manner.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
           <f-element id="FIA_X509_EXT.2.3">
@@ -4935,10 +4935,10 @@
               requirement is to ensure that the MDM Server verifies that each client certificate is
               unique.</note>
             <aactivity>
-              <h4>Tests</h4>For each MDM Agent/platform listed as supported in the ST: The evaluator
+              <tests>For each MDM Agent/platform listed as supported in the ST: The evaluator
               shall enroll a client device with the MDM Server using certificates. Then attempt to
               enroll a second device with the same client certificate, verifying that enrolment was
-              unsuccessful. </aactivity>
+              unsuccessful.</tests> </aactivity>
           </f-element>
         </f-component>
         <f-component id="FIA_X509_EXT.3" name="X509 Enrollment">
@@ -4968,14 +4968,14 @@
             </selectables> shall validate the chain of certificates from the Root CA upon
               receiving the CA Certificate Response.</title>
             <aactivity>
-              <h4>TSS</h4>If the ST author selects "device-specific information", the evaluator
+              <tss>If the ST author selects "device-specific information", the evaluator
               shall verify that the TSS contains a description of the device-specific fields used in
-              certificate requests. <h4>Guidance</h4>The evaluator shall check to ensure that the
+              certificate requests.</tss><guidance>The evaluator shall check to ensure that the
               operational guidance contains instructions on requesting certificates from a CA,
               including generation of a Certificate Request Message. If the ST author selects
               "Common Name", "Organization", "Organizational Unit", or "Country", the evaluator
               shall ensure that this guidance includes instructions for establishing these fields
-              before creating the certificate request message. <h4>Tests</h4>
+              before creating the certificate request message. </guidance><tests>
               <testlist>
                 <test>The evaluator shall use the operational guidance to cause the TOE to generate
                   a certificate request message. The evaluator shall capture the generated message
@@ -4988,7 +4988,7 @@
                   the certificate response message, and demonstrate that the function succeeds. The
                   evaluator shall then delete one of the certificates, and show that the function
                   fails.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -5040,9 +5040,9 @@
               portion of the public-private key pair generated by the TOE as specified in
               FCS_CKM.1(2).</note>
             <aactivity>
-              <h4>Guidance</h4>The evaluator shall check to ensure that the operational guidance
+              <guidance>The evaluator shall check to ensure that the operational guidance
               contains instructions on requesting certificates from an EST server, including
-              generating a Certificate Request Message. <h4>Tests</h4>The evaluator shall also
+              generating a Certificate Request Message. </guidance><tests>The evaluator shall also
               perform the following tests. Other tests are performed in conjunction with the
               Assurance Activity listed for FCS_TLSC_EXT.1. <testlist>
                 <test>The evaluator shall use the operational guidance to cause the TOE to request
@@ -5108,7 +5108,7 @@
                   and ensure that it conforms with the format specified by RFC 2986. The evaluator
                   shall confirm that the certificate request provides the public key and other
                   required information, including any necessary user-input information.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -5138,7 +5138,7 @@
               (meaning that if the host environment is compromised, the self tests will not be
               meaningful).</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to ensure that it details the self
+              <tss>The evaluator shall examine the TSS to ensure that it details the self
               tests that are run by the TSF on start-up; this description should include an outline
               of what the tests are actually doing (e.g., rather than saying "memory is tested", a
               description similar to "memory is tested by writing a value to each memory location
@@ -5150,13 +5150,13 @@
               argument that the tests are sufficient to demonstrate that the integrity of stored TSF
               executable code has not been compromised. The evaluator also ensures that the TSS (or
               the operational guidance) describes the actions that take place for successful (e.g.
-              hash verified) and unsuccessful (e.g., hash not verified) cases. <h4>Tests</h4>The
+              hash verified) and unsuccessful (e.g., hash not verified) cases.</tss><tests>The
               evaluator shall perform the following tests: <testlist>
                 <test>The evaluator performs the integrity check on a known good TSF executable and
                   verifies that the check is successful.</test>
                 <test>The evaluator modifies the TSF executable, performs the integrity check on the
                   modified TSF executable and verifies that the check fails.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -5181,17 +5181,17 @@
               server software runs. If the server is an appliance, the update must be verified by
               the TSF software or hardware.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS and verify that it describes the
+              <tss>The evaluator shall examine the TSS and verify that it describes the
               standards by which the updates are digitally signed and how the signature verification
-              process is implemented. <h4>Guidance</h4>The evaluator shall examine the AGD guidance
+              process is implemented.</tss> <guidance>The evaluator shall examine the AGD guidance
               to verify that it describes how to query the current version of the TSF software and
-              how to initiate updates. <h4>Tests</h4>The evaluator shall perform the following
+              how to initiate updates.</guidance> <tests>The evaluator shall perform the following
               tests: <testlist>
                 <test>The evaluator shall attempt to initiate an update digitally signed by the
                   vendor and verify that the update is successfully installed.</test>
                 <test>The evaluator shall attempt to install an update not digitally signed by the
                   vendor and verify that the update is not installed.</test>
-              </testlist>
+              </testlist></tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -5256,12 +5256,12 @@
               communication, the ST author lists in the assignment for FTP_ITC.1.3 the services for
               which the TOE can initiate the communication with the authorized IT entity.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to determine that the methods of
+              <tss>The evaluator shall examine the TSS to determine that the methods of
               communication with authorized IT entities are indicated, along with how those
-              communications are protected. <h4>Guidance</h4>The evaluator shall confirm that the
+              communications are protected.</tss><guidance>The evaluator shall confirm that the
               operational guidance contains instructions for configuring the communication channel
-              between the MDM Server and authorized IT entities for each supported method.
-                <h4>Tests</h4>
+              between the MDM Server and authorized IT entities for each supported method.</guidance>
+                <tests>
               <testlist>
                 <test>The evaluators shall ensure that communications using each specified (in the
                   operational guidance) communication method is tested during the course of the
@@ -5272,7 +5272,7 @@
                 <test>The evaluator shall ensure, for each communication channel with the MDM
                   Server, that a protocol analyzer identifies the traffic as the protocol under
                   testing.</test>
-              </testlist> Further assurance activities are associated with the specific protocols.
+              </testlist> Further assurance activities are associated with the specific protocols.</tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -5313,13 +5313,13 @@
               Appendix C corresponding to their selection are copied to the ST if not already
               present.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to determine that the methods of
+              <tss>The evaluator shall examine the TSS to determine that the methods of
               remote TOE administration are indicated, along with how those communications are
               protected. The evaluator shall also confirm that all protocols listed in the TSS in
               support of TOE administration are consistent with those specified in the requirement,
-              and are included in the requirements in the ST. <h4>Guidance</h4>The evaluator shall
+              and are included in the requirements in the ST.</tss><guidance>The evaluator shall
               confirm that the operational guidance contains instructions for establishing the
-              remote administrative sessions for each supported method. <h4>Tests</h4>The evaluator
+              remote administrative sessions for each supported method. </guidance><tests>The evaluator
               shall also perform the following tests: <testlist>
                 <test>The evaluators shall ensure that communications using each specified (in the
                   operational guidance) remote administration method is tested during the course of
@@ -5331,7 +5331,7 @@
                   invoking the trusted path.</test>
                 <test>The evaluator shall ensure, for each method of remote administration, the
                   channel data is not sent in plaintext.</test>
-              </testlist> Further assurance activities are associated with the specific protocols.
+              </testlist> Further assurance activities are associated with the specific protocols.</tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -5370,13 +5370,13 @@
               requirements in Appendix C corresponding to their selection are copied to the ST if
               not already present.</note>
             <aactivity>
-              <h4>TSS</h4>The evaluator shall examine the TSS to determine that the methods of
+              <tss>The evaluator shall examine the TSS to determine that the methods of
               remote enrollment are indicated, along with how those communications are protected.
               The evaluator shall also confirm that all protocols listed in the TSS in support of
               enrollment are consistent with those specified in the requirement, and are included in
-              the requirements in the ST. <h4>Guidance</h4>The evaluator shall confirm that the
+              the requirements in the ST.</tss><guidance>The evaluator shall confirm that the
               operational guidance contains instructions for establishing the enrollment sessions
-              for each supported method. <h4>Tests</h4>For each MDM Agent/platform listed as
+              for each supported method. </guidance><tests>For each MDM Agent/platform listed as
               supported in the ST: <testlist>
                 <test>The evaluators shall ensure that communications using each specified (in the
                   operational guidance) enrollment method is tested during the course of the
@@ -5388,7 +5388,7 @@
                   trusted path.</test>
                 <test>The evaluator shall ensure, for each method enrollment, the channel data is
                   not sent in plaintext.</test>
-              </testlist> Further assurance activities are associated with the specific protocols.
+              </testlist> Further assurance activities are associated with the specific protocols.</tests>
             </aactivity>
           </f-element>
         </f-component>
