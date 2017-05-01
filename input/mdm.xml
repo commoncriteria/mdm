@@ -79,12 +79,11 @@ To do:
     <entry>
       <version>3.0</version>
       <date>2016-11-21</date>
-      <subject>Clarified many requirements and assurance activities<htm:br/>
-        Mandated objective requirements: (FAU_GEN.1), (FAU_STG.1), (FAU_STG.4), (FDP_DAR_EXT.2), 
-        (FIA_BLT_EXT.3)
+      <subject>Updates to align with Technical Decisions<htm:br/>
+        Added requirements to support BYOD use case
         <htm:br/>
-        Added new objective requirements: Application Backup, Biometric Authentication Factor,
-        Access Control, User Authentication, Bluetooth Encryption </subject>
+        Removed IPsec and SSH requirements, which are now contained in
+        EPs</subject>
     </entry>
   </RevisionHistory>
 
@@ -214,18 +213,23 @@ To do:
         <abbr linkend="MDM"/> Agent. Optionally, the <abbr linkend="MDM"/> system may consist of a
       separate Mobile Application Store (MAS) server. <subsection id="tb" title="TOE Boundary"> The
           <abbr linkend="MDM"/> system operational environment consists of the mobile device on
-        which the <abbr linkend="MDM"/> Agent resides, the platform on which the <abbr linkend="MDM"
-        /> Server runs, and an untrusted wireless network over which they communicate, as pictured below.<htm:br/>
+        which the <abbr linkend="MDM"/> Agent resides, the platform on which the <abbr linkend="MDM"/>
+        Server runs, and an untrusted wireless network over which they communicate, as pictured below.
+        <htm:br/>
         <figure entity="images/MDMserveroperatingenvironment.jpg"
           title="Figure 1: MDM System Operating Environment" id="agentoperatingenvironment"/>
-        <htm:br/> The <htm:b>MDM Server</htm:b> is an application on a general-purpose platform or
+        <htm:br/>
+        The <htm:b>MDM Server</htm:b> is an application on a general-purpose platform or
         on a network device, executing in a trusted network environment. The <abbr linkend="MDM"/>
         Server provides administration of the mobile device policies and reporting on mobile device
         behavior. The <abbr linkend="MDM"/> Server is responsible for managing device enrollment,
         configuring and sending policies to the <abbr linkend="MDM"/> Agents, collecting reports on
         device status, and sending commands to the Agents. The platform on which the <abbr
           linkend="MDM"/> Server software runs is either a general-purpose platform or a network
-        device.<htm:br/> The <htm:b>MDM Agent</htm:b> establishes a secure connection back to the
+        device.
+        <htm:br/>
+        <htm:br/>
+        The <htm:b>MDM Agent</htm:b> establishes a secure connection back to the
           <abbr linkend="MDM"/> Server controlled by an enterprise administrator and configures the
         mobile device per the administrator’s policies. Optionally, the <abbr linkend="MDM"/> Agent
         may interact with the MAS Server to download and install enterprise applications. The <abbr
@@ -238,12 +242,15 @@ To do:
         Server. Otherwise, the <abbr linkend="MDM"/> Agent is provided by the mobile device vendor
         and is out of scope of this <abbr linkend="PP"/>; however, <abbr linkend="MDM"/>s are
         required to indicate the mobile platforms supported by the <abbr linkend="MDM"/> Server and
-        must be tested against the native <abbr linkend="MDM"/> agent of those platforms.<htm:br/>
+        must be tested against the native <abbr linkend="MDM"/> agent of those platforms.
+        <htm:br/>
+        <htm:br/>
         The <htm:b>MAS Server</htm:b> is an application on a general-purpose platform or on a
         network device, executing in a trusted network environment. The MAS Server may be separate
         to or included in the <abbr linkend="MDM"/> Server. The MAS server hosts applications for
         the enterprise, authenticates Agents, and securely transmits applications to enrolled mobile
-        devices. </subsection>
+        devices. 
+      </subsection>
     </section>
     <section id="usec" title="Use Cases"> This <abbr linkend="PP"/> defines 4 use cases:<htm:br/>
       <usecases>
