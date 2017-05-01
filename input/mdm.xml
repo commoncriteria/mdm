@@ -318,29 +318,43 @@ To do:
       </usecases>
     </section>
   </chapter>
-  <chapter id="cc" title="Conformance Claims">
-    <htm:h4>Conformance Statement</htm:h4> To be conformant to this <abbr linkend="PP"/>, an <abbr
-      linkend="ST"/> must demonstrate Exact Conformance, a subset of Strict Conformance as defined
-    in [CC] Part 1 (ASE_CCL). The <abbr linkend="ST"/> must include all components in this <abbr
-      linkend="PP"/> that are:<htm:br/>
-    <htm:ul>
-      <htm:li>Unconditional (which are always required)</htm:li>
-      <htm:li>Selection-based (which are required when certain selections are chosen in the
-        unconditional requirements)</htm:li>
-    </htm:ul> It may also include components that are:<htm:br/>
-    <htm:ul>
-      <htm:li>Optional</htm:li>
-      <htm:li>Objective</htm:li>
-    </htm:ul> Unconditional requirements are found in the main body of the document (Section 5),
-    while appendices contain the selection-based, optional, and objective requirements. The <abbr
-      linkend="ST"/> may iterate any of these components but it must not introduce any additional
-    component (e.g., from <abbr linkend="CC"/> Part 2 or 3) that is not defined in this <abbr
-      linkend="PP"/>. <htm:h4>
-      <abbr linkend="CC"/> Conformance Claims</htm:h4> This <abbr linkend="PP"/> is conformant to
-    Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Revision 4 [CC].
-      <htm:h4>PP Claims</htm:h4> This <abbr linkend="PP"/> does not claim conformance to any
-    Protection Profile. <htm:h4>Package Claims</htm:h4> This <abbr linkend="PP"/> does not claim
-    conformance to any packages. </chapter>
+  <chapter title="Conformance Claims" id="ccl">
+    <cclaims>
+      <cclaim id="Conformance Statement">
+        <description> To be conformant to this PP, a <abbr linkend="ST"/> must demonstrate Exact
+          Conformance, a subset of Strict Conformance as defined in <cite linkend="bibCC"/> Part 1
+          (ASE_CCL). The <abbr linkend="ST"/> must include all components in this PP that are: <h:ul>
+            <h:li>unconditional (which are always required)</h:li>
+            <h:li>selection-based (which are required when certain <h:i>selections</h:i> are chosen in the
+              unconditional requirements)</h:li>
+          </h:ul>and may include components that are <h:ul>
+            <h:li>optional or</h:li>
+            <h:li>objective.</h:li>
+          </h:ul>
+          <InsertAppendixExplainer/> The <abbr linkend="ST"/> may iterate any of these components,
+          but it must not include any additional component (e.g. from CC Part 2 or 3 or a PP not
+          conformant with this one, or extended by the <abbr linkend="ST"/>) not defined in this PP
+          or a PP conformant to this one. 
+          <h:br/>
+          Some components in this Protection Profile have a dependency on
+          other components.  In accordance with <cite linkend="bibCC"/> Part 1, <appref linkend="satisfiedreqs"/> 
+          includes justifications for those cases where the PP does not explicitly contain the component
+          upon which there is a dependency.
+        </description>
+      </cclaim>
+      <cclaim id="CC Conformance Claims">
+        <description>This PP is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria
+          Version 3.1, Revision 4.<cite linkend="bibCC"/>.</description>
+      </cclaim>
+      <cclaim id="PP Claim">
+        <description>This PP does not claim conformance to any other Protection
+          Profile.</description>
+      </cclaim>
+      <cclaim id="Package Claim">
+        <description>This PP does not claim conformance to any packages.</description>
+      </cclaim>
+    </cclaims>
+  </chapter>
   <chapter id="spd" title="Security Problem Description">
     <section id="ths" title="Threats">
       <threats>
