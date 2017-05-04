@@ -14,7 +14,7 @@ To do:
 
 - cross references - search for Section & Appendix cross refs & adjust
 -->
-<?xml-model href="https://github.com/commoncriteria/transforms/blob/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <PP xmlns="http://common-criteria.rhcloud.com/ns/cc" name="Mobile Device Management"
   xmlns:htm="http://www.w3.org/1999/xhtml">
   <PPReference title="PP Reference" id="ID003">
@@ -89,7 +89,7 @@ To do:
     <section id="ov" title="Overview"> Mobile device management (MDM) products allow enterprises to
       apply security policies to mobile devices, such as smartphones and tablets. The purpose of
       these policies is to establish a security posture adequate to permit mobile devices to process
-      enterprise data and connect to enterprise network resources.<htm:br/> This document provides a
+      enterprise data and connect to enterprise network resources.<htm:br/><htm:br/> This document provides a
       baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> System,
       which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is
       only one component of an enterprise deployment of mobile devices. Other components, such as
@@ -213,10 +213,10 @@ To do:
           <abbr linkend="MDM"/> system operational environment consists of the mobile device on
         which the <abbr linkend="MDM"/> Agent resides, the platform on which the <abbr linkend="MDM"/>
         Server runs, and an untrusted wireless network over which they communicate, as pictured below.
-        <htm:br/>
+        <htm:br/><htm:br/>
         <figure entity="images/MDMserveroperatingenvironment.jpg"
           title="Figure 1: MDM System Operating Environment" id="agentoperatingenvironment"/>
-        <htm:br/>
+        <htm:br/><htm:br/>
         The <htm:b>MDM Server</htm:b> is an application on a general-purpose platform or
         on a network device, executing in a trusted network environment. The <abbr linkend="MDM"/>
         Server provides administration of the mobile device policies and reporting on mobile device
@@ -225,8 +225,7 @@ To do:
         device status, and sending commands to the Agents. The platform on which the <abbr
           linkend="MDM"/> Server software runs is either a general-purpose platform or a network
         device.
-        <htm:br/>
-        <htm:br/>
+        <htm:br/><htm:br/>
         The <htm:b>MDM Agent</htm:b> establishes a secure connection back to the
           <abbr linkend="MDM"/> Server controlled by an enterprise administrator and configures the
         mobile device per the administrator’s policies. Optionally, the <abbr linkend="MDM"/> Agent
@@ -287,7 +286,7 @@ To do:
             occurred. Unlike in the enterprise-owned cases, the enterprise is limited in what
             security policies it can enforce because the user purchased the device primarily for
             personal use and is unlikely to accept policies that limit the functionality of the
-            device.<htm:br/> However, because the Enterprise allows the user full (or nearly full)
+            device.<htm:br/><htm:br/> However, because the Enterprise allows the user full (or nearly full)
             access to the Enterprise network, the Enterprise will require certain security policies,
             for example a password or screen lock policy, and health reporting, such as the
             integrity of the mobile device system software, before allowing access. The
@@ -321,14 +320,14 @@ To do:
       <cclaim id="Conformance Statement">
         <description> To be conformant to this PP, a <abbr linkend="ST"/> must demonstrate Exact
           Conformance, a subset of Strict Conformance as defined in <cite linkend="bibCC"/> Part 1
-          (ASE_CCL). The <abbr linkend="ST"/> must include all components in this PP that are: <h:ul>
-            <h:li>unconditional (which are always required)</h:li>
-            <h:li>selection-based (which are required when certain <h:i>selections</h:i> are chosen in the
-              unconditional requirements)</h:li>
-          </h:ul>and may include components that are <h:ul>
-            <h:li>optional or</h:li>
-            <h:li>objective.</h:li>
-          </h:ul>
+          (ASE_CCL). The <abbr linkend="ST"/> must include all components in this PP that are: <htm:ul>
+            <htm:li>unconditional (which are always required)</htm:li>
+            <htm:li>selection-based (which are required when certain <htm:i>selections</htm:i> are chosen in the
+              unconditional requirements)</htm:li>
+          </htm:ul>and may include components that are <htm:ul>
+            <htm:li>optional or</htm:li>
+            <htm:li>objective.</htm:li>
+          </htm:ul>
           <InsertAppendixExplainer/> The <abbr linkend="ST"/> may iterate any of these components,
           but it must not include any additional component (e.g. from CC Part 2 or 3 or a PP not
           conformant with this one, or extended by the <abbr linkend="ST"/>) not defined in this PP
@@ -405,7 +404,7 @@ To do:
         </assumption>
         <assumption id="A.MDM_SERVER_PLATFORM">
           <description> The <abbr linkend="MDM"/> Server relies upon a trustworthy platform and
-            local network from which it provides administrative capabilities. <htm:br/> The <abbr
+            local network from which it provides administrative capabilities. <htm:br/><htm:br/> The <abbr
               linkend="MDM"/> server relies on the this platform to provide a range of
             security-related services including reliable timestamps, user and group account
             management, logon and logout services via a local or network directory service, remote
@@ -599,7 +598,7 @@ To do:
       id="con" title="Conventions"> The <abbr linkend="CC"/> defines operations on Security
       Functional Requirements: assignments, selections, assignments within selections and
       refinements. This document uses the following font conventions to identify the operations
-      defined by the <abbr linkend="CC"/>: <htm:br/>
+      defined by the <abbr linkend="CC"/>: <htm:br/><htm:br/>
       <htm:ul>
         <htm:li><htm:b>Refinement</htm:b> operation (denoted by <htm:b>bold text</htm:b>) is used to
           add details to a requirement, and thus further restricts a requirement</htm:li>
@@ -619,7 +618,7 @@ To do:
       required to list all the supported <abbr linkend="MDM"/> Agents/MD platforms with which an
         <abbr linkend="MDM"/> Server operates. The identified assurance activities for testing that
       includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent/platform
-      listed in the <abbr linkend="ST"/>.<htm:br/> The evaluator’s activities for testing that
+      listed in the <abbr linkend="ST"/>.<htm:br/><htm:br/> The evaluator’s activities for testing that
       include use of an Agent will ensure that the Server interacts appropriately with the Agent
       (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the
       received data correctly (i.e. appropriately applies the policy to the device), as that is
@@ -692,7 +691,7 @@ To do:
               <guidance> The evaluator shall verify that the guidance instructs administrators on
                 the method of determining the network connectivity status of an enrolled agent. </guidance>
               <tests> For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr
-                  linkend="ST"/>:<htm:br/> The evaluator shall configure the <abbr linkend="MDM"/>
+                  linkend="ST"/>:<htm:br/><htm:br/> The evaluator shall configure the <abbr linkend="MDM"/>
                 Agent/platform to perform a network reachability test, both with and without such
                 connectivity and shall ensure that by following the guidance, the evaluator can
                 determine results that reflect both. </tests>
@@ -760,7 +759,7 @@ To do:
               Continuous Monitoring (SACM) Working Group and others to define protocols and
               standards to assess and report upon endpoint device posture. We expect that this
               requirement will evolve in future versions of this Protection Profile as standards
-              efforts mature.<htm:br/> If “IPsec” is selected the Extended Package for IPsec VPN
+              efforts mature.<htm:br/><htm:br/> If “IPsec” is selected the Extended Package for IPsec VPN
               Clients must be included in the <abbr linkend="ST"/>. If “SSH” is selected the
               Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If
               “TLS”, “TLS/HTTPS” or “DTLS” are selected the appropriate selection-based <abbr
@@ -819,7 +818,7 @@ To do:
                 <selectable>none</selectable>
               </selectables>. </title>
             <note role="application"> This requirement is designed to permit the enterprise to
-              restrict users’ enrollment of devices.<htm:br/> In the next version of this Protection
+              restrict users’ enrollment of devices.<htm:br/><htm:br/> In the next version of this Protection
               Profile, a unique device ID will be required to limit the user’s enrollment. The
               unique device ID can be the IMEI or an ID specific to a particular platform. The other
               options will still be selectable in the next version, but a unique device ID will be
@@ -874,7 +873,7 @@ To do:
                 administrators and MD users]</htm:i>.</title>
             <note role="application">This requirement outlines the enrollment functions that both
               administrators and MD users may perform. The enrollment actions are identified in the
-                <abbr linkend="TSS"/> as a part of FIA_ENR_EXT.1.<htm:br/> The authorized
+                <abbr linkend="TSS"/> as a part of FIA_ENR_EXT.1.<htm:br/><htm:br/> The authorized
               administrator does not remotely initiate enrollment of the mobile devices that are in
               the possession of users but may enroll mobile devices when they are in the possession
               of the administrator, for example, before distributing the mobile devices to the
@@ -1009,7 +1008,7 @@ To do:
                 </htm:li>
               </htm:ul> 
               <htm:b>and the following commands to the <abbr linkend="MDM"/> Agent: </htm:b>
-                <htm:br/>
+                <htm:br/><htm:br/>
               <selectables linebreak="yes">
                 <selectable>
                   <ctr id="smf13" pre=""></ctr>. remove Enterprise applications, (MDF Function17)
@@ -1059,7 +1058,7 @@ To do:
                 <selectable>no other management functions</selectable>
               </selectables>
               <htm:b>and the following MD configuration policies</htm:b>:
-              <htm:br/>
+              <htm:br/><htm:br/>
               <htm:ul style="list-style-type:none">
                 <htm:li>
                   <ctr id="smf25" pre=""></ctr>. password policy: <htm:ol type="a">
@@ -1107,7 +1106,7 @@ To do:
                     <selectable>no other method</selectable>
                   </selectables>, (MDF Function 5)</htm:li>
               </htm:ul>
-              <htm:b>and the following MD configuration policies</htm:b>:<htm:br/>
+              <htm:b>and the following MD configuration policies</htm:b>:<htm:br/><htm:br/>
               <selectables linebreak="yes">
                 <selectable>
                   <ctr id="smf31" pre=""></ctr>. enable/disable policy for the VPN protection
@@ -1143,20 +1142,16 @@ To do:
                   <ctr id="smf39" pre=""></ctr>. the Bluetooth trusted channel policy:<htm:br/>
                   <htm:ol type="a">
                     <htm:li>enable/disable the Discoverable mode (for BR/EDR)</htm:li>
-                    <htm:li>change the Bluetooth device name, <selectables linebreak="yes">
-                        <selectable><htm:li>allow/disallow additional wireless technologies to be
-                            used with Bluetooth </htm:li></selectable>
-                        <selectable><htm:li>disable/enable Advertising (for
-                          LE)</htm:li></selectable>
-                        <selectable><htm:li>disable/enable the Connection mode</htm:li></selectable>
-                        <selectable><htm:li>disable/enable the Bluetooth services and/or profiles
-                            available on the device </htm:li></selectable>
-                        <selectable><htm:li>specify minimum level of security for each
-                            pairing</htm:li></selectable>
-                        <selectable><htm:li>configure allowable methods of Out of Band
-                            pairing</htm:li></selectable>
-                        <selectable><htm:li>no other Bluetooth configuration] (MDF Function
-                            18)</htm:li></selectable>
+                    <htm:li>change the Bluetooth device name, 
+                      <selectables linebreak="yes">
+                        <selectable>allow/disallow additional wireless technologies to be
+                            used with Bluetooth </selectable>
+                        <selectable>disable/enable Advertising (for LE)</selectable>
+                        <selectable>disable/enable the Connection mode</selectable>
+                        <selectable>disable/enable the Bluetooth services and/or profiles available on the device </selectable>
+                        <selectable>specify minimum level of security for eachpairing</selectable>
+                        <selectable>configure allowable methods of Out of Bandpairing</selectable>
+                        <selectable>no other Bluetooth configuration] (MDF Function 18)</selectable>
                       </selectables>
                     </htm:li>
                   </htm:ol>
@@ -1166,14 +1161,12 @@ To do:
                   notification in the locked state of <htm:br/>
                   <htm:ol type="a">
                     <selectables linebreak="yes">
-                      <selectable><htm:li>email notifications</htm:li></selectable>
-                      <selectable><htm:li>calendar appointments</htm:li></selectable>
-                      <selectable><htm:li>contact associated with phone call
-                        notification</htm:li></selectable>
-                      <selectable><htm:li>text message notification</htm:li></selectable>
-                      <selectable><htm:li>other application-based
-                        notifications</htm:li></selectable>
-                      <selectable><htm:li>none] (MDF Function 19)</htm:li></selectable>
+                      <selectable>email notifications</selectable>
+                      <selectable>calendar appointments</selectable>
+                      <selectable>contact associated with phone call notification</selectable>
+                      <selectable>text message notification</selectable>
+                      <selectable>other application-based notifications</selectable>
+                      <selectable>none] (MDF Function 19)</selectable>
                     </selectables>
                   </htm:ol>
                 </selectable>
@@ -1284,17 +1277,17 @@ To do:
                 linkend="MDM"/> Agent. This requirement is broken into two configurable areas: <abbr
                 linkend="MDM"/> Agent commands and <abbr linkend="MDM"/> Agent policies. The <abbr
                 linkend="ST"/> author can add more commands and configuration policies by completing
-              the appropriate assignment statements.<htm:br/> The <abbr linkend="ST"/> author shall
+              the appropriate assignment statements.<htm:br/><htm:br/> The <abbr linkend="ST"/> author shall
               not claim any functionality not provided by the Mobile Device. All selections and
               assignments performed by the <abbr linkend="ST"/> author in this requirement should
               match the selections and assignments of the validated Mobile Device <abbr linkend="ST"
-              />.<htm:br/> Function-specific Application Notes:<htm:br/> Function specific
+              />.<htm:br/><htm:br/> Function-specific Application Notes:<htm:br/><htm:br/> Function specific
               application notes reference Mobile Device Fundamentals (MDF) <abbr linkend="PP"/> v
-              3.0.<htm:br/> Function 16 provides the <abbr linkend="MDM"/> server to display an
-              alert to the user of the mobile device.<htm:br/> The audit records read according to
+              3.0.<htm:br/><htm:br/> Function 16 provides the <abbr linkend="MDM"/> server to display an
+              alert to the user of the mobile device.<htm:br/><htm:br/> The audit records read according to
               Function 19 are to be transmitted to an external audit server according to
               FAU_STG_EXT.1. The <abbr linkend="MDM"/> Server is not expected to retain those
-              logs.<htm:br/> Function 56 corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr
+              logs.<htm:br/><htm:br/> Function 56 corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr
                 linkend="MDM"/> Agent has not had a successful reachability event with the <abbr
                 linkend="MDM"/> Server in the amount of time specified in ‘a’, then the agent shall
               perform the action selected in ‘b’. It is feasible, but not required, that if multiple
@@ -1309,7 +1302,7 @@ To do:
                 evaluator shall also examine the <abbr linkend="ST"/> of the claimed Mobile Device
                 to verify that the selections and assignments in the functions and policies in the
                   <abbr linkend="TSS"/> do not exceed the capabilities of the supported MD.
-                <htm:br/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it
+                <htm:br/><htm:br/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it
                 identifies the management functions implemented for each supported <abbr
                   linkend="MDM"/> Agent/platform, which are likely to be subsets of the all of the
                 management functions available to the administrator on the <abbr linkend="MDM"/>
@@ -1360,7 +1353,7 @@ To do:
             <note role="application"> This requirement captures all the configuration functionality
               in the <abbr linkend="MDM"/> Server to configure the underlying <abbr linkend="MDM"/>
               Server. The <abbr linkend="ST"/> author can add more commands and configuration
-              policies by completing the assignment statement.<htm:br/> Function a can be met by
+              policies by completing the assignment statement.<htm:br/><htm:br/> Function a can be met by
               relying on the platform to configure the certificates used by the <abbr linkend="MDM"
               /> server, however, the <abbr linkend="MDM"/> Server shall allow the administrator to
               choose with certificate is used for a specific functionality. The selection in b
@@ -1482,7 +1475,7 @@ To do:
             <note role="application"> This requirement references the user authenticator used for
               device enrollment in management in FIA_ENR_EXT.1.1. The user authenticator shall only
               be valid for a configurable time limit. If the authenticator is expired, even if the
-              entered correctly, enrollment shall not occur. <htm:br/> The length of the time the
+              entered correctly, enrollment shall not occur. <htm:br/><htm:br/> The length of the time the
               authenticator is valid for is configured per function g in FMT_SMF.1(2). If
               FMT_SAE_EXT.1 is included in the <abbr linkend="ST"/>, then function g shall be
               selected in FMT_SMF.1(2). </note>
@@ -1533,13 +1526,13 @@ To do:
           <f-element id="FPT_ITT.1.1">
             <!-- HERE I made the FPT_ITT.1.1 tag up, it is not in the Word document -->
             <title> The <abbr linkend="ST"/> author must include at least one of FPT_ITT.1 or
-              FTP_ITC.1(2) in the <abbr linkend="ST"/>. <htm:br/> If the <abbr linkend="TOE"/>
+              FTP_ITC.1(2) in the <abbr linkend="ST"/>. <htm:br/><htm:br/> If the <abbr linkend="TOE"/>
               includes an <abbr linkend="MDM"/> Agent, the communication channel between the Agent
               and Server is internal to the <abbr linkend="TOE"/>. The <abbr linkend="ST"/> author
               shall include FPT_ITT.1. If the MAS Server is physically distinct from the <abbr
                 linkend="MDM"/> Server, the MAS Server is considered a separate part of the
               distributed <abbr linkend="TOE"/> and FPT_ITT.1 shall apply to all channels used to
-              transfer <abbr linkend="TSF"/> data with the MAS Server. <htm:br/> If the <abbr
+              transfer <abbr linkend="TSF"/> data with the MAS Server. <htm:br/><htm:br/> If the <abbr
                 linkend="TOE"/> interoperates with an evaluated <abbr linkend="MDM"/> Agent built
               into a mobile device, the <abbr linkend="ST"/> author shall include FTP_ITC.1(2).
             </title>
@@ -1559,14 +1552,14 @@ To do:
               of a distributed <abbr linkend="TOE"/> (such as between the <abbr linkend="MDM"/>
               Server and the MAS Server) is protected through the use of an encrypted communications
               channel. The data passed in this trusted communication channel are encrypted as
-              defined the protocol chosen in the first selection.<htm:br/> The trusted channel uses
+              defined the protocol chosen in the first selection.<htm:br/><htm:br/> The trusted channel uses
               secure protocols that preserve the confidentiality and integrity of <abbr
                 linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the
               mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If “IPsec” is selected
               the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"
               />. If “TLS”, “HTTPS” or “DTLS” is selected the appropriate selection-based <abbr
                 linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"
-              />.<htm:br/> Protocol, RBG, Certificate validation, algorithm, and similar services
+              />.<htm:br/><htm:br/> Protocol, RBG, Certificate validation, algorithm, and similar services
               may be met with platform provided services. </note>
             <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the
@@ -1594,11 +1587,11 @@ To do:
       <subsection id="tpc" title="Trusted Path/Channels">
         <!-- HERE this next f-component is not a proper f-component in the Word document --> The
           <abbr linkend="ST"/> author must include at least one FPT_ITT.1 or FTP_ITC.1(2) in the
-          <abbr linkend="ST"/>. <htm:br/> If the <abbr linkend="TOE"/> interoperates with an
+          <abbr linkend="ST"/>. <htm:br/><htm:br/> If the <abbr linkend="TOE"/> interoperates with an
         evaluated <abbr linkend="MDM"/> Agent built into a mobile device, the <abbr linkend="ST"/>
         author shall include FTP_ITC.1(2). If the MAS Server is physically distinct from the <abbr
           linkend="MDM"/> Server, then FTP_ITC.1(3) shall be included in the <abbr linkend="ST"
-        />.<htm:br/> If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, the <abbr
+        />.<htm:br/><htm:br/> If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, the <abbr
           linkend="ST"/> author shall include FPT_ITT.1. </subsection>
     </section>
     <section id="tpsfr" title="TOE or Platform Security Functional Requirements">
@@ -1625,12 +1618,12 @@ To do:
               on which it runs. The <abbr linkend="ST"/> author can include other auditable events
               in the assignment; they are not limited to the list presented. All audits must contain
               at least the information mentioned in FAU_GEN.1.2, but may contain more information
-              which can be assigned.<htm:br/> Item b above requires all administrative actions to be
+              which can be assigned.<htm:br/><htm:br/> Item b above requires all administrative actions to be
               auditable, so no additional specification for the auditability of these actions is
               specified in Table 1 aside from those that require additional record content.
               Administrative actions refer to any management functions specified by
-              FMT_MOF.1(1).<htm:br/> Item c includes those commands, which may be performed
-              automatically based on triggers or on a schedule.<htm:br/> Depending on the specific
+              FMT_MOF.1(1).<htm:br/><htm:br/> Item c includes those commands, which may be performed
+              automatically based on triggers or on a schedule.<htm:br/><htm:br/> Depending on the specific
               requirements selected by the <abbr linkend="ST"/> author from Security Functional
               Requirements, Optional Requirements, Selection-Based Requirements, and Objective
               Requirements, the <abbr linkend="ST"/> author should include the appropriate auditable
@@ -1644,7 +1637,7 @@ To do:
                 generated (TSF, <abbr linkend="TOE"/> platform).</tss>
               <guidance> The evaluator shall check the administrative guide and ensure that it lists
                 all of the auditable events. The evaluator shall check to make sure that every audit
-                event type mandated by the <abbr linkend="PP"/> is described.<htm:br/> The evaluator
+                event type mandated by the <abbr linkend="PP"/> is described.<htm:br/><htm:br/> The evaluator
                 shall also make a determination of the administrative actions that are relevant in
                 the context of this <abbr linkend="PP"/> including those listed in the Management
                 section. The evaluator shall examine the administrative guide and make a
@@ -1664,7 +1657,7 @@ To do:
                 cryptographic protocols contained in the <abbr linkend="ST"/>. For administrative
                 actions, the evaluator shall test that each action determined by the evaluator above
                 to be security relevant in the context of this <abbr linkend="PP"/> is
-                auditable.<htm:br/> Note that the testing here can be accomplished in conjunction
+                auditable.<htm:br/><htm:br/> Note that the testing here can be accomplished in conjunction
                 with the testing of the security mechanisms directly. For example, testing performed
                 to ensure that the administrative guidance provided is correct verifies that
                 AGD_OPE.1 is satisfied and should address the invocation of the administrative
@@ -1702,14 +1695,14 @@ To do:
               <tests> When verifying the test results from FAU_GEN.1.1, the evaluator shall ensure
                 the audit records generated during testing match the format specified in the
                 administrative guide, and that the fields in each audit record have the proper
-                entries.<htm:br/> Note that the testing here can be accomplished in conjunction with
+                entries.<htm:br/><htm:br/> Note that the testing here can be accomplished in conjunction with
                 the testing of the security mechanisms directly. For example, testing performed to
                 ensure that the administrative guidance provided is correct verifies that AGD_OPE.1
                 is satisfied and should address the invocation of the administrative actions that
-                are needed to verify the audit records are generated as expected.<htm:br/> The
+                are needed to verify the audit records are generated as expected.<htm:br/><htm:br/> The
                 Auditable Events table includes optional, selection-based and objective
                 requirements. The auditing of these requirements are only required if the
-                requirement is included in the <abbr linkend="ST"/>.<htm:br/>
+                requirement is included in the <abbr linkend="ST"/>.<htm:br/><htm:br/>
                 <htm:center><htm:H4>Table 1: Auditable Events</htm:H4></htm:center>
                 <htm:table>
                   <htm:TR>
@@ -1959,7 +1952,8 @@ To do:
               </tests>
             </aactivity>
           </f-element>
-        </f-component> <f-component id="FAU_GEN.1(2)" name="Audit Generation (MAS Server)"
+        </f-component> 
+        <f-component id="FAU_GEN.1(2)" name="Audit Generation (MAS Server)"
           status="optional">
           <f-element id="FAU_GEN.1.1(2)">
             <title>The MAS Server shall be able to generate an audit record of the following
@@ -2010,11 +2004,11 @@ To do:
               <tests>When verifying the test results from FAU_GEN.1.1, the evaluator shall ensure
                 the audit records generated during testing match the format specified in the
                 administrative guide, and that the fields in each audit record have the proper
-                entries.<htm:br/> Note that the testing here can be accomplished in conjunction with
+                entries.<htm:br/><htm:br/> Note that the testing here can be accomplished in conjunction with
                 the testing of the security mechanisms directly. For example, testing performed to
                 ensure that the administrative guidance provided is correct verifies that AGD_OPE.1
                 is satisfied and should address the invocation of the administrative actions that
-                are needed to verify the audit records are generated as expected. <htm:br/></tests>
+                are needed to verify the audit records are generated as expected. <htm:br/><htm:br/></tests>
             </aactivity>
           </f-element>
         </f-component> <f-component id="FAU_STG_EXT.1" name="External Trail Storage"
@@ -2031,14 +2025,14 @@ To do:
             <note role="application">The <abbr linkend="TOE"/> shall be capable of transmitting
               audit data to an external entity using a trusted channel as specified in FTP_ITC.1(1)
               and optionally can store the audit data locally. If “stored locally” is selected, then
-              FAU_STG_EXT.2.1 shall be included in the <abbr linkend="ST"/>.<htm:br/> The <abbr
+              FAU_STG_EXT.2.1 shall be included in the <abbr linkend="ST"/>.<htm:br/><htm:br/> The <abbr
                 linkend="TOE"/> may rely on a non-<abbr linkend="TOE"/> audit server for storage and
               review of audit records. Although the <abbr linkend="TOE"/> generates audit records
               and receives audit records from managed mobile devices, the storage of these audit
               records and the ability to allow the administrator to review these audit records is
               provided by the operational environment. The <abbr linkend="TSF"/> may rely on the
               underlying operating system for this functionality, and the first selection should be
-              made appropriately.<htm:br/> If the <abbr linkend="TOE"/> relies on a non-<abbr
+              made appropriately.<htm:br/><htm:br/> If the <abbr linkend="TOE"/> relies on a non-<abbr
                 linkend="TOE"/> audit server and the trusted channel implements TLS, mutual
               authentication is not required since the audit server is outside of the <abbr
                 linkend="TOE"/>. </note>
@@ -2051,14 +2045,14 @@ To do:
                 are sent to the audit log server. For example, when an audit event is generated, is
                 it simultaneously sent to the external server and the local store, or is the local
                 store used as a buffer and “cleared” periodically by sending the data to the audit
-                server.<htm:br/> The evaluator shall also examine the operational guidance to ensure
+                server.<htm:br/><htm:br/> The evaluator shall also examine the operational guidance to ensure
                 it describes how to establish the trusted channel to the audit server, as well as
                 describe any requirements on the audit server (particular audit server protocol,
                 version of the protocol required, etc.), as well as configuration of the <abbr
                   linkend="TOE"/> needed to communicate with the audit server. </guidance>
               <tests> Testing of the trusted channel mechanism will be performed as specified in the
                 associated assurance activities for the particular trusted channel
-                mechanism.<htm:br/> The evaluator shall perform the following test for this
+                mechanism.<htm:br/><htm:br/> The evaluator shall perform the following test for this
                 requirement: <testlist>
                   <test>The evaluator shall establish a session between the <abbr linkend="TOE"/>
                     and the audit server according to the configuration guidance provided. The
@@ -2082,17 +2076,17 @@ To do:
               trusted channel per FTP_ITC.1(3).</title>
             <note role="application">If the MAS Server is physically separate from the <abbr
                 linkend="MDM"/> Server then the transmission of audit data to an external entity
-              uses a distinct trusted channel per FTP_ITC.1(3).<htm:br/> The <abbr linkend="TOE"/>
+              uses a distinct trusted channel per FTP_ITC.1(3).<htm:br/><htm:br/> The <abbr linkend="TOE"/>
               may rely on a non-<abbr linkend="TOE"/> audit server for storage and review of audit
               records. Although the <abbr linkend="TOE"/> generates audit records and receives audit
               records from managed mobile devices, the storage of these audit records and the
               ability to allow the administrator to review these audit records is provided by the
               operational environment. The <abbr linkend="TSF"/> may rely on the underlying
               operating system for this functionality, and the first selection should be made
-              appropriately.<htm:br/> If the <abbr linkend="TOE"/> relies on a non-<abbr
+              appropriately.<htm:br/><htm:br/> If the <abbr linkend="TOE"/> relies on a non-<abbr
                 linkend="TOE"/> audit server and the trusted channel implements TLS, mutual
               authentication is not required since the audit server is outside of the <abbr
-                linkend="TOE"/>. <htm:br/>
+                linkend="TOE"/>. <htm:br/><htm:br/>
             </note>
             <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the
@@ -2103,16 +2097,16 @@ To do:
                 are sent to the audit log server. For example, when an audit event is generated, is
                 it simultaneously sent to the external server and the local store, or is the local
                 store used as a buffer and “cleared” periodically by sending the data to the audit
-                server.<htm:br/> The evaluator shall also examine the operational guidance to ensure
+                server.<htm:br/><htm:br/> The evaluator shall also examine the operational guidance to ensure
                 it describes how to establish the trusted channel to the audit server, as well as
                 describe any requirements on the audit server (particular audit server protocol,
                 version of the protocol required, etc.), as well as configuration of the <abbr
-                  linkend="TOE"/> needed to communicate with the audit server.<htm:br/>
+                  linkend="TOE"/> needed to communicate with the audit server.<htm:br/><htm:br/>
               </guidance>
               <tests>Testing of the trusted channel mechanism will be performed as specified in the
                 associated assurance activities for the particular trusted channel
-                mechanism.<htm:br/> The evaluator shall perform the following test for this
-                requirement: <htm:br/>
+                mechanism.<htm:br/><htm:br/> The evaluator shall perform the following test for this
+                requirement: <htm:br/><htm:br/>
                 <testlist><test>The evaluator shall establish a session between the <abbr
                       linkend="TOE"/> and the audit server according to the configuration guidance
                     provided. The evaluator shall then examine the traffic that passes between the
@@ -2136,7 +2130,7 @@ To do:
               </selectables> shall protect the stored audit records in the audit trail from
               unauthorized modification.</title>
             <note role="application">If “stored locally” is selected in FAU_STG_EXT.1.1(1), this
-                <abbr linkend="SFR"/> shall be included in the <abbr linkend="ST"/>.<htm:br/> The
+                <abbr linkend="SFR"/> shall be included in the <abbr linkend="ST"/>.<htm:br/><htm:br/> The
               purpose of this requirement is to ensure that audit records are stored securely. The
                 <abbr linkend="ST"/> author is responsible for selecting whether audit records are
               maintained when audit storage or failure occurs. The <abbr linkend="ST"/> author must
@@ -2231,7 +2225,7 @@ To do:
               generation is used for key establishment, the schemes in FCS_CKM.2.1 and selected
               cryptographic protocols must match the selection. When key generation is used for
                 <abbr linkend="MDM"/> authentication, the public key is expected to be associated
-              with an X.509v3 certificate.<htm:br/> If the <abbr linkend="TOE"/> only acts as a
+              with an X.509v3 certificate.<htm:br/><htm:br/> If the <abbr linkend="TOE"/> only acts as a
               receiver in the RSA key establishment scheme, the <abbr linkend="TOE"/> does not need
               to implement RSA key generation. </note>
             <aactivity>
@@ -2261,7 +2255,7 @@ To do:
                 the Key Generation test. This test verifies the ability of the <abbr linkend="TSF"/>
                 to correctly produce values for the key components including the public verification
                 exponent e, the private prime factors p and q, the public modulus n and the
-                calculation of the private signature exponent d.<htm:br/> Key Pair generation
+                calculation of the private signature exponent d.<htm:br/><htm:br/> Key Pair generation
                 specifies 5 ways (or methods) to generate the primes p and q. These include: <htm:ol>
                   <htm:li>Random Primes:</htm:li>
                   <htm:ol type="a">
@@ -2283,7 +2277,7 @@ To do:
                 evaluator shall have the <abbr linkend="TSF"/> generate 25 key pairs. The evaluator
                 shall verify the correctness of the <abbr linkend="TSF"/>’s implementation by
                 comparing values generated by the <abbr linkend="TSF"/> with those generated from a
-                known good implementation.<htm:br/> If possible, the Random Probable primes method
+                known good implementation.<htm:br/><htm:br/> If possible, the Random Probable primes method
                 should also be verified against a known good implementation as described above.
                 Otherwise, the evaluator shall have the <abbr linkend="TSF"/> generate 10 keys pairs
                 for each supported key length nlen and verify: <htm:ul>
@@ -2304,45 +2298,45 @@ To do:
                 test (IUT) to generate 10 private/public key pairs. The private key shall be
                 generated using an approved random bit generator (RBG). To determine correctness,
                 the evaluator shall submit the generated key pairs to the public key verification
-                (PKV) function of a known good implementation.<htm:br/>
+                (PKV) function of a known good implementation.<htm:br/><htm:br/>
                 <htm:h4>FIPS 186-4 Public Key Verification (PKV) Test</htm:h4> For each supported
                 NIST curve, i.e., P-256, P-384 and P-521, the evaluator shall generate 10
                 private/public key pairs using the key generation function of a known good
                 implementation and modify five of the public key values so that they are incorrect,
                 leaving five values unchanged (i.e., correct). The evaluator shall obtain in
-                response a set of 10 PASS/FAIL values.<htm:br/>
+                response a set of 10 PASS/FAIL values.<htm:br/><htm:br/>
                 <htm:h4>Key Generation for Finite-Field Cryptography (FFC)</htm:h4> The evaluator
                 shall verify the implementation of the Parameters Generation and the Key Generation
                 for FFC by the <abbr linkend="TOE"/> using the Parameter Generation and Key
                 Generation test. This test verifies the ability of the <abbr linkend="TSF"/> to
                 correctly produce values for the field prime p, the cryptographic prime q (dividing
                 p-1), the cryptographic group generator g, and the calculation of the private key x
-                and public key y.<htm:br/> The Parameter generation specifies 2 ways (or methods) to
-                generate the cryptographic prime q and the field prime p:<htm:br/> Cryptographic and
-                Field Primes: <htm:br/>
+                and public key y.<htm:br/><htm:br/> The Parameter generation specifies 2 ways (or methods) to
+                generate the cryptographic prime q and the field prime p:<htm:br/><htm:br/> Cryptographic and
+                Field Primes: <htm:br/><htm:br/>
                 <htm:ul>
                   <htm:li>Primes q and p shall both be provable primes</htm:li>
                   <htm:li>Primes q and field prime p shall both be probable primes and two ways to
                     generate the cryptographic group generator g:</htm:li>
-                </htm:ul> Cryptographic Group Generator: <htm:br/>
+                </htm:ul> Cryptographic Group Generator: <htm:br/><htm:br/>
                 <htm:ul>
                   <htm:li>Generator g constructed through a verifiable process</htm:li>
                   <htm:li>Generator g constructed through an unverifiable process.</htm:li>
                 </htm:ul> The Key generation specifies 2 ways to generate the private key
-                x:<htm:br/> Private Key: <htm:ul>
+                x:<htm:br/><htm:br/> Private Key: <htm:ul>
                   <htm:li>len(q) bit output of RBG where 1 &lt;=x &lt;= q-1</htm:li>
                   <htm:li>len(q) + 64 bit output of RBG, followed by a mod q-1 operation where
                     1&lt;= x&lt;=q-1.</htm:li>
                 </htm:ul> The security strength of the RBG must be at least that of the security
-                offered by the FFC parameter set.<htm:br/> To test the cryptographic and field prime
+                offered by the FFC parameter set.<htm:br/><htm:br/> To test the cryptographic and field prime
                 generation method for the provable primes method and/or the group generator g for a
                 verifiable process, the evaluator must seed the <abbr linkend="TSF"/> parameter
                 generation routine with sufficient data to deterministically generate the parameter
-                set.<htm:br/> For each key length supported, the evaluator shall have the <abbr
+                set.<htm:br/><htm:br/> For each key length supported, the evaluator shall have the <abbr
                   linkend="TSF"/> generate 25 parameter sets and key pairs. The evaluator shall
                 verify the correctness of the <abbr linkend="TSF"/>’s implementation by comparing
                 values generated by the <abbr linkend="TSF"/> with those generated from a known good
-                implementation. Verification must also confirm<htm:br/>
+                implementation. Verification must also confirm<htm:br/><htm:br/>
                 <htm:ul>
                   <htm:li>g != 0,1</htm:li>
                   <htm:li>q divides p-1</htm:li>
@@ -2375,9 +2369,9 @@ To do:
               establishment schemes are described in Section 9 of NIST SP 800-56B; however, Section
               9 relies on implementation of other sections in SP 800-56B. If the <abbr linkend="TOE"
               /> acts as a receiver in the RSA key establishment scheme, the <abbr linkend="TOE"/>
-              does not need to implement RSA key generation.<htm:br/> The elliptic curves used for
+              does not need to implement RSA key generation.<htm:br/><htm:br/> The elliptic curves used for
               the key establishment scheme shall correlate with the curves specified in FCS_CKM.1.1.
-              <htm:br/> The domain parameters used for the finite field-based key establishment
+              <htm:br/><htm:br/> The domain parameters used for the finite field-based key establishment
               scheme are specified by the key generation according to FCS_CKM.1.1.</note>
             <aactivity>
               <htm:h4>Requirement met by the platform</htm:h4>
@@ -2396,7 +2390,7 @@ To do:
                 correspond to the key generation schemes identified in FCS_CKM.1.1. If the <abbr
                   linkend="ST"/> specifies more than one scheme, the evaluator shall examine the
                   <abbr linkend="TSS"/> to verify that it identifies the usage for each
-                scheme.<htm:br/> The evaluator shall ensure that the <abbr linkend="TSS"/> describes
+                scheme.<htm:br/><htm:br/> The evaluator shall ensure that the <abbr linkend="TSS"/> describes
                 how the <abbr linkend="TOE"/> handles decryption errors. In accordance with NIST
                 Special Publication 800-56B, the <abbr linkend="TOE"/> must not reveal the
                 particular error that occurred, either through the contents of any outputted or
@@ -2425,8 +2419,8 @@ To do:
                 Function (KDF). If key confirmation is supported, the evaluator shall also verify
                 that the components of key confirmation have been implemented correctly, using the
                 test procedures described below. This includes the parsing of the DKM, the
-                generation of MACdata and the calculation of MACtag.<htm:br/>
-                <htm:u>Function Test</htm:u><htm:br/> The Function test verifies the ability of the
+                generation of MACdata and the calculation of MACtag.<htm:br/><htm:br/>
+                <htm:u>Function Test</htm:u><htm:br/><htm:br/> The Function test verifies the ability of the
                   <abbr linkend="TOE"/> to implement the key agreement schemes correctly. To conduct
                 this test the evaluator shall generate or obtain test vectors from a known good
                 implementation of the <abbr linkend="TOE"/> supported schemes. For each supported
@@ -2434,19 +2428,19 @@ To do:
                 key confirmation role- key confirmation type combination, the tester shall generate
                 10 sets of test vectors. The data set consists of one set of domain parameter values
                 (FFC) or the NIST approved curve (ECC) per 10 sets of public keys. These keys are
-                static, ephemeral or both depending on the scheme being tested.<htm:br/> The
+                static, ephemeral or both depending on the scheme being tested.<htm:br/><htm:br/> The
                 evaluator shall obtain the DKM, the corresponding <abbr linkend="TOE"/>’s public
                 keys (static and/or ephemeral), the MAC tag(s), and any inputs used in the KDF, such
-                as the Other Information field OI and <abbr linkend="TOE"/> id fields.<htm:br/> If
+                as the Other Information field OI and <abbr linkend="TOE"/> id fields.<htm:br/><htm:br/> If
                 the <abbr linkend="TOE"/> does not use a KDF defined in SP 800-56A, the evaluator
                 shall obtain only the public keys and the hashed value of the shared
-                secret.<htm:br/> The evaluator shall verify the correctness of the <abbr
+                secret.<htm:br/><htm:br/> The evaluator shall verify the correctness of the <abbr
                   linkend="TSF"/>’s implementation of a given scheme by using a known good
                 implementation to calculate the shared secret value, derive the keying material DKM,
-                and compare hashes or MAC tags generated from these values.<htm:br/> If key
+                and compare hashes or MAC tags generated from these values.<htm:br/><htm:br/> If key
                 confirmation is supported, the <abbr linkend="TSF"/> shall perform the above for
-                each implemented approved MAC algorithm. <htm:br/>
-                <htm:u>Validity Test</htm:u><htm:br/> The Validity test verifies the ability of the
+                each implemented approved MAC algorithm. <htm:br/><htm:br/>
+                <htm:u>Validity Test</htm:u><htm:br/><htm:br/> The Validity test verifies the ability of the
                   <abbr linkend="TOE"/> to recognize another party’s valid and invalid key agreement
                 results with or without key confirmation. To conduct this test, the evaluator shall
                 obtain a list of the supporting cryptographic functions included in the SP800-56A
@@ -2455,7 +2449,7 @@ To do:
                 test vectors consisting of data sets including domain parameter values or NIST
                 approved curves, the evaluator’s public keys, the <abbr linkend="TOE"/>’s
                 public/private key pairs, MACTag, and any inputs used in the KDF, such as the other
-                info and <abbr linkend="TOE"/> id fields.<htm:br/> The evaluator shall inject an
+                info and <abbr linkend="TOE"/> id fields.<htm:br/><htm:br/> The evaluator shall inject an
                 error in some of the test vectors to test that the <abbr linkend="TOE"/> recognizes
                 invalid key agreement results caused by the following fields being incorrect: the
                 shared secret value Z, the DKM, the other information field OI, the data to be
@@ -2466,16 +2460,16 @@ To do:
                   linkend="TOE"/> detects errors in the public key validation function and/or the
                 partial key validation function (in ECC only). At least two of the test vectors
                 shall remain unmodified and therefore should result in valid key agreement results
-                (they should pass).<htm:br/> The <abbr linkend="TOE"/> shall use these modified test
+                (they should pass).<htm:br/><htm:br/> The <abbr linkend="TOE"/> shall use these modified test
                 vectors to emulate the key agreement scheme using the corresponding parameters. The
                 evaluator shall compare the <abbr linkend="TOE"/>’s results with the results using a
-                known good implementation verifying that the <abbr linkend="TOE"/> detects these errors.<htm:br/>
+                known good implementation verifying that the <abbr linkend="TOE"/> detects these errors.<htm:br/><htm:br/>
                 <htm:h4>SP800-56B Key Establishment Schemes</htm:h4> The evaluator shall verify that
                 the <abbr linkend="TSS"/> describes whether the <abbr linkend="TOE"/> acts as a
-                sender, a recipient, or both for RSA-based key establishment schemes.<htm:br/> If
+                sender, a recipient, or both for RSA-based key establishment schemes.<htm:br/><htm:br/> If
                 the <abbr linkend="TOE"/> acts as a sender, the following assurance activity shall
                 be performed to ensure the proper operation of every <abbr linkend="TOE"/> supported
-                combination of RSA-based key establishment scheme:<htm:br/> To conduct this test the
+                combination of RSA-based key establishment scheme:<htm:br/><htm:br/> To conduct this test the
                 evaluator shall generate or obtain test vectors from a known good implementation of
                 the <abbr linkend="TOE"/> supported schemes. For each combination of supported key
                 establishment scheme and its options (with or without key confirmation if supported,
@@ -2489,10 +2483,10 @@ To do:
                 (in cases where key confirmation is incorporated, the test shall use the MacKey from
                 the test vector instead of the randomly generated MacKey used in normal operation)
                 and ensure that the outputted ciphertext is equivalent to the ciphertext in the test
-                vector.<htm:br/> If the <abbr linkend="TOE"/> acts as a receiver, the following
+                vector.<htm:br/><htm:br/> If the <abbr linkend="TOE"/> acts as a receiver, the following
                 assurance activities shall be performed to ensure the proper operation of every
                   <abbr linkend="TOE"/> supported combination of RSA-based key establishment
-                scheme:<htm:br/> To conduct this test the evaluator shall generate or obtain test
+                scheme:<htm:br/><htm:br/> To conduct this test the evaluator shall generate or obtain test
                 vectors from a known good implementation of the <abbr linkend="TOE"/> supported
                 schemes. For each combination of supported key establishment scheme and its options
                 (with our without key confirmation if supported, for each supported key confirmation
@@ -2547,13 +2541,13 @@ To do:
             </title>
             <note role="application">The <abbr linkend="ST"/> author should select the platform if
               the <abbr linkend="MDM"/> Server performs no operations using plaintext secret,
-              private cryptographic keys, and <abbr linkend="CSP"/>s. <htm:br/>Any security related
+              private cryptographic keys, and <abbr linkend="CSP"/>s. <htm:br/><htm:br/>Any security related
               information (such as keys, authentication data, and passwords) must be zeroized when
               no longer in use to prevent the disclosure or modification of security critical data.
-              <htm:br/>The zeroization indicated above applies to each intermediate storage area for
+              <htm:br/><htm:br/>The zeroization indicated above applies to each intermediate storage area for
               plaintext key and Cryptographic Service Provider (<abbr linkend="CSP"/>) (i.e., any
               storage, such as memory buffers, that is included in the path of such data) upon the
-              transfer of the key/<abbr linkend="CSP"/> to another location. <htm:br/>Since the
+              transfer of the key/<abbr linkend="CSP"/> to another location. <htm:br/><htm:br/>Since the
                 <abbr linkend="TOE"/> does not include the host IT environment, the extent of this
               capability is necessarily somewhat limited. For the purposes of this requirement, it
               is sufficient for the <abbr linkend="TOE"/> to invoke the correct underlying functions
@@ -2571,17 +2565,17 @@ To do:
               material and <abbr linkend="CSP"/> are no longer needed and thus should be destroyed.
               The <abbr linkend="TSF"/> shall ‘release’ the key material and <abbr linkend="CSP"/>
               when no longer needed, regardless if the <abbr linkend="TSF"/> or <abbr linkend="TOE"
-              /> platform destroys the key material and <abbr linkend="CSP"/>s.<htm:br/> For the
+              /> platform destroys the key material and <abbr linkend="CSP"/>s.<htm:br/><htm:br/> For the
               purposes of this requirement, plaintext keying material refers to authentication data,
               authorization data, secret/private symmetric keys, data used to derive keys, etc. </note>
-            <aactivity> Assurance Activity Note:<htm:br/> The Assurance Activity used is dependent
-              on the selection made in FCS_CKM_EXT.4.1. <htm:br/>
+            <aactivity> Assurance Activity Note:<htm:br/><htm:br/> The Assurance Activity used is dependent
+              on the selection made in FCS_CKM_EXT.4.1. <htm:br/><htm:br/>
               <tss> The evaluator shall check to ensure the <abbr linkend="TSS"/> lists each type of
                 plaintext key material and <abbr linkend="CSP"/> (authentication data, authorization
                 data, secret/private symmetric keys, data used to derive keys, etc.) and its origin
-                and storage location.<htm:br/> The evaluator shall verify that the <abbr
+                and storage location.<htm:br/><htm:br/> The evaluator shall verify that the <abbr
                   linkend="TSS"/> describes when each type of key material and <abbr linkend="CSP"/>
-                is no longer needed.<htm:br/>
+                is no longer needed.<htm:br/><htm:br/>
               </tss>
               <htm:h4>Requirement met by the platform</htm:h4>
               <tss> For each platform listed in the <abbr linkend="ST"/>, the evaluator shall
@@ -2608,7 +2602,7 @@ To do:
                     the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds to test
                     that keys are cleared correctly, including all intermediate copies of the key
                     that may have been created internally by the <abbr linkend="TOE"/> during normal
-                    cryptographic processing with that key. <htm:br/> Cryptographic <abbr
+                    cryptographic processing with that key. <htm:br/><htm:br/> Cryptographic <abbr
                       linkend="TOE"/> implementations in software shall be loaded and exercised
                     under a debugger to perform such tests. The evaluator shall perform the
                     following test for each key subject to clearing, including intermediate copies
@@ -2680,32 +2674,32 @@ To do:
               <htm:h4>Requirement met by the <abbr linkend="TOE"/></htm:h4>
               <tests>
                 <htm:h4>AES-CBC Tests</htm:h4>
-                <htm:u>AES-CBC Known Answer Tests</htm:u><htm:br/> There are four Known Answer Tests
+                <htm:u>AES-CBC Known Answer Tests</htm:u><htm:br/><htm:br/> There are four Known Answer Tests
                 (KATs), described below. In all KATs, the plaintext, ciphertext, and IV values shall
                 be 128-bit blocks. The results from each test may either be obtained by the
                 evaluator directly or by supplying the inputs to the implementer and receiving the
                 results in response. To determine correctness, the evaluator shall compare the
                 resulting values to those obtained by submitting the same inputs to a known good
-                implementation.<htm:br/> KAT-1. To test the encrypt functionality of AES-CBC, the
+                implementation.<htm:br/><htm:br/> KAT-1. To test the encrypt functionality of AES-CBC, the
                 evaluator shall supply a set of 10 plaintext values and obtain the ciphertext value
                 that results from AES-CBC encryption of the given plaintext using a key value of all
                 zeros and an IV of all zeros. Five plaintext values shall be encrypted with a
                 128-bit all-zeros key, and the other five shall be encrypted with a 256-bit all-
-                zeros key.<htm:br/> To test the decrypt functionality of AES-CBC, the evaluator
+                zeros key.<htm:br/><htm:br/> To test the decrypt functionality of AES-CBC, the evaluator
                 shall perform the same test as for encrypt, using 10 ciphertext values as input and
-                AES-CBC decryption.<htm:br/> KAT-2. To test the encrypt functionality of AES-CBC,
+                AES-CBC decryption.<htm:br/><htm:br/> KAT-2. To test the encrypt functionality of AES-CBC,
                 the evaluator shall supply a set of 10 key values and obtain the ciphertext value
                 that results from AES-CBC encryption of an all-zeros plaintext using the given key
                 value and an IV of all zeros. Five of the keys shall be 128-bit keys, and the other
-                five shall be 256-bit keys.<htm:br/> To test the decrypt functionality of AES-CBC,
+                five shall be 256-bit keys.<htm:br/><htm:br/> To test the decrypt functionality of AES-CBC,
                 the evaluator shall perform the same test as for encrypt, using an all-zero
-                ciphertext value as input and AES-CBC decryption.<htm:br/> KAT-3. To test the
+                ciphertext value as input and AES-CBC decryption.<htm:br/><htm:br/> KAT-3. To test the
                 encrypt functionality of AES-CBC, the evaluator shall supply the two sets of key
                 values described below and obtain the ciphertext value that results from AES
                 encryption of an all-zeros plaintext using the given key value and an IV of all
                 zeros. The first set of keys shall have 128 128-bit keys, and the second set shall
                 have 256 256-bit keys. Key i in each set shall have the leftmost i bits be ones and
-                the rightmost N-i bits be zeros, for i in [1,N].<htm:br/> To test the decrypt
+                the rightmost N-i bits be zeros, for i in [1,N].<htm:br/><htm:br/> To test the decrypt
                 functionality of AES-CBC, the evaluator shall supply the two sets of key and
                 ciphertext value pairs described below and obtain the plaintext value that results
                 from AES-CBC decryption of the given ciphertext using the given key and an IV of all
@@ -2714,17 +2708,17 @@ To do:
                 key/ciphertext pairs. Key i in each set shall have the leftmost i bits be ones and
                 the rightmost N-i bits be zeros, for i in [1,N]. The ciphertext value in each pair
                 shall be the value that results in an all-zeros plaintext when decrypted with its
-                corresponding key.<htm:br/> KAT-4. To test the encrypt functionality of AES-CBC, the
+                corresponding key.<htm:br/><htm:br/> KAT-4. To test the encrypt functionality of AES-CBC, the
                 evaluator shall supply the set of 128 plaintext values described below and obtain
                 the two ciphertext values that result from AES-CBC encryption of the given plaintext
                 using a 128-bit key value of all zeros with an IV of all zeros and using a 256-bit
                 key value of all zeros with an IV of all zeros, respectively. Plaintext value i in
                 each set shall have the leftmost i bits be ones and the rightmost 128-i bits be
-                zeros, for i in [1,128].<htm:br/> To test the decrypt functionality of AES-CBC, the
+                zeros, for i in [1,128].<htm:br/><htm:br/> To test the decrypt functionality of AES-CBC, the
                 evaluator shall perform the same test as for encrypt, using ciphertext values of the
-                same form as the plaintext in the encrypt test as input and AES-CBC decryption.<htm:br/>
+                same form as the plaintext in the encrypt test as input and AES-CBC decryption.<htm:br/><htm:br/>
                 <htm:u>AES-CBC Multi-Block Message Test</htm:u>
-                <htm:br/> The evaluator shall test the encrypt functionality by encrypting an
+                <htm:br/><htm:br/> The evaluator shall test the encrypt functionality by encrypting an
                 i-block message where 1 &lt; i &lt;=10. The evaluator shall choose a key, an IV and
                 plaintext message of length i blocks and encrypt the message, using the mode to be
                 tested, with the chosen key and IV. The ciphertext shall be compared to the result
@@ -2734,23 +2728,32 @@ To do:
                 choose a key, an IV and a ciphertext message of length i blocks and decrypt the
                 message, using the mode to be tested, with the chosen key and IV. The plaintext
                 shall be compared to the result of decrypting the same ciphertext message with the
-                same key and IV using a known good implementation. <htm:br/>
-                <htm:u>AES-CBC Monte Carlo Tests</htm:u><htm:br/> The evaluator shall test the
+                same key and IV using a known good implementation. <htm:br/><htm:br/>
+                <htm:u>AES-CBC Monte Carlo Tests</htm:u><htm:br/><htm:br/> The evaluator shall test the
                 encrypt functionality using a set of 200 plaintext, IV, and key 3-tuples. 100 of
                 these shall use 128 bit keys, and 100 shall use 256 bit keys. The plaintext and IV
-                values shall be 128-bit blocks. For each 3-tuple, 1000 iterations shall be run as follows:<htm:br/>
+                values shall be 128-bit blocks. For each 3-tuple, 1000 iterations shall be run as follows:<htm:br/><htm:br/>
                 <!-- HERE code - this is not going to be properly indented but I don't 
-                know if we have a code tag, will the pre tag work? -->
-                <htm:pre> # Input: PT, IV, Key for i = 1 to 1000:<htm:br/> if i == 1:<htm:br/> CT[1]
-                  = AES-CBC-Encrypt(Key, IV, PT)<htm:br/> PT = IV<htm:br/> else:<htm:br/> CT[i] =
-                  AES-CBC-Encrypt(Key,PT)<htm:br/> PT = CT[i-1]<htm:br/>
-                </htm:pre> The ciphertext computed in the 1000th iteration (i.e., CT[1000]) is the
+                know if we have a code tag, so I made an image of the code sample -->
+                <figure entity="images/codeSample.jpg"
+                  title="" id="code"/>
+                
+                <!--
+                <htm:pre> # Input: PT, IV, Key for i = 1 to 1000:<htm:br/> 
+                  if i == 1:<htm:br/> 
+                  CT[1] = AES-CBC-Encrypt(Key, IV, PT)<htm:br/> 
+                  PT = IV<htm:br/> 
+                  else:<htm:br/> 
+                  CT[i] = AES-CBC-Encrypt(Key,PT)<htm:br/> 
+                  PT = CT[i-1]<htm:br/>
+                </htm:pre>--> 
+                The ciphertext computed in the 1000th iteration (i.e., CT[1000]) is the
                 result for that trial. This result shall be compared to the result of running 1000
-                iterations with the same values using a known good implementation.<htm:br/> The
+                iterations with the same values using a known good implementation.<htm:br/><htm:br/> The
                 evaluator shall test the decrypt functionality using the same test as for encrypt,
-                exchanging CT and PT and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.<htm:br/>
+                exchanging CT and PT and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.<htm:br/><htm:br/>
                 <htm:h4>AES-GCM Test</htm:h4> The evaluator shall test the authenticated encrypt
-                functionality of AES-GCM for each combination of the following input parameter lengths:<htm:br/>
+                functionality of AES-GCM for each combination of the following input parameter lengths:<htm:br/><htm:br/>
                 <htm:ul>
                   <htm:li>128 bit and 256 bit keys</htm:li>
                   <htm:li>Two plaintext lengths. One of the plaintext lengths shall be a non-zero
@@ -2766,17 +2769,17 @@ To do:
                 obtain the ciphertext value and tag that results from AES-GCM authenticated encrypt.
                 Each supported tag length shall be tested at least once per set of 10. The IV value
                 may be supplied by the evaluator or the implementation being tested, as long as it
-                is known. <htm:br/> The evaluator shall test the decrypt functionality using a set
+                is known. <htm:br/><htm:br/> The evaluator shall test the decrypt functionality using a set
                 of 10 key, ciphertext, tag, AAD, and IV 5- tuples for each combination of parameter
                 lengths above and obtain a Pass/Fail result on authentication and the decrypted
                 plaintext if Pass. The set shall include five tuples that Pass and five that
-                Fail.<htm:br/> The results from each test may either be obtained by the evaluator
+                Fail.<htm:br/><htm:br/> The results from each test may either be obtained by the evaluator
                 directly or by supplying the inputs to the implementer and receiving the results in
                 response. To determine correctness, the evaluator shall compare the resulting values
-                to those obtained by submitting the same inputs to a known good implementation.<htm:br/>
+                to those obtained by submitting the same inputs to a known good implementation.<htm:br/><htm:br/>
                 <htm:h4>AES-CCM Tests</htm:h4> The evaluator shall test the generation-encryption
                 and decryption-verification functionality of AES-CCM for the following input
-                parameter and tag lengths:<htm:br/>
+                parameter and tag lengths:<htm:br/><htm:br/>
                 <htm:ul>
                   <htm:li>128 bit and 256 bit keys</htm:li>
                   <htm:li>Two payload lengths. One payload length shall be the shortest supported
@@ -2813,15 +2816,15 @@ To do:
                     resulting ciphertext.</test>
                 </testlist> To determine correctness in each of the above tests, the evaluator shall
                 compare the ciphertext with the result of generation-encryption of the same inputs
-                with a known good implementation.<htm:br/> To test the decryption-verification
+                with a known good implementation.<htm:br/><htm:br/> To test the decryption-verification
                 functionality of AES-CCM, for EACH combination of supported associated data length,
                 payload length, nonce length and tag length, the evaluator shall supply a key value
                 and 15 nonce, associated data and ciphertext 3-tuples and obtain either a FAIL
                 result or a PASS result with the decrypted payload. The evaluator shall supply 10
-                tuples that should FAIL and 5 that should PASS per set of 15.<htm:br/>
+                tuples that should FAIL and 5 that should PASS per set of 15.<htm:br/><htm:br/>
                 <htm:h4>AES Key Wrap (AES-KW) and Key Wrap with Padding (AES-KWP) Test</htm:h4> The
                 evaluator shall test the authenticated encryption functionality of AES-KW for EACH
-                combination of the following input parameter lengths:<htm:br/>
+                combination of the following input parameter lengths:<htm:br/><htm:br/>
                 <htm:ul>
                   <htm:li>128 and 256 bit key encryption keys (KEKs)</htm:li>
                   <htm:li>Three plaintext lengths. One of the plaintext lengths shall be two
@@ -2831,10 +2834,10 @@ To do:
                 </htm:ul> using a set of 100 key and plaintext pairs and obtain the ciphertext that
                 results from AES-KW authenticated encryption. To determine correctness, the
                 evaluator shall use the AES-KW authenticated- encryption function of a known good
-                implementation. <htm:br/> The evaluator shall test the authenticated-decryption
+                implementation. <htm:br/><htm:br/> The evaluator shall test the authenticated-decryption
                 functionality of AES-KW using the same test as for authenticated-encryption,
                 replacing plaintext values with ciphertext values and AES-KW authenticated-
-                encryption with AES-KW authenticated-decryption. <htm:br/> The evaluator shall test
+                encryption with AES-KW authenticated-decryption. <htm:br/><htm:br/> The evaluator shall test
                 the authenticated-encryption functionality of AES-KWP using the same test as for
                 AES-KW authenticated-encryption with the following change in the three plaintext
                 lengths: <htm:ul>
@@ -2896,31 +2899,31 @@ To do:
                 in the following sections for the bit-oriented vs. the byte-oriented testmacs.</tss>
               <tests>The evaluator shall perform all of the following tests for each hash algorithm
                 implemented by the <abbr linkend="TSF"/> and used to satisfy the requirements of
-                this <abbr linkend="PP"/>.<htm:br/> Short Messages Test Bit-oriented Mode<htm:br/>
+                this <abbr linkend="PP"/>.<htm:br/><htm:br/> Short Messages Test Bit-oriented Mode<htm:br/><htm:br/>
                 The evaluators devise an input set consisting of m+1 messages, where m is the block
                 length of the hash algorithm. The length of the messages range sequentially from 0
                 to m bits. The message text shall be pseudorandomly generated. The evaluators
                 compute the message digest for each of the messages and ensure that the correct
                 result is produced when the messages are provided to the <abbr linkend="TSF"
-                />.<htm:br/> Short Messages Test Byte-oriented Mode<htm:br/> The evaluators devise
+                />.<htm:br/><htm:br/> Short Messages Test Byte-oriented Mode<htm:br/><htm:br/> The evaluators devise
                 an input set consisting of m/8+1 messages, where m is the block length of the hash
                 algorithm. The length of the messages range sequentially from 0 to m/8 bytes, with
                 each message being an integral number of bytes. The message text shall be
                 pseudorandomly generated. The evaluators compute the message digest for each of the
                 messages and ensure that the correct result is produced when the messages are
-                provided to the <abbr linkend="TSF"/>.<htm:br/> Selected Long Messages Test
-                Bit-oriented Mode<htm:br/> The evaluators devise an input set consisting of m
+                provided to the <abbr linkend="TSF"/>.<htm:br/><htm:br/> Selected Long Messages Test
+                Bit-oriented Mode<htm:br/><htm:br/> The evaluators devise an input set consisting of m
                 messages, where m is the block length of the hash algorithm. The length of the ith
                 message is 512 + 99*i, where 1 ≤ i ≤ m. The message text shall be pseudorandomly
                 generated. The evaluators compute the message digest for each of the messages and
                 ensure that the correct result is produced when the messages are provided to the
-                  <abbr linkend="TSF"/>.<htm:br/> Selected Long Messages Test Byte-oriented
-                Mode<htm:br/> The evaluators devise an input set consisting of m/8 messages, where m
+                  <abbr linkend="TSF"/>.<htm:br/><htm:br/> Selected Long Messages Test Byte-oriented
+                Mode<htm:br/><htm:br/> The evaluators devise an input set consisting of m/8 messages, where m
                 is the block length of the hash algorithm. The length of the ith message is 512 +
                 8*99*i, where 1 ≤ i ≤ m/8. The message text shall be pseudorandomly generated. The
                 evaluators compute the message digest for each of the messages and ensure that the
                 correct result is produced when the messages are provided to the <abbr linkend="TSF"
-                />.<htm:br/> Pseudorandomly Generated Messages Test<htm:br/> This test is for
+                />.<htm:br/><htm:br/> Pseudorandomly Generated Messages Test<htm:br/><htm:br/> This test is for
                 byte-oriented implementations only. The evaluators randomly generate a seed that is
                 n bits long, where n is the length of the message digest produced by the hash
                 function to be tested. The evaluators then formulate a set of 100 messages and
@@ -2954,7 +2957,7 @@ To do:
               perform digital signatures in accordance with the trusted channel protocols. The <abbr
                 linkend="MDM"/> Server is required to validate any signed policies and policy
               updates sent by the <abbr linkend="MDM"/> Server. </note>
-            <aactivity> Requirement met by the platform<htm:br/>
+            <aactivity> Requirement met by the platform<htm:br/><htm:br/>
               <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine
                 the <abbr linkend="ST"/> of the platform to ensure that the digital signature
                 functions claimed in that platform's <abbr linkend="ST"/> contains the digital
@@ -2965,37 +2968,37 @@ To do:
                 are used for in the <abbr linkend="MDM"/> Server (it should be noted that this may
                 be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server;
                 nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part
-                of this assurance activity).<htm:br/>
-              </tss> Requirement met by the <abbr linkend="TOE"/><htm:br/>
-              <tests> ECDSA Algorithm Tests<htm:br/>
-                <htm:u>ECDSA FIPS 186-4 Signature Generation Test</htm:u><htm:br/> For each
+                of this assurance activity).<htm:br/><htm:br/>
+              </tss> Requirement met by the <abbr linkend="TOE"/><htm:br/><htm:br/>
+              <tests> ECDSA Algorithm Tests<htm:br/><htm:br/>
+                <htm:u>ECDSA FIPS 186-4 Signature Generation Test</htm:u><htm:br/><htm:br/> For each
                 supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the
                 evaluator shall generate 10 1024-bit long messages and obtain for each message a
                 public key and the resulting signature values R and S. To determine correctness, the
                 evaluator shall use the signature verification function of a known good
-                implementation. <htm:br/>
-                <htm:u>ECDSA FIPS 186-4 Signature Verification Test</htm:u><htm:br/> For each
+                implementation. <htm:br/><htm:br/>
+                <htm:u>ECDSA FIPS 186-4 Signature Verification Test</htm:u><htm:br/><htm:br/> For each
                 supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the
                 evaluator shall generate a set of 10 1024-bit message, public key and signature
                 tuples and modify one of the values (message, public key or signature) in five of
                 the 10 tuples. The evaluator shall obtain in response a set of 10 PASS/FAIL
-                values.<htm:br/> RSA Signature Algorithm Tests<htm:br/>
-                <htm:u>Signature Generation Test</htm:u><htm:br/> The evaluator shall verify the
+                values.<htm:br/><htm:br/> RSA Signature Algorithm Tests<htm:br/><htm:br/>
+                <htm:u>Signature Generation Test</htm:u><htm:br/><htm:br/> The evaluator shall verify the
                 implementation of RSA Signature Generation by the <abbr linkend="TOE"/> using the
                 Signature Generation Test. To conduct this test the evaluator must generate or
                 obtain 10 messages from a trusted reference implementation for each modulus size/SHA
                 combination supported by the <abbr linkend="TSF"/>. The evaluator shall have the
                   <abbr linkend="TOE"/> use their private key and modulus value to sign these
-                messages.<htm:br/> The evaluator shall verify the correctness of the <abbr
+                messages.<htm:br/><htm:br/> The evaluator shall verify the correctness of the <abbr
                   linkend="TSF"/>’s signature using a known good implementation and the associated
-                public keys to verify the signatures. <htm:br/>
-                <htm:u>Signature Verification Test</htm:u><htm:br/> The evaluator shall perform the
+                public keys to verify the signatures. <htm:br/><htm:br/>
+                <htm:u>Signature Verification Test</htm:u><htm:br/><htm:br/> The evaluator shall perform the
                 Signature Verification test to verify the ability of the <abbr linkend="TOE"/> to
                 recognize another party’s valid and invalid signatures. The evaluator shall inject
                 errors into the test vectors produced during the Signature Verification Test by
                 introducing errors in some of the public keys e, messages, IR format, and/or
                 signatures. The <abbr linkend="TOE"/> attempts to verify the signatures and returns
-                success or failure.<htm:br/> The evaluator shall use these test vectors to emulate
+                success or failure.<htm:br/><htm:br/> The evaluator shall use these test vectors to emulate
                 the signature verification test using the corresponding parameters and verify that
                 the <abbr linkend="TOE"/> detects these errors. </tests>
             </aactivity>
@@ -3024,7 +3027,7 @@ To do:
               channel). The hash selection must support the message digest size selection. The hash
               selection should be consistent with the overall strength of the algorithm used for
               FCS_COP.1(3).</note>
-            <aactivity> Requirement met by the platform<htm:br/>
+            <aactivity> Requirement met by the platform<htm:br/><htm:br/>
               <tss> For each platform listed in the <abbr linkend="ST"/>, the evaluator shall
                 examine the <abbr linkend="ST"/> of the platform to ensure that the keyed-hash
                 function(s) claimed in that platform's <abbr linkend="ST"/> contains the keyed-hash
@@ -3036,7 +3039,7 @@ To do:
                 noted that this may be through a mechanism that is not implemented by the <abbr
                   linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the
                   <abbr linkend="TSS"/> as part of this assurance activity). </tss> Requirement met
-              by the <abbr linkend="TOE"/><htm:br/>
+              by the <abbr linkend="TOE"/><htm:br/><htm:br/>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it specifies
                 the following values used by the HMAC function: key length, hash function used,
                 block size, and output MAC length used. Test For each of the supported parameter
@@ -3072,7 +3075,7 @@ To do:
               While any of the identified hash functions (SHA-224, SHA-256, SHA-384, SHA-512) are
               allowed for Hash_DRBG or HMAC_DRBG, only AES-based implementations for CTR_DRBG are
               allowed.</note>
-            <aactivity> Requirement met by the platform<htm:br/>
+            <aactivity> Requirement met by the platform<htm:br/><htm:br/>
               <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine
                 the <abbr linkend="ST"/> of the platform to ensure that the RBG functions claimed in
                 that platform's <abbr linkend="ST"/> contains the RBG functions in the <abbr
@@ -3083,12 +3086,12 @@ To do:
                 (it should be noted that this may be through a mechanism that is not implemented by
                 the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in
                 the <abbr linkend="TSS"/> as part of this assurance activity). </tss> Requirement
-              met by the <abbr linkend="TOE"/><htm:br/>
-              <tests> The evaluator shall perform the following tests.<htm:br/> The evaluator shall
+              met by the <abbr linkend="TOE"/><htm:br/><htm:br/>
+              <tests> The evaluator shall perform the following tests.<htm:br/><htm:br/> The evaluator shall
                 perform 15 trials for the RNG implementation. If the RNG is configurable, the
                 evaluator shall perform 15 trials for each configuration. The evaluator shall also
                 confirm that the operational guidance contains appropriate instructions for
-                configuring the RNG functionality.<htm:br/> If the RNG has prediction resistance
+                configuring the RNG functionality.<htm:br/><htm:br/> If the RNG has prediction resistance
                 enabled, each trial consists of (1) instantiate DRBG, (2) generate the first block
                 of random bits (3) generate a second block of random bits (4) uninstantiate. The
                 evaluator verifies that the second block of random bits is the expected value. The
@@ -3098,7 +3101,7 @@ To do:
                 first call to generate. The final two are additional input and entropy input for the
                 second call to generate. These values are randomly generated. “generate one block of
                 random bits” means to generate random bits with number of returned bits equal to the
-                Output Block Length (as defined in NIST SP 800-90A).<htm:br/> If the RNG does not
+                Output Block Length (as defined in NIST SP 800-90A).<htm:br/><htm:br/> If the RNG does not
                 have prediction resistance, each trial consists of (1) instantiate DRBG, (2)
                 generate the first block of random bits (3) reseed, (4) generate a second block of
                 random bits (5) uninstantiate. The evaluator verifies that the second block of
@@ -3107,19 +3110,19 @@ To do:
                 nonce, and personalization string for the instantiate operation. The fifth value is
                 additional input to the first call to generate. The sixth and seventh are additional
                 input and entropy input to the call to reseed. The final value is additional input
-                to the second generate call.<htm:br/> The following paragraphs contain more
+                to the second generate call.<htm:br/><htm:br/> The following paragraphs contain more
                 information on some of the input values to be generated/selected by the
-                evaluator.<htm:br/> Entropy input: the length of the entropy input value must equal
-                the seed length.<htm:br/> Nonce: If a nonce is supported (CTR_DRBG with no
+                evaluator.<htm:br/><htm:br/> Entropy input: the length of the entropy input value must equal
+                the seed length.<htm:br/><htm:br/> Nonce: If a nonce is supported (CTR_DRBG with no
                 Derivation Function does not use a nonce), the nonce bit length is one-half the seed
-                length.<htm:br/> Personalization string: The length of the personalization string
+                length.<htm:br/><htm:br/> Personalization string: The length of the personalization string
                 must be less than or equal to seed length. If the implementation only supports one
                 personalization string length, then the same length can be used for both values. If
                 more than one string length is support, the evaluator shall use personalization
                 strings of two different lengths. If the implementation does not use a
-                personalization string, no value needs to be supplied.<htm:br/> Additional input:
+                personalization string, no value needs to be supplied.<htm:br/><htm:br/> Additional input:
                 the additional input bit lengths have the same defaults and restrictions as the
-                personalization string lengths.<htm:br/>
+                personalization string lengths.<htm:br/><htm:br/>
               </tests></aactivity>
           </f-element>
           <f-element id="FCS_RBG_EXT.1.2">
@@ -3137,7 +3140,7 @@ To do:
             <note role="application">For the first selection in this requirement, the <abbr
                 linkend="ST"/> author selects ‘software-based noise source’ if any additional noise
               sources are used as input to the application’s DRBG. Note that the application must
-              use the platform’s DRBG to seed its DRBG. <htm:br/> In the second selection in this
+              use the platform’s DRBG to seed its DRBG. <htm:br/><htm:br/> In the second selection in this
               requirement, the <abbr linkend="ST"/> author selects the appropriate number of bits of
               entropy that corresponds to the greatest security strength of the algorithms included
               in the <abbr linkend="ST"/>. Security strength is defined in Tables 2 and 3 of NIST SP
@@ -3146,7 +3149,7 @@ To do:
               strength 256 bits), then the <abbr linkend="ST"/> author would select 256 bits. </note>
             <aactivity>Documentation shall be produced—and the evaluator shall perform the
               activities—in accordance with Appendix D: Entropy Documentation and Assessment and the
-              “Clarification to the Entropy Documentation and Assessment Annex."<htm:br/> In the
+              “Clarification to the Entropy Documentation and Assessment Annex."<htm:br/><htm:br/> In the
               future, specific statistical testing (in line with NIST SP 800-90B) will be required
               to verify the entropy estimates </aactivity>
           </f-element>
@@ -3166,9 +3169,9 @@ To do:
               by the platform, then both of the selections can be specified by the <abbr
                 linkend="ST"/> author and the <abbr linkend="ST"/> author must identify in the <abbr
                 linkend="TSS"/> those keys which are manipulated by the <abbr linkend="TOE"/> and
-              those by the platform. <htm:br/> If the <abbr linkend="TSF"/> is an application, and
+              those by the platform. <htm:br/><htm:br/> If the <abbr linkend="TSF"/> is an application, and
               not a dedicated server, then it should store its private keys in the platform-provided
-              key storage.<htm:br/> The <abbr linkend="ST"/> author is responsible for selecting the
+              key storage.<htm:br/><htm:br/> The <abbr linkend="ST"/> author is responsible for selecting the
               manner in which the keys are stored and where they are stored in the selections above. </note>
             <aactivity>
               <tss>Regardless of whether this requirement is met by the <abbr linkend="TSF"/> or the
@@ -3178,16 +3181,16 @@ To do:
                 items, the evaluator will confirm that the <abbr linkend="TSS"/> lists for what
                 purpose it is used, and how it is stored. The evaluator than performs the following
                 actions. Persistent secrets and private keys manipulated by the <abbr linkend="TOE"
-                /> platform<htm:br/> For each platform listed in the <abbr linkend="ST"/>, the
+                /> platform<htm:br/><htm:br/> For each platform listed in the <abbr linkend="ST"/>, the
                 evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the
                 persistent secrets and private keys listed as being stored by the platform in the
                   <abbr linkend="MDM"/> Server <abbr linkend="ST"/> are identified as being
-                protected in that platform's <abbr linkend="ST"/>.<htm:br/> Persistent secrets and
-                private keys manipulated by the <abbr linkend="TSF"/><htm:br/> The evaluator reviews
+                protected in that platform's <abbr linkend="ST"/>.<htm:br/><htm:br/> Persistent secrets and
+                private keys manipulated by the <abbr linkend="TSF"/><htm:br/><htm:br/> The evaluator reviews
                 the <abbr linkend="TSS"/> to determine that it makes a case that, for each item
                 listed as being manipulated by the <abbr linkend="TOE"/>, it is not written
                 unencrypted to persistent memory, and that the item is stored by the platform.
-                <htm:br/>
+                <htm:br/><htm:br/>
               </tss>
             </aactivity>
           </f-element>
@@ -3209,10 +3212,10 @@ To do:
                 linkend="TSF"/> shall not be kept in plaintext. The intent of this requirement is to
               ensure that the private keys, credentials, and persistent secrets cannot be accessed
               in the <abbr linkend="TOE"/> in an unencrypted state, allowing an attacker to access
-              keys without having to exhaust the AES key space. <htm:br/> This requirement must be
+              keys without having to exhaust the AES key space. <htm:br/><htm:br/> This requirement must be
               including in the <abbr linkend="ST"/> if the selection in FCS_STG_EXT.1 indicates that
               the <abbr linkend="TSF"/> is protecting private keys and persistent secrets with
-              encryption rather than the platform- provided key storage.<htm:br/> If this
+              encryption rather than the platform- provided key storage.<htm:br/><htm:br/> If this
               requirement is included in the <abbr linkend="ST"/>, FCS_IV_EXT.1 must also be
               included. </note>
             <aactivity>
@@ -3257,7 +3260,7 @@ To do:
             </title>
             <note role="application">The TLS Client is required for <abbr linkend="MDM"/> Agents in
               the <abbr linkend="TOE"/> and may be included in <abbr linkend="MDM"/> Servers in
-              order to support Enrollment over Secure Transport (Appendix C.2.2).<htm:br/> The
+              order to support Enrollment over Secure Transport (Appendix C.2.2).<htm:br/><htm:br/> The
               ciphersuites to be tested in the evaluated configuration are limited by this
               requirement. It is recognized that RFC 5246 mandates the cipher suite
               TLS_RSA_WITH_AES_128_CBC_SHA, but this cipher suite is not tested with this
@@ -3266,9 +3269,9 @@ To do:
               suites, then “no other ciphersuite” should be selected. It is necessary to limit the
               ciphersuites that can be used in an evaluated configuration administratively on the
               server in the test environment. The Suite B algorithms listed above (RFC 6460) are the
-              preferred algorithms for implementation. <htm:br/> These requirements will be
+              preferred algorithms for implementation. <htm:br/><htm:br/> These requirements will be
               revisited as new TLS versions are standardized by the IETF. If any ciphersuites are
-              selected using ECDHE, then FCS_TLSC_EXT.3 is required.<htm:br/>
+              selected using ECDHE, then FCS_TLSC_EXT.3 is required.<htm:br/><htm:br/>
             </note>
             <aactivity>
               <tss>The evaluator shall check the description of the implementation of this protocol
@@ -3305,7 +3308,7 @@ To do:
                   <test>The evaluator shall configure the server to select the
                     TLS_NULL_WITH_NULL_NULL ciphersuite and verify that the client denies the
                     connection.</test>
-                  <test>The evaluator shall perform the following modifications to the traffic:<htm:br/>
+                  <test>The evaluator shall perform the following modifications to the traffic:<htm:br/><htm:br/>
                     <htm:ul>
                       <htm:li>Change the TLS version selected by the server in the Server Hello to a
                         non-supported TLS version (for example 1.3 represented by the two bytes 03
@@ -3349,7 +3352,7 @@ To do:
               a Common Name for the Subject Name field of the certificate and a (case- insensitive)
               DNS name, URI name, and Service Name for the Subject Alternative Name field. The
               client then compares this list of all acceptable reference identifiers to the
-              presented identifiers in the TLS server’s certificate.<htm:br/> The preferred method
+              presented identifiers in the TLS server’s certificate.<htm:br/><htm:br/> The preferred method
               for verification is the Subject Alternative Name using DNS names, URI names, or
               Service Names. Verification using the Common Name is required for the purposes of
               backwards compatibility. Additionally, support for use of IP addresses in the Subject
@@ -3359,7 +3362,7 @@ To do:
               follow the best practices regarding matching; these best practices are captured in the
               assurance activity. If wildcards are not accepted, then it is sufficient to
               demonstrate that server certificates that are presented with the wildcard scenarios
-              listed in the assurance activity deny the connection.<htm:br/>
+              listed in the assurance activity deny the connection.<htm:br/><htm:br/>
             </note>
             <aactivity>
               <tss>The evaluator shall ensure that the <abbr linkend="TSS"/> describes the client’s
@@ -3392,7 +3395,7 @@ To do:
                     SAN that matches. The evaluator shall verify that the connection
                     succeeds.</test>
                   <test>The evaluator shall perform the following wildcard tests with each supported
-                    type of reference identifier:<htm:br/>
+                    type of reference identifier:<htm:br/><htm:br/>
                     <htm:ul>
                       <htm:li>The evaluator shall present a server certificate containing a wildcard
                         that is not in the left-most label of the presented identifier (e.g.
@@ -3436,7 +3439,7 @@ To do:
             <note role="application">Validity is determined by the identifier verification,
               certificate path, the expiration date, and the revocation status in accordance with
               RFC 5280. Certificate validity shall be tested in accordance with testing performed
-              for FIA_X509_EXT.1.<htm:br/> For TLS connections, this channel shall not be
+              for FIA_X509_EXT.1.<htm:br/><htm:br/> For TLS connections, this channel shall not be
               established if the peer certificate is invalid. </note>
             <aactivity>
               <tests>The evaluator shall use TLS as a function to verify that the validation rules
@@ -3560,7 +3563,7 @@ To do:
                 <selectable>TLS_EMPTY_RENEGOTIATION_INFO_SCSV ciphersuite</selectable>
               </selectables> in the ClientHello message.</title>
             <note role="application">RFC 5746 defines an extension to TLS that binds renegotiation
-              handshakes to the cryptography in the original handshake.<htm:br/> The ciphersuite
+              handshakes to the cryptography in the original handshake.<htm:br/><htm:br/> The ciphersuite
               included in the selection is a means for clients to be compatible with servers that
               don’t support the extension. It is recommended that client implementations support
               both the ciphersuite and the extension. </note>
@@ -3623,7 +3626,7 @@ To do:
             </title>
             <note role="application"> The <abbr linkend="MDM"/> Server must support all versions of
               TLS supported by evaluated Agents listed in the <abbr linkend="ST"/> as supported in
-              the <abbr linkend="MDM"/> System. <htm:br/> The ciphersuites to be tested in the
+              the <abbr linkend="MDM"/> System. <htm:br/><htm:br/> The ciphersuites to be tested in the
               evaluated configuration are limited by this requirement. It is recognized that RFC
               5246 mandates the cipher suite TLS_RSA_WITH_AES_128_CBC_SHA, but this cipher suite is
               not tested with this requirement. The <abbr linkend="ST"/> author should select the
@@ -3633,8 +3636,8 @@ To do:
               those in this requirement, the appropriate instructions need to be contained in the
               guidance called for by AGD_OPE. FMT_SMF.1 addresses configuration of the ciphersuite
               to be used for connections. The Suite B algorithms listed above (RFC 6460) are the
-              preferred algorithms for implementation.<htm:br/> These requirements will be revisited
-              as new TLS versions are standardized by the IETF.<htm:br/>
+              preferred algorithms for implementation.<htm:br/><htm:br/> These requirements will be revisited
+              as new TLS versions are standardized by the IETF.<htm:br/><htm:br/>
             </note>
             <aactivity>
               <tss>The evaluator shall check the description of the implementation of this protocol
@@ -3732,7 +3735,7 @@ To do:
               client-side certificates for TLS mutual authentication. Mutual authentication is not
               required for device enrollment, even if TLS is used. However, all communication
               between the <abbr linkend="MDM"/> Server and Agent post-enrollment shall use mutual
-              authentication.<htm:br/> Validity is determined by the certificate path, the
+              authentication.<htm:br/><htm:br/> Validity is determined by the certificate path, the
               expiration date, and the revocation status in accordance with RFC 5280. Certificate
               validity shall be tested in accordance with testing performed for FIA_X509_EXT.1. </note>
             <aactivity>
@@ -3816,7 +3819,7 @@ To do:
                   </selectables></selectable>
               </selectables>.</title>
             <note role="application"> This element may be omitted if no DHE or ECDHE ciphersuites
-              are selected in FCS_TLSS_EXT.1.1.<htm:br/> If the <abbr linkend="ST"/> lists a DHE
+              are selected in FCS_TLSS_EXT.1.1.<htm:br/><htm:br/> If the <abbr linkend="ST"/> lists a DHE
               ciphersuite in FCS_TLSS_EXT.1.1, the <abbr linkend="ST"/> must include the
               Diffie-Hellman selection in the requirement. FMT_SMF.1 requires the configuration of
               the key agreement parameters in order to establish the security strength of the TLS
@@ -3928,11 +3931,11 @@ To do:
                 <testlist>
                   <test>The evaluator shall attempt to establish a connection with a DTLS server,
                     observe the traffic with a packet analyzer, and verify that the connection
-                    succeeds and that the traffic is identified as DTLS.<htm:br/> Other tests are
+                    succeeds and that the traffic is identified as DTLS.<htm:br/><htm:br/> Other tests are
                     performed in conjunction with the Assurance Activity listed for
-                    FCS_TLSS_EXT.1.<htm:br/> Certificate validity shall be tested in accordance with
+                    FCS_TLSS_EXT.1.<htm:br/><htm:br/> Certificate validity shall be tested in accordance with
                     testing performed for FIA_X509_EXT.1, and the evaluator shall perform the
-                    following test.<htm:br/>
+                    following test.<htm:br/><htm:br/>
                   </test>
                   <test>The evaluator shall demonstrate that using a certificate without a valid
                     certification path results in the function failing. Using the administrative
@@ -3976,7 +3979,7 @@ To do:
                     server, observe the traffic with a packet analyzer, and verify that the
                     connection succeeds and that the traffic is identified as TLS or HTTPS.</test>
                   Other tests are performed in conjunction with the TLS evaluation
-                  activities.<htm:br/> Certificate validity shall be tested in accordance with
+                  activities.<htm:br/><htm:br/> Certificate validity shall be tested in accordance with
                   testing performed for FIA_X509_EXT.1, and the evaluator shall perform the
                   following test: <test>The evaluator shall demonstrate that using a certificate
                     without a valid certification path results in an application notification. Using
@@ -3999,10 +4002,10 @@ To do:
               if FCS_STG_EXT.2.1 is included in the <abbr linkend="ST"/>, meaning that the selection
               in FCS_STG_EXT.1 indicates that the <abbr linkend="TSF"/> is protecting private keys
               and persistent secrets with encryption rather than the platform- provided key
-              storage.<htm:br/> Table 3 lists the requirements for composition of IVs according to
+              storage.<htm:br/><htm:br/> Table 3 lists the requirements for composition of IVs according to
               the corresponding NIST Special Publications for each cipher mode. The composition of
               IVs generated for encryption according to a cryptographic protocol is addressed by the
-              protocol. Thus, this requirement addresses only IVs generated for key storage encryption.<htm:br/>
+              protocol. Thus, this requirement addresses only IVs generated for key storage encryption.<htm:br/><htm:br/>
               <!-- HERE put table from page 103 here -->
               <htm:center><htm:H4>Table 3: References and IV Requirements for NIST-approved Cipher
                   Modes</htm:H4></htm:center>
@@ -4043,7 +4046,7 @@ To do:
                     first plaintext block and about common shared prefixes in messages.</htm:td>
                 </htm:tr>
                 <htm:tr>
-                  <htm:td>XEX (XOR Encrypt XOR)<htm:br/> Tweakable Block Cipher with Ciphertext
+                  <htm:td>XEX (XOR Encrypt XOR)<htm:br/><htm:br/> Tweakable Block Cipher with Ciphertext
                     Stealing (XTS) </htm:td>
                   <htm:td>SP800-38E</htm:td>
                   <htm:td>No IV. Tweak values shall be non-negative integers, assigned
@@ -4152,7 +4155,7 @@ To do:
               </selectables> related to limiting the user’s enrollment of devices. </title>
             <note role="application"> The <abbr linkend="MDM"/> server shall not allow two devices
               to be enrolled using the same unique identifier. The unique identifier is specified in
-              FIA_ENR_EXT.1.2.<htm:br/> FIA_UAU_EXT.4.1(2) can only be included in the <abbr
+              FIA_ENR_EXT.1.2.<htm:br/><htm:br/> FIA_UAU_EXT.4.1(2) can only be included in the <abbr
                 linkend="ST"/> if “devices specified by IMEI” or “device specified by <assignable>an
                 unique device ID</assignable> is selected in FIA_ENR_EXT.1.2. The same selection
               shall be completed for this requirement. </note>
@@ -4195,7 +4198,7 @@ To do:
                       5759</selectable></selectables>
                 </htm:li>
                 <htm:li>The <abbr linkend="TSF"/> shall validate the extendedKeyUsage field
-                  according to the following rules:<htm:br/>
+                  according to the following rules:<htm:br/><htm:br/>
                   <htm:ul>
                     <htm:li>Certificates used for trusted updates and executable code integrity
                       verification shall have the Code Signing purpose (id-kp 3 with OID
@@ -4221,7 +4224,7 @@ To do:
               using OCSP or CRLs. FIA_X509_EXT.2 requires that certificates are used for trusted
               channels; this use requires that the extendedKeyUsage rules are verified. Certificates
               may optionally be used for code signing and policy signing and, if implemented, must
-              be validated to contain the corresponding extendedKeyUsage.<htm:br/> Regardless of the
+              be validated to contain the corresponding extendedKeyUsage.<htm:br/><htm:br/> Regardless of the
               selection of <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform, the validation
               is expected to end in a trusted root CA certificate in a root store managed by the
               platform. </note>
@@ -4324,9 +4327,9 @@ To do:
               verification (FPT_TST_EXT.1.2). If some authentication services are provided by the
                 <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author
               shall clearly identify which services are provided by the <abbr linkend="TOE"/> and
-              which by the platform.<htm:br/> If code signing for integrity verification is
+              which by the platform.<htm:br/><htm:br/> If code signing for integrity verification is
               selected, the <abbr linkend="MDM"/> vendor is not expected to digitally sign DLL’s
-              from other vendors that have been incorporated into their product.<htm:br/> If “IPsec”
+              from other vendors that have been incorporated into their product.<htm:br/><htm:br/> If “IPsec”
               is selected the Extended Package for IPsec VPN Clients must be included in the <abbr
                 linkend="ST"/>. If “SSH” is selected the Extended Package for Secure Shell must be
               included in the <abbr linkend="ST"/>. If “TLS”, “HTTPS” or “DTLS” are selected the
@@ -4361,7 +4364,7 @@ To do:
               <tss>The evaluator shall check the <abbr linkend="TSS"/> to ensure that it describes
                 how the <abbr linkend="TOE"/> chooses which certificates to use, and any necessary
                 instructions in the administrative guidance for configuring the operating
-                environment so that the <abbr linkend="TOE"/> can use the certificates.<htm:br/> The
+                environment so that the <abbr linkend="TOE"/> can use the certificates.<htm:br/><htm:br/> The
                 evaluator shall examine the <abbr linkend="TSS"/> to confirm that it describes the
                 behavior of the <abbr linkend="TOE"/> when a connection cannot be established during
                 the validity check of a certificate used in establishing a trusted channel. The
@@ -4393,10 +4396,10 @@ To do:
               that each client certificate is unique.</note>
             <aactivity>
               <tests>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr
-                  linkend="ST"/>:<htm:br/> The evaluator shall utilize appropriate combinations of
+                  linkend="ST"/>:<htm:br/><htm:br/> The evaluator shall utilize appropriate combinations of
                 specialized operational environment and development tools (debuggers, simulators,
                 etc. for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds as
-                needed to perform this test.<htm:br/> The evaluator shall initiate communications
+                needed to perform this test.<htm:br/><htm:br/> The evaluator shall initiate communications
                 between the <abbr linkend="MDM"/> Server and a client device over a trusted channel
                 established using the device’s unique certificate, verifying that a successful
                 communication channel was established. The evaluator shall then attempt to initiate
@@ -4420,7 +4423,7 @@ To do:
                 <selectable>Country</selectable>
               </selectables>.</title>
             <note role="application"> The public key is the public key portion of the public-private
-              key pair generated by the <abbr linkend="TOE"/> as specified in FCS_CKM.1.1.<htm:br/>
+              key pair generated by the <abbr linkend="TOE"/> as specified in FCS_CKM.1.1.<htm:br/><htm:br/>
               As Enrollment over Secure Transport (EST) is a new standard that has not yet been
               widely adopted, this requirement is included as an interim objective requirement in
               order to allow developers to distinguish those products which have do have the ability
@@ -4632,7 +4635,7 @@ To do:
                 writing a value to each memory location and reading it back to ensure it is
                 identical to what was written" shall be used). The evaluator shall ensure that the
                   <abbr linkend="TSS"/> makes an argument that the tests are sufficient to
-                demonstrate that the <abbr linkend="TSF"/> is operating correctly.<htm:br/> The
+                demonstrate that the <abbr linkend="TSF"/> is operating correctly.<htm:br/><htm:br/> The
                 evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes how to
                 verify the integrity of stored <abbr linkend="TSF"/> executable code when it is
                 loaded for execution. The evaluator shall ensure that the <abbr linkend="TSS"/>
@@ -4711,20 +4714,20 @@ To do:
             <note role="application">The intent of the mandatory portion of the above requirement is
               to use the cryptographic protocols identified in the requirement to establish and
               maintain a trusted channel with authorized IT entities that the <abbr linkend="TOE"/>
-              interacts with to perform its functions.<htm:br/> Protection (by one of the listed
+              interacts with to perform its functions.<htm:br/><htm:br/> Protection (by one of the listed
               protocols) is required at least for communications with the server that collects the
               audit information. If it communicates with an authentication server (e.g., RADIUS),
               then the <abbr linkend="ST"/> author chooses “authentication server” in FTP_ITC.1.1(1)
               and this connection must be protected by one of the listed protocols. If other
               authorized IT entities (e.g., NTP server) are protected, the <abbr linkend="ST"/>
               author makes the appropriate assignments (for those entities) and selections (for the
-              protocols that are used to protect those connections). <htm:br/> To summarize, the
+              protocols that are used to protect those connections). <htm:br/><htm:br/> To summarize, the
               connection to an external audit collection server is required to be protected by one
               of the listed protocols. If an external authentication server is supported, then it is
               required to protect that connection with one of the listed protocols. For any other
               external server, external communications are not required to be protected, but if
               protection is claimed, then it must be protected with one of the identified
-              protocols.<htm:br/> The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the
+              protocols.<htm:br/><htm:br/> The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the
               protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/>
               communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms
               supported by the <abbr linkend="TOE"/>. If “IPsec” is selected the Extended Package
@@ -4732,15 +4735,15 @@ To do:
               selected the Extended Package for Secure Shell must be included in the <abbr
                 linkend="ST"/>. If “TLS” or “TLS/HTTPS” is selected the appropriate selection-based
                 <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"
-              />.<htm:br/> Protocol, RBG, Certificate validation, algorithm, and similar services
-              may be met with platform provided services.<htm:br/> The requirement implies that not
+              />.<htm:br/><htm:br/> Protocol, RBG, Certificate validation, algorithm, and similar services
+              may be met with platform provided services.<htm:br/><htm:br/> The requirement implies that not
               only are communications protected when they are initially established, but also on
               resumption after an outage. It may be the case that some part of the <abbr
                 linkend="TOE"/> setup involves manually setting up tunnels to protect other
               communication, and if after an outage the <abbr linkend="TOE"/> attempts to
               re-establish the communication automatically with (the necessary) manual intervention,
               there may be a window created where an attacker might be able to gain critical
-              information or compromise a connection.<htm:br/>
+              information or compromise a connection.<htm:br/><htm:br/>
             </note>
           </f-element>
           <f-element id="FTP_ITC.1.2(1)">
@@ -4794,7 +4797,7 @@ To do:
               is to use the cryptographic protocols identified in the requirement to establish and
               maintain a trusted channel between the <abbr linkend="TOE"/> and the <abbr
                 linkend="MDM"/> Agent. Only TLS, DTLS, or HTTPS are used in this trusted
-              channel.<htm:br/> This requirement is to ensure that the transmission of any audit
+              channel.<htm:br/><htm:br/> This requirement is to ensure that the transmission of any audit
               logs, mobile device information data (software version, hardware model, and
               application versions), and configuration data collected by the <abbr linkend="MDM"/>
               Agent and sent from the <abbr linkend="MDM"/> Agent to the <abbr linkend="MDM"/>
@@ -4802,19 +4805,19 @@ To do:
               trusted channel also protects any commands and policies sent by the <abbr
                 linkend="MDM"/> Server to the <abbr linkend="MDM"/> Agent. Either the <abbr
                 linkend="MDM"/> Agent or the <abbr linkend="MDM"/> Server is able to initiate the
-              connection.<htm:br/> This trusted channel protects both the connection between an
+              connection.<htm:br/><htm:br/> This trusted channel protects both the connection between an
               enrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server and the
               connection between an unenrolled <abbr linkend="MDM"/> Agent and the <abbr
                 linkend="MDM"/> Server during the enrollment operation. Different protocols can be
               used for these two connections, and the description in the <abbr linkend="TSS"/>
-              should make this difference clear.<htm:br/> The trusted channel uses TLS, DTLS, or
+              should make this difference clear.<htm:br/><htm:br/> The trusted channel uses TLS, DTLS, or
               HTTPS as the protocol that preserves the confidentiality and integrity of <abbr
                 linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the
               mechanism or mechanisms supported by the <abbr linkend="TOE"/>, and then ensures the
               detailed requirements in Appendix B corresponding to their selection are copied to the
-                <abbr linkend="ST"/> if not already present.<htm:br/> Protocol, RBG, Certificate
+                <abbr linkend="ST"/> if not already present.<htm:br/><htm:br/> Protocol, RBG, Certificate
               validation, algorithm, and similar services may be met with platform provided
-              services.<htm:br/>
+              services.<htm:br/><htm:br/>
             </note>
           </f-element>
           <f-element id="FTP_ITC.1.2(2)">
@@ -4878,19 +4881,19 @@ To do:
             <note role="application"> The intent of the mandatory portion of the above requirement
               is to use the cryptographic protocols identified in the requirement to establish and
               maintain a trusted channel with authorized IT entities that the MAS Server interacts
-              with to perform its functions.<htm:br/> Protection (by one of the listed protocols) is
+              with to perform its functions.<htm:br/><htm:br/> Protection (by one of the listed protocols) is
               required at least for communications with the server that collects the audit
               information. If it communicates with an authentication server (e.g., RADIUS), then the
                 <abbr linkend="ST"/> author chooses “authentication server” in FTP_ITC.1.1(1) and
               this connection must be protected by one of the listed protocols. If other authorized
               IT entities (e.g., NTP server) are protected, the <abbr linkend="ST"/> author makes
               the appropriate assignments (for those entities) and selections (for the protocols
-              that are used to protect those connections). <htm:br/> To summarize, the connection to
+              that are used to protect those connections). <htm:br/><htm:br/> To summarize, the connection to
               an external audit collection server is required to be protected by one of the listed
               protocols. If an external authentication server is supported, then it is required to
               protect that connection with one of the listed protocols. For any other external
               server, external communications are not required to be protected, but if protection is
-              claimed, then it must be protected with one of the identified protocols.<htm:br/> The
+              claimed, then it must be protected with one of the identified protocols.<htm:br/><htm:br/> The
               trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the
               confidentiality and integrity of MAS communications. The <abbr linkend="ST"/> author
               chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If “IPsec”
@@ -4898,15 +4901,15 @@ To do:
                 linkend="ST"/>. If “SSH” is selected the Extended Package for Secure Shell must be
               included in the <abbr linkend="ST"/>. If “TLS” or “TLS/HTTPS” is selected the
               appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in
-              the <abbr linkend="ST"/>.<htm:br/> Protocol, RBG, Certificate validation, algorithm,
-              and similar services may be met with platform provided services.<htm:br/> The
+              the <abbr linkend="ST"/>.<htm:br/><htm:br/> Protocol, RBG, Certificate validation, algorithm,
+              and similar services may be met with platform provided services.<htm:br/><htm:br/> The
               requirement implies that not only are communications protected when they are initially
               established, but also on resumption after an outage. It may be the case that some part
               of the <abbr linkend="TOE"/> setup involves manually setting up tunnels to protect
               other communication, and if after an outage the <abbr linkend="TOE"/> attempts to
               re-establish the communication automatically with (the necessary) manual intervention,
               there may be a window created where an attacker might be able to gain critical
-              information or compromise a connection.<htm:br/>
+              information or compromise a connection.<htm:br/><htm:br/>
             </note>
           </f-element>
           <f-element id="FTP_ITC.1.2(3)">
@@ -5043,7 +5046,7 @@ To do:
               first selection. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms
               supported by the <abbr linkend="TOE"/>, and then ensures the detailed requirements in
               Appendix B corresponding to their selection are copied to the <abbr linkend="ST"/> if
-              not already present.<htm:br/> If “TLS” is selected as the protocol used for the
+              not already present.<htm:br/><htm:br/> If “TLS” is selected as the protocol used for the
               trusted communications path for enrollment, mutual authentication is not required. </note>
             <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the
@@ -5081,12 +5084,12 @@ To do:
       <secref linkend="SFRs"/> are a formal instantiation of the Security Objectives. The <abbr
       linkend="PP"/> identifies the Security Assurance Requirements (<abbr linkend="SAR"/>s) to
     frame the extent to which the evaluator assesses the documentation applicable for the evaluation
-    and performs independent testing. <htm:br/> This section lists the set of <abbr linkend="SAR"/>s
+    and performs independent testing. <htm:br/><htm:br/> This section lists the set of <abbr linkend="SAR"/>s
     from <abbr linkend="CC"/> part 3 that are required in evaluations against this <abbr
       linkend="PP"/>. Individual Assurance Activities (AAs) to be performed are specified both in
-      <secref linkend="req"/> as well as in this section. <htm:br/> The general model for evaluation
+      <secref linkend="req"/> as well as in this section. <htm:br/><htm:br/> The general model for evaluation
     of <abbr linkend="TOE"/>s against <abbr linkend="ST"/>s written to conform to this <abbr
-      linkend="PP"/> is as follows: <htm:br/> After the <abbr linkend="ST"/> has been approved for
+      linkend="PP"/> is as follows: <htm:br/><htm:br/> After the <abbr linkend="ST"/> has been approved for
     evaluation, the <abbr class="expanded"
       title="Information Technology Security Evaluation Facility">ITSEF</abbr> will obtain the <abbr
       linkend="TOE"/>, supporting environmental IT, and the administrative/user guides for the <abbr
@@ -5157,7 +5160,7 @@ To do:
           understanding the interfaces presented in the <abbr linkend="TSS"/> in response to the
           functional requirements and the interfaces presented in the AGD documentation. No
           additional “functional specification” documentation is necessary to satisfy the assurance
-          activities specified.<htm:br/> The interfaces that need to be evaluated are characterized
+          activities specified.<htm:br/><htm:br/> The interfaces that need to be evaluated are characterized
           through the information needed to perform the assurance activities listed, rather than as
           an independent, abstract list. <group type="dev-action">
             <a-element id="ADV_FSP.1.1D">
@@ -5222,8 +5225,8 @@ To do:
       provided with the <abbr linkend="ST"/>. Guidance must include a description of how the IT
       personnel verifies that the Operational Environment can fulfill its role for the security
       functionality. The documentation should be in an informal style and readable by the IT
-      personnel.<htm:br/> Guidance must be provided for every operational environment that the
-      product supports as claimed in the <abbr linkend="ST"/>. This guidance includes:<htm:br/>
+      personnel.<htm:br/><htm:br/> Guidance must be provided for every operational environment that the
+      product supports as claimed in the <abbr linkend="ST"/>. This guidance includes:<htm:br/><htm:br/>
       <htm:ul>
         <htm:li>instructions to successfully install the <abbr linkend="TSF"/> in that
           environment</htm:li>
@@ -5242,7 +5245,7 @@ To do:
                 a single document. Guidance to users, administrators and application developers can
                 be spread among documents or web pages. Where appropriate, the guidance
                 documentation is expressed in the eXtensible Configuration Checklist Description
-                Format (XCCDF) to support security automation.<htm:br/> Rather than repeat
+                Format (XCCDF) to support security automation.<htm:br/><htm:br/> Rather than repeat
                 information here, the developer should review the assurance activities for this
                 component to ascertain the specifics of the guidance that the evaluator will be
                 checking for. This will provide the necessary information for the preparation of
@@ -5294,20 +5297,20 @@ To do:
               <aactivity> Some of the contents of the operational guidance will be verified by the
                 assurance activities in Sections 4.2, 4.3, and 4.4and evaluation of the <abbr
                   linkend="TOE"/> according to the <abbr linkend="CEM"/>. The following additional
-                information is also required.<htm:br/> If cryptographic functions are provided by
+                information is also required.<htm:br/><htm:br/> If cryptographic functions are provided by
                 the <abbr linkend="TOE"/>, the operational guidance shall contain instructions for
                 configuring the cryptographic engine associated with the evaluated configuration of
                 the <abbr linkend="TOE"/>. It shall provide a warning to the administrator that use
                 of other cryptographic engines was not evaluated nor tested during the <abbr
-                  linkend="CC"/> evaluation of the <abbr linkend="TOE"/>.<htm:br/> The documentation
+                  linkend="CC"/> evaluation of the <abbr linkend="TOE"/>.<htm:br/><htm:br/> The documentation
                 must describe the process for verifying updates to the <abbr linkend="TOE"/> by
                 verifying a digital signature – this may be done by the <abbr linkend="TOE"/> or the
                 underlying platform. The evaluator shall verify that this process includes the
-                following steps:<htm:br/> Instructions for obtaining the update itself. This should
+                following steps:<htm:br/><htm:br/> Instructions for obtaining the update itself. This should
                 include instructions for making the update accessible to the <abbr linkend="TOE"/>
-                (e.g., placement in a specific directory).<htm:br/> Instructions for initiating the
+                (e.g., placement in a specific directory).<htm:br/><htm:br/> Instructions for initiating the
                 update process, as well as discerning whether the process was successful or
-                unsuccessful. This includes generation of the hash/digital signature.<htm:br/> The
+                unsuccessful. This includes generation of the hash/digital signature.<htm:br/><htm:br/> The
                   <abbr linkend="TOE"/> will likely contain security functionality that does not
                 fall in the scope of evaluation under this <abbr linkend="PP"/>. The operational
                 guidance shall make it clear to an administrator which security functionality is
@@ -5427,14 +5430,14 @@ To do:
                 requirements. By ensuring that the <abbr linkend="TOE"/> is specifically identified
                 and that this identification is consistent in the <abbr linkend="ST"/> and in the
                 AGD guidance (as done in the assurance activity for ALC_CMC.1), the evaluator
-                implicitly confirms the information required by this component.<htm:br/> Life-cycle
+                implicitly confirms the information required by this component.<htm:br/><htm:br/> Life-cycle
                 support is targeted aspects of the developer’s life-cycle and instructions to
                 providers of applications for the developer’s devices, rather than an in-depth
                 examination of the <abbr linkend="TSF"/> manufacturer’s development and
                 configuration management process. This is not meant to diminish the critical role
                 that a developer’s practices play in contributing to the overall trustworthiness of
                 a product; rather, it’s a reflection on the information to be made available for
-                evaluation.<htm:br/> The evaluator shall ensure that the developer has identified
+                evaluation.<htm:br/><htm:br/> The evaluator shall ensure that the developer has identified
                 (in public-facing development documentation for their platform) one or more
                 development environments appropriate for use in developing applications for the
                 developer’s platform. For each of these development environments, the developer
@@ -5442,11 +5445,11 @@ To do:
                 overflow protection mechanisms in the environment(s) are invoked (e.g., compiler
                 flags). The evaluator shall ensure that this documentation also includes an
                 indication of whether such protections are on by default, or have to be specifically
-                enabled.<htm:br/> The evaluator shall ensure that the <abbr linkend="TSF"/> is
+                enabled.<htm:br/><htm:br/> The evaluator shall ensure that the <abbr linkend="TSF"/> is
                 uniquely identified (with respect to other products from the <abbr linkend="TSF"/>
                 vendor), and that documentation provided by the developer in association with the
                 requirements in the <abbr linkend="ST"/> is associated with the <abbr linkend="TSF"
-                /> using this unique identification.<htm:br/>
+                /> using this unique identification.<htm:br/><htm:br/>
               </aactivity>
             </a-element>
           </group>
@@ -5458,7 +5461,7 @@ To do:
         AVA_VAN family. At the assurance level specified in this <abbr linkend="PP"/>, testing is
         based on advertised functionality and interfaces with dependency on the availability of
         design information. One of the primary outputs of the evaluation process is the test report
-        as specified in the following requirements.<htm:br/> Since many of the APIs are not exposed
+        as specified in the following requirements.<htm:br/><htm:br/> Since many of the APIs are not exposed
         at the user interface (e.g., touch screen), the ability to stimulate the necessary
         interfaces requires a developer’s test environment. This test environment will allow the
         evaluator, for example, to access APIs and view file system information that is not
@@ -5496,7 +5499,7 @@ To do:
                 the <abbr linkend="CEM"/> and the body of this <abbr linkend="PP"/>’s Assurance
                 Activities. While it is not necessary to have one test case per test listed in an
                 Assurance Activity, the evaluator must document in the test plan that each
-                applicable testing requirement in the <abbr linkend="ST"/> is covered.<htm:br/> The
+                applicable testing requirement in the <abbr linkend="ST"/> is covered.<htm:br/><htm:br/> The
                 test plan identifies the platforms to be tested, and for those platforms not
                 included in the test plan but included in the <abbr linkend="ST"/>, the test plan
                 provides a justification for not testing the platforms. This justification must
@@ -5504,7 +5507,7 @@ To do:
                 make an argument that the differences do not affect the testing to be performed. It
                 is not sufficient to merely assert that the differences have no affect; rationale
                 must be provided. If all platforms claimed in the <abbr linkend="ST"/> are tested,
-                then no rationale is necessary.<htm:br/> The test plan describes the composition of
+                then no rationale is necessary.<htm:br/><htm:br/> The test plan describes the composition of
                 each platform to be tested, and any setup that is necessary beyond what is contained
                 in the AGD documentation. It should be noted that the evaluator is expected to
                 follow the AGD documentation for installation and setup of each platform either as
@@ -5515,14 +5518,14 @@ To do:
                 includes the configuration of the cryptographic engine to be used. The cryptographic
                 algorithms implemented by this engine are those specified by this <abbr linkend="PP"
                 /> and used by the cryptographic protocols being evaluated (IPsec, TLS/HTTPS,
-                SSH).<htm:br/> The test plan identifies high-level test objectives as well as the
+                SSH).<htm:br/><htm:br/> The test plan identifies high-level test objectives as well as the
                 test procedures to be followed to achieve those objectives. These procedures include
                 expected results. The test report (which could just be an annotated version of the
                 test plan) details the activities that took place when the test procedures were
                 executed, and includes the actual results of the tests. This shall be a cumulative
                 account, so if there was a test run that resulted in a failure; a fix installed; and
                 then a successful re-run of the test, the report would show a “fail” and “pass”
-                result (and the supporting details), and not just the “pass” result.<htm:br/>
+                result (and the supporting details), and not just the “pass” result.<htm:br/><htm:br/>
               </aactivity>
             </a-element>
           </group>
@@ -5583,7 +5586,8 @@ To do:
       </subsection>
     </section>
   </chapter>
-  <appendix id="app-opt" title="Optional Requirements"> As indicated in <secref linkend="ccl"/>, the
+
+  <appendix id="optional" title="Optional Requirements"> As indicated in <secref linkend="ccl"/>, the
     baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its
     underlying platform) are contained in the body of this <abbr linkend="PP"/>. Additionally, there
     are three other types of requirements specified in <appref linkend="optional"/>, <appref
@@ -5600,7 +5604,7 @@ To do:
     /> vendors is encouraged. Note that the <abbr linkend="ST"/> author is responsible for ensuring
     that requirements that may be associated with those in <appref linkend="optional"/>, <appref
       linkend="sel-based"/>, and/or <appref linkend="objective"/> but are not listed (e.g., FMT-type
-    requirements) are also included in the <abbr linkend="ST"/>. <htm:br/> This Appendix is divided
+    requirements) are also included in the <abbr linkend="ST"/>. <htm:br/><htm:br/> This Appendix is divided
     into three subsections: optional requirements that may be performed by the <abbr linkend="TSF"
     />, optional requirements that may be performed by the <abbr linkend="MDM"/> Server or its
     underlying platform, and optional requirements to support a Mobile Application Store Server. <!-- HERE this next requirement does not fit anywhere and I had to make it a subsection to get it to work -->
@@ -5627,47 +5631,49 @@ To do:
       </subsection>
     </section>
   </appendix>
-  <appendix id="app-sel" title="Selection-Based Requirements"> As indicated in the introduction to
+  <appendix id="sel-based" title="Selection-Based Requirements"> As indicated in the introduction to
     this <abbr linkend="PP"/>, the baseline requirements (those that must be performed by the <abbr
       linkend="TOE"/> or its underlying platform) are contained in the body of the <abbr
       linkend="PP"/>. There are additional requirements based on selections in the body of the <abbr
       linkend="PP"/>: if certain selections are made, then additional requirements below will need
     to be included. </appendix>
-  <appendix id="app-obj" title="Objective Requirements"> As indicated in the introduction to this
+  <appendix id="objective" title="Objective Requirements"> As indicated in the introduction to this
       <abbr linkend="EP"/>, the baseline requirements (those that must be performed by the <abbr
       linkend="TOE"/> or its underlying platform) are contained in the body of this <abbr
       linkend="EP"/>. There are additional requirements that specify security functionality that is
     desirable and these requirements are contained in this Appendix. It is expected that these
     requirements will transition from objective requirements to baseline requirements in future
-    versions of this <abbr linkend="EP"/>.<htm:br/> At any time these may be included in the <abbr
+    versions of this <abbr linkend="EP"/>.<htm:br/><htm:br/> At any time these may be included in the <abbr
       linkend="ST"/> such that the <abbr linkend="TOE"/> is still conformant to this <abbr
-      linkend="EP"/>.<htm:br/> This Appendix is divided into two subsections: objective requirements
+      linkend="EP"/>.<htm:br/><htm:br/> This Appendix is divided into two subsections: objective requirements
     that may be performed by the <abbr linkend="TSF"/> and objective requirements that may be
-    performed by the <abbr linkend="MDM"/> Agent or its underlying platform.<htm:br/>
+    performed by the <abbr linkend="MDM"/> Agent or its underlying platform.<htm:br/><htm:br/>
   </appendix>
+  
+  
   <appendix id="entropy" title="Entropy Documentation and Assessment"> This appendix describes the
     required supplementary information for each entropy source used by the <abbr linkend="TOE"
-    />.<htm:br/> The documentation of the entropy source(s) should be detailed enough that, after
+    />.<htm:br/><htm:br/> The documentation of the entropy source(s) should be detailed enough that, after
     reading, the evaluator will thoroughly understand the entropy source and why it can be relied
     upon to provide sufficient entropy. This documentation should include multiple detailed
     sections: design description, entropy justification, operating conditions, and health testing.
-    This documentation is not required to be part of the <abbr linkend="TSS"/>. <htm:br/>
+    This documentation is not required to be part of the <abbr linkend="TSS"/>. <htm:br/><htm:br/>
     <section id="sec1" title="Design Description"> Documentation shall include the design of each
       entropy source as a whole, including the interaction of all entropy source components. Any
       information that can be shared regarding the design should also be included for any
-      third-party entropy sources that are included in the product.<htm:br/> The documentation will
+      third-party entropy sources that are included in the product.<htm:br/><htm:br/> The documentation will
       describe the operation of the entropy source to include, how entropy is produced, and how
       unprocessed (raw) data can be obtained from within the entropy source for testing purposes.
       The documentation should walk through the entropy source design indicating where the entropy
       comes from, where the entropy output is passed next, any post-processing of the raw outputs
       (hash, XOR, etc.), if/where it is stored, and finally, how it is output from the entropy
       source. Any conditions placed on the process (e.g., blocking) should also be described in the
-      entropy source design. Diagrams and examples are encouraged.<htm:br/> This design must also
+      entropy source design. Diagrams and examples are encouraged.<htm:br/><htm:br/> This design must also
       include a description of the content of the security boundary of the entropy source and a
       description of how the security boundary ensures that an adversary outside the boundary cannot
-      affect the entropy rate.<htm:br/> If implemented, the design description shall include a
+      affect the entropy rate.<htm:br/><htm:br/> If implemented, the design description shall include a
       description of how third-party applications can add entropy to the RBG. A description of any
-      RBG state saving between power-off and power-on shall be included.<htm:br/>
+      RBG state saving between power-off and power-on shall be included.<htm:br/><htm:br/>
     </section>
     <section id="sec2" title="Entropy Justification"> There should be a technical argument for where
       the unpredictability in the source comes from and why there is confidence in the entropy
@@ -5676,27 +5682,27 @@ To do:
       rate (i.e. the minimum entropy (in bits) per bit or byte of source data) and explain that
       sufficient entropy is going into the <abbr linkend="TOE"/> randomizer seeding process. This
       discussion will be part of a justification for why the entropy source can be relied upon to
-      produce bits with entropy.<htm:br/> The amount of information necessary to justify the
+      produce bits with entropy.<htm:br/><htm:br/> The amount of information necessary to justify the
       expected min-entropy rate depends on the type of entropy source included in the
-      product.<htm:br/> For developer provided entropy sources, in order to justify the min-entropy
+      product.<htm:br/><htm:br/> For developer provided entropy sources, in order to justify the min-entropy
       rate, it is expected that a large number of raw source bits will be collected, statistical
       tests will be performed, and the min- entropy rate determined from the statistical tests.
       While no particular statistical tests are required at this time, it is expected that some
-      testing is necessary in order to determine the amount of min-entropy in each output.<htm:br/>
+      testing is necessary in order to determine the amount of min-entropy in each output.<htm:br/><htm:br/>
       For third party provided entropy sources, in which the <abbr linkend="TOE"/> vendor has
       limited access to the design and raw entropy data of the source, the documentation will
       indicate an estimate of the amount of min- entropy obtained from this third-party source. It
       is acceptable for the vendor to “assume” an amount of min-entropy, however, this assumption
       must be clearly stated in the documentation provided. In particular, the min-entropy estimate
-      must be specified and the assumption included in the <abbr linkend="ST"/>.<htm:br/> Regardless
+      must be specified and the assumption included in the <abbr linkend="ST"/>.<htm:br/><htm:br/> Regardless
       of type of entropy source, the justification will also include how the DRBG is initialized
       with the entropy stated in the <abbr linkend="ST"/>, for example by verifying that the
       min-entropy rate is multiplied by the amount of source data used to seed the DRBG or that the
       rate of entropy expected based on the amount of source data is explicitly stated and compared
       to the statistical rate. If the amount of source data used to seed the DRBG is not clear or
       the calculated rate is not explicitly related to the seed, the documentation will not be
-      considered complete.<htm:br/> The entropy justification shall not include any data added from
-      any third-party application or from any state saving between restarts.<htm:br/>
+      considered complete.<htm:br/><htm:br/> The entropy justification shall not include any data added from
+      any third-party application or from any state saving between restarts.<htm:br/><htm:br/>
     </section>
     <section id="sec3" title="Operating Conditions"> The entropy rate may be affected by conditions
       outside the control of the entropy source itself. For example, voltage, frequency,
@@ -5705,14 +5711,14 @@ To do:
       operating conditions under which the entropy source is expected to generate random data.
       Similarly, documentation shall describe the conditions under which the entropy source is no
       longer guaranteed to provide sufficient entropy. Methods used to detect failure or degradation
-      of the source shall be included.<htm:br/>
+      of the source shall be included.<htm:br/><htm:br/>
     </section>
     <section id="sec4" title="Health Testing"> More specifically, all entropy source health tests
       and their rationale will be documented. This will include a description of the health tests,
       the rate and conditions under which each health test is performed (e.g., at startup,
       continuously, or on-demand), the expected results for each health test, <abbr linkend="TOE"/>
       behavior upon entropy source failure, and rationale indicating why each test is believed to be
-      appropriate for detecting one or more failures in the entropy source.<htm:br/>
+      appropriate for detecting one or more failures in the entropy source.<htm:br/><htm:br/>
     </section>
   </appendix>
   <appendix id="use-case" title="Use Case Templates"> The following use case templates list those
@@ -5912,57 +5918,54 @@ To do:
     <bibliography>
       <entry id="bibCC">
         <tag>CC</tag>
-        <description>Common Criteria for Information Technology Security Evaluation - <h:ul>
-            <h:li><h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf"
-                >Part 1: Introduction and General Model</h:a>, CCMB-2012-09-001, Version 3.1
-              Revision 4, September 2012.</h:li>
-            <h:li><h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf"
-                >Part 2: Security Functional Components</h:a>, CCMB-2012-09-002, Version 3.1
-              Revision 4, September 2012.</h:li>
-            <h:li><h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R4.pdf"
-                >Part 3: Security Assurance Components</h:a>, CCMB-2012-09-003, Version 3.1 Revision
-              4, September 2012.</h:li>
-          </h:ul></description>
+        <description>Common Criteria for Information Technology Security Evaluation - <htm:ul>
+          <htm:li><htm:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part 1: Introduction and General Model</htm:a>, CCMB-2012-09-001, Version 3.1
+              Revision 4, September 2012.</htm:li>
+          <htm:li><htm:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf">Part 2: Security Functional Components</htm:a>, CCMB-2012-09-002, Version 3.1
+              Revision 4, September 2012.</htm:li>
+          <htm:li><htm:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R4.pdf">Part 3: Security Assurance Components</htm:a>, CCMB-2012-09-003, Version 3.1 Revision
+              4, September 2012.</htm:li>
+          </htm:ul></description>
       </entry>
 
       <entry id="bibCEM">
         <tag>CEM</tag>
         <description>
-          <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CEMV3.1R4.pdf">Common
+          <htm:a href="http://www.commoncriteriaportal.org/files/ccfiles/CEMV3.1R4.pdf">Common
             Evaluation Methodology for Information Technology Security - Evaluation
-            Methodology</h:a>, CCMB-2012-09-004, Version 3.1, Revision 4, September 2012.
+            Methodology</htm:a>, CCMB-2012-09-004, Version 3.1, Revision 4, September 2012.
         </description>
       </entry>
 
       <entry id="bibCSA">
         <tag>CSA</tag>
         <description>
-          <h:a href="http://csrc.nist.gov/groups/SMA/ispab/documents/csa_87.txt">Computer Security
-            Act of 1987</h:a>, H.R. 145, June 11, 1987. </description>
+          <htm:a href="http://csrc.nist.gov/groups/SMA/ispab/documents/csa_87.txt">Computer Security
+            Act of 1987</htm:a>, H.R. 145, June 11, 1987. </description>
       </entry>
 
       <entry id="bibOMB">
         <tag>OMB</tag>
         <description>
-          <h:a href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2006/m06-19.pdf"
+          <htm:a href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2006/m06-19.pdf"
             >Reporting Incidents Involving Personally Identifiable Information and Incorporating the
-            Cost for Security in Agency Information Technology Investments</h:a>, OMB M-06-19, July
+            Cost for Security in Agency Information Technology Investments</htm:a>, OMB M-06-19, July
           12, 2006. </description>
       </entry>
 
       <entry id="bibMDF">
         <tag>MDF PP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?id=381">Protection Profile for
-            Mobile Device Fundamentals, Version 3.0, June 2016</h:a>
+          <htm:a href="https://www.niap-ccevs.org/Profile/Info.cfm?id=381">Protection Profile for
+            Mobile Device Fundamentals, Version 3.0, June 2016</htm:a>
         </description>
       </entry>
 
       <entry id="bibMDMA">
         <tag>MDM Agent PP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/Profile/Info.cfm?id=403">Protection Profile for
-            Mobile Device Management, Version 3.0, October 2016</h:a>
+          <htm:a href="https://www.niap-ccevs.org/Profile/Info.cfm?id=403">Protection Profile for
+            Mobile Device Management, Version 3.0, October 2016</htm:a>
         </description>
       </entry>
 
