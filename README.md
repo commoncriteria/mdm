@@ -1,4 +1,4 @@
-Mobile Device Management
+Mobile Device Management [![Build Status](https://jenkins-criteria.rhcloud.com/buildStatus/icon?job=protection-profiles/mdm)](https://jenkins-criteria.rhcloud.com/job/protection-profiles/job/mdm/)
 ===========
 
 Protection Profile for Mobile Device Management
