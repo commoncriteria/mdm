@@ -1,4 +1,4 @@
-Mobile Device Management [![Build Status](https://jenkins-criteria.rhcloud.com/buildStatus/icon?job=protection-profiles/mdm)](https://jenkins-criteria.rhcloud.com/job/protection-profiles/job/mdm/)
+Mobile Device Management [![Build Status](https://travis-ci.org/commoncriteria/mdm.svg?branch=master)](https://travis-ci.org/commoncriteria/mdm)
 ===========
 
 Protection Profile for Mobile Device Management
