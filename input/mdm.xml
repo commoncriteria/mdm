@@ -3471,12 +3471,10 @@ To do:
               <guidance>The evaluator shall verify that the AGD guidance required per
                 FIA_X509_EXT.2.1 includes instructions for configuring the client-side certificates
                 for TLS mutual authentication.</guidance>
-              <tests>The evaluator shall perform the following modification to the traffic: <h:ul>
-                  <h:li>Configure the server to require mutual authentication and then modify a
-                    byte in a CA field in the Server’s Certificate Request handshake message. The
-                    modified CA field must not be the CA used to sign the client’s certificate. The
-                    evaluator shall verify the connection is unsuccessful.</h:li>
-                </h:ul>
+              <tests>The evaluator shall observe the following behavior: <testlist>
+                <test>The evaluator shall establish a connection to a peer server that is not configured for mutual authentication (i.e. does not send Server’s Certificate Request (type 13) message). The evaluator observes negotiation of a TLS channel and confirms that the TOE did not send Client’s Certificate message (type 11) during handshake.</test>
+                <test>The evaluator shall establish a connection to a peer server with a shared trusted root that is configured for mutual authentication (i.e. it sends Server’s Certificate Request (type 13) message). The evaluator observes negotiation of a TLS channel and confirms that the TOE responds with a non-empty Client’s Certificate message (type 11) and Certificate Verify (type 15) message.</test>
+                </testlist>
               </tests></aactivity>
           </f-element>
         </f-component> <f-component id="FCS_TLSC_EXT.2" name="TLS Client Protocol"
