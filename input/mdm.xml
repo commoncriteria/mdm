@@ -32,7 +32,8 @@ To do:
       </entry>
     </ReferenceTable>
   </PPReference>
-  <RevisionHistory role="draft">
+  <!--  
+    <RevisionHistory role="draft">
     <entry>
       <version>1.0</version>
       <date>2013-10-21</date>
@@ -53,8 +54,9 @@ To do:
         Mobile Application Store requirements. </subject>
     </entry>
   </RevisionHistory>
+  -->
   
-  <RevisionHistory role="final">
+  <RevisionHistory>
     <entry>
       <version>1.0</version>
       <date>2013-10-21</date>
@@ -215,7 +217,7 @@ To do:
         Server runs, and an untrusted wireless network over which they communicate, as pictured below.
         <h:br/><h:br/>
         <figure entity="images/MDMserveroperatingenvironment.jpg"
-          title="Figure 1: MDM System Operating Environment" id="agentoperatingenvironment"/>
+          title="MDM System Operating Environment" id="agentoperatingenvironment"/>
         <h:br/><h:br/>
         The <h:b>MDM Server</h:b> is an application on a general-purpose platform or
         on a network device, executing in a trusted network environment. The <abbr linkend="MDM"/>
@@ -325,7 +327,7 @@ To do:
             <h:li>selection-based (which are required when certain <h:i>selections</h:i> are chosen in the
               unconditional requirements)</h:li>
           </h:ul>and may include components that are <h:ul>
-            <h:li>optional or</h:li>
+            <h:li>optional</h:li>
             <h:li>objective.</h:li>
           </h:ul>
           <InsertAppendixExplainer/> The <abbr linkend="ST"/> may iterate any of these components,
@@ -336,7 +338,7 @@ To do:
       </cclaim>
       <cclaim id="CC Conformance Claims">
         <description>This PP is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria
-          Version 3.1, Revision 4.<cite linkend="bibCC"/>.</description>
+          Version 3.1, Revision 4<cite linkend="bibCC"/>.</description>
       </cclaim>
       <cclaim id="PP Claim">
         <description>This PP does not claim conformance to any other Protection
@@ -535,7 +537,7 @@ To do:
           <component-refer ref="FIA_X509_EXT.2"/>
           <component-refer ref="FIA_X509_EXT.3"/>
           <component-refer ref="FIA_X509_EXT.4"/>
-          <component-refer ref="FPT_ITT.1(*)"/>
+          <component-refer ref="FPT_ITT.1"/>
           <component-refer ref="FTP_ITC.1(*)"/>
           <component-refer ref="FTP_TRP.1(*)"/>
         </SO>
@@ -594,8 +596,8 @@ To do:
   </chapter>
   <chapter title="Security Requirements" id="req">The Security Functional Requirements included in
     this section are derived from Part 2 of the Common Criteria for Information Technology Security
-    Evaluation, Version 3.1, Revision 4, with additional extended functional components. <section
-      id="con" title="Conventions"> The <abbr linkend="CC"/> defines operations on Security
+    Evaluation, Version 3.1, Revision 4, with additional extended functional components. 
+    <section id="con" title="Conventions"> The <abbr linkend="CC"/> defines operations on Security
       Functional Requirements: assignments, selections, assignments within selections and
       refinements. This document uses the following font conventions to identify the operations
       defined by the <abbr linkend="CC"/>: <h:br/><h:br/>
@@ -789,13 +791,16 @@ To do:
             <note role="application">The <abbr linkend="MDM"/> Server may use its own directory or a
               directory server to perform the authentication decision for users performing the
               remote enrollment of a mobile device.</note>
-            <aactivity> The evaluator shall examine the <abbr linkend="TSS"/> and verify that it
+            <aactivity> 
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it
               describes the process of enrollment for each <abbr linkend="MDM"/> Agent/platform
               listed as supported in the <abbr linkend="ST"/>. This description shall include the
               trusted path used for enrollment (FTP_TRP.1(2)), the method of user authentication
               (username/password, token, etc.), the method of authentication decision (local or
               remote authentication services), and the actions performed on the <abbr linkend="MDM"
-              /> Server upon successful authentication. <testlist>
+              /> Server upon successful authentication. </tss>
+              <tests>
+                <testlist>
                 <test>The evaluator shall attempt to enroll a device without providing correct
                   credentials. The evaluator shall verify that the device is not enrolled and that
                   the described enrollment actions are not taken.</test>
@@ -803,6 +808,7 @@ To do:
                   credentials. The evaluator shall verify that the device is enrolled and that the
                   described enrollment actions are taken.</test>
               </testlist>
+              </tests>
             </aactivity>
           </f-element>
           <f-element id="FIA_ENR_EXT.1.2">
@@ -825,6 +831,9 @@ To do:
               unique device ID can be the IMEI or an ID specific to a particular platform. The other
               options will still be selectable in the next version, but a unique device ID will be
               required. </note>
+            <!-- TODO: Make unique ID mandatory, all other options selectable and remove the app note.
+            The MDM Server shall limit the user’s enrollment of devices to devices specified by [selection: IMEI, [assignment: a unique device ID]] and [selection: specific device models, a number of devices, specific time period, [assignment: other features], no other features].  
+            -->
             <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it
                 implements a policy to limit the user’s enrollment of devices.</tss>
@@ -894,7 +903,7 @@ To do:
           <f-element id="FMT_POL_EXT.1.1">
             <title>The <abbr linkend="MDM"/> Server shall provide digitally signed policies and
               policy updates to the <abbr linkend="MDM"/> Agent.</title>
-            <note role="application">Application Note: The intent of this requirement is to
+            <note role="application">The intent of this requirement is to
               cryptographically tie the policies to the enterprise that mandated the policy, not to
               protect the policies in transit (as they are already protected by FPT_ITT.1 or
               FTP_ITC.1(2)). This is especially critical for users who connect to multiple
@@ -1017,7 +1026,7 @@ To do:
                 <h:br/><h:br/>
               <selectables linebreak="yes">
                 <selectable>
-                  <ctr id="smf13" pre=""></ctr>. remove Enterprise applications, (MDF Function17)
+                  <ctr id="smf13" pre=""></ctr>. remove Enterprise applications, (MDF Function 17)
                 </selectable>
                 <selectable>
                   <ctr id="smf14" pre=""></ctr>. wipe Enterprise data, (MDF Function 28)
@@ -1142,7 +1151,7 @@ To do:
                   <ctr id="smf37" pre=""></ctr>. enable policy for removable media’s
                   data-at-rest protection, (MDF Function 21)</selectable>
                 <selectable>
-                  <ctr id="smf38" pre=""></ctr>.enable/disable policy for local
+                  <ctr id="smf38" pre=""></ctr>. enable/disable policy for local
                   authentication bypass, (MDF Function 27)</selectable>
                 <selectable>
                   <ctr id="smf39" pre=""></ctr>. the Bluetooth trusted channel policy:<h:br/>
@@ -1157,8 +1166,8 @@ To do:
                         <selectable>disable/enable the Bluetooth services and/or profiles available on the device </selectable>
                         <selectable>specify minimum level of security for eachpairing</selectable>
                         <selectable>configure allowable methods of Out of Bandpairing</selectable>
-                        <selectable>no other Bluetooth configuration] (MDF Function 18)</selectable>
-                      </selectables>
+                        <selectable>no other Bluetooth configuration</selectable>
+                      </selectables>(MDF Function 18)
                     </h:li>
                   </h:ol>
                 </selectable>
@@ -1172,8 +1181,8 @@ To do:
                       <selectable>contact associated with phone call notification</selectable>
                       <selectable>text message notification</selectable>
                       <selectable>other application-based notifications</selectable>
-                      <selectable>none] (MDF Function 19)</selectable>
-                    </selectables>
+                      <selectable>none</selectable>
+                    </selectables>(MDF Function 19)
                   </h:ol>
                 </selectable>
                 <selectable>
@@ -1508,7 +1517,7 @@ To do:
           </f-element>
         </f-component>
       </subsection>
-      <subsection id="fpt" title="Protection of the TSF (FPT)"> Note that FPT_TUD_EXT.1 also
+      <subsection id="fpt" title="Protection of the TSF (FPT)"> <!-- Why did we include this disclaimer for this section and none of the other sections in which there are SFRs in both 5.3 and 5.4-->Note that FPT_TUD_EXT.1 also
         includes the components FPT_TUD_EXT.1.2 and FPT_TUD_EXT.1.3. However, the functionality
         described by these components can be implemented by either the <abbr linkend="TSF"/> or by
         the Operational Environment. Refer to section 5.4.4 for the definition of these components.
@@ -1517,7 +1526,6 @@ To do:
             <title>The <abbr linkend="MDM"/> Server shall provide Authorized Administrators the
               ability to query the current version of the <abbr linkend="MDM"/> Server
               software.</title>
-            <note role="application"/>
             <aactivity>
               <guidance>The evaluator shall ensure that the administrator guidance includes
                 instructions for determining the current version of the <abbr linkend="TOE"
@@ -1528,7 +1536,8 @@ To do:
             </aactivity>
           </f-element>
         </f-component>
-        <!-- HERE this next f-component is not a proper f-component in the Word document -->
+        <!-- HERE this next f-component is not a proper f-component in the Word document 
+        TODO: Most likely will need to move FPT_ITT.1 and FTP_ITC.1(2) to selection based (currently in optional) and then make a new SFR in which they select which one, to be able to work with the worksheets. Would it be better to have a SFR with the selection: Agent in TOE, Agent outside of TOE or selection: FPT_ITT.1, FTP_ITC.1(2)? -->
         <f-component id="FPT_ITT.1" name="Internal TOE TSF Data Transfer">
           <f-element id="FPT_ITT.1.1">
             <!-- HERE I made the FPT_ITT.1.1 tag up, it is not in the Word document -->
@@ -1546,28 +1555,15 @@ To do:
           </f-element>
         </f-component>
         <f-component id="FPT_ITT.1" name="Internal TOE TSF Data Transfer" status="optional">
-          <f-element id="FPT_ITT.1.1(1)">
+          <f-element id="FPT_ITT.1.1"> <!-- Removed iteration -->
             <title>The <abbr linkend="TSF"/> shall protect all data from [disclosure and
               modification] through use of <selectables>
-                <selectable>IPsec</selectable>
-                <selectable>TLS</selectable>
-                <selectable>HTTPS</selectable>
-                <selectable>DTLS</selectable>
-              </selectables> when it is transferred between separate parts of the <abbr
-                linkend="TOE"/>.</title>
-            <note role="application">This requirement ensures all communications between components
-              of a distributed <abbr linkend="TOE"/> (such as between the <abbr linkend="MDM"/>
-              Server and the MAS Server) is protected through the use of an encrypted communications
-              channel. The data passed in this trusted communication channel are encrypted as
-              defined the protocol chosen in the first selection.<h:br/><h:br/> The trusted channel uses
-              secure protocols that preserve the confidentiality and integrity of <abbr
-                linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the
-              mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If “IPsec” is selected
-              the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"
-              />. If “TLS”, “HTTPS” or “DTLS” is selected the appropriate selection-based <abbr
-                linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"
-              />.<h:br/><h:br/> Protocol, RBG, Certificate validation, algorithm, and similar services
-              may be met with platform provided services. </note>
+                <selectable id="ITT_IPSEC">IPsec</selectable>
+                <selectable id="ITT_TLS">TLS</selectable>
+                <selectable id="ITT_HTTPS">HTTPS</selectable>
+                <selectable id="ITT_DTLS">DTLS</selectable>
+              </selectables> when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
+            <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> (such as between the <abbr linkend="MDM"/> Server and the MAS Server) is protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection.<h:br/><h:br/> The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If “IPsec” is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If “TLS”, “HTTPS” or “DTLS” is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/> Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services. </note>
             <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the
                 methods and protocols used to protect distributed <abbr linkend="TOE"/> components
@@ -1918,7 +1914,7 @@ To do:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FPT_ITT.1(*)</h:TD>
+                    <h:TD>FPT_ITT.1</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Identity of initiator and recipient.</h:TD>
                   </h:TR>
@@ -2025,7 +2021,7 @@ To do:
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables> shall be able to transmit audit data to an external IT entity using a trusted channel per FTP_ITC.1(1) and <selectables>
-                <selectable>stored locally</selectable>
+                <selectable id="FAU_STG.1_stored">stored locally</selectable>
                 <selectable>no other method</selectable>
               </selectables>.
             </title>
@@ -2131,7 +2127,7 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="FAU_STG_EXT.2" name="Audit Event Storage" status="sel-based">
-          <selection-depends req="FAU_STG_EXT.1.1(1)"/>
+          <selection-depends req="FAU_STG_EXT.1.1(1)" ids="FAU_STG.1_stored"/>
           <f-element id="FAU_STG_EXT.2.1">
             <title>The <selectables>
                 <selectable>TSF</selectable>
@@ -3243,6 +3239,7 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="FCS_TLSC_EXT.1" name="TLS Client Protocol" status="optional">
+          <!-- Even though this is optional, for the worksheet it should really be selection based on if the TOE includes a agent or I guess it would be included in the worksheet for the agent. It should also be reference in the other trusted path requirements for if the MDM Server is acting as the client. -->
           <f-element id="FCS_TLSC_EXT.1.1">
             <title> The <selectables>
                 <selectable>TSF</selectable>
@@ -3251,43 +3248,21 @@ To do:
                 <selectable>TLS 1.0 (RFC 3246)</selectable>
                 <selectable>TLS 1.1 (RFC 4346)</selectable>
                 <selectable>no other version</selectable>
-              </selectables> supporting the following ciphersuites: <h:ul>
-                <h:li>Mandatory Ciphersuites: <selectables linebreak="yes">
+              </selectables> supporting the following ciphersuites: 
+                <selectables linebreak="yes">
                     <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
                     <selectable>TLS_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246</selectable>
-                  </selectables>
-                </h:li>
-                <h:li>Optional Ciphersuites: <selectables linebreak="yes">
-                    <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_ SHA256 as defined in RFC
-                      5246</selectable>
-                    <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC
-                      5246</selectable>
-                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC
-                      5289</selectable>
-                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC
-                      5289</selectable>
-                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC
-                      5289</selectable>
-                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC
-                      5289</selectable>
-                    <selectable>no other ciphersuite</selectable></selectables>
-                </h:li>
-              </h:ul>
+                    <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_ SHA256 as defined in RFC 5246</selectable>
+                    <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246</selectable>
+                    <selectable id="TLSC_ECC1">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+                    <selectable id="TLSC_ECC2">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+                    <selectable id="TLSC_ECC3">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+                    <selectable id="TLSC_ECC4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+                    </selectables>.
             </title>
-            <note role="application">The TLS Client is required for <abbr linkend="MDM"/> Agents in
-              the <abbr linkend="TOE"/> and may be included in <abbr linkend="MDM"/> Servers in
-              order to support Enrollment over Secure Transport (Appendix C.2.2).<h:br/><h:br/> The
-              ciphersuites to be tested in the evaluated configuration are limited by this
-              requirement. It is recognized that RFC 5246 mandates the cipher suite
-              TLS_RSA_WITH_AES_128_CBC_SHA, but this cipher suite is not tested with this
-              requirement. The <abbr linkend="ST"/> author should select the optional ciphersuites
-              that are supported; if there are no ciphersuites supported other than the mandatory
-              suites, then “no other ciphersuite” should be selected. It is necessary to limit the
-              ciphersuites that can be used in an evaluated configuration administratively on the
-              server in the test environment. The Suite B algorithms listed above (RFC 6460) are the
-              preferred algorithms for implementation. <h:br/><h:br/> These requirements will be
-              revisited as new TLS versions are standardized by the IETF. If any ciphersuites are
-              selected using ECDHE, then <!--will need to update the SFR ref--> FCS_TLSC_EXT.3 is required.<h:br/><h:br/>
+            <note role="application">The TLS Client is required for <abbr linkend="MDM"/> Agents in the <abbr linkend="TOE"/> and may be included in <abbr linkend="MDM"/> Servers in order to support Enrollment over Secure Transport (Appendix C.2.2).<h:br/><h:br/>        
+              The ciphersuites to be tested in the evaluated configuration are limited by this requirement; however, this requirement does not restrict the <abbr linkend="TOE"/>'s ability to propose (in its Client Hello) additional ciphersuites beyond the ones listed in this requirement. Put simply, the <abbr linkend="TOE"/> may propose any ciphersuite; however, the evaluation will only test the ciphersuties in the above list. It is recognized that RFC 5246 mandates the cipher suite TLS_RSA_WITH_AES_128_CBC_SHA, but this cipher suite is not tested with this requirement. The <abbr linkend="ST"/> author should select the ciphersuites that are supported. It is necessary to limit the ciphersuites that can be used in an evaluated configuration administratively on the server in the test environment. The Suite B algorithms listed above (RFC 6460) are the preferred algorithms for implementation.<h:br/><h:br/>
+              These requirements will be revisited as new TLS versions are standardized by the IETF. If any ciphersuites are selected using ECDHE, then <!--will need to update the SFR ref--> FCS_TLSC_EXT.3 is required.<h:br/><h:br/>
             </note>
             <aactivity>
               <tss>The evaluator shall check the description of the implementation of this protocol
@@ -3497,7 +3472,7 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="FCS_TLSC_EXT.2" name="TLS Client Protocol" status="sel-based">
-          <selection-depends req="FCS_TLSC_EXT.1.1"/><!--HERE what req does this depend on -->
+          <selection-depends req="FCS_TLSC_EXT.1.1" ids="TLSC_ECC1,TLSC_ECC2,TLSC_ECC3,TLSC_ECC4"/>
           <f-element id="FCS_TLSC_EXT.2.1">
             <!-- was FCS_TLSC_EXT.1.5 -->
             <title>The <selectables>
@@ -3604,10 +3579,13 @@ To do:
               </tests></aactivity>
           </f-element>
         </f-component> 
-        <f-component id="FCS_TLSS_EXT.1" name="TLS Server Protocol"
-          status="sel-based">
-          <selection-depends req="FCS_TLSS_EXT.1.1"/>
-          <!-- HERE what is req this depends on -->
+        <f-component id="FCS_TLSS_EXT.1" name="TLS Server Protocol" status="sel-based">
+          <selection-depends req="FTP_TRP.1.1(1)" ids="TRP_TLS_1, TRP_HTTPS_1"/> 
+          <selection-depends req="FTP_TRP.1.1(2)" ids="TRP_TLS_2, TRP_HTTPS_2"/>
+          <selection-depends req="FTP_ITC.1.1(1)" ids="ITC_TLS_1, ITC_HTTPS_1"/> 
+          <selection-depends req="FTP_ITC.1.1(2)" ids="ITC_TLS_2, ITC_DTLS_2, ITC_HTTPS_2"/>
+          <selection-depends req="FTP_ITC.1.1(3)" ids="ITC_TLS_3, ITC_HTTPS_3"/>
+          <selection-depends req="FPT_ITT.1.1" ids="ITT_TLS, ITT_HTTPS, ITT_DTLS"/>
           <f-element id="FCS_TLSS_EXT.1.1">
             <title> The <selectables>
                 <selectable>MDM Server</selectable>
@@ -3616,58 +3594,25 @@ To do:
                 <selectable>TLS 1.0 (RFC 2246)</selectable>
                 <selectable>TLS 1.1 (RFC 4346)</selectable>
                 <selectable>no other version</selectable>
-              </selectables> supporting the following ciphersuites: <h:ul>
-                <h:li>Mandatory Ciphersuites: <selectables linebreak="yes">
+              </selectables> supporting the following ciphersuites: 
+                <selectables linebreak="yes">
                     <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-                    <selectable>TLS_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC
-                      5246]</selectable>
-                  </selectables>
-                </h:li>
-                <h:li>Optional Ciphersuites: <selectables linebreak="yes">
-                    <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_ SHA256 as defined in RFC
-                      5246</selectable>
-                    <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC
-                      5246</selectable>
-                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC
-                      5289</selectable>
-                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC
-                      5289</selectable>
-                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC
-                      5289</selectable>
-                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC
-                      5289</selectable>
-                    <selectable>no other ciphersuite</selectable>
-                  </selectables>
-                </h:li>
-              </h:ul>
+                    <selectable>TLS_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246</selectable>
+                    <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_ SHA256 as defined in RFC 5246</selectable>
+                    <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246</selectable>
+                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+                    <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>               
+                  </selectables>.
             </title>
-            <note role="application"> The <abbr linkend="MDM"/> Server must support all versions of
-              TLS supported by evaluated Agents listed in the <abbr linkend="ST"/> as supported in
-              the <abbr linkend="MDM"/> System. <h:br/><h:br/> The ciphersuites to be tested in the
-              evaluated configuration are limited by this requirement. It is recognized that RFC
-              5246 mandates the cipher suite TLS_RSA_WITH_AES_128_CBC_SHA, but this cipher suite is
-              not tested with this requirement. The <abbr linkend="ST"/> author should select the
-              optional ciphersuites that are supported; if there are no ciphersuites supported other
-              than the mandatory suites, then “None” should be selected. If administrative steps
-              need to be taken so that the suites negotiated by the implementation are limited to
-              those in this requirement, the appropriate instructions need to be contained in the
-              guidance called for by AGD_OPE. FMT_SMF.1 addresses configuration of the ciphersuite
-              to be used for connections. The Suite B algorithms listed above (RFC 6460) are the
-              preferred algorithms for implementation.<h:br/><h:br/> These requirements will be revisited
-              as new TLS versions are standardized by the IETF.<h:br/><h:br/>
+            <note role="application"> The <abbr linkend="MDM"/> Server must support all versions of TLS supported by evaluated Agents listed in the <abbr linkend="ST"/> as supported in the <abbr linkend="MDM"/> System. <h:br/><h:br/> 
+              The ciphersuites to be tested in the evaluated configuration are limited by this requirement. It is recognized that RFC 5246 mandates the cipher suite TLS_RSA_WITH_AES_128_CBC_SHA, but this cipher suite is not tested with this requirement. The <abbr linkend="ST"/> author should select the ciphersuites that are supported. If administrative steps need to be taken so that the suites negotiated by the implementation are limited to those in this requirement, the appropriate instructions need to be contained in the guidance called for by AGD_OPE. FMT_SMF.1 addresses configuration of the ciphersuite to be used for connections. The Suite B algorithms listed above (RFC 6460) are the preferred algorithms for implementation.<h:br/><h:br/> 
+              These requirements will be revisited as new TLS versions are standardized by the IETF.<h:br/><h:br/>
             </note>
             <aactivity>
-              <tss>The evaluator shall check the description of the implementation of this protocol
-                in the <abbr linkend="TSS"/> to ensure that the ciphersuites supported are
-                specified. The evaluator shall check the <abbr linkend="TSS"/> to ensure that the
-                ciphersuites specified are identical to those listed for this component. The
-                evaluator shall check the <abbr linkend="TSS"/> to account for all versions of TLS
-                supported by an evaluated client.</tss>
-              <guidance>The evaluator shall also check the operational guidance to ensure that it
-                contains instructions on configuring the <abbr linkend="TOE"/> so that TLS conforms
-                to the description in the <abbr linkend="TSS"/> (for instance, the set of
-                ciphersuites advertised by the <abbr linkend="TOE"/> may have to be restricted to
-                meet the requirements).</guidance>
+              <tss>The evaluator shall check the description of the implementation of this protocol in the <abbr linkend="TSS"/> to ensure that the ciphersuites supported are specified. The evaluator shall check the <abbr linkend="TSS"/> to ensure that the ciphersuites specified are identical to those listed for this component. The evaluator shall check the <abbr linkend="TSS"/> to account for all versions of TLS supported by an evaluated client.</tss>
+              <guidance>The evaluator shall also check the operational guidance to ensure that it contains instructions on configuring the <abbr linkend="TOE"/> so that TLS conforms to the description in the <abbr linkend="TSS"/> (for instance, the set of ciphersuites advertised by the <abbr linkend="TOE"/> may have to be restricted to meet the requirements).</guidance>
               <tests>The evaluator shall also perform the following tests: <testlist>
                   <test>The evaluator shall establish a TLS connection using each of the
                     ciphersuites specified by the requirement. This connection may be established as
@@ -3916,7 +3861,7 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="FCS_DTLS_EXT.1" name="DTLS Protocol" status="sel-based">
-          <selection-depends req="FCS_TLSS_EXT.1.1"/><!-- HERE what is req this depends on -->
+          <selection-depends req="FTP_ITC.1.1(2)" ids="ITC_DTLS_2"/><selection-depends req="FPT_ITT.1.1" ids="ITT_DTLS"/>
           <f-element id="FCS_DTLS_EXT.1.1">
             <title>The <selectables>
                 <selectable>TSF</selectable>
@@ -3967,8 +3912,7 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="FCS_HTTPS_EXT.1" name="HTTPS Protocol" status="sel-based">
-          <selection-depends req="FCS_HTTPS_EXT.1.1"/>
-          <!-- HERE what is req this depends on -->
+          <selection-depends req="FTP_TRP.1.1(1)" ids="TRP_HTTPS_1"/><selection-depends req="FTP_TRP.1.1(2)" ids="TRP_HTTPS_2"/><selection-depends req="FTP_ITC.1.1(1)" ids="ITC_HTTPS_1"/><selection-depends req="FTP_ITC.1.1(2)" ids="ITC_HTTPS_2"/><selection-depends req="FTP_ITC.1.1(3)" ids="ITC_HTTPS_3"/><selection-depends req="FPT_ITT.1.1" ids="ITT_HTTPS"/>
           <f-element id="FCS_HTTPS_EXT.1.1">
             <title>The <selectables>
                 <selectable>TSF</selectable>
@@ -4719,16 +4663,16 @@ To do:
         </f-component>
       </subsection>
       <subsection id="ftp" title="Trusted Path/Channels (FTP)">
-        <f-component id="FTP_ITC.1" name="Inter-TSF Trusted Channel (Authorized IT Entities)">
+        <f-component id="FTP_ITC.1(1)" name="Inter-TSF Trusted Channel (Authorized IT Entities)">
           <f-element id="FTP_ITC.1.1(1)">
             <title>The <selectables>
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables> shall use <selectables>
-                <selectable>IPsec</selectable>
-                <selectable>SSH</selectable>
-                <selectable>TLS</selectable>
-                <selectable>TLS/HTTPS</selectable>
+                <selectable id="ITC_IPSEC_1">IPsec</selectable>
+                <selectable id="ITC_SSH_1">SSH</selectable>
+                <selectable id="ITC_TLS_1">TLS</selectable>
+                <selectable id="ITC_HTTPS_1">TLS/HTTPS</selectable>
               </selectables> to provide a trusted communication channel between itself and
               authorized IT entities supporting the following capabilities: audit server, <selectables>
                 <selectable>authentication server</selectable>
@@ -4811,9 +4755,9 @@ To do:
           status="optional">
           <f-element id="FTP_ITC.1.1(2)">
             <title>The <abbr linkend="TSF"/> shall use <selectables>
-                <selectable>TLS</selectable>
-                <selectable>DTLS</selectable>
-                <selectable>HTTPS</selectable>
+                <selectable id="ITC_TLS_2">TLS</selectable>
+                <selectable id="ITC_DTLS_2">DTLS</selectable>
+                <selectable id="ITC_HTTPS_2">HTTPS</selectable>
               </selectables> to provide a trusted communication channel between itself and another
               trusted IT product that is logically distinct from other communication channels,
               provides assured identification of its end points, protects channel data from
@@ -4893,10 +4837,10 @@ To do:
                 <selectable>MAS Server</selectable>
                 <selectable>MAS Server platform</selectable>
               </selectables> shall use <selectables>
-                <selectable>IPsec</selectable>
-                <selectable>SSH</selectable>
-                <selectable>TLS</selectable>
-                <selectable>TLS/HTTPS</selectable>
+                <selectable id="ITC_IPSEC_3">IPsec</selectable>
+                <selectable id="ITC_SSH_3">SSH</selectable>
+                <selectable id="ITC_TLS_3">TLS</selectable>
+                <selectable id="ITC_HTTPS_3">TLS/HTTPS</selectable>
               </selectables> to provide a trusted communication channel between itself and
               authorized IT entities supporting the following capabilities: audit server, <selectables>
                 <selectable>authentication server</selectable>
@@ -4972,16 +4916,16 @@ To do:
               </tests></aactivity>
           </f-element>
         </f-component> 
-        <f-component id="FTP_TRP.1" name="Trusted Path for Remote Administration">
+        <f-component id="FTP_TRP.1(1)" name="Trusted Path for Remote Administration">
           <f-element id="FTP_TRP.1.1(1)">
             <title>The <selectables>
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables> shall use <selectables>
-                <selectable>IPsec</selectable>
-                <selectable>TLS</selectable>
-                <selectable>TLS/HTTPS</selectable>
-                <selectable>SSH</selectable>
+                <selectable id="TRP_IPSEC_1">IPsec</selectable>
+                <selectable id="TRP_TLS_1">TLS</selectable>
+                <selectable id="TRP_HTTPS_1">TLS/HTTPS</selectable>
+                <selectable id="TRP_SSH_1">SSH</selectable>
               </selectables>to provide a trusted communication path between itself and remote
               administrators that is logically distinct from other communication paths and provides
               assured identification of its endpoints and protection of the communicated data from
@@ -5037,14 +4981,14 @@ To do:
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FTP_TRP.1" name="Trusted Path (for Enrollment)">
+        <f-component id="FTP_TRP.1(2)" name="Trusted Path (for Enrollment)">
           <f-element id="FTP_TRP.1.1(2)">
             <title>The <selectables>
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables> shall use <selectables>
-                <selectable>TLS</selectable>
-                <selectable>TLS/HTTPS</selectable>
+                <selectable id="TRP_TLS_2">TLS</selectable>
+                <selectable id="TRP_HTTPS_2">TLS/HTTPS</selectable>
               </selectables> to provide a trusted communication path between itself and MD users
               that is logically distinct from other communication paths and provides assured
               identification of its endpoints and protection of the communicated data from
