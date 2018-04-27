@@ -630,155 +630,72 @@ To do:
       <subsection id="fau" title="Security Audit (FAU)">
         <f-component id="FAU_ALT_EXT.1" name="Server Alerts">
           <f-element id="FAU_ALT_EXT.1.1">
-            <title>The <abbr linkend="MDM"/> Server shall alert the administrators in the event of
-              any of the following: <h:ol type="a">
+            <title>The <abbr linkend="MDM"/> Server shall alert the administrators in the event of any of the following: <h:ol type="a">
                 <h:li>change in enrollment status</h:li>
                 <h:li>failure to apply policies to a mobile device</h:li>
-                <h:li>
-                  <selectables>
-                    <selectable><assignable>other events</assignable></selectable>
-                    <selectable>no other events</selectable>
-                  </selectables>
-                </h:li>
-              </h:ol></title>
-            <note role="application"> The <abbr linkend="MDM"/> Agent is required to report to the
-                <abbr linkend="MDM"/> Server on successful application of policies on a managed
-              mobile device, and failures can be inferred from the absence of such alerts. This
-              requirement is intended to ensure that the <abbr linkend="MDM"/> Server notifies
-              administrators when policies are not properly installed. Failure to properly install
-              policy updates does not affect the enrollment status of the mobile device.</note>
+                <h:li><selectables><selectable><assignable>other events</assignable></selectable><selectable>no other events</selectable></selectables></h:li>
+              </h:ol>
+            </title>
+            <note role="application"> The <abbr linkend="MDM"/> Agent is required to report to the <abbr linkend="MDM"/> Server on successful application of policies on a managed mobile device, and failures can be inferred from the absence of such alerts. This requirement is intended to ensure that the <abbr linkend="MDM"/> Server notifies administrators when policies are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the mobile device.</note>
             <aactivity>
-              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it
-                describes how the alert system is implemented. The evaluator shall also verify that
-                a description of each assigned event is provided in the <abbr linkend="TSS"/>.</tss>
-              <tests> For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr
-                  linkend="ST"/>: <testlist>
-                  <test>The evaluator shall enroll a device and ensure that the <abbr linkend="MDM"
-                    /> server alerts the administrator of the change in enrollment status. The
-                    evaluator shall unenroll (retire) a device and ensure that the <abbr
-                      linkend="MDM"/> server alerts the administrator of the change in enrollment
-                    status.</test>
-                  <test>The evaluator shall configure policies, which the <abbr linkend="MDM"/>
-                    agent should not be able to apply. These policies shall include:<h:ul>
-                      <h:li>a setting which is configurable on the <abbr linkend="MDM"/> Server
-                        interface but not supported by the platform on which the <abbr linkend="MDM"
-                        /> Agent runs, if any such settings exist</h:li>
-                      <h:li>a valid configuration setting with an invalid parameter, which may
-                        require manual modification of the policy prior to transmission to the
-                        device</h:li>
-                    </h:ul> The evaluator shall deploy such policies and verify that the <abbr
-                      linkend="MDM"/> server alerts the administrator about the failed application
-                    of the policy.</test>
-                  <test>(Conditional) The evaluator shall trigger each of the events listed and
-                    ensure that the <abbr linkend="MDM"/> Server alerts the administrator.</test>
-                </testlist></tests>
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes how the alert system is implemented. The evaluator shall also verify that a description of each assigned event is provided in the <abbr linkend="TSS"/>.</tss>
+              <tests> For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>: <testlist>
+                  <test>The evaluator shall enroll a device and ensure that the <abbr linkend="MDM"/> server alerts the administrator of the change in enrollment status. The evaluator shall unenroll (retire) a device and ensure that the <abbr linkend="MDM"/> server alerts the administrator of the change in enrollment status.</test>
+                  <test>The evaluator shall configure policies, which the <abbr linkend="MDM"/> agent should not be able to apply. These policies shall include:<h:ul>
+                      <h:li>a setting which is configurable on the <abbr linkend="MDM"/> Server interface but not supported by the platform on which the <abbr linkend="MDM"/> Agent runs, if any such settings exist</h:li>
+                      <h:li>a valid configuration setting with an invalid parameter, which may require manual modification of the policy prior to transmission to the device</h:li>
+                    </h:ul> 
+                    The evaluator shall deploy such policies and verify that the <abbr linkend="MDM"/> server alerts the administrator about the failed application of the policy.</test>
+                  <test>(Conditional) The evaluator shall trigger each of the events listed and ensure that the <abbr linkend="MDM"/> Server alerts the administrator.</test>
+                </testlist>
+              </tests>
             </aactivity>
           </f-element>
         </f-component>
         <f-component id="FAU_NET_EXT.1" name="Network Reachability Review">
           <f-element id="FAU_NET_EXT.1.1">
-            <title>The <abbr linkend="MDM"/> Server shall provide authorized administrators with the
-              capability to read the network connectivity status of an enrolled agent.</title>
-            <note role="application"> The <abbr linkend="MDM"/> Server establishes the network
-              connectivity status of enrolled agents using periodic reachability event alerts from
-              the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr
-                linkend="EP"/>. This status may be determined using “polls” from the <abbr
-                linkend="MDM"/> Server which the Agent is required to respond to or using scheduled
-              periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
+            <title>The <abbr linkend="MDM"/> Server shall provide authorized administrators with the capability to read the network connectivity status of an enrolled agent.</title>
+            <note role="application"> The <abbr linkend="MDM"/> Server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr linkend="EP"/>. This status may be determined using “polls” from the <abbr linkend="MDM"/> Server which the Agent is required to respond to or using scheduled periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
             <aactivity>
-              <tss> The evaluator ensures that the <abbr linkend="TSS"/> describes how reachability
-                events are implemented, for each supported mobile platform. The evaluator verifies
-                that this description clearly indicates who (MDM Agent or <abbr linkend="MDM"/>
-                Server) initiates reachability events. </tss>
-              <guidance> The evaluator shall verify that the guidance instructs administrators on
-                the method of determining the network connectivity status of an enrolled agent. </guidance>
-              <tests> For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr
-                  linkend="ST"/>:<h:br/><h:br/> The evaluator shall configure the <abbr linkend="MDM"/>
-                Agent/platform to perform a network reachability test, both with and without such
-                connectivity and shall ensure that by following the guidance, the evaluator can
-                determine results that reflect both. </tests>
+              <tss> The evaluator ensures that the <abbr linkend="TSS"/> describes how reachability events are implemented, for each supported mobile platform. The evaluator verifies that this description clearly indicates who (MDM Agent or <abbr linkend="MDM"/> Server) initiates reachability events. </tss>
+              <guidance> The evaluator shall verify that the guidance instructs administrators on the method of determining the network connectivity status of an enrolled agent. </guidance>
+              <tests> For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<h:br/><h:br/> The evaluator shall configure the <abbr linkend="MDM"/> Agent/platform to perform a network reachability test, both with and without such connectivity and shall ensure that by following the guidance, the evaluator can determine results that reflect both. </tests>
             </aactivity>
           </f-element>
         </f-component> 
         <f-component id="FAU_SAR.1" name="Audit Review" status="optional">
           <f-element id="FAU_SAR.1.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall provide [Authorized Administrators] with the capability to read
-              [all audit data] from the audit records.</title>
+            <title>The <selectables><selectable>TSF</selectable><selectable><abbr linkend="TOE"/> platform</selectable></selectables> shall provide [Authorized Administrators] with the capability to read [all audit data] from the audit records.</title>
           </f-element>
           <f-element id="FAU_SAR.1.2">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall provide the audit records in a manner suitable for the Authorized
-              Administrators to interpret the information.</title>
-            <note role="application">The intent of this requirement is to ensure that the
-              administrator can view and interpret the audit records and to prevent unauthorized
-              users from accessing the logs.</note>
+            <title>The <selectables><selectable>TSF</selectable><selectable><abbr linkend="TOE"/> platform</selectable></selectables> shall provide the audit records in a manner suitable for the Authorized Administrators to interpret the information.</title>
+            <note role="application">The intent of this requirement is to ensure that the administrator can view and interpret the audit records and to prevent unauthorized users from accessing the logs.</note>
             <aactivity>
-              <guidance>The evaluator shall check the AGD guidance and ensure that it describes how
-                the administrator accesses the audit data and describes the format of the audit
-                record.</guidance>
-              <tests>The evaluator shall attempt to view the audit record as the authorized
-                administrator and verify that the action succeeds. The evaluator shall ensure the
-                audit records generated during testing match the format specified in the
-                administrative guide.</tests></aactivity>
+              <guidance>The evaluator shall check the AGD guidance and ensure that it describes how the administrator accesses the audit data and describes the format of the audit record.</guidance>
+              <tests>The evaluator shall attempt to view the audit record as the authorized administrator and verify that the action succeeds. The evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide.</tests>
+            </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="FAU_CRP_EXT.1"
-          name="Support for Compliance Reporting of Mobile Device Configuration" status="objective">
+        <f-component id="FAU_CRP_EXT.1" name="Support for Compliance Reporting of Mobile Device Configuration" status="objective">
           <f-element id="FAU_CRP_EXT.1.1">
-            <title> The <abbr linkend="MDM"/> Server shall provide <selectables>
-                <selectable>an interface that provides responses to queries about the configuration
-                  of enrolled devices</selectable>
-                <selectable>an interface that permits the export of data about the configuration of
-                  enrolled devices</selectable>
-              </selectables> to authorized entities over an authenticated <selectables>
-                <selectable>TLS/HTTPS</selectable>
-                <selectable>TLS</selectable>
-                <selectable>DTLS</selectable>
-                <selectable>IPsec</selectable>
-                <selectable>SSH</selectable>
-              </selectables> trusted communication channel. The provided information for each
-              enrolled mobile device includes: <h:ol type="a">
+            <title> The <abbr linkend="MDM"/> Server shall provide <selectables><selectable>an interface that provides responses to queries about the configuration of enrolled devices</selectable><selectable>an interface that permits the export of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over an authenticated <selectables><selectable>TLS/HTTPS</selectable><selectable>TLS</selectable><selectable>DTLS</selectable><selectable>IPsec</selectable><selectable>SSH</selectable></selectables> trusted communication channel. The provided information for each enrolled mobile device includes: <h:ol type="a">
                 <h:li>The current version of the MD firmware/software</h:li>
                 <h:li>The current version of the hardware model of the device</h:li>
                 <h:li>The current version of installed mobile applications</h:li>
-                <h:li>List of MD configuration policies that are in place on the device (as
-                  defined in FMT_SMF.1.1(1))</h:li>
-                <h:li><selectables>
-                    <selectable><assignable>list of other available information about enrolled
-                        devices</assignable></selectable>
-                    <selectable>no other information</selectable>
-                  </selectables>
+                <h:li>List of MD configuration policies that are in place on the device (as defined in FMT_SMF.1.1(1))</h:li>
+                <h:li><selectables><selectable><assignable>list of other available information about enrolled devices</assignable></selectable><selectable>no other information</selectable></selectables>
                 </h:li>
               </h:ol>
             </title>
-            <note role="application">The intent of this requirement is that the <abbr linkend="MDM"
-              /> Server be able to provide compliance information about enrolled mobile devices for
-              use by other enterprise security infrastructure systems. There are active standards
-              efforts underway by the Internet Engineering Task Force (IETF) Security Automation and
-              Continuous Monitoring (SACM) Working Group and others to define protocols and
-              standards to assess and report upon endpoint device posture. We expect that this
-              requirement will evolve in future versions of this Protection Profile as standards
-              efforts mature.<h:br/><h:br/> If “IPsec” is selected the Extended Package for IPsec VPN
-              Clients must be included in the <abbr linkend="ST"/>. If “SSH” is selected the
-              Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If
-              “TLS”, “TLS/HTTPS” or “DTLS” are selected the appropriate selection-based <abbr
-                linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. </note>
+            <note role="application">The intent of this requirement is that the <abbr linkend="MDM"/> Server be able to provide compliance information about enrolled mobile devices for use by other enterprise security infrastructure systems. There are active standards efforts underway by the Internet Engineering Task Force (IETF) Security Automation and Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report upon endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile as standards efforts mature.<h:br/><h:br/> 
+              If “IPsec” is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If “SSH” is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If “TLS”, “TLS/HTTPS” or “DTLS” are selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. </note>
             <aactivity>
-              <guidance>The evaluator shall check to ensure that the operational guidance contains
-                instructions on how to access the <abbr linkend="MDM"/> Server’s compliance
-                reporting interface. </guidance><tests>
+              <guidance>The evaluator shall check to ensure that the operational guidance contains instructions on how to access the <abbr linkend="MDM"/> Server’s compliance reporting interface. </guidance><tests>
                 <testlist>
-                  <test>Using the operational guidance, the evaluator shall demonstrate the ability
-                    to access the compliance reporting interface from an authorized entity and
-                    successfully obtain information about enrolled devices.</test>
-                  <test>The evaluator shall attempt to access the compliance reporting interface
-                    from an unauthorized entity and demonstrate that the attempt is denied.</test>
-                </testlist></tests>
+                  <test>Using the operational guidance, the evaluator shall demonstrate the ability to access the compliance reporting interface from an authorized entity and successfully obtain information about enrolled devices.</test>
+                  <test>The evaluator shall attempt to access the compliance reporting interface from an unauthorized entity and demonstrate that the attempt is denied.</test>
+                </testlist>
+              </tests>
             </aactivity>
           </f-element>
         </f-component> 
@@ -786,38 +703,21 @@ To do:
       <subsection id="fia" title="Identification and Authentication (FIA)">
         <f-component id="FIA_ENR_EXT.1" name="Enrollment of Mobile Device into Management">
           <f-element id="FIA_ENR_EXT.1.1">
-            <title>The <abbr linkend="MDM"/> Server shall authenticate the remote user over a
-              trusted channel during the enrollment of a mobile device.</title>
-            <note role="application">The <abbr linkend="MDM"/> Server may use its own directory or a
-              directory server to perform the authentication decision for users performing the
-              remote enrollment of a mobile device.</note>
+            <title>The <abbr linkend="MDM"/> Server shall authenticate the remote user over a trusted channel during the enrollment of a mobile device.</title>
+            <note role="application">The <abbr linkend="MDM"/> Server may use its own directory or a directory server to perform the authentication decision for users performing the remote enrollment of a mobile device.</note>
             <aactivity> 
-              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it
-              describes the process of enrollment for each <abbr linkend="MDM"/> Agent/platform
-              listed as supported in the <abbr linkend="ST"/>. This description shall include the
-              trusted path used for enrollment (FTP_TRP.1(2)), the method of user authentication
-              (username/password, token, etc.), the method of authentication decision (local or
-              remote authentication services), and the actions performed on the <abbr linkend="MDM"
-              /> Server upon successful authentication. </tss>
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes the process of enrollment for each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>. This description shall include the trusted path used for enrollment (FTP_TRP.1(2)), the method of user authentication (username/password, token, etc.), the method of authentication decision (local or remote authentication services), and the actions performed on the <abbr linkend="MDM"/> Server upon successful authentication. </tss>
               <tests>
                 <testlist>
-                <test>The evaluator shall attempt to enroll a device without providing correct
-                  credentials. The evaluator shall verify that the device is not enrolled and that
-                  the described enrollment actions are not taken.</test>
-                <test>The evaluator shall attempt to enroll the device providing correct
-                  credentials. The evaluator shall verify that the device is enrolled and that the
-                  described enrollment actions are taken.</test>
+                <test>The evaluator shall attempt to enroll a device without providing correct credentials. The evaluator shall verify that the device is not enrolled and that the described enrollment actions are not taken.</test>
+                <test>The evaluator shall attempt to enroll the device providing correct credentials. The evaluator shall verify that the device is enrolled and that the described enrollment actions are taken.</test>
               </testlist>
               </tests>
             </aactivity>
           </f-element>
           <f-element id="FIA_ENR_EXT.1.2">
             <title>The <abbr linkend="MDM"/> Server shall limit the user’s enrollment of devices to <selectables>
-                <selectable>devices specified by <selectables>
-                    <selectable>IMEI</selectable>
-                    <selectable><assignable>a unique device ID</assignable></selectable>
-                  </selectables>
-                </selectable>
+                <selectable>devices specified by <selectables><selectable>IMEI</selectable><selectable><assignable>a unique device ID</assignable></selectable></selectables></selectable>
                 <selectable>specific device models</selectable>
                 <selectable>a number of devices</selectable>
                 <selectable>specific time period</selectable>
@@ -825,28 +725,15 @@ To do:
                 <selectable><assignable>other features</assignable></selectable>
                 <selectable>none</selectable>
               </selectables>. </title>
-            <note role="application"> This requirement is designed to permit the enterprise to
-              restrict users’ enrollment of devices.<h:br/><h:br/> In the next version of this Protection
-              Profile, a unique device ID will be required to limit the user’s enrollment. The
-              unique device ID can be the IMEI or an ID specific to a particular platform. The other
-              options will still be selectable in the next version, but a unique device ID will be
-              required. </note>
+            <note role="application"> This requirement is designed to permit the enterprise to restrict users’ enrollment of devices.<h:br/><h:br/> In the next version of this Protection Profile, a unique device ID will be required to limit the user’s enrollment. The unique device ID can be the IMEI or an ID specific to a particular platform. The other options will still be selectable in the next version, but a unique device ID will be required. </note>
             <!-- TODO: Make unique ID mandatory, all other options selectable and remove the app note.
             The MDM Server shall limit the user’s enrollment of devices to devices specified by [selection: IMEI, [assignment: a unique device ID]] and [selection: specific device models, a number of devices, specific time period, [assignment: other features], no other features].  
             -->
             <aactivity>
-              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it
-                implements a policy to limit the user’s enrollment of devices.</tss>
-              <guidance>The evaluator shall ensure that the administrative guidance describes the
-                method(s) of restricting user enrollment and that it instructs the administrator how
-                to configure the restrictions.</guidance>
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it implements a policy to limit the user’s enrollment of devices.</tss>
+              <guidance>The evaluator shall ensure that the administrative guidance describes the method(s) of restricting user enrollment and that it instructs the administrator how to configure the restrictions.</guidance>
               <tests>For each type of policy selected, the evaluator shall perform the following: <testlist>
-                  <test>The evaluator shall attempt to configure the <abbr linkend="MDM"/> Server
-                    according to the administrative guidance in order to prevent enrollment. The
-                    evaluator shall verify that the user cannot enroll a device outside of the
-                    configured limitation. (For example, the evaluator may try to enroll a
-                    disallowed device, or may try to enroll additional devices beyond the number
-                    allowed.)</test>
+                  <test>The evaluator shall attempt to configure the <abbr linkend="MDM"/> Server according to the administrative guidance in order to prevent enrollment. The evaluator shall verify that the user cannot enroll a device outside of the configured limitation. (For example, the evaluator may try to enroll a disallowed device, or may try to enroll additional devices beyond the number allowed.)</test>
                 </testlist>
               </tests>
             </aactivity>
@@ -856,121 +743,64 @@ To do:
       <subsection id="fmt" title="Security Management (FMT)">
         <f-component id="FMT_MOF.1(1)" name="Management of Functions Behavior">
           <f-element id="FMT_MOF.1.1(1)">
-            <title>Refinement: The <abbr linkend="MDM"/> Server shall restrict the ability to
-              perform the functions <h:ul>
+            <title>Refinement: The <abbr linkend="MDM"/> Server shall restrict the ability to perform the functions <h:ul>
                 <h:li>listed in FMT_SMF.1(1)</h:li>
                 <h:li>enable, disable, and modify policies listed in FMT_SMF.1(1)</h:li>
                 <h:li>listed in FMT_SMF.1(2)</h:li>
               </h:ul> to [authorized administrators].</title>
-            <note role="application">This requirement outlines the functions that administrators
-              will have the power to enable, disable, modify, and monitor functions and policies
-              listed in FMT_SMF.1(1). It also includes functions necessary to maintain and configure
-              the <abbr linkend="MDM"/> Server itself.</note>
+            <note role="application">This requirement outlines the functions that administrators will have the power to enable, disable, modify, and monitor functions and policies listed in FMT_SMF.1(1). It also includes functions necessary to maintain and configure the <abbr linkend="MDM"/> Server itself.</note>
             <aactivity>
-              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and user documents to
-                ensure that it describes what security management functions are restricted to the
-                administrator and what actions can be taken for each management function. The
-                evaluator shall verify that the security management functions are restricted to
-                authorized administrators and the administrator is only able to take the actions as
-                described in the user documents.</tss>
-              <tests>The evaluator shall attempt to access the functions and policies in
-                FMT_SMF.1(1) as an unauthorized user and verify that the attempt fails.
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and user documents to ensure that it describes what security management functions are restricted to the administrator and what actions can be taken for each management function. The evaluator shall verify that the security management functions are restricted to authorized administrators and the administrator is only able to take the actions as described in the user documents.</tss>
+              <tests>The evaluator shall attempt to access the functions and policies in FMT_SMF.1(1) as an unauthorized user and verify that the attempt fails.
               </tests>
             </aactivity>
           </f-element>
         </f-component>
         <f-component id="FMT_MOF.1(2)" name="Management of Functions Behavior (Enrollment)">
           <f-element id="FMT_MOF.1.1(2)">
-            <title>Refinement: The <h:b>MDM Server</h:b> shall restrict the ability to
-                <h:i>[initiate the enrollment process]</h:i> to <h:i>[authorized
-                administrators and MD users]</h:i>.</title>
-            <note role="application">This requirement outlines the enrollment functions that both
-              administrators and MD users may perform. The enrollment actions are identified in the
-                <abbr linkend="TSS"/> as a part of FIA_ENR_EXT.1.<h:br/><h:br/> The authorized
-              administrator does not remotely initiate enrollment of the mobile devices that are in
-              the possession of users but may enroll mobile devices when they are in the possession
-              of the administrator, for example, before distributing the mobile devices to the
-              users. </note>
+            <title>Refinement: The <h:b>MDM Server</h:b> shall restrict the ability to <h:i>[initiate the enrollment process]</h:i> to <h:i>[authorized administrators and MD users]</h:i>.</title>
+            <note role="application">This requirement outlines the enrollment functions that both administrators and MD users may perform. The enrollment actions are identified in the <abbr linkend="TSS"/> as a part of FIA_ENR_EXT.1.<h:br/><h:br/> The authorized administrator does not remotely initiate enrollment of the mobile devices that are in the possession of users but may enroll mobile devices when they are in the possession of the administrator, for example, before distributing the mobile devices to the users. </note>
             <aactivity>
-              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it
-                describes how unauthorized users are prevented from enrolling in the <abbr
-                  linkend="MDM"/> services.</tss>
-              <tests>The test of this function is performed in conjunction with
-                FIA_ENR_EXT.1.</tests></aactivity>
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes how unauthorized users are prevented from enrolling in the <abbr linkend="MDM"/> services.</tss>
+              <tests>The test of this function is performed in conjunction with FIA_ENR_EXT.1.</tests>
+            </aactivity>
           </f-element>
         </f-component>
         <f-component id="FMT_POL_EXT.1" name="Trusted Policy Update">
           <f-element id="FMT_POL_EXT.1.1">
-            <title>The <abbr linkend="MDM"/> Server shall provide digitally signed policies and
-              policy updates to the <abbr linkend="MDM"/> Agent.</title>
-            <note role="application">The intent of this requirement is to
-              cryptographically tie the policies to the enterprise that mandated the policy, not to
-              protect the policies in transit (as they are already protected by FPT_ITT.1 or
-              FTP_ITC.1(2)). This is especially critical for users who connect to multiple
-              enterprises.</note>
+            <title>The <abbr linkend="MDM"/> Server shall provide digitally signed policies and policy updates to the <abbr linkend="MDM"/> Agent.</title>
+            <note role="application">The intent of this requirement is to cryptographically tie the policies to the enterprise that mandated the policy, not to
+ protect the policies in transit (as they are already protected by FPT_ITT.1 or FTP_ITC.1(2)). This is especially critical for users who connect to multiple enterprises.</note>
             <aactivity>
-              <tss>Policies must be digitally signed by the enterprise using the algorithms in
-                FCS_COP.1(3). The evaluator shall ensure that the <abbr linkend="TSS"/> describes
-                how policies are digitally signed by the <abbr linkend="TSF"/>.</tss>
-              <guidance>If applicable, the evaluator shall verify that the AGD guidance instructs
-                administrators on configuring the Enterprise certificate to be used for signing
-                policies or signing the policies before applying them. </guidance>
-              <tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1(1).
-                The evaluator shall examine the policy either at the <abbr linkend="MDM"/> Server,
-                in transmission, or at the <abbr linkend="MDM"/> agent, and verify the <abbr
-                  linkend="TSF"/> signs the update and provides it to the <abbr linkend="MDM"/>
-                Agent.</tests></aactivity>
-          </f-element>
-        </f-component> 
-        <f-component id="FMT_MOF.1(3)" name="Management of Functions in MAS Server"
-          status="optional">
-          <f-element id="FMT_MOF.1.1(3)">
-            <title>The MAS Server shall restrict the ability to configure user groups for
-              user-access to specific applications allowing only the administrator to perform this
-              function.</title>
-            <note role="application">This requirement is to ensure that the MAS Server can create
-              groups to configure which applications a user can access based on which group they are
-              in. If the MAS Server uses the groups defined by the <abbr linkend="MDM"/>, then it
-              must communicate with the <abbr linkend="MDM"/> Server (if separate server) to
-              determine which applications the user can access.</note>
-            <aactivity>
-              <tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine if the MAS
-                Server creates its own groups or relies on the groups specified by the <abbr
-                  linkend="MDM"/> Server.</tss>
-              <guidance>The evaluator shall confirm that the operational guidance contains how to
-                create and define user groups and how to specify which applications are accessible
-                by which group.</guidance>
-              <tests>The evaluator shall ensure that the MAS client can only access the applications
-                specified for the group they are enrolled in. The evaluator shall create a user
-                group and do not define the user to be part of the group. Verify that an application
-                accessible to that group cannot be accessed. The evaluator shall include the user in
-                the group and assure that the application can be accessed.</tests></aactivity>
-          </f-element>
-        </f-component>
-        <f-component id="FMT_MOF.1(4)" name="Management of Functions in (MAS Server Downloads)"
-          status="optional">
-          <f-element id="FMT_MOF.1.1(4)">
-            <title>The MAS Server shall restrict the ability to download applications allowing only
-              enrolled mobile devices that are compliant with <abbr linkend="MDM"/> policies and
-              assigned to a user in the application access group to perform this function.</title>
-            <note role="application"/>
-            <aactivity>
-              <tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that all
-                methods of initiating an application download or update push are specified.</tss>
-              <guidance>The evaluator shall confirm that the operational guidance contains how to
-                initiate an application download or update push.</guidance>
-              <tests>The evaluator shall ensure that the MAS Server verifies that the mobile device
-                is enrolled in the <abbr linkend="MDM"/> Server and is in a compliant state. The
-                evaluator shall verify that an application cannot be downloaded from the MAS Server
-                prior to enrolling the device with the <abbr linkend="MDM"/>. The evaluator shall
-                partially enroll the mobile device, so the device is connected to the <abbr
-                  linkend="MDM"/> Server, but is not compliant and verify that applications cannot
-                be downloaded.</tests>
+              <tss>Policies must be digitally signed by the enterprise using the algorithms in FCS_COP.1(3). The evaluator shall ensure that the <abbr linkend="TSS"/> describes how policies are digitally signed by the <abbr linkend="TSF"/>.</tss>
+              <guidance>If applicable, the evaluator shall verify that the AGD guidance instructs administrators on configuring the Enterprise certificate to be used for signing policies or signing the policies before applying them. </guidance>
+              <tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1(1). The evaluator shall examine the policy either at the <abbr linkend="MDM"/> Server, in transmission, or at the <abbr linkend="MDM"/> agent, and verify the <abbr linkend="TSF"/> signs the update and provides it to the <abbr linkend="MDM"/> Agent.</tests>
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="FMT_SMF.1(3)"
-          name="Specification of Management Functions (MAS Server)" status="optional">
+        <f-component id="FMT_MOF.1(3)" name="Management of Functions in MAS Server" status="optional">
+          <f-element id="FMT_MOF.1.1(3)">
+            <title>The MAS Server shall restrict the ability to configure user groups for user-access to specific applications allowing only the administrator to perform this function.</title>
+            <note role="application">This requirement is to ensure that the MAS Server can create groups to configure which applications a user can access based on which group they are in. If the MAS Server uses the groups defined by the <abbr linkend="MDM"/>, then it must communicate with the <abbr linkend="MDM"/> Server (if separate server) to determine which applications the user can access.</note>
+            <aactivity>
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine if the MAS Server creates its own groups or relies on the groups specified by the <abbr linkend="MDM"/> Server.</tss>
+              <guidance>The evaluator shall confirm that the operational guidance contains how to create and define user groups and how to specify which applications are accessible by which group.</guidance>
+              <tests>The evaluator shall ensure that the MAS client can only access the applications specified for the group they are enrolled in. The evaluator shall create a user group and do not define the user to be part of the group. Verify that an application accessible to that group cannot be accessed. The evaluator shall include the user in the group and assure that the application can be accessed.</tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        <f-component id="FMT_MOF.1(4)" name="Management of Functions in (MAS Server Downloads)" status="optional">
+          <f-element id="FMT_MOF.1.1(4)">
+            <title>The MAS Server shall restrict the ability to download applications allowing only enrolled mobile devices that are compliant with <abbr linkend="MDM"/> policies and assigned to a user in the application access group to perform this function.</title>
+            <aactivity>
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> to determine that all methods of initiating an application download or update push are specified.</tss>
+              <guidance>The evaluator shall confirm that the operational guidance contains how to initiate an application download or update push.</guidance>
+              <tests>The evaluator shall ensure that the MAS Server verifies that the mobile device is enrolled in the <abbr linkend="MDM"/> Server and is in a compliant state. The evaluator shall verify that an application cannot be downloaded from the MAS Server prior to enrolling the device with the <abbr linkend="MDM"/>. The evaluator shall partially enroll the mobile device, so the device is connected to the <abbr linkend="MDM"/> Server, but is not compliant and verify that applications cannot be downloaded.</tests>
+            </aactivity>
+          </f-element>
+        </f-component> 
+        <!-- HERE -->
+        <f-component id="FMT_SMF.1(3)" name="Specification of Management Functions (MAS Server)" status="optional">
           <f-element id="FMT_SMF.1.1(3)">
             <title>The MAS Server shall be capable of performing the following management functions:
                 <h:ol type="a">
@@ -983,26 +813,16 @@ To do:
                   </selectables></h:li>
               </h:ol>
             </title>
-            <note role="application">This requirement captures all the configuration functionality
-              in the MAS Server to configure the underlying MAS Server. The <abbr linkend="ST"/>
-              author can add more commands and configuration policies by completing the assignment
-              statement.</note>
+            <note role="application">This requirement captures all the configuration functionality in the MAS Server to configure the underlying MAS Server. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the assignment statement.</note>
             <aactivity>
-              <tss>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes
-                each management function listed.</tss>
-              <guidance>The evaluator shall verify the AGD guidance includes detailed instructions
-                of what options are available and how to configure each management functional
-                capability listed. </guidance>
-              <tests>The test of the functions are performed in conjunction with the restriction of
-                the function in FMT_MOF.1.</tests></aactivity>
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed.</tss>
+              <guidance>The evaluator shall verify the AGD guidance includes detailed instructions of what options are available and how to configure each management functional capability listed. </guidance>
+              <tests>The test of the functions are performed in conjunction with the restriction of the function in FMT_MOF.1.</tests></aactivity>
           </f-element>
         </f-component> 
-        <f-component id="FMT_SMF.1(1)"
-          name="Specification of Management Functions (Server configuration of Agent)">
+        <f-component id="FMT_SMF.1(1)" name="Specification of Management Functions (Server configuration of Agent)">
           <f-element id="FMT_SMF.1.1(1)">
-            <title>The <h:b>MDM Server</h:b> shall be capable of <h:b>communicating the
-                following commands to the <abbr linkend="MDM"/> Agent:
-              </h:b>
+            <title>The <h:b>MDM Server</h:b> shall be capable of <h:b>communicating the following commands to the <abbr linkend="MDM"/> Agent: </h:b>
               <h:ul style="list-style-type:none">
                 <h:li><ctr id="smf1" pre=""></ctr>. transition to the locked state, (MDF Function 6)</h:li>
                 <h:li><ctr id="smf2" pre=""></ctr>. full wipe of protected data, (MDF Function 7)</h:li>
@@ -1010,29 +830,19 @@ To do:
                 <h:li><ctr id="smf4" pre=""></ctr>. install policies,</h:li>
                 <h:li><ctr id="smf5" pre=""></ctr>. query connectivity status,</h:li>
                 <h:li><ctr id="smf6" pre=""></ctr>. query the current version of the MD firmware/software</h:li>
-                <h:li><ctr id="smf7" pre=""></ctr>. query the current version of the hardware model
-                  of the device</h:li>
-                <h:li><ctr id="smf8" pre=""></ctr>. query the current version of installed mobile
-                  applications</h:li>
-                <h:li><ctr id="smf9" pre=""></ctr>. import X.509v3 certificates into the Trust Anchor
-                  Database, (MDF Function 11)</h:li>
+                <h:li><ctr id="smf7" pre=""></ctr>. query the current version of the hardware model of the device</h:li>
+                <h:li><ctr id="smf8" pre=""></ctr>. query the current version of installed mobile applications</h:li>
+                <h:li><ctr id="smf9" pre=""></ctr>. import X.509v3 certificates into the Trust Anchor Database, (MDF Function 11)</h:li>
                 <h:li><ctr id="smf10" pre=""></ctr>. install applications, (MDF Function 16)</h:li>
-                <h:li><ctr id="smf11" pre=""></ctr>. update system software, (MDF Function
-                  15)</h:li>
+                <h:li><ctr id="smf11" pre=""></ctr>. update system software, (MDF Function 15)</h:li>
                 <h:li><ctr id="smf12" pre=""></ctr>. remove applications, (MDF Function 14)
                 </h:li>
               </h:ul> 
-              <h:b>and the following commands to the <abbr linkend="MDM"/> Agent: </h:b>
-                <h:br/><h:br/>
+              <h:b>and the following commands to the <abbr linkend="MDM"/> Agent: </h:b><h:br/><h:br/>
               <selectables linebreak="yes">
-                <selectable>
-                  <ctr id="smf13" pre=""></ctr>. remove Enterprise applications, (MDF Function 17)
-                </selectable>
-                <selectable>
-                  <ctr id="smf14" pre=""></ctr>. wipe Enterprise data, (MDF Function 28)
-                </selectable>
-                <selectable>
-                  <ctr id="smf15" pre=""></ctr>. remove imported X.509v3 certificates and 
+                <selectable><ctr id="smf13" pre=""></ctr>. remove Enterprise applications, (MDF Function 17) </selectable>
+                <selectable><ctr id="smf14" pre=""></ctr>. wipe Enterprise data, (MDF Function 28) </selectable>
+                <selectable><ctr id="smf15" pre=""></ctr>. remove imported X.509v3 certificates and 
                   <selectables>
                     <selectable>no other X.509v3 certificates</selectable>
                     <selectable><assignable>list of other categories of X.509v3
@@ -1331,8 +1141,7 @@ To do:
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="FMT_SMF.1(2)"
-          name="Specification of Management Functions (Server Configuration of Server)">
+        <f-component id="FMT_SMF.1(2)" name="Specification of Management Functions (Server Configuration of Server)">
           <f-element id="FMT_SMF.1.1(2)">
             <title> The <abbr linkend="MDM"/> Server shall be capable of performing the following
               management functions: <h:ol type="a">
@@ -1601,78 +1410,26 @@ To do:
       <subsection id="fau2" title="Security Audit (FAU)">
         <f-component id="FAU_GEN.1" name="Audit Data Generation">
           <f-element id="FAU_GEN.1.1(1)">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall be able to generate an audit record of the following auditable
-              events: <h:ol type="a">
+            <title>The <selectables><selectable>TSF</selectable><selectable><abbr linkend="TOE"/> platform</selectable> </selectables> shall be able to generate an audit record of the following auditable events: <h:ol type="a">
                 <h:li>Start-up and shutdown of the <abbr linkend="MDM"/> Server software</h:li>
                 <h:li>All administrative actions</h:li>
-                <h:li>Commands issued from the <abbr linkend="MDM"/> Server to an <abbr
-                    linkend="MDM"/> Agent</h:li>
+                <h:li>Commands issued from the <abbr linkend="MDM"/> Server to an <abbr linkend="MDM"/> Agent</h:li>
                 <h:li>Specifically defined auditable events listed in Table 1</h:li>
                 <h:li><assignable>other events</assignable>.</h:li>
               </h:ol>
             </title>
-            <note role="application"> This requirement outlines the information to be included in
-              audit records generated by either the <abbr linkend="MDM"/> Server software or the
-                <abbr linkend="TOE"/> platform. Each of these audit records may be written by the
-                <abbr linkend="MDM"/> Server software or may be dispatched to the operating system
-              on which it runs. The <abbr linkend="ST"/> author can include other auditable events
-              in the assignment; they are not limited to the list presented. All audits must contain
-              at least the information mentioned in FAU_GEN.1.2, but may contain more information
-              which can be assigned.<h:br/><h:br/> Item b above requires all administrative actions to be
-              auditable, so no additional specification for the auditability of these actions is
-              specified in Table 1 aside from those that require additional record content.
-              Administrative actions refer to any management functions specified by
-              FMT_MOF.1(1).<h:br/><h:br/> Item c includes those commands, which may be performed
-              automatically based on triggers or on a schedule.<h:br/><h:br/> Depending on the specific
-              requirements selected by the <abbr linkend="ST"/> author from Security Functional
-              Requirements, Optional Requirements, Selection-Based Requirements, and Objective
-              Requirements, the <abbr linkend="ST"/> author should include the appropriate auditable
-              event from Table 1 in the <abbr linkend="ST"/> for the requirements selected. </note>
+            <note role="application"> This requirement outlines the information to be included in audit records generated by either the <abbr linkend="MDM"/> Server software or the <abbr linkend="TOE"/> platform. Each of these audit records may be written by the <abbr linkend="MDM"/> Server software or may be dispatched to the operating system on which it runs. The <abbr linkend="ST"/> author can include other auditable events in the assignment; they are not limited to the list presented. All audits must contain at least the information mentioned in FAU_GEN.1.2, but may contain more information which can be assigned.<h:br/><h:br/> 
+              Item b above requires all administrative actions to be auditable, so no additional specification for the auditability of these actions is specified in Table 1 aside from those that require additional record content. Administrative actions refer to any management functions specified by FMT_MOF.1(1).<h:br/><h:br/> Item c includes those commands, which may be performed automatically based on triggers or on a schedule.<h:br/><h:br/> Depending on the specific requirements selected by the <abbr linkend="ST"/> author from Security Functional Requirements, Optional Requirements, Selection-Based Requirements, and Objective Requirements, the <abbr linkend="ST"/> author should include the appropriate auditable event from Table 1 in the <abbr linkend="ST"/> for the requirements selected. </note>
             <aactivity>
-              <tss>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it lists all
-                of the auditable events. The evaluator shall check to make sure that every audit
-                event type mandated by the <abbr linkend="PP"/> is described in the <abbr
-                  linkend="TSS"/>. The evaluator shall verify that for every audit event described
-                in the <abbr linkend="TSS"/>, the description indicates where the audit event is
-                generated (TSF, <abbr linkend="TOE"/> platform).</tss>
-              <guidance> The evaluator shall check the administrative guide and ensure that it lists
-                all of the auditable events. The evaluator shall check to make sure that every audit
-                event type mandated by the <abbr linkend="PP"/> is described.<h:br/><h:br/> The evaluator
-                shall also make a determination of the administrative actions that are relevant in
-                the context of this <abbr linkend="PP"/> including those listed in the Management
-                section. The evaluator shall examine the administrative guide and make a
-                determination of which administrative commands are related to the configuration
-                (including enabling or disabling) of the mechanisms implemented in the <abbr
-                  linkend="TOE"/> that are necessary to enforce the requirements specified in the
-                  <abbr linkend="PP"/>. The evaluator shall document the methodology or approach
-                taken while determining which actions in the administrative guide are security
-                relevant with respect to this <abbr linkend="PP"/>. The evaluator may perform this
-                activity as part of the activities associated with ensuring the AGD_OPE guidance
-                satisfies the requirements. </guidance>
-              <tests>The evaluator shall test the <abbr linkend="TOE"/>’s ability to correctly
-                generate audit records by having the <abbr linkend="TOE"/> generate audit records
-                for the events listed in the provided table and administrative actions. This should
-                include all instances of an event. The evaluator shall test that audit records are
-                generated for the establishment and termination of a channel for each of the
-                cryptographic protocols contained in the <abbr linkend="ST"/>. For administrative
-                actions, the evaluator shall test that each action determined by the evaluator above
-                to be security relevant in the context of this <abbr linkend="PP"/> is
-                auditable.<h:br/><h:br/> Note that the testing here can be accomplished in conjunction
-                with the testing of the security mechanisms directly. For example, testing performed
-                to ensure that the administrative guidance provided is correct verifies that
-                AGD_OPE.1 is satisfied and should address the invocation of the administrative
-                actions that are needed to verify the audit records are generated as expected.
-              </tests></aactivity>
+              <tss>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it lists all of the auditable events. The evaluator shall check to make sure that every audit event type mandated by the <abbr linkend="PP"/> is described in the <abbr linkend="TSS"/>. The evaluator shall verify that for every audit event described in the <abbr linkend="TSS"/>, the description indicates where the audit event is generated (TSF, <abbr linkend="TOE"/> platform).</tss>
+              <guidance> The evaluator shall check the administrative guide and ensure that it lists all of the auditable events. The evaluator shall check to make sure that every audit event type mandated by the <abbr linkend="PP"/> is described.<h:br/><h:br/> 
+                The evaluator shall also make a determination of the administrative actions that are relevant in the context of this <abbr linkend="PP"/> including those listed in the Management section. The evaluator shall examine the administrative guide and make a determination of which administrative commands are related to the configuration (including enabling or disabling) of the mechanisms implemented in the <abbr linkend="TOE"/> that are necessary to enforce the requirements specified in the <abbr linkend="PP"/>. The evaluator shall document the methodology or approach taken while determining which actions in the administrative guide are security relevant with respect to this <abbr linkend="PP"/>. The evaluator may perform this activity as part of the activities associated with ensuring the AGD_OPE guidance  satisfies the requirements. </guidance>
+              <tests>The evaluator shall test the <abbr linkend="TOE"/>’s ability to correctly generate audit records by having the <abbr linkend="TOE"/> generate audit records for the events listed in the provided table and administrative actions. This should include all instances of an event. The evaluator shall test that audit records are generated for the establishment and termination of a channel for each of the cryptographic protocols contained in the <abbr linkend="ST"/>. For administrative actions, the evaluator shall test that each action determined by the evaluator above to be security relevant in the context of this <abbr linkend="PP"/> is auditable.<h:br/><h:br/> Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly. For example, testing performed to ensure that the administrative guidance provided is correct verifies that AGD_OPE.1 is satisfied and should address the invocation of the administrative actions that are needed to verify the audit records are generated as expected.
+              </tests>
+            </aactivity>
           </f-element>
           <f-element id="FAU_GEN.1.2(1)">
-            <title> The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall record within each <abbr linkend="TSF"/> audit record at least
-              the following information: <h:ul>
+            <title> The <selectables> <selectable>TSF</selectable><selectable><abbr linkend="TOE"/> platform</selectable></selectables> shall record within each <abbr linkend="TSF"/> audit record at least the following information: <h:ul>
                 <h:li>date and time of the event,</h:li>
                 <h:li>type of event,</h:li>
                 <h:li>subject identity,</h:li>
@@ -1681,31 +1438,13 @@ To do:
                 <h:li><assignable>other audit relevant information</assignable>.</h:li>
               </h:ul>
             </title>
-            <note role="application"> All audits must contain at least the information mentioned in
-              FAU_GEN.1.2, but may contain more information which can be assigned. The <abbr
-                linkend="ST"/> author shall identify in the <abbr linkend="TSS"/> which information
-              of the audit record that is performed by the <abbr linkend="TSF"/> and that which is
-              performed by the <abbr linkend="TOE"/> platform. </note>
+            <note role="application"> All audits must contain at least the information mentioned in FAU_GEN.1.2, but may contain more information which can be assigned. The <abbr linkend="ST"/> author shall identify in the <abbr linkend="TSS"/> which information of the audit record that is performed by the <abbr linkend="TSF"/> and that which is performed by the <abbr linkend="TOE"/> platform. </note>
             <aactivity>
-              <tss>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a
-                format for audit records. Each audit record format type must be covered, along with
-                a brief description of each field.</tss>
-              <guidance>The evaluator shall check the administrative guide and ensure that it
-                provides a format for audit records. Each audit record format type must be covered,
-                along with a brief description of each field. The evaluator shall check to make sure
-                that the description of the fields contains the information required in
-                FAU_GEN.1.2.</guidance>
-              <tests> When verifying the test results from FAU_GEN.1.1, the evaluator shall ensure
-                the audit records generated during testing match the format specified in the
-                administrative guide, and that the fields in each audit record have the proper
-                entries.<h:br/><h:br/> Note that the testing here can be accomplished in conjunction with
-                the testing of the security mechanisms directly. For example, testing performed to
-                ensure that the administrative guidance provided is correct verifies that AGD_OPE.1
-                is satisfied and should address the invocation of the administrative actions that
-                are needed to verify the audit records are generated as expected.<h:br/><h:br/> The
-                Auditable Events table includes optional, selection-based and objective
-                requirements. The auditing of these requirements are only required if the
-                requirement is included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              <tss>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field.</tss>
+              <guidance>The evaluator shall check the administrative guide and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field. The evaluator shall check to make sure that the description of the fields contains the information required in FAU_GEN.1.2.</guidance>
+              <tests> When verifying the test results from FAU_GEN.1.1, the evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide, and that the fields in each audit record have the proper entries.<h:br/><h:br/> 
+                Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly. For example, testing performed to ensure that the administrative guidance provided is correct verifies that AGD_OPE.1 is satisfied and should address the invocation of the administrative actions that are needed to verify the audit records are generated as expected.<h:br/><h:br/> 
+                The Auditable Events table includes optional, selection-based and objective requirements. The auditing of these requirements are only required if the requirement is included in the <abbr linkend="ST"/>.<h:br/><h:br/>
                 <h:center><h:H4>Table 1: Auditable Events</h:H4></h:center>
                 <h:table>
                   <h:TR>
@@ -1956,123 +1695,55 @@ To do:
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="FAU_GEN.1(2)" name="Audit Generation (MAS Server)"
-          status="optional">
+        <f-component id="FAU_GEN.1(2)" name="Audit Generation (MAS Server)" status="optional">
           <f-element id="FAU_GEN.1.1(2)">
-            <title>The MAS Server shall be able to generate an audit record of the following
-              auditable events: <h:ol type="a">
+            <title>The MAS Server shall be able to generate an audit record of the following auditable events: <h:ol type="a">
                 <h:li>Failure to push a new application on a managed mobile device</h:li>
-                <h:li>Failure to update an existing application on a managed mobile
-                  device.</h:li>
+                <h:li>Failure to update an existing application on a managed mobile device.</h:li>
               </h:ol></title>
-            <note role="application">The <abbr linkend="MDM"/> Agent is required to report to the
-              MAS Server on successful receipt of an application or update on a managed mobile
-              device, and failures can be inferred from the absence of such alerts.</note>
+            <note role="application">The <abbr linkend="MDM"/> Agent is required to report to the MAS Server on successful receipt of an application or update on a managed mobile device, and failures can be inferred from the absence of such alerts.</note>
             <aactivity>
-              <tss>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a
-                format for audit records.</tss>
-              <guidance> The evaluator shall check the administrative guide and ensure that it
-                provides a format for audit records. Each audit record format type must be covered,
-                along with a brief description of each field. </guidance>
-              <tests>The evaluator shall verify that when an application or update push fails, that
-                the audit records generated match the format specified in the guidance and that the
-                fields in each audit record have the proper entries.</tests></aactivity>
+              <tss>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a format for audit records.</tss>
+              <guidance> The evaluator shall check the administrative guide and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field. </guidance>
+              <tests>The evaluator shall verify that when an application or update push fails, that the audit records generated match the format specified in the guidance and that the fields in each audit record have the proper entries.</tests>
+            </aactivity>
           </f-element>
           <f-element id="FAU_GEN.1.2(2)">
-            <title>The <selectables>
-                <selectable>MAS Server</selectable>
-                <selectable>MAS Server platform</selectable>
-              </selectables> shall record within each <abbr linkend="TSF"/> audit record at least
-              the following information: <h:ul>
+            <title>The <selectables><selectable>MAS Server</selectable><selectable>MAS Server platform</selectable></selectables> shall record within each <abbr linkend="TSF"/> audit record at least the following information: <h:ul>
                 <h:li>date and time of the event</h:li>
                 <h:li>type of event</h:li>
                 <h:li>mobile device identity</h:li>
                 <h:li><assignable>other audit relevant information</assignable></h:li>
               </h:ul>
             </title>
-            <note role="application">All audits must contain at least the information mentioned in
-              FAU_GEN.1.2, but may contain more information which can be assigned. The <abbr
-                linkend="ST"/> author shall identify in the <abbr linkend="TSS"/> which information
-              of the audit record that is performed by the <abbr linkend="TSF"/> and that which is
-              performed by the <abbr linkend="TOE"/> platform.</note>
+            <note role="application">All audits must contain at least the information mentioned in FAU_GEN.1.2, but may contain more information which can be assigned. The <abbr linkend="ST"/> author shall identify in the <abbr linkend="TSS"/> which information of the audit record that is performed by the <abbr linkend="TSF"/> and that which is performed by the <abbr linkend="TOE"/> platform.</note>
             <aactivity>
-              <tss>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a
-                format for audit records. Each audit record format type must be covered, along with
-                a brief description of each field.</tss>
-              <guidance>The evaluator shall check the administrative guide and ensure that it
-                provides a format for audit records. Each audit record format type must be covered,
-                along with a brief description of each field. The evaluator shall check to make sure
-                that the description of the fields contains the information required in
-                FAU_GEN.1.2.</guidance>
-              <tests>When verifying the test results from FAU_GEN.1.1, the evaluator shall ensure
-                the audit records generated during testing match the format specified in the
-                administrative guide, and that the fields in each audit record have the proper
-                entries.<h:br/><h:br/> Note that the testing here can be accomplished in conjunction with
-                the testing of the security mechanisms directly. For example, testing performed to
-                ensure that the administrative guidance provided is correct verifies that AGD_OPE.1
-                is satisfied and should address the invocation of the administrative actions that
-                are needed to verify the audit records are generated as expected. <h:br/><h:br/></tests>
+              <tss>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field.</tss>
+              <guidance>The evaluator shall check the administrative guide and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field. The evaluator shall check to make sure that the description of the fields contains the information required in FAU_GEN.1.2.</guidance>
+              <tests>When verifying the test results from FAU_GEN.1.1, the evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide, and that the fields in each audit record have the proper entries.<h:br/><h:br/> 
+                Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly. For example, testing performed to ensure that the administrative guidance provided is correct verifies that AGD_OPE.1 is satisfied and should address the invocation of the administrative actions that are needed to verify the audit records are generated as expected.</tests>
             </aactivity>
           </f-element>
         </f-component> 
         <f-component id="FAU_STG_EXT.1" name="External Trail Storage">
           <f-element id="FAU_STG_EXT.1.1(1)">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall be able to transmit audit data to an external IT entity using a trusted channel per FTP_ITC.1(1) and <selectables>
-                <selectable id="FAU_STG.1_stored">stored locally</selectable>
-                <selectable>no other method</selectable>
-              </selectables>.
+            <title>The <selectables><selectable>TSF</selectable><selectable><abbr linkend="TOE"/> platform</selectable></selectables> shall be able to transmit audit data to an external IT entity using a trusted channel per FTP_ITC.1(1) and <selectables><selectable id="FAU_STG.1_stored">stored locally</selectable><selectable>no other method</selectable></selectables>.
             </title>
-            <note role="application">The <abbr linkend="TOE"/> shall be capable of transmitting
-              audit data to an external entity using a trusted channel as specified in FTP_ITC.1(1)
-              and optionally can store the audit data locally. If “stored locally” is selected, then
-              FAU_STG_EXT.2.1 shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> The <abbr
-                linkend="TOE"/> may rely on a non-<abbr linkend="TOE"/> audit server for storage and
-              review of audit records. Although the <abbr linkend="TOE"/> generates audit records
-              and receives audit records from managed mobile devices, the storage of these audit
-              records and the ability to allow the administrator to review these audit records is
-              provided by the operational environment. The <abbr linkend="TSF"/> may rely on the
-              underlying operating system for this functionality, and the first selection should be
-              made appropriately.<h:br/><h:br/> If the <abbr linkend="TOE"/> relies on a non-<abbr
-                linkend="TOE"/> audit server and the trusted channel implements TLS, mutual
-              authentication is not required since the audit server is outside of the <abbr
-                linkend="TOE"/>. </note>
+            <note role="application">The <abbr linkend="TOE"/> shall be capable of transmitting audit data to an external entity using a trusted channel as specified in FTP_ITC.1(1) and optionally can store the audit data locally. If “stored locally” is selected, then FAU_STG_EXT.2.1 shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> 
+              The <abbr linkend="TOE"/> may rely on a non-<abbr linkend="TOE"/> audit server for storage and review of audit records. Although the <abbr linkend="TOE"/> generates audit records and receives audit records from managed mobile devices, the storage of these audit records and the ability to allow the administrator to review these audit records is provided by the operational environment. The <abbr linkend="TSF"/> may rely on the underlying operating system for this functionality, and the first selection should be made appropriately.<h:br/><h:br/> If the <abbr linkend="TOE"/> relies on a non-<abbr linkend="TOE"/> audit server and the trusted channel implements TLS, mutual authentication is not required since the audit server is outside of the <abbr linkend="TOE"/>. </note>
             <aactivity>
-              <tss>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the
-                means by which the audit data are transferred to the external audit server, and how
-                the trusted channel is provided.</tss>
-              <guidance> The evaluator shall also examine the operational guidance to determine that
-                it describes the relationship between the local audit data and the audit data that
-                are sent to the audit log server. For example, when an audit event is generated, is
-                it simultaneously sent to the external server and the local store, or is the local
-                store used as a buffer and “cleared” periodically by sending the data to the audit
-                server.<h:br/><h:br/> The evaluator shall also examine the operational guidance to ensure
-                it describes how to establish the trusted channel to the audit server, as well as
-                describe any requirements on the audit server (particular audit server protocol,
-                version of the protocol required, etc.), as well as configuration of the <abbr
-                  linkend="TOE"/> needed to communicate with the audit server. </guidance>
-              <tests> Testing of the trusted channel mechanism will be performed as specified in the
-                associated assurance activities for the particular trusted channel
-                mechanism.<h:br/><h:br/> The evaluator shall perform the following test for this
-                requirement: <testlist>
-                  <test>The evaluator shall establish a session between the <abbr linkend="TOE"/>
-                    and the audit server according to the configuration guidance provided. The
-                    evaluator shall then examine the traffic that passes between the audit server
-                    and the <abbr linkend="TOE"/> during several activities of the evaluator’s
-                    choice designed to generate audit data to be transferred to the audit server.
-                    The evaluator shall observe that these data are not able to be viewed in the
-                    clear during this transfer, and that they are successfully received by the audit
-                    server. The evaluator shall record the particular software (name, version) used
-                    on the audit server during testing. </test>
+              <tss>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided.</tss>
+              <guidance> The evaluator shall also examine the operational guidance to determine that it describes the relationship between the local audit data and the audit data that are sent to the audit log server. For example, when an audit event is generated, is it simultaneously sent to the external server and the local store, or is the local store used as a buffer and “cleared” periodically by sending the data to the audit server.<h:br/><h:br/> 
+                The evaluator shall also examine the operational guidance to ensure it describes how to establish the trusted channel to the audit server, as well as describe any requirements on the audit server (particular audit server protocol, version of the protocol required, etc.), as well as configuration of the <abbr  linkend="TOE"/> needed to communicate with the audit server. </guidance>
+              <tests> Testing of the trusted channel mechanism will be performed as specified in the associated assurance activities for the particular trusted channel mechanism.<h:br/><h:br/> 
+                The evaluator shall perform the following test for this requirement: <testlist>
+                  <test>The evaluator shall establish a session between the <abbr linkend="TOE"/> and the audit server according to the configuration guidance provided. The evaluator shall then examine the traffic that passes between the audit server and the <abbr linkend="TOE"/> during several activities of the evaluator’s choice designed to generate audit data to be transferred to the audit server. The evaluator shall observe that these data are not able to be viewed in the clear during this transfer, and that they are successfully received by the audit server. The evaluator shall record the particular software (name, version) used on the audit server during testing. </test>
                 </testlist>
               </tests>
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="FAU_STG_EXT.3"
-          name="External Audit Trail Storage (MAS Server)" status="optional">
+        <f-component id="FAU_STG_EXT.3" name="External Audit Trail Storage (MAS Server)" status="optional">
           <f-element id="FAU_STG_EXT.3.1(1)"><!-- was FAU_STG_EXT.1.1(2) -->
             <title>The <selectables>
                 <selectable>MAS Server</selectable>
