@@ -2686,7 +2686,7 @@ To do:
                         message to be a ciphersuite not presented in the Client Hello handshake
                         message. The evaluator shall verify that the client rejects the connection
                         after receiving the Server Hello.</h:li>
-                      <h:li>Modify the signature block in the Server’s Key Exchange handshake
+                      <h:li>(conditional) If an ECDHE or DHE ciphersuite is selected, modify the signature block in the Server’s Key Exchange handshake
                         message, and verify that the client rejects the connection after receiving
                         the Server Key Exchange message.</h:li>
                       <h:li>Modify a byte in the Server Finished handshake message, and verify
@@ -3014,7 +3014,7 @@ To do:
                         message, and verify that the server rejects the client’s Certificate Verify
                         handshake message or that the server denies the client’s Finished handshake
                         message.</h:li>
-                      <h:li>Modify the signature block in the client’s Certificate Verify
+                      <h:li>(conditional) If an ECDHE or DHE ciphersuite is selected, modify the signature block in the client’s Certificate Verify
                         handshake message, and verify that the server rejects the client’s
                         Certificate Verify handshake message and verify that the server denies the
                         client’s Finished handshake message.</h:li>
@@ -3038,7 +3038,7 @@ To do:
             <title>The <selectables>
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables>shall deny connections from clients requesting SSL 1.0, SSL 2.0, SSL 3.0
+              </selectables>shall deny connections from clients requesting SSL 2.0, SSL 3.0
               and <selectables>
                 <selectable>TLS 1.0</selectable>
                 <selectable>TLS 1.1</selectable>
@@ -3048,10 +3048,7 @@ To do:
               <tss>The evaluator shall verify that the <abbr linkend="TSS"/> contains a description
                 of the denial of old SSL and TLS versions, and any configuration necessary to meet
                 the requirement must be contained in the AGD guidance.</tss>
-              <tests>The evaluator shall send a Client Hello requesting a connection with version
-                SSL 1.0 and verify that the server denies the connection. The evaluator shall repeat
-                this test with SSL 2.0 and SSL 3.0 and any selected TLS
-              versions.</tests></aactivity>
+              <tests>The evaluator shall send a Client Hello requesting a connection for all mandatory and selected protocol versions in the SFR (e.g., by enumeration of protocol versions in a test client) and verify that the server denies the connection for each attempt. </tests></aactivity>
           </f-element>
           <f-element id="FCS_TLSS_EXT.1.3">
             <title>The <selectables>
@@ -3095,10 +3092,7 @@ To do:
                     validate the certificate to be used in the function, and demonstrate that the
                     function succeeds. The evaluator then shall delete one of the certificates, and
                     show that the function fails.</test>
-                  <test>The evaluator shall configure the client to send a certificate that does not
-                    chain to one of the Certificate Authorities (either a Root or Intermediate CA)
-                    in the server’s Certificate Request message. The evaluator shall verify that the
-                    attempted connection is denied.</test>
+                <test>If the TOE supports sending a non-empty Certificate Authorities list in its Certificate Request message, the evaluator shall configure the client to send a certificate that does not chain to one of the Certificate Authorities (either a Root or Intermediate CA) in the server’s Certificate Request message. The evaluator shall verify that the attempted connection is denied. If the TOE doesn't support sending a non-empty Certificate Authorities list in its Certificate Request message, this test shall be omitted.</test>
                   <test>The evaluator shall configure the client to send a certificate with the
                     Client Authentication purpose in the extendedKeyUsage field and verify that the
                     server accepts the attempted connection. The evaluator shall repeat this test
@@ -3302,7 +3296,7 @@ To do:
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables> shall implement HTTPS using TLS as specified in <linkref linkend="FCS_TLSS_EXT.1"/>.</title>
           </f-element>
-          <f-element id="FCS_HTTPS_EXT.1.3">
+         <!--   <f-element id="FCS_HTTPS_EXT.1.3">
             <title>The <selectables>
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
@@ -3310,7 +3304,8 @@ To do:
                 <selectable>not establish the connection</selectable>
                 <selectable>request authorization to establish the connection</selectable>
                 <selectable>no other action</selectable>
-              </selectables> if the peer certificate is deemed invalid.</title>
+              </selectables> if the peer certificate is deemed invalid.</title>-->
+          <!-- FCS_HTTPS_EXT.1.3 was removed per TD212, however the AA was not changed as part of the TD and it will need to be changed TODO. -->
             <note role="application">Validity is determined by the certificate path, the expiration
               date, and the revocation status in accordance with RFC 5280.</note>
             <aactivity>
@@ -3535,8 +3530,8 @@ To do:
                   certificate using <selectables>
                     <selectable>the Online Certificate Status Protocol (CSP) as specified in RFC
                       2560</selectable>
-                    <selectable>a Certificate Revocation List (CRL) as specified in RFC
-                      5759</selectable></selectables>
+                    <selectable>a Certificate Revocation List (CRL) as specified in RFC 5280 Section 6.3</selectable>
+                    <selectable>a Certificate Revocation List (CRL) as specified in RFC 5759 Section 5</selectable></selectables>
                 </h:li>
                 <h:li>The <abbr linkend="TSF"/> shall validate the extendedKeyUsage field
                   according to the following rules:<h:br/><h:br/>
