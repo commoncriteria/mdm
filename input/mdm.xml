@@ -1074,12 +1074,42 @@ To do:
         </f-component> 
       </subsection>
       <subsection id="fcs" title="Cryptographic Support (FCS)"> 
-        <f-component id="fcs_ckm.1" name="Cryptographic Key Generation">
+        <f-component name="Cryptographic Keys" id="fcs_ckm_ext.1">
+          <f-element id="fcs_ckm_ext.1.1">
+            <title>The TSF shall<selectables>
+              <selectable>invoke platform-provided asymmetric cryptographic key generation</selectable>
+              <selectable id="keygen">implement asymmetric cryptographic key generation</selectable>
+            </selectables>.</title>
+            <note role="Application"> If "implement asymmetric cryptographic key generation" is selected, then <linkref linkend="FCS_CKM.1.1"/> shall be included in the ST. </note>
+            <aactivity>
+              <h:h4>If "invoke platform-provided asymmetric cryptographic key generation" is selected:</h:h4>
+              <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the key generation claimed in that platform's <abbr linkend="ST"/> contains the key generation requirement in the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/>. The evaluator shall also examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key generation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).</tss>
+              <h:h4>If "implement asymmetric cryptographic key generation" is selected:</h:h4>
+              The evaluator shall test the asymmetric cryptographic key generation in conjuction with <linkref linkend="FCS_CKM.1.1"/>.           
+            </aactivity>  
+          </f-element> 
+          <f-element id="fcs_ckm_ext.1.2">
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided cryptographic key establishment</selectable>
+              <selectable id="keyest">implement cryptographic key establishment</selectable>
+            </selectables>.</title>
+            <note role="Application">
+              If "implement cryptographic key establishment" is selected, then <linkref linkend="FCS_CKM.2.1"/> shall be included in the ST.           
+            </note>
+            <aactivity>
+              <h:h4>If "invoke platform-provided cryptographic key establishment" is selected:</h:h4>
+              <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the key establishment claimed in that platform's <abbr linkend="ST"/> contains the key establishment requirement in the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/>. The evaluator shall also examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).</tss>
+              <h:h4>If "implement cryptographic key establishment" is selected:</h:h4>
+              The evaluator shall test this in conjunction with <linkref linkend="FCS_CKM.2.1"/>.
+            </aactivity>   
+          </f-element>  
+        </f-component>
+
+        
+        <f-component id="fcs_ckm.1" name="Cryptographic Key Generation" status="sel-based">
+          <selection-depends req="fcs_ckm_ext.1.1" ids="keygen"/>
           <f-element id="fcs_ckm.1.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall generate <h:b>asymmetric</h:b> cryptographic keys in
+            <title>The TSF shall generate <h:b>asymmetric</h:b> cryptographic keys in
               accordance with a specified cryptographic key generation algorithm <selectables
                 linebreak="yes">
                 <selectable>RSA schemes using cryptographic key sizes of 2048-bit or greater that
@@ -1107,18 +1137,6 @@ To do:
               receiver in the RSA key establishment scheme, the <abbr linkend="TOE"/> does not need
               to implement RSA key generation. </note>
             <aactivity>
-              <h:h4>Requirement met by the platform</h:h4>
-              <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine
-                the <abbr linkend="ST"/> of the platform to ensure that the key generation claimed
-                in that platform's <abbr linkend="ST"/> contains the key generation requirement in
-                the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/>. The evaluator shall also
-                examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server’s <abbr
-                  linkend="ST"/> to verify that it describes (for each supported platform) how the
-                key generation functionality is invoked (it should be noted that this may be through
-                a mechanism that is not implemented by the <abbr linkend="MDM"/> Server;
-                nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part
-                of this assurance activity).</tss>
-              <h:h4>Requirement met by the <abbr linkend="TOE"/></h:h4>
               <tss>The evaluator shall ensure that the <abbr linkend="TSS"/> identifies the key
                 sizes supported by the <abbr linkend="TOE"/>. If the <abbr linkend="ST"/> specifies
                 more than one scheme, the evaluator shall examine the <abbr linkend="TSS"/> to
@@ -1224,12 +1242,10 @@ To do:
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_ckm.2" name="Cryptographic Key Establishment">
+        <f-component id="fcs_ckm.2" name="Cryptographic Key Establishment" status="sel-based">
+          <selection-depends req="fcs_ckm_ext.1.2" ids="keyest"/>
           <f-element id="fcs_ckm.2.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall perform cryptographic key establishment in accordance with a
+            <title>The TSF shall perform cryptographic key establishment in accordance with a
               specified cryptographic key establishment method: <selectables linebreak="yes">
                 <selectable>RSA-based key establishment schemes that meets the following: NIST
                   Special Publication 800-56B, “Recommendation for Pair-Wise Key Establishment
@@ -1252,18 +1268,6 @@ To do:
               <h:br/><h:br/> The domain parameters used for the finite field-based key establishment
               scheme are specified by the key generation according to <linkref linkend="FCS_CKM.1.1"/>.</note>
             <aactivity>
-              <h:h4>Requirement met by the platform</h:h4>
-              <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine
-                the <abbr linkend="ST"/> of the platform to ensure that the key establishment
-                claimed in that platform's <abbr linkend="ST"/> contains the key establishment
-                requirement in the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/>. The
-                evaluator shall also examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/>
-                Server’s <abbr linkend="ST"/> to verify that it describes (for each supported
-                platform) how the key establishment functionality is invoked (it should be noted
-                that this may be through a mechanism that is not implemented by the <abbr
-                  linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the
-                  <abbr linkend="TSS"/> as part of this assurance activity).</tss>
-              <h:h4>Requirement met by the <abbr linkend="TOE"/></h:h4>
               <tss>The evaluator shall ensure that the supported key establishment schemes
                 correspond to the key generation schemes identified in <linkref linkend="FCS_CKM.1.1"/>. If the <abbr
                   linkend="ST"/> specifies more than one scheme, the evaluator shall examine the
