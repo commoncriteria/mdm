@@ -3812,25 +3812,8 @@ To do:
       </subsection>
       
       <subsection id="fpt" title="Protection of the TSF (FPT)"> 
-         <!-- HERE this next f-component is not a proper f-component in the Word document 
-        TODO: Most likely will need to move FPT_ITT.1 and FTP_ITC.1(2) to selection based (currently in optional) and then make a new SFR in which they select which one, to be able to work with the worksheets. Would it be better to have a SFR with the selection: Agent in TOE, Agent outside of TOE or selection: FPT_ITT.1, FTP_ITC.1(2)? -->
-        <f-component id="fpt_itt.1" name="Internal TOE TSF Data Transfer">
-          <f-element id="fpt_itt.1.1">
-            <!-- HERE I made the FPT_ITT.1.1 tag up, it is not in the Word document -->
-            <title> The <abbr linkend="ST"/> author must include at least one of <linkref linkend="FPT_ITT.1"/> or
-              <linkref linkend="FTP_ITC.1(2)"/> in the <abbr linkend="ST"/>. <h:br/><h:br/> If the <abbr linkend="TOE"/>
-              includes an <abbr linkend="MDM"/> Agent, the communication channel between the Agent
-              and Server is internal to the <abbr linkend="TOE"/>. The <abbr linkend="ST"/> author
-              shall include <linkref linkend="FPT_ITT.1"/>. If the MAS Server is physically distinct from the <abbr
-                linkend="MDM"/> Server, the MAS Server is considered a separate part of the
-              distributed <abbr linkend="TOE"/> and <linkref linkend="FPT_ITT.1"/> shall apply to all channels used to
-              transfer <abbr linkend="TSF"/> data with the MAS Server. <h:br/><h:br/> If the <abbr
-                linkend="TOE"/> interoperates with an evaluated <abbr linkend="MDM"/> Agent built
-              into a mobile device, the <abbr linkend="ST"/> author shall include <linkref linkend="FTP_ITC.1(2)"/>.
-            </title>
-          </f-element>
-        </f-component>
-        <f-component id="fpt_itt.1" name="Internal TOE TSF Data Transfer" status="optional">
+        <f-component id="fpt_itt.1" name="Internal TOE TSF Data Transfer" status="sel-based">
+          <selection-depends req="ftp_itc_ext.1.1" ids="AgentInTOE_fpt, DistributedTOE_MAS"/>
           <f-element id="fpt_itt.1.1">
             <title>The <abbr linkend="TSF"/> shall protect all data from [disclosure and
               modification] through use of <selectables>
@@ -3965,7 +3948,7 @@ To do:
           </f-element>       
         </f-component>    
       </subsection>  
-      <subsection id="fta2" title="TOE Access (FTA)">
+      <subsection id="fta" title="TOE Access (FTA)">
         <f-component id="fta_tab.1" name="Default TOE Access Banners" status="optional">
           <f-element id="fta_tab.1.1">
             <title>Before establishing a user session, the <selectables><selectable>TSF</selectable><selectable><abbr linkend="TOE"/> platform</selectable>
@@ -3978,17 +3961,36 @@ To do:
         </f-component>
       </subsection>
       
-      <subsection id="tpc" title="Trusted Path/Channels">
-        <!-- HERE this next f-component is not a proper f-component in the Word document --> The
-          <abbr linkend="ST"/> author must include at least one <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(2)"/> in the
-          <abbr linkend="ST"/>. <h:br/><h:br/> If the <abbr linkend="TOE"/> interoperates with an
-        evaluated <abbr linkend="MDM"/> Agent built into a mobile device, the <abbr linkend="ST"/>
-        author shall include <linkref linkend="FTP_ITC.1(2)"/>. If the MAS Server is physically distinct from the <abbr
-          linkend="MDM"/> Server, then <linkref linkend="FTP_ITC.1(3)"/> shall be included in the <abbr linkend="ST"
-        />.<h:br/><h:br/> If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, the <abbr
-          linkend="ST"/> author shall include <linkref linkend="FPT_ITT.1"/>. 
-      
-      <f-component id="ftp_itc.1(1)" name="Inter-TSF Trusted Channel (Authorized IT Entities)">
+      <subsection id="ftp" title="Trusted Path/Channels">
+        <f-component name="Trusted Channel" id="ftp_itc_ext.1"> <!-- New SFR, this will specify if Agent is in the TOE-->
+          <f-element id="ftp_itc_ext.1.1">
+            <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself, an MDM Agent that is <selectables>
+              <selectable id="AgentInTOE">internal to the TOE</selectable>
+              <selectable id="AgentOutTOE">external to the TOE</selectable>
+            </selectables>, and <selectables>
+              <selectable id="DistributedTOE_MAS">a MAS Server</selectable>
+              <selectable>no other</selectable>
+            </selectables>
+             that is logically distinct from other communication channels as specified in <selectables>
+              <selectable id="AgentInTOE_fpt"><linkref linkend="FPT_ITT.1"/></selectable>
+              <selectable id="AgentOutTOE_ftp"><linkref linkend="FTP_ITC.1(2)"/></selectable>
+              <selectable id="AgentOutTOE_MAS"><linkref linkend="FTP_ITC.1(3)"/></selectable>
+            </selectables>
+              </title>.
+            <note role="Application">
+              This SFR describes the communication channels between the MDM Server, an Agent that may or may not be in the TOE and an optionally physically distinct MAS Server, to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/> 
+               
+              If the TOE includes an MDM Agent, then the communication channel between the Agent and MDM Server is internal to the TOE and thus "internal to the TOE" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1"/> shall be selected in the third selection and <linkref linkend="FPT_ITT.1"/> shall be included in the ST. <h:br/><h:br/> 
+              If the TOE interoperates with an evaluated MDM Agent built into a mobile device (i.e., the TOE does not include an MDM Agent), the communication channel between the Agent and MDM Server is external to the TOE and thus "external to the TOE" shall be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> shall be selected in the third selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the ST. <h:br/><h:br/>
+              If the MAS Server is physically distinct from the MDM Server, then "MAS Server" shall be selected in the second selection. The MAS Server is considered a separate part of the distributed TOE and thus <linkref linkend="FPT_ITT.1"/> shall be selected in the third selection and <linkref linkend="FPT_ITT.1"/> shall be included in the ST for all internal channels used to transfer TSF data with the MAS Server. This includes the communication channel between the MDM Server and MAS Server and additionally between the MAS Server and MDM Agent, if the MDM Agent is internal to the TOE. Additionally, <linkref linkend="FTP_ITC.1(3)"/> shall be selected in the third selection and <linkref linkend="FTP_ITC.1(3)"/> shall be included in the ST for the communication channel between a the MAS Server and authorized IT entities. If the MAS Server is not physically distinct from the MDM Server, then "no other" shall be selected in the second selection.<h:br/><h:br/>                     
+            </note>
+              <aactivity>
+                <!-- TO DO: FIX AA -->
+                This is to be tested with FPT_ITT.1 or FTP_ITC.1(2) or FTP_ITC.1(3).
+              </aactivity>
+          </f-element>
+        </f-component>
+        <f-component id="ftp_itc.1(1)" name="Inter-TSF Trusted Channel (Authorized IT Entities)"> <!-- MDM Server is the client for these connections (i.e. to external audit server), so likely will need to reference TLSC requirements -->
           <f-element id="ftp_itc.1.1(1)">
             <title>The <selectables>
                 <selectable>TSF</selectable>
@@ -4070,7 +4072,8 @@ To do:
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="ftp_itc.1(2)" name="Inter-TSF Trusted Channel (MDM Agent)" status="optional">
+        <f-component id="ftp_itc.1(2)" name="Inter-TSF Trusted Channel (MDM Agent)" status="sel-based">
+          <selection-depends req="ftp_itc_ext.1.1" ids="AgentOutTOE_ftp"/>
           <f-element id="ftp_itc.1.1(2)">
             <title>The <abbr linkend="TSF"/> shall use <selectables>
                 <selectable id="ITC_TLS_2">TLS</selectable>
@@ -4148,7 +4151,8 @@ To do:
               </tests></aactivity>
           </f-element>
         </f-component> 
-        <f-component id="ftp_itc.1(3)" name="Inter-TSF Trusted Channel (MAS Server)" status="optional">
+        <f-component id="ftp_itc.1(3)" name="Inter-TSF Trusted Channel (MAS Server)" status="sel-based">
+          <selection-depends req="ftp_itc_ext.1.1" ids="AgentOutTOE_MAS"/>
           <f-element id="ftp_itc.1.1(3)">
             <title>Refinement: The <selectables>
                 <selectable>MAS Server</selectable>
