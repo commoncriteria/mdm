@@ -1018,9 +1018,12 @@ To do:
         </f-component>      
         <f-component id="fau_stg_ext.1(1)" name="External Trail Storage">
           <f-element id="fau_stg_ext.1.1(1)">
-            <title>The <selectables><selectable>TSF</selectable><selectable><abbr linkend="TOE"/> platform</selectable></selectables> shall be able to transmit audit data to an external IT entity using a trusted channel per <linkref linkend="FTP_ITC.1(1)"/> and <selectables><selectable id="FAU_STG.1_stored">stored locally</selectable><selectable>no other method</selectable></selectables>.
+            <title>The TSF shall<selectables>
+              <selectable>be able to transmit audit data to an external IT entity using a trusted channel per <linkref linkend="FTP_ITC.1(1)"/></selectable>
+              <selectable>implement platform-provided API to transmit audit data to and external IT entity</selectable>
+              </selectables>.
             </title>
-            <note role="application">The <abbr linkend="TOE"/> shall be capable of transmitting audit data to an external entity using a trusted channel as specified in <linkref linkend="FTP_ITC.1(1)"/> and optionally can store the audit data locally. If “stored locally” is selected, then <linkref linkend="FAU_STG_EXT.2.1"/> shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> 
+            <note role="application">The <abbr linkend="TOE"/> shall be capable of transmitting audit data to an external entity using a trusted channel as specified in <linkref linkend="FTP_ITC.1(1)"/>.<h:br/><h:br/> 
               The <abbr linkend="TOE"/> may rely on a non-<abbr linkend="TOE"/> audit server for storage and review of audit records. Although the <abbr linkend="TOE"/> generates audit records and receives audit records from managed mobile devices, the storage of these audit records and the ability to allow the administrator to review these audit records is provided by the operational environment. The <abbr linkend="TSF"/> may rely on the underlying operating system for this functionality, and the first selection should be made appropriately.<h:br/><h:br/> If the <abbr linkend="TOE"/> relies on a non-<abbr linkend="TOE"/> audit server and the trusted channel implements TLS, mutual authentication is not required since the audit server is outside of the <abbr linkend="TOE"/>. </note>
             <aactivity>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided.</tss>
@@ -1031,6 +1034,21 @@ To do:
                   <test>The evaluator shall establish a session between the <abbr linkend="TOE"/> and the audit server according to the configuration guidance provided. The evaluator shall then examine the traffic that passes between the audit server and the <abbr linkend="TOE"/> during several activities of the evaluator’s choice designed to generate audit data to be transferred to the audit server. The evaluator shall observe that these data are not able to be viewed in the clear during this transfer, and that they are successfully received by the audit server. The evaluator shall record the particular software (name, version) used on the audit server during testing. </test>
                 </testlist>
               </tests>
+            </aactivity>
+          </f-element>
+          <f-element id="fau_stg_ext.1.2"> <!-- Added New SFR --> <!-- Skeleton -->
+            <title>The TSF shall<selectables>
+              <selectable id="FAU_STG.1_stored">store audit data locally</selectable>
+              <selectable>not store audit data</selectable>
+            </selectables>.
+            </title>
+            <note role="application">
+              The <abbr linkend="TOE"/> shall be capable of storing audit data locally. If “store audit data locally” is selected, then <linkref linkend="FAU_STG_EXT.2.1"/> shall be included in the <abbr linkend="ST"/>.
+            </note>
+            <aactivity>
+              <tss></tss>
+              <guidance></guidance>
+              <tests></tests>
             </aactivity>
           </f-element>
         </f-component>         
@@ -1060,8 +1078,7 @@ To do:
           <f-element id="fau_stg_ext.2.1">
             <title>The <selectables>
                 <selectable>TSF</selectable>
-                <selectable>
-                  <abbr linkend="TOE"/> platform</selectable>
+                <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables> shall protect the stored audit records in the audit trail from
               unauthorized modification.</title>
             <note role="application">If “stored locally” is selected in <linkref linkend="FAU_STG_EXT.1.1(1)"/>, this
