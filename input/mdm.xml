@@ -569,8 +569,6 @@ To do:
     <section id="teaa" title="Test Environment for Assurance Activities"> 
       As described in the assurance activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents/MD platforms with which an <abbr linkend="MDM"/> Server operates. The identified assurance activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent/platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/> The evaluator’s activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Assurance Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Extended Package for Mobile Device Management Agents. </section>
     <section id="tsfr" title="TOE Security Functional Requirements">
-      
-      
       <subsection id="fau" title="Security Audit (FAU)">
         <f-component id="fau_alt_ext.1" name="Server Alerts">
           <f-element id="fau_alt_ext.1.1">
@@ -949,7 +947,8 @@ To do:
             </h:ol></title>
             <note role="application">The <abbr linkend="MDM"/> Agent is required to report to the MAS Server on successful receipt of an application or update on a managed mobile device, and failures can be inferred from the absence of such alerts.</note>
             <aactivity>
-              <tss>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a format for audit records.</tss>
+              <TSS>
+              The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a format for audit records.</TSS>
               <guidance> The evaluator shall check the administrative guide and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field. </guidance>
               <tests>The evaluator shall verify that when an application or update push fails, that the audit records generated match the format specified in the guidance and that the fields in each audit record have the proper entries.</tests>
             </aactivity>
@@ -1108,54 +1107,24 @@ To do:
         </f-component> 
       </subsection>
       <subsection id="fcs" title="Cryptographic Support (FCS)"> 
-        <f-component id="fcs_ckm_ext.1" name="Cryptographic Keys"> <!-- Added new SFR -->
-          <f-element id="fcs_ckm_ext.1.1">
-            <title>The TSF shall<selectables>
-              <selectable>invoke platform-provided asymmetric cryptographic key generation</selectable>
-              <selectable id="keygen">implement asymmetric cryptographic key generation</selectable>
-            </selectables>.</title>
-            <note role="Application"> If "implement asymmetric cryptographic key generation" is selected, then <linkref linkend="FCS_CKM.1.1"/> shall be included in the ST. </note>
-            <aactivity>
-              <h:h4>If "invoke platform-provided asymmetric cryptographic key generation" is selected:</h:h4>
-              <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the key generation claimed in that platform's <abbr linkend="ST"/> contains the key generation requirement in the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/>. The evaluator shall also examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key generation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).</tss>
-              <h:h4>If "implement asymmetric cryptographic key generation" is selected:</h:h4>
-              The evaluator shall test the asymmetric cryptographic key generation in conjuction with <linkref linkend="FCS_CKM.1.1"/>.           
-            </aactivity>  
-          </f-element> 
-          <f-element id="fcs_ckm_ext.1.2">
-            <title>The TSF shall <selectables>
-              <selectable>invoke platform-provided cryptographic key establishment</selectable>
-              <selectable id="keyest">implement cryptographic key establishment</selectable>
-            </selectables>.</title>
-            <note role="Application">
-              If "implement cryptographic key establishment" is selected, then <linkref linkend="FCS_CKM.2.1"/> shall be included in the ST.           
-            </note>
-            <aactivity>
-              <h:h4>If "invoke platform-provided cryptographic key establishment" is selected:</h:h4>
-              <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the key establishment claimed in that platform's <abbr linkend="ST"/> contains the key establishment requirement in the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/>. The evaluator shall also examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).</tss>
-              <h:h4>If "implement cryptographic key establishment" is selected:</h:h4>
-              The evaluator shall test this in conjunction with <linkref linkend="FCS_CKM.2.1"/>.
-            </aactivity>   
-          </f-element>  
-        </f-component>
-        <f-component id="fcs_ckm.1" name="Cryptographic Key Generation" status="sel-based">
-          <selection-depends req="fcs_ckm_ext.1.1" ids="keygen"/>
+        <f-component id="fcs_ckm.1" name="Cryptographic Key Generation">
           <f-element id="fcs_ckm.1.1">
-            <title>The TSF shall generate <h:b>asymmetric</h:b> cryptographic keys in
-              accordance with a specified cryptographic key generation algorithm <selectables
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided asymmetric cryptographic key generation</selectable>
+              <selectable>implement asymmetric cryptographic key generation</selectable>
+            </selectables> in accordance with a specified cryptographic key generation algorithm <selectables
                 linebreak="yes">
                 <selectable>RSA schemes using cryptographic key sizes of 2048-bit or greater that
                   meets FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix
                   B.3</selectable>
-                <selectable>
-                  <h:b>ECC schemes using “NIST curves” P-384 and <selectables>
+                <selectable><h:b>ECC schemes using “NIST curves” P-384 and <selectables>
                       <selectable>P-256</selectable>
                       <selectable>P-521</selectable>
                       <selectable>no other curves</selectable>
                     </selectables></h:b> that meet the following: <h:b>FIPS PUB 186-4, “Digital
                     Signature Standard (DSS)”, Appendix B.4</h:b>
                 </selectable>
-                <selectable> FFC schemes using cryptographic key sizes of 2048-bit or greater that
+                <selectable>FFC schemes using cryptographic key sizes of 2048-bit or greater that
                   meet the following: FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix
                   B.1 </selectable>
               </selectables>
@@ -1169,6 +1138,10 @@ To do:
               receiver in the RSA key establishment scheme, the <abbr linkend="TOE"/> does not need
               to implement RSA key generation. </note>
             <aactivity>
+              <h:h4>If "invoke platform-provided asymmetric cryptographic key generation" is selected:</h:h4>
+              <!-- TODO: Need to review this AA -->
+              <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the key generation claimed in that platform's <abbr linkend="ST"/> contains the key generation requirement in the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/>. The evaluator shall also examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key generation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).</tss>
+              <h:h4>If "implement asymmetric cryptographic key generation" is selected:</h:h4>
               <tss>The evaluator shall ensure that the <abbr linkend="TSS"/> identifies the key
                 sizes supported by the <abbr linkend="TOE"/>. If the <abbr linkend="ST"/> specifies
                 more than one scheme, the evaluator shall examine the <abbr linkend="TSS"/> to
@@ -1274,11 +1247,12 @@ To do:
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_ckm.2" name="Cryptographic Key Establishment" status="sel-based">
-          <selection-depends req="fcs_ckm_ext.1.2" ids="keyest"/>
+        <f-component id="fcs_ckm.2" name="Cryptographic Key Establishment">
           <f-element id="fcs_ckm.2.1">
-            <title>The TSF shall perform cryptographic key establishment in accordance with a
-              specified cryptographic key establishment method: <selectables linebreak="yes">
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided cryptographic key establishment</selectable>
+              <selectable>implement cryptographic key establishment</selectable>
+            </selectables> in accordance with a specified cryptographic key establishment method: <selectables linebreak="yes">
                 <selectable>RSA-based key establishment schemes that meets the following: NIST
                   Special Publication 800-56B, “Recommendation for Pair-Wise Key Establishment
                   Schemes Using Integer Factorization Cryptography”</selectable>
@@ -1300,6 +1274,10 @@ To do:
               <h:br/><h:br/> The domain parameters used for the finite field-based key establishment
               scheme are specified by the key generation according to <linkref linkend="FCS_CKM.1.1"/>.</note>
             <aactivity>
+              <h:h4>If "invoke platform-provided cryptographic key establishment" is selected:</h:h4>
+              <!-- TODO: Need to review this AA -->
+              <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the key establishment claimed in that platform's <abbr linkend="ST"/> contains the key establishment requirement in the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/>. The evaluator shall also examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).</tss>
+              <h:h4>If "implement cryptographic key establishment" is selected:</h:h4>
               <tss>The evaluator shall ensure that the supported key establishment schemes
                 correspond to the key generation schemes identified in <linkref linkend="FCS_CKM.1.1"/>. If the <abbr
                   linkend="ST"/> specifies more than one scheme, the evaluator shall examine the
@@ -1420,38 +1398,30 @@ To do:
         </f-component> 
         <f-component id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
           <f-element id="fcs_ckm_ext.4.1">
-            <title> The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall destroy plaintext keying material and critical security
-              parameters in accordance with the following rules: <h:ul>
-                <h:li>For volatile memory, the destruction shall be executed by a single direct
-                  overwrite <selectables>
-                    <selectable>consisting of a pseudo-random pattern using the <abbr linkend="TSF"
-                      />’s RBG</selectable>
+            <!-- TODO: Will need to modify this SFR more b/c if invoke platfomr-provided key destruction is choosen then will likely not be able to specify how the platform destroys it. Joe McDaniels has many different version of this SFR that we can try to use.
+            AA has not been updated.-->
+            <title> The TSF shall destroy plaintext keying material and critical security parameters by <selectables>
+              <selectable>invoking a platform-provided key destruction</selectable>
+              <selectable>implementing key destruction in accordance with the following rules: <h:ul>
+                <h:li>For volatile memory, the destruction shall be executed by a single direct overwrite <selectables>
+                    <selectable>consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>’s RBG</selectable>
                     <selectable>consisting of zeroes</selectable>
                   </selectables></h:li>
-                <h:li>For non-volatile EEPROM, the destruction shall be executed by a single
-                  direct overwrite consisting of a pseudo random pattern using the <abbr
+                <h:li>For non-volatile EEPROM, the destruction shall be executed by a single direct overwrite consisting of a pseudo random pattern using the <abbr
                     linkend="TSF"/>’s RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>), followed by a
                   read-verify.</h:li>
-                <h:li>For non-volatile flash memory, that is not wear-leveled, the destruction
-                  shall be executed<selectables>
-                    <selectable>by a single direct overwrite consisting of zeros followed by a
-                      read-verify</selectable>
-                    <selectable>by a block erase that erases the reference to memory that stores
-                      data as well as the data itself</selectable>
+                <h:li>For non-volatile flash memory, that is not wear-leveled, the destruction shall be executed<selectables>
+                    <selectable>by a single direct overwrite consisting of zeros followed by a read-verify</selectable>
+                    <selectable>by a block erase that erases the reference to memory that stores data as well as the data itself</selectable>
                   </selectables>
                 </h:li>
-                <h:li>For non-volatile flash memory, that is wear-leveled, the destruction shall
-                  be executed <selectables>
+                <h:li>For non-volatile flash memory, that is wear-leveled, the destruction shall be executed <selectables>
                     <selectable>by a single direct overwrite consisting of zeros</selectable>
                     <selectable>by a block erase</selectable>
-                  </selectables>. </h:li>
+                  </selectables></h:li>
                 <h:li>For non-volatile memory other than EEPROM and flash, the destruction shall
                   be executed by a single direct overwrite with a random pattern that is changed
-                  before each writ.</h:li>
-              </h:ul>
+                  before each write</h:li></h:ul></selectable></selectables>.
             </title>
             <note role="application">The <abbr linkend="ST"/> author should select the platform if
               the <abbr linkend="MDM"/> Server performs no operations using plaintext secret,
