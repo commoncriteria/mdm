@@ -1730,11 +1730,11 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="fcs_cop.1(2)" name="Cryptographic Operation (Hashing Algorithms)">
-          <f-element id="fcs_cop.1.1(2)">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall perform cryptographic hashing in accordance with a specified
+          <f-element id="fcs_cop.1.1(2)"> <!--free-->
+            <title>The TSF shall <selectables>
+                <selectable>invoke platform-provided functionality</selectable>
+                <selectable>implement functionality </selectable>
+              </selectables> to perform cryptographic hashing in accordance with a specified
               cryptographic algorithm <selectables>
                 <selectable>SHA-256</selectable>
                 <selectable>SHA-384</selectable>
@@ -1749,7 +1749,7 @@ To do:
               digest size selection. The hash selection should be consistent with the overall
               strength of the algorithm used (for example, SHA-256 for 128-bit keys).</note>
             <aactivity>
-              <h:h4>Requirement met by the platform</h:h4>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine
                 the <abbr linkend="ST"/> of the platform to ensure that the hash function(s) claimed
                 in that platform's <abbr linkend="ST"/> contains the hash function(s) in the <abbr
@@ -1761,7 +1761,7 @@ To do:
                 not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism
                 will be identified in the <abbr linkend="TSS"/> as part of this assurance
                 activity).</tss>
-              <h:h4>Requirement met by the <abbr linkend="TOE"/></h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4>
               <tss>The evaluator shall check that the association of the hash function with other
                   <abbr linkend="TSF"/> cryptographic functions (for example, the digital signature
                 verification function) is documented in the <abbr linkend="TSS"/>. The evaluator
@@ -1811,11 +1811,11 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="fcs_cop.1(3)" name="Cryptographic Operation (Signature Algorithms)">
-          <f-element id="fcs_cop.1.1(3)">
-            <title>Refinement: The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall perform cryptographic signature services (generation and
+          <f-element id="fcs_cop.1.1(3)"> <!--free-->
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality </selectable>
+              </selectables> to perform cryptographic signature services (generation and
               verification) in accordance with a specified cryptographic algorithm <selectables
                 linebreak="yes">
                 <selectable>RSA schemes using cryptographic key sizes of 2048-bit or greater that
@@ -1834,7 +1834,7 @@ To do:
               perform digital signatures in accordance with the trusted channel protocols. The <abbr
                 linkend="MDM"/> Server is required to validate any signed policies and policy
               updates sent by the <abbr linkend="MDM"/> Server. </note>
-            <aactivity> Requirement met by the platform<h:br/><h:br/>
+            <aactivity> If "invoke platform-provided functionality" is selected:<h:br/><h:br/>
               <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine
                 the <abbr linkend="ST"/> of the platform to ensure that the digital signature
                 functions claimed in that platform's <abbr linkend="ST"/> contains the digital
@@ -1846,7 +1846,7 @@ To do:
                 be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server;
                 nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part
                 of this assurance activity).<h:br/><h:br/>
-              </tss> Requirement met by the <abbr linkend="TOE"/><h:br/><h:br/>
+              </tss> If "implement functionality" is selected:<h:br/>
               <tests> ECDSA Algorithm Tests<h:br/><h:br/>
                 <h:u>ECDSA FIPS 186-4 Signature Generation Test</h:u><h:br/><h:br/> For each
                 supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the
@@ -1882,11 +1882,11 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="fcs_cop.1(4)" name="Cryptographic Operation (Keyed-Hash Message Authentication)">
-          <f-element id="fcs_cop.1.1(4)">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall perform keyed-hash message authentication in accordance with a
+          <f-element id="fcs_cop.1.1(4)"> <!--free-->
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality </selectable>
+              </selectables> to perform keyed-hash message authentication in accordance with a
               specified cryptographic algorithm HMAC -<selectables>
                 <selectable>SHA-256</selectable>
                 <selectable>SHA-384</selectable>
@@ -1904,7 +1904,7 @@ To do:
               channel). The hash selection must support the message digest size selection. The hash
               selection should be consistent with the overall strength of the algorithm used for
               <linkref linkend="FCS_COP.1(3)"/>.</note>
-            <aactivity> Requirement met by the platform<h:br/><h:br/>
+            <aactivity> If "invoke platform-provided functionality" is selected:<h:br/><h:br/>
               <tss> For each platform listed in the <abbr linkend="ST"/>, the evaluator shall
                 examine the <abbr linkend="ST"/> of the platform to ensure that the keyed-hash
                 function(s) claimed in that platform's <abbr linkend="ST"/> contains the keyed-hash
@@ -1915,8 +1915,8 @@ To do:
                 selected in the <abbr linkend="MDM"/> Server’s <abbr linkend="ST"/> (it should be
                 noted that this may be through a mechanism that is not implemented by the <abbr
                   linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the
-                  <abbr linkend="TSS"/> as part of this assurance activity). </tss> Requirement met
-              by the <abbr linkend="TOE"/><h:br/><h:br/>
+                <abbr linkend="TSS"/> as part of this assurance activity). </tss> 
+              If "implement functionality" is selected:<h:br/><h:br/>
               <tss>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it specifies
                 the following values used by the HMAC function: key length, hash function used,
                 block size, and output MAC length used. Test For each of the supported parameter
