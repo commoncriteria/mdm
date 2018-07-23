@@ -1241,7 +1241,7 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="fcs_ckm.2" name="Cryptographic Key Establishment">
-          <f-element id="fcs_ckm.2.1">
+          <f-element id="fcs_ckm.2.1"> <!--free-->
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided cryptographic key establishment</selectable>
               <selectable>implement cryptographic key establishment</selectable>
@@ -2122,11 +2122,11 @@ To do:
           </f-element>
         </f-component>
         <f-component id="fcs_rbg_ext.1" name="Extended: Random Bit Generation">
-          <f-element id="fcs_rbg_ext.1.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall perform all deterministic random bit generation services in
+          <f-element id="fcs_rbg_ext.1.1"> <!--free-->
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality </selectable>
+              </selectables> to perform all deterministic random bit generation services in
               accordance with NIST Special Publication 800-90A using <selectables>
                 <selectable>Hash_DRBG (any)</selectable>
                 <selectable>HMAC_DRBG (any)</selectable>
@@ -2141,7 +2141,7 @@ To do:
               While any of the identified hash functions (SHA-224, SHA-256, SHA-384, SHA-512) are
               allowed for Hash_DRBG or HMAC_DRBG, only AES-based implementations for CTR_DRBG are
               allowed.</note>
-            <aactivity> Requirement met by the platform<h:br/><h:br/>
+            <aactivity> If "invoke platform-provided functionality" is selected:<h:br/><h:br/>
               <tss>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine
                 the <abbr linkend="ST"/> of the platform to ensure that the RBG functions claimed in
                 that platform's <abbr linkend="ST"/> contains the RBG functions in the <abbr
@@ -2151,8 +2151,7 @@ To do:
                 is invoked for each operation they are used for in the <abbr linkend="MDM"/> Server
                 (it should be noted that this may be through a mechanism that is not implemented by
                 the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in
-                the <abbr linkend="TSS"/> as part of this assurance activity). </tss> Requirement
-              met by the <abbr linkend="TOE"/><h:br/><h:br/>
+                the <abbr linkend="TSS"/> as part of this assurance activity). </tss> If "implement functionality" is selected:<h:br/><h:br/>
               <tests> The evaluator shall perform the following tests.<h:br/><h:br/> The evaluator shall
                 perform 15 trials for the RNG implementation. If the RNG is configurable, the
                 evaluator shall perform 15 trials for each configuration. The evaluator shall also
@@ -2221,14 +2220,12 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="fcs_stg_ext.1" name="Cryptographic Key Storage">
-          <f-element id="fcs_stg_ext.1.1">
-            <title> The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall use <selectables>
-                <selectable>platform-provided key storage</selectable>
-                <selectable id="fcs_stg_enc">encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
+          <f-element id="fcs_stg_ext.1.1"> <!--free-->
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided key storage</selectable>
+              <selectable id="fcs_stg_enc">implement encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
               </selectables> for all persistent secrets and private keys.</title>
+            <!--check this note and aa-->
             <note role="application">This requirement ensures that persistent secrets (credentials,
               secret keys) and private keys are stored securely when not in use. If some
               secrets/keys are manipulated by the <abbr linkend="TOE"/> and others are manipulated
@@ -2947,19 +2944,19 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="fia_uau.1" name="Timing of Authentication">
-          <f-element id="fia_uau.1.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall allow <assignable>list of TSF mediated
+          <f-element id="fia_uau.1.1"> <!--free--> <!--check this for logic-->
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality </selectable>
+              </selectables> to allow <assignable>list of TSF mediated
                 actions</assignable> on behalf of the user to be performed before the user is
               authenticated with the Server.</title>
           </f-element>
-          <f-element id="fia_uau.1.2">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall require each user to be successfully authenticated with the
+          <f-element id="fia_uau.1.2"> <!--free--> <!--check this for logic-->
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality </selectable>
+              </selectables> that requires each user to be successfully authenticated with the
               Server before allowing any other <abbr linkend="TSF"/>-mediated actions on behalf of
               that user.</title>
             <note role="application">This requirement ensures that any user attempting to access the
