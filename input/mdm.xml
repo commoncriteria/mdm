@@ -519,6 +519,16 @@ To do:
           <component-refer ref="FMT_POL_EXT.1"/>
           <component-refer ref="FMT_SMF.1(1)"/>
         </SO>
+<!--    <SO id="O.Quality">
+        <description>To ensure quality of implementation, conformant <abbr title="Target of Evaluation" linkend="TOE">TOE</abbr>s
+            leverage services and <abbr title="Application Programming Interface" linkend="API">API</abbr>s provided by the runtime environment rather
+            than implementing their own versions of these services and APIs. This is especially
+            important for cryptographic services and other complex operations such as file and media
+            parsing. Leveraging this platform behavior relies upon using only documented and supported APIs.</description>
+        <component-refer ref="fmt_mec_ext.1"/> needed?
+        <component-refer ref="fpt_api_ext.1"/>
+        </SO>
+        -->
       </SOs>
     </section>
     <section id="sooe" title="Security Objectives for the Operational Environment">
@@ -3814,7 +3824,23 @@ To do:
         </f-component> 
       </subsection>
       
-      <subsection id="fpt" title="Protection of the TSF (FPT)"> 
+      <subsection id="fpt" title="Protection of the TSF (FPT)">
+        <!-- added fpt_api
+        <f-component id="fpt_api_ext.1" name="Use of Supported Services and APIs">
+          <f-element id="fpt_api_ext.1.1">
+            <title>The TSF shall use only documented platform <abbr title="Application Programming Interface" linkend="API">API</abbr>s.</title>
+            <note role="application">
+              The definition of <h:i>documented</h:i> may vary depending upon whether the application is provided by a third party (who relies upon documented platform APIs) or by a platform vendor who may be able to guarantee support for platform APIs.
+            </note>
+            <aactivity>
+              The evaluator shall verify that the TSS lists the platform <abbr title="Application Programming Interface" linkend="API">API</abbr>s 
+              used in the application.
+              The evaluator shall then compare the list with the supported <abbr title="Application Programming Interface" linkend="API">API</abbr>s
+              (available through e.g. developer accounts, platform developer groups) and ensure that all 
+              <abbr title="Application Programming Interface" linkend="API">API</abbr>s listed in the TSS are supported.
+            </aactivity>
+          </f-element>
+        </f-component> -->
         <f-component id="fpt_itt.1" name="Internal TOE TSF Data Transfer" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1" ids="AgentInTOE_fpt, DistributedTOE_MAS"/>
           <f-element id="fpt_itt.1.1">
