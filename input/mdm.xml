@@ -1009,7 +1009,7 @@ To do:
             </title>
             <note role="application">The intent of this requirement is to identify all criteria that can be selected to trigger an audit event. The <abbr linkend="ST"/> author must select whether the <abbr linkend="TSF"/> or the platform maintains the audit record. For the <abbr linkend="ST"/> author, the assignment is used to list any additional criteria or "none".</note>
             <aactivity>
-              <Guidance/>The evaluator shall review the administrative guidance to ensure that the guidance itemizes all event types, as well as describes all attributes that are to be selectable in accordance with the requirement, to include those attributes listed in the assignment. The administrative guidance shall also contain instructions on how to set the pre-selection as well as explain the syntax (if present) for multi-value pre- selection. The administrative guidance shall also identify those audit records that are always recorded, regardless of the selection criteria currently being enforced.
+              <Guidance/>The evaluator shall review the administrative guidance to ensure that the guidance itemizes all event types, as well as describes all attributes that are to be selectable in accordance with the requirement, to include those attributes listed in the assignment. The administrative guidance shall also contain instructions on how to set the pre-selection as well as explain the syntax (if present) for multi-value pre-selection. The administrative guidance shall also identify those audit records that are always recorded, regardless of the selection criteria currently being enforced.
               <Tests/>The evaluator shall also perform the following tests:<testlist>
                 <test>For each attribute listed in the requirement, the evaluator shall devise a test to show that selecting the attribute causes only audit events with that attribute (or those that are always recorded, as identified in the administrative guidance) to be recorded.</test>
                 <test>[conditional] If the <abbr linkend="TSF"/> supports specification of more complex audit pre-selection criteria (e.g., multiple attributes, logical expressions using attributes) then the evaluator shall devise tests showing that this capability is correctly implemented. The evaluator shall also, in the test plan, provide a short narrative justifying the set of tests as representative and sufficient to exercise the capability.</test>
@@ -1072,27 +1072,15 @@ To do:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
               </selectables> to protect the stored audit records in the audit trail from unauthorized modification.</title>
-            <note role="application">If "store audit data locally" is selected in <linkref linkend="FAU_STG_EXT.1.1(1)"/>, this
-                <abbr linkend="SFR"/> shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> The
-              purpose of this requirement is to ensure that audit records are stored securely. The
-                <abbr linkend="ST"/> author is responsible for selecting whether audit records are
-              maintained when audit storage or failure occurs. The <abbr linkend="ST"/> author must
-              choose a means by which audit records are saved and select the events during which the
-              records will be saved. The <abbr linkend="TSF"/> may rely on the underlying operating
-              system for this functionality, and the first selection should be made appropriately. </note>
+            <note role="application">If "store audit data locally" is selected in <linkref linkend="FAU_STG_EXT.1.1(1)"/>, this <abbr linkend="SFR"/> shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> The purpose of this requirement is to ensure that audit records are stored securely. The <abbr linkend="ST"/> author is responsible for selecting whether audit records are maintained when audit storage or failure occurs. The <abbr linkend="ST"/> author must choose a means by which audit records are saved and select the events during which the records will be saved. The <abbr linkend="TSF"/> may rely on the underlying operating system for this functionality, and the first selection should be made appropriately.</note>
             <aactivity>
-              <TSS/>The evaluator shall ensure that the <abbr linkend="TSS"/> describes how the audit
-                records are protected from unauthorized modification or deletion. The evaluator
-                shall ensure that the <abbr linkend="TOE"/> uses audit trail specific protection
-                mechanisms.
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the audit record protection functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
+              <h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS/>The evaluator shall ensure that the <abbr linkend="TSS"/> describes how the audit records are protected from unauthorized modification or deletion. The evaluator shall ensure that the <abbr linkend="TOE"/> uses audit trail specific protection mechanisms.
               <Tests/>The evaluator shall perform the following tests: <testlist>
-                  <test>The evaluator shall access the audit trail as an unauthorized user and
-                    attempt to modify and delete the audit records. The evaluator shall verify that
-                    these attempts fail.</test>
-                  <test>The evaluator shall access the audit trail as an authorized user and attempt
-                    to modify and delete the audit records. The evaluator shall verify that these
-                    attempts succeed. The evaluator shall verify that only the records intended for
-                    modification and deletion are modified and deleted.</test>
+                  <test>The evaluator shall access the audit trail as an unauthorized user and attempt to modify and delete the audit records. The evaluator shall verify that these attempts fail.</test>
+                  <test>The evaluator shall access the audit trail as an authorized user and attempt to modify and delete the audit records. The evaluator shall verify that these attempts succeed. The evaluator shall verify that only the records intended for modification and deletion are modified and deleted.</test>
                 </testlist>
               </aactivity>
           </f-element>
