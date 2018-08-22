@@ -1413,81 +1413,31 @@ To do:
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key destruction functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
             </aactivity>
           </f-element>
-          <f-element id="fcs_ckm_ext.4.2">
-            <title>The <abbr linkend="TSF"/> shall destroy all plaintext keying material and
-              critical security parameters (<abbr linkend="CSP"/>s) when no longer needed.</title>
-            <note role="application">Key destruction procedures are performed in accordance with
-              <linkref linkend="FCS_CKM_EXT.4.1"/>. Even if "implement platform-provided functionality" is selected in
-              <linkref linkend="FCS_CKM_EXT.4.1"/>, the <abbr linkend="TSF"/> shall determine when the plaintext keying
-              material and <abbr linkend="CSP"/> are no longer needed and thus should be destroyed.
-              The <abbr linkend="TSF"/> shall ‘release' the key material and <abbr linkend="CSP"/>
-              when no longer needed, regardless if the <abbr linkend="TSF"/> or <abbr linkend="TOE"
-              /> platform destroys the key material and <abbr linkend="CSP"/>s.<h:br/><h:br/> For the
-              purposes of this requirement, plaintext keying material refers to authentication data,
-              authorization data, secret/private symmetric keys, data used to derive keys, etc. </note>
+          <f-element id="fcs_ckm_ext.4.2"> <!--will have to edit this one to remove platform requirements-->
+            <title>The <abbr linkend="TSF"/> shall destroy all plaintext keying material and critical security parameters (<abbr linkend="CSP"/>s) when no longer needed.</title>
+            <note role="application">Key destruction procedures are performed in accordance with <linkref linkend="FCS_CKM_EXT.4.1"/>. Even if "invoking platform-provided functionality" is selected in <linkref linkend="FCS_CKM_EXT.4.1"/>, the <abbr linkend="TSF"/> shall determine when the plaintext keying material and <abbr linkend="CSP"/> are no longer needed and thus should be destroyed. The <abbr linkend="TSF"/> shall "release" the key material and <abbr linkend="CSP"/> when no longer needed, regardless if the <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform destroys the key material and <abbr linkend="CSP"/>s.<h:br/><h:br/> For the purposes of this requirement, plaintext keying material refers to authentication data, authorization data, secret/private symmetric keys, data used to derive keys, etc.</note>
             <aactivity> 
-              Assurance Activity Note:<h:br/><h:br/> The Assurance Activity used is dependent
-              on the selection made in <linkref linkend="FCS_CKM_EXT.4.1"/>. <h:br/><h:br/>
-              <TSS/> The evaluator shall check to ensure the <abbr linkend="TSS"/> lists each type of
-                plaintext key material and <abbr linkend="CSP"/> (authentication data, authorization
-                data, secret/private symmetric keys, data used to derive keys, etc.) and its origin
-                and storage location.<h:br/><h:br/> The evaluator shall verify that the <abbr
-                  linkend="TSS"/> describes when each type of key material and <abbr linkend="CSP"/>
-                is no longer needed.<h:br/><h:br/>
-              
+              Assurance Activity Note:<h:br/><h:br/> The Assurance Activity used is dependent on the selection made in <linkref linkend="FCS_CKM_EXT.4.1"/>. <h:br/><h:br/>
+              <TSS/> The evaluator shall check to ensure the <abbr linkend="TSS"/> lists each type of plaintext key material and <abbr linkend="CSP"/> (authentication data, authorization data, secret/private symmetric keys, data used to derive keys, etc.) and its origin and storage location.<h:br/><h:br/> The evaluator shall verify that the <abbr linkend="TSS"/> describes when each type of key material and <abbr linkend="CSP"/> is no longer needed.<h:br/><h:br/> <!--this might be asking too much. If they implement platform functionality they might not have access to the keys?-->              
               <h:h4>Requirement met by the platform</h:h4>
-              <TSS/> For each platform listed in the <abbr linkend="ST"/>, the evaluator shall
+              <!--><TSS/> For each platform listed in the <abbr linkend="ST"/>, the evaluator shall
                 examine the <abbr linkend="TSS"/> of the <abbr linkend="ST"/> of the platform to
                 ensure that each of the secret keys, private keys, and <abbr linkend="CSP"/>s used
-                to generate key listed above are covered. 
+                to generate key listed above are covered.<-->
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key releasing functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
               <h:h4>Requirement met by the <abbr linkend="TOE"/></h:h4>
-              <TSS/>The evaluator shall also verify that, for each type, the type of clearing
-                procedure that is performed is listed. If different types of memory are used to
-                store the materials to be protected, the evaluator shall check to ensure that the
-                  <abbr linkend="TSS"/> describes the clearing procedure in terms of the memory in
-                which the data are stored (for example, "secret keys stored on flash are cleared by
-                overwriting once with zeros, while secret keys stored on the internal persistent
-                storage device are cleared by overwriting one time with a random pattern that is
-                changed before each write"). For block erases, the evaluator shall also ensure that
-                the block erase command used is listed and shall verify that the command used also
-                addresses any copies of the plaintext key material that may be created in order to
-                optimize the use of flash memory.<h:br/><h:br/> 
-              <Tests/>For each software and firmware key clearing situation the evaluator shall
-                repeat the following tests. Note that at this time hardware-bound keys are
-                explicitly excluded from testing. <testlist>
-                  <test>The evaluator shall utilize appropriate combinations of specialized
-                    operational environment and development tools (debuggers, simulators, etc.) for
-                    the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds to test
-                    that keys are cleared correctly, including all intermediate copies of the key
-                    that may have been created internally by the <abbr linkend="TOE"/> during normal
-                    cryptographic processing with that key. <h:br/><h:br/> Cryptographic <abbr
-                      linkend="TOE"/> implementations in software shall be loaded and exercised
-                    under a debugger to perform such tests. The evaluator shall perform the
-                    following test for each key subject to clearing, including intermediate copies
-                    of keys that are persisted encrypted by the <abbr linkend="TOE"/>: <h:ol>
-                      <h:li>Load the instrumented <abbr linkend="TOE"/> build in a
-                        debugger.</h:li>
-                      <h:li>Record the value of the key in the <abbr linkend="TOE"/> subject to
-                        clearing.</h:li>
-                      <h:li>Cause the <abbr linkend="TOE"/> to perform a normal cryptographic
-                        processing with the key from #1.</h:li>
+              <TSS/>The evaluator shall also verify that, for each type, the type of clearing procedure that is performed is listed. If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the <abbr linkend="TSS"/> describes the clearing procedure in terms of the memory in which the data are stored (for example, "secret keys stored on flash are cleared by overwriting once with zeros, while secret keys stored on the internal persistent storage device are cleared by overwriting one time with a random pattern that is    changed before each write"). For block erases, the evaluator shall also ensure that the block erase command used is listed and shall verify that the command used also addresses any copies of the plaintext key material that may be created in order to optimize the use of flash memory.<h:br/><h:br/> 
+              <Tests/>For each software and firmware key clearing situation the evaluator shall repeat the following tests. Note that at this time hardware-bound keys are explicitly excluded from testing. <testlist>
+                  <test>The evaluator shall utilize appropriate combinations of specialized operational environment and development tools (debuggers, simulators, etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds to test that keys are cleared correctly, including all intermediate copies of the key that may have been created internally by the <abbr linkend="TOE"/> during normal cryptographic processing with that key. <h:br/><h:br/> Cryptographic <abbr linkend="TOE"/> implementations in software shall be loaded and exercised under a debugger to perform such tests. The evaluator shall perform the following test for each key subject to clearing, including intermediate copies of keys that are persisted encrypted by the <abbr linkend="TOE"/>: <h:ol>
+                      <h:li>Load the instrumented <abbr linkend="TOE"/> build in a debugger.</h:li>
+                      <h:li>Record the value of the key in the <abbr linkend="TOE"/> subject to clearing.</h:li>
+                      <h:li>Cause the <abbr linkend="TOE"/> to perform a normal cryptographic processing with the key from #1.</h:li>
                       <h:li>Cause the <abbr linkend="TOE"/> to clear the key.</h:li>
-                      <h:li>Cause the <abbr linkend="TOE"/> to stop the execution but not
-                        exit.</h:li>
-                      <h:li>Cause the <abbr linkend="TOE"/> to dump the entire memory footprint of
-                        the <abbr linkend="TOE"/> into a binary file.</h:li>
-                      <h:li>Search the content of the binary file created in #4 for instances of
-                        the known key value from #1.</h:li>
-                    </h:ol> The test succeeds if no copies of the key from #1 are found in step #7
-                    above and fails otherwise. The evaluator shall perform this test on all keys,
-                    including those persisted in encrypted form, to ensure intermediate copies are
-                    cleared. </test>
-                  <test>In cases where the <abbr linkend="TOE"/> is implemented in firmware and
-                    operates in a limited operating environment that does not allow the use of
-                    debuggers, the evaluator shall utilize a simulator for the <abbr linkend="TOE"/>
-                    on a general purpose operating system. The evaluator shall provide a rationale
-                    explaining the instrumentation of the simulated test environment and justifying
-                    the obtained test results. </test>
+                      <h:li>Cause the <abbr linkend="TOE"/> to stop the execution but not exit.</h:li>
+                      <h:li>Cause the <abbr linkend="TOE"/> to dump the entire memory footprint of the <abbr linkend="TOE"/> into a binary file.</h:li>
+                      <h:li>Search the content of the binary file created in #4 for instances of the known key value from #1.</h:li>
+                    </h:ol> The test succeeds if no copies of the key from #1 are found in step #7 above and fails otherwise. The evaluator shall perform this test on all keys, including those persisted in encrypted form, to ensure intermediate copies are cleared. </test>
+                  <test>In cases where the <abbr linkend="TOE"/> is implemented in firmware and operates in a limited operating environment that does not allow the use of debuggers, the evaluator shall utilize a simulator for the <abbr linkend="TOE"/> on a general purpose operating system. The evaluator shall provide a rationale explaining the instrumentation of the simulated test  enironment and justifying the obtained test results. </test>
                 </testlist>
             </aactivity>
           </f-element>
