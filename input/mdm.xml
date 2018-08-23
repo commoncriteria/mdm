@@ -1953,8 +1953,7 @@ To do:
               IVs generated for encryption according to a cryptographic protocol is addressed by the
               protocol. Thus, this requirement addresses only IVs generated for key storage encryption.<h:br/><h:br/>
               <!-- HERE put table from page 103 here -->
-              <h:center><h:H4>Table 3: References and IV Requirements for NIST-approved Cipher
-                Modes</h:H4></h:center>
+              <h:center><h:H4>Table 3: References and IV Requirements for NIST-approved Cipher Modes</h:H4></h:center>
               <h:table>
                 <h:TR>
                   <h:TD><h:b>Cipher Mode</h:b></h:TD>
@@ -2023,11 +2022,12 @@ To do:
               </h:table>
             </note>
             <aactivity>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it details
-                the encryption of user credentials, persistent secrets, and private keys and the
-                generation of the IVs used for that encryption.<h:br/><h:br/>
-              <Tests/>The evaluator shall ensure that the generation of IVs for each key encrypted by
-                the same <abbr linkend="KEK"/> meets Table 3. </aactivity>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the IV generation is invoked for each mode selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
+              <h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it details the encryption of user credentials, persistent secrets, and private keys and the generation of the IVs used for that encryption.<h:br/><h:br/>
+              <Tests/>The evaluator shall ensure that the generation of IVs for each key encrypted by the same <abbr linkend="KEK"/> meets Table 3. 
+            </aactivity>
           </f-element>
         </f-component>
         <f-component id="fcs_rbg_ext.1" name="Extended: Random Bit Generation">
