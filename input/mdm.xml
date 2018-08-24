@@ -2153,22 +2153,14 @@ To do:
                 <selectable>CCM</selectable>
                 <selectable>CBC mode</selectable>
               </selectables> .</title>
-            <note role="application">This requirement states that keys used by the <abbr
-                linkend="TSF"/> shall not be kept in plaintext. The intent of this requirement is to
-              ensure that the private keys, credentials, and persistent secrets cannot be accessed
-              in the <abbr linkend="TOE"/> in an unencrypted state, allowing an attacker to access
-              keys without having to exhaust the AES key space. <h:br/><h:br/> This requirement must be
-              including in the <abbr linkend="ST"/> if the selection in <linkref linkend="FCS_STG_EXT.1"/> indicates that
-              the <abbr linkend="TSF"/> is protecting private keys and persistent secrets with
-              encryption rather than the platform-provided key storage.<h:br/><h:br/> If this
-              requirement is included in the <abbr linkend="ST"/>, <linkref linkend="FCS_IV_EXT.1"/> must also be
-              included. </note>
+            <note role="application">This requirement states that keys used by the <abbr linkend="TSF"/> shall not be kept in plaintext. The intent of this requirement is to ensure that the private keys, credentials, and persistent secrets cannot be accessed in the <abbr linkend="TOE"/> in an unencrypted state, allowing an attacker to access keys without having to exhaust the AES key space. <h:br/><h:br/> 
+              This requirement must be including in the <abbr linkend="ST"/> if the selection in <linkref linkend="FCS_STG_EXT.1"/> indicates that the <abbr linkend="TSF"/> is protecting private keys and persistent secrets with encryption rather than the platform-provided key storage.<h:br/><h:br/> 
+              If this requirement is included in the <abbr linkend="ST"/>, <linkref linkend="FCS_IV_EXT.1"/> must also be included.</note>
             <aactivity>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes in
-                detail how user credentials, persistent secret and private keys are stored and
-                encrypted. The evaluator shall review the <abbr linkend="TSS"/> to determine that it
-                makes a case that key material is not written unencrypted to persistent memory and
-                that it identifies the mode of encryption.
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how the key encryption functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes in detail how user credentials, persistent secret and private keys are stored and encrypted. The evaluator shall review the <abbr linkend="TSS"/> to determine that it makes a case that key material is not written unencrypted to persistent memory and that it identifies the mode of encryption.
             </aactivity>
           </f-element>
         </f-component> 
