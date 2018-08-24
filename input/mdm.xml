@@ -2041,54 +2041,19 @@ To do:
                 <selectable>HMAC_DRBG (any)</selectable>
                 <selectable>CTR_DRBG (AES)</selectable>
               </selectables>.</title>
-            <note role="application">The <abbr linkend="ST"/> author should select whether the
-              Server provides its own DRBG or uses the platform's. SP 800-90A contains three
-              different methods of generating random numbers; each of these, in turn, depends on
-              underlying cryptographic primitives (hash functions/ciphers). The <abbr linkend="ST"/>
-              author will select the function used, and include the specific underlying
-              cryptographic primitives used in the requirement or in the <abbr linkend="TSS"/>.
-              While any of the identified hash functions (SHA-224, SHA-256, SHA-384, SHA-512) are
-              allowed for Hash_DRBG or HMAC_DRBG, only AES-based implementations for CTR_DRBG are
-              allowed.</note>
+            <note role="application">The <abbr linkend="ST"/> author should select whether the Server provides its own DRBG or uses the platform's. SP 800-90A contains three different methods of generating random numbers; each of these, in turn, depends on underlying cryptographic primitives (hash functions/ciphers). The <abbr linkend="ST"/> author will select the function used, and include the specific underlying cryptographic primitives used in the requirement or in the <abbr linkend="TSS"/>. While any of the identified hash functions (SHA-224, SHA-256, SHA-384, SHA-512) are allowed for Hash_DRBG or HMAC_DRBG, only AES-based implementations for CTR_DRBG are allowed.</note>
             <aactivity> 
-              If "invoke platform-provided functionality" is selected:<h:br/><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the RBG functionality is invoked for each operation they are used for in the <abbr linkend="MDM"/> Server (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).  If "implement functionality" is selected:<h:br/><h:br/>
-              <Tests/> The evaluator shall perform the following tests.<h:br/><h:br/> The evaluator shall
-                perform 15 trials for the RNG implementation. If the RNG is configurable, the
-                evaluator shall perform 15 trials for each configuration. The evaluator shall also
-                confirm that the operational guidance contains appropriate instructions for
-                configuring the RNG functionality.<h:br/><h:br/> If the RNG has prediction resistance
-                enabled, each trial consists of (1) instantiate DRBG, (2) generate the first block
-                of random bits (3) generate a second block of random bits (4) uninstantiate. The
-                evaluator verifies that the second block of random bits is the expected value. The
-                evaluator shall generate eight input values for each trial. The first is a count (0
-                – 14). The next three are entropy input, nonce, and personalization string for the
-                instantiate operation. The next two are additional input and entropy input for the
-                first call to generate. The final two are additional input and entropy input for the
-                second call to generate. These values are randomly generated. "generate one block of
-                random bits" means to generate random bits with number of returned bits equal to the
-                Output Block Length (as defined in NIST SP 800-90A).<h:br/><h:br/> If the RNG does not
-                have prediction resistance, each trial consists of (1) instantiate DRBG, (2)
-                generate the first block of random bits (3) reseed, (4) generate a second block of
-                random bits (5) uninstantiate. The evaluator verifies that the second block of
-                random bits is the expected value. The evaluator shall generate eight input values
-                for each trial. The first is a count (0 – 14). The next three are entropy input,
-                nonce, and personalization string for the instantiate operation. The fifth value is
-                additional input to the first call to generate. The sixth and seventh are additional
-                input and entropy input to the call to reseed. The final value is additional input
-                to the second generate call.<h:br/><h:br/> The following paragraphs contain more
-                information on some of the input values to be generated/selected by the
-                evaluator.<h:br/><h:br/> Entropy input: the length of the entropy input value must equal
-                the seed length.<h:br/><h:br/> Nonce: If a nonce is supported (CTR_DRBG with no
-                Derivation Function does not use a nonce), the nonce bit length is one-half the seed
-                length.<h:br/><h:br/> Personalization string: The length of the personalization string
-                must be less than or equal to seed length. If the implementation only supports one
-                personalization string length, then the same length can be used for both values. If
-                more than one string length is support, the evaluator shall use personalization
-                strings of two different lengths. If the implementation does not use a
-                personalization string, no value needs to be supplied.<h:br/><h:br/> Additional input:
-                the additional input bit lengths have the same defaults and restrictions as the
-                personalization string lengths.<h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the RBG functionality is invoked for each operation they are used for in the <abbr linkend="MDM"/> Server (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
+              <h:h4>If "implement functionality" is selected:</h:h4>
+              <Tests/> The evaluator shall perform the following tests.<h:br/><h:br/> The evaluator shall perform 15 trials for the RNG implementation. If the RNG is configurable, the evaluator shall perform 15 trials for each configuration. The evaluator shall also confirm that the operational guidance contains appropriate instructions for configuring the RNG  functionality.<h:br/><h:br/> 
+              If the RNG has prediction resistance enabled, each trial consists of (1) instantiate DRBG, (2) generate the first block of random bits (3) generate a second block of random bits (4) uninstantiate. The evaluator verifies that the second block of random bits is the expected value. The evaluator shall generate eight input values for each trial. The first is a count (0 – 14). The next three are entropy input, nonce, and personalization string for the instantiate operation. The next two are additional input and entropy input for the first call to generate. The final two are additional input and entropy input for the second call to generate. These values are randomly generated. "generate one block of random bits" means to generate random bits with number of returned bits equal to the Output Block Length (as defined in NIST SP 800-90A).<h:br/><h:br/> 
+              If the RNG does not have prediction resistance, each trial consists of (1) instantiate DRBG, (2) generate the first block of random bits (3) reseed, (4) generate a second block of random bits (5) uninstantiate. The evaluator verifies that the second block of random bits is the expected value. The evaluator shall generate eight input values for each trial. The first is a count (0 – 14). The next three are entropy input, nonce, and personalization string for the instantiate operation. The fifth value is additional input to the first call to generate. The sixth and seventh are additional input and entropy input to the call to reseed. The final value is additional input to the second generate call.<h:br/><h:br/> 
+              The following paragraphs contain more information on some of the input values to be generated/selected by the evaluator.<h:br/><h:br/> 
+              Entropy input: the length of the entropy input value must equal the seed length.<h:br/><h:br/> 
+              Nonce: If a nonce is supported (CTR_DRBG with no Derivation Function does not use a nonce), the nonce bit length is one-half the seed length.<h:br/><h:br/> 
+              Personalization string: The length of the personalization string must be less than or equal to seed length. If the implementation only supports one personalization string length, then the same length can be used for both values. If more than one string length is support, the evaluator shall use personalization strings of two different lengths. If the implementation does not use a personalization string, no value needs to be supplied.<h:br/><h:br/>
+              Additional input: the additional input bit lengths have the same defaults and restrictions as the personalization string lengths.<h:br/><h:br/>
               </aactivity>
           </f-element>
           <f-element id="fcs_rbg_ext.1.2">
