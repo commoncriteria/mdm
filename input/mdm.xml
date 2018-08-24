@@ -2128,33 +2128,14 @@ To do:
               <selectable id="fcs_stg_enc">implement encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
               </selectables> for all persistent secrets and private keys.</title>
             <!--check this note and aa-->
-            <note role="application">This requirement ensures that persistent secrets (credentials,
-              secret keys) and private keys are stored securely when not in use. If some
-              secrets/keys are manipulated by the <abbr linkend="TOE"/> and others are manipulated
-              by the platform, then both of the selections can be specified by the <abbr
-                linkend="ST"/> author and the <abbr linkend="ST"/> author must identify in the <abbr
-                linkend="TSS"/> those keys which are manipulated by the <abbr linkend="TOE"/> and
-              those by the platform. <h:br/><h:br/> If the <abbr linkend="TSF"/> is an application, and
-              not a dedicated server, then it should store its private keys in the platform-provided
-              key storage.<h:br/><h:br/> The <abbr linkend="ST"/> author is responsible for selecting the
-              manner in which the keys are stored and where they are stored in the selections above. </note>
+            <note role="application">This requirement ensures that persistent secrets (credentials, secret keys) and private keys are stored securely when not in use. If some secrets/keys are manipulated by the <abbr linkend="TOE"/> and others are manipulated by the platform, then both of the selections can be specified by the <abbr linkend="ST"/> author and the <abbr linkend="ST"/> author must identify in the <abbr linkend="TSS"/> those keys which are manipulated by the <abbr linkend="TOE"/> and those by the platform. <h:br/><h:br/> If the <abbr linkend="TSF"/> is an application, and not a dedicated server, then it should store its private keys in the platform-provided key storage.<h:br/><h:br/> The <abbr linkend="ST"/> author is responsible for selecting the manner in which the keys are stored and where they are stored in the selections above. </note>
             <aactivity>
-              <TSS/>Regardless of whether this requirement is met by the <abbr linkend="TSF"/> or the
-                  <abbr linkend="TOE"/> platform, the evaluator will check the <abbr linkend="TSS"/>
-                to ensure that it lists each persistent secret (credential, secret key) and private
-                key needed to meet the requirements in the <abbr linkend="ST"/>. For each of these
-                items, the evaluator will confirm that the <abbr linkend="TSS"/> lists for what
-                purpose it is used, and how it is stored. The evaluator than performs the following
-                actions. Persistent secrets and private keys manipulated by the <abbr linkend="TOE"
-                /> platform<h:br/><h:br/> For each platform listed in the <abbr linkend="ST"/>, the <!--this will have to change, no platform ST-->
-                evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the
-                persistent secrets and private keys listed as being stored by the platform in the
-                  <abbr linkend="MDM"/> Server <abbr linkend="ST"/> are identified as being
-                protected in that platform's <abbr linkend="ST"/>.<h:br/><h:br/> Persistent secrets and
-                private keys manipulated by the <abbr linkend="TSF"/><h:br/><h:br/> The evaluator reviews
-                the <abbr linkend="TSS"/> to determine that it makes a case that, for each item
-                listed as being manipulated by the <abbr linkend="TOE"/>, it is not written
-                unencrypted to persistent memory, and that the item is stored by the platform.
+              <TSS/>Regardless of whether this requirement is met by the <abbr linkend="TSF"/> or the <abbr linkend="TOE"/> platform, the evaluator will check the <abbr linkend="TSS"/> to ensure that it lists each persistent secret (credential, secret key) and private key needed to meet the requirements in the <abbr linkend="ST"/>. For each of these items, the evaluator will confirm that the <abbr linkend="TSS"/> lists for what purpose it is used, and how it is stored. The evaluator than performs the following actions. 
+              Persistent secrets and private keys manipulated by the <abbr linkend="TOE"/> platform<h:br/><h:br/> 
+              <!-- Old activity>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the persistent secrets and private keys listed as being stored by the platform in the <abbr linkend="MDM"/> Server <abbr linkend="ST"/> are identified as being protected in that platform's <abbr  linkend="ST"/>.<h:br/><h:br/><-->
+              The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how the key storage functionality is invoked for each persistent secret and private key described in the <abbr linkend="TSS"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/> 
+              Persistent secrets and private keys manipulated by the <abbr linkend="TSF"/><h:br/><h:br/> 
+              The evaluator reviews the <abbr linkend="TSS"/> to determine that it makes a case that, for each item listed as being manipulated by the <abbr linkend="TOE"/>, it is not written unencrypted to persistent memory, and that the item is stored by the platform.
                 <h:br/><h:br/>              
             </aactivity>
           </f-element>
