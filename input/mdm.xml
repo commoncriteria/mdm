@@ -2910,27 +2910,16 @@ To do:
             <title>The TSF shall <selectables>
                 <selectable>invoke platform-provided functionality</selectable>
                 <selectable>implement functionality</selectable> 
-              </selectables> to treat a certificate as a CA certificate only if the
-              basicConstraints extension is present and the CA flag is set to TRUE.</title>
-            <note role="application">This requirement applies to certificates that are used and
-              processed by the <abbr linkend="TOE"/> or platform and restricts the certificates that
-              may be added as trusted CA certificates.</note>
+              </selectables> to treat a certificate as a CA certificate only if the basicConstraints extension is present and the CA flag is set to TRUE.</title>
+            <note role="application">This requirement applies to certificates that are used and processed by the <abbr linkend="TOE"/> or platform and restricts the certificates that may be added as trusted CA certificates.</note>
             <aactivity>
-              <Tests/>The tests described must be performed in conjunction with the other certificate
-                services assurance activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The
-                evaluator shall create a chain of at least four certificates: the node certificate
-                to be tested, two Intermediate CAs, and the self-signed Root CA. <testlist>
-                  <test>The evaluator shall construct a certificate path, such that the certificate
-                    of the CA issuing the <abbr linkend="TOE"/>'s certificate does not contain the
-                    basicConstraints extension. The validation of the certificate path fails.</test>
-                  <test>The evaluator shall construct a certificate path, such that the certificate
-                    of the CA issuing the <abbr linkend="TOE"/>'s certificate has the cA flag in the
-                    basicConstraints extension not set. The validation of the certificate path
-                    fails.</test>
-                  <test>The evaluator shall construct a certificate path, such that the certificate
-                    of the CA issuing the <abbr linkend="TOE"/>'s certificate has the cA flag in the
-                    basicConstraints extension set to TRUE. The validation of the certificate path
-                    succeeds.</test>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <Tests/>The tests described must be performed in conjunction with the other certificate services assurance activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
+              <testlist>
+                  <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>'s certificate does not contain the basicConstraints extension. The validation of the certificate path fails.</test>
+                  <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>'s certificate has the cA flag in the basicConstraints extension not set. The validation of the certificate path fails.</test>
+                  <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>'s certificate has the cA flag in the basicConstraints extension set to TRUE. The validation of the certificate path succeeds.</test>
                 </testlist>
             </aactivity>
           </f-element>
