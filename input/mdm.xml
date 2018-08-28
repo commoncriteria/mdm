@@ -1039,7 +1039,7 @@ To do:
             <note role="application">The <abbr linkend="TOE"/> shall be capable of transmitting audit data to an external entity using a trusted channel as specified in <linkref linkend="FTP_ITC.1(1)"/> and optionally can store audit data locally. If "store audit data locally" is selected, then <linkref linkend="FAU_STG_EXT.2.1"/> shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> 
               The <abbr linkend="TOE"/> may rely on a non-<abbr linkend="TOE"/> audit server for storage and review of audit records. Although the <abbr linkend="TOE"/> generates audit records and receives audit records from managed mobile devices, the storage of these audit records and the ability to allow the administrator to review these audit records is provided by the operational environment. The <abbr linkend="TSF"/> may rely on the underlying operating system for this functionality, and the selection should be made appropriately.<h:br/><h:br/> If the <abbr linkend="TOE"/> relies on a non-<abbr linkend="TOE"/> audit server and the trusted channel implements TLS, mutual authentication is not required since the audit server is outside of the <abbr linkend="TOE"/>. </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the trusted channel functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
               <h:h4>If "implement functionality" is selected:</h:h4>            
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server. <h:br/><h:br/>
@@ -1081,7 +1081,7 @@ To do:
               </selectables> to protect the stored audit records in the audit trail from unauthorized modification.</title>
             <note role="application">If "store audit data locally" is selected in <linkref linkend="FAU_STG_EXT.1.1(1)"/>, this <abbr linkend="SFR"/> shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> The purpose of this requirement is to ensure that audit records are stored securely. The <abbr linkend="ST"/> author is responsible for selecting whether audit records are maintained when audit storage or failure occurs. The <abbr linkend="ST"/> author must choose a means by which audit records are saved and select the events during which the records will be saved. The <abbr linkend="TSF"/> may rely on the underlying operating system for this functionality, and the first selection should be made appropriately.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the audit record protection functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
               <TSS/>The evaluator shall ensure that the <abbr linkend="TSS"/> describes how the audit records are protected from unauthorized modification or deletion. The evaluator shall ensure that the <abbr linkend="TOE"/> uses audit trail specific protection mechanisms.<h:br/><h:br/>
@@ -1124,7 +1124,7 @@ To do:
               receiver in the RSA key establishment scheme, the <abbr linkend="TOE"/> does not need
               to implement RSA key generation. </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <!-- TODO: Need to review this AA -->
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key generation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
               <h:h4>If "implement functionality" is selected:</h:h4>
@@ -1259,7 +1259,7 @@ To do:
               <h:br/><h:br/> The domain parameters used for the finite field-based key establishment
               scheme are specified by the key generation according to <linkref linkend="FCS_CKM.1.1"/>.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <!-- TODO: Need to review this AA -->
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
               <h:h4>If "implement functionality" is selected:</h:h4>
@@ -1409,7 +1409,7 @@ To do:
             <note role="application">The <abbr linkend="ST"/> author should select "invoking platform-provided functionality" if the <abbr linkend="MDM"/> Server performs no operations using plaintext secret, private cryptographic keys, and <abbr linkend="CSP"/>s. <h:br/><h:br/>Any security related information (such as keys, authentication data, and passwords) must be zeroized when no longer in use to prevent the disclosure or modification of security critical data. <h:br/><h:br/>
               The zeroization indicated above applies to each intermediate storage area for plaintext key and Cryptographic Service Provider (<abbr linkend="CSP"/>) (i.e., any storage, such as memory buffers, that is included in the path of such data) upon the transfer of the key/<abbr linkend="CSP"/> to another location. <h:br/><h:br/>Since the <abbr linkend="TOE"/> does not include the host IT environment, the extent of this capability is necessarily somewhat limited. For the purposes of this requirement, it is sufficient for the <abbr linkend="TOE"/> to invoke the correct underlying functions of the host to perform the zeroization--it does not imply that the <abbr linkend="TOE"/> has to include a kernel-mode memory driver to ensure the data are zeroized. It is  assumed that the host platform appropriately performs zeroization of key material in its internal processes. </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key destruction functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
             </aactivity>
           </f-element>
@@ -1462,7 +1462,7 @@ To do:
             </title>
             <note role="application">For the second selection of <linkref linkend="FCS_COP.1.1(1)"/> , the <abbr linkend="ST"/> author should choose the mode or modes in which AES operates in the trusted channel protocols. For the third selection, the <abbr linkend="ST"/> author should choose the key sizes that are supported by this functionality.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the encryption/decryption functionality is invoked for each mode and key size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
               <h:h4>If "implement functionality" is selected:</h:h4>
               <testlist><h:b><h:u>AES-CBC Tests</h:u></h:b>
@@ -1656,7 +1656,7 @@ To do:
               digest size selection. The hash selection should be consistent with the overall
               strength of the algorithm used (for example, SHA-256 for 128-bit keys).</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>
                 to verify that it describes (for each supported platform) how the hash functionality
                 is invoked for each digest size selected in the <abbr linkend="MDM"/> Server's <abbr
@@ -1747,7 +1747,7 @@ To do:
             </title>
             <note role="application">The <abbr linkend="ST"/> Author should choose the algorithm implemented to perform digital signatures. The <abbr linkend="MDM"/> Server must perform digital signatures in accordance with the trusted channel protocols. The <abbr linkend="MDM"/> Server is required to validate any signed policies and policy updates sent by the <abbr linkend="MDM"/> Server. </note>  
             <aactivity> 
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/>
                 Server's <abbr linkend="ST"/> to verify that it describes (for each supported
                 platform) how the digital signature functionality is invoked for each operation they
@@ -1755,7 +1755,7 @@ To do:
                 be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server;
                 nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part
                 of this assurance activity).<h:br/><h:br/>
-               <h:h4>If "implement functionality" is selected:</h:h4><h:br/><h:br/>
+               <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
                 <testlist><h:b><h:u>ECDSA Algorithm Tests</h:u></h:b><h:br/><h:br/>
                 <test>ECDSA FIPS 186-4 Signature Generation Test<h:br/><h:br/> For each
                 supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the
@@ -1817,7 +1817,7 @@ To do:
               selection should be consistent with the overall strength of the algorithm used for
               <linkref linkend="FCS_COP.1(3)"/>.</note>
             <aactivity> 
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/>
                 Server's <abbr linkend="ST"/> to verify that it describes (for each supported
                 platform) how the keyed-hash functionality is invoked for each mode and key size
@@ -2022,7 +2022,7 @@ To do:
               </h:table>
             </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the IV generation is invoked for each mode selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
               <h:h4>If "implement functionality" is selected:</h:h4>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it details the encryption of user credentials, persistent secrets, and private keys and the generation of the IVs used for that encryption.<h:br/><h:br/>
@@ -2043,7 +2043,7 @@ To do:
               </selectables>.</title>
             <note role="application">The <abbr linkend="ST"/> author should select whether the Server provides its own DRBG or uses the platform's. SP 800-90A contains three different methods of generating random numbers; each of these, in turn, depends on underlying cryptographic primitives (hash functions/ciphers). The <abbr linkend="ST"/> author will select the function used, and include the specific underlying cryptographic primitives used in the requirement or in the <abbr linkend="TSS"/>. While any of the identified hash functions (SHA-224, SHA-256, SHA-384, SHA-512) are allowed for Hash_DRBG or HMAC_DRBG, only AES-based implementations for CTR_DRBG are allowed.</note>
             <aactivity> 
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the RBG functionality is invoked for each operation they are used for in the <abbr linkend="MDM"/> Server (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
               <h:h4>If "implement functionality" is selected:</h:h4>
               <Tests/> The evaluator shall perform the following tests.<h:br/><h:br/> The evaluator shall perform 15 trials for the RNG implementation. If the RNG is configurable, the evaluator shall perform 15 trials for each configuration. The evaluator shall also confirm that the operational guidance contains appropriate instructions for configuring the RNG  functionality.<h:br/><h:br/> 
@@ -2122,7 +2122,7 @@ To do:
               This requirement must be including in the <abbr linkend="ST"/> if the selection in <linkref linkend="FCS_STG_EXT.1"/> indicates that the <abbr linkend="TSF"/> is protecting private keys and persistent secrets with encryption rather than the platform-provided key storage.<h:br/><h:br/> 
               If this requirement is included in the <abbr linkend="ST"/>, <linkref linkend="FCS_IV_EXT.1"/> must also be included.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how the key encryption functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes in detail how user credentials, persistent secret and private keys are stored and encrypted. The evaluator shall review the <abbr linkend="TSS"/> to determine that it makes a case that key material is not written unencrypted to persistent memory and that it identifies the mode of encryption.
@@ -2783,21 +2783,28 @@ To do:
           </f-element>
         </f-component> 
         <f-component id="fia_uau.1" name="Timing of Authentication">
-          <f-element id="fia_uau.1.1"> <!--free--> <!--check this for logic-->
+          <f-element id="fia_uau.1.1"> <!--free-->
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality </selectable>
               </selectables> to allow <assignable>list of TSF mediated actions</assignable> on behalf of the user to be performed before the user is authenticated with the Server.</title>
+            <aactivity>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
+              <TSS/> The evaluator shall complete the testing required in <abbr linkend="fia_uau.1.2"/>.
+            </aactivity>
           </f-element>
-          <f-element id="fia_uau.1.2"> <!--free--> <!--check this for logic-->
+          <f-element id="fia_uau.1.2"> <!--free-->
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality </selectable>
               </selectables> that requires each user to be successfully authenticated with the Server before allowing any other <abbr linkend="TSF"/>-mediated actions on behalf of that user.</title>
             <note role="application">This requirement ensures that any user attempting to access the <abbr linkend="TSF"/> must be authenticated. These users may be administrators attempting to administer the <abbr linkend="TOE"/> or ordinary users attempting to enroll for management by the <abbr linkend="MDM"/> system. The <abbr linkend="ST"/> author is responsible for assigning the list of actions that can take place before this authentication. The <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform may utilize enterprise authentication to meet this requirement.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how the user authentication <!--need better wording here--> functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <h:h4>If either is selected:</h:h4>
               <!--how do we make the test apply to both?-->
               <Tests/>
                 <testlist>The evaluator shall perform the following tests: <test>The evaluator shall attempt to perform the prohibited actions before authentication. The evaluator shall verify the actions cannot be performed.</test>
@@ -2890,9 +2897,9 @@ To do:
             </title>
             <note role="application"> <linkref linkend="FIA_X509_EXT.1.1"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author shall select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br/><h:br/>
               <Tests/>The tests described must be performed in conjunction with the other certificate services assurance activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA. 
               <testlist>
@@ -2913,7 +2920,7 @@ To do:
               </selectables> to treat a certificate as a CA certificate only if the basicConstraints extension is present and the CA flag is set to TRUE.</title>
             <note role="application">This requirement applies to certificates that are used and processed by the <abbr linkend="TOE"/> or platform and restricts the certificates that may be added as trusted CA certificates.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <Tests/>The tests described must be performed in conjunction with the other certificate services assurance activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
               <testlist>
@@ -2947,7 +2954,7 @@ To do:
               If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "TLS", "HTTPS" or "DTLS" are selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. 
             </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
             </aactivity>
           </f-element>
