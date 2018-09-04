@@ -3764,41 +3764,21 @@ To do:
                 <selectable id="ITC_SSH_1">SSH</selectable>
                 <selectable id="ITC_TLS_1">TLS</selectable>
                 <selectable id="ITC_HTTPS_1">TLS/HTTPS</selectable>
-              </selectables> to provide a trusted communication channel between itself and
-              authorized IT entities supporting the following capabilities: audit server, <selectables>
+              </selectables> to provide a trusted communication channel between itself and authorized IT entities supporting the following capabilities: audit server, <selectables>
                 <selectable>authentication server</selectable>
                 <selectable><assignable>other capabilities</assignable></selectable>
-              </selectables> that is logically distinct from other communication channels and
-              provides assured identification of its end points and protection of the channel data
-              from modification or disclosure.</title>
+              </selectables> that is logically distinct from other communication channels and provides assured identification of its end points and protection of the channel data from modification or disclosure.</title>
             <note role="application">The intent of the mandatory portion of the above requirement is to use the cryptographic protocols identified in the requirement to establish and maintain a trusted channel with authorized IT entities that the <abbr linkend="TOE"/> interacts with to perform its functions.<h:br/><h:br/> 
-              Protection (by one of the listed protocols) is required at least for communications with the server that collects the audit information. If it communicates with an authentication server (e.g., RADIUS), then the <abbr linkend="ST"/> author chooses "authentication server" in <linkref linkend="FTP_ITC.1.1(1)"/> and this connection must be protected by one of the listed protocols. If other authorized IT entities (e.g., NTP server) are protected, the <abbr linkend="ST"/>
-              author makes the appropriate assignments (for those entities) and selections (for the
-              protocols that are used to protect those connections). <h:br/><h:br/> 
-              To summarize, the
-              connection to an external audit collection server is required to be protected by one
-              of the listed protocols. If an external authentication server is supported, then it is
-              required to protect that connection with one of the listed protocols. For any other
-              external server, external communications are not required to be protected, but if
-              protection is claimed, then it must be protected with one of the identified
-              protocols.<h:br/><h:br/> The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the
-              protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/>
-              communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms
-              supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package
-              for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is
-              selected the Extended Package for Secure Shell must be included in the <abbr
-                linkend="ST"/>. If "TLS" or "TLS/HTTPS" is selected the appropriate selection-based
-                <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"
-              />.<h:br/><h:br/> Protocol, RBG, Certificate validation, algorithm, and similar services
-              may be met with platform provided services.<h:br/><h:br/> The requirement implies that not
-              only are communications protected when they are initially established, but also on
-              resumption after an outage. It may be the case that some part of the <abbr
-                linkend="TOE"/> setup involves manually setting up tunnels to protect other
-              communication, and if after an outage the <abbr linkend="TOE"/> attempts to
-              re-establish the communication automatically with (the necessary) manual intervention,
-              there may be a window created where an attacker might be able to gain critical
-              information or compromise a connection.<h:br/><h:br/>
+              Protection (by one of the listed protocols) is required at least for communications with the server that collects the audit information. If it communicates with an authentication server (e.g., RADIUS), then the <abbr linkend="ST"/> author chooses "authentication server" in <linkref linkend="FTP_ITC.1.1(1)"/> and this connection must be protected by one of the listed protocols. If other authorized IT entities (e.g., NTP server) are protected, the <abbr linkend="ST"/> author makes the appropriate assignments (for those entities) and selections (for the protocols that are used to protect those connections).<h:br/><h:br/> 
+              To summarize, the connection to an external audit collection server is required to be protected by one of the listed protocols. If an external authentication server is supported, then it is required to protect that connection with one of the listed protocols. For any other external server, external communications are not required to be protected, but if protection is claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
+              The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "TLS" or "TLS/HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/> 
+              Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services.<h:br/><h:br/> 
+              The requirement implies that not only are communications protected when they are initially established, but also on resumption after an outage. It may be the case that some part of the <abbr linkend="TOE"/> setup involves manually setting up tunnels to protect other communication, and if after an outage the <abbr linkend="TOE"/> attempts to re-establish the communication automatically with (the necessary) manual intervention, there may be a window created where an attacker might be able to gain critical information or compromise a connection.<h:br/><h:br/>
             </note>
+            <aactivity>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="ftp_itc.1.2(1)">
             <title>The <abbr linkend="TSF"/> shall permit the <abbr linkend="MDM"/> Server or other
