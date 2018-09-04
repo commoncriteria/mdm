@@ -3680,34 +3680,26 @@ To do:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to provide Authorized Administrators the ability to initiate updates to <abbr linkend="TSF"/> software.</title>
+            <aactivity>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="fpt_tud_ext.1.3"> <!--free-->
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to provide a means to verify software updates to the <abbr
-              linkend="TSF"/> using a digital signature mechanism prior to installing those
-              updates.</title>
-            <note role="application">The software on the <abbr linkend="TSF"/> will occasionally
-              need to be updated. This requirement is intended to ensure that the <abbr
-                linkend="TSF"/> only installs updates provided by the vendor, as updates provided by
-              another source may contain malicious code. If the server is not an appliance, the
-              update will be verified by the platform on which the server software runs. If the
-              server is an appliance, the update must be verified by the <abbr linkend="TSF"/>
-              software or hardware.</note>
+            </selectables> to provide a means to verify software updates to the <abbr linkend="TSF"/> using a digital signature mechanism prior to installing those updates.</title>
+            <note role="application">The software on the <abbr linkend="TSF"/> will occasionally need to be updated. This requirement is intended to ensure that the <abbr linkend="TSF"/> only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the <abbr linkend="TSF"/> software or hardware.</note>
             <aactivity>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it
-                describes the standards by which the updates are digitally signed and how the
-                signature verification process is implemented.<h:br/><h:br/>
-              <Guidance/>The evaluator shall examine the AGD guidance to verify that it describes how
-                to query the current version of the <abbr linkend="TSF"/> software, how to initiate
-              updates and how to check the integrity of updates prior to installation.<h:br/><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes the standards by which the updates are digitally signed and how the signature verification process is implemented.<h:br/><h:br/>
+              <Guidance/>The evaluator shall examine the AGD guidance to verify that it describes how to query the current version of the <abbr linkend="TSF"/> software, how to initiate updates and how to check the integrity of updates prior to installation.<h:br/><h:br/>
               <Tests/>The evaluator shall perform the following tests: <testlist>
-                <test>The evaluator shall attempt to initiate an update digitally signed by the
-                  vendor and verify that the update is successfully installed.</test>
-                <test>The evaluator shall attempt to install an update not digitally signed by the
-                  vendor and verify that either the signature can be checked (allowing the update
-                  to be aborted) or the update is not installed.</test>
+                <test>The evaluator shall attempt to initiate an update digitally signed by the vendor and verify that the update is successfully installed.</test>
+                <test>The evaluator shall attempt to install an update not digitally signed by the vendor and verify that either the signature can be checked (allowing the update to be aborted) or the update is not installed.</test>
               </testlist>
             </aactivity>
           </f-element>       
