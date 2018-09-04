@@ -3016,23 +3016,14 @@ To do:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
               </selectables> to require a unique certificate for each client device.</title>
-            <note role="application">Each client device will have a unique X.509v3 certificate for
-              use by the <abbr linkend="MDM"/> Agent; the certificate is not to be reused among
-              clients. This requirement is to ensure that the <abbr linkend="MDM"/> Server verifies
-              that each client certificate is unique.</note>
+            <note role="application">Each client device will have a unique X.509v3 certificate for use by the <abbr linkend="MDM"/> Agent; the certificate is not to be reused among clients. This requirement is to ensure that the <abbr linkend="MDM"/> Server verifies that each client certificate is unique.</note>
             <aactivity>
-              <Tests/>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr
-                  linkend="ST"/>:<h:br/><h:br/> The evaluator shall utilize appropriate combinations of
-                specialized operational environment and development tools (debuggers, simulators,
-                etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds as
-                needed to perform this test.<h:br/><h:br/> The evaluator shall initiate communications
-                between the <abbr linkend="MDM"/> Server and a client device over a trusted channel
-                established using the device's unique certificate, verifying that a successful
-                communication channel was established. The evaluator shall then attempt to initiate
-                communications between the <abbr linkend="MDM"/> Server and a second client device
-                over a trusted channel established using the unique certificate from the first
-                device, verifying that the <abbr linkend="MDM"/> Server rejects this attempt at
-                communication. 
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
+              <Tests/>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<h:br/><h:br/>
+              The evaluator shall utilize appropriate combinations of specialized operational environment and development tools (debuggers, simulators, etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds as needed to perform this test.<h:br/><h:br/> 
+              The evaluator shall initiate communications between the <abbr linkend="MDM"/> Server and a client device over a trusted channel established using the device's unique certificate, verifying that a successful communication channel was established. The evaluator shall then attempt to initiate communications between the <abbr linkend="MDM"/> Server and a second client device over a trusted channel established using the unique certificate from the first device, verifying that the <abbr linkend="MDM"/> Server rejects this attempt at communication. 
             </aactivity>
           </f-element>
         </f-component> 
