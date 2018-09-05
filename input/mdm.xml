@@ -993,6 +993,10 @@ To do:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to provide [Authorized Administrators] with the capability to read [all audit data] from the audit records.</title>
+            <aactivity>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="fau_sar.1.2"> <!--free-->
             <title>The TSF shall <selectables>
@@ -1002,6 +1006,10 @@ To do:
             <note role="application">The intent of this requirement is to ensure that the administrator can view and interpret the audit records and to prevent unauthorized users from accessing the logs.</note>
             <aactivity>
               <Guidance/>The evaluator shall check the AGD guidance and ensure that it describes how the administrator accesses the audit data and describes the format of the audit record.<h:br/><h:br/>
+                <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+                <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <Tests/>The evaluator shall attempt to view the audit record as the authorized administrator and verify that the action succeeds. The evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide.
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>              
               <Tests/>The evaluator shall attempt to view the audit record as the authorized administrator and verify that the action succeeds. The evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide.
             </aactivity>
           </f-element>
@@ -1899,6 +1907,10 @@ To do:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to implement the HTTPS protocol that complies with RFC 2818.</title>
+            <aactivity>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="fcs_https_ext.1.2"> <!--free-->
             <title>The TSF shall <selectables>
@@ -1916,23 +1928,16 @@ To do:
                 <selectable>no other action</selectable>
               </selectables> if the peer certificate is deemed invalid.</title>-->
             <!-- FCS_HTTPS_EXT.1.3 was removed per TD212, however the AA was not changed as part of the TD and it will need to be changed TODO. -->
-            <note role="application">Validity is determined by the certificate path, the expiration
-              date, and the revocation status in accordance with RFC 5280.</note>
+            <note role="application">Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with RFC 5280.</note>
             <aactivity>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <Tests/>
                 <testlist>
-                  <test>The evaluator shall attempt to establish an HTTPS connection with a web
-                    server, observe the traffic with a packet analyzer, and verify that the
-                    connection succeeds and that the traffic is identified as TLS or HTTPS.</test>
-                  Other tests are performed in conjunction with the TLS evaluation
-                  activities.<h:br/><h:br/> Certificate validity shall be tested in accordance with
-                  testing performed for <linkref linkend="FIA_X509_EXT.1"/>, and the evaluator shall perform the
-                  following test: <test>The evaluator shall demonstrate that using a certificate
-                    without a valid certification path results in an application notification. Using
-                    the administrative guidance, the evaluator shall then load a valid certificate
-                    and certification path, and demonstrate that the function succeeds. The
-                    evaluator then shall delete one of the certificates, and show that the selection
-                    listed in the <abbr linkend="ST"/> occurs.</test>
+                  <test>The evaluator shall attempt to establish an HTTPS connection with a web server, observe the traffic with a packet analyzer, and verify that the connection succeeds and that the traffic is identified as TLS or HTTPS.</test>
+                  Other tests are performed in conjunction with the TLS evaluation activities.<h:br/><h:br/> 
+                  Certificate validity shall be tested in accordance with testing performed for <linkref linkend="FIA_X509_EXT.1"/>, and the evaluator shall perform the following test: <test>The evaluator shall demonstrate that using a certificate without a valid certification path results in an application notification. Using the administrative guidance, the evaluator shall then load a valid certificate and certification path, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the selection listed in the <abbr linkend="ST"/> occurs.</test>
                 </testlist>
             </aactivity>
           </f-element> 
@@ -2098,7 +2103,7 @@ To do:
               <TSS/>Regardless of whether this requirement is met by the <abbr linkend="TSF"/> or the <abbr linkend="TOE"/> platform, the evaluator will check the <abbr linkend="TSS"/> to ensure that it lists each persistent secret (credential, secret key) and private key needed to meet the requirements in the <abbr linkend="ST"/>. For each of these items, the evaluator will confirm that the <abbr linkend="TSS"/> lists for what purpose it is used, and how it is stored. The evaluator than performs the following actions. 
               Persistent secrets and private keys manipulated by the <abbr linkend="TOE"/> platform<h:br/><h:br/> 
               <!-- Old activity>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the persistent secrets and private keys listed as being stored by the platform in the <abbr linkend="MDM"/> Server <abbr linkend="ST"/> are identified as being protected in that platform's <abbr  linkend="ST"/>.<h:br/><h:br/><-->
-              The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how the key storage functionality is invoked for each persistent secret and private key described in the <abbr linkend="TSS"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/> 
+              The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key storage functionality is invoked for each persistent secret and private key described in the <abbr linkend="TSS"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/> 
               Persistent secrets and private keys manipulated by the <abbr linkend="TSF"/><h:br/><h:br/> 
               The evaluator reviews the <abbr linkend="TSS"/> to determine that it makes a case that, for each item listed as being manipulated by the <abbr linkend="TOE"/>, it is not written unencrypted to persistent memory, and that the item is stored by the platform.
                 <h:br/><h:br/>              
@@ -2791,8 +2796,6 @@ To do:
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
-              The evaluator shall complete the testing required in <linkref linkend="FIA_UAU.1.2"/>.
             </aactivity>
           </f-element>
           <f-element id="fia_uau.1.2"> <!--free-->
@@ -2803,9 +2806,12 @@ To do:
             <note role="application">This requirement ensures that any user attempting to access the <abbr linkend="TSF"/> must be authenticated. These users may be administrators attempting to administer the <abbr linkend="TOE"/> or ordinary users attempting to enroll for management by the <abbr linkend="MDM"/> system. The <abbr linkend="ST"/> author is responsible for assigning the list of actions that can take place before this authentication. The <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform may utilize enterprise authentication to meet this requirement.</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If either is selected:</h:h4>
-              <!--how do we make the test apply to both?-->
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/>
+              <Tests/>
+              <testlist>The evaluator shall perform the following tests: <test>The evaluator shall attempt to perform the prohibited actions before authentication. The evaluator shall verify the actions cannot be performed.</test>
+                <test>The evaluator shall attempt to perform the prohibited actions after authentication. The evaluator shall verify the actions can be performed.</test>
+              </testlist>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <Tests/>
                 <testlist>The evaluator shall perform the following tests: <test>The evaluator shall attempt to perform the prohibited actions before authentication. The evaluator shall verify the actions cannot be performed.</test>
                   <test>The evaluator shall attempt to perform the prohibited actions after authentication. The evaluator shall verify the actions can be performed.</test>
@@ -3019,7 +3025,7 @@ To do:
             <note role="application">Each client device will have a unique X.509v3 certificate for use by the <abbr linkend="MDM"/> Agent; the certificate is not to be reused among clients. This requirement is to ensure that the <abbr linkend="MDM"/> Server verifies that each client certificate is unique.</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <Tests/>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<h:br/><h:br/>
               The evaluator shall utilize appropriate combinations of specialized operational environment and development tools (debuggers, simulators, etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds as needed to perform this test.<h:br/><h:br/> 
@@ -3043,7 +3049,7 @@ To do:
               As Enrollment over Secure Transport (EST) is a new standard that has not yet been widely adopted, this requirement is included as an interim objective requirement in order to allow developers to distinguish those products which have do have the ability to generate Certificate Request Messages but do not yet implement <abbr linkend="EST"/>.</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
             </aactivity>
           </f-element>
           <f-element id="fia_x509_ext.3.2"> <!--check-->
@@ -3649,7 +3655,7 @@ To do:
             <note role="application">While the <abbr linkend="TOE"/> is typically a software package running in the IT Environment, it is still capable of performing the self-test activities required above. It should be understood, however, that there is a significant dependency on the host environment in assessing the assurance provided by the tests mentioned above (meaning that if the host environment is compromised, the self-tests will not be meaningful).</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it details the self-tests that are run by the <abbr linkend="TSF"/> on start-up; this description should include an outline of what the tests are actually doing (e.g., rather than saying "memory is tested", a description similar to "memory is tested by writing a value to each memory location and reading it back to ensure it is identical to what was written" shall be used). The evaluator shall ensure that the <abbr linkend="TSS"/> makes an argument that the tests are sufficient to demonstrate that the <abbr linkend="TSF"/> is operating correctly.<h:br/><h:br/> 
               The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes how to verify the integrity of stored <abbr linkend="TSF"/> executable code when it is loaded for execution. The evaluator shall ensure that the <abbr linkend="TSS"/> makes an argument that the tests are sufficient to demonstrate that the integrity of stored <abbr linkend="TSF"/> executable code has not been compromised. The evaluator also ensures that the <abbr linkend="TSS"/> (or the operational guidance) describes the actions that take place for successful (e.g. hash verified) and unsuccessful e.g., hash not verified) cases.<h:br/><h:br/> 
@@ -3682,7 +3688,7 @@ To do:
             </selectables> to provide Authorized Administrators the ability to initiate updates to <abbr linkend="TSF"/> software.</title>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
             </aactivity>
           </f-element>
           <f-element id="fpt_tud_ext.1.3"> <!--free-->
@@ -3693,7 +3699,7 @@ To do:
             <note role="application">The software on the <abbr linkend="TSF"/> will occasionally need to be updated. This requirement is intended to ensure that the <abbr linkend="TSF"/> only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the <abbr linkend="TSF"/> software or hardware.</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes the standards by which the updates are digitally signed and how the signature verification process is implemented.<h:br/><h:br/>
               <Guidance/>The evaluator shall examine the AGD guidance to verify that it describes how to query the current version of the <abbr linkend="TSF"/> software, how to initiate updates and how to check the integrity of updates prior to installation.<h:br/><h:br/>
@@ -3715,7 +3721,7 @@ To do:
             <note role="application"/>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The <abbr linkend="TSS"/> shall describe when the banner is displayed.<h:br/><h:br/> 
               <Guidance/>The evaluator follows the operational guidance to configure a notice and consent warning message.<h:br/><h:br/>
@@ -3777,7 +3783,7 @@ To do:
             </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
             </aactivity>
           </f-element>
           <f-element id="ftp_itc.1.2(1)">
@@ -3993,7 +3999,7 @@ To do:
               </selectables>to provide a trusted communication path between itself and remote administrators that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from [modification, disclosure].</title>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
             </aactivity>
           </f-element>
           <f-element id="ftp_trp.1.2(1)"> <!--free-->
@@ -4003,7 +4009,7 @@ To do:
               </selectables> to permit remote administrators to initiate communication via the trusted path.</title>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
             </aactivity>
           </f-element>
           <f-element id="ftp_trp.1.3(1)"> <!--free-->
@@ -4014,7 +4020,7 @@ To do:
             <note role="application">This requirement ensures that authorized remote administrators initiate all communication with the <abbr linkend="TOE"/> via a trusted path, and that all communications with the <abbr linkend="TOE"/> by remote administrators is performed over this path. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "TLS" or "TLS/HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of remote <abbr linkend="TOE"/> administration are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of <abbr linkend="TOE"/> administration are consistent with those specified in the requirement, and are included in the requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains instructions for establishing the remote administrative sessions for each supported method.<h:br/><h:br/>
@@ -4037,7 +4043,7 @@ To do:
               </selectables> to provide a trusted communication path between itself and MD users that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data from [modification, disclosure]. </title>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
             </aactivity>
           </f-element>
           <f-element id="ftp_trp.1.2(2)"> <!--free-->
@@ -4047,7 +4053,7 @@ To do:
               </selectables> to permit MD users to initiate communication via the trusted path.</title>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
             </aactivity>
           </f-element>
           <f-element id="ftp_trp.1.3(2)"> <!--free-->
@@ -4059,7 +4065,7 @@ To do:
               If "TLS" is selected as the protocol used for the trusted communications path for enrollment, mutual authentication is not required.</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/>to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of remote enrollment are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of enrollment are consistent with those specified in the requirement, and are included in the requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains instructions for establishing the enrollment sessions for each supported method.<h:br/><h:br/>
