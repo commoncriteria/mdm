@@ -2796,8 +2796,6 @@ To do:
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
-              The evaluator shall complete the testing required in <linkref linkend="FIA_UAU.1.2"/>.
             </aactivity>
           </f-element>
           <f-element id="fia_uau.1.2"> <!--free-->
@@ -2808,9 +2806,12 @@ To do:
             <note role="application">This requirement ensures that any user attempting to access the <abbr linkend="TSF"/> must be authenticated. These users may be administrators attempting to administer the <abbr linkend="TOE"/> or ordinary users attempting to enroll for management by the <abbr linkend="MDM"/> system. The <abbr linkend="ST"/> author is responsible for assigning the list of actions that can take place before this authentication. The <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform may utilize enterprise authentication to meet this requirement.</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If either is selected:</h:h4>
-              <!--how do we make the test apply to both?-->
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/>
+              <Tests/>
+              <testlist>The evaluator shall perform the following tests: <test>The evaluator shall attempt to perform the prohibited actions before authentication. The evaluator shall verify the actions cannot be performed.</test>
+                <test>The evaluator shall attempt to perform the prohibited actions after authentication. The evaluator shall verify the actions can be performed.</test>
+              </testlist>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <Tests/>
                 <testlist>The evaluator shall perform the following tests: <test>The evaluator shall attempt to perform the prohibited actions before authentication. The evaluator shall verify the actions cannot be performed.</test>
                   <test>The evaluator shall attempt to perform the prohibited actions after authentication. The evaluator shall verify the actions can be performed.</test>
