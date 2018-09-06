@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
 
-<!-- This is the FreeTOE Branch -->
+
 
 <!--
 Check this:
@@ -1005,12 +1005,10 @@ To do:
             </selectables> to provide the audit records in a manner suitable for the Authorized Administrators to interpret the information.</title>
             <note role="application">The intent of this requirement is to ensure that the administrator can view and interpret the audit records and to prevent unauthorized users from accessing the logs.</note>
             <aactivity>
-              <Guidance/>The evaluator shall check the AGD guidance and ensure that it describes how the administrator accesses the audit data and describes the format of the audit record.<h:br/><h:br/>
-                <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-                <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <Guidance/>The evaluator shall check the AGD guidance and ensure that it describes how the administrator accesses the audit data and describes the format of the audit record.<h:br/><h:br/>          
               <Tests/>The evaluator shall attempt to view the audit record as the authorized administrator and verify that the action succeeds. The evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide.
-              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>              
-              <Tests/>The evaluator shall attempt to view the audit record as the authorized administrator and verify that the action succeeds. The evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide.
+              
             </aactivity>
           </f-element>
         </f-component> 
@@ -2093,9 +2091,9 @@ To do:
         </f-component> 
         <f-component id="fcs_stg_ext.1" name="Cryptographic Key Storage">
           <f-element id="fcs_stg_ext.1.1"> <!--free-->
-            <title>The TSF shall <selectables>
-              <selectable>invoke platform-provided key storage</selectable> <!--want to discuss if we can make this one generic like the rest-->
-              <selectable id="fcs_stg_enc">implement encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
+            <title>The TSF shall utilize <selectables>
+              <selectable> platform-provided key storage</selectable> <!--want to discuss if we can make this one generic like the rest-->
+              <selectable id="fcs_stg_enc"> encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
               </selectables> for all persistent secrets and private keys.</title>
             <!--check this note and aa-->
             <note role="application">This requirement ensures that persistent secrets (credentials, secret keys) and private keys are stored securely when not in use. If some secrets/keys are manipulated by the <abbr linkend="TOE"/> and others are manipulated by the platform, then both of the selections can be specified by the <abbr linkend="ST"/> author and the <abbr linkend="ST"/> author must identify in the <abbr linkend="TSS"/> those keys which are manipulated by the <abbr linkend="TOE"/> and those by the platform. <h:br/><h:br/> If the <abbr linkend="TSF"/> is an application, and not a dedicated server, then it should store its private keys in the platform-provided key storage.<h:br/><h:br/> The <abbr linkend="ST"/> author is responsible for selecting the manner in which the keys are stored and where they are stored in the selections above. </note>
@@ -2805,17 +2803,12 @@ To do:
               </selectables> that requires each user to be successfully authenticated with the Server before allowing any other <abbr linkend="TSF"/>-mediated actions on behalf of that user.</title>
             <note role="application">This requirement ensures that any user attempting to access the <abbr linkend="TSF"/> must be authenticated. These users may be administrators attempting to administer the <abbr linkend="TOE"/> or ordinary users attempting to enroll for management by the <abbr linkend="MDM"/> system. The <abbr linkend="ST"/> author is responsible for assigning the list of actions that can take place before this authentication. The <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform may utilize enterprise authentication to meet this requirement.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/>
+              
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <Tests/>
               <testlist>The evaluator shall perform the following tests: <test>The evaluator shall attempt to perform the prohibited actions before authentication. The evaluator shall verify the actions cannot be performed.</test>
                 <test>The evaluator shall attempt to perform the prohibited actions after authentication. The evaluator shall verify the actions can be performed.</test>
-              </testlist>
-              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
-              <Tests/>
-                <testlist>The evaluator shall perform the following tests: <test>The evaluator shall attempt to perform the prohibited actions before authentication. The evaluator shall verify the actions cannot be performed.</test>
-                  <test>The evaluator shall attempt to perform the prohibited actions after authentication. The evaluator shall verify the actions can be performed.</test>
-                </testlist>
+              </testlist>              
             </aactivity>
           </f-element>
         </f-component> 
@@ -3024,12 +3017,12 @@ To do:
               </selectables> to require a unique certificate for each client device.</title>
             <note role="application">Each client device will have a unique X.509v3 certificate for use by the <abbr linkend="MDM"/> Agent; the certificate is not to be reused among clients. This requirement is to ensure that the <abbr linkend="MDM"/> Server verifies that each client certificate is unique.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
+              
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity). If "implement functionality" is selected then the evalauator shall examine the <abbr linkend="TSS"/> to verify that it describes the methods to ensure that each client utilizes a unique certificate. <h:br/><h:br/>
+             
               <Tests/>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<h:br/><h:br/>
               The evaluator shall utilize appropriate combinations of specialized operational environment and development tools (debuggers, simulators, etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds as needed to perform this test.<h:br/><h:br/> 
-              The evaluator shall initiate communications between the <abbr linkend="MDM"/> Server and a client device over a trusted channel established using the device's unique certificate, verifying that a successful communication channel was established. The evaluator shall then attempt to initiate communications between the <abbr linkend="MDM"/> Server and a second client device over a trusted channel established using the unique certificate from the first device, verifying that the <abbr linkend="MDM"/> Server rejects this attempt at communication. 
+              The evaluator shall initiate communications between the <abbr linkend="MDM"/> Server and a client device over a trusted channel established using the device's unique certificate, verifying that a successful communication channel was established. The evaluator shall then attempt to initiate comarmunications between the <abbr linkend="MDM"/> Server and a second client device over a trusted channel established using the unique certificate from the first device, verifying that the <abbr linkend="MDM"/> Server rejects this attempt at communication. 
             </aactivity>
           </f-element>
         </f-component> 
