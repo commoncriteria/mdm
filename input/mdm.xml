@@ -3830,7 +3830,9 @@ To do:
             <note role="application"> The intent of the mandatory portion of the above requirement
               is to use the cryptographic protocols identified in the requirement to establish and
               maintain a trusted channel between the <abbr linkend="TOE"/> and the <abbr
-                linkend="MDM"/> Agent. Only TLS, DTLS, or HTTPS are used in this trusted
+                linkend="MDM"/> Agent. If the <abbr linkend="TOE"/> includes a separate MAS Server,
+              this requirement also addresses the communication between the MAS Server and the <abbr linkend="MDM"/> Agent.
+              Only TLS, DTLS, or HTTPS are used in this trusted
               channel.<h:br/><h:br/> This requirement is to ensure that the transmission of any audit
               logs, mobile device information data (software version, hardware model, and
               application versions), and configuration data collected by the <abbr linkend="MDM"/>
@@ -3840,7 +3842,7 @@ To do:
                 linkend="MDM"/> Server to the <abbr linkend="MDM"/> Agent. Either the <abbr
                 linkend="MDM"/> Agent or the <abbr linkend="MDM"/> Server is able to initiate the
               connection.<h:br/><h:br/> This trusted channel protects both the connection between an
-              enrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server and the
+              enrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server <!-- ToDo: The following may not be true -->and the
               connection between an unenrolled <abbr linkend="MDM"/> Agent and the <abbr
                 linkend="MDM"/> Server during the enrollment operation. Different protocols can be
               used for these two connections, and the description in the <abbr linkend="TSS"/>
@@ -3867,8 +3869,7 @@ To do:
                 <selectable>no other communication</selectable>
               </selectables>. </title>
             <note role="application">If the <abbr linkend="TOE"/> includes a separate MAS Server,
-              this requirement also addresses the communication between the MAS Server and the <abbr
-                linkend="MDM"/> Agent.</note>
+              then "all communications between the MAS Server and the MDM Agent" shall be selected.</note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the
                 methods of Agent-Server communication are indicated, along with how those
