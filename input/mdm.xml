@@ -730,7 +730,8 @@ To do:
                   </h:TR>
                   <h:TR>
                     <h:TD>FCS_CKM.1</h:TD>
-                    <h:TD>Failure of key generation activity for authentication keys.</h:TD>
+                    <h:TD> <selectables> <selectable>Failure of key generation activity for authentication keys</selectable>
+                    <selectable>None</selectable></selectables></h:TD>
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
@@ -1832,16 +1833,11 @@ To do:
                 selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be
                 noted that this may be through a mechanism that is not implemented by the <abbr
                   linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the
-                <abbr linkend="TSS"/> as part of this assurance activity).  
-              If "implement functionality" is selected:<h:br/><h:br/>
+                <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it specifies
                 the following values used by the HMAC function: key length, hash function used,
-                block size, and output MAC length used. Test For each of the supported parameter
-                sets, the evaluator shall compose 15 sets of test data. Each set shall consist of a
-                key and message data. The evaluator shall have the <abbr linkend="TSF"/> generate
-                HMAC tags for these sets of test data. The resulting MAC tags shall be compared to
-                the result of generating HMAC tags with the same key and IV using a known good
-                implementation.<h:br/><h:br/>
+                block size, and output MAC length used.<h:br/><h:br/>
               <Tests/>For each of the supported parameter sets, the evaluator shall compose 15 sets
                 of test data. Each set shall consist of a key and message data. The evaluator shall
                 have the <abbr linkend="TSF"/> generate HMAC tags for these sets of test data. The
@@ -2886,9 +2882,9 @@ To do:
                 <h:li>The certificate path must terminate with a trusted CA certificate.</h:li>
                 <h:li>The <abbr linkend="TSF"/> shall validate a certificate path by ensuring the presence of the basicConstraints extension and that the CA flag is set to TRUE for all CA certificates.</h:li>
                 <h:li>The <abbr linkend="TSF"/> shall validate the revocation status of the certificate using <selectables>
-                    <selectable>the Online Certificate Status Protocol (CSP) as specified in RFC 2560</selectable>
+                    <selectable>the Online Certificate Status Protocol (OCSP) as specified in RFC 2560</selectable>
                     <selectable>a Certificate Revocation List (CRL) as specified in RFC 5280 Section 6.3</selectable>
-                    <selectable>a Certificate Revocation List (CRL) as specified in RFC 5759 Section 5</selectable></selectables>
+                    <selectable>a Certificate Revocation List (CRL) as specified in RFC 5759 Section 5</selectable></selectables>.
                 </h:li>
                 <h:li>The <abbr linkend="TSF"/> shall validate the extendedKeyUsage field according to the following rules:<h:br/><h:br/>
                   <h:ul>
