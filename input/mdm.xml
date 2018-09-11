@@ -1051,6 +1051,7 @@ To do:
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server. <h:br/><h:br/>
               <Guidance/> The evaluator shall also examine the operational guidance to determine that it describes the relationship between the local audit data and the audit data that are sent to the audit log server. For example, when an audit event is generated, is it simultaneously sent to the external server and the local store, or is the local store used as a buffer and "cleared" periodically by sending the data to the audit server.<h:br/><h:br/> 
               The evaluator shall also examine the operational guidance to ensure it describes how to establish the trusted channel to the audit server, as well as describe any requirements on the audit server (particular audit server protocol, version of the protocol required, etc.), as well as configuration of the <abbr  linkend="TOE"/> needed to communicate with the audit server. <h:br/><h:br/>
+              <!--for this test will we be able to capture traffic if invoked by the platform?-->
               <Tests/> Testing of the trusted channel mechanism will be performed as specified in the associated assurance activities for the particular trusted channel mechanism.<h:br/><h:br/> 
                 The evaluator shall perform the following test for this requirement: <testlist>
                   <test>The evaluator shall establish a session between the <abbr linkend="TOE"/> and the audit server according to the configuration guidance provided. The evaluator shall then examine the traffic that passes between the audit server and the <abbr linkend="TOE"/> during several activities of the evaluator's choice designed to generate audit data to be transferred to the audit server. The evaluator shall observe that these data are not able to be viewed in the clear during this transfer, and that they are successfully received by the audit server. The evaluator shall record the particular software (name, version) used on the audit server during testing. </test>
@@ -2802,8 +2803,7 @@ To do:
               <selectable>implement functionality </selectable>
               </selectables> that requires each user to be successfully authenticated with the Server before allowing any other <abbr linkend="TSF"/>-mediated actions on behalf of that user.</title>
             <note role="application">This requirement ensures that any user attempting to access the <abbr linkend="TSF"/> must be authenticated. These users may be administrators attempting to administer the <abbr linkend="TOE"/> or ordinary users attempting to enroll for management by the <abbr linkend="MDM"/> system. The <abbr linkend="ST"/> author is responsible for assigning the list of actions that can take place before this authentication. The <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform may utilize enterprise authentication to meet this requirement.</note>
-            <aactivity>
-              
+            <aactivity>              
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <Tests/>
               <testlist>The evaluator shall perform the following tests: <test>The evaluator shall attempt to perform the prohibited actions before authentication. The evaluator shall verify the actions cannot be performed.</test>
@@ -2932,8 +2932,8 @@ To do:
           </f-element>
         </f-component>
         <f-component id="fia_x509_ext.2" name="X509 Certificate Authentication">
-          <f-element id="fia_x509_ext.2.1">
-            <title>The TSF shall <selectables> <!--free--> <!--check this-->
+          <f-element id="fia_x509_ext.2.1"> <!--free-->
+            <title>The TSF shall <selectables> 
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
               </selectables> to use X.509v3 certificates as defined by RFC 5280 to support authentication for 
@@ -2956,11 +2956,9 @@ To do:
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
-              The evaluator shall complete the testing required in <linkref linkend="FIA_x509_ext.2.2"/>
             </aactivity>
           </f-element>
-          <f-element id="fia_x509_ext.2.2"> <!--free--><!--need to check this one-->
+          <f-element id="fia_x509_ext.2.2"> <!--free-->
             <title> When the 
               <selectables>
                 <selectable>TSF</selectable>
@@ -3652,6 +3650,7 @@ To do:
               <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it details the self-tests that are run by the <abbr linkend="TSF"/> on start-up; this description should include an outline of what the tests are actually doing (e.g., rather than saying "memory is tested", a description similar to "memory is tested by writing a value to each memory location and reading it back to ensure it is identical to what was written" shall be used). The evaluator shall ensure that the <abbr linkend="TSS"/> makes an argument that the tests are sufficient to demonstrate that the <abbr linkend="TSF"/> is operating correctly.<h:br/><h:br/> 
               The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes how to verify the integrity of stored <abbr linkend="TSF"/> executable code when it is loaded for execution. The evaluator shall ensure that the <abbr linkend="TSS"/> makes an argument that the tests are sufficient to demonstrate that the integrity of stored <abbr linkend="TSF"/> executable code has not been compromised. The evaluator also ensures that the <abbr linkend="TSS"/> (or the operational guidance) describes the actions that take place for successful (e.g. hash verified) and unsuccessful e.g., hash not verified) cases.<h:br/><h:br/> 
+              <!--if invoke platform is selected would we have access to the executable to do this test?-->
               <Tests/>The evaluator shall perform the following tests:
               <testlist>
                 <test>The evaluator performs the integrity check on a known good <abbr linkend="TSF"/> executable and verifies that the check is successful.</test>
@@ -3691,10 +3690,7 @@ To do:
             </selectables> to provide a means to verify software updates to the <abbr linkend="TSF"/> using a digital signature mechanism prior to installing those updates.</title>
             <note role="application">The software on the <abbr linkend="TSF"/> will occasionally need to be updated. This requirement is intended to ensure that the <abbr linkend="TSF"/> only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the <abbr linkend="TSF"/> software or hardware.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes the standards by which the updates are digitally signed and how the signature verification process is implemented.<h:br/><h:br/>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).If "implement functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes the standards by which the updates are digitally signed and how the signature verification process is implemented.<h:br/><h:br/>
               <Guidance/>The evaluator shall examine the AGD guidance to verify that it describes how to query the current version of the <abbr linkend="TSF"/> software, how to initiate updates and how to check the integrity of updates prior to installation.<h:br/><h:br/>
               <Tests/>The evaluator shall perform the following tests: <testlist>
                 <test>The evaluator shall attempt to initiate an update digitally signed by the vendor and verify that the update is successfully installed.</test>
@@ -3713,10 +3709,7 @@ To do:
             </selectables> to display an Administrator-specified advisory notice and consent warning message regarding use of the <abbr linkend="TOE"/>.</title>
             <note role="application"/>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
-              <TSS/>The <abbr linkend="TSS"/> shall describe when the banner is displayed.<h:br/><h:br/> 
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity). If "implement functionality" is selected, the <abbr linkend="TSS"/> shall describe when the banner is displayed.<h:br/><h:br/>
               <Guidance/>The evaluator follows the operational guidance to configure a notice and consent warning message.<h:br/><h:br/>
               <Tests/>The evaluator shall also perform the following test: The evaluator shall start up or unlock the <abbr linkend="TSF"/>. The evaluator shall verify that the notice and consent warning message is displayed in each instance described in the <abbr linkend="TSS"/>.
             </aactivity>
@@ -3807,6 +3800,7 @@ To do:
                     and ensuring that communication is successful.</test>
                   <test>The evaluator shall ensure, for each method of communication, the channel
                     data is not sent in plaintext.</test>
+                  <!--will the protocol analyzer be able to be used/see traffic. Will there be insight to platform communications?-->
                   <test>The evaluator shall ensure, for each communication channel with the <abbr
                       linkend="MDM"/> Server, that a protocol analyzer identifies the traffic as the
                     protocol under testing.</test>
