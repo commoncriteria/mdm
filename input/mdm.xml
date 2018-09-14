@@ -1047,7 +1047,7 @@ To do:
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the trusted channel functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
-              <h:h4>If "implement functionality" is selected:</h:h4>            
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>         
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server. <h:br/><h:br/>
               <Guidance/> The evaluator shall also examine the operational guidance to determine that it describes the relationship between the local audit data and the audit data that are sent to the audit log server. For example, when an audit event is generated, is it simultaneously sent to the external server and the local store, or is the local store used as a buffer and "cleared" periodically by sending the data to the audit server.<h:br/><h:br/> 
               The evaluator shall also examine the operational guidance to ensure it describes how to establish the trusted channel to the audit server, as well as describe any requirements on the audit server (particular audit server protocol, version of the protocol required, etc.), as well as configuration of the <abbr  linkend="TOE"/> needed to communicate with the audit server. <h:br/><h:br/>
@@ -1088,9 +1088,9 @@ To do:
               </selectables> to protect the stored audit records in the audit trail from unauthorized modification.</title>
             <note role="application">If "store audit data locally" is selected in <linkref linkend="FAU_STG_EXT.1.1(1)"/>, this <abbr linkend="SFR"/> shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> The purpose of this requirement is to ensure that audit records are stored securely. The <abbr linkend="ST"/> author is responsible for selecting whether audit records are maintained when audit storage or failure occurs. The <abbr linkend="ST"/> author must choose a means by which audit records are saved and select the events during which the records will be saved. The <abbr linkend="TSF"/> may rely on the underlying operating system for this functionality, and the first selection should be made appropriately.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the audit record protection functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall ensure that the <abbr linkend="TSS"/> describes how the audit records are protected from unauthorized modification or deletion. The evaluator shall ensure that the <abbr linkend="TOE"/> uses audit trail specific protection mechanisms.<h:br/><h:br/>
               <Tests/>The evaluator shall perform the following tests: <testlist>
                   <test>The evaluator shall access the audit trail as an unauthorized user and attempt to modify and delete the audit records. The evaluator shall verify that these attempts fail.</test>
@@ -1131,10 +1131,10 @@ To do:
               receiver in the RSA key establishment scheme, the <abbr linkend="TOE"/> does not need
               to implement RSA key generation. </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <!-- TODO: Need to review this AA -->
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key generation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
-              <h:h4>If "implement functionality" is selected:</h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall ensure that the <abbr linkend="TSS"/> identifies the key
                 sizes supported by the <abbr linkend="TOE"/>. If the <abbr linkend="ST"/> specifies
                 more than one scheme, the evaluator shall examine the <abbr linkend="TSS"/> to
@@ -1269,7 +1269,7 @@ To do:
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <!-- TODO: Need to review this AA -->
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
-              <h:h4>If "implement functionality" is selected:</h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall ensure that the supported key establishment schemes
                 correspond to the key generation schemes identified in <linkref linkend="FCS_CKM.1.1"/>. If the <abbr
                   linkend="ST"/> specifies more than one scheme, the evaluator shall examine the
@@ -1471,7 +1471,7 @@ To do:
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the encryption/decryption functionality is invoked for each mode and key size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
-              <h:h4>If "implement functionality" is selected:</h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <testlist><h:b><h:u>AES-CBC Tests</h:u></h:b>
                 <test>AES-CBC Known Answer Tests<h:br/><h:br/> 
                   There are four Known Answer Tests (KATs), described below. In all KATs, the plaintext, ciphertext, and IV values shall be 128-bit blocks. The results from each test may either be obtained by the evaluator directly or by supplying the inputs to the implementer and receiving the results in response. To determine correctness, the evaluator shall compare the resulting values to those obtained by submitting the same inputs to a known good implementation.<h:br/><h:br/> 
@@ -1671,7 +1671,7 @@ To do:
                 not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism
                 will be identified in the <abbr linkend="TSS"/> as part of this assurance
                 activity).
-              <h:h4>If "implement functionality" is selected:</h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall check that the association of the hash function with other
                   <abbr linkend="TSF"/> cryptographic functions (for example, the digital signature
                 verification function) is documented in the <abbr linkend="TSS"/>. The evaluator
@@ -2028,7 +2028,7 @@ To do:
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the IV generation is invoked for each mode selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
-              <h:h4>If "implement functionality" is selected:</h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it details the encryption of user credentials, persistent secrets, and private keys and the generation of the IVs used for that encryption.<h:br/><h:br/>
               <Tests/>The evaluator shall ensure that the generation of IVs for each key encrypted by the same <abbr linkend="KEK"/> meets Table 3. 
             </aactivity>
@@ -2049,7 +2049,7 @@ To do:
             <aactivity> 
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the RBG functionality is invoked for each operation they are used for in the <abbr linkend="MDM"/> Server (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
-              <h:h4>If "implement functionality" is selected:</h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <Tests/> The evaluator shall perform the following tests.<h:br/><h:br/> The evaluator shall perform 15 trials for the RNG implementation. If the RNG is configurable, the evaluator shall perform 15 trials for each configuration. The evaluator shall also confirm that the operational guidance contains appropriate instructions for configuring the RNG  functionality.<h:br/><h:br/> 
               If the RNG has prediction resistance enabled, each trial consists of (1) instantiate DRBG, (2) generate the first block of random bits (3) generate a second block of random bits (4) uninstantiate. The evaluator verifies that the second block of random bits is the expected value. The evaluator shall generate eight input values for each trial. The first is a count (0 – 14). The next three are entropy input, nonce, and personalization string for the instantiate operation. The next two are additional input and entropy input for the first call to generate. The final two are additional input and entropy input for the second call to generate. These values are randomly generated. "generate one block of random bits" means to generate random bits with number of returned bits equal to the Output Block Length (as defined in NIST SP 800-90A).<h:br/><h:br/> 
               If the RNG does not have prediction resistance, each trial consists of (1) instantiate DRBG, (2) generate the first block of random bits (3) reseed, (4) generate a second block of random bits (5) uninstantiate. The evaluator verifies that the second block of random bits is the expected value. The evaluator shall generate eight input values for each trial. The first is a count (0 – 14). The next three are entropy input, nonce, and personalization string for the instantiate operation. The fifth value is additional input to the first call to generate. The sixth and seventh are additional input and entropy input to the call to reseed. The final value is additional input to the second generate call.<h:br/><h:br/> 
@@ -2128,7 +2128,7 @@ To do:
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key encryption functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4><h:br/>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes in detail how user credentials, persistent secret and private keys are stored and encrypted. The evaluator shall review the <abbr linkend="TSS"/> to determine that it makes a case that key material is not written unencrypted to persistent memory and that it identifies the mode of encryption.
             </aactivity>
           </f-element>
