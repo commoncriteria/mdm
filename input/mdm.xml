@@ -730,7 +730,8 @@ To do:
                   </h:TR>
                   <h:TR>
                     <h:TD>FCS_CKM.1</h:TD>
-                    <h:TD>Failure of key generation activity for authentication keys.</h:TD>
+                    <h:TD> <selectables> <selectable>Failure of key generation activity for authentication keys</selectable>
+                    <selectable>None</selectable></selectables></h:TD>
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
@@ -1830,16 +1831,11 @@ To do:
                 selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be
                 noted that this may be through a mechanism that is not implemented by the <abbr
                   linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the
-              <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>  
+                <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it specifies
                 the following values used by the HMAC function: key length, hash function used,
-                block size, and output MAC length used. Test For each of the supported parameter
-                sets, the evaluator shall compose 15 sets of test data. Each set shall consist of a
-                key and message data. The evaluator shall have the <abbr linkend="TSF"/> generate
-                HMAC tags for these sets of test data. The resulting MAC tags shall be compared to
-                the result of generating HMAC tags with the same key and IV using a known good
-                implementation.<h:br/><h:br/>
+                block size, and output MAC length used.<h:br/><h:br/>
               <Tests/>For each of the supported parameter sets, the evaluator shall compose 15 sets
                 of test data. Each set shall consist of a key and message data. The evaluator shall
                 have the <abbr linkend="TSF"/> generate HMAC tags for these sets of test data. The
@@ -2082,7 +2078,7 @@ To do:
               of 112 bits), AES 128 (security strength 128 bits), and HMAC-SHA-256 (security
               strength 256 bits), then the <abbr linkend="ST"/> author would select 256 bits. </note>
             <aactivity>
-              <!--TSS?-->
+              <TSS/>         
               Documentation shall be produced-and the evaluator shall perform the
               activities-in accordance with Appendix D: Entropy Documentation and Assessment and the
               "Clarification to the Entropy Documentation and Assessment Annex."<h:br/><h:br/> In the
@@ -2100,11 +2096,11 @@ To do:
             <!--check this note and aa-->
             <note role="application">This requirement ensures that persistent secrets (credentials, secret keys) and private keys are stored securely when not in use. If some secrets/keys are manipulated by the <abbr linkend="TOE"/> and others are manipulated by the platform, then both of the selections can be specified by the <abbr linkend="ST"/> author and the <abbr linkend="ST"/> author must identify in the <abbr linkend="TSS"/> those keys which are manipulated by the <abbr linkend="TOE"/> and those by the platform. <h:br/><h:br/> If the <abbr linkend="TSF"/> is an application, and not a dedicated server, then it should store its private keys in the platform-provided key storage.<h:br/><h:br/> The <abbr linkend="ST"/> author is responsible for selecting the manner in which the keys are stored and where they are stored in the selections above. </note>
             <aactivity>
-              <TSS/>Regardless of whether this requirement is met by the <abbr linkend="TSF"/> or the <abbr linkend="TOE"/> platform, the evaluator will check the <abbr linkend="TSS"/> to ensure that it lists each persistent secret (credential, secret key) and private key needed to meet the requirements in the <abbr linkend="ST"/>. For each of these items, the evaluator will confirm that the <abbr linkend="TSS"/> lists for what purpose it is used, and how it is stored. The evaluator than performs the following actions. 
-              Persistent secrets and private keys manipulated by the <abbr linkend="TOE"/> platform<h:br/><h:br/> 
+              <TSS/>Regardless of whether this requirement is met by the <abbr linkend="TSF"/> or the <abbr linkend="TOE"/> platform, the evaluator will check the <abbr linkend="TSS"/> to ensure that it lists each persistent secret (credential, secret key) and private key needed to meet the requirements in the <abbr linkend="ST"/>. For each of these items, the evaluator will confirm that the <abbr linkend="TSS"/> lists for what purpose it is used, and how it is stored. The evaluator than performs the following actions. <h:br/><h:br/>
+              Persistent secrets and private keys manipulated by the <abbr linkend="TOE"/> platform:<h:br/><h:br/> 
               <!-- Old activity>For each platform listed in the <abbr linkend="ST"/>, the evaluator shall examine the <abbr linkend="ST"/> of the platform to ensure that the persistent secrets and private keys listed as being stored by the platform in the <abbr linkend="MDM"/> Server <abbr linkend="ST"/> are identified as being protected in that platform's <abbr  linkend="ST"/>.<h:br/><h:br/><-->
               The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key storage functionality is invoked for each persistent secret and private key described in the <abbr linkend="TSS"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/> 
-              Persistent secrets and private keys manipulated by the <abbr linkend="TSF"/><h:br/><h:br/> 
+              Persistent secrets and private keys manipulated by the <abbr linkend="TSF"/>:<h:br/><h:br/> 
               The evaluator reviews the <abbr linkend="TSS"/> to determine that it makes a case that, for each item listed as being manipulated by the <abbr linkend="TOE"/>, it is not written unencrypted to persistent memory, and that the item is stored by the platform.<h:br/><h:br/>              
             </aactivity>
           </f-element>
@@ -2764,19 +2760,14 @@ To do:
             </aactivity>
           </f-element>
           <f-element id="fia_enr_ext.1.2">
-            <title>The <abbr linkend="MDM"/> Server shall limit the user's enrollment of devices to <selectables>
-                <selectable>devices specified by <selectables><selectable>IMEI</selectable><selectable><assignable>a unique device ID</assignable></selectable></selectables></selectable>
-                <selectable>specific device models</selectable>
+            <title>The <abbr linkend="MDM"/> Server shall limit the user's enrollment of devices to devices specified by <selectables> <selectable>IMEI</selectable><selectable><assignable>a unique device ID</assignable></selectable></selectables> and <selectables>
+              <selectable>specific device models</selectable>
                 <selectable>a number of devices</selectable>
-                <selectable>specific time period</selectable>
-              </selectables> and <selectables>
+                <selectable>specific time period</selectable>         
                 <selectable><assignable>other features</assignable></selectable>
-                <selectable>none</selectable>
+                <selectable>no other features</selectable>
               </selectables>. </title>
-            <note role="application"> This requirement is designed to permit the enterprise to restrict users' enrollment of devices.<h:br/><h:br/> In the next version of this Protection Profile, a unique device ID will be required to limit the user's enrollment. The unique device ID can be the IMEI or an ID specific to a particular platform. The other options will still be selectable in the next version, but a unique device ID will be required. </note>
-            <!-- TODO: Make unique ID mandatory, all other options selectable and remove the app note.
-            The MDM Server shall limit the user's enrollment of devices to devices specified by [selection: IMEI, [assignment: a unique device ID]] and [selection: specific device models, a number of devices, specific time period, [assignment: other features], no other features].  
-            -->
+            <note role="application"> This requirement is designed to permit the enterprise to restrict users' enrollment of devices.<h:br/><h:br/> In the next version of this Protection Profile, a unique device ID will be required to limit the user's enrollment. The unique device ID can be the IMEI or an ID specific to a particular platform. </note>         
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it implements a policy to limit the user's enrollment of devices.<h:br/><h:br/>
               <Guidance/>The evaluator shall ensure that the administrative guidance describes the method(s) of restricting user enrollment and that it instructs the administrator how to configure the restrictions.<h:br/><h:br/>
@@ -2863,8 +2854,7 @@ To do:
                     connectivity, so the device is un-enrolled but the <abbr linkend="MDM"/> server
                     considers the device still enrolled.) The evaluator shall verify that the second
                     enrollment using the same unique device ID fails.</test>
-                </testlist>
-              
+                </testlist>              
             </aactivity>
           </f-element>
         </f-component> 
@@ -2878,9 +2868,9 @@ To do:
                 <h:li>The certificate path must terminate with a trusted CA certificate.</h:li>
                 <h:li>The <abbr linkend="TSF"/> shall validate a certificate path by ensuring the presence of the basicConstraints extension and that the CA flag is set to TRUE for all CA certificates.</h:li>
                 <h:li>The <abbr linkend="TSF"/> shall validate the revocation status of the certificate using <selectables>
-                    <selectable>the Online Certificate Status Protocol (CSP) as specified in RFC 2560</selectable>
+                    <selectable>the Online Certificate Status Protocol (OCSP) as specified in RFC 2560</selectable>
                     <selectable>a Certificate Revocation List (CRL) as specified in RFC 5280 Section 6.3</selectable>
-                    <selectable>a Certificate Revocation List (CRL) as specified in RFC 5759 Section 5</selectable></selectables>
+                    <selectable>a Certificate Revocation List (CRL) as specified in RFC 5759 Section 5</selectable></selectables>.
                 </h:li>
                 <h:li>The <abbr linkend="TSF"/> shall validate the extendedKeyUsage field according to the following rules:<h:br/><h:br/>
                   <h:ul>
@@ -3244,7 +3234,7 @@ To do:
               <h:b>and the following commands to the <abbr linkend="MDM"/> Agent:</h:b><h:br/>
                 <selectables>
                 <selectable><ctr id="smf13" ctr-type="mgmt" pre=""></ctr>. remove Enterprise applications (MDF Function 17)</selectable>
-                <selectable><ctr id="smf14" ctr-type="mgmt" pre=""></ctr>. wipe Enterprise data (MDF Function 28) </selectable>
+                <selectable><ctr id="smf14" ctr-type="mgmt" pre=""></ctr>. wipe Enterprise data (MDF Function 28)</selectable>
                 <selectable><ctr id="smf15" ctr-type="mgmt" pre=""></ctr>. remove imported X.509v3 certificates and 
                   <selectables>
                     <selectable>no other X.509v3 certificates</selectable>
