@@ -1392,12 +1392,10 @@ To do:
               <selectable>invoking platform-provided functionality</selectable>
               <selectable>implementing key destruction in accordance with the following rules: <h:ul>
                 <h:li>For volatile memory, the destruction shall be executed by a single direct overwrite <selectables>
-                    <selectable>consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>'s RBG</selectable>
+                  <selectable>consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
                     <selectable>consisting of zeroes</selectable>
                   </selectables></h:li>
-                <h:li>For non-volatile EEPROM, the destruction shall be executed by a single direct overwrite consisting of a pseudo random pattern using the <abbr
-                    linkend="TSF"/>'s RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>), followed by a
-                  read-verify.</h:li>
+                <h:li>For non-volatile EEPROM, the destruction shall be executed by a single direct overwrite consisting of a pseudo random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>), followed by a read-verify.</h:li>
                 <h:li>For non-volatile flash memory, that is not wear-leveled, the destruction shall be executed <selectables>
                     <selectable>by a single direct overwrite consisting of zeros followed by a read-verify</selectable>
                     <selectable>by a block erase that erases the reference to memory that stores data as well as the data itself</selectable>
