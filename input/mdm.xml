@@ -1437,7 +1437,7 @@ To do:
                       <h:li>Cause the <abbr linkend="TOE"/> to dump the entire memory footprint of the <abbr linkend="TOE"/> into a binary file.</h:li>
                       <h:li>Search the content of the binary file created in #4 for instances of the known key value from #1.</h:li>
                     </h:ol> The test succeeds if no copies of the key from #1 are found in step #7 above and fails otherwise. The evaluator shall perform this test on all keys, including those persisted in encrypted form, to ensure intermediate copies are cleared. </test>
-                  <test>In cases where the <abbr linkend="TOE"/> is implemented in firmware and operates in a limited operating environment that does not allow the use of debuggers, the evaluator shall utilize a simulator for the <abbr linkend="TOE"/> on a general purpose operating system. The evaluator shall provide a rationale explaining the instrumentation of the simulated test  enironment and justifying the obtained test results. </test>
+                  <test>In cases where the <abbr linkend="TOE"/> is implemented in firmware and operates in a limited operating environment that does not allow the use of debuggers, the evaluator shall utilize a simulator for the <abbr linkend="TOE"/> on a general purpose operating system. The evaluator shall provide a rationale explaining the instrumentation of the simulated test  environment and justifying the obtained test results. </test>
                 </testlist>
             </aactivity>
           </f-element>
@@ -2141,7 +2141,7 @@ To do:
                     </selectables>.
             </title>
             <note role="application">The TLS Client is required for <abbr linkend="MDM"/> Agents in the <abbr linkend="TOE"/> and may be included in <abbr linkend="MDM"/> Servers in order to support Enrollment over Secure Transport (Appendix C.2.2).<h:br/><h:br/>        
-              The ciphersuites to be tested in the evaluated configuration are limited by this requirement; however, this requirement does not restrict the <abbr linkend="TOE"/>'s ability to propose (in its Client Hello) additional ciphersuites beyond the ones listed in this requirement. Put simply, the <abbr linkend="TOE"/> may propose any ciphersuite; however, the evaluation will only test the ciphersuties in the above list. It is recognized that RFC 5246 mandates the cipher suite TLS_RSA_WITH_AES_128_CBC_SHA, but this cipher suite is not tested with this requirement. The <abbr linkend="ST"/> author should select the ciphersuites that are supported. It is necessary to limit the ciphersuites that can be used in an evaluated configuration administratively on the server in the test environment. The Suite B algorithms listed above (RFC 6460) are the preferred algorithms for implementation.<h:br/><h:br/>
+              The ciphersuites to be tested in the evaluated configuration are limited by this requirement; however, this requirement does not restrict the <abbr linkend="TOE"/>'s ability to propose (in its Client Hello) additional ciphersuites beyond the ones listed in this requirement. Put simply, the <abbr linkend="TOE"/> may propose any ciphersuite; however, the evaluation will only test the ciphersuites in the above list. It is recognized that RFC 5246 mandates the cipher suite TLS_RSA_WITH_AES_128_CBC_SHA, but this cipher suite is not tested with this requirement. The <abbr linkend="ST"/> author should select the ciphersuites that are supported. It is necessary to limit the ciphersuites that can be used in an evaluated configuration administratively on the server in the test environment. The Suite B algorithms listed above (RFC 6460) are the preferred algorithms for implementation.<h:br/><h:br/>
               These requirements will be revisited as new TLS versions are standardized by the IETF. If any ciphersuites are selected using ECDHE, then <linkref linkend="FCS_TLSC_EXT.2.1"/> is required.<h:br/><h:br/>
             </note>
             <aactivity>
@@ -2712,7 +2712,7 @@ To do:
             <title>The <selectables>
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall include the renegotiation_info extenstion in ServerHello
+              </selectables> shall include the renegotiation_info extension in ServerHello
               messages.</title>
             <note role="application">RFC 5746 defines an extension to TLS that binds renegotiation
               handshakes to the cryptography in the original handshake.</note>
@@ -2968,7 +2968,7 @@ To do:
               </selectables> to require a unique certificate for each client device.</title>
             <note role="application">Each client device will have a unique X.509v3 certificate for use by the <abbr linkend="MDM"/> Agent; the certificate is not to be reused among clients. This requirement is to ensure that the <abbr linkend="MDM"/> Server verifies that each client certificate is unique.</note>
             <aactivity>              
-              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity). If "implement functionality" is selected then the evalauator shall examine the <abbr linkend="TSS"/> to verify that it describes the methods to ensure that each client utilizes a unique certificate. <h:br/><h:br/>             
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity). If "implement functionality" is selected then the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the methods to ensure that each client utilizes a unique certificate. <h:br/><h:br/>             
               <Tests/>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<h:br/><h:br/>
               The evaluator shall utilize appropriate combinations of specialized operational environment and development tools (debuggers, simulators, etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds as needed to perform this test.<h:br/><h:br/> 
               The evaluator shall initiate communications between the <abbr linkend="MDM"/> Server and a client device over a trusted channel established using the device's unique certificate, verifying that a successful communication channel was established. The evaluator shall then attempt to initiate communications between the <abbr linkend="MDM"/> Server and a second client device over a trusted channel established using the unique certificate from the first device, verifying that the <abbr linkend="MDM"/> Server rejects this attempt at communication. 
@@ -3315,8 +3315,8 @@ To do:
                         <selectable>disable/enable Advertising (for LE)</selectable>
                         <selectable>disable/enable the Connection mode</selectable>
                         <selectable>disable/enable the Bluetooth services and/or profiles available on the device </selectable>
-                        <selectable>specify minimum level of security for eachpairing</selectable>
-                        <selectable>configure allowable methods of Out of Bandpairing</selectable>
+                        <selectable>specify minimum level of security for each pairing</selectable>
+                        <selectable>configure allowable methods of Out of Band pairing</selectable>
                         <selectable>no other Bluetooth configuration</selectable>
                       </selectables>(MDF Function 18)
                     </h:li>
