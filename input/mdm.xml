@@ -1394,7 +1394,33 @@ To do:
             <!-- TODO: Will need to modify this SFR more b/c if invoke platform-provided key destruction is chosen then will likely not be able to specify how the platform destroys it. Joe McDaniels has many different version of this SFR that we can try to use.
             AA has not been updated.-->
             <title> The TSF shall destroy plaintext keying material and critical security parameters by <selectables>
-              <selectable>invoking platform-provided functionality</selectable>
+              <selectable>invoking platform-provided functionality with the following rules: <h:ul>
+                <h:li>For volatile memory, the destruction shall be executed by <selectables>
+                  <selectable>a single direct overwrite consisting of <selectables>
+                    <selectable>a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
+                    <selectable>zeroes</selectable>
+                    <selectable>ones</selectable>
+                    <selectable>a new value of a key</selectable>
+                    <selectable><assignable>some value that does not contain any CSP</assignable></selectable>
+                  </selectables> </selectable>
+                  <selectable>removal of power to the memory</selectable>
+                  <selectable>destruction of reference to the key directly followed by a request for garbage collection</selectable>
+                </selectables></h:li>
+                <h:li>For non-volatile [that consists of the invocation of an interface provided by the underlying platform that <selectables>
+                  <selectable>logically addresses the storage location of the key and performs a <selectables>
+                    <selectable>single</selectable>
+                    <selectable> <assignable>ST author defined multi-pass</assignable> direct overwrite consisting of <selectables>
+                      <selectable>a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
+                      <selectable>zeroes</selectable>
+                      <selectable>ones</selectable>
+                      <selectable>a new value of a key</selectable>
+                      <selectable><assignable>some value that does not contain any CSP</assignable></selectable>
+                    </selectables> </selectable>
+                  </selectables></selectable>
+                  <selectable>instructs the underlying platform to destroy the abstraction that represents the key</selectable>
+                </selectables>
+                </h:li>
+              </h:ul> that meets the following standard: No Standard</selectable>
               <selectable>implementing key destruction in accordance with the following rules: <h:ul>
                 <h:li>For volatile memory, the destruction shall be executed by a single direct overwrite <selectables>
                   <selectable>consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
