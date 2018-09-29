@@ -21,9 +21,9 @@ To do:
   <PPReference title="PP Reference" id="XXXXX">
     <ReferenceTable>
       <PPTitle>Protection Profile for Mobile Device Management</PPTitle>
-      <PPVersion>3.0</PPVersion>
+      <PPVersion>4.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2016-11-21</PPPubDate>
+      <PPPubDate>2018-09-24</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>Version 3.0</CCVersion>
       <Keywords>Mobile Device Management; MDM</Keywords>
@@ -85,6 +85,11 @@ To do:
         <h:br/>
         Removed IPsec and SSH requirements, which are now contained in
         EPs</subject>
+    </entry>
+    <entry>
+      <version>4.0</version>
+      <date>2018-09-24</date>
+      <subject></subject>
     </entry>
   </RevisionHistory>
 
@@ -1389,7 +1394,33 @@ To do:
             <!-- TODO: Will need to modify this SFR more b/c if invoke platform-provided key destruction is chosen then will likely not be able to specify how the platform destroys it. Joe McDaniels has many different version of this SFR that we can try to use.
             AA has not been updated.-->
             <title> The TSF shall destroy plaintext keying material and critical security parameters by <selectables>
-              <selectable>invoking platform-provided functionality</selectable>
+              <selectable>invoking platform-provided functionality with the following rules: <h:ul>
+                <h:li>For volatile memory, the destruction shall be executed by <selectables>
+                  <selectable>a single direct overwrite consisting of <selectables>
+                    <selectable>a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
+                    <selectable>zeroes</selectable>
+                    <selectable>ones</selectable>
+                    <selectable>a new value of a key</selectable>
+                    <selectable><assignable>some value that does not contain any CSP</assignable></selectable>
+                  </selectables> </selectable>
+                  <selectable>removal of power to the memory</selectable>
+                  <selectable>destruction of reference to the key directly followed by a request for garbage collection</selectable>
+                </selectables></h:li>
+                <h:li>For non-volatile [that consists of the invocation of an interface provided by the underlying platform that <selectables>
+                  <selectable>logically addresses the storage location of the key and performs a <selectables>
+                    <selectable>single</selectable>
+                    <selectable> <assignable>ST author defined multi-pass</assignable> </selectable>
+                  </selectables> direct overwrite consisting of <selectables>
+                      <selectable>a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
+                      <selectable>zeroes</selectable>
+                      <selectable>ones</selectable>
+                      <selectable>a new value of a key</selectable>
+                      <selectable><assignable>some value that does not contain any CSP</assignable></selectable>
+                    </selectables> </selectable>
+                  <selectable>instructs the underlying platform to destroy the abstraction that represents the key</selectable>
+                </selectables>
+                </h:li>
+              </h:ul></selectable>
               <selectable>implementing key destruction in accordance with the following rules: <h:ul>
                 <h:li>For volatile memory, the destruction shall be executed by a single direct overwrite <selectables>
                   <selectable>consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
@@ -1419,13 +1450,13 @@ To do:
             <aactivity> 
               Assurance Activity Note:<h:br/><h:br/> The Assurance Activity used is dependent on the selection made in <linkref linkend="FCS_CKM_EXT.4.1"/>. <h:br/><h:br/>
               <TSS/> The evaluator shall check to ensure the <abbr linkend="TSS"/> lists each type of plaintext key material and <abbr linkend="CSP"/> (authentication data, authorization data, secret/private symmetric keys, data used to derive keys, etc.) and its origin and storage location.<h:br/><h:br/> The evaluator shall verify that the <abbr linkend="TSS"/> describes when each type of key material and <abbr linkend="CSP"/> is no longer needed.<h:br/><h:br/> <!--this might be asking too much. If they implement platform functionality they might not have access to the keys?-->              
-              <h:h4>Requirement met by the platform</h:h4>
+              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <!--><TSS/> For each platform listed in the <abbr linkend="ST"/>, the evaluator shall
                 examine the <abbr linkend="TSS"/> of the <abbr linkend="ST"/> of the platform to
                 ensure that each of the secret keys, private keys, and <abbr linkend="CSP"/>s used
                 to generate key listed above are covered.<-->
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key releasing functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
-              <h:h4>Requirement met by the <abbr linkend="TOE"/></h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4>
               <TSS/>The evaluator shall also verify that, for each type, the type of clearing procedure that is performed is listed. If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the <abbr linkend="TSS"/> describes the clearing procedure in terms of the memory in which the data are stored (for example, "secret keys stored on flash are cleared by overwriting once with zeros, while secret keys stored on the internal persistent storage device are cleared by overwriting one time with a random pattern that is    changed before each write"). For block erases, the evaluator shall also ensure that the block erase command used is listed and shall verify that the command used also addresses any copies of the plaintext key material that may be created in order to optimize the use of flash memory.<h:br/><h:br/> 
               <Tests/>For each software and firmware key clearing situation the evaluator shall repeat the following tests. Note that at this time hardware-bound keys are explicitly excluded from testing. <testlist>
                   <test>The evaluator shall utilize appropriate combinations of specialized operational environment and development tools (debuggers, simulators, etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds to test that keys are cleared correctly, including all intermediate copies of the key that may have been created internally by the <abbr linkend="TOE"/> during normal cryptographic processing with that key. <h:br/><h:br/> Cryptographic <abbr linkend="TOE"/> implementations in software shall be loaded and exercised under a debugger to perform such tests. The evaluator shall perform the following test for each key subject to clearing, including intermediate copies of keys that are persisted encrypted by the <abbr linkend="TOE"/>: <h:ol>
@@ -1914,7 +1945,7 @@ To do:
                 <selectable>request authorization to establish the connection</selectable>
                 <selectable>no other action</selectable>
               </selectables> if the peer certificate is deemed invalid.</title>-->
-            <!-- FCS_HTTPS_EXT.1.3 was removed per TD212, however the AA was not changed as part of the TD and it will need to be changed TODO. -->
+            <!-- FCS_HTTPS_EXT.1.3 was removed per TD212-->
             <note role="application">Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with RFC 5280.</note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
@@ -1922,7 +1953,8 @@ To do:
                 <testlist>
                   <test>The evaluator shall attempt to establish an HTTPS connection with a web server, observe the traffic with a packet analyzer, and verify that the connection succeeds and that the traffic is identified as TLS or HTTPS.</test>
                   Other tests are performed in conjunction with the TLS evaluation activities.<h:br/><h:br/> 
-                  Certificate validity shall be tested in accordance with testing performed for <linkref linkend="FIA_X509_EXT.1"/>, and the evaluator shall perform the following test: <test>The evaluator shall demonstrate that using a certificate without a valid certification path results in an application notification. Using the administrative guidance, the evaluator shall then load a valid certificate and certification path, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the selection listed in the <abbr linkend="ST"/> occurs.</test>
+                  <!--  Certificate validity shall be tested in accordance with testing performed for <linkref linkend="FIA_X509_EXT.1"/>, and the evaluator shall perform the following test: <test>The evaluator shall demonstrate that using a certificate without a valid certification path results in an application notification. Using the administrative guidance, the evaluator shall then load a valid certificate and certification path, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the selection listed in the <abbr linkend="ST"/> occurs.</test>-->
+                  <!-- This test applied to HTTPS_EXT.1.3 with was removed due to TD212, thus this test was removed -->
                 </testlist>
             </aactivity>
           </f-element> 
