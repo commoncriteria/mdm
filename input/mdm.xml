@@ -1442,7 +1442,7 @@ To do:
               Any security related information (such as keys, authentication data, and passwords) must be zeroized when no longer in use to prevent the disclosure or modification of security critical data.<h:br/><h:br/>
               The zeroization indicated above applies to each intermediate storage area for plaintext key and Cryptographic Service Provider (<abbr linkend="CSP"/>) (i.e., any storage, such as memory buffers, that is included in the path of such data) upon the transfer of the key/<abbr linkend="CSP"/> to another location.<h:br/><h:br/>
               Since the <abbr linkend="TOE"/> does not include the host IT environment, the extent of this capability is necessarily somewhat limited. For the purposes of this requirement, it is sufficient for the <abbr linkend="TOE"/> to invoke the correct underlying functions of the host to perform the zeroization--it does not imply that the <abbr linkend="TOE"/> has to include a kernel-mode memory driver to ensure the data are zeroized. It is  assumed that the host platform appropriately performs zeroization of key material in its internal processes.<h:br/><h:br/>
-              Several selections allow assignment of a ‘value that does not contain any CSP’. This means that the TOE uses some other specified data not drawn from a source that may contain key material or reveal information about key material, and not being any of the particular values listed as other selection options. The point of the phrase ‘does not contain any CSP’ is to ensure that the overwritten data is carefully selected, and not taken from a general ‘pool’ that might contain current or residual data that itself requires confidentiality protection.            
+              Several selections allow assignment of a 'value that does not contain any CSP'. This means that the TOE uses some other specified data not drawn from a source that may contain key material or reveal information about key material, and not being any of the particular values listed as other selection options. The point of the phrase "does not contain any CSP" is to ensure that the overwritten data is carefully selected, and not taken from a general 'pool' that might contain current or residual data that itself requires confidentiality protection.            
             </note>
             <aactivity>
               <TSS/>If "invoking platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key destruction functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).
@@ -3553,7 +3553,7 @@ To do:
       </subsection>
       
       <subsection id="fpt" title="Protection of the TSF (FPT)">
-        <!-- added fpt_api
+        <!-- added fpt_api-->
         <f-component id="fpt_api_ext.1" name="Use of Supported Services and APIs">
           <f-element id="fpt_api_ext.1.1">
             <title>The TSF shall use only documented platform <abbr title="Application Programming Interface" linkend="API">API</abbr>s.</title>
@@ -3561,11 +3561,11 @@ To do:
               The definition of <h:i>documented</h:i> may vary depending upon whether the <abbr linkend="MDM"/> software is provided by a third party (who relies upon documented platform APIs) or by a platform vendor who may be able to guarantee support for platform APIs.
             </note>
             <aactivity>
-              The evaluator shall verify that the TSS lists the platform <abbr title="Application Programming Interface" linkend="API">API</abbr>s used by the <abbr linkend="MDM"/> software. The evaluator shall then compare the list with the supported <abbr title="Application Programming Interface" linkend="API">API</abbr>s (available through e.g. developer accounts, platform developer groups) and ensure that all <abbr title="Application Programming Interface" linkend="API">API</abbr>s listed in the TSS are supported.
+              <TSS/>The evaluator shall verify that the TSS<!--ST?--> lists the platform <abbr title="Application Programming Interface" linkend="API">API</abbr>s used by the <abbr linkend="MDM"/> software. The evaluator shall then compare the list with the supported <abbr title="Application Programming Interface" linkend="API">API</abbr>s (available through e.g. developer accounts, platform developer groups) and ensure that all <abbr title="Application Programming Interface" linkend="API">API</abbr>s listed in the TSS are supported.
             </aactivity>
           </f-element>
-        </f-component> -->
-        <!-- added fpt_lib
+        </f-component> 
+        <!-- added fpt_lib-->
         <f-component id="fpt_lib_ext.1" name="Use of Third Party Libraries">
           <f-element id="fpt_lib_ext.1.1">
             <title> The <abbr linkend="MDM"/> software shall be packaged with only
@@ -3575,10 +3575,10 @@ To do:
               The intention of this requirement is for the evaluator to discover and document whether the <abbr linkend="MDM"/> software is including unnecessary or unexpected third-party libraries. This includes adware libraries which could present a privacy threat, as well as ensuring documentation of such libraries in case vulnerabilities are later discovered.
             </note>
             <aactivity> 
-              The evaluator shall install the <abbr linkend="MDM"/> software and survey its installation directory for dynamic libraries. The evaluator shall verify that libraries found to be packaged with or employed by the <abbr linkend="MDM"/> software are limited to those in the assignment.
+              <TSS/>The evaluator shall install the <abbr linkend="MDM"/> software and survey its installation directory for dynamic libraries. The evaluator shall verify that libraries found to be packaged with or employed by the <abbr linkend="MDM"/> software are limited to those in the assignment.
             </aactivity>
           </f-element>
-        </f-component> -->        
+        </f-component>         
         <f-component id="fpt_itt.1" name="Internal TOE TSF Data Transfer" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1" ids="AgentInTOE_fpt, DistributedTOE_MAS"/>
           <f-element id="fpt_itt.1.1">
