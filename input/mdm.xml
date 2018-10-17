@@ -3592,7 +3592,23 @@ To do:
                 <selectable id="ITT_HTTPS">HTTPS</selectable>
                 <selectable id="ITT_DTLS">DTLS</selectable>
               </selectables> when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
-            <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> (such as between the <abbr linkend="MDM"/> Server and the MAS Server) is protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection.<h:br/><h:br/> The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "TLS", "HTTPS" or "DTLS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/> Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services. </note>
+            <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> (such as between the <abbr linkend="MDM"/> Server and the MAS Server) is protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection.<h:br/><h:br/> The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
+              <h:ul>
+                <h:li>FCS_TLS_EXT.1: 
+                  <h:ul>
+                    <h:li>either TLS or DTLS is selected depending on the selection made in FPT_ITT.1.1</h:li>
+                    <h:li>either client or server is selected as appropriate</h:li>
+                  </h:ul>
+                </h:li>
+                <h:li>FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
+                  <h:ul>
+                    <h:li>TLS_RSA_WITH_AES_128_CBC_SHA cannot be selected</h:li>
+                    <h:li>mutual authentication must be selected</h:li>
+                  </h:ul>
+                  </h:li>
+              </h:ul>
+             Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services. </note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the
                 methods and protocols used to protect distributed <abbr linkend="TOE"/> components
