@@ -2104,7 +2104,7 @@ To do:
               </selectables> of entropy at least equal to the greatest security strength (according
               to NIST SP 800-57) of the keys and hashes that it will generate.</title>
             <note role="application">For the first selection in this requirement, the <abbr
-                linkend="ST"/> author selects ‘software-based noise source' if any additional noise
+                linkend="ST"/> author selects 'software-based noise source' if any additional noise
               sources are used as input to the application's DRBG. Note that the application must
               use the platform's DRBG to seed its DRBG. <h:br/><h:br/> In the second selection in this
               requirement, the <abbr linkend="ST"/> author selects the appropriate number of bits of
@@ -2170,7 +2170,7 @@ To do:
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables> shall implement TLS 1.2 (RFC 5246) and <selectables>
-                <selectable>TLS 1.0 (RFC 3246)</selectable>
+                <selectable>TLS 1.0 (RFC 2246)</selectable>
                 <selectable>TLS 1.1 (RFC 4346)</selectable>
                 <selectable>no other version</selectable>
               </selectables> supporting the following ciphersuites: 
@@ -2183,7 +2183,7 @@ To do:
                     <selectable id="TLSC_ECC2">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
                     <selectable id="TLSC_ECC3">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
                     <selectable id="TLSC_ECC4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-                    <selectable>TLS_TSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+                    <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                     <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                     <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
                     <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
@@ -3482,7 +3482,7 @@ To do:
               Function <ctr-ref refid="smf12"/> may be satisfied by application blacklisting and/or disabling for the BYOD use case.<h:br/><h:br/>
               Function <ctr-ref refid="smf16"/> provides the <abbr linkend="MDM"/> server to display an alert to the user of the mobile device.<h:br/><h:br/> 
               The audit records read according to Function <ctr-ref refid="smf19"/> are to be transmitted to an external audit server according to <linkref linkend="FAU_STG_EXT.1(1)"/>. The <abbr linkend="MDM"/> Server is not expected to retain those logs.<h:br/><h:br/> 
-              Function <ctr-ref refid="smf56"/> corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr linkend="MDM"/> Agent has not had a successful reachability event with the <abbr linkend="MDM"/> Server in the amount of time specified in ‘a', then the agent shall perform the action selected in ‘b'. It is feasible, but not required, that if multiple actions are selected in ‘b', each action could be associated with a different timeout in ‘a'. If function <ctr-ref refid="smf56"/> is included in the <abbr linkend="ST"/>, than FPT_NET_EXT.1.1 shall be included in the Agent <abbr linkend="ST"/>. </note>
+              Function <ctr-ref refid="smf56"/> corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr linkend="MDM"/> Agent has not had a successful reachability event with the <abbr linkend="MDM"/> Server in the amount of time specified in 'a', then the agent shall perform the action selected in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each action could be associated with a different timeout in 'a'. If function <ctr-ref refid="smf56"/> is included in the <abbr linkend="ST"/>, than FPT_NET_EXT.1.1 shall be included in the Agent <abbr linkend="ST"/>. </note>
             <aactivity>
               <TSS/> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed. The evaluator shall examine the <abbr linkend="TSS"/> to verify that any differences between management functions and policies for each supported <abbr linkend="MDM"/> Agent/platform listed. The evaluator shall also examine the <abbr linkend="ST"/> of the claimed Mobile Device to verify that the selections and assignments in the functions and policies in the <abbr linkend="TSS"/> do not exceed the capabilities of the supported MD. <h:br/><h:br/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it identifies the management functions implemented for each supported <abbr linkend="MDM"/> Agent/platform, which are likely to be subsets of the all of the management functions available to the administrator on the <abbr linkend="MDM"/> Server.<h:br/><h:br/>
               <Tests/>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<testlist>
@@ -3695,7 +3695,9 @@ To do:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to display an Administrator-specified advisory notice and consent warning message regarding use of the <abbr linkend="TOE"/>.</title>
-            <note role="application"/>
+            <note role="application">
+              This requirement is to ensure that a advisory notice and/or consent banner is presented to the user on start-up or unlock of the TSF.
+            </note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               If "implement functionality" is selected, the <abbr linkend="TSS"/> shall describe when the banner is displayed.<h:br/><h:br/>
