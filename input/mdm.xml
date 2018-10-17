@@ -121,14 +121,12 @@ To do:
             temporarily stored on mobile devices to which the mobile device user is allowed access
             according to the security policy defined by the enterprise and implemented by the
             administrator. </description></entry>
-        <entry><term><abbr title="Enrollment over Securit Transport"
+        <entry><term><abbr title="Enrollment over Secure Transport"
             >EST</abbr></term><description>Enrollment over Secure Transport</description></entry>
         <entry><term><abbr title="Extended Package">EP</abbr></term><description>An
             implementation-independent set of security requirements for a specific subset of
             products described by a <abbr linkend="PP"/>. </description></entry>
-        <entry><term><abbr title="Key Encryption Key">KEK</abbr></term><description>Key Encryption
-            Key</description></entry>
-        <entry><term>Key Encryption Key</term><description>A key that is used to encrypt other keys,
+        <entry><term><abbr title="Key Encryption Key">KEK</abbr></term><description>A key that is used to encrypt other keys,
             such as data encryption keys (<abbr linkend="DEK"/>s) or storage repositories that
             contain keys. </description></entry>
         <entry><term>Locked State</term><description>Mobile device state where the device is powered
@@ -201,7 +199,7 @@ To do:
         <figure entity="images/MDMserveroperatingenvironment.jpg"
           title="MDM System Operating Environment" id="agentoperatingenvironment"/>
         <h:br/><h:br/>
-        The <h:b><abbr linkend="MDM"/>Server</h:b> is an application on a general-purpose platform or on a network device, executing in a trusted network environment. The <abbr linkend="MDM"/> Server provides administration of the mobile device policies and reporting on mobile device behavior. The <abbr linkend="MDM"/> Server is responsible for managing device enrollment, configuring and sending policies to the <abbr linkend="MDM"/> Agents, collecting reports on device status, and sending commands to the Agents. The platform on which the <abbr linkend="MDM"/> Server software runs is either a general-purpose platform or a network device.
+        The <h:b><abbr linkend="MDM"/> Server</h:b> is an application on a general-purpose platform or on a network device, executing in a trusted network environment. The <abbr linkend="MDM"/> Server provides administration of the mobile device policies and reporting on mobile device behavior. The <abbr linkend="MDM"/> Server is responsible for managing device enrollment, configuring and sending policies to the <abbr linkend="MDM"/> Agents, collecting reports on device status, and sending commands to the Agents. The platform on which the <abbr linkend="MDM"/> Server software runs is either a general-purpose platform or a network device.
         <h:br/><h:br/>
         The <h:b><abbr linkend="MDM"/> Agent</h:b> establishes a secure connection back to the
           <abbr linkend="MDM"/> Server controlled by an enterprise administrator and configures the
@@ -344,9 +342,9 @@ To do:
           </objective-refer>
         </threat>
         <threat id="T.NETWORK_EAVESDROP">
-          <description>An attacker may masquerade as <abbr linkend="MDM"/> Server and attempt to
-            compromise the integrity of the mobile device by sending malicious management
-            commands.</description>
+          <description>An attacker is positioned on a communications channel or elsewhere on the
+            network infrastructure. Attackers may monitor and gain access to data exchanged
+            between the <abbr linkend="MDM"/> Server and other endpoints.</description>
           <objective-refer ref="O.DATA_PROTECTION_TRANSIT">
             <rationale>The threat T.NETWORK_EAVESDROP is countered by O.DATA_PROTECTION_TRANSIT
             </rationale>
@@ -527,17 +525,15 @@ To do:
           <component-refer ref="FMT_POL_EXT.1"/>
           <component-refer ref="FMT_SMF.1(1)"/>
         </SO>
-<!--    <SO id="O.Quality">
+    <SO id="O.Quality">
         <description>To ensure quality of implementation, conformant <abbr title="Target of Evaluation" linkend="TOE">TOE</abbr>s
             leverage services and <abbr title="Application Programming Interface" linkend="API">API</abbr>s provided by the runtime environment rather
             than implementing their own versions of these services and APIs. This is especially
             important for cryptographic services and other complex operations such as file and media
             parsing. Leveraging this platform behavior relies upon using only documented and supported APIs.</description>
-        <component-refer ref="fmt_mec_ext.1"/> needed?
         <component-refer ref="fpt_api_ext.1"/>
         <component-refer ref="fpt_lib_ext.1"/>
-        </SO>
-        -->
+        </SO>        
       </SOs>
     </section>
     <section id="sooe" title="Security Objectives for the Operational Environment">
@@ -912,9 +908,19 @@ To do:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
+                    <h:TD>FPT_API_EXT.1.1</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
                     <h:TD>FPT_ITT.1</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Identity of initiator and recipient.</h:TD>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FPT_LIB_EXT.1.1</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
                   </h:TR>
                   <h:TR>
                     <h:TD>FPT_TST_EXT.1</h:TD>
@@ -1045,7 +1051,7 @@ To do:
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>              
-            </selectables> to implement a trusted channel per <linkref linkend="FTP_ITC.1(1)"/> to transmit audit data to and external IT entity and <selectables>
+            </selectables> to implement a trusted channel per <linkref linkend="FTP_ITC.1(1)"/> to transmit audit data to an external IT entity and <selectables>
                 <selectable>store audit data locally</selectable>
                 <selectable>no other method</selectable>
                 </selectables>.
@@ -2098,7 +2104,7 @@ To do:
               </selectables> of entropy at least equal to the greatest security strength (according
               to NIST SP 800-57) of the keys and hashes that it will generate.</title>
             <note role="application">For the first selection in this requirement, the <abbr
-                linkend="ST"/> author selects ‘software-based noise source' if any additional noise
+                linkend="ST"/> author selects 'software-based noise source' if any additional noise
               sources are used as input to the application's DRBG. Note that the application must
               use the platform's DRBG to seed its DRBG. <h:br/><h:br/> In the second selection in this
               requirement, the <abbr linkend="ST"/> author selects the appropriate number of bits of
@@ -2164,7 +2170,7 @@ To do:
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables> shall implement TLS 1.2 (RFC 5246) and <selectables>
-                <selectable>TLS 1.0 (RFC 3246)</selectable>
+                <selectable>TLS 1.0 (RFC 2246)</selectable>
                 <selectable>TLS 1.1 (RFC 4346)</selectable>
                 <selectable>no other version</selectable>
               </selectables> supporting the following ciphersuites: 
@@ -2177,7 +2183,7 @@ To do:
                     <selectable id="TLSC_ECC2">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
                     <selectable id="TLSC_ECC3">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
                     <selectable id="TLSC_ECC4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-                    <selectable>TLS_TSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+                    <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                     <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                     <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
                     <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
@@ -3259,7 +3265,7 @@ To do:
                 <selectable><ctr id="smf13" ctr-type="mgmt" pre=""></ctr>. remove Enterprise applications (MDF Function 17)</selectable>
                 <selectable><ctr id="smf14" ctr-type="mgmt" pre=""></ctr>. wipe Enterprise data (MDF Function 28)</selectable>
                 <selectable><ctr id="smf15" ctr-type="mgmt" pre=""></ctr>. remove imported X.509v3 certificates and 
-                  <selectables>
+                  <selectables linebreak="yes">
                     <selectable>no other X.509v3 certificates</selectable>
                     <selectable><assignable>list of other categories of X.509v3 certificates</assignable></selectable>
                   </selectables> in the Trust Anchor Database (MDF Function 12)</selectable>
@@ -3268,7 +3274,7 @@ To do:
                 <selectable>
                   <ctr id="smf17" ctr-type="mgmt" pre=""></ctr>. import keys/secrets into the secure key storage (MDF Function 9)</selectable>
                 <selectable>
-                  <ctr id="smf18" ctr-type="mgmt" pre=""></ctr>. destroy imported keys/secrets and <selectables>
+                  <ctr id="smf18" ctr-type="mgmt" pre=""></ctr>. destroy imported keys/secrets and <selectables linebreak="yes">
                     <selectable>no other keys/secrets</selectable>
                     <selectable><assignable>list of other categories of keys/secrets</assignable></selectable>
                   </selectables> in the secure key storage (MDF Function 10)</selectable>
@@ -3277,7 +3283,7 @@ To do:
                 <selectable>
                   <ctr id="smf20" ctr-type="mgmt" pre=""></ctr>. retrieve MD-software integrity verification values (MDF Function 38)</selectable>
                 <selectable>
-                  <ctr id="smf21" ctr-type="mgmt" pre=""></ctr>. approve exceptions for sharing data between <selectables>
+                  <ctr id="smf21" ctr-type="mgmt" pre=""></ctr>. approve exceptions for sharing data between <selectables linebreak="yes">
                     <selectable>application processes</selectable>
                     <selectable>group of application processes</selectable>
                   </selectables> (MDF Function 42)</selectable>
@@ -3310,7 +3316,7 @@ To do:
                   <ctr id="smf27" ctr-type="mgmt" pre=""></ctr>. wireless networks (SSIDs) to which the MD may connect (MDF Function 2)</h:li> <h:li>
                     <ctr id="smf28" ctr-type="mgmt" pre=""></ctr>. security policy for each wireless network: 
                     <h:ol type="a">
-                    <h:li><selectables>
+                      <h:li><selectables linebreak="yes">
                         <selectable>specify the CA(s) from which the MD will accept WLAN authentication server certificate(s)</selectable>
                         <selectable>specify the FQDN(s) of acceptable WLAN authentication server certificate(s)</selectable>
                       </selectables></h:li>
@@ -3327,7 +3333,7 @@ To do:
                     <selectable>denying application installation</selectable>
                   </selectables>, (MDF Function 8)</h:li>
                 <h:li>
-                  <ctr id="smf30" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for <assignable>list of audio or visual collection devices</assignable> across device, <selectables>
+                  <ctr id="smf30" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for <assignable>list of audio or visual collection devices</assignable> across device, <selectables linebreak="yes">
                     <selectable>on a per-app basis</selectable>
                     <selectable>on a per-group of applications processes basis</selectable>
                     <selectable>no other method</selectable>
@@ -3336,7 +3342,7 @@ To do:
               <h:b>and the following MD configuration policies</h:b>:<h:br/><h:br/>
               <h:ul style="list-style-type:none"><selectables linebreak="yes">
                 <selectable>
-                  <ctr id="smf31" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for the VPN protection across MD, <selectables>
+                  <ctr id="smf31" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for the VPN protection across MD, <selectables linebreak="yes">
                     <selectable>on a per-app basis</selectable>
                     <selectable>on a per-group of application processes basis</selectable>
                     <selectable>no other method</selectable>
@@ -3394,7 +3400,7 @@ To do:
                   <ctr id="smf43" ctr-type="mgmt" pre=""></ctr>. policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database, (MDF Function 29)</selectable>
                 <selectable>
                   <ctr id="smf44" ctr-type="mgmt" pre=""></ctr>. 
-                  <selectables>
+                  <selectables linebreak="yes">
                     <selectable>certificate</selectable>
                     <selectable>public-key</selectable>
                   </selectables> used to validate digital signature on applications, (MDF Function 33)</selectable>
@@ -3407,13 +3413,13 @@ To do:
                 <selectable>
                   <ctr id="smf48" ctr-type="mgmt" pre=""></ctr>. configure the auditable items (MDF Function 37)</selectable>
                 <selectable>
-                  <ctr id="smf49" ctr-type="mgmt" pre=""></ctr>. enable/disable <selectables>
+                  <ctr id="smf49" ctr-type="mgmt" pre=""></ctr>. enable/disable <selectables linebreak="yes">
                     <selectable>USB mass storage mode</selectable>
                     <selectable>USB data transfer without user authentication</selectable>
                     <selectable>USB data transfer without authentication of the connection system</selectable>
                   </selectables> (MDF Function 39) </selectable>
                 <selectable>
-                  <ctr id="smf50" ctr-type="mgmt" pre=""></ctr>. enable/disable backup of <selectables>
+                  <ctr id="smf50" ctr-type="mgmt" pre=""></ctr>. enable/disable backup of <selectables linebreak="yes">
                     <selectable>all applications</selectable>
                     <selectable>selected applications</selectable>
                     <selectable>selected groups of applications</selectable>
@@ -3472,11 +3478,11 @@ To do:
             </title>
             <note role="application"> This requirement captures all the configuration functionality the <abbr linkend="TSF"/> provides the administrator to configure the <abbr linkend="MDM"/> Agent. This requirement is broken into two configurable areas: <abbr linkend="MDM"/> Agent commands and <abbr linkend="MDM"/> Agent policies. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> The <abbr linkend="ST"/> author shall not claim any functionality not provided by the Mobile Device. All selections and assignments performed by the <abbr linkend="ST"/> author in this requirement should match the selections and assignments of the validated Mobile Device <abbr linkend="ST"/>.<h:br/><h:br/> 
               Function-specific Application Notes:<h:br/><h:br/> 
-              Function specific application notes reference Mobile Device Fundamentals (MDF) <abbr linkend="PP"/> v3.0.<h:br/><h:br/> 
+              Function specific application notes reference Mobile Device Fundamentals (MDF) <abbr linkend="PP"/> v3.1.<h:br/><h:br/> 
               Function <ctr-ref refid="smf12"/> may be satisfied by application blacklisting and/or disabling for the BYOD use case.<h:br/><h:br/>
               Function <ctr-ref refid="smf16"/> provides the <abbr linkend="MDM"/> server to display an alert to the user of the mobile device.<h:br/><h:br/> 
               The audit records read according to Function <ctr-ref refid="smf19"/> are to be transmitted to an external audit server according to <linkref linkend="FAU_STG_EXT.1(1)"/>. The <abbr linkend="MDM"/> Server is not expected to retain those logs.<h:br/><h:br/> 
-              Function <ctr-ref refid="smf56"/> corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr linkend="MDM"/> Agent has not had a successful reachability event with the <abbr linkend="MDM"/> Server in the amount of time specified in ‘a', then the agent shall perform the action selected in ‘b'. It is feasible, but not required, that if multiple actions are selected in ‘b', each action could be associated with a different timeout in ‘a'. If function <ctr-ref refid="smf56"/> is included in the <abbr linkend="ST"/>, than FPT_NET_EXT.1.1 shall be included in the Agent <abbr linkend="ST"/>. </note>
+              Function <ctr-ref refid="smf56"/> corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr linkend="MDM"/> Agent has not had a successful reachability event with the <abbr linkend="MDM"/> Server in the amount of time specified in 'a', then the agent shall perform the action selected in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each action could be associated with a different timeout in 'a'. If function <ctr-ref refid="smf56"/> is included in the <abbr linkend="ST"/>, than FPT_NET_EXT.1.1 shall be included in the Agent <abbr linkend="ST"/>. </note>
             <aactivity>
               <TSS/> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed. The evaluator shall examine the <abbr linkend="TSS"/> to verify that any differences between management functions and policies for each supported <abbr linkend="MDM"/> Agent/platform listed. The evaluator shall also examine the <abbr linkend="ST"/> of the claimed Mobile Device to verify that the selections and assignments in the functions and policies in the <abbr linkend="TSS"/> do not exceed the capabilities of the supported MD. <h:br/><h:br/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it identifies the management functions implemented for each supported <abbr linkend="MDM"/> Agent/platform, which are likely to be subsets of the all of the management functions available to the administrator on the <abbr linkend="MDM"/> Server.<h:br/><h:br/>
               <Tests/>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<testlist>
@@ -3705,7 +3711,9 @@ To do:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to display an Administrator-specified advisory notice and consent warning message regarding use of the <abbr linkend="TOE"/>.</title>
-            <note role="application"/>
+            <note role="application">
+              This requirement is to ensure that a advisory notice and/or consent banner is presented to the user on start-up or unlock of the TSF.
+            </note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               If "implement functionality" is selected, the <abbr linkend="TSS"/> shall describe when the banner is displayed.<h:br/><h:br/>
@@ -4328,7 +4336,7 @@ To do:
   <appendix id="sel-based" title="Selection-Based Requirements"> 
     As indicated in the introduction to this <abbr linkend="PP"/>, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of the <abbr linkend="PP"/>. There are additional requirements based on selections in the body of the <abbr linkend="PP"/>: if certain selections are made, then additional requirements below will need to be included. </appendix>
   <appendix id="objective" title="Objective Requirements"> 
-    As indicated in the introduction to this <abbr linkend="EP"/>, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of this <abbr linkend="EP"/>. There are additional requirements that specify security functionality that is desirable and these requirements are contained in this Appendix. It is expected that these requirements will transition from objective requirements to baseline requirements in future versions of this <abbr linkend="EP"/>.<h:br/><h:br/> At any time these may be included in the <abbr linkend="ST"/> such that the <abbr linkend="TOE"/> is still conformant to this <abbr linkend="EP"/>.<h:br/><h:br/> This Appendix is divided into two subsections: objective requirements that may be performed by the <abbr linkend="TSF"/> and objective requirements that may be performed by the <abbr linkend="MDM"/> Agent or its underlying platform.<h:br/><h:br/>
+    As indicated in the introduction to this <abbr linkend="PP"/>, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of this <abbr linkend="PP"/>. There are additional requirements that specify security functionality that is desirable and these requirements are contained in this Appendix. It is expected that these requirements will transition from objective requirements to baseline requirements in future versions of this <abbr linkend="PP"/>.<h:br/><h:br/> At any time these may be included in the <abbr linkend="ST"/> such that the <abbr linkend="TOE"/> is still conformant to this <abbr linkend="PP"/>.<h:br/><h:br/> This Appendix is divided into two subsections: objective requirements that may be performed by the <abbr linkend="TSF"/> and objective requirements that may be performed by the <abbr linkend="MDM"/> Agent or its underlying platform.<h:br/><h:br/>
   </appendix>
   <appendix id="entropy" title="Entropy Documentation and Assessment"> 
     This appendix describes the required supplementary information for each entropy source used by the <abbr linkend="TOE"/>.<h:br/><h:br/> The documentation of the entropy source(s) should be detailed enough that, after reading, the evaluator will thoroughly understand the entropy source and why it can be relied upon to provide sufficient entropy. This documentation should include multiple detailed sections: design description, entropy justification, operating conditions, and health testing. This documentation is not required to be part of the <abbr linkend="TSS"/>. <h:br/><h:br/>
