@@ -794,22 +794,12 @@ To do:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_TLSC_EXT.3</h:TD>
-                    <h:TD>None.</h:TD>
-                    <h:TD/>
-                  </h:TR>
-                  <h:TR>
                     <h:TD>FCS_TLSS_EXT.1</h:TD>
                     <h:TD>Failure to establish a TLS session.</h:TD>
                     <h:TD>Reason for failure.</h:TD>
                   </h:TR>
                   <h:TR>
                     <h:TD>FCS_TLSS_EXT.2</h:TD>
-                    <h:TD>None.</h:TD>
-                    <h:TD/>
-                  </h:TR>
-                  <h:TR>
-                    <h:TD>FCS_TLSS_EXT.3</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -2428,78 +2418,6 @@ To do:
               </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_tlsc_ext.3" name="TLS Client Protocol (Signature Algorithms Extension)" status="objective">
-          <f-element id="fcs_tlsc_ext.3.1"><!-- was FCS_TLSC_EXT.1.6 -->
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall present the signature_algorithms extension in the Client Hello
-              with the supported_signature_algorithms value containing the following hash
-              algorithms: <selectables>
-                <selectable>SHA256</selectable>
-                <selectable>SHA384</selectable>
-                <selectable>SHA512</selectable>
-              </selectables> and no other hash algorithms.</title>
-            <note role="application">This requirement limits the hashing algorithms supported for
-              the purpose of digital signature verification by the client and limits the server to
-              the supported hashes for the purpose of digital signature generation by the server.
-              The signature_algorithm extension is only supported by TLS 1.2.</note>
-            <aactivity>
-              <TSS/>The evaluator shall verify that <abbr linkend="TSS"/> describes the
-                signature_algorithm extension and whether the required behavior is performed by
-                default or may be configured.<h:br/><h:br/>
-              <Guidance/>If the <abbr linkend="TSS"/> indicates that the signature_algorithm
-                extension must be configured to meet the requirement, the evaluator shall verify
-                that AGD guidance includes configuration of the signature_algorithm
-                extension.<h:br/><h:br/>
-              <Tests/>The evaluator shall configure the server to send a certificate in the TLS
-                connection that is not supported according to the Client's HashAlgorithm enumeration
-                within the signature_algorithms extension (for example, send a certificate with a
-                SHA-1 signature). The evaluator shall verify that the <abbr linkend="TOE"/>
-                disconnects after receiving the server's Certificate handshake message.
-              </aactivity>
-          </f-element>
-          <f-element id="fcs_tlsc_ext.3.2"><!-- was FCS_TLSC_EXT.1.7 -->
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall support secure renegotiation through use of the
-              "renegotiation_info" TLS extension in accordance with RFC 5746.</title>
-          </f-element>
-          <f-element id="fcs_tlsc_ext.3.3"><!-- was FCS_TLSC_EXT.1.8 -->
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall include [choose only one of]: <selectables>
-                <selectable>renegotiation_info extension</selectable>
-                <selectable>TLS_EMPTY_RENEGOTIATION_INFO_SCSV ciphersuite</selectable>
-              </selectables> in the ClientHello message.</title>
-            <note role="application">RFC 5746 defines an extension to TLS that binds renegotiation
-              handshakes to the cryptography in the original handshake.<h:br/><h:br/> The ciphersuite
-              included in the selection is a means for clients to be compatible with servers that
-              don't support the extension. It is recommended that client implementations support
-              both the ciphersuite and the extension. </note>
-            <aactivity>
-              <Tests/>
-                <testlist>
-                  <test>The evaluator shall use a network packet analyzer/sniffer to capture the
-                    traffic between the two TLS endpoints. The evaluator shall verify that either
-                    the "renegotiation_info" field or the SCSV ciphersuite is included in the
-                    ClientHello packet during the initial handshake.</test>
-                  <test>The evaluator shall verify the Client's handling of ServerHello messages
-                    received during the initial handshake that include the "renegotiation_info"
-                    extension. The evaluator shall modify the length portion of this field in the
-                    ServerHello message to be non-zero and verify that the client sends a failure
-                    and terminates the connection. The evaluator shall verify that a properly
-                    formatted field results in a successful TLS connection.</test>
-                  <test>The evaluator shall verify that ServerHello messages received during secure
-                    renegotiation contain the "renegotiation_info" extension. The evaluator shall
-                    modify either the "client_verify_data" or "server_verify_data" value and verify
-                    that the client terminates the connection.</test>
-                </testlist>
-              </aactivity>
-          </f-element>
-        </f-component> 
         <f-component id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
           <selection-depends req="FTP_TRP.1.1(1)" ids="TRP_TLS_1, TRP_HTTPS_1"/> 
           <selection-depends req="FTP_TRP.1.1(2)" ids="TRP_TLS_2, TRP_HTTPS_2"/>
@@ -2723,67 +2641,6 @@ To do:
                 the size matches the expected size for the configured curve is sufficient.) The
                 evaluator shall repeat this test for each supported NIST Elliptic Curve and each
                 supported Diffie-Hellman key size.
-            </aactivity>
-          </f-element>
-        </f-component> 
-        <f-component id="fcs_tlss_ext.3" name="TLS Server Protocol" status="objective">
-          <f-element id="fcs_tlss_ext.3.1"><!-- was 1.7 -->
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall present the HashAlgorithm enumeration in
-              supported_signature_algorithms in the Certificate Request with the following hash
-              algorithms: <selectables>
-                <selectable>SHA256</selectable>
-                <selectable>SHA384</selectable>
-                <selectable>SHA512</selectable>
-              </selectables> and no other hash algorithms.</title>
-            <note role="application">This requirement limits the hashing algorithms supported for
-              the purpose of digital signature verification by the server and limits the client to
-              the supported hashes for the purpose of digital signature generation by the client.
-              The supported_signature_algorithms is only supported by TLS 1.2.</note>
-            <aactivity>
-              <TSS/>(Conditional) The evaluator shall verify that <abbr linkend="TSS"/> describes the
-                supported_signature_algorithms field of the Certificate Request and whether the
-                required behavior is performed by default or may be configured. If the <abbr
-                  linkend="TSS"/> indicates that the supported_signature_algorithms field must be
-                configured to meet the requirement, the evaluator shall verify that AGD guidance
-                includes configuration of the supported_signature_algorithms field.<h:br/><h:br/>
-              <Tests/>The evaluator shall configure a client to send the signature_algorithms
-                extension indicating that hash algorithm used by the server's certificate is not
-                supported. The evaluator shall attempt a connection and verify that the server
-                denies the client's connection.
-            </aactivity>
-          </f-element>
-          <f-element id="fcs_tlss_ext.3.2"><!-- was 1.8 -->
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall support the "renegotiation_info" TLS extension in accordance with
-              RFC 5746.</title>
-          </f-element>
-          <f-element id="fcs_tlss_ext.3.3"><!-- was 1.9 -->
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall include the renegotiation_info extension in ServerHello
-              messages.</title>
-            <note role="application">RFC 5746 defines an extension to TLS that binds renegotiation
-              handshakes to the cryptography in the original handshake.</note>
-            <aactivity>
-              <Tests/>The following tests require connection with a client that supports secure
-                renegotiation and the "renegotiation_info" extension. <testlist>
-                  <test>The evaluator shall use a network packet analyzer/sniffer to capture the
-                    traffic between the two TLS endpoints. The evaluator shall verify that the
-                    "renegotiation_info" field is included in the ServerHello packet.</test>
-                  <test>The evaluator shall modify the length portion of the field in the
-                    ClientHello message in the initial handshake to be non-zero and verify that the
-                    client sends a failure and terminates the connection. The evaluator shall verify
-                    that a properly formatted field results in a successful TLS connection.</test>
-                  <test>The evaluator shall modify the "client_verify_data" or "server_verify_data"
-                    value in the ClientHello message received during secure renegotiation and verify
-                    that the server terminates the connection.</test>
-                </testlist>
             </aactivity>
           </f-element>
         </f-component> 
@@ -3767,7 +3624,22 @@ To do:
             <note role="application">The intent of the mandatory portion of the above requirement is to use the cryptographic protocols identified in the requirement to establish and maintain a trusted channel with authorized IT entities that the <abbr linkend="TOE"/> interacts with to perform its functions.<h:br/><h:br/> 
               Protection (by one of the listed protocols) is required at least for communications with the server that collects the audit information. If it communicates with an authentication server (e.g., RADIUS), then the <abbr linkend="ST"/> author chooses "authentication server" in <linkref linkend="FTP_ITC.1.1(1)"/> and this connection must be protected by one of the listed protocols. If other authorized IT entities (e.g., NTP server) are protected, the <abbr linkend="ST"/> author makes the appropriate assignments (for those entities) and selections (for the protocols that are used to protect those connections).<h:br/><h:br/> 
               To summarize, the connection to an external audit collection server is required to be protected by one of the listed protocols. If an external authentication server is supported, then it is required to protect that connection with one of the listed protocols. For any other external server, external communications are not required to be protected, but if protection is claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
-              The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "TLS" or "TLS/HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/> 
+              The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
+              <h:ul>
+                <h:li>FCS_TLS_EXT.1: 
+                  <h:ul>
+                    <h:li>either TLS or DTLS is selected depending on the selection made in FPT_ITT.1.1</h:li>
+                    <h:li>either client or server is selected as appropriate</h:li>
+                  </h:ul>
+                </h:li>
+                <h:li>FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
+                  <h:ul>
+                    <h:li>TLS_RSA_WITH_AES_128_CBC_SHA cannot be selected</h:li>
+                    <h:li>mutual authentication must be selected</h:li>
+                  </h:ul>
+                </h:li>
+              </h:ul> 
               Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services.<h:br/><h:br/> 
               The requirement implies that not only are communications protected when they are initially established, but also on resumption after an outage. It may be the case that some part of the <abbr linkend="TOE"/> setup involves manually setting up tunnels to protect other communication, and if after an outage the <abbr linkend="TOE"/> attempts to re-establish the communication automatically with (the necessary) manual intervention, there may be a window created where an attacker might be able to gain critical information or compromise a connection.<h:br/><h:br/>
             </note>
@@ -3845,11 +3717,29 @@ To do:
               should make this difference clear.<h:br/><h:br/> The trusted channel uses TLS, DTLS, or
               HTTPS as the protocol that preserves the confidentiality and integrity of <abbr
                 linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the
-              mechanism or mechanisms supported by the <abbr linkend="TOE"/>, and then ensures the
-              detailed requirements in Appendix B corresponding to their selection are copied to the
-                <abbr linkend="ST"/> if not already present.<h:br/><h:br/> Protocol, RBG, Certificate
+              mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
+              <h:ul>
+                <h:li>FCS_TLS_EXT.1: 
+                  <h:ul>
+                    <h:li>either TLS or DTLS is selected depending on the selection made in FPT_ITT.1.1</h:li>
+                    <h:li>server must be selected</h:li>
+                  </h:ul>
+                </h:li>
+                <h:li>FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
+                  <h:ul>
+                    <h:li>TLS_RSA_WITH_AES_128_CBC_SHA cannot be selected</h:li>
+                    <h:li>mutual authentication must be selected</h:li>
+                  </h:ul>
+                </h:li>
+              </h:ul>  Protocol, RBG, Certificate
               validation, algorithm, and similar services may be met with platform provided
-              services.<h:br/><h:br/>
+              services.<h:br/><h:br/> 
+              The requirement implies that not only are communications protected when they are initially established, 
+              but also on resumption after an outage. It may be the case that some part of the <abbr linkend="TOE"/> setup 
+              involves manually setting up tunnels to protect other communication, and if after an outage the <abbr linkend="TOE"/> 
+              attempts to re-establish the communication automatically with (the necessary) manual intervention, there may be a 
+              window created where an attacker might be able to gain critical information or compromise a connection.<h:br/><h:br/>
             </note>
           </f-element>
           <f-element id="ftp_itc.1.2(2)">
