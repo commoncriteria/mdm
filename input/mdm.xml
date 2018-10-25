@@ -3366,12 +3366,12 @@ To do:
               protocols. If an external authentication server is supported, then it is required to protect that connection with one 
               of the listed protocols. For any other external server, external communications are not required to be protected, but 
               if protection is claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
-              
+              <!--TODO REVIEW FOR CORRECTNESS-->
               For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MDM Server should still 
               be able to support mutual authentication. There are no requirements levied on the external entities, but the MDM Server 
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
               entitiy does support mutual authenticaion, the MDM Server is in a position to make use of that.<h:br/><h:br/>
-              
+              <!--TODO END REVIEW-->
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
               <h:ul>
@@ -3463,12 +3463,14 @@ To do:
                 linkend="MDM"/> Server to the <abbr linkend="MDM"/> Agent. Either the <abbr
                 linkend="MDM"/> Agent or the <abbr linkend="MDM"/> Server is able to initiate the
               connection.<h:br/><h:br/> 
+              <!--TODO REVIEW FOR CORRECTNESS-->
               For TLS connections between the MDM Server and Agent, the MDM Server is the Server side of the TLS connection, 
               therefore it is appropriate to include the selection-based FCS_TLSS SFRs in the ST, not FCS_TLSC SFRs. With respect 
               to mutual authentication, in cases where the Agent is outside of the <abbr linkend="TOE"/>, it should be verified 
               that the server can support mutual authentication, meaning that the server includes support for client-side certificates 
               for TLS mutual authentication post-enrollment. However, the client side is not evaluated since the agent is not in 
               the <abbr linkend="TOE"/>.<h:br/><h:br/>
+              <!--TODO END REVIEW-->
               This trusted channel protects both the connection between an
               enrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server <!-- ToDo: The following may not be true -->and the
               connection between an unenrolled <abbr linkend="MDM"/> Agent and the <abbr
@@ -3577,12 +3579,12 @@ To do:
               protect that connection with one of the listed protocols. For any other external
               server, external communications are not required to be protected, but if protection is
               claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
-              
+              <!--TODO REVIEW FOR CORRECTNESS-->
               For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MDM Server should still 
               be able to support mutual authentication. There are no requirements levied on the external entities, but the MDM Server 
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
               entitiy does support mutual authenticaion, the MDM Server is in a position to make use of that.<h:br/><h:br/>
-              
+              <!--TODO END REVIEW-->
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the
               confidentiality and integrity of MAS communications. The <abbr linkend="ST"/> author
               chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec"
