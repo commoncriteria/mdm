@@ -16,12 +16,12 @@ To do:
 - cross references - search for Section & Appendix cross refs & adjust
 -->
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
 <PP xmlns="https://niap-ccevs.org/cc/v1" name="Mobile Device Management"
   xmlns:h="http://www.w3.org/1999/xhtml">
     
   <PPReference>
     <ReferenceTable>
-      <PPTitle>Protection Profile for Mobile Device Management</PPTitle>
       <PPVersion>4.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2018-09-24</PPPubDate>
@@ -91,8 +91,23 @@ To do:
   <chapter id="int" title="Introduction">
     <section id="ov" title="Overview"> 
       Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network resources.<h:br/><h:br/> This document provides a baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> System, which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce the security policies, and network access control servers, are out of scope. </section>
-    <section id="terms" title="Terms and Acronyms">
-      The following section provides both Common Criteria and technology terms used in this <abbr linkend="PP"/>. <glossary>
+    <section id="terms" title="Terms">
+      <!-- TODO: Craig go through the terms defined below an separate them into the different subsections -->
+      <!--  <subsection title="Common Criteria Terms">
+        
+        
+        
+      </subsection>
+      
+      <subsection title="Technology Terms">
+        
+        
+        
+      </subsection>
+     -->
+      The following section provides both Common Criteria and technology terms used in this <abbr linkend="PP"/>. 
+      
+      <glossary>
         <!-- HERE glossary <abbr linkend="TSS"/>-->
         <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent. </description></entry>
         <entry><term><abbr title="Application Programming Interface">API</abbr></term>
@@ -447,7 +462,8 @@ To do:
             management actions undertaken by its administrators.</description>
           <!-- HERE are these component-refer tags correct? -->
           <component-refer ref="FAU_ALT_EXT.1"/>
-          <component-refer ref="FAU_GEN.1"/>
+          <component-refer ref="FAU_GEN.1(1)"/>
+          <component-refer ref="FAU_GEN.1(2)"/>
           <component-refer ref="FAU_NET_EXT.1"/>
           <component-refer ref="FAU_SAR.1"/>
           <component-refer ref="FAU_SEL.1"/>
@@ -779,6 +795,7 @@ To do:
                     <h:TD/>
                   </h:TR>
                   <!-- This is now replaced by FCS_TLSC_EXT.1 and FCS_TLSS_EXT.2 audits. Remove completely once sure this is correct.
+                    KIM - Audit of TLS and DTLS will remain in the base PP. Please update the name to correspond to package.
                   <h:TR>
                     <h:TD>FCS_DTLS_EXT.1</h:TD>
                     <h:TD>Failure of the certificate validity check.</h:TD>
@@ -814,12 +831,11 @@ To do:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_TLSC_EXT.1</h:TD>
+                    <h:TD rowspan="3">FCS_TLSC_EXT.1</h:TD>
                     <!-- Added certificate validity check to replace FCS_DTLS_EXT.1 audit -->
-                    <h:TD>Failure to establish a TLS session.<h:br/> Failure to verify presented
-                      identifier.<h:br/>Failure of the certificate validity check.</h:TD>
-                    <h:TD>Reason for failure.<h:br/><h:br/>Presented identifier and reference
-                      identifier.<h:br/>Issuer Name and Subject Name of certificate.</h:TD>
+                    <h:TD>Failure to establish a TLS session.</h:TD><h:TD>Reason for failure.</h:TD></h:TR>
+                  <h:TR><h:TD>Failure to verify presented identifier.</h:TD><h:TD>Presented identifier and reference identifier.</h:TD></h:TR>
+                  <h:TR><h:TD>Failure of the certificate validity check.</h:TD><h:TD>Issuer Name and Subject Name of certificate.</h:TD>
                   </h:TR>
                   <h:TR>
                     <h:TD>FCS_TLSC_EXT.2</h:TD>
@@ -3259,7 +3275,7 @@ To do:
               For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MDM Server should still 
               be able to support mutual authentication. There are no requirements levied on the external entities, but the MDM Server 
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
-              entitiy does support mutual authenticaion, the MDM Server is in a position to make use of that.<h:br/><h:br/>
+              entity does support mutual authentication, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               <!--TODO END REVIEW-->
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
@@ -3476,10 +3492,10 @@ To do:
               server, external communications are not required to be protected, but if protection is
               claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
               <!--TODO REVIEW FOR CORRECTNESS-->
-              For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MDM Server should still 
-              be able to support mutual authentication. There are no requirements levied on the external entities, but the MDM Server 
+              For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MAS Server should still 
+              be able to support mutual authentication. There are no requirements levied on the external entities, but the MAS Server 
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
-              entitiy does support mutual authenticaion, the MDM Server is in a position to make use of that.<h:br/><h:br/>
+              entitiy does support mutual authenticaion, the MAS Server is in a position to make use of that.<h:br/><h:br/>
               <!--TODO END REVIEW-->
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the
               confidentiality and integrity of MAS communications. The <abbr linkend="ST"/> author
@@ -4242,5 +4258,20 @@ To do:
       </entry>
     </bibliography>
   </appendix>
+  
+  <extra-css>
+<!-- DO NOT DELETE -->
+    
+    .SOlist .optional::after,
+    .SOlist .sel-based::after,
+    .SOlist .objective::after { 
+    content: "(OPTIONAL)"
+    } 
+    
+  </extra-css>
+  
+  
+  
+  
 </PP>
 
