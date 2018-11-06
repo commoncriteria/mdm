@@ -590,7 +590,8 @@ To do:
       </h:ul>
     </section>
     <section id="teaa" title="Test Environment for Assurance Activities"> 
-      As described in the assurance activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents/MD platforms with which an <abbr linkend="MDM"/> Server operates. The identified assurance activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent/platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/> The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Assurance Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Extended Package for Mobile Device Management Agents. </section>
+      As described in the assurance activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents/MD platforms with which an <abbr linkend="MDM"/> Server operates. The identified assurance activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent/platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/>      
+      The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Assurance Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Extended Package for Mobile Device Management Agents. </section>
     <section id="tsfr" title="TOE Security Functional Requirements">
       <subsection id="fau" title="Security Audit (FAU)">
         <f-component id="fau_alt_ext.1" name="Server Alerts">
@@ -1956,8 +1957,20 @@ To do:
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to implement HTTPS using TLS, and the TLS Functional Package must be included in the 
-              <abbr linkend="ST"/>, with the following selections made:
+            </selectables> to implement HTTPS using TLS. 
+            </title>
+            <!--   </f-element>
+           <f-element id="fcs_https_ext.1.3">
+            <title>The <selectables>
+                <selectable>TSF</selectable>
+                <selectable><abbr linkend="TOE"/> platform</selectable>
+              </selectables> shall <selectables>
+                <selectable>not establish the connection</selectable>
+                <selectable>request authorization to establish the connection</selectable>
+                <selectable>no other action</selectable>
+              </selectables> if the peer certificate is deemed invalid.</title>-->
+            <!-- FCS_HTTPS_EXT.1.3 was removed per TD212-->
+            <note role="application">The TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
@@ -1972,20 +1985,8 @@ To do:
                     <h:li>session renegotiation must be selected</h:li>
                   </h:ul>
                 </h:li>
-              </h:ul> 
-            </title>
-            <!--   </f-element>
-           <f-element id="fcs_https_ext.1.3">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall <selectables>
-                <selectable>not establish the connection</selectable>
-                <selectable>request authorization to establish the connection</selectable>
-                <selectable>no other action</selectable>
-              </selectables> if the peer certificate is deemed invalid.</title>-->
-            <!-- FCS_HTTPS_EXT.1.3 was removed per TD212-->
-            <note role="application">Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with RFC 5280.</note>
+              </h:ul>              
+              Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with RFC 5280.</note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <Tests/>
