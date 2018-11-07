@@ -327,6 +327,111 @@ To do:
       </cclaim>
     </cclaims>
   </chapter>
+  <!--Begin Distributed TOE -->
+  <chapter title="Introduction to Distributed TOEs" id="idt">
+    This PP includes support for distributed <abbr linkend="MDM"/> <abbr linkend="TOE"/>s. <abbr linkend="MDM"/>'s can sometimes be composed of multiple components operating as a logical whole. Oftentimes we see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different architectures; but fundamentally, they are variations of the following model where the <abbr linkend="SFR"/>'s of this PP can only be fulfilled if the components are deployed and operate together. To be considered a distributed <abbr linkend="TOE"/>, a minimum of 2 interconnected components are required.
+    <section title="Registration of components of a distributed TOE" id="rcd"></section>
+    When dealing with a distributed TOE, a number of separate components need to be brought together in the operational environment in order to create the TOE: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the TOE is to have a “registration process” in which components “join” the TOE. The registration process starts with two components, one of which (the “joiner”) is about to join an existing TOE by registering with the other (the “gatekeeper”). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed TOE registration approach which uses an instance of FPT_ITT.1 or FTP_ITC.1 to protect the registration exchange.
+    <!--INSERT FIGURE 1 -->
+    The second approach (Figure 11) utilises an alternative registration channel and supports usecases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.
+    <!--INSERT FIGURE 2 -->
+    The final approach (Figure 12) supports use-cases where registration is performed manually
+    through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the
+    two components establish an internal TSF channel that satisfies FPT_ITT.1 or FTP_ITC.1.
+    <!--INSERT FIGURE 3 -->
+    In each case, during the registration process, the Security Administrator must positively enable
+    the joining components before it can act as part of the TSF. The following figure illustrates the
+    approaches that this enablement step may take;
+    <!--INSERT FIGURE 4 -->
+    Note that in the case where no registration channel is required, that is the joiner and gatekeeper
+    are directly configured (Figure 12), enablement is implied as part of this direct configuration
+    process.
+    After registration the components will communicate between themselves using a normal
+    SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an ST as an instance of
+    FTP_ITC.1 or FPT_ITT.1 in terms of section 6 and appendix A). This channel for intercomponent
+    communications is specified at the top level with the new (extended) SFR
+    FCO_CPC_EXT.1 (see section A.7.1) and is in addition to the other communication channels
+    required for communication with entities outside the TOE (which are specified in an ST as
+    instances of FTP_ITC.1 and FTP_TRP.1). 
+    <section title="Allocation of requirements in distributed TOEs" id="ard"></section>
+    For a distributed TOE, the security functional requirements in this cPP need to be met by the
+    TOE as a whole, but not all SFRs will necessarily be implemented by all components. The
+    following categories are defined in order to specify when each SFR must be implemented by a
+    component:
+    <ul>
+      <li>All Components (“All”) – All components that comprise the distributed TOE must independently satisfy the requirement.</li>
+      <li>At least one Component (“One”) – This requirement must be fulfilled by at least one component within the distributed TOE.</li>
+      <li>Feature Dependent (“Feature Dependent”) – These requirements will only be fulfilled where the feature is implemented by the distributed TOE component (note that the requirement to meet the PP as a whole requires that at least one component implements these requirements if they are specified in section 6).</li>
+    </ul>
+    <h:center>Table 1 specifies how each of the SFRs in this PP must be met, using the categories above.</h:center>
+    <h:table>
+      <h:TR>
+        <h:TD><h:b>Requirement</h:b></h:TD>
+        <h:TD><h:b>Description</h:b></h:TD>
+        <h:TD><h:b>Distributed TOE SFR Allocation</h:b></h:TD>
+      </h:TR>
+      <h:tr>
+        <h:td>FAU_GEN.1</h:td>
+        <h:td>Audit Data Generation</h:td>
+        <h:td>All</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>Counter (CTR)</h:td>
+        <h:td>SP800-38A</h:td>
+        <h:td>"Initial Counter" shall be non-repeating. No counter value shall be
+          repeated across multiple messages with the same secret key</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>Cipher Block Chaining (CBC)</h:td>
+        <h:td>SP800-38A</h:td>
+        <h:td>IVs shall be unpredictable. Repeating IVs leak information about whether
+          the first one or more blocks are shared between two messages, so IVs should be
+          non-repeating in such situations.</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>Output Feedback (OFB)</h:td>
+        <h:td>SP800-38A</h:td>
+        <h:td>IVs shall be non-repeating and shall not be generated by invoking the
+          cipher on another IV.</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>Cipher Feedback (CFB)</h:td>
+        <h:td>SP800-38A</h:td>
+        <h:td>IVs should be non-repeating as repeating IVs leak information about the
+          first plaintext block and about common shared prefixes in messages.</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>XEX (XOR Encrypt XOR)<h:br/><h:br/> Tweakable Block Cipher with Ciphertext
+          Stealing (XTS) </h:td>
+        <h:td>SP800-38E</h:td>
+        <h:td>No IV. Tweak values shall be non-negative integers, assigned
+          consecutively, and starting at an arbitrary non-negative integer.</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>Cipher-based Message Authentication Code (CMAC)</h:td>
+        <h:td>SP800-38B</h:td>
+        <h:td>No IV</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>Key Wrap and Key Wrap with Padding</h:td>
+        <h:td>SP800-38F</h:td>
+        <h:td>No IV</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>Counter with CBC-Message Authentication Code (CCM)</h:td>
+        <h:td>SP800-38C</h:td>
+        <h:td>No IV. Nonces shall be non-repeating.</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>Galois Counter Mode (GCM)</h:td>
+        <h:td>SP800-38D</h:td>
+        <h:td>IV shall be non-repeating. The number of invocations of GCM shall not
+          exceed 2^32 for a given secret key unless an implementation only uses 96-bit IVs
+          (default length).</h:td>
+      </h:tr>
+    </h:table>
+  </chapter>
+  <!--END Distributed TOE -->
   <chapter title="Security Problem Description" id="spd">
     <section title="Threats" id="threats">
       <threats>
