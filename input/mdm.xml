@@ -358,11 +358,11 @@ To do:
     TOE as a whole, but not all SFRs will necessarily be implemented by all components. The
     following categories are defined in order to specify when each SFR must be implemented by a
     component:
-    <ul>
-      <li>All Components (“All”) – All components that comprise the distributed TOE must independently satisfy the requirement.</li>
-      <li>At least one Component (“One”) – This requirement must be fulfilled by at least one component within the distributed TOE.</li>
-      <li>Feature Dependent (“Feature Dependent”) – These requirements will only be fulfilled where the feature is implemented by the distributed TOE component (note that the requirement to meet the PP as a whole requires that at least one component implements these requirements if they are specified in section 6).</li>
-    </ul>
+    <h:ul>
+      <h:li><h:b>All Components (“All”)</h:b> – All components that comprise the distributed TOE must independently satisfy the requirement.</h:li>
+      <h:li><h:b>At least one Component (“One”)</h:b> – This requirement must be fulfilled by at least one component within the distributed TOE.</h:li>
+      <h:li><h:b>Feature Dependent (“Feature Dependent”)</h:b> – These requirements will only be fulfilled where the feature is implemented by the distributed TOE component (note that the requirement to meet the PP as a whole requires that at least one component implements these requirements if they are specified in section 6).</h:li>
+    </h:ul>
     <h:br/>
     <h:center>Table 1 specifies how each of the SFRs in this PP must be met, using the categories above.</h:center>
     <h:table>
@@ -630,8 +630,10 @@ To do:
         <h:td>FMT_MOF.1/AutoUpdate</h:td>
         <h:td>Management of security functions behaviour</h:td>
         <h:td>Feature Dependent</h:td> 
-      </h:tr> 
+      </h:tr>
     </h:table>
+    <h:br/>
+    The ST for a distributed TOE must include a mapping of SFRs to each of the components of the TOE. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities as described in [SD, 5.1.2] and [SD, 5.6.1.1] respectively.) The ST for a distributed TOE may also introduce a “minimum configuration” and identify components that may have instances added to an operational configuration without affecting the validity of the CC certification. [SD, B.4] describes Evaluation Activities relating to these equivalency aspects of a distributed TOE (and hence what is expected in the ST). 
   </chapter>
   <!--END Distributed TOE -->
   <chapter title="Security Problem Description" id="spd">
@@ -680,6 +682,15 @@ To do:
     </section>
     <section id="asp" title="Assumptions">
       <assumptions>
+        <assumption id="A.COMPONENTS_RUNNING (applies to distributed TOEs only)">
+          <description>For distributed TOEs it is assumed that the availability of all TOE components is checked as
+            appropriate to reduce the risk of an undetected attack on (or failure of) one or more TOE
+            components. It is also assumed that in addition to the availability of all components it is also
+            checked as appropriate that the audit functionality is running properly on all TOE components.</description>
+          <objective-refer ref="OE.COMPONENTS_RUNNING">
+            <rationale>The operational environment objective OE.COMPONENTS_RUNNING is realized through A.COMPONENTS_RUNNING.</rationale>
+          </objective-refer>
+        </assumption>
         <assumption id="A.CONNECTIVITY">
           <description>The <abbr linkend="TOE"/> relies on network connectivity to carry out its
             management activities. The <abbr linkend="TOE"/> will robustly handle instances when
@@ -794,9 +805,7 @@ To do:
           <component-refer ref="FAU_STG_EXT.2"/>
         </SO>
         <SO id="O.DATA_PROTECTION_TRANSIT">
-          <description>Data exchanged between the <abbr linkend="MDM"/> Server and the <abbr
-              linkend="MDM"/> Agent must be protected from being monitored, accessed, or
-            altered.</description>
+          <description>Data exchanged between the <abbr linkend="MDM"/> Server and the <abbr linkend="MDM"/> Agent must be protected from being monitored, accessed, or altered.</description>
           <component-refer ref="FAU_STG_EXT.1"/>
           <component-refer ref="FCS_CKM_EXT.4"/>
           <component-refer ref="FCS_CKM.1"/>
@@ -854,6 +863,9 @@ To do:
     </section>
     <section id="sooe" title="Security Objectives for the Operational Environment">
       <SOEs>
+        <SOE id="OE.COMPONENTS_RUNNING (applies to distributed TOE's only)">
+          <description>For distributed <abbr linkend="TOE"/>s the Security Administrator ensures that the availability of every <abbr linkend="TOE"/> component is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more TOE components. The Security Administrator also ensures that it is checked as appropriate for every TOE component that the audit functionality is running properly. </description>
+        </SOE>
         <SOE id="OE.PROPER_ADMIN">
           <description><abbr linkend="TOE"/> Administrators are trusted to follow and apply all
             administrator guidance in a trusted manner.</description>
