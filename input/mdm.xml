@@ -208,7 +208,7 @@ To do:
         <figure entity="images/MDMserveroperatingenvironment.jpg"
           title="MDM System Operating Environment" id="agentoperatingenvironment"/>
         <h:br/><h:br/>
-        The <h:b><abbr linkend="MDM"/> Server</h:b> is an application on a general-purpose platform or on a network device, executing in a trusted network environment. The <abbr linkend="MDM"/> Server provides administration of the mobile device policies and reporting on mobile device behavior. The <abbr linkend="MDM"/> Server is responsible for managing device enrollment, configuring and sending policies to the <abbr linkend="MDM"/> Agents, collecting reports on device status, and sending commands to the Agents. The platform on which the <abbr linkend="MDM"/> Server software runs is either a general-purpose platform or a network device.
+        The <h:b><abbr linkend="MDM"/> Server</h:b> is an application on a general-purpose platform or on a network device, executing in a trusted network environment. The <abbr linkend="MDM"/> Server provides administration of the mobile device policies and reporting on mobile device behavior. The <abbr linkend="MDM"/> Server is responsible for managing device enrollment, configuring and sending policies to the <abbr linkend="MDM"/> Agents, collecting reports on device status, and sending commands to the Agents. The platform on which the <abbr linkend="MDM"/> Server software runs is either a general-purpose platform, a network device, or a cloud environment. The <abbr linkend="MDM"/> Server may be standalone or distributed, where a distributed TOE is one that requires multiple distinct components to operate as a logical whole in order to fulfil the requirements of this PP (a more extensive description of distributed <abbr linkend="MDM"/>s is given in section 3)
         <h:br/><h:br/>
         The <h:b><abbr linkend="MDM"/> Agent</h:b> establishes a secure connection back to the
           <abbr linkend="MDM"/> Server controlled by an enterprise administrator and configures the
@@ -331,7 +331,7 @@ To do:
   <chapter title="Introduction to Distributed TOEs" id="idt">
     This PP includes support for distributed <abbr linkend="MDM"/> <abbr linkend="TOE"/>s. <abbr linkend="MDM"/>'s can sometimes be composed of multiple components operating as a logical whole. Oftentimes we see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different architectures; but fundamentally, they are variations of the following model where the <abbr linkend="SFR"/>'s of this PP can only be fulfilled if the components are deployed and operate together. To be considered a distributed <abbr linkend="TOE"/>, a minimum of 2 interconnected components are required.
     <section title="Registration of components of a distributed TOE" id="rcd"></section>
-    When dealing with a distributed TOE, a number of separate components need to be brought together in the operational environment in order to create the TOE: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the TOE is to have a “registration process” in which components “join” the TOE. The registration process starts with two components, one of which (the “joiner”) is about to join an existing TOE by registering with the other (the “gatekeeper”). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed TOE registration approach which uses an instance of FPT_ITT.1 or FTP_ITC.1 to protect the registration exchange.
+    When dealing with a distributed TOE, a number of separate components need to be brought together in the operational environment in order to create the TOE: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the TOE is to have a "registration process" in which components "join" the TOE. The registration process starts with two components, one of which (the "joiner") is about to join an existing TOE by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed TOE registration approach which uses an instance of FPT_ITT.1 or FTP_ITC.1 to protect the registration exchange.
     <!--INSERT FIGURE 1 -->
     The second approach (Figure 11) utilises an alternative registration channel and supports usecases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.
     <!--INSERT FIGURE 2 -->
@@ -359,9 +359,9 @@ To do:
     following categories are defined in order to specify when each SFR must be implemented by a
     component:
     <h:ul>
-      <h:li><h:b>All Components (“All”)</h:b> – All components that comprise the distributed TOE must independently satisfy the requirement.</h:li>
-      <h:li><h:b>At least one Component (“One”)</h:b> – This requirement must be fulfilled by at least one component within the distributed TOE.</h:li>
-      <h:li><h:b>Feature Dependent (“Feature Dependent”)</h:b> – These requirements will only be fulfilled where the feature is implemented by the distributed TOE component (note that the requirement to meet the PP as a whole requires that at least one component implements these requirements if they are specified in section 6).</h:li>
+      <h:li><h:b>All Components ("All")</h:b> - All components that comprise the distributed TOE must independently satisfy the requirement.</h:li>
+      <h:li><h:b>At least one Component ("One")</h:b> - This requirement must be fulfilled by at least one component within the distributed TOE.</h:li>
+      <h:li><h:b>Feature Dependent ("Feature Dependent")</h:b> - These requirements will only be fulfilled where the feature is implemented by the distributed TOE component (note that the requirement to meet the PP as a whole requires that at least one component implements these requirements if they are specified in <!--section 6 will not make sense -->section 6).</h:li>
     </h:ul>
     <h:br/>
     <h:center>Table 1 specifies how each of the SFRs in this PP must be met, using the categories above.</h:center>
@@ -633,7 +633,7 @@ To do:
       </h:tr>
     </h:table>
     <h:br/>
-    The ST for a distributed TOE must include a mapping of SFRs to each of the components of the TOE. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities as described in [SD, 5.1.2] and [SD, 5.6.1.1] respectively.) The ST for a distributed TOE may also introduce a “minimum configuration” and identify components that may have instances added to an operational configuration without affecting the validity of the CC certification. [SD, B.4] describes Evaluation Activities relating to these equivalency aspects of a distributed TOE (and hence what is expected in the ST). 
+    The ST for a distributed TOE must include a mapping of SFRs to each of the components of the TOE. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities as described in [SD, 5.1.2] and [SD, 5.6.1.1] respectively.) The ST for a distributed TOE may also introduce a "minimum configuration" and identify components that may have instances added to an operational configuration without affecting the validity of the CC certification. [SD, B.4] describes Evaluation Activities relating to these equivalency aspects of a distributed TOE (and hence what is expected in the ST). 
   </chapter>
   <!--END Distributed TOE -->
   <chapter title="Security Problem Description" id="spd">
@@ -893,12 +893,13 @@ To do:
         <SOE id="OE.WIRELESS_NETWORK">
           <description>A wireless network will be available to the mobile devices.</description>
         </SOE>
-
       </SOEs>
     </section>
   </chapter>
   <chapter title="Security Requirements" id="req">
-    The Security Functional Requirements included in this section are derived from Part 2 of the Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional components. 
+    The Security Functional Requirements included in this section are derived from Part 2 of the Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional components.
+    <h:br/>
+    For a distributed TOE, the ST author should reference Table 1 for guidance on how each SFR should be met. The table details whether SFRs should be met by all TOE components, by at least one TOE component or whether they are dependent upon the feature being implemented by the TOE component. The ST for a distributed TOE must include a mapping of SFRs to each of the components of the TOE. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities as described in [SD, 5.1.2] and [SD, 5.6.1.1] respectively.
     <section id="con" title="Conventions"> 
       The <abbr linkend="CC"/> defines operations on Security Functional Requirements: assignments, selections, assignments within selections and refinements. This document uses the following font conventions to identify the operations defined by the <abbr linkend="CC"/>: <h:br/><h:br/>
       <h:ul>
