@@ -205,8 +205,7 @@ To do:
       The Mobile Device Management (MDM) system consists of two primary components: the <abbr linkend="MDM"/> Server software and the <abbr linkend="MDM"/> Agent. Optionally, the <abbr linkend="MDM"/> system may consist of a separate Mobile Application Store (MAS) server. 
       <subsection id="tb" title="TOE Boundary"> The <abbr linkend="MDM"/> system operational environment consists of the mobile device on which the <abbr linkend="MDM"/> Agent resides, the platform on which the <abbr linkend="MDM"/> Server runs, and an untrusted wireless network over which they communicate, as pictured below.
         <h:br/><h:br/>
-        <figure entity="images/MDMserveroperatingenvironment.jpg"
-          title="MDM System Operating Environment" id="agentoperatingenvironment"/>
+        <figure entity="images/MDMserveroperatingenvironment.jpg" title="MDM System Operating Environment" id="agentoperatingenvironment"/>
         <h:br/><h:br/>
         The <h:b><abbr linkend="MDM"/> Server</h:b> is an application on a general-purpose platform or on a network device, executing in a trusted network environment. The <abbr linkend="MDM"/> Server provides administration of the mobile device policies and reporting on mobile device behavior. The <abbr linkend="MDM"/> Server is responsible for managing device enrollment, configuring and sending policies to the <abbr linkend="MDM"/> Agents, collecting reports on device status, and sending commands to the Agents. The platform on which the <abbr linkend="MDM"/> Server software runs is either a general-purpose platform, a network device, or a cloud environment. The <abbr linkend="MDM"/> Server may be standalone or distributed, where a distributed <abbr linkend="TOE"/> is one that requires multiple distinct components to operate as a logical whole in order to fulfil the requirements of this PP (a more extensive description of distributed <abbr linkend="MDM"/>s is given in section 3)
         <h:br/><h:br/>
@@ -332,42 +331,33 @@ To do:
     This PP includes support for distributed <abbr linkend="MDM"/> <abbr linkend="TOE"/>'s. <abbr linkend="MDM"/>'s can sometimes be composed of multiple components operating as a logical whole. Oftentimes we see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different architectures; but fundamentally, they are variations of the following model where the <abbr linkend="SFR"/>'s of this <abbr linkend="PP"/> can only be fulfilled if the components are deployed and operate together. To be considered a distributed <abbr linkend="TOE"/>, a minimum of 2 interconnected components are required.
     <section title="Registration of components of a distributed TOE" id="rcd"></section>
     When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/>: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1"/> to protect the registration exchange.<h:br/><h:br/>
-    <!--INSERT FIGURE 1 -->
+    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1" id=""/>
+    <h:br/><h:br/>
     The second approach (Figure 11) utilises an alternative registration channel and supports use cases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
-    <!--INSERT FIGURE 2 -->
-    The final approach (Figure 12) supports use-cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal TSF channel that satisfies FPT_ITT.1 or FTP_ITC.1.<h:br/><h:br/>
-    <!--INSERT FIGURE 3 -->
-    In each case, during the registration process, the Security Administrator must positively enable
-    the joining components before it can act as part of the TSF. The following figure illustrates the
-    approaches that this enablement step may take;<h:br/><h:br/>
-    <!--INSERT FIGURE 4 -->
-    Note that in the case where no registration channel is required, that is the joiner and gatekeeper
-    are directly configured (Figure 12), enablement is implied as part of this direct configuration
-    process.<h:br/><h:br/>
-    After registration the components will communicate between themselves using a normal
-    SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an ST as an instance of
-    FTP_ITC.1 or FPT_ITT.1 in terms of section 6 and appendix A). This channel for intercomponent
-    communications is specified at the top level with the new (extended) SFR
-    FCO_CPC_EXT.1 (see section A.7.1) and is in addition to the other communication channels
-    required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an ST as
-    instances of FTP_ITC.1 and FTP_TRP.1). 
+    <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id=""/>
+    <h:br/><h:br/>
+    The final approach (Figure 12) supports use-cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1"/>.<h:br/><h:br/>
+    <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id=""/>
+    <h:br/><h:br/>
+    In each case, during the registration process, the Security Administrator must positively enable the joining components before it can act as part of the TSF. The following figure illustrates the approaches that this enablement step may take;<h:br/><h:br/>
+    <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id=""/>
+    <h:br/><h:br/>
+    Note that in the case where no registration channel is required, that is the joiner and gatekeeper are directly configured (Figure 12), enablement is implied as part of this direct configuration process.<h:br/><h:br/>
+    After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an ST as an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1"/> in terms of section 6 and appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> (see section 6.2.2) and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of <linkref linkend="FTP_ITC.1"/> and <linkref linkend="FTP_TRP.1"/>). 
     <section title="Allocation of requirements in distributed TOEs" id="ard"></section>
-    For a distributed TOE, the security functional requirements in this cPP need to be met by the
-    <abbr linkend="TOE"/> as a whole, but not all SFRs will necessarily be implemented by all components. The
-    following categories are defined in order to specify when each SFR must be implemented by a
-    component:
+    For a distributed <abbr linkend="TOE"/>, the security functional requirements in this <abbr linkend="PP"/> need to be met by the <abbr linkend="TOE"/> as a whole, but not all <abbr linkend="SFR"/>'s will necessarily be implemented by all components. The following categories are defined in order to specify when each <abbr linkend="SFR"/> must be implemented by a component:
     <h:ul>
       <h:li><h:b>All Components ("All")</h:b> - All components that comprise the distributed <abbr linkend="TOE"/> must independently satisfy the requirement.</h:li>
-      <h:li><h:b>At least one Component ("One")</h:b> - This requirement must be fulfilled by at least one component within the distributed TOE.</h:li>
-      <h:li><h:b>Feature Dependent ("Feature Dependent")</h:b> - These requirements will only be fulfilled where the feature is implemented by the distributed <abbr linkend="TOE"/> component (note that the requirement to meet the PP as a whole requires that at least one component implements these requirements if they are specified in <!--section 6 will not make sense -->section 6).</h:li>
+      <h:li><h:b>At least one Component ("One")</h:b> - This requirement must be fulfilled by at least one component within the distributed <abbr linkend="TOE"/>.</h:li>
+      <h:li><h:b>Feature Dependent ("Feature Dependent")</h:b> - These requirements will only be fulfilled where the feature is implemented by the distributed <abbr linkend="TOE"/> component (note that the requirement to meet the <abbr linkend="PP"/> as a whole requires that at least one component implements these requirements if they are specified in <!--section 6 will not make sense -->section 6).</h:li>
     </h:ul>
     <h:br/>
-    <h:center>Table 1 specifies how each of the SFRs in this PP must be met, using the categories above.</h:center>
+    <h:center>Table 1 specifies how each of the <abbr linkend="SFR"/>'s in this <abbr linkend="PP"/> must be met, using the categories above.</h:center>
     <h:table>
       <h:TR>
         <h:TD><h:b>Requirement</h:b></h:TD>
         <h:TD><h:b>Description</h:b></h:TD>
-        <h:TD><h:b>Distributed <abbr linkend="TOE"/> SFR Allocation</h:b></h:TD>
+        <h:TD><h:b>Distributed <abbr linkend="TOE"/> <abbr linkend="SFR"/> Allocation</h:b></h:TD>
       </h:TR>
       <h:tr>
         <h:td>FAU_ALT_EXT.1</h:td>
