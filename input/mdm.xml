@@ -330,20 +330,20 @@ To do:
   <chapter title="Introduction to Distributed TOEs" id="idt">
     This <abbr linkend="PP"/> includes support for distributed <abbr linkend="MDM"/> <abbr linkend="TOE"/>'s. <abbr linkend="MDM"/>'s can sometimes be composed of multiple components operating as a logical whole. Oftentimes we see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different architectures; but fundamentally, they are variations of the following model where the <abbr linkend="SFR"/>'s of this <abbr linkend="PP"/> can only be fulfilled if the components are deployed and operate together. To be considered a distributed <abbr linkend="TOE"/>, a minimum of 2 interconnected components are required.
     <section title="Registration of components of a distributed TOE" id="rcd"></section>
-    When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/>: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1"/> to protect the registration exchange.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1" id=""/>
+    When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/>: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> to protect the registration exchange.<h:br/><h:br/>
+    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1(1)" id=""/>
     <h:br/><h:br/>
     The second approach (Figure 2) utilises an alternative registration channel and supports use cases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
     <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id=""/>
     <h:br/><h:br/>
-    The final approach (Figure 3) supports use-cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1"/>.<h:br/><h:br/>
+    The final approach (Figure 3) supports use-cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/>.<h:br/><h:br/>
     <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id=""/>
     <h:br/><h:br/>
     In each case, during the registration process, the Security Administrator must positively enable the joining components before it can act as part of the <abbr linkend="TSF"/>. The following figure illustrates the approaches that this enablement step may take;<h:br/><h:br/>
     <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id=""/>
     <h:br/><h:br/>
     Note that in the case where no registration channel is required, that is the joiner and gatekeeper are directly configured (Figure 3), enablement is implied as part of this direct configuration process.<h:br/><h:br/>
-    After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an <abbr linkend="ST"/> as an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1"/> in terms of section 6 and appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> (see section 6.2.2) and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of <linkref linkend="FTP_ITC.1"/> and <linkref linkend="FTP_TRP.1"/>). 
+    After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an <abbr linkend="ST"/> as an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> in terms of section 6 and appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> (see section 6.2.2) and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of <linkref linkend="FTP_ITC.1(1)"/> and <linkref linkend="FTP_TRP.1(1)"/>). 
     <section title="Allocation of requirements in distributed TOEs" id="ard"></section>
     For a distributed <abbr linkend="TOE"/>, the security functional requirements in this <abbr linkend="PP"/> need to be met by the <abbr linkend="TOE"/> as a whole, but not all <abbr linkend="SFR"/>'s will necessarily be implemented by all components. The following categories are defined in order to specify when each <abbr linkend="SFR"/> must be implemented by a component:
     <h:ul>
@@ -361,12 +361,12 @@ To do:
       </h:TR>
       <h:tr>
         <h:td>FAU_ALT_EXT.1</h:td>
-        <h:td></h:td>
-        <h:td></h:td>
+        <h:td>Server Alerts</h:td>
+        <h:td>One</h:td>
       </h:tr>
       <h:tr>
         <h:td>FAU_CRP_EXT.1</h:td>
-        <h:td></h:td>
+        <h:td>Support for Compliance Reporting of Mobile Device Configuration</h:td>
         <h:td></h:td>
       </h:tr>
       <h:tr>
@@ -383,17 +383,17 @@ To do:
       <!-->
       <h:tr>
         <h:td>FAU_NET_EXT.1</h:td>
-        <h:td></h:td>
+        <h:td>Network Reachability Review</h:td>
         <h:td></h:td>
       </h:tr>
       <h:tr>
         <h:td>FAU_SAR.1</h:td>
-        <h:td></h:td>
+        <h:td>Audit Review</h:td>
         <h:td></h:td>
       </h:tr>
       <h:tr>
         <h:td>FAU_SEL.1</h:td>
-        <h:td></h:td>
+        <h:td>Security Audit Event Selection</h:td>
         <h:td></h:td>
       </h:tr>
       <h:tr>
@@ -488,7 +488,7 @@ To do:
       <-->
       <h:tr>
         <h:td>FCS_IV_EXT.1</h:td>
-        <h:td></h:td>
+        <h:td>Initialization Vector Generation</h:td>
         <h:td></h:td>
       </h:tr>
       <h:tr>
@@ -498,12 +498,12 @@ To do:
       </h:tr>
       <h:tr>
         <h:td>FCS_STG_EXT.1</h:td>
-        <h:td></h:td>
+        <h:td>Cryptographic Key Storage</h:td>
         <h:td></h:td>
       </h:tr>
       <h:tr>
         <h:td>FCS_STG_EXT.2</h:td>
-        <h:td></h:td>
+        <h:td>Encrypted Cryptographic Key Storage</h:td>
         <h:td></h:td>
       </h:tr>
       <!-->
@@ -522,7 +522,7 @@ To do:
       <-->
       <h:tr>
         <h:td>FIA_ENR_EXT.1</h:td>
-        <h:td></h:td>
+        <h:td>Enrollment of Mobile Device into Management</h:td>
         <h:td></h:td>
       </h:tr>
       <h:tr>
@@ -532,7 +532,7 @@ To do:
       </h:tr>
       <h:tr>
         <h:td>FIA_UAU_EXT.4(*)</h:td>
-        <h:td></h:td>
+        <h:td>User Authentication</h:td>
         <h:td></h:td>
       </h:tr>
       <!-->
@@ -571,7 +571,7 @@ To do:
       </h:tr>
       <h:tr>
         <h:td>FIA_X509_EXT.4</h:td>
-        <h:td></h:td>
+        <h:td>Alternate X509 Enrollment</h:td>
         <h:td></h:td> 
       </h:tr>      
       <h:tr>
@@ -586,12 +586,12 @@ To do:
       </h:tr>
       <h:tr>
         <h:td>FMT_MOF.1(3)</h:td>
-        <h:td></h:td>
+        <h:td>Management of Functions in MAS Server</h:td>
         <h:td></h:td> 
       </h:tr>
       <h:tr>
         <h:td>FMT_MOF.1(4)</h:td>
-        <h:td></h:td>
+        <h:td>Management of Functions in (MAS Server Downloads)</h:td>
         <h:td></h:td> 
       </h:tr>
       <!-->
@@ -610,12 +610,12 @@ To do:
       <-->
       <h:tr>
         <h:td>FMT_POL_EXT.1</h:td>
-        <h:td></h:td>
+        <h:td>Trusted Policy Update</h:td>
         <h:td></h:td> 
       </h:tr>
       <h:tr>
         <h:td>FMT_SAE_EXT.1</h:td>
-        <h:td></h:td>
+        <h:td>Security Attribute Expiration</h:td>
         <h:td></h:td> 
       </h:tr>      
       <h:tr>
@@ -630,7 +630,7 @@ To do:
       </h:tr>
       <h:tr>
         <h:td>FMT_SMF.1(3)</h:td>
-        <h:td></h:td>
+        <h:td>Specification of Management Functions (MAS Server)</h:td>
         <h:td></h:td> 
       </h:tr>
       <h:tr>
@@ -647,7 +647,7 @@ To do:
       <-->
       <h:tr>
         <h:td>FPT_API_EXT.1.1</h:td>
-        <h:td></h:td>
+        <h:td>Use of Supported Services and API's</h:td>
         <h:td></h:td> 
       </h:tr>
       <!-->
@@ -664,7 +664,7 @@ To do:
       </h:tr>
       <h:tr>
         <h:td>FPT_LIB_EXT.1.1</h:td>
-        <h:td></h:td>
+        <h:td>Use of Third Party Libraries</h:td>
         <h:td></h:td> 
       </h:tr>
       <!-->
@@ -732,7 +732,7 @@ To do:
       </h:tr>
       <h:tr>
         <h:td>FTP_TRP.1(2)</h:td>
-        <h:td></h:td>
+        <h:td>Trusted Path for Enrollment</h:td>
         <h:td></h:td> 
       </h:tr>
       <h:tr>
@@ -742,7 +742,7 @@ To do:
       </h:tr>     
     </h:table>
     <h:br/>
-    The ST for a distributed <abbr linkend="TOE"/> must include a mapping of SFRs to each of the components of the TOE. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities.) The ST for a distributed <abbr linkend="TOE"/> may also introduce a "minimum configuration" and identify components that may have instances added to an operational configuration without affecting the validity of the CC certification. <!--????-->[SD, B.4] describes Evaluation Activities relating to these equivalency aspects of a distributed <abbr linkend="TOE"/> (and hence what is expected in the ST). 
+    The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> must include a mapping of <abbr linkend="SFR"/>'s to each of the components of the <abbr linkend="TOE"/>. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities.) The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> may also introduce a "minimum configuration" and identify components that may have instances added to an operational configuration without affecting the validity of the <abbr linkend="CC"/> certification. <!--????-->[SD, B.4] describes Evaluation Activities relating to these equivalency aspects of a distributed <abbr linkend="TOE"/> (and hence what is expected in the <abbr linkend="ST"/>). 
   </chapter>
   <!--END Distributed <abbr linkend="TOE"/> -->
   <chapter title="Security Problem Description" id="spd">
@@ -792,10 +792,8 @@ To do:
     <section id="asp" title="Assumptions">
       <assumptions>
         <assumption id="A.COMPONENTS_RUNNING (applies to distributed TOEs only)">
-          <description>For distributed TOEs it is assumed that the availability of all <abbr linkend="TOE"/> components is checked as
-            appropriate to reduce the risk of an undetected attack on (or failure of) one or more TOE
-            components. It is also assumed that in addition to the availability of all components it is also
-            checked as appropriate that the audit functionality is running properly on all <abbr linkend="TOE"/> components.</description>
+          <description>For distributed <abbr linkend="TOE"/>'s it is assumed that the availability of all <abbr linkend="TOE"/> components is checked as
+            appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr linkend="TOE"/> components. It is also assumed that in addition to the availability of all components it is also checked as appropriate that the audit functionality is running properly on all <abbr linkend="TOE"/> components.</description>
           <objective-refer ref="OE.COMPONENTS_RUNNING">
             <rationale>The operational environment objective OE.COMPONENTS_RUNNING is realized through A.COMPONENTS_RUNNING.</rationale>
           </objective-refer>
@@ -1008,7 +1006,7 @@ To do:
   <chapter title="Security Requirements" id="req">
     The Security Functional Requirements included in this section are derived from Part 2 of the Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional components.
     <h:br/><h:br/>
-    For a distributed TOE, the ST author should reference Table 1 for guidance on how each SFR should be met. The table details whether SFRs should be met by all <abbr linkend="TOE"/> components, by at least one <abbr linkend="TOE"/> component or whether they are dependent upon the feature being implemented by the <abbr linkend="TOE"/> component. The ST for a distributed <abbr linkend="TOE"/> must include a mapping of SFRs to each of the components of the TOE. (Note that this deliverable is examined as part of the ASE_TSS.1<!--???--> and AVA_VAN.1 Evaluation Activities.)
+    For a distributed <abbr linkend="TOE"/>, the <abbr linkend="ST"/> author should reference Table 1 for guidance on how each <abbr linkend="SFR"/> should be met. The table details whether <abbr linkend="SFR"/>'s should be met by all <abbr linkend="TOE"/> components, by at least one <abbr linkend="TOE"/> component or whether they are dependent upon the feature being implemented by the <abbr linkend="TOE"/> component. The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> must include a mapping of <abbr linkend="SFR"/>'s to each of the components of the <abbr linkend="TOE"/>. (Note that this deliverable is examined as part of the ASE_TSS.1<!--???--> and AVA_VAN.1 Evaluation Activities.)
     <!--><section id="con" title="Conventions"> 
       The <abbr linkend="CC"/> defines operations on Security Functional Requirements: assignments, selections, assignments within selections and refinements. This document uses the following font conventions to identify the operations defined by the <abbr linkend="CC"/>: <h:br/><h:br/>
       <h:ul>
@@ -1116,14 +1114,14 @@ To do:
               <h:li>Start-up and shutdown of the <abbr linkend="MDM"/> Server software</h:li>
               <h:li>All administrative actions</h:li>
               <h:li>Commands issued from the <abbr linkend="MDM"/> Server to an <abbr linkend="MDM"/> Agent</h:li>
-              <h:li>Specifically defined auditable events listed in Table 1</h:li>
+              <h:li>Specifically defined auditable events listed in Table 2</h:li>
               <h:li><assignable>other events</assignable>.</h:li>
             </h:ol>
             </title>
             <note role="application"> This requirement outlines the information to be included in audit records generated by either the <abbr linkend="MDM"/> Server software or the <abbr linkend="TOE"/> platform. Each of these audit records may be written by the <abbr linkend="MDM"/> Server software or may be dispatched to the operating system on which it runs. The <abbr linkend="ST"/> author can include other auditable events in the assignment; they are not limited to the list presented. All audits must contain at least the information mentioned in <linkref linkend="FAU_GEN.1.2(1)"/>, but may contain more information which can be assigned.<h:br/><h:br/> 
-              Item b above requires all administrative actions to be auditable. Administrative actions refer to any management functions specified by <linkref linkend="FMT_MOF.1(1)"/>. Thus no additional specification for the auditability of these actions is specified in Table 1 aside from those that require additional record content. <h:br/><h:br/> 
+              Item b above requires all administrative actions to be auditable. Administrative actions refer to any management functions specified by <linkref linkend="FMT_MOF.1(1)"/>. Thus no additional specification for the auditability of these actions is specified in Table 2 aside from those that require additional record content. <h:br/><h:br/> 
               Item c includes those commands, which may be performed automatically based on triggers or on a schedule.<h:br/><h:br/> 
-              Depending on the specific requirements selected by the <abbr linkend="ST"/> author from Security Functional Requirements, Optional Requirements, Selection-Based Requirements, and Objective Requirements, the <abbr linkend="ST"/> author should include the appropriate auditable event from Table 1 in the <abbr linkend="ST"/> for the requirements selected.<h:br/><h:br/>
+              Depending on the specific requirements selected by the <abbr linkend="ST"/> author from Security Functional Requirements, Optional Requirements, Selection-Based Requirements, and Objective Requirements, the <abbr linkend="ST"/> author should include the appropriate auditable event from Table 2 in the <abbr linkend="ST"/> for the requirements selected.<h:br/><h:br/>
               For distributed <abbr linkend="TOE"/>s each component must generate an audit record for each of the <abbr linkend="SFR"/>s that it implements. If more than one <abbr linkend="TOE"/> component is involved when an audit event is triggered, the event has to be audited on each component (e.g. rejection of a connection by one component while attempting to establish a secure communication channel between two components should result in an audit event being generated by both components). This is not limited to error cases but also includes events about successful actions like successful build up/tear down of a secure communication channel between <abbr linkend="TOE"/> components.<h:br/><h:br/>
               <!-- TODO: Need to come up with a statement to specify that both invoke or implement can be selected and it should be specified which auditable events are tied to MDM or the platform. -->            
             </note>
@@ -1142,7 +1140,7 @@ To do:
               <h:li>type of event,</h:li>
               <h:li>subject identity,</h:li>
               <h:li>(if relevant) the outcome (success or failure) of the event,</h:li>
-              <h:li>additional information in Table 1,</h:li>
+              <h:li>additional information in Table 2,</h:li>
               <h:li><assignable>other audit relevant information</assignable>.</h:li>
             </h:ul>
             </title>
@@ -1156,7 +1154,7 @@ To do:
               <Tests/> When verifying the test results from <linkref linkend="FAU_GEN.1.1(1)"/>, the evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide, and that the fields in each audit record have the proper entries.<h:br/><h:br/> 
                 Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly. For example, testing performed to ensure that the administrative guidance provided is correct verifies that AGD_OPE.1 is satisfied and should address the invocation of the administrative actions that are needed to verify the audit records are generated as expected.<h:br/><h:br/> 
                 The Auditable Events table includes optional, selection-based and objective requirements. The auditing of these requirements are only required if the requirement is included in the <abbr linkend="ST"/>.<h:br/><h:br/>
-                <h:center><h:H4>Table 1: Auditable Events</h:H4></h:center>
+                <h:center><h:H4>Table 2: Auditable Events</h:H4></h:center>
                 <h:table>
                   <h:TR>
                     <h:TH>Requirement</h:TH>
@@ -1202,6 +1200,12 @@ To do:
                   <h:TR>
                     <h:TD>FAU_STG_EXT.2</h:TD>
                     <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCO_CPC_EXT.1</h:TD>
+                    <h:TD>Enabling communications between a pair of components. Disabling communications between a pair of components.</h:TD>
+                    <h:TD>Identities of the endpoints pairs enabled or disabled.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
@@ -1302,6 +1306,11 @@ To do:
                   </h:TR>
                   <h:TR>
                     <h:TD>FIA_X509_EXT.1(1)</h:TD>
+                    <h:TD>Failure to validate X.509 certificate</h:TD>
+                    <h:TD>Reason for failure.</h:TD>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FIA_X509_EXT.1(2)</h:TD>
                     <h:TD>Failure to validate X.509 certificate</h:TD>
                     <h:TD>Reason for failure.</h:TD>
                   </h:TR>
@@ -1427,6 +1436,11 @@ To do:
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol.</h:TD>
                   </h:TR>
+                  <h:TR>
+                    <h:TD>FTP_TRP.1(3)</h:TD>
+                    <h:TD>Initiation and termination of the trusted channel.</h:TD>
+                    <h:TD>Trusted channel protocol.</h:TD>
+                  </h:TR>
                 </h:table>
             </aactivity>
           </f-element>
@@ -1546,10 +1560,7 @@ To do:
               support verifying client certs, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               <!--TODO END REVIEW-->
               
-              For distributed TOEs each component must be able to export audit data across a protected
-              channel external (FTP_ITC.1) or intercomponent (FPT_ITT.1 or FTP_ITC.1) as appropriate.
-              At least one component of the <abbr linkend="TOE"/> must be able to export audit records via FTP_ITC.1 such
-              that all <abbr linkend="TOE"/> audit records can be exported to an external IT entity. 
+              For distributed <abbr linkend="TOE"/>'s each component must be able to export audit data across a protected channel external (FTP_ITC.1) or intercomponent (FPT_ITT.1 or FTP_ITC.1) as appropriate. At least one component of the <abbr linkend="TOE"/> must be able to export audit records via FTP_ITC.1 such that all <abbr linkend="TOE"/> audit records can be exported to an external IT entity. 
               </note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided. <h:br/><h:br/>
@@ -1612,43 +1623,23 @@ To do:
         <f-component name="Security Audit for Distributed TOEs">
           <f-element>
             <title>
-              For distributed TOEs the handling of audit information might be more complicated than for
-              TOEs consisting only of one component. There are a few basic requirements to be fulfilled:
-               Every component must be able to generate audit information.
-               Every component must either be able to buffer audit information and forward it to
-              another <abbr linkend="TOE"/> component or to store audit information locally.
-               For the overall <abbr linkend="TOE"/> it must be possible to store all audit information locally.
-               For the overall <abbr linkend="TOE"/> it must be possible to send out audit information to an external
-              audit server.
-              In general, every component must be able to generate its own audit information. It would be
-              possible that every component also stores its own audit information locally as well as every
-              component could be able to send out audit data to an external audit server. It would also be
-              sufficient that every component would be able to generate its own audit data and buffer it
-              locally before the information is sent out to one or more other <abbr linkend="TOE"/> components for local
-              storage and/or transmission to an external audit server. For the transfer of audit records between
-              <abbr linkend="TOE"/> components the secure connection via FTP_ITC.1 or FPT_ITT.1 must be used.
-              Such a solution would still be suitable to fulfil the requirement that all audit-related SFRs have
-              to be fulfilled by all <abbr linkend="TOE"/> components, although formally not every component would support
-              local storage or transfer to an external audit server itself.
-              Regarding the establishment of inter-TOE communication, error conditions as well as
-              successful connection/teardown events should be captured by both ends of the connection.
-              Although all <abbr linkend="TOE"/> components shall be able to generate their own audit data according to
-              FAU_GEN.1 for all the SFRs that they implement, not all <abbr linkend="TOE"/> components have to provide
-              audit data about all events. For distributed TOEs a mapping shall be provided to show which
-              auditable events according to FAU_GEN.1 are covered by which components (also giving a
-              justification that the records generated by each component cover all the SFRs that it
-              implements). The overall <abbr linkend="TOE"/> has to provide audit information about all events defined for
-              FAU_GEN.1. As a result, at least one <abbr linkend="TOE"/> component has to be assigned to every auditable
-              event defined for FAU_GEN.1. The part of the mapping related to Table 2 shall be consistent
-              with the mapping of SFRs to <abbr linkend="TOE"/> components for ASE_TSS.1 in the sense that all components
-              defined as generating audit information for a particular SFR should also contribute to that SFR
-              in the mapping for ASE_TSS.1. This applies not only to audit events defined for mandatory
-              SFRs but also to all audit events for optional and selection-based SFRs as defined in Appendix
-              A and Appendix B.
-              If one or more of the optional audit components FAU_STG.1, FAU_STG_EXT.2/LocSpace
-              and FAU_STG.3/LocSpace are selected in the Security Target derived from this cPP, then the
-              SFR mapping for ASE_TSS.1 must include a specific identification of the <abbr linkend="TOE"/> components to
-              which they apply
+              For distributed <abbr linkend="TOE"/>'s the handling of audit information might be more complicated than for <abbr linkend="TOE"/>'s consisting only of one component. There are a few basic requirements to be fulfilled:
+              <h:ul>
+                <h:li>Every component must be able to generate audit information.</h:li>
+                <h:li>Every component must either be able to buffer audit information and forward it to another <abbr linkend="TOE"/> component or to store audit information locally.</h:li>
+                <h:li>For the overall <abbr linkend="TOE"/> it must be possible to store all audit information locally.</h:li>
+                <h:li>For the overall <abbr linkend="TOE"/> it must be possible to send out audit information to an external audit server.</h:li>
+              </h:ul><h:br/><h:br/>
+              
+              In general, every component must be able to generate its own audit information. It would be possible that every component also stores its own audit information locally as well as every component could be able to send out audit data to an external audit server. It would also be sufficient that every component would be able to generate its own audit data and buffer it locally before the information is sent out to one or more other <abbr linkend="TOE"/> components for local storage and/or transmission to an external audit server. For the transfer of audit records between <abbr linkend="TOE"/> components the secure connection via FTP_ITC.1 or FPT_ITT.1 must be used.<h:br/><h:br/>
+              
+              Such a solution would still be suitable to fulfil the requirement that all audit-related <abbr linkend="SFR"/>'s have to be fulfilled by all <abbr linkend="TOE"/> components, although formally not every component would support local storage or transfer to an external audit server itself.<h:br/><h:br/>
+              
+              Regarding the establishment of inter-<abbr linkend="TOE"/> communication, error conditions as well as successful connection/teardown events should be captured by both ends of the connection.<h:br/><h:br/>
+              
+              Although all <abbr linkend="TOE"/> components shall be able to generate their own audit data according to FAU_GEN.1 for all the <abbr linkend="SFR"/>'s that they implement, not all <abbr linkend="TOE"/> components have to provide audit data about all events. For distributed <abbr linkend="TOE"/>'s a mapping shall be provided to show which auditable events according to FAU_GEN.1 are covered by which components (also giving a justification that the records generated by each component cover all the <abbr linkend="SFR"/>'s that it implements). The overall <abbr linkend="TOE"/> has to provide audit information about all events defined for FAU_GEN.1. As a result, at least one <abbr linkend="TOE"/> component has to be assigned to every auditable event defined for FAU_GEN.1. The part of the mapping related to Table 2 shall be consistent with the mapping of <abbr linkend="SFR"/>'s to <abbr linkend="TOE"/> components for ASE_TSS.1 in the sense that all components defined as generating audit information for a particular SFR should also contribute to that SFR in the mapping for ASE_TSS.1. This applies not only to audit events defined for mandatory <abbr linkend="SFR"/>'s but also to all audit events for optional and selection-based <abbr linkend="SFR"/>'s as defined in Appendix A and Appendix B.<h:br/><h:br/>
+              
+              If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 are selected in the <abbr linkend="ST"/> derived from this <abbr linkend="PP"/>, then the <abbr linkend="SFR"/> mapping for ASE_TSS.1 must include a specific identification of the <abbr linkend="TOE"/> components to which they apply.
             </title>
           </f-element>
         </f-component>
@@ -1694,12 +1685,18 @@ To do:
             </selectables> to enable an Administrator to disable communications between any pair of <abbr linkend="TOE"/> components.</title>
             <note>
               This <abbr linkend="SFR"/> is only applicable if the <abbr linkend="TOE"/> is distributed and therefore has multiple components that need to communicate via an internal <abbr linkend="TSF"/> channel. When creating the <abbr linkend="TSF"/> from the initial pair of components, either of these components may be identified as the <abbr linkend="TSF"/> for the purposes of satisfying the meaning of "<abbr linkend="TSF"/>" in this <abbr linkend="SFR"/>. <h:br/><h:br/>
+              
               The intention of this requirement is to ensure that there is a registration process that includes a positive enablement step by an Administrator before components joining a distributed <abbr linkend="TOE"/> can communicate with the other components of the <abbr linkend="TOE"/> and before the new component can act as part of the <abbr linkend="TSF"/>. The registration process may itself involve communication with the joining component: many implementations use a bespoke process for this, and the security requirements for the "registration communication" are then defined in <linkref linkend="FCO_CPC_EXT.1.2"/>. Use of this "registration communication" channel is not deemed inconsistent with the requirement of <linkref linkend="FCO_CPC_EXT.1.1"/> (i.e. the registration channel can be used before the enablement step, but only in order to complete the registration process).<h:br/><h:br/>
-              The channel selection (for the registration channel) in <linkref linkend="FCO_CPC_EXT.1.2"/> is essentially a choice between the use of a normal secure channel that is equivalent to a channel used to communicate with external IT entities (FTP_ITC.1) or existing <abbr linkend="TOE"/> components (FPT_ITT.1), or else a separate type of channel that is specific to registration (FTP_TRP.1/Join). If the <abbr linkend="TOE"/> does not require a communications channel for registration (e.g. because the registration is achieved entirely by configuration actions by an Administrator at each of the components) then the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> is completed with the "No channel" option.<h:br/><h:br/>
-              If the ST author selects the FTP_ITC.1/FPT_ITT.1 channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the TSS identifies the relevant SFR iteration that specifies the channel used. If the ST author selects the FTP_TRP.1/Join channel type, then the <abbr linkend="TOE"/> Summary Specification (possibly with support from the operational guidance) describes details of the channel and the mechanisms that it uses (and describes how the registration process ensures that the channel can only be used by the intended joiner and gatekeeper). Note that the FTP_TRP.1/Join channel type may require support from security measures in the operational environment (see the definition of FTP_TRP.1/Join for details).<h:br/><h:br/>
-              If the ST author selects the FTP_ITC.1/FPT_ITT.1 channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the ST identifies the registration channel as a separate iteration of FTP_ITC.1 or FPT_ITT.1 and gives the iteration identifier (e.g. ”FPT_ITT.1/Join”) in an ST Application Note for FCO_CPC_EXT.1.<h:br/><h:br/>
+              
+              The channel selection (for the registration channel) in <linkref linkend="FCO_CPC_EXT.1.2"/> is essentially a choice between the use of a normal secure channel that is equivalent to a channel used to communicate with external IT entities (FTP_ITC.1) or existing <abbr linkend="TOE"/> components (FPT_ITT.1), or else a separate type of channel that is specific to registration (FTP_TRP.1(3)). If the <abbr linkend="TOE"/> does not require a communications channel for registration (e.g. because the registration is achieved entirely by configuration actions by an Administrator at each of the components) then the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> is completed with the "No channel" option.<h:br/><h:br/>
+              
+              If the <abbr linkend="ST"/> author selects the FTP_ITC.1/FPT_ITT.1 channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the <abbr linkend="TSS"/> identifies the relevant <abbr linkend="SFR"/> iteration that specifies the channel used. If the <abbr linkend="ST"/> author selects the FTP_TRP.1/Join channel type, then the <abbr linkend="TSS"/> (possibly with support from the operational guidance) describes details of the channel and the mechanisms that it uses (and describes how the registration process ensures that the channel can only be used by the intended joiner and gatekeeper). Note that the FTP_TRP.1(3) channel type may require support from security measures in the operational environment (see the definition of FTP_TRP.1(3) for details).<h:br/><h:br/>
+              
+              If the <abbr linkend="ST"/> author selects the FTP_ITC.1/FPT_ITT.1 channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the <abbr linkend="ST"/> identifies the registration channel as a separate iteration of FTP_ITC.1 or FPT_ITT.1 and gives the iteration identifier (e.g. "FPT_ITT.1/Join") in an <abbr linkend="ST"/> Application Note for FCO_CPC_EXT.1.<h:br/><h:br/>
+              
               Note that the channel set up and used for registration may be adopted as a continuing internal communication channel (i.e. between different <abbr linkend="TOE"/> components) provided that the channel meets the requirements of FTP_ITC.1 or FPT_ITT.1. Otherwise the registration channel is closed after use and a separate channel is used for the internal communications.<h:br/><h:br/>
-              Specific requirements for Preparative Procedures relating to FCO_CPC_EXT.1 are defined in the Evaluation Activities in [SD].
+              
+              Specific requirements for Preparative Procedures relating to FCO_CPC_EXT.1 are defined in the Evaluation Activities.
             </note>
             <aactivity>
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the audit record protection functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/></TSS>
@@ -1746,7 +1743,7 @@ To do:
               with an X.509v3 certificate.<h:br/><h:br/> If the <abbr linkend="TOE"/> only acts as a
               receiver in the RSA key establishment scheme, the <abbr linkend="TOE"/> does not need
               to implement RSA key generation. <h:br/><h:br/>
-              In a distributed TOE, if the <abbr linkend="TOE"/> component acts as a receiver in the key establishment scheme,
+              In a distributed <abbr linkend="TOE"/>, if the <abbr linkend="TOE"/> component acts as a receiver in the key establishment scheme,
               the <abbr linkend="TOE"/> does not need to implement key generation.
             </note>
             <aactivity>
@@ -2863,11 +2860,7 @@ To do:
               <selectable>implement functionality </selectable>
               </selectables> that requires each user to be successfully authenticated with the Server before allowing any other <abbr linkend="TSF"/>-mediated actions on behalf of that user.</title>
             <note role="application">This requirement ensures that any user attempting to access the <abbr linkend="TSF"/> must be authenticated. These users may be administrators attempting to administer the <abbr linkend="TOE"/> or ordinary users attempting to enroll for management by the <abbr linkend="MDM"/> system. The <abbr linkend="ST"/> author is responsible for assigning the list of actions that can take place before this authentication. The <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform may utilize enterprise authentication to meet this requirement.<h:br/><h:br/>
-              According to the application note for FMT_SMR.1, for distributed TOEs at least one TOE
-              component has to support the authentication of Security Administrators according to
-              FIA_UAU_EXT.2 but not necessarily all <abbr linkend="TOE"/> components. In case not
-              all <abbr linkend="TOE"/> components support this way of authentication for Security Administrators the TSS
-              shall describe how Security Administrators are authenticated and identified.
+              For distributed <abbr linkend="TOE"/>'s at least one <abbr linkend="TOE"/> component has to support the authentication of Administrators but not necessarily all <abbr linkend="TOE"/> components. In case not all <abbr linkend="TOE"/> components support authentication for Administrators the <abbr linkend="TSS"/> shall describe how Administrators are authenticated and identified.
             </note>
             <aactivity>              
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
@@ -3024,16 +3017,9 @@ To do:
             </h:ul>
             </title>
             <note role="application"> 
-              <linkref linkend="FIA_X509_EXT.1.1(2)"/> should be chosen if the <abbr linkend="TOE"/> is distributed and the protocol(s) selected in FPT_ITT.1
-              utilize X.509 certificates for peer authentication. In this case, the use of revocation list checking
-              is optional as there are additional requirements surrounding the enabling and disabling of the
-              ITT channel as defined in FCO_CPC_EXT.1. If revocation checking is not supported, the ST
-              author should select no revocation method. However, if certificate revocation checking is
-              supported, the ST author selects whether this is performed using OCSP or CRLs.<h:br/><h:br/>
+              <linkref linkend="FIA_X509_EXT.1.1(2)"/> should be chosen if the <abbr linkend="TOE"/> is distributed and the protocol(s) selected in FPT_ITT.1 utilize X.509 certificates for peer authentication. In this case, the use of revocation list checking is optional as there are additional requirements surrounding the enabling and disabling of the ITT channel as defined in FCO_CPC_EXT.1. If revocation checking is not supported, the <abbr linkend="ST"/> author should select no revocation method. However, if certificate revocation checking is supported, the <abbr linkend="ST"/> author selects whether this is performed using OCSP or CRLs.<h:br/><h:br/>
               
-              The TSS shall describe when revocation checking is performed. It is expected that revocation
-              checking is performed when a certificate is used in an authentication step. It is not sufficient to
-              verify the status of a X.509 certificate only when it is loaded onto the device.<h:br/><h:br/>
+              The <abbr linkend="TSS"/> shall describe when revocation checking is performed. It is expected that revocation checking is performed when a certificate is used in an authentication step. It is not sufficient to verify the status of a X.509 certificate only when it is loaded onto the device.<h:br/><h:br/>
               
               <!-- not REALLY sure of the meaning of this?
               If the <abbr linkend="TOE"/> does not support functionality that uses any of the certificate types listed in the
@@ -3123,12 +3109,7 @@ To do:
                 <selectable>not accept the certificate</selectable>
               </selectables>.</title>
             <note role="application">Often a connection must be established to perform a verification of the revocation status of a certificate - either to download a CRL or to perform OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate valid according to all other rules in <linkref linkend="FIA_X509_EXT.1(1)"/>, the behavior indicated in the second selection shall determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in <linkref linkend="FIA_X509_EXT.1(1)"/>. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must also select function d in <linkref linkend="FMT_SMF.1(2)"/>.<h:br/><h:br/>
-              If the <abbr linkend="TOE"/> is distributed and FIA_X509_EXT.1(2) is selected, then certificate revocation
-              checking is optional. This is due to additional authorization actions being performed in the
-              enabling and disabling of the intra-TOE trusted channel as defined in FCO_CPC_EXT.1. In
-              this case, a connection is not required to determine certificate validity and this SFR is trivially
-              satisfied.
-            
+              If the <abbr linkend="TOE"/> is distributed and FIA_X509_EXT.1(2) is selected, then certificate revocation checking is optional. This is due to additional authorization actions being performed in the enabling and disabling of the intra-<abbr linkend="TOE"/> trusted channel as defined in FCO_CPC_EXT.1. In this case, a connection is not required to determine certificate validity and this <abbr linkend="SFR"/> is trivially satisfied.            
             </note>
             <aactivity>
               <TSS/>The evaluator shall check the <abbr linkend="TSS"/> to ensure that it describes how the <abbr linkend="TOE"/> chooses which certificates to use, and any necessary instructions in the administrative guidance for configuring the operating environment so that the <abbr linkend="TOE"/> can use the certificates.<h:br/><h:br/>
@@ -3644,22 +3625,9 @@ To do:
             </title>
             <note role="application"> This requirement captures all the configuration functionality in the <abbr linkend="MDM"/> Server to configure the underlying <abbr linkend="MDM"/> Server. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the assignment statement.<h:br/><h:br/> Function a can be met by relying on the platform to configure the certificates used by the <abbr linkend="MDM"/> server, however, the <abbr linkend="MDM"/> Server shall allow the administrator to choose which certificate is used for a specific functionality. The selection in b corresponds to the selection in <linkref linkend="FIA_ENR_EXT.1.2"/>. The selection in c includes a function that corresponds to the selection in <linkref linkend="FIA_X509_EXT.2.2"/>. Function e allows the administrator to configure periodicity of assigned commands, for example "read audit logs kept by the Mobile Device". In this way the administrator can configure the <abbr linkend="MDM"/> system to retrieve audit logs from the Mobile Device on a periodic, such as daily, basis in order to ensure freshness of log data and to minimize loss of audit logs. Function f allows the administrator to configure the privacy-sensitive information that will and will not be collected from particular mobile devices to handle Bring Your Own Device environments where some information may not be appropriate to collect. Privacy sensitive information may include items such as device physical location and lists of installed personal applications, and would vary depending on the particular capabilities of the <abbr linkend="TOE"/> and <abbr linkend="MDM"/> agent. The <abbr linkend="TOE"/> should provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and define the information that will be collected from devices in each category. Function g corresponds to configuring the length of time the user authenticator for enrollment is valid in <linkref linkend="FMT_SAE_EXT.1"/>. This function shall be included in the <abbr linkend="ST"/> if and only if <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               
-              For distributed TOEs the interaction between <abbr linkend="TOE"/> components will be configurable (see
-              FCO_CPC_EXT.1). Therefore, the ST author includes the selection "Ability to configure the
-              interaction between <abbr linkend="TOE"/> components" for distributed TOEs. A simple example would be the
-              change of communication protocol according to FPT_ITT.1. Another example would be
-              changing the management of a <abbr linkend="TOE"/> component from direct remote administration to remote
-              administration through another <abbr linkend="TOE"/> component. A more complex use case would be if the
-              realization of an SFR is achieved through two or more <abbr linkend="TOE"/> components and the
-              responsibilities between the two or more components could be modified.<h:br/><h:br/>
+              For distributed <abbr linkend="TOE"/>s the interaction between <abbr linkend="TOE"/> components will be configurable (see FCO_CPC_EXT.1). Therefore, the <abbr linkend="ST"/> author includes the selection "Ability to configure the interaction between <abbr linkend="TOE"/> components" for distributed <abbr linkend="TOE"/>s. A simple example would be the change of communication protocol according to FPT_ITT.1. Another example would be changing the management of a <abbr linkend="TOE"/> component from direct remote administration to remote administration through another <abbr linkend="TOE"/> component. A more complex use case would be if the realization of an <abbr linkend="SFR"/> is achieved through two or more <abbr linkend="TOE"/> components and the responsibilities between the two or more components could be modified.<h:br/><h:br/>
               
-              For distributed TOEs that implement a registration channel (as described in
-              FCO_CPC_EXT.1.2), the ST author uses the selection “Ability to configure the cryptographic
-              functionality” in this SFR, and its corresponding mapping in the TSS, to describe the
-              configuration of any cryptographic aspects of the registration channel that can be modified by
-              the operational environment in order to improve the channel security (cf. the description of the
-              content of Preparative Procedures in [SD, 3.6.1.2]).
-              
+              For distributed <abbr linkend="TOE"/>s that implement a registration channel (as described in FCO_CPC_EXT.1.2), the <abbr linkend="ST"/> author uses the selection “Ability to configure the cryptographic functionality” in this <abbr linkend="SFR"/>, and its corresponding mapping in the <abbr linkend="TSS"/>, to describe the configuration of any cryptographic aspects of the registration channel that can be modified by the operational environment in order to improve the channel security.              
             </note>
             <aactivity>
               <TSS/> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed. For function f, the evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes the privacy-sensitive information that the <abbr linkend="TOE"/> has the capability to collect from enrolled mobile devices.<h:br/><h:br/> 
@@ -3680,19 +3648,7 @@ To do:
             <title>The <abbr linkend="MDM"/> Server shall be able to associate users with roles.</title>
             <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role shall be supported. If no additional roles are supported, then "no additional roles" is stated. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>
               
-              For distributed TOEs not every <abbr linkend="TOE"/> component is required to implement its own user
-              management to fulfil this SFR. At least one component has to support authentication and 
-              identification of users according to FIA_UAU.1.
-              For the other <abbr linkend="TOE"/> components authentication as Security Administrator can be realized
-              through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1) from a
-              component that supports the authentication of Security Administrators according to
-              FIA_UIA_EXT.1 and FIA_UAU_EXT.2. The identification of users according to
-              FIA_UIA_EXT.1.2 and the association of users with roles according to FMT_SMR.2.2 is done
-              through the components that support the authentication of Security Administrators according
-              to FIA_UIA_EXT.1 and FIA_UAU_EXT.2. <abbr linkend="TOE"/> components that authenticate Security
-              Administrators through the use of a trusted channel are not required to support local
-              administration of the component as defined in FMT_SMR.2.3.
-              
+              For distributed <abbr linkend="TOE"/>s not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfil this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to FIA_UAU.1. For the other <abbr linkend="TOE"/> components authentication as Administrator can be realized through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1) from a component that supports the authentication of Administrators according to FIA_UAU.1. The identification of users according to FIA_UAU.1.2 and the association of users with roles according to FMT_SMR.1.2(1) is done through the components that support the authentication of Administrators according to FIA_UAU.1.   
             </note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the administrator role and the powers granted to and limitations of the role.<h:br/><h:br/>
@@ -3811,10 +3767,8 @@ To do:
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables>-provided cryptographic services.</title>
             <note role="application">While the <abbr linkend="TOE"/> is typically a software package running in the IT Environment, it is still capable of performing the self-test activities required above. It should be understood, however, that there is a significant dependency on the host environment in assessing the assurance provided by the tests mentioned above (meaning that if the host environment is compromised, the self-tests will not be meaningful).<h:br/><h:br/>
-              For distributed TOEs all <abbr linkend="TOE"/> components have to perform self-tests. This does not necessarily
-              mean that each <abbr linkend="TOE"/> component has to carry out the same self-tests: the ST describes the
-              applicability of the selection (i.e. when self-tests are run) and the final assignment (i.e. which
-              self-tests are carried out) to each <abbr linkend="TOE"/> component.
+              
+              For distributed <abbr linkend="TOE"/>s all <abbr linkend="TOE"/> components have to perform self-tests. This does not necessarily mean that each <abbr linkend="TOE"/> component has to carry out the same self-tests: the <abbr linkend="ST"/> describes the applicability of the selection (i.e. when self-tests are run) and the final assignment (i.e. which self-tests are carried out) to each <abbr linkend="TOE"/> component.
             </note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>         
@@ -3834,16 +3788,11 @@ To do:
               ability to query the current version of the <abbr linkend="MDM"/> Server
               software.</title>
             <note role="application">
-              For a distributed TOE, the method of determining the installed versions on each component of
-              the <abbr linkend="TOE"/> is described in the operational guidance. 
+              For a distributed TOE, the method of determining the installed versions on each component of the <abbr linkend="TOE"/> is described in the operational guidance. 
             </note>
             <aactivity>
-              <Guidance/>The evaluator shall ensure that the administrator guidance includes
-                instructions for determining the current version of the <abbr linkend="TOE"
-                />.<h:br/><h:br/>
-              <Tests/>The evaluator shall query the <abbr linkend="TSF"/> for the current version of
-                the software according to the AGD guidance and shall verify that the current version
-                matches that of the documented and installed version.
+              <Guidance/>The evaluator shall ensure that the administrator guidance includes instructions for determining the current version of the <abbr linkend="TOE"/>.<h:br/><h:br/>
+              <Tests/>The evaluator shall query the <abbr linkend="TSF"/> for the current version of the software according to the AGD guidance and shall verify that the current version matches that of the documented and installed version.
             </aactivity>
           </f-element>
           <f-element id="fpt_tud_ext.1.2"> <!--free-->
@@ -3861,15 +3810,10 @@ To do:
               <selectable>implement functionality</selectable>
             </selectables> to provide a means to verify software updates to the <abbr linkend="TSF"/> using a digital signature mechanism prior to installing those updates.</title>
             <note role="application">The software on the <abbr linkend="TSF"/> will occasionally need to be updated. This requirement is intended to ensure that the <abbr linkend="TSF"/> only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the <abbr linkend="TSF"/> software or hardware.<h:br/><h:br/>
-              For distributed TOEs all <abbr linkend="TOE"/> components shall support Trusted Update. The verification of
-              the signature or hash on the update shall either be done by each <abbr linkend="TOE"/> component itself
-              (signature verification) or for each <abbr linkend="TOE"/> component (hash verification).<h:br/><h:br/>
-              Updating a distributed <abbr linkend="TOE"/> might lead to the situation where different <abbr linkend="TOE"/> components are
-              running different software versions. Depending on the differences between the different
-              software versions the impact of a mixture of different software versions might be no problem
-              at all or critical to the proper functioning of the TOE. The TSS shall detail the mechanisms that
-              support the continuous proper functioning of the <abbr linkend="TOE"/> during trusted update of distributed
-              TOEs.
+              
+              For distributed <abbr linkend="TOE"/>'s all <abbr linkend="TOE"/> components shall support Trusted Update. The verification of the signature or hash on the update shall either be done by each <abbr linkend="TOE"/> component itself (signature verification) or for each <abbr linkend="TOE"/> component (hash verification).<h:br/><h:br/>
+              
+              Updating a distributed <abbr linkend="TOE"/> might lead to the situation where different <abbr linkend="TOE"/> components are running different software versions. Depending on the differences between the different software versions the impact of a mixture of different software versions might be no problem at all or critical to the proper functioning of the <abbr linkend="TOE"/>. The <abbr linkend="TSS"/> shall detail the mechanisms that support the continuous proper functioning of the <abbr linkend="TOE"/> during trusted update of distributed <abbr linkend="TOE"/>'s.
             </note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
@@ -4459,29 +4403,14 @@ To do:
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to require the use of the trusted path for [joining components to the TSF under environmental constraints identified in <assignable>reference to operational guidance</assignable>].</title>
-            <note role="application">This SFR implements one of the types of channel identified in the main selection for
-              FCO_CPC_EXT.1.2. The “joining component” in FTP_TRP.1/Join is the IT entity that is
-              attempting to join the distributed <abbr linkend="TOE"/> by using the registration process.<h:br/><h:br/>
-              The effect of this SFR is to require the ability for components to communicate in a secure
-              manner while the distributed TSF is being created (or when adding components to an existing
-              distributed TSF). When creating the TSF from the initial pair of components, either of these
-              components may be identified as the TSF for the purposes of satisfying the meaning of “TSF”
-              in this SFR.<h:br/><h:br/>
-              The selection at the end of FTP_TRP.1.1/Join recognises that in some cases confidentiality (i.e.
-              protection of the data from disclosure) may not be provided by the channel. The ST author
-              distinguishes in the TSS whether in this case the <abbr linkend="TOE"/> relies on the environment to provide
-              confidentiality (as part of the constraints referenced in FTP_TRP.1.3/Join) or whether the
-              registration data exchanged does not require confidentiality (in which case this assertion must
-              be justified). If ”none” is selected, then this word may be omitted in the ST to improve
-              readability.<h:br/><h:br/>
-              The assignment in FTP_TRP.1.3/Join ensures that the ST highlights any specific details needed
-              to protect the registration environment.
-              Note that when the ST uses FTP_TRP.1/Join for the registration channel then this channel
-              cannot be reused as the normal inter-component communication channel (the latter channel
-              must meet FTP_ITC.1 or FPT_ITT.1).
-              Specific requirements for Preparative Procedures relating to FTP_TRP.1/Join are defined in
-              the Evaluation Activities in [SD].<h:br/><h:br/>             
+            </selectables> to require the use of the trusted path for [joining components to the <abbr linkend="TSF"/> under environmental constraints identified in <assignable>reference to operational guidance</assignable>].</title>
+            <note role="application">This <abbr linkend="SFR"/> implements one of the types of channel identified in the main selection for FCO_CPC_EXT.1.2. The "joining component" in FTP_TRP.1(3) is the IT entity that is attempting to join the distributed <abbr linkend="TOE"/> by using the registration process.<h:br/><h:br/>
+              
+              The effect of this <abbr linkend="SFR"/> is to require the ability for components to communicate in a secure manner while the distributed <abbr linkend="TSF"/> is being created (or when adding components to an existing distributed <abbr linkend="TSF"/>). When creating the <abbr linkend="TSF"/> from the initial pair of components, either of these components may be identified as the <abbr linkend="TSF"/> for the purposes of satisfying the meaning of "<abbr linkend="TSF"/>" in this <abbr linkend="SFR"/>.<h:br/><h:br/>
+              <!-- The below paragraph doesn’t really fit. Do we think this channel need to be encrypted or not?-->
+              The selection at the end of FTP_TRP.1.1(3) recognises that in some cases confidentiality (i.e. protection of the data from disclosure) may not be provided by the channel. The ST author distinguishes in the <abbr linkend="TSS"/> whether in this case the <abbr linkend="TOE"/> relies on the environment to provide confidentiality (as part of the constraints referenced in FTP_TRP.1.3(3)) or whether the registration data exchanged does not require confidentiality (in which case this assertion must be justified). If "none" is selected, then this word may be omitted in the ST to improve readability.<h:br/><h:br/>
+              
+              The assignment in FTP_TRP.1.3(3) ensures that the <abbr linkend="ST"/> highlights any specific details needed to protect the registration environment. Note that when the <abbr linkend="ST"/> uses FTP_TRP.1(3) for the registration channel then this channel cannot be reused as the normal inter-component communication channel (the latter channel must meet FTP_ITC.1 or FPT_ITT.1). Specific requirements for Preparative Procedures relating to FTP_TRP.1(3) are defined in the Evaluation Activities.<h:br/><h:br/>             
               
               The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "TLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, 
