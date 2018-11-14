@@ -281,8 +281,8 @@ To do:
         <h:br/><h:br/>
         The <h:b><abbr linkend="MDM"/> Agent</h:b> establishes a secure connection back to the
           <abbr linkend="MDM"/> Server controlled by an enterprise administrator and configures the
-        mobile device per the administrator's policies. Optionally, the <abbr linkend="MDM"/> Agent
-        may interact with the MAS Server to download and install enterprise applications. The <abbr
+        mobile device per the administrator's policies. <!--Optionally, the <abbr linkend="MDM"/> Agent
+        may interact with the MAS Server to download and install enterprise applications. -->The <abbr
           linkend="MDM"/> Agent is addressed in the Extended Package for <abbr linkend="MDM"/>
         Agents. If the <abbr linkend="MDM"/> Agent is installed on a mobile device as an application
         developed by the <abbr linkend="MDM"/> developer, the <abbr linkend="EP"/> extends this
@@ -295,11 +295,13 @@ To do:
         must be tested against the native <abbr linkend="MDM"/> agent of those platforms.
         <h:br/>
         <h:br/>
+        <!--
         The <h:b>MAS Server</h:b> is an application on a general-purpose platform or on a
         network device, executing in a trusted network environment. The MAS Server may be separate
         to or included in the <abbr linkend="MDM"/> Server. The MAS server hosts applications for
         the enterprise, authenticates Agents, and securely transmits applications to enrolled mobile
-        devices. 
+        devices.
+        -->
       </subsection>
     </section>
     <section id="usec" title="Use Cases"> This <abbr linkend="PP"/> defines 4 use cases:<h:br/>
@@ -654,6 +656,7 @@ To do:
         <h:td>Management of functions behaviour (Enrollment)</h:td>
         <h:td>Feature Dependent</h:td> 
       </h:tr>
+      <!-->
       <h:tr>
         <h:td>FMT_MOF.1(3)</h:td>
         <h:td>Management of Functions in MAS Server</h:td>
@@ -663,8 +666,7 @@ To do:
         <h:td>FMT_MOF.1(4)</h:td>
         <h:td>Management of Functions in (MAS Server Downloads)</h:td>
         <h:td></h:td> 
-      </h:tr>
-      <!-->
+      </h:tr>      
       <h:tr>
         <h:td>FMT_MTD.1/CoreData</h:td>
         <h:td>Management of TSF Data</h:td>
@@ -698,11 +700,13 @@ To do:
         <h:td>Specification of Management Functions (Server Configuration of Server)</h:td>
         <h:td>Feature Dependent</h:td> 
       </h:tr>
+      <!--
       <h:tr>
         <h:td>FMT_SMF.1(3)</h:td>
         <h:td>Specification of Management Functions (MAS Server)</h:td>
         <h:td></h:td> 
       </h:tr>
+      -->
       <h:tr>
         <h:td>FMT_SMR.1(1)</h:td>
         <h:td>Security Management Roles</h:td>
@@ -1515,6 +1519,7 @@ To do:
             </aactivity>
           </f-element>
         </f-component> 
+        <!--
         <f-component id="fau_gen.1(2)" name="Audit Generation (MAS Server)" status="optional">
           <f-element id="fau_gen.1.1(2)">
             <title>The MAS Server shall be able to generate an audit record of the following auditable events: <h:ol type="a">
@@ -1545,7 +1550,8 @@ To do:
                 Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly. For example, testing performed to ensure that the administrative guidance provided is correct verifies that AGD_OPE.1 is satisfied and should address the invocation of the administrative actions that are needed to verify the audit records are generated as expected.
             </aactivity>
           </f-element>
-        </f-component>        
+        </f-component> 
+        -->
         <f-component id="fau_net_ext.1" name="Network Reachability Review">
           <f-element id="fau_net_ext.1.1">
             <title>The <abbr linkend="MDM"/> Server shall provide authorized administrators with the capability to read the network connectivity status of an enrolled agent.</title>
@@ -1642,7 +1648,8 @@ To do:
                 </testlist>
             </aactivity>
           </f-element>
-        </f-component>         
+        </f-component>
+        <!--
         <f-component id="fau_stg_ext.1(2)" name="External Audit Trail Storage (MAS Server)" status="optional">
           <f-element id="fau_stg_ext.1.1(2)">
             <title>The MAS Server shall be able to transmit audit data to an external IT entity using a trusted channel per <linkref linkend="FTP_ITC.1(3)"/>.</title>
@@ -1654,12 +1661,12 @@ To do:
               administrator to review these audit records is provided by the operational environment. The <abbr linkend="TSF"/> may 
               rely on the underlying operating system for this functionality, and the first selection should be made 
               appropriately.<h:br/><h:br/> 
-              <!--TODO REVIEW FOR CORRECTNESS-->
+              < TODO REVIEW FOR CORRECTNESS >
               Although the audit server is outside of the <abbr linkend="TOE"/>, the MDM Server should still be able to support 
               mutual authentication. There are no requirements levied on the audit server, but the client (MDM Server) should be 
               able to support TLS client certificate authentication. This way if the non-<abbr linkend="TOE"/> audit server does 
               support verifying client certs, the MDM Server is in a position to make use of that.<h:br/><h:br/>
-              <!--TODO END REVIEW-->
+              < TODO END REVIEW>
             </note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided. <h:br/><h:br/> 
@@ -1671,7 +1678,8 @@ To do:
                 </testlist>
             </aactivity>
           </f-element>
-        </f-component>        
+        </f-component>  
+        -->
         <f-component id="fau_stg_ext.2" name="Audit Event Storage" status="sel-based">
           <selection-depends req="FAU_STG_EXT.1.1(1)" ids="FAU_STG.1_stored"/>
           <f-element id="fau_stg_ext.2.1"> <!--free-->
@@ -3721,6 +3729,7 @@ To do:
             </aactivity>
           </f-element>
         </f-component> 
+        <!--
         <f-component id="fmt_smr.1(2)" name="Security Management Roles (MAS Server)" status="optional">
           <f-element id="fmt_smr.1.1(2)">
             <title>Refinement: The MAS Server shall maintain the roles administrator, MD user, enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
@@ -3734,7 +3743,8 @@ To do:
               <Tests/>In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the <abbr linkend="TOE"/> that conforms to the requirements of this <abbr linkend="PP"/> be tested; for instance, if the <abbr linkend="TOE"/> can be administered through a local hardware interface or TLS/HTTPS then both methods of administration must be exercised during the evaluation team's test activities.
             </aactivity>
           </f-element>
-        </f-component> 
+        </f-component>
+        -->
       </subsection>
       
       <subsection id="fpt" title="Protection of the TSF (FPT)">
@@ -3767,14 +3777,14 @@ To do:
         <f-component id="fpt_itt.1" name="Internal TOE TSF Data Transfer" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1" ids="AgentInTOE_fpt, DistributedTOE_MAS"/>
           <f-element id="fpt_itt.1.1">
-            <title>The <abbr linkend="TSF"/> shall protect all data from [disclosure and
-              modification] through use of <selectables>
+            <title>The <abbr linkend="TSF"/> shall protect all data from [disclosure and modification] through use of 
+              <selectables>
                 <selectable id="ITT_IPSEC">IPsec</selectable>
                 <selectable id="ITT_TLS">TLS</selectable>
                 <selectable id="ITT_HTTPS">HTTPS</selectable>
                 <selectable id="ITT_DTLS">DTLS</selectable>
               </selectables> when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
-            <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> (such as between the <abbr linkend="MDM"/> Server and the MAS Server) is protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection.<h:br/><h:br/> 
+            <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> <!--(such as between the <abbr linkend="MDM"/> Server and the MAS Server)-->are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection.<h:br/><h:br/> 
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               <!-- need to review text below-->
               This channel may also be used as the registration channel for the registration process, as described in section 3.3 and FCO_CPC_EXT.1.2.<h:br/><h:br/>
@@ -3914,22 +3924,22 @@ To do:
       <subsection id="ftp" title="Trusted Path/Channels (FTP)">
         <f-component name="Trusted Channel" id="ftp_itc_ext.1"> <!-- New SFR, this will specify if Agent is in the TOE-->
           <f-element id="ftp_itc_ext.1.1">
-            <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself, an MDM Agent that is <selectables>
+            <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself and an MDM Agent that is <selectables>
               <selectable id="AgentInTOE">internal to the TOE</selectable>
               <selectable id="AgentOutTOE">external to the TOE</selectable>
-            </selectables>, and <selectables>
+            </selectables><!--, and <selectables>
               <selectable id="DistributedTOE_MAS">a MAS Server</selectable>
               <selectable>no other</selectable>
-            </selectables>
+            </selectables> -->
              that is logically distinct from other communication channels, as specified in <selectables>
               <selectable id="AgentInTOE_fpt"><linkref linkend="FPT_ITT.1"/></selectable>
               <selectable id="AgentOutTOE_ftp"><linkref linkend="FTP_ITC.1(2)"/></selectable>
-              <selectable id="AgentOutTOE_MAS"><linkref linkend="FTP_ITC.1(3)"/></selectable>
+              <!--<selectable id="AgentOutTOE_MAS"><linkref linkend="FTP_ITC.1(3)"/></selectable>-->
             </selectables>
               .</title>
             <note role="Application">
-              This SFR describes the communication channels between the MDM Server, an Agent that may or may not be in the <abbr linkend="TOE"/> and 
-              optionally a physically distinct MAS Server, to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/>
+              This SFR describes the communication channels between the MDM Server and an Agent that may or may not be in the <abbr linkend="TOE"/> <!--and 
+              optionally a physically distinct MAS Server,-->to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/>
               If the <abbr linkend="TOE"/> includes an MDM Agent, then the communication channel between the Agent and MDM Server is internal to the 
               <abbr linkend="TOE"/> and thus "internal to the TOE" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1"/> 
               shall be selected in the third selection and <linkref linkend="FPT_ITT.1"/> shall be included in the ST. <h:br/><h:br/>
@@ -3937,6 +3947,7 @@ To do:
               MDM Agent), the communication channel between the Agent and MDM Server is external to the <abbr linkend="TOE"/> and thus "external to 
               the TOE" shall be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> shall be selected in 
               the third selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the ST. <h:br/><h:br/>
+              <!--
               If the MAS Server is physically distinct from the MDM Server, then "MAS Server" shall be selected in the second 
               selection. The MAS Server is considered a separate part of the distributed <abbr linkend="TOE"/> and thus <linkref linkend="FPT_ITT.1"/> 
               shall be selected in the third selection and <linkref linkend="FPT_ITT.1"/> shall be included in the ST for all 
@@ -3944,11 +3955,12 @@ To do:
               MDM Server and MAS Server and additionally between the MAS Server and MDM Agent, if the MDM Agent is internal to the 
               TOE. Additionally, <linkref linkend="FTP_ITC.1(3)"/> shall be selected in the third selection and 
               <linkref linkend="FTP_ITC.1(3)"/> shall be included in the ST for the communication channel between a the MAS Server 
-              and authorized IT entities. If the MAS Server is not physically distinct from the MDM Server, then "no other" shall 
+              and authorized IT entities. If the MAS Server is- not physically distinct from the MDM Server, then "no other" shall 
               be selected in the second selection.<h:br/><h:br/>
+              -->
             </note>
               <aactivity>
-                <TSS/>The evaluator shall ensure that the TSS contains whether the MDM Server communication channel is internal or external to the <abbr linkend="TOE"/> and if the MAS Server is physically distinct from the MDM Server, thus requiring a logically distinct communication channel for the MAS Server.<h:br/><h:br/> 
+                <TSS/>The evaluator shall ensure that the TSS contains whether the MDM Server communication channel is internal or external to the <abbr linkend="TOE"/>. <!-- and if the MAS Server is physically distinct from the MDM Server, thus requiring a logically distinct communication channel for the MAS Server.--><h:br/><h:br/> 
                 <Tests/>
                   This testing can be completed in conjunction with the testing for FPT_ITT.1, FTP_ITC.1(2) or FTP_ITC.1(3).               
               </aactivity>
@@ -3967,8 +3979,7 @@ To do:
               </selectables> to provide a trusted communication channel between itself and authorized IT entities supporting the following capabilities: audit server, <selectables>
                 <selectable>authentication server</selectable>
                 <selectable><assignable>other capabilities</assignable></selectable>
-              </selectables> that is logically distinct from other communication channels and provides assured identification of its 
-                            end points and protection of the channel data from modification or disclosure.</title>
+              </selectables> that is logically distinct from other communication channels and provides assured identification of its end points and protection of the channel data from modification or disclosure.</title>
             <note role="application">The intent of the mandatory portion of the above requirement is to use the cryptographic 
               protocols identified in the requirement to establish and maintain a trusted channel with authorized IT entities 
               that the <abbr linkend="TOE"/> interacts with to perform its functions.<h:br/><h:br/> 
@@ -4074,8 +4085,8 @@ To do:
             <note role="application"> The intent of the mandatory portion of the above requirement
               is to use the cryptographic protocols identified in the requirement to establish and
               maintain a trusted channel between the <abbr linkend="TOE"/> and the <abbr
-                linkend="MDM"/> Agent. If the <abbr linkend="TOE"/> includes a separate MAS Server,
-              this requirement also addresses the communication between the MAS Server and the <abbr linkend="MDM"/> Agent.
+                linkend="MDM"/> Agent. <!--If the <abbr linkend="TOE"/> includes a separate MAS Server,
+              this requirement also addresses the communication between the MAS Server and the <abbr linkend="MDM"/> Agent.-->
               Only TLS, DTLS, or HTTPS are used in this trusted
               channel.<h:br/><h:br/> This requirement is to ensure that the transmission of any audit
               logs, mobile device information data (software version, hardware model, and
@@ -4135,13 +4146,13 @@ To do:
           <f-element id="ftp_itc.1.3(2)">
             <title>The <abbr linkend="TSF"/> shall initiate communication via the trusted channel
               for all communication between the <abbr linkend="MDM"/> Server and the <abbr
-                linkend="MDM"/> Agent and <selectables>
+                linkend="MDM"/> Agent. <!-- and <selectables>
                 <selectable>all communication between the MAS Server and the <abbr linkend="MDM"/>
                   Agent</selectable>
                 <selectable>no other communication</selectable>
-              </selectables>. </title>
-            <note role="application">If the <abbr linkend="TOE"/> includes a separate MAS Server,
-              then "all communications between the MAS Server and the MDM Agent" shall be selected.</note>
+              </selectables>-->. </title>
+            <!--<note role="application">If the <abbr linkend="TOE"/> includes a separate MAS Server,
+              then "all communications between the MAS Server and the MDM Agent" shall be selected.</note>-->
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the
                 methods of Agent-Server communication are indicated, along with how those
@@ -4167,7 +4178,8 @@ To do:
                 </testlist> Further assurance activities are associated with the specific protocols.
               </aactivity>
           </f-element>
-        </f-component> 
+        </f-component>
+        <!--
         <f-component id="ftp_itc.1(3)" name="Inter-TSF Trusted Channel (MAS Server)" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1" ids="AgentOutTOE_MAS"/>
           <f-element id="ftp_itc.1.1(3)">
@@ -4202,12 +4214,12 @@ To do:
               protect that connection with one of the listed protocols. For any other external
               server, external communications are not required to be protected, but if protection is
               claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
-              <!--TODO REVIEW FOR CORRECTNESS-->
+              <TODO REVIEW FOR CORRECTNESS>
               For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MAS Server should still 
               be able to support mutual authentication. There are no requirements levied on the external entities, but the MAS Server 
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
               entitiy does support mutual authenticaion, the MAS Server is in a position to make use of that.<h:br/><h:br/>
-              <!--TODO END REVIEW-->
+              <TODO END REVIEW>
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the
               confidentiality and integrity of MAS communications. The <abbr linkend="ST"/> author
               chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec"
@@ -4277,6 +4289,7 @@ To do:
               </aactivity>
           </f-element>
         </f-component> 
+        -->
         <f-component id="ftp_trp.1(1)" name="Trusted Path (for Remote Administration)">
           <f-element id="ftp_trp.1.1(1)"> <!--free-->
             <title>The TSF shall <selectables>
