@@ -3714,11 +3714,16 @@ To do:
         </f-component> 
         <f-component id="fmt_smr.1(1)" name="Security Management Roles">
           <f-element id="fmt_smr.1.1(1)">
-            <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <assignable>additional authorized identified roles</assignable>.</title>
+            <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <selectables>
+              <selecatble>enrolled mobile devices</selecatble>
+              <selecatble>application access groups</selecatble>
+              <selecatble><assignable>additional authorized identified roles</assignable></selecatble>
+              <selecatble>no additional roles</selecatble>
+            </selectables>.</title>
           </f-element>
           <f-element id="fmt_smr.1.2(1)">
             <title>The <abbr linkend="MDM"/> Server shall be able to associate users with roles.</title>
-            <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role shall be supported. If no additional roles are supported, then "no additional roles" is stated. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>
+            <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role shall be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>
               
               For distributed <abbr linkend="TOE"/>s not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfil this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to FIA_UAU.1. For the other <abbr linkend="TOE"/> components authentication as Administrator can be realized through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1) from a component that supports the authentication of Administrators according to FIA_UAU.1. The identification of users according to FIA_UAU.1.2 and the association of users with roles according to FMT_SMR.1.2(1) is done through the components that support the authentication of Administrators according to FIA_UAU.1.   
             </note>
@@ -3787,7 +3792,7 @@ To do:
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> <!--(such as between the <abbr linkend="MDM"/> Server and the MAS Server)-->are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection.<h:br/><h:br/> 
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               <!-- need to review text below-->
-              This channel may also be used as the registration channel for the registration process, as described in section 3.3 and FCO_CPC_EXT.1.2.<h:br/><h:br/>
+              This channel may also be used as the registration channel for the registration process, as described in section 3.1 and FCO_CPC_EXT.1.2.<h:br/><h:br/>
               
               If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
               <h:ul>
@@ -4146,7 +4151,7 @@ To do:
           <f-element id="ftp_itc.1.3(2)">
             <title>The <abbr linkend="TSF"/> shall initiate communication via the trusted channel
               for all communication between the <abbr linkend="MDM"/> Server and the <abbr
-                linkend="MDM"/> Agent. <!-- and <selectables>
+                linkend="MDM"/> Agent <!-- and <selectables>
                 <selectable>all communication between the MAS Server and the <abbr linkend="MDM"/>
                   Agent</selectable>
                 <selectable>no other communication</selectable>
