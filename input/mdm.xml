@@ -14,15 +14,19 @@ Check this:
 To do:
 - ask Keven about <OSPs> tag, why do I have to wrap each <OSP> with an <OSPs>
 - cross references - search for Section & Appendix cross refs & adjust
+
 - edit fau_gen to make it applicable to any component of a distributed toe
 - make links out of all the references to ITT/ITC sfr's
 - finish table 1, have to add where we think things belong
 - fix table 2 after mas server sfr's get figured out
 - fix dead links to TLS, etc
 - comment matrix
-- TLS
+- TLS: package and figure out how to use platform TLS with the TLS package
 - Mas server
-- incorporate evaluation activity for distributed TOE (SD B.4)
+- incorporate evaluation activity for distributed TOE (SD B.4) (pulled it in the appendix but its ugly and might need to be fixed)
+- have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
+- unify the random use of  TOE/TSF/MDM server and MD user/agent
+
 
 - Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2) 
 - Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(3), fmt_mof.1(4), fmt_smf.1(3)
@@ -113,7 +117,7 @@ To do:
         <entry><term>Common Criteria Testing Laboratory</term><description>Within the context of the Common Criteria Evaluation and Validation Scheme (CCEVS), an IT security evaluation facility, accredited by the National Voluntary Laboratory Accreditation Program (NVLAP) and approved by the NIAP Validation Body to conduct Common Criteria-based evaluations.
           </description></entry>
         <entry><term><abbr title="Common Evaluation Methodology">CEM</abbr></term><description>Common Evaluation Methodology for Information Technology Security Evaluation. </description></entry>
-        <entry><term><abbr title="Extended Package">EP</abbr></term><description>An implementation-independent set of security requirements for a specific subset of products described by a <abbr linkend="PP"/>.</description></entry>
+        <entry><term><abbr title="Module">Module</abbr></term><description>An implementation-independent set of security requirements for a specific subset of products described by a <abbr linkend="PP"/>.</description></entry>
         <entry><term><abbr title="Protection Profile">PP</abbr></term><description>An
             implementation-independent set of security requirements for a category of products.
           </description></entry>
@@ -219,8 +223,7 @@ To do:
             temporarily stored on mobile devices to which the mobile device user is allowed access
             according to the security policy defined by the enterprise and implemented by the
             administrator. </description></entry>
-        <entry><term><abbr title="Enrollment over Secure Transport">EST</abbr></term><description>Enrollment over Secure Transport</description></entry>
-        <entry><term><abbr title="Extended Package">EP</abbr></term><description>An implementation-independent set of security requirements for a specific subset of products described by a <abbr linkend="PP"/>.</description></entry>
+        <entry><term><abbr title="Enrollment over Secure Transport">EST</abbr></term><description>Enrollment over Secure Transport</description></entry>        
         <entry><term><abbr title="Key Encryption Key">KEK</abbr></term><description>A key that is used to encrypt other keys,
             such as data encryption keys (<abbr linkend="DEK"/>s) or storage repositories that
             contain keys. </description></entry>
@@ -233,6 +236,7 @@ To do:
             Device Management</description></entry>
         <entry><term>Mobile Device User</term><description>The person who uses and is held
             responsible for a mobile device. </description></entry>
+        <entry><term><abbr title="Module">Module</abbr></term><description>An implementation-independent set of security requirements for a specific subset of products described by a <abbr linkend="PP"/>.</description></entry>
         <entry><term><abbr title="Operating System">OS</abbr></term><description>Software which runs at the highest
             privilege level and can directly control hardware resources. Modern mobile devices
             typically have at least two primary operating systems: one which runs on the cellular
@@ -296,7 +300,7 @@ To do:
           <abbr linkend="MDM"/> Server controlled by an enterprise administrator and configures the
         mobile device per the administrator's policies. <!--Optionally, the <abbr linkend="MDM"/> Agent
         may interact with the MAS Server to download and install enterprise applications. -->The <abbr
-          linkend="MDM"/> Agent is addressed in the Extended Package for <abbr linkend="MDM"/>
+          linkend="MDM"/> Agent is addressed in the Module for <abbr linkend="MDM"/>
         Agents. If the <abbr linkend="MDM"/> Agent is installed on a mobile device as an application
         developed by the <abbr linkend="MDM"/> developer, the <abbr linkend="EP"/> extends this
           <abbr linkend="PP"/> and is included in the <abbr linkend="TOE"/>. In this case, the <abbr
@@ -1106,7 +1110,7 @@ To do:
     </section>
     <section id="teaa" title="Test Environment for Assurance Activities"> 
       As described in the assurance activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents/MD platforms with which an <abbr linkend="MDM"/> Server operates. The identified assurance activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent/platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/>      
-      The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Assurance Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Extended Package for Mobile Device Management Agents. </section>
+      The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Assurance Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Module for Mobile Device Management Agents. </section>
     <section id="tsfr" title="TOE Security Functional Requirements">
       <subsection id="fau" title="Security Audit (FAU)">
         <f-component id="fau_alt_ext.1" name="Server Alerts">
@@ -1161,8 +1165,8 @@ To do:
               Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report upon 
               endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile 
               as standards efforts mature.<h:br/><h:br/> 
-              If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. 
-              If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. 
+              If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. 
+              If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. 
               If "HTTPS" isselected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in 
               the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the 
@@ -3168,7 +3172,7 @@ To do:
                 <selectable>no additional uses</selectable>
               </selectables></title>
             <note role="application"> The <abbr linkend="ST"/> author's selection(s) shall match the selection of <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_ITC.1(1)"/>, and <linkref linkend="FPT_ITT.1"/>. Certificates may optionally be used for trusted updates of system software (<linkref linkend="FPT_TUD_EXT.1.3"/>) and software integrity verification (<linkref linkend="FPT_TST_EXT.1.2"/>). If some authentication services are provided by the <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author shall clearly identify which services are provided by the <abbr linkend="TOE"/> and which by the platform.<h:br/><h:br/> If code signing for integrity verification is selected, the <abbr linkend="MDM"/> vendor is not expected to digitally sign DLL's from other vendors that have been incorporated into their product.<h:br/><h:br/> 
-              If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "TLS", "HTTPS" or "DTLS" are selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. 
+              If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. If "TLS", "HTTPS" or "DTLS" are selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. 
             </note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
@@ -3800,7 +3804,7 @@ To do:
                 <selectable id="ITT_DTLS">DTLS</selectable>
               </selectables> when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> <!--(such as between the <abbr linkend="MDM"/> Server and the MAS Server)-->are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection.<h:br/><h:br/> 
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               <!-- need to review text below-->
               This channel may also be used as the registration channel for the registration process, as described in section 3.1 and FCO_CPC_EXT.1.2.<h:br/><h:br/>
               
@@ -4011,7 +4015,7 @@ To do:
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
               entity does support mutual authentication, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               <!--TODO END REVIEW-->
-              The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
@@ -4365,8 +4369,8 @@ To do:
               the <abbr linkend="TOE"/> by remote administrators is performed over this path. The data passed in this trusted 
               communication channel are encrypted as defined the protocol chosen in the first selection. The <abbr linkend="ST"/> 
               author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the 
-              Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the 
-              Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the 
+              Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the 
+              Module for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the 
               appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "TLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, 
               with the following selections made:
