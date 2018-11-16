@@ -4163,12 +4163,23 @@ To do:
             </note>
           </f-element>
           <f-element id="ftp_itc.1.2(2)">
-            <title>The <abbr linkend="TSF"/> shall permit the <abbr linkend="TSF"/> and <abbr
-                linkend="MDM"/> Agent to initiate communication via the trusted channel.</title>
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to permit the <abbr linkend="TSF"/> and <abbr linkend="MDM"/> Agent to initiate communication via the trusted channel.</title>
+            <aactivity>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+              of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+              how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+              the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+              of this evaluation activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="ftp_itc.1.3(2)">
-            <title>The <abbr linkend="TSF"/> shall initiate communication via the trusted channel
-              for all communication between the <abbr linkend="MDM"/> Server and the <abbr
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to initiate communication via the trusted channel for all communication between the <abbr linkend="MDM"/> Server and the <abbr
                 linkend="MDM"/> Agent <!-- and <selectables>
                 <selectable>all communication between the MAS Server and the <abbr linkend="MDM"/>
                   Agent</selectable>
@@ -4183,6 +4194,12 @@ To do:
                 listed in the <abbr linkend="TSS"/> in support of remote <abbr linkend="TOE"/>
                 administration are consistent with those specified in the requirement, and are
                 included in the requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              
+                If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+                of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+                how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+                the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+                of this evaluation activity).<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains
                 instructions for configuring the communication channel between the <abbr
                   linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server for each supported
