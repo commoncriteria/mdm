@@ -4043,12 +4043,23 @@ To do:
             </note>
           </f-element>
           <f-element id="ftp_itc.1.2(1)">
-            <title>The <abbr linkend="TSF"/> shall permit the <abbr linkend="MDM"/> Server or other
-              authorized IT entities to initiate communication via the trusted channel.</title>
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to permit the <abbr linkend="MDM"/> Server or other authorized IT entities to initiate communication via the trusted channel.</title>
+            <aactivity>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+              of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+              how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+              the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+              of this evaluation activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="ftp_itc.1.3(1)">
-            <title>The <abbr linkend="TSF"/> shall initiate communication via the trusted channel
-              for <assignable>list of services for which the TSF is able to initiate communications</assignable>.</title>
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to initiate communication via the trusted channel for <assignable>list of services for which the TSF is able to initiate communications</assignable>.</title>
             <note role="application">While there are no requirements on the party initiating the
               communication, the <abbr linkend="ST"/> author lists in the assignment for <linkref linkend="FTP_ITC.1.3(1)"/>
               the services for which the <abbr linkend="TOE"/> can initiate the communication with
@@ -4057,6 +4068,11 @@ To do:
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the
                 methods of communication with authorized IT entities are indicated, along with how
                 those communications are protected.<h:br/><h:br/> 
+                If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+                of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+                how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+                the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+                of this evaluation activity).<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains
                 instructions for configuring the communication channel between the <abbr
                   linkend="MDM"/> Server and authorized IT entities for each supported
