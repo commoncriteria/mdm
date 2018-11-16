@@ -16,21 +16,16 @@ To do:
 - cross references - search for Section & Appendix cross refs & adjust
 -->
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<PP xmlns="https://niap-ccevs.org/cc/v1" name="Mobile Device Management"
+
+<PP type="PP" boilerplate="yes" xmlns="https://niap-ccevs.org/cc/v1" name="Mobile Device Management"
   xmlns:h="http://www.w3.org/1999/xhtml">
-  <PPReference title="PP Reference" id="XXXXX">
+    
+  <PPReference>
     <ReferenceTable>
-      <PPTitle>Protection Profile for Mobile Device Management</PPTitle>
       <PPVersion>4.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2018-09-24</PPPubDate>
-      <PPCertificationID>unassigned</PPCertificationID>
-      <CCVersion>Version 3.0</CCVersion>
       <Keywords>Mobile Device Management; MDM</Keywords>
-      <entry>
-        <name>Registration</name>
-        <description>National Information Assurance Partnership</description>
-      </entry>
     </ReferenceTable>
   </PPReference>
   <!--  
@@ -96,8 +91,23 @@ To do:
   <chapter id="int" title="Introduction">
     <section id="ov" title="Overview"> 
       Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network resources.<h:br/><h:br/> This document provides a baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> System, which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce the security policies, and network access control servers, are out of scope. </section>
-    <section id="terms" title="Terms and Acronyms">
-      The following section provides both Common Criteria and technology terms used in this <abbr linkend="PP"/>. <glossary>
+    <section id="terms" title="Terms">
+      <!-- TODO: Craig go through the terms defined below an separate them into the different subsections -->
+      <!--  <subsection title="Common Criteria Terms">
+        
+        
+        
+      </subsection>
+      
+      <subsection title="Technology Terms">
+        
+        
+        
+      </subsection>
+     -->
+      The following section provides both Common Criteria and technology terms used in this <abbr linkend="PP"/>. 
+      
+      <glossary>
         <!-- HERE glossary <abbr linkend="TSS"/>-->
         <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent. </description></entry>
         <entry><term><abbr title="Application Programming Interface">API</abbr></term>
@@ -192,7 +202,8 @@ To do:
       </glossary>
     </section>
     <section id="cte" title="Compliant Targets of Evaluation">
-      The Mobile Device Management (MDM) system consists of two primary components: the <abbr linkend="MDM"/> Server software and the <abbr linkend="MDM"/> Agent. Optionally, the <abbr linkend="MDM"/> system may consist of a separate Mobile Application Store (MAS) server. <subsection id="tb" title="TOE Boundary"> The <abbr linkend="MDM"/> system operational environment consists of the mobile device on which the <abbr linkend="MDM"/> Agent resides, the platform on which the <abbr linkend="MDM"/> Server runs, and an untrusted wireless network over which they communicate, as pictured below.
+      The Mobile Device Management (MDM) system consists of two primary components: the <abbr linkend="MDM"/> Server software and the <abbr linkend="MDM"/> Agent. Optionally, the <abbr linkend="MDM"/> system may consist of a separate Mobile Application Store (MAS) server. 
+      <subsection id="tb" title="TOE Boundary"> The <abbr linkend="MDM"/> system operational environment consists of the mobile device on which the <abbr linkend="MDM"/> Agent resides, the platform on which the <abbr linkend="MDM"/> Server runs, and an untrusted wireless network over which they communicate, as pictured below.
         <h:br/><h:br/>
         <figure entity="images/MDMserveroperatingenvironment.jpg"
           title="MDM System Operating Environment" id="agentoperatingenvironment"/>
@@ -452,7 +463,8 @@ To do:
             management actions undertaken by its administrators.</description>
           <!-- HERE are these component-refer tags correct? -->
           <component-refer ref="FAU_ALT_EXT.1"/>
-          <component-refer ref="FAU_GEN.1"/>
+          <component-refer ref="FAU_GEN.1(1)"/>
+          <component-refer ref="FAU_GEN.1(2)"/>
           <component-refer ref="FAU_NET_EXT.1"/>
           <component-refer ref="FAU_SAR.1"/>
           <component-refer ref="FAU_SEL.1"/>
@@ -579,7 +591,8 @@ To do:
       </h:ul>
     </section>
     <section id="teaa" title="Test Environment for Assurance Activities"> 
-      As described in the assurance activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents/MD platforms with which an <abbr linkend="MDM"/> Server operates. The identified assurance activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent/platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/> The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Assurance Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Extended Package for Mobile Device Management Agents. </section>
+      As described in the assurance activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents/MD platforms with which an <abbr linkend="MDM"/> Server operates. The identified assurance activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent/platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/>      
+      The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Assurance Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Extended Package for Mobile Device Management Agents. </section>
     <section id="tsfr" title="TOE Security Functional Requirements">
       <subsection id="fau" title="Security Audit (FAU)">
         <f-component id="fau_alt_ext.1" name="Server Alerts">
@@ -783,6 +796,7 @@ To do:
                     <h:TD/>
                   </h:TR>
                   <!-- This is now replaced by FCS_TLSC_EXT.1 and FCS_TLSS_EXT.2 audits. Remove completely once sure this is correct.
+                    KIM - Audit of TLS and DTLS will remain in the base PP. Please update the name to correspond to package.
                   <h:TR>
                     <h:TD>FCS_DTLS_EXT.1</h:TD>
                     <h:TD>Failure of the certificate validity check.</h:TD>
@@ -818,12 +832,11 @@ To do:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_TLSC_EXT.1</h:TD>
+                    <h:TD rowspan="3">FCS_TLSC_EXT.1</h:TD>
                     <!-- Added certificate validity check to replace FCS_DTLS_EXT.1 audit -->
-                    <h:TD>Failure to establish a TLS session.<h:br/> Failure to verify presented
-                      identifier.<h:br/>Failure of the certificate validity check.</h:TD>
-                    <h:TD>Reason for failure.<h:br/><h:br/>Presented identifier and reference
-                      identifier.<h:br/>Issuer Name and Subject Name of certificate.</h:TD>
+                    <h:TD>Failure to establish a TLS session.</h:TD><h:TD>Reason for failure.</h:TD></h:TR>
+                  <h:TR><h:TD>Failure to verify presented identifier.</h:TD><h:TD>Presented identifier and reference identifier.</h:TD></h:TR>
+                  <h:TR><h:TD>Failure of the certificate validity check.</h:TD><h:TD>Issuer Name and Subject Name of certificate.</h:TD>
                   </h:TR>
                   <h:TR>
                     <h:TD>FCS_TLSC_EXT.2</h:TD>
@@ -1945,8 +1958,20 @@ To do:
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to implement HTTPS using TLS, and the TLS Functional Package must be included in the 
-              <abbr linkend="ST"/>, with the following selections made:
+            </selectables> to implement HTTPS using TLS. 
+            </title>
+            <!--   </f-element>
+           <f-element id="fcs_https_ext.1.3">
+            <title>The <selectables>
+                <selectable>TSF</selectable>
+                <selectable><abbr linkend="TOE"/> platform</selectable>
+              </selectables> shall <selectables>
+                <selectable>not establish the connection</selectable>
+                <selectable>request authorization to establish the connection</selectable>
+                <selectable>no other action</selectable>
+              </selectables> if the peer certificate is deemed invalid.</title>-->
+            <!-- FCS_HTTPS_EXT.1.3 was removed per TD212-->
+            <note role="application">The TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
@@ -1961,20 +1986,8 @@ To do:
                     <h:li>session renegotiation must be selected</h:li>
                   </h:ul>
                 </h:li>
-              </h:ul> 
-            </title>
-            <!--   </f-element>
-           <f-element id="fcs_https_ext.1.3">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall <selectables>
-                <selectable>not establish the connection</selectable>
-                <selectable>request authorization to establish the connection</selectable>
-                <selectable>no other action</selectable>
-              </selectables> if the peer certificate is deemed invalid.</title>-->
-            <!-- FCS_HTTPS_EXT.1.3 was removed per TD212-->
-            <note role="application">Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with RFC 5280.</note>
+              </h:ul>              
+              Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with RFC 5280.</note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
               <Tests/>
@@ -3264,7 +3277,7 @@ To do:
               For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MDM Server should still 
               be able to support mutual authentication. There are no requirements levied on the external entities, but the MDM Server 
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
-              entitiy does support mutual authenticaion, the MDM Server is in a position to make use of that.<h:br/><h:br/>
+              entity does support mutual authentication, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               <!--TODO END REVIEW-->
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Extended Package for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
@@ -3481,10 +3494,10 @@ To do:
               server, external communications are not required to be protected, but if protection is
               claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
               <!--TODO REVIEW FOR CORRECTNESS-->
-              For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MDM Server should still 
-              be able to support mutual authentication. There are no requirements levied on the external entities, but the MDM Server 
+              For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MAS Server should still 
+              be able to support mutual authentication. There are no requirements levied on the external entities, but the MAS Server 
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
-              entitiy does support mutual authenticaion, the MDM Server is in a position to make use of that.<h:br/><h:br/>
+              entitiy does support mutual authenticaion, the MAS Server is in a position to make use of that.<h:br/><h:br/>
               <!--TODO END REVIEW-->
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the
               confidentiality and integrity of MAS communications. The <abbr linkend="ST"/> author
@@ -3966,7 +3979,7 @@ To do:
       </subsection>
     </section>
   </chapter>
-  <appendix id="optional" title="Optional Requirements"> 
+  <appendix id="optional" title="Optional Requirements">
     As indicated in <secref linkend="ccl"/>, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of this <abbr linkend="PP"/>. Additionally, there are three other types of requirements specified in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and <appref linkend="objective"/>. The first type are requirements that can be included in the <abbr linkend="ST"/>, but do not have to be in order for a <abbr linkend="TOE"/> to claim conformance to this <abbr linkend="PP"/>. The second type (in <appref linkend="sel-based"/>) are requirements based on selections in the body of the <abbr linkend="PP"/>: if certain selections are made, then additional requirements in that appendix will need to be included. The third type (in <appref linkend="objective"/> are components that are not required in order to conform to this <abbr linkend="PP"/>, but will be included in the baseline requirements in future versions of this <abbr linkend="PP"/>, so adoption by vendors is encouraged. Note that the <abbr linkend="ST"/> author is responsible for ensuring that requirements in future versions of this <abbr linkend="PP"/>, so adoption by <abbr linkend="MDM"/> vendors is encouraged. Note that the <abbr linkend="ST"/> author is responsible for ensuring that requirements that may be associated with those in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and/or <appref linkend="objective"/> but are not listed (e.g., FMT-type requirements) are also included in the <abbr linkend="ST"/>. <h:br/><h:br/> This Appendix is divided into three subsections: optional requirements that may be performed by the <abbr linkend="TSF"/>, optional requirements that may be performed by the <abbr linkend="MDM"/> Server or its underlying platform, and optional requirements to support a Mobile Application Store Server. 
   </appendix>  
   <appendix id="sel-based" title="Selection-Based Requirements"> 
@@ -4247,5 +4260,20 @@ To do:
       </entry>
     </bibliography>
   </appendix>
+  
+  <extra-css>
+<!-- DO NOT DELETE -->
+    
+    .SOlist .optional::after,
+    .SOlist .sel-based::after,
+    .SOlist .objective::after { 
+    content: "(OPTIONAL)"
+    } 
+    
+  </extra-css>
+  
+  
+  
+  
 </PP>
 
