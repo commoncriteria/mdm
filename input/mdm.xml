@@ -14,6 +14,7 @@ Check this:
 To do:
 - ask Keven about <OSPs> tag, why do I have to wrap each <OSP> with an <OSPs>
 - cross references - search for Section & Appendix cross refs & adjust
+- edit fau_gen to make it applicable to any component of a distributed toe
 - make links out of all the references to ITT/ITC sfr's
 - finish table 1, have to add where we think things belong
 - fix table 2 after mas server sfr's get figured out
@@ -21,6 +22,7 @@ To do:
 - comment matrix
 - TLS
 - Mas server
+- incorporate evaluation activity for distributed TOE (SD B.4)
 
 - Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2) 
 - Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(3), fmt_mof.1(4), fmt_smf.1(3)
@@ -32,6 +34,7 @@ To do:
     
   <PPReference>
     <ReferenceTable>
+      <PPTitle>Mobile Device Management Protection Profile</PPTitle>
       <PPVersion>4.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2018-09-24</PPPubDate>
@@ -197,7 +200,7 @@ To do:
       
       <glossary>
         <!-- HERE glossary <abbr linkend="TSS"/>-->
-        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent. </description></entry>
+        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. <!--This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent.--></description></entry>
         <entry><term><abbr title="Application Programming Interface">API</abbr></term>
           <description>Application Programming Interface</description></entry>
         <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for Information Technology Security Evaluation (International Standard ISO/IEC 15408).</description></entry>
@@ -415,19 +418,19 @@ To do:
     When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/>: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> to protect the registration exchange.<h:br/><h:br/>
     <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1(1)" id=""/>
     <h:br/><h:br/>
-    The second approach (Figure 2) utilises an alternative registration channel and supports use cases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
+    The second approach (Figure 3) utilises an alternative registration channel and supports use cases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
     <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id=""/>
     <h:br/><h:br/>
-    The final approach (Figure 3) supports use-cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/>.<h:br/><h:br/>
+    The final approach (Figure 4) supports use-cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/>.<h:br/><h:br/>
     <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id=""/>
     <h:br/><h:br/>
     In each case, during the registration process, the Security Administrator must positively enable the joining components before it can act as part of the <abbr linkend="TSF"/>. The following figure illustrates the approaches that this enablement step may take;<h:br/><h:br/>
     <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id=""/>
     <h:br/><h:br/>
-    Note that in the case where no registration channel is required, that is the joiner and gatekeeper are directly configured (Figure 3), enablement is implied as part of this direct configuration process.<h:br/><h:br/>
-    After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an <abbr linkend="ST"/> as an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> in terms of section 6 and appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> (see section 6.2.2) and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of <linkref linkend="FTP_ITC.1(1)"/> and <linkref linkend="FTP_TRP.1(1)"/>). 
+    Note that in the case where no registration channel is required, that is the joiner and gatekeeper are directly configured (Figure 4), enablement is implied as part of this direct configuration process.<h:br/><h:br/>
+    After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an <abbr linkend="ST"/> as an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> in terms of section 6 and appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of <linkref linkend="FTP_ITC.1(1)"/> and <linkref linkend="FTP_TRP.1(1)"/>). 
     <section title="Allocation of requirements in distributed TOEs" id="ard"></section>
-    For a distributed <abbr linkend="TOE"/>, the security functional requirements in this <abbr linkend="PP"/> need to be met by the <abbr linkend="TOE"/> as a whole, but not all <abbr linkend="SFR"/>'s will necessarily be implemented by all components. The following categories are defined in order to specify when each <abbr linkend="SFR"/> must be implemented by a component:
+    For a distributed <abbr linkend="TOE"/>, the security functional requirements in this <abbr linkend="PP"/> need to be met by the <abbr linkend="TOE"/> as a whole, but not all <abbr linkend="SFR"/>'s will necessarily be implemented by all components. The following categories are defined in order to specify when each <abbr linkend="SFR"/> must be implemented by a component:<h:br/>
     <h:ul>
       <h:li><h:b>All Components ("All")</h:b> - All components that comprise the distributed <abbr linkend="TOE"/> must independently satisfy the requirement.</h:li>
       <h:li><h:b>At least one Component ("One")</h:b> - This requirement must be fulfilled by at least one component within the distributed <abbr linkend="TOE"/>.</h:li>
@@ -3661,9 +3664,10 @@ To do:
             <note role="application"> This requirement captures all the configuration functionality the <abbr linkend="TSF"/> provides the administrator to configure the <abbr linkend="MDM"/> Agent. This requirement is broken into two configurable areas: <abbr linkend="MDM"/> Agent commands and <abbr linkend="MDM"/> Agent policies. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> The <abbr linkend="ST"/> author shall not claim any functionality not provided by the Mobile Device. All selections and assignments performed by the <abbr linkend="ST"/> author in this requirement should match the selections and assignments of the validated Mobile Device <abbr linkend="ST"/>.<h:br/><h:br/> 
               Function-specific Application Notes:<h:br/><h:br/> 
               Function specific application notes reference Mobile Device Fundamentals (MDF) <abbr linkend="PP"/> v3.1.<h:br/><h:br/> 
-              Function <ctr-ref refid="smf12"/> may be satisfied by application blacklisting and/or disabling for the BYOD use case.<h:br/><h:br/>
+              Function <ctr-ref refid="smf12"/> may be satisfied for the BYOD use case by application blacklisting and/or disabling. In the case of BYOD, and enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not loose any information they might have in the application.<h:br/><h:br/>
               Function <ctr-ref refid="smf16"/> provides the <abbr linkend="MDM"/> server to display an alert to the user of the mobile device.<h:br/><h:br/> 
               The audit records read according to Function <ctr-ref refid="smf19"/> are to be transmitted to an external audit server according to <linkref linkend="FAU_STG_EXT.1(1)"/>. The <abbr linkend="MDM"/> Server is not expected to retain those logs.<h:br/><h:br/> 
+              Function <ctr-ref refid="smf34"/> provides the ability to enable/disable policy for the list of protocols where the device acts as a server, such as a mobile hotspot.<h:br/><h:br/>  
               Function <ctr-ref refid="smf56"/> corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr linkend="MDM"/> Agent has not had a successful reachability event with the <abbr linkend="MDM"/> Server in the amount of time specified in 'a', then the agent shall perform the action selected in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each action could be associated with a different timeout in 'a'. If function <ctr-ref refid="smf56"/> is included in the <abbr linkend="ST"/>, than FPT_NET_EXT.1.1 shall be included in the Agent <abbr linkend="ST"/>. </note>
             <aactivity>
               <TSS/> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed. The evaluator shall examine the <abbr linkend="TSS"/> to verify that any differences between management functions and policies for each supported <abbr linkend="MDM"/> Agent/platform listed. The evaluator shall also examine the <abbr linkend="ST"/> of the claimed Mobile Device to verify that the selections and assignments in the functions and policies in the <abbr linkend="TSS"/> do not exceed the capabilities of the supported MD. <h:br/><h:br/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it identifies the management functions implemented for each supported <abbr linkend="MDM"/> Agent/platform, which are likely to be subsets of the all of the management functions available to the administrator on the <abbr linkend="MDM"/> Server.<h:br/><h:br/>
@@ -3979,10 +3983,7 @@ To do:
         </f-component>
         <f-component id="ftp_itc.1(1)" name="Inter-TSF Trusted Channel (Authorized IT Entities)"> <!-- MDM Server is the client for these connections (i.e. to external audit server), so likely will need to reference TLSC requirements -->
           <f-element id="ftp_itc.1.1(1)"> <!--free-->
-            <title>The TSF shall <selectables>
-              <selectable>invoke platform-provided functionality</selectable>
-              <selectable>implement functionality</selectable>
-              </selectables> to use <selectables>
+            <title>The TSF shall use <selectables>
                 <selectable id="ITC_IPSEC_1">IPsec</selectable>
                 <selectable id="ITC_SSH_1">SSH</selectable>
                 <selectable id="ITC_TLS_1">TLS</selectable>
@@ -4041,18 +4042,25 @@ To do:
               to re-establish the communication automatically with (the necessary) manual intervention, there may be a window created 
               where an attacker might be able to gain critical information or compromise a connection.<h:br/><h:br/> -->
             </note>
-            <aactivity>
-              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
-            </aactivity>
           </f-element>
           <f-element id="ftp_itc.1.2(1)">
-            <title>The <abbr linkend="TSF"/> shall permit the <abbr linkend="MDM"/> Server or other
-              authorized IT entities to initiate communication via the trusted channel.</title>
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to permit the <abbr linkend="MDM"/> Server or other authorized IT entities to initiate communication via the trusted channel.</title>
+            <aactivity>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+              of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+              how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+              the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+              of this evaluation activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="ftp_itc.1.3(1)">
-            <title>The <abbr linkend="TSF"/> shall initiate communication via the trusted channel
-              for <assignable>list of services for which the TSF is able to
-                initiate communications</assignable>.</title>
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to initiate communication via the trusted channel for <assignable>list of services for which the TSF is able to initiate communications</assignable>.</title>
             <note role="application">While there are no requirements on the party initiating the
               communication, the <abbr linkend="ST"/> author lists in the assignment for <linkref linkend="FTP_ITC.1.3(1)"/>
               the services for which the <abbr linkend="TOE"/> can initiate the communication with
@@ -4061,6 +4069,11 @@ To do:
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the
                 methods of communication with authorized IT entities are indicated, along with how
                 those communications are protected.<h:br/><h:br/> 
+                If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+                of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+                how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+                the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+                of this evaluation activity).<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains
                 instructions for configuring the communication channel between the <abbr
                   linkend="MDM"/> Server and authorized IT entities for each supported
@@ -4151,12 +4164,23 @@ To do:
             </note>
           </f-element>
           <f-element id="ftp_itc.1.2(2)">
-            <title>The <abbr linkend="TSF"/> shall permit the <abbr linkend="TSF"/> and <abbr
-                linkend="MDM"/> Agent to initiate communication via the trusted channel.</title>
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to permit the <abbr linkend="TSF"/> and <abbr linkend="MDM"/> Agent to initiate communication via the trusted channel.</title>
+            <aactivity>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+              of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+              how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+              the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+              of this evaluation activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="ftp_itc.1.3(2)">
-            <title>The <abbr linkend="TSF"/> shall initiate communication via the trusted channel
-              for all communication between the <abbr linkend="MDM"/> Server and the <abbr
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to initiate communication via the trusted channel for all communication between the <abbr linkend="MDM"/> Server and the <abbr
                 linkend="MDM"/> Agent <!-- and <selectables>
                 <selectable>all communication between the MAS Server and the <abbr linkend="MDM"/>
                   Agent</selectable>
@@ -4171,6 +4195,12 @@ To do:
                 listed in the <abbr linkend="TSS"/> in support of remote <abbr linkend="TOE"/>
                 administration are consistent with those specified in the requirement, and are
                 included in the requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              
+                If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+                of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+                how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+                the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+                of this evaluation activity).<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains
                 instructions for configuring the communication channel between the <abbr
                   linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server for each supported
@@ -4303,24 +4333,14 @@ To do:
         -->
         <f-component id="ftp_trp.1(1)" name="Trusted Path (for Remote Administration)">
           <f-element id="ftp_trp.1.1(1)"> <!--free-->
-            <title>The TSF shall <selectables>
-              <selectable>invoke platform-provided functionality</selectable>
-              <selectable>implement functionality</selectable>
-              </selectables> to use <selectables>
+            <title>The TSF shall use <selectables>
                 <selectable id="TRP_IPSEC_1">IPsec</selectable>
                 <selectable id="TRP_TLS_1">TLS</selectable>
                 <selectable id="TRP_HTTPS_1">HTTPS</selectable>
                 <selectable id="TRP_SSH_1">SSH</selectable>
               </selectables> to provide a trusted communication path between itself and remote administrators that is logically 
               distinct from other communication paths and provides assured identification of its endpoints and protection of the 
-              communicated data from [modification, disclosure].</title>
-            <aactivity>
-              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
-              of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
-              how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
-              the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
-              of this evaluation activity).<h:br/><h:br/>
-            </aactivity>
+              communicated data from [modification, disclosure].</title>            
           </f-element>
           <f-element id="ftp_trp.1.2(1)"> <!--free-->
             <title>The TSF shall <selectables>
@@ -4380,23 +4400,13 @@ To do:
         </f-component>
         <f-component id="ftp_trp.1(2)" name="Trusted Path (for Enrollment)">
           <f-element id="ftp_trp.1.1(2)"> <!--free-->
-            <title>The TSF shall <selectables>
-              <selectable>invoke platform-provided functionality</selectable>
-              <selectable>implement functionality</selectable>
-              </selectables> to use <selectables>
+            <title>The TSF shall use <selectables>
                 <selectable id="TRP_TLS_2">TLS</selectable>
                 <selectable id="TRP_HTTPS_2">HTTPS</selectable>
               </selectables> to provide a trusted communication path between itself and MD users that is logically distinct 
               from other communication paths and provides assured identification of its endpoints and protection of the 
               communicated data from disclosure and detection of modification of the communicated data from 
               [modification, disclosure]. </title>
-            <aactivity>
-              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine 
-              the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it 
-              describes (for each supported platform) how this functionality is invoked (it should be noted that this may be 
-              through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will 
-              be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
-            </aactivity>
           </f-element>
           <f-element id="ftp_trp.1.2(2)"> <!--free-->
             <title>The TSF shall <selectables>
@@ -4833,6 +4843,75 @@ To do:
       appropriate for detecting one or more failures in the entropy source.<h:br/><h:br/>
     </section>
   </appendix>
+  
+  <appendix id="" title="Evaluating additional components for a distributed TOE">
+    In the case of a distributed TOE the Security Target will identify an evaluated configuration that consists of a number of separate components chosen by the ST author, which collectively satisfy the requirements of the PP. This evaluated configuration need not be the minimum set of components that could possibly meet the PP (e.g. if the TOE is intended for large enterprise deployments then the evaluated configuration might include some redundancy in components in order to support expected connectivity and loads), but because this is the main configuration referred to in the ST and the evaluation, it is treated in this section as the minimum configuration of interest and is referred to here as the 'minimum configuration' as well as the 'evaluated configuration'.<h:br/><h:br/>
+    
+    In addition to the minimum configuration above, the ST may also identify (at the author's discretion, and subject to verification as described in this section) which TOE components can have instances added to an operational configuration without affecting the validity of the CC certification. The ST description may include constraints on how such components are added, including required and/or prohibited configurations of the components.<h:br/><h:br/>
+    
+    Extra instances of a TOE component must have the same hardware and software as the original component included in the evaluated configuration.<h:br/><h:br/>
+    <section title="Evaluator Actions for Assessing the ST">
+      <TSS/>The evaluator shall examine the TSS to identify any extra instances of TOE
+      components allowed in the ST and shall examine the description of how the
+      additional components maintain the SFRs to confirm that it is consistent with
+      the role that the component plays in the evaluated configuration. For example:
+      the secure channels used by the extra component for intra-TOE
+      communications (FPT_ITT) and external communications (FTP_ITC) must
+      be consistent, the audit information generated by the extra component must be
+      maintained, and the management of the extra component must be consistent
+      with that used for the original instance of the component in the minimum
+      configuration.
+    </section>
+    <section title="Evaluator Actions for Assessing the Guidance Documentation">
+      <Guidance/>The evaluator shall examine the description of the extra instances of TOE
+      components in the guidance documentation to confirm that they are consistent
+      with those identified as allowed in the ST. This includes confirmation that the
+      result of applying the guidance documentation to configure the extra component will leave the TOE in a state such that the claims for SFR support
+      in each component are as described in the ST and therefore that all SFRs
+      continue to be met when the extra components are present.<h:br/><h:br/>
+      
+      The evaluator shall examine the secure communications described for the
+      extra components to confirm that they are the same as described for the
+      components in the minimum configuration (additional connections between
+      allowed extra components and the components in the minimum configuration
+      are allowed of course).<h:br/><h:br/>    
+    </section> 
+    <section title="Evaluator Actions for Testing the TOE">
+      <Test/>The evaluator tests the TOE in the minimum configuration as defined in the
+      ST (and the guidance documentation).<h:br/><h:br/>
+      
+      If the description of the use of extra components in the ST and guidance
+      documentation identifies any difference in the SFRs allocated to a component,
+      or the scope of the SFRs involved (e.g. if different selections apply to different
+      instances of the component) then the evaluator tests these additional SFR cases
+      that were not included in the minimum configuration.<h:br/><h:br/>
+      
+      In addition the evaluator tests the following aspects for each extra component
+      that is identified as allowed in the distributed TOE:
+      <h:ul>
+        <h:li>Communications: the evaluator follows the guidance documentation to
+          confirm, by testing, that any additional connections introduced with the
+          extra component and not present in the minimum configuration are
+          consistent with the requirements stated in the ST ( e.g. with regard to
+          protocols and ciphersuites used). An example of such an additional
+          connection would be if a single instance of the component is present in
+          the minimum configuration and adding a duplicate component then
+          introduces an extra communication between the two instances. Another
+          example might be if the use of the additional components necessitated the
+          use of a connection to an external authentication server instead of using
+          locally stored credentials. </h:li>
+        <h:li>Audit: the evaluator confirms that the audit records from different
+          instances of a component can be distinguished so that it is clear which
+          instance generated the record.</h:li>
+        <h:li>Management: if the extra component manages other components in the
+          distributed TOE then the evaluator shall follow the guidance
+          documentation to confirm that management via the extra component uses
+          the same roles and role holders for administrators as for the component in
+          the minimum configuration.</h:li>
+      </h:ul>      
+    </section>
+  </appendix> 
+  
   <appendix id="use-case" title="Use Case Templates"> 
     The following use case templates list those selections, assignments, and objective requirements that best support the use cases identified by this Protection Profile. Note that the templates assume that all <abbr linkend="SFR"/>s listed in Section 5 are included in the <abbr linkend="ST"/>, not just those listed in the templates. These templates and deviations from the template should be identified in the Security Target to assist customers with making risk-based purchasing decisions. Products that do not meet these templates are not precluded from use in the scenarios identified by this Protection Profile. Where selections for a particular requirement are not identified in a use case template, all available selections are equally applicable to the use case. 
     <section title="Enterprise-owned device for general-purpose enterprise use" id="usecase1">
