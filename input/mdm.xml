@@ -17,15 +17,16 @@ To do:
 
 - edit fau_gen to make it applicable to any component of a distributed toe
 - make links out of all the references to ITT/ITC sfr's
-- finish table 1, have to add where we think things belong
+- finish table 1, have to add where we think things belong >> done
 - fix table 2 after mas server sfr's get figured out
 - fix dead links to TLS, etc
-- comment matrix
+- comment matrix >> mostly done, didnt see anything else critical
 - TLS: package and figure out how to use platform TLS with the TLS package
 - Mas server
 - incorporate evaluation activity for distributed TOE (SD B.4) (pulled it in the appendix but its ugly and might need to be fixed)
 - have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
 - unify the random use of  TOE/TSF/MDM server and MD user/agent
+- update TOE boundary section
 
 
 - Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2) 
@@ -112,9 +113,7 @@ To do:
       Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network resources.<h:br/><h:br/> This document provides a baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> System, which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce the security policies, and network access control servers, are out of scope. </section>
    <section id="terms" title="Terms">
      <subsection id="ccterms" title="Common Criteria Terms">
-     <glossary>
-       
-     
+     <glossary>    
        <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for
             Information Technology Security Evaluation (International Standard ISO/IEC 15408).
           </description></entry>
@@ -147,7 +146,7 @@ To do:
      </subsection>
       <subsection title="Technology Terms" id="techterms">
         <glossary>
-        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent. </description></entry>
+        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. <!--This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent.--></description></entry>
         <entry><term><abbr title="Application Programming Interface">API</abbr></term>
           <description>Application Programming Interface</description></entry>
           <entry><term><abbr title="Critical Security Parameter">CSP</abbr></term><description>Critical Security Parameter</description></entry>
@@ -588,7 +587,7 @@ To do:
       <h:tr>
         <h:td>FCS_IV_EXT.1</h:td>
         <h:td>Initialization Vector Generation</h:td>
-        <h:td></h:td>
+        <h:td>Feature Dependent</h:td>
       </h:tr>
       <h:tr>
         <h:td>FCS_RBG_EXT.1</h:td>
@@ -598,12 +597,12 @@ To do:
       <h:tr>
         <h:td>FCS_STG_EXT.1</h:td>
         <h:td>Cryptographic Key Storage</h:td>
-        <h:td></h:td>
+        <h:td>All</h:td>
       </h:tr>
       <h:tr>
         <h:td>FCS_STG_EXT.2</h:td>
         <h:td>Encrypted Cryptographic Key Storage</h:td>
-        <h:td></h:td>
+        <h:td>Feature Dependent</h:td>
       </h:tr>
       <!-->
       <h:tr>
@@ -622,7 +621,7 @@ To do:
       <h:tr>
         <h:td>FIA_ENR_EXT.1</h:td>
         <h:td>Enrollment of Mobile Device into Management</h:td>
-        <h:td></h:td>
+        <h:td>One</h:td>
       </h:tr>
       <h:tr>
         <h:td>FIA_UAU.1</h:td>
@@ -632,7 +631,7 @@ To do:
       <h:tr>
         <h:td>FIA_UAU_EXT.4(*)</h:td>
         <h:td>User Authentication</h:td>
-        <h:td></h:td>
+        <h:td>One</h:td>
       </h:tr>
       <!-->
       <h:tr>
@@ -671,7 +670,7 @@ To do:
       <h:tr>
         <h:td>FIA_X509_EXT.4</h:td>
         <h:td>Alternate X509 Enrollment</h:td>
-        <h:td></h:td> 
+        <h:td>Feature Dependent</h:td> 
       </h:tr>      
       <h:tr>
         <h:td>FMT_MOF.1(1)</h:td>
@@ -710,12 +709,12 @@ To do:
       <h:tr>
         <h:td>FMT_POL_EXT.1</h:td>
         <h:td>Trusted Policy Update</h:td>
-        <h:td></h:td> 
+        <h:td>One</h:td> 
       </h:tr>
       <h:tr>
         <h:td>FMT_SAE_EXT.1</h:td>
         <h:td>Security Attribute Expiration</h:td>
-        <h:td></h:td> 
+        <h:td>One</h:td> 
       </h:tr>      
       <h:tr>
         <h:td>FMT_SMF.1(1)</h:td>
@@ -749,7 +748,7 @@ To do:
       <h:tr>
         <h:td>FPT_API_EXT.1.1</h:td>
         <h:td>Use of Supported Services and API's</h:td>
-        <h:td></h:td> 
+        <h:td>All</h:td> 
       </h:tr>
       <!-->
       <h:tr>
@@ -766,7 +765,7 @@ To do:
       <h:tr>
         <h:td>FPT_LIB_EXT.1.1</h:td>
         <h:td>Use of Third Party Libraries</h:td>
-        <h:td></h:td> 
+        <h:td>All</h:td> 
       </h:tr>
       <!-->
       <h:tr>
@@ -825,6 +824,11 @@ To do:
         <h:td>FTP_ITC.1</h:td>
         <h:td>Inter-TSF Trusted Channel (Authorized IT Entities)</h:td>
         <h:td>One</h:td> 
+      </h:tr>
+      <h:tr>
+        <h:td>FTP_ITC_EXT.1</h:td>
+        <h:td>Trusted Channel</h:td>
+        <h:td>One</h:td> 
       </h:tr> 
       <h:tr>
         <h:td>FTP_TRP.1(1)</h:td>
@@ -834,7 +838,7 @@ To do:
       <h:tr>
         <h:td>FTP_TRP.1(2)</h:td>
         <h:td>Trusted Path for Enrollment</h:td>
-        <h:td></h:td> 
+        <h:td>One</h:td> 
       </h:tr>
       <h:tr>
         <h:td>FTP_TRP.1(3)</h:td>
@@ -1527,6 +1531,11 @@ To do:
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Non-<abbr linkend="TOE"/> endpoint of
                       connection.</h:TD>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FTP_ITC_EXT.1</h:TD>
+                    <h:TD>Trusted Path/Channels.</h:TD>
+                    <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
                     <h:TD>FTP_TRP.1(1)</h:TD>
@@ -3713,6 +3722,7 @@ To do:
                     <selectable><h:li>configure the privacy-sensitive information that will and will not be collected from particular mobile devices</h:li></selectable>
                     <selectable><h:li>configure the length of time the enrollment authenticator is valid</h:li></selectable>
                     <selectable><h:li>configure the interaction between <abbr linkend="TOE"/> components</h:li></selectable>
+                    <selectable><h:li>configure the cryptographic functionality</h:li></selectable>
                     <selectable><h:li>no other management functions</h:li></selectable>
                   </selectables>                
               </h:ol>
@@ -3721,7 +3731,7 @@ To do:
               
               For distributed <abbr linkend="TOE"/>s the interaction between <abbr linkend="TOE"/> components will be configurable (see FCO_CPC_EXT.1). Therefore, the <abbr linkend="ST"/> author includes the selection "Ability to configure the interaction between <abbr linkend="TOE"/> components" for distributed <abbr linkend="TOE"/>s. A simple example would be the change of communication protocol according to FPT_ITT.1. Another example would be changing the management of a <abbr linkend="TOE"/> component from direct remote administration to remote administration through another <abbr linkend="TOE"/> component. A more complex use case would be if the realization of an <abbr linkend="SFR"/> is achieved through two or more <abbr linkend="TOE"/> components and the responsibilities between the two or more components could be modified.<h:br/><h:br/>
               
-              For distributed <abbr linkend="TOE"/>s that implement a registration channel (as described in FCO_CPC_EXT.1.2), the <abbr linkend="ST"/> author uses the selection “Ability to configure the cryptographic functionality” in this <abbr linkend="SFR"/>, and its corresponding mapping in the <abbr linkend="TSS"/>, to describe the configuration of any cryptographic aspects of the registration channel that can be modified by the operational environment in order to improve the channel security.              
+              For distributed <abbr linkend="TOE"/>s that implement a registration channel (as described in FCO_CPC_EXT.1.2), the <abbr linkend="ST"/> author uses the selection "configure the cryptographic functionality" in this <abbr linkend="SFR"/>, and its corresponding mapping in the <abbr linkend="TSS"/>, to describe the configuration of any cryptographic aspects of the registration channel that can be modified by the operational environment in order to improve the channel security.              
             </note>
             <aactivity>
               <TSS/> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed. For function f, the evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes the privacy-sensitive information that the <abbr linkend="TOE"/> has the capability to collect from enrolled mobile devices.<h:br/><h:br/> 
@@ -3761,18 +3771,14 @@ To do:
         </f-component> 
         <f-component id="fmt_smr.1(1)" name="Security Management Roles">
           <f-element id="fmt_smr.1.1(1)">
-            <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <selectables linebreak="yes">
-              <selectable>enrolled mobile devices, application access groups</selectable>
+            <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <selectables>
               <selectable><assignable>additional authorized identified roles</assignable></selectable>
               <selectable>no additional roles</selectable>
             </selectables>.</title>
           </f-element>
           <f-element id="fmt_smr.1.2(1)">
             <title>The <abbr linkend="MDM"/> Server shall be able to associate users with roles.</title>
-            <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role shall be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>
-              
-              If the TSF supports Mobile Application Store functionality then "enrolled mobile devices, application access groups" shall be selected. Additional SFR's to support this functionality to be included in the ST are: FAU_GEN.1.1(2), FAU_GEN.1.2(2), FMT_MOF.1.1(3), FMT_MOF.1.1(4), and FMT_SMF.1.1(3).
-              
+            <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role shall be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>              
               For distributed <abbr linkend="TOE"/>s not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfil this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to FIA_UAU.1. For the other <abbr linkend="TOE"/> components authentication as Administrator can be realized through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1) from a component that supports the authentication of Administrators according to FIA_UAU.1. The identification of users according to FIA_UAU.1.2 and the association of users with roles according to FMT_SMR.1.2(1) is done through the components that support the authentication of Administrators according to FIA_UAU.1.   
             </note>
             <aactivity>
