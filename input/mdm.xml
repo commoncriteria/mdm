@@ -33,7 +33,7 @@ To do:
 -->
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
-<PP type="PP" boilerplate="yes" xmlns="https://niap-ccevs.org/cc/v1" name="Mobile Device Management"
+<PP type="pp" boilerplate="yes" xmlns="https://niap-ccevs.org/cc/v1" name="Mobile Device Management"
   xmlns:h="http://www.w3.org/1999/xhtml">
     
   <PPReference>
@@ -420,16 +420,16 @@ To do:
     This <abbr linkend="PP"/> includes support for distributed <abbr linkend="MDM"/> <abbr linkend="TOE"/>'s. <abbr linkend="MDM"/>'s can sometimes be composed of multiple components operating as a logical whole. Oftentimes we see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different architectures; but fundamentally, they are variations of the following model where the <abbr linkend="SFR"/>'s of this <abbr linkend="PP"/> can only be fulfilled if the components are deployed and operate together. To be considered a distributed <abbr linkend="TOE"/>, a minimum of 2 interconnected components are required.
     <section title="Registration of components of a distributed TOE" id="rcd"></section>
     When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/>: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> to protect the registration exchange.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1(1)" id=""/>
+    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1(1)" id="DTF1"/>
     <h:br/><h:br/>
     The second approach (Figure 3) utilises an alternative registration channel and supports use cases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id=""/>
+    <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id="DTF2"/>
     <h:br/><h:br/>
     The final approach (Figure 4) supports use-cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/>.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id=""/>
+    <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id="DTF3"/>
     <h:br/><h:br/>
     In each case, during the registration process, the Security Administrator must positively enable the joining components before it can act as part of the <abbr linkend="TSF"/>. The following figure illustrates the approaches that this enablement step may take;<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id=""/>
+    <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id="DTF4"/>
     <h:br/><h:br/>
     Note that in the case where no registration channel is required, that is the joiner and gatekeeper are directly configured (Figure 4), enablement is implied as part of this direct configuration process.<h:br/><h:br/>
     After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an <abbr linkend="ST"/> as an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> in terms of section 6 and appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of <linkref linkend="FTP_ITC.1(1)"/> and <linkref linkend="FTP_TRP.1(1)"/>). 
@@ -1061,7 +1061,7 @@ To do:
     </section>
     <section id="sooe" title="Security Objectives for the Operational Environment">
       <SOEs>
-        <SOE id="OE.COMPONENTS_RUNNING (applies to distributed TOE's only)">
+        <SOE id="OE.COMPONENTS_RUNNING">
           <description>For distributed <abbr linkend="TOE"/>s the Security Administrator ensures that the availability of every <abbr linkend="TOE"/> component is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr linkend="TOE"/> components. The Security Administrator also ensures that it is checked as appropriate for every <abbr linkend="TOE"/> component that the audit functionality is running properly. </description>
         </SOE>
         <SOE id="OE.PROPER_ADMIN">
@@ -1712,8 +1712,8 @@ To do:
               </aactivity>
           </f-element>
         </f-component>
-        <f-component name="Security Audit for Distributed TOEs">
-          <f-element>
+        <f-component name="Security Audit for Distributed TOEs" id="SADT">
+          <f-element id="">
             <title>
               For distributed <abbr linkend="TOE"/>'s the handling of audit information might be more complicated than for <abbr linkend="TOE"/>'s consisting only of one component. There are a few basic requirements to be fulfilled:<h:br/><h:br/>
               <h:ul>
@@ -3730,10 +3730,10 @@ To do:
         <f-component id="fmt_smr.1(1)" name="Security Management Roles">
           <f-element id="fmt_smr.1.1(1)">
             <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <selectables>
-              <selecatble>enrolled mobile devices</selecatble>
-              <selecatble>application access groups</selecatble>
-              <selecatble><assignable>additional authorized identified roles</assignable></selecatble>
-              <selecatble>no additional roles</selecatble>
+              <selectable>enrolled mobile devices</selectable>
+              <selectable>application access groups</selectable>
+              <selectable><assignable>additional authorized identified roles</assignable></selectable>
+              <selectable>no additional roles</selectable>
             </selectables>.</title>
           </f-element>
           <f-element id="fmt_smr.1.2(1)">
