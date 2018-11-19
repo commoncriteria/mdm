@@ -3101,7 +3101,8 @@ To do:
             </aactivity>
           </f-element>          
         </f-component>
-        <f-component id="fia_x509_ext.1(2)" name="Validation of Certificates">
+        <f-component id="fia_x509_ext.1(2)" name="Validation of Certificates" status="sel-based" >
+          <selection-depends req="FPT_ITT.1.1" ids="ITT_IPSEC, ITT_HTTPS, ITT_TLS, ITT_DTLS"/>
           <f-element id="fia_x509_ext.1.1(2)"> <!--free-->
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -3850,7 +3851,8 @@ To do:
                 <selectable id="ITT_DTLS">DTLS</selectable>
               </selectables> when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> <!--(such as between the <abbr linkend="MDM"/> Server and the MAS Server)-->are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection.<h:br/><h:br/> 
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. To support mutual authentication FIA_X509_EXT.1(2) should be included in the ST<h:br/><h:br/>
+                            
               <!-- need to review text below-->
               This channel may also be used as the registration channel for the registration process, as described in section 3.1 and FCO_CPC_EXT.1.2.<h:br/><h:br/>
               
@@ -4063,7 +4065,7 @@ To do:
               if protection is claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
               <!--TODO REVIEW FOR CORRECTNESS-->
               For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MDM Server should still 
-              be able to support mutual authentication. There are no requirements levied on the external entities, but the MDM Server 
+              be able to support mutual authentication via FIA_X509_EXT.1(1). There are no requirements levied on the external entities, but the MDM Server 
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
               entity does support mutual authentication, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               <!--TODO END REVIEW-->
