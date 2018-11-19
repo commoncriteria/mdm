@@ -428,17 +428,18 @@ To do:
     This <abbr linkend="PP"/> includes support for distributed <abbr linkend="MDM"/> <abbr linkend="TOE"/>'s. <abbr linkend="MDM"/>'s can sometimes be composed of multiple components operating as a logical whole. Oftentimes we see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different architectures; but fundamentally, they are variations of the following model where the <abbr linkend="SFR"/>'s of this <abbr linkend="PP"/> can only be fulfilled if the components are deployed and operate together. To be considered a distributed <abbr linkend="TOE"/>, a minimum of 2 interconnected components are required.
     <section title="Registration of components of a distributed TOE" id="rcd"></section>
     When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/>: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> to protect the registration exchange.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1(1)" id="distTOE1"/>
+
+    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1(1)" id="DTF1"/>
     <!-- Question: Does it hold true that ITT should be used if cert revocation is not performed and ITC if cert revocation is performed? -->
     <h:br/><h:br/>
     The second approach (Figure 3) utilises an alternative registration channel and supports use cases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id="distTOE2"/>
+    <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id="DTF2"/>
     <h:br/><h:br/>
     The final approach (Figure 4) supports use-cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/>.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id="distTOE3"/>
+    <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id="DTF3"/>
     <h:br/><h:br/>
     In each case, during the registration process, the Security Administrator must positively enable the joining components before it can act as part of the <abbr linkend="TSF"/>. The following figure illustrates the approaches that this enablement step may take;<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id="distTOE4"/>
+    <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id="DTF4"/>
     <h:br/><h:br/>
     Note that in the case where no registration channel is required, that is the joiner and gatekeeper are directly configured (Figure 4), enablement is implied as part of this direct configuration process.<h:br/><h:br/>
     After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an <abbr linkend="ST"/> as an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> in terms of section 6 and appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of <linkref linkend="FTP_ITC.1(1)"/> and <linkref linkend="FTP_TRP.1(1)"/>). 
@@ -1070,8 +1071,10 @@ To do:
     </section>
     <section id="sooe" title="Security Objectives for the Operational Environment">
       <SOEs>
-        <SOE id="OE.COMPONENTS_RUNNING"> <!-- (applies to distributed TOE's only) -->
-          <description>For distributed <abbr linkend="TOE"/>s the Security Administrator ensures that the availability of every <abbr linkend="TOE"/> component is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr linkend="TOE"/> components. The Security Administrator also ensures that it is checked as appropriate for every <abbr linkend="TOE"/> component that the audit functionality is running properly. </description>
+
+        <SOE id="OE.COMPONENTS_RUNNING">
+          <description>For distributed <abbr linkend="TOE"/>s the Administrator ensures that the availability of every <abbr linkend="TOE"/> component is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr linkend="TOE"/> components. The Administrator also ensures that it is checked as appropriate for every <abbr linkend="TOE"/> component that the audit functionality is running properly. </description>
+
         </SOE>
         <SOE id="OE.PROPER_ADMIN">
           <description><abbr linkend="TOE"/> Administrators are trusted to follow and apply all
@@ -1174,10 +1177,9 @@ To do:
               Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report upon 
               endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile 
               as standards efforts mature.<h:br/><h:br/> 
-              If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. 
-              If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. 
-              If "HTTPS" isselected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in 
-              the <abbr linkend="ST"/>.<h:br/><h:br/>
+              If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>.<h:br/><h:br/> 
+              If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
+              If "HTTPS" isselected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the 
               following selections made:
               <h:ul>
@@ -3182,7 +3184,9 @@ To do:
                 <selectable>no additional uses</selectable>
               </selectables></title>
             <note role="application"> The <abbr linkend="ST"/> author's selection(s) shall match the selection of <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_ITC.1(1)"/>, and <linkref linkend="FPT_ITT.1"/>. Certificates may optionally be used for trusted updates of system software (<linkref linkend="FPT_TUD_EXT.1.3"/>) and software integrity verification (<linkref linkend="FPT_TST_EXT.1.2"/>). If some authentication services are provided by the <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author shall clearly identify which services are provided by the <abbr linkend="TOE"/> and which by the platform.<h:br/><h:br/> If code signing for integrity verification is selected, the <abbr linkend="MDM"/> vendor is not expected to digitally sign DLL's from other vendors that have been incorporated into their product.<h:br/><h:br/> 
-              If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. If "TLS", "HTTPS" or "DTLS" are selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. 
+              If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
+              If "TLS", "HTTPS" or "DTLS" are selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. 
             </note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
@@ -3738,9 +3742,8 @@ To do:
         </f-component> 
         <f-component id="fmt_smr.1(1)" name="Security Management Roles">
           <f-element id="fmt_smr.1.1(1)">
-            <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <selectables>
-              <selectable>enrolled mobile devices</selectable>
-              <selectable>application access groups</selectable>
+            <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <selectables linebreak="yes">
+              <selectable>enrolled mobile devices, application access groups</selectable>
               <selectable><assignable>additional authorized identified roles</assignable></selectable>
               <selectable>no additional roles</selectable>
             </selectables>.</title>
@@ -3748,6 +3751,8 @@ To do:
           <f-element id="fmt_smr.1.2(1)">
             <title>The <abbr linkend="MDM"/> Server shall be able to associate users with roles.</title>
             <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role shall be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>
+              
+              If the TSF supports Mobile Application Store functionality then "enrolled mobile devices, application access groups" shall be selected. Additional SFR's to support this functionality to be included in the ST are: FAU_GEN.1.1(2), FAU_GEN.1.2(2), FMT_MOF.1.1(3), FMT_MOF.1.1(4), and FMT_SMF.1.1(3).
               
               For distributed <abbr linkend="TOE"/>s not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfil this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to FIA_UAU.1. For the other <abbr linkend="TOE"/> components authentication as Administrator can be realized through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1) from a component that supports the authentication of Administrators according to FIA_UAU.1. The identification of users according to FIA_UAU.1.2 and the association of users with roles according to FMT_SMR.1.2(1) is done through the components that support the authentication of Administrators according to FIA_UAU.1.   
             </note>
@@ -3953,9 +3958,10 @@ To do:
       <subsection id="ftp" title="Trusted Path/Channels (FTP)">
         <f-component name="Trusted Channel" id="ftp_itc_ext.1"> <!-- New SFR, this will specify if Agent is in the TOE-->
           <f-element id="ftp_itc_ext.1.1">
-            <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself and an MDM Agent that is <selectables>
-              <selectable id="AgentInTOE">internal to the TOE</selectable>
-              <selectable id="AgentOutTOE">external to the TOE</selectable>
+            <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself and <selectables linebreak="yes">              
+              <selectable id="AgentInTOE">an MDM Agent that is internal to the TOE</selectable>
+              <selectable id="AgentOutTOE">an MDM Agent that is external to the TOE</selectable>
+              <selectable>other components comprising the distributed TOE</selectable>
             </selectables><!--, and <selectables>
               <selectable id="DistributedTOE_MAS">a MAS Server</selectable>
               <selectable>no other</selectable>
@@ -3967,15 +3973,20 @@ To do:
             </selectables>
               .</title>
             <note role="Application">
-              This SFR describes the communication channels between the MDM Server and an Agent that may or may not be in the <abbr linkend="TOE"/> <!--and 
-              optionally a physically distinct MAS Server,-->to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/>
+              This SFR describes the communication channels between the MDM Server and an Agent that may or may not be in the <abbr linkend="TOE"/>, and 
+              optionally separate components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/>
+              
               If the <abbr linkend="TOE"/> includes an MDM Agent, then the communication channel between the Agent and MDM Server is internal to the 
-              <abbr linkend="TOE"/> and thus "internal to the TOE" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1"/> 
-              shall be selected in the third selection and <linkref linkend="FPT_ITT.1"/> shall be included in the ST. <h:br/><h:br/>
+              <abbr linkend="TOE"/> and thus "an MDM Agent that is internal to the TOE" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1"/> 
+              shall be selected in the second selection and <linkref linkend="FPT_ITT.1"/> shall be included in the ST. <h:br/><h:br/>
+              
               If the <abbr linkend="TOE"/> interoperates with an evaluated MDM Agent built into a mobile device (i.e., the <abbr linkend="TOE"/> does not include an 
-              MDM Agent), the communication channel between the Agent and MDM Server is external to the <abbr linkend="TOE"/> and thus "external to 
+              MDM Agent), the communication channel between the Agent and MDM Server is external to the <abbr linkend="TOE"/> and thus "an MDM Agent that is external to 
               the TOE" shall be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> shall be selected in 
-              the third selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the ST. <h:br/><h:br/>
+              the second selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the ST. <h:br/><h:br/>
+              
+              If the TOE is distributed then "other components comprising the distributed TOE" shall be selected in the first selection and <linkref linkend="FPT_ITT.1"/> shall be selected in the second selection. <linkref linkend="FPT_ITT.1"/> shall be included in the ST for all internal channels used to transfer TSF data between TOE components.
+              
               <!--
               If the MAS Server is physically distinct from the MDM Server, then "MAS Server" shall be selected in the second 
               selection. The MAS Server is considered a separate part of the distributed <abbr linkend="TOE"/> and thus <linkref linkend="FPT_ITT.1"/> 
@@ -4025,7 +4036,10 @@ To do:
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
               entity does support mutual authentication, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               <!--TODO END REVIEW-->
-              The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>.<h:br/><h:br/>
+              If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
+              If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
