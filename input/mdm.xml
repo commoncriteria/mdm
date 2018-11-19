@@ -526,37 +526,37 @@ To do:
       <h:tr>
         <h:td>FCS_CKM.1</h:td>
         <h:td>Cryptographic Key Generation</h:td>
-        <h:td>One <!--NOTE --></h:td> 
+        <h:td>Feature Dependent <!--NOTE --></h:td> <!-- Changed to account for Agent -->
       </h:tr> 
       <h:tr>
         <h:td>FCS_CKM.2</h:td>
         <h:td>Cryptographic Key Establishment</h:td>
-        <h:td>All</h:td> 
+        <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr> 
       <h:tr>
         <h:td>FCS_CKM_EXT.4</h:td>
         <h:td>Cryptographic Key Destruction</h:td>
-        <h:td>All</h:td> 
+        <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr> 
       <h:tr>
         <h:td>FCS_COP.1.1(1)</h:td>
         <h:td>Cryptographic Operation (Confidentiality Algorithms)</h:td>
-        <h:td>All</h:td> 
+        <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr>
       <h:tr>
         <h:td>FCS_COP.1.1(2)</h:td>
         <h:td>Cryptographic Operation (Hashing Algorithms)</h:td>
-        <h:td>All</h:td> 
+        <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr> 
       <h:tr>
         <h:td>FCS_COP.1.1(3)</h:td>
         <h:td>Cryptographic Operation (Signature Algorithms)</h:td>
-        <h:td>All</h:td> 
+        <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr> 
       <h:tr>
         <h:td>FCS_COP.1.1(4)</h:td>
         <h:td>Cryptographic Operation (Keyed-Hash Message Authentication)</h:td>
-        <h:td>All</h:td> 
+        <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr> 
       <h:tr>
         <h:td>FCS_HTTPS_EXT.1</h:td>
@@ -592,7 +592,7 @@ To do:
       <h:tr>
         <h:td>FCS_RBG_EXT.1</h:td>
         <h:td>Random Bit Generation</h:td>
-        <h:td>All</h:td> 
+        <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr>
       <h:tr>
         <h:td>FCS_STG_EXT.1</h:td>
@@ -655,22 +655,22 @@ To do:
       <h:tr>
         <h:td>FIA_X509_EXT.1(2)</h:td>
         <h:td>X.509 Certification Validation</h:td>
-        <h:td>Feature Dependent</h:td> 
+        <h:td>Feature Dependent</h:td> <!-- Needed for Agent -->
       </h:tr> 
       <h:tr>
         <h:td>FIA_X509_EXT.2</h:td>
         <h:td>X.509 Certificate Authentication</h:td>
-        <h:td>Feature Dependent</h:td> 
+        <h:td>Feature Dependent</h:td> <!-- Needed for Agent -->
       </h:tr> 
       <h:tr>
         <h:td>FIA_X509_EXT.3</h:td>
         <h:td>X509 Enrollment</h:td>
-        <h:td>Feature Dependent <!--note --></h:td> 
+        <h:td>Feature Dependent <!--note --></h:td> <!-- Needed for Agent -->
       </h:tr>
       <h:tr>
         <h:td>FIA_X509_EXT.4</h:td>
         <h:td>Alternate X509 Enrollment</h:td>
-        <h:td>Feature Dependent</h:td> 
+        <h:td>Feature Dependent</h:td> <!-- Needed for Agent -->
       </h:tr>      
       <h:tr>
         <h:td>FMT_MOF.1(1)</h:td>
@@ -3771,13 +3771,13 @@ To do:
         </f-component> 
         <f-component id="fmt_smr.1(1)" name="Security Management Roles">
           <f-element id="fmt_smr.1.1(1)">
-            <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <selectables>
+            <title>The TSF shall maintain the roles administrator, MD user, and <selectables>
               <selectable><assignable>additional authorized identified roles</assignable></selectable>
               <selectable>no additional roles</selectable>
             </selectables>.</title>
           </f-element>
           <f-element id="fmt_smr.1.2(1)">
-            <title>The <abbr linkend="MDM"/> Server shall be able to associate users with roles.</title>
+            <title>The TSF shall be able to associate users with roles.</title>
             <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role shall be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>              
               For distributed <abbr linkend="TOE"/>s not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfil this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to FIA_UAU.1. For the other <abbr linkend="TOE"/> components authentication as Administrator can be realized through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1) from a component that supports the authentication of Administrators according to FIA_UAU.1. The identification of users according to FIA_UAU.1.2 and the association of users with roles according to FMT_SMR.1.2(1) is done through the components that support the authentication of Administrators according to FIA_UAU.1.   
             </note>
@@ -3792,7 +3792,7 @@ To do:
         <f-component id="fmt_smr.1(2)" name="Security Management Roles (MAS Server)" status="sel-based">
           <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
           <f-element id="fmt_smr.1.1(2)">
-            <title>Refinement: The TSF shall maintain the roles administrator, MD user, enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
+            <title>Refinement: The TSF shall additionally maintain the roles enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
           </f-element>
           <f-element id="fmt_smr.1.2(2)">
             <title>The MAS Server shall be able to associate users with roles.</title>
@@ -3803,8 +3803,7 @@ To do:
               <Tests/>In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the <abbr linkend="TOE"/> that conforms to the requirements of this <abbr linkend="PP"/> be tested; for instance, if the <abbr linkend="TOE"/> can be administered through a local hardware interface or TLS/HTTPS then both methods of administration must be exercised during the evaluation team's test activities.
             </aactivity>
           </f-element>
-        </f-component>
-       
+        </f-component>      
       </subsection>
       
       <subsection id="fpt" title="Protection of the TSF (FPT)">
