@@ -3944,9 +3944,10 @@ To do:
       <subsection id="ftp" title="Trusted Path/Channels (FTP)">
         <f-component name="Trusted Channel" id="ftp_itc_ext.1"> <!-- New SFR, this will specify if Agent is in the TOE-->
           <f-element id="ftp_itc_ext.1.1">
-            <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself and an MDM Agent that is <selectables>
-              <selectable id="AgentInTOE">internal to the TOE</selectable>
-              <selectable id="AgentOutTOE">external to the TOE</selectable>
+            <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself and <selectables>              
+              <selectable id="AgentInTOE">an MDM Agent that is internal to the TOE</selectable>
+              <selectable id="AgentOutTOE">an MDM Agent that is external to the TOE</selectable>
+              <selectable>other components comprising the distributed TOE</selectable>
             </selectables><!--, and <selectables>
               <selectable id="DistributedTOE_MAS">a MAS Server</selectable>
               <selectable>no other</selectable>
@@ -3958,15 +3959,20 @@ To do:
             </selectables>
               .</title>
             <note role="Application">
-              This SFR describes the communication channels between the MDM Server and an Agent that may or may not be in the <abbr linkend="TOE"/> <!--and 
-              optionally a physically distinct MAS Server,-->to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/>
+              This SFR describes the communication channels between the MDM Server and an Agent that may or may not be in the <abbr linkend="TOE"/>, and 
+              optionally separate components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/>
+              
               If the <abbr linkend="TOE"/> includes an MDM Agent, then the communication channel between the Agent and MDM Server is internal to the 
-              <abbr linkend="TOE"/> and thus "internal to the TOE" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1"/> 
-              shall be selected in the third selection and <linkref linkend="FPT_ITT.1"/> shall be included in the ST. <h:br/><h:br/>
+              <abbr linkend="TOE"/> and thus "an MDM Agent that is internal to the TOE" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1"/> 
+              shall be selected in the second selection and <linkref linkend="FPT_ITT.1"/> shall be included in the ST. <h:br/><h:br/>
+              
               If the <abbr linkend="TOE"/> interoperates with an evaluated MDM Agent built into a mobile device (i.e., the <abbr linkend="TOE"/> does not include an 
-              MDM Agent), the communication channel between the Agent and MDM Server is external to the <abbr linkend="TOE"/> and thus "external to 
+              MDM Agent), the communication channel between the Agent and MDM Server is external to the <abbr linkend="TOE"/> and thus "an MDM Agent that is external to 
               the TOE" shall be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> shall be selected in 
-              the third selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the ST. <h:br/><h:br/>
+              the second selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the ST. <h:br/><h:br/>
+              
+              If the TOE is distributed then "other components comprising the distributed TOE" shall be selected in the first selection and <linkref linkend="FPT_ITT.1"/> shall be selected in the second selection. <linkref linkend="FPT_ITT.1"/> shall be included in the ST for all internal channels used to transfer TSF data between TOE components.
+              
               <!--
               If the MAS Server is physically distinct from the MDM Server, then "MAS Server" shall be selected in the second 
               selection. The MAS Server is considered a separate part of the distributed <abbr linkend="TOE"/> and thus <linkref linkend="FPT_ITT.1"/> 
