@@ -22,6 +22,7 @@ To do:
     
   <PPReference>
     <ReferenceTable>
+      <PPTitle>Protection Profile for Mobile Device Management</PPTitle>
       <PPVersion>4.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2018-09-24</PPPubDate>
@@ -92,33 +93,47 @@ To do:
     <section id="ov" title="Overview"> 
       Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network resources.<h:br/><h:br/> This document provides a baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> System, which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce the security policies, and network access control servers, are out of scope. </section>
     <section id="terms" title="Terms">
-      <!-- TODO: Craig go through the terms defined below an separate them into the different subsections -->
-      <!--  <subsection title="Common Criteria Terms">
-        
-        
-        
+      The following section provides both Common Criteria and technology terms used in this <abbr linkend="PP"/>.
+       <subsection title="Common Criteria Terms">
+	 <glossary>
+           <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for
+           Information Technology Security Evaluation (International Standard ISO/IEC 15408).
+           </description></entry>
+           <entry><term>Common Criteria Testing Laboratory</term><description>Within the context of the Common Criteria Evaluation and Validation Scheme (CCEVS), an IT security evaluation facility, accredited by the National Voluntary Laboratory Accreditation Program (NVLAP) and approved by the NIAP Validation Body to conduct Common Criteria-based evaluations.
+           </description></entry>
+        <entry><term><abbr title="Common Evaluation Methodology">CEM</abbr></term><description>Common Evaluation Methodology for Information Technology Security Evaluation. </description></entry>
+        <entry><term><abbr title="Extended Package">EP</abbr></term><description>An
+            implementation-independent set of security requirements for a specific subset of
+            products described by a <abbr linkend="PP"/>. </description></entry>
+        <entry><term><abbr title="Protection Profile">PP</abbr></term><description>An
+            implementation-independent set of security requirements for a category of products.
+          </description></entry>
+        <entry><term><abbr title="Security Assurance Requirement">SAR</abbr></term><description>A
+            requirement for how the <abbr linkend="TOE"/>'s proper implementation of the <abbr
+              linkend="SFR"/>'s is verified by an evaluator. </description></entry>
+        <entry><term><abbr title="Security Functional Requirement">SFR</abbr></term><description>A
+            requirement for security enforcement by the <abbr linkend="TOE"/>.
+          </description></entry>
+        <entry><term><abbr title="Security Target">ST</abbr></term><description>A set of
+            implementation-dependent security requirements for a specific product.
+          </description></entry>
+        <entry><term><abbr title="Target of Evaluation">TOE</abbr></term><description>The product
+            under evaluation.</description></entry>
+        <entry><term><abbr title="TOE Security Functionality">TSF</abbr></term><description>The
+            security functionality of the product under evaluation. </description></entry>
+        <entry><term><abbr title="TOE Summary Specification">TSS</abbr></term><description>A
+            description of how a <abbr linkend="TOE"/> satisfies the <abbr linkend="SFR"/>s in an
+              <abbr linkend="ST"/>. </description></entry>
+
+	 </glossary>
       </subsection>
       
-      <subsection title="Technology Terms">
-        
-        
-        
-      </subsection>
-     -->
-      The following section provides both Common Criteria and technology terms used in this <abbr linkend="PP"/>. 
-      
-      <glossary>
-        <!-- HERE glossary <abbr linkend="TSS"/>-->
+      <subsection title="Technical Terms">
+	<glossary>
         <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent. </description></entry>
         <entry><term><abbr title="Application Programming Interface">API</abbr></term>
           <description>Application Programming Interface</description>
         </entry>
-        <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for
-            Information Technology Security Evaluation (International Standard ISO/IEC 15408).
-          </description></entry>
-        <entry><term>Common Criteria Testing Laboratory</term><description>Within the context of the Common Criteria Evaluation and Validation Scheme (CCEVS), an IT security evaluation facility, accredited by the National Voluntary Laboratory Accreditation Program (NVLAP) and approved by the NIAP Validation Body to conduct Common Criteria-based evaluations.
-          </description></entry>
-        <entry><term><abbr title="Common Evaluation Methodology">CEM</abbr></term><description>Common Evaluation Methodology for Information Technology Security Evaluation. </description></entry>
         <entry><term><abbr title="Critical Security Parameter">CSP</abbr></term><description>Critical Security Parameter</description></entry>
         <entry><term>Data</term><description>Program/application or files that are stored or transmitted by a server or mobile device. </description></entry>
         <entry><term><abbr title="Data Encryption Key">DEK</abbr></term><description>Data Encryption Key</description></entry>
@@ -131,11 +146,7 @@ To do:
             temporarily stored on mobile devices to which the mobile device user is allowed access
             according to the security policy defined by the enterprise and implemented by the
             administrator. </description></entry>
-        <entry><term><abbr title="Enrollment over Secure Transport"
-            >EST</abbr></term><description>Enrollment over Secure Transport</description></entry>
-        <entry><term><abbr title="Extended Package">EP</abbr></term><description>An
-            implementation-independent set of security requirements for a specific subset of
-            products described by a <abbr linkend="PP"/>. </description></entry>
+            <entry><term><abbr title="Enrollment over Secure Transport">EST</abbr></term><description>Enrollment over Secure Transport</description></entry>
         <entry><term><abbr title="Key Encryption Key">KEK</abbr></term><description>A key that is used to encrypt other keys,
             such as data encryption keys (<abbr linkend="DEK"/>s) or storage repositories that
             contain keys. </description></entry>
@@ -165,32 +176,13 @@ To do:
             including user or enterprise data. Protected data is encrypted while the mobile device
             is in the powered-off state. This includes keys in software-based storage. May overlap
             with sensitive data. </description></entry>
-        <entry><term><abbr title="Protection Profile">PP</abbr></term><description>An
-            implementation-independent set of security requirements for a category of products.
-          </description></entry>
         <entry><term><abbr title="Root Encryption key">REK</abbr></term><description>A key tied to a particular device that
             is used to encrypt all other keys for that device. </description></entry>
-        <entry><term><abbr title="Security Assurance Requirement">SAR</abbr></term><description>A
-            requirement for how the <abbr linkend="TOE"/>'s proper implementation of the <abbr
-              linkend="SFR"/>'s is verified by an evaluator. </description></entry>
-        <entry><term><abbr title="Security Functional Requirement">SFR</abbr></term><description>A
-            requirement for security enforcement by the <abbr linkend="TOE"/>.
-          </description></entry>
-        <entry><term><abbr title="Security Target">ST</abbr></term><description>A set of
-            implementation-dependent security requirements for a specific product.
-          </description></entry>
         <entry><term>Sensitive Data</term><description>Data that is encrypted by the mobile device.
             May include all user or enterprise data or may be data for specific applications such as
             emails, messaging, documents, calendar items, or contacts. May be protected while the
             mobile device is in the locked state. Must include at minimum some keys in
             software-based key storage. </description></entry>
-        <entry><term><abbr title="Target of Evaluation">TOE</abbr></term><description>The product
-            under evaluation.</description></entry>
-        <entry><term><abbr title="TOE Security Functionality">TSF</abbr></term><description>The
-            security functionality of the product under evaluation. </description></entry>
-        <entry><term><abbr title="TOE Summary Specification">TSS</abbr></term><description>A
-            description of how a <abbr linkend="TOE"/> satisfies the <abbr linkend="SFR"/>s in an
-              <abbr linkend="ST"/>. </description></entry>
         <entry><term>Trust Anchor Database</term><description>A list of trusted root Certificate
             Authority certificates. </description></entry>
         <entry><term>TSF Data</term><description>Data for the operation of the <abbr linkend="TSF"/>
@@ -199,7 +191,10 @@ To do:
             by an <abbr linkend="MDM"/>. </description></entry>
         <entry><term>Unlocked State</term><description>Mobile device state where it is powered on
             and its functionality is available for use. </description></entry>
-      </glossary>
+
+	</glossary>
+      </subsection>
+ 
     </section>
     <section id="cte" title="Compliant Targets of Evaluation">
       The Mobile Device Management (MDM) system consists of two primary components: the <abbr linkend="MDM"/> Server software and the <abbr linkend="MDM"/> Agent. Optionally, the <abbr linkend="MDM"/> system may consist of a separate Mobile Application Store (MAS) server. 
@@ -295,38 +290,7 @@ To do:
       </usecases>
     </section>
   </chapter>
-  <chapter title="Conformance Claims" id="ccl">
-    <cclaims>
-      <cclaim id="Conformance Statement">
-        <description> To be conformant to this PP, a <abbr linkend="ST"/> must demonstrate Exact
-          Conformance, a subset of Strict Conformance as defined in <cite linkend="bibCC"/> Part 1
-          (ASE_CCL). The <abbr linkend="ST"/> must include all components in this PP that are: <h:ul>
-            <h:li>unconditional (which are always required)</h:li>
-            <h:li>selection-based (which are required when certain <h:i>selections</h:i> are chosen in the
-              unconditional requirements)</h:li>
-          </h:ul>and may include components that are <h:ul>
-            <h:li>optional</h:li>
-            <h:li>objective.</h:li>
-          </h:ul>
-          <InsertAppendixExplainer/> The <abbr linkend="ST"/> may iterate any of these components,
-          but it must not include any additional component (e.g. from CC Part 2 or 3 or a PP not
-          conformant with this one, or extended by the <abbr linkend="ST"/>) not defined in this PP
-          or a PP conformant to this one. 
-        </description>
-      </cclaim>
-      <cclaim id="CC Conformance Claims">
-        <description>This PP is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria
-          Version 3.1, Revision 4<cite linkend="bibCC"/>.</description>
-      </cclaim>
-      <cclaim id="PP Claim">
-        <description>This PP does not claim conformance to any other Protection
-          Profile.</description>
-      </cclaim>
-      <cclaim id="Package Claim">
-        <description>This PP does not claim conformance to any packages.</description>
-      </cclaim>
-    </cclaims>
-  </chapter>
+  <chapter title="Conformance Claims" id="ccl"/>
   <chapter title="Security Problem Description" id="spd">
     <section title="Threats" id="threats">
       <threats>
@@ -577,6 +541,9 @@ To do:
 
       </SOEs>
     </section>
+    <section title="Security Objectives Rationale" id="secobjrat">
+    </section>
+
   </chapter>
   <chapter title="Security Requirements" id="req">
     The Security Functional Requirements included in this section are derived from Part 2 of the Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional components. 
