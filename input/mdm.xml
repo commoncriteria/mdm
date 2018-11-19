@@ -1547,7 +1547,8 @@ To do:
             </aactivity>
           </f-element>
         </f-component>        
-        <f-component id="fau_gen.1(2)" name="Audit Generation (MAS Server)" status="optional">
+        <f-component id="fau_gen.1(2)" name="Audit Generation (MAS Server)" status="sel-based">
+          <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
           <f-element id="fau_gen.1.1(2)">
             <title>The MAS Server shall be able to generate an audit record of the following auditable events: <h:ol type="a">
               <h:li>Failure to push a new application on a managed mobile device</h:li>
@@ -3354,15 +3355,25 @@ To do:
       <subsection id="fmt" title="Security Management (FMT)">
         <f-component id="fmt_mof.1(1)" name="Management of Functions Behavior">
           <f-element id="fmt_mof.1.1(1)">
-            <title>Refinement: The <abbr linkend="MDM"/> Server shall restrict the ability to perform the functions <h:ul>
+            <title>Refinement: The TSF shall restrict the ability to perform the functions <h:ul>
                 <h:li>listed in <linkref linkend="FMT_SMF.1(1)"/></h:li>
                 <h:li>enable, disable, and modify policies listed in <linkref linkend="FMT_SMF.1(1)"/></h:li>
                 <h:li>listed in <linkref linkend="FMT_SMF.1(2)"/></h:li>
+              <h:li><selectables>
+                <selectable id="mas">enable, disable and modify policies listed in <linkref linkend="FMT_SMF.1(3)"/></selectable>
+                <selectable>no other functions</selectable>
+              </selectables></h:li>
               </h:ul> to [authorized administrators].</title>
-            <note role="application">This requirement outlines the functions that administrators will have the power to enable, disable, modify, and monitor functions and policies listed in <linkref linkend="FMT_SMF.1(1)"/>. It also includes functions necessary to maintain and configure the <abbr linkend="MDM"/> Server itself.</note>
+            <note role="application">This requirement outlines the functions that administrators will have the power to enable, disable, modify, and monitor functions and policies listed in <linkref linkend="FMT_SMF.1(1)"/>. It also includes functions necessary to maintain and configure the <abbr linkend="MDM"/> Server itself.<h:br/><h:br/>
+              "Enable, disable and modify policies listed in <linkref linkend="FMT_SMF.1(3)"/>" shall be selected if the TOE includes MAS functionality and the MAS SFRs<!-- TODO: SFR names --> shall be included in the ST.          
+            </note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> and user documents to ensure that it describes what security management functions are restricted to the administrator and what actions can be taken for each management function. The evaluator shall verify that the security management functions are restricted to authorized administrators and the administrator is only able to take the actions as described in the user documents.<h:br/><h:br/>
-              <Tests/>The evaluator shall attempt to access the functions and policies in <linkref linkend="FMT_SMF.1(1)"/> as an unauthorized user and verify that the attempt fails.            
+              <Tests/>
+              <testlist>
+                <test>The evaluator shall attempt to access the functions and policies in <linkref linkend="FMT_SMF.1(1)"/> as an unauthorized user and verify that the attempt fails.</test> 
+                <test>[conditional] The evaluator shall attempt to access the functions and policies in <linkref linkend="FMT_SMF.1(3)"/> as an unauthorized user and verify that the attempt fails.</test>
+              </testlist>
             </aactivity>
           </f-element>
         </f-component>
@@ -3376,7 +3387,8 @@ To do:
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fmt_mof.1(3)" name="Management of Functions in MAS Server" status="optional">
+        <!-- Removed (3) because added a selection to (1) to be the hook for bringing in the MAS SFRs. The App Note and AA went to FMT_SMF.1.1(3) -->
+       <!--  <f-component id="fmt_mof.1(3)" name="Management of Functions in MAS Server" status="optional">
           <f-element id="fmt_mof.1.1(3)">
             <title>The MAS Server shall restrict the ability to configure user groups for user-access to specific applications allowing only the administrator to perform this function.</title>
             <note role="application">This requirement is to ensure that the MAS Server can create groups to configure which applications a user can access based on which group they are in. If the MAS Server uses the groups defined by the <abbr linkend="MDM"/>, then it must communicate with the <abbr linkend="MDM"/> Server (if separate server) to determine which applications the user can access.</note>
@@ -3386,8 +3398,9 @@ To do:
               <Tests/>The evaluator shall ensure that the MAS client can only access the applications specified for the group they are enrolled in. The evaluator shall create a user group and do not define the user to be part of the group. Verify that an application accessible to that group cannot be accessed. The evaluator shall include the user in the group and assure that the application can be accessed.
             </aactivity>
           </f-element>
-        </f-component>
-        <f-component id="fmt_mof.1(4)" name="Management of Functions in (MAS Server Downloads)" status="optional">
+        </f-component>--> 
+        <f-component id="fmt_mof.1(4)" name="Management of Functions in (MAS Server Downloads)" status="sel-based">
+          <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
           <f-element id="fmt_mof.1.1(4)">
             <title>The MAS Server shall restrict the ability to download applications allowing only enrolled mobile devices that are compliant with <abbr linkend="MDM"/> policies and assigned to a user in the application access group to perform this function.</title>
             <aactivity>
@@ -3426,26 +3439,7 @@ To do:
             </aactivity>
           </f-element>
         </f-component>  
-        <f-component id="fmt_smf.1(3)" name="Specification of Management Functions (MAS Server)" status="optional">
-          <f-element id="fmt_smf.1.1(3)">
-            <title>The MAS Server shall be capable of performing the following management functions:
-                <h:ol type="a">
-                <h:li>Configure application access groups</h:li>
-                <h:li>Download applications</h:li>
-                <h:li>
-                  <selectables>
-                    <selectable><assignable>other MAS management functions</assignable></selectable>
-                    <selectable>no other functions</selectable>
-                  </selectables></h:li>
-              </h:ol>
-            </title>
-            <note role="application">This requirement captures all the configuration functionality in the MAS Server to configure the underlying MAS Server. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the assignment statement.</note>
-            <aactivity>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed.<h:br/><h:br/>
-              <Guidance/>The evaluator shall verify the AGD guidance includes detailed instructions of what options are available and how to configure each management functional capability listed.<h:br/><h:br/> 
-              <Tests/>The test of the functions are performed in conjunction with the restriction of the function in <linkref linkend="FMT_MOF.1(3)"/>.</aactivity>
-          </f-element>
-        </f-component> 
+        
         <f-component id="fmt_smf.1(1)" name="Specification of Management Functions (Server configuration of Agent)">
           <f-element id="fmt_smf.1.1(1)">
             <title>The <h:b><abbr linkend="MDM"/> Server</h:b> shall be capable of <h:b>communicating the following commands to the <abbr linkend="MDM"/> Agent: </h:b>
@@ -3740,6 +3734,31 @@ To do:
             </aactivity>
           </f-element>
         </f-component> 
+        <f-component id="fmt_smf.1(3)" name="Specification of Management Functions (MAS Server)" status="sel-based">
+          <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
+          <f-element id="fmt_smf.1.1(3)">
+            <title>The MAS Server shall be capable of performing the following management functions:
+              <h:ol type="a">
+                <h:li>Configure application access groups</h:li>
+                <h:li>Download applications</h:li>
+                <h:li>
+                  <selectables>
+                    <selectable><assignable>other MAS management functions</assignable></selectable>
+                    <selectable>no other functions</selectable>
+                  </selectables></h:li>
+              </h:ol>
+            </title>
+            <note role="application">This requirement captures all the configuration functionality in the MAS Server to configure the underlying MAS Server. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the assignment statement. <h:br/><h:br/>
+              The MAS Server shall be able to create groups to configure which applications a user can access based on which group they are in. If the MAS Server uses the groups defined by the <abbr linkend="MDM"/>, then it must communicate with the <abbr linkend="MDM"/> Server (if separate server) to determine which applications the user can access.
+            </note>
+            <aactivity>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed.<h:br/><h:br/>The evaluator shall examine the <abbr linkend="TSS"/> to determine if the MAS Server creates its own groups or relies on the groups specified by the <abbr linkend="MDM"/> Server.<h:br/><h:br/>
+              <Guidance/>The evaluator shall confirm that the operational guidance contains how to create and define user groups and how to specify which applications are accessible by which group.<h:br/><h:br/>
+              The evaluator shall verify the AGD guidance includes detailed instructions of what options are available and how to configure each management functional capability listed.<h:br/><h:br/> 
+              <Tests/>The evaluator shall ensure that the MAS client can only access the applications specified for the group they are enrolled in. The evaluator shall create a user group and do not define the user to be part of the group. Verify that an application accessible to that group cannot be accessed. The evaluator shall include the user in the group and assure that the application can be accessed.
+            </aactivity>
+          </f-element>
+        </f-component> 
         <f-component id="fmt_smr.1(1)" name="Security Management Roles">
           <f-element id="fmt_smr.1.1(1)">
             <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <selectables linebreak="yes">
@@ -3763,10 +3782,11 @@ To do:
             </aactivity>
           </f-element>
         </f-component> 
-        <!--
-        <f-component id="fmt_smr.1(2)" name="Security Management Roles (MAS Server)" status="optional">
+       
+        <f-component id="fmt_smr.1(2)" name="Security Management Roles (MAS Server)" status="sel-based">
+          <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
           <f-element id="fmt_smr.1.1(2)">
-            <title>Refinement: The MAS Server shall maintain the roles administrator, MD user, enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
+            <title>Refinement: The TSF shall maintain the roles administrator, MD user, enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
           </f-element>
           <f-element id="fmt_smr.1.2(2)">
             <title>The MAS Server shall be able to associate users with roles.</title>
@@ -3778,7 +3798,7 @@ To do:
             </aactivity>
           </f-element>
         </f-component>
-        -->
+       
       </subsection>
       
       <subsection id="fpt" title="Protection of the TSF (FPT)">
