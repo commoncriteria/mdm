@@ -33,7 +33,7 @@ To do:
 -->
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
-<PP type="PP" boilerplate="yes" xmlns="https://niap-ccevs.org/cc/v1" name="Mobile Device Management"
+<PP type="pp" boilerplate="yes" xmlns="https://niap-ccevs.org/cc/v1" name="Mobile Device Management"
   xmlns:h="http://www.w3.org/1999/xhtml">
     
   <PPReference>
@@ -41,7 +41,7 @@ To do:
       <PPTitle>Mobile Device Management Protection Profile</PPTitle>
       <PPVersion>4.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2018-09-24</PPPubDate>
+      <PPPubDate>2018-11-24</PPPubDate>
       <Keywords>Mobile Device Management; MDM</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -101,17 +101,21 @@ To do:
     <entry>
       <version>4.0</version>
       <date>2018-09-24</date>
-      <subject></subject>
+      <subject>
+        <!-- TODO: Add items here for revision history -->
+      </subject>
     </entry>
   </RevisionHistory>
 
   <chapter id="int" title="Introduction">
     <section id="ov" title="Overview"> 
       Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network resources.<h:br/><h:br/> This document provides a baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> System, which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce the security policies, and network access control servers, are out of scope. </section>
-    <section id="terms" title="Terms">
-      <!-- TODO: Craig go through the terms defined below an separate them into the different subsections -->
-      <!--  <subsection title="Common Criteria Terms">
-        <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for
+   <section id="terms" title="Terms">
+     <subsection id="ccterms" title="Common Criteria Terms">
+     <glossary>
+       
+     
+       <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for
             Information Technology Security Evaluation (International Standard ISO/IEC 15408).
           </description></entry>
         <entry><term>Common Criteria Testing Laboratory</term><description>Within the context of the Common Criteria Evaluation and Validation Scheme (CCEVS), an IT security evaluation facility, accredited by the National Voluntary Laboratory Accreditation Program (NVLAP) and approved by the NIAP Validation Body to conduct Common Criteria-based evaluations.
@@ -139,9 +143,10 @@ To do:
               <abbr linkend="ST"/>. </description></entry>
         <entry><term>TSF Data</term><description>Data for the operation of the <abbr linkend="TSF"/>
             that is used to enforce its security requirements. </description></entry>     
-      </subsection>
-      
-      <subsection title="Technology Terms">
+      </glossary>
+     </subsection>
+      <subsection title="Technology Terms" id="techterms">
+        <glossary>
         <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent. </description></entry>
         <entry><term><abbr title="Application Programming Interface">API</abbr></term>
           <description>Application Programming Interface</description></entry>
@@ -198,13 +203,14 @@ To do:
             by an <abbr linkend="MDM"/>. </description></entry>
        <entry><term>Unlocked State</term><description>Mobile device state where it is powered on
             and its functionality is available for use. </description></entry>       
+      </glossary>
       </subsection>
-     -->
-      The following section provides both Common Criteria and technology terms used in this <abbr linkend="PP"/>. 
+    
       
+      <!-- 
       <glossary>
-        <!-- HERE glossary <abbr linkend="TSS"/>-->
-        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. <!--This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent.--></description></entry>
+      
+        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device.</description></entry>
         <entry><term><abbr title="Application Programming Interface">API</abbr></term>
           <description>Application Programming Interface</description></entry>
         <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for Information Technology Security Evaluation (International Standard ISO/IEC 15408).</description></entry>
@@ -287,6 +293,7 @@ To do:
         <entry><term>Unlocked State</term><description>Mobile device state where it is powered on
             and its functionality is available for use. </description></entry>
       </glossary>
+      -->
     </section>
     <section id="cte" title="Compliant Targets of Evaluation">
       The Mobile Device Management (MDM) system consists of two primary components: the <abbr linkend="MDM"/> Server software and the <abbr linkend="MDM"/> Agent. Optionally, the <abbr linkend="MDM"/> system may consist of a separate Mobile Application Store (MAS) server. 
@@ -312,6 +319,7 @@ To do:
         must be tested against the native <abbr linkend="MDM"/> agent of those platforms.
         <h:br/>
         <h:br/>
+        <!-- TODO: I still feel like we need to have some definition of what MAS functionality is. We just need minor tweaks to the definition below to include cloud. -->
         <!--
         The <h:b>MAS Server</h:b> is an application on a general-purpose platform or on a
         network device, executing in a trusted network environment. The MAS Server may be separate
@@ -420,16 +428,17 @@ To do:
     This <abbr linkend="PP"/> includes support for distributed <abbr linkend="MDM"/> <abbr linkend="TOE"/>'s. <abbr linkend="MDM"/>'s can sometimes be composed of multiple components operating as a logical whole. Oftentimes we see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different architectures; but fundamentally, they are variations of the following model where the <abbr linkend="SFR"/>'s of this <abbr linkend="PP"/> can only be fulfilled if the components are deployed and operate together. To be considered a distributed <abbr linkend="TOE"/>, a minimum of 2 interconnected components are required.
     <section title="Registration of components of a distributed TOE" id="rcd"></section>
     When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/>: this requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> to protect the registration exchange.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1(1)" id=""/>
+    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1 or FTP_ITC.1(1)" id="distTOE1"/>
+    <!-- Question: Does it hold true that ITT should be used if cert revocation is not performed and ITC if cert revocation is performed? -->
     <h:br/><h:br/>
     The second approach (Figure 3) utilises an alternative registration channel and supports use cases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id=""/>
+    <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id="distTOE2"/>
     <h:br/><h:br/>
     The final approach (Figure 4) supports use-cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/>.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id=""/>
+    <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id="distTOE3"/>
     <h:br/><h:br/>
     In each case, during the registration process, the Security Administrator must positively enable the joining components before it can act as part of the <abbr linkend="TSF"/>. The following figure illustrates the approaches that this enablement step may take;<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id=""/>
+    <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id="distTOE4"/>
     <h:br/><h:br/>
     Note that in the case where no registration channel is required, that is the joiner and gatekeeper are directly configured (Figure 4), enablement is implied as part of this direct configuration process.<h:br/><h:br/>
     After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an <abbr linkend="ST"/> as an instance of <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(1)"/> in terms of section 6 and appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of <linkref linkend="FTP_ITC.1(1)"/> and <linkref linkend="FTP_TRP.1(1)"/>). 
@@ -1061,7 +1070,7 @@ To do:
     </section>
     <section id="sooe" title="Security Objectives for the Operational Environment">
       <SOEs>
-        <SOE id="OE.COMPONENTS_RUNNING (applies to distributed TOE's only)">
+        <SOE id="OE.COMPONENTS_RUNNING"> <!-- (applies to distributed TOE's only) -->
           <description>For distributed <abbr linkend="TOE"/>s the Security Administrator ensures that the availability of every <abbr linkend="TOE"/> component is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr linkend="TOE"/> components. The Security Administrator also ensures that it is checked as appropriate for every <abbr linkend="TOE"/> component that the audit functionality is running properly. </description>
         </SOE>
         <SOE id="OE.PROPER_ADMIN">
@@ -1644,12 +1653,12 @@ To do:
               storage of these audit records and the ability to allow the administrator to review these audit records is provided by 
               the operational environment. The <abbr linkend="TSF"/> may rely on the underlying operating system for this 
               functionality.<h:br/><h:br/> 
-              <!--TODO REVIEW FOR CORRECTNESS-->
+              
               Although the audit server is outside of the <abbr linkend="TOE"/>, the MDM Server should still be able to support 
               mutual authentication. There are no requirements levied on the audit server, but the client (MDM Server) should be 
               able to support TLS client certificate authentication. This way if the non-<abbr linkend="TOE"/> audit server does 
               support verifying client certs, the MDM Server is in a position to make use of that.<h:br/><h:br/>
-              <!--TODO END REVIEW-->
+              
               
               For distributed <abbr linkend="TOE"/>'s each component must be able to export audit data across a protected channel external (FTP_ITC.1) or intercomponent (FPT_ITT.1 or FTP_ITC.1) as appropriate. At least one component of the <abbr linkend="TOE"/> must be able to export audit records via FTP_ITC.1 such that all <abbr linkend="TOE"/> audit records can be exported to an external IT entity. 
               </note>
@@ -1713,8 +1722,8 @@ To do:
               </aactivity>
           </f-element>
         </f-component>
-        <f-component name="Security Audit for Distributed TOEs">
-          <f-element>
+        <f-component name="Security Audit for Distributed TOEs" id="fau_dis_ext.1"> <!-- TODO: Change the ID -->
+          <f-element id="fau_dis_ext.1.1">
             <title>
               For distributed <abbr linkend="TOE"/>'s the handling of audit information might be more complicated than for <abbr linkend="TOE"/>'s consisting only of one component. There are a few basic requirements to be fulfilled:<h:br/><h:br/>
               <h:ul>
@@ -1735,6 +1744,7 @@ To do:
           </f-element>
         </f-component>
       </subsection>
+  
       <subsection id="fco" title="Communication (FCO)">
         <f-component id="fco_cpc_ext.1" name="Componenet Registration Channel Definition" status="objective">
           <f-element id="fco_cpc_ext.1.1">
@@ -3729,10 +3739,10 @@ To do:
         <f-component id="fmt_smr.1(1)" name="Security Management Roles">
           <f-element id="fmt_smr.1.1(1)">
             <title>The <abbr linkend="MDM"/> Server shall maintain the roles administrator, MD user, and <selectables>
-              <selecatble>enrolled mobile devices</selecatble>
-              <selecatble>application access groups</selecatble>
-              <selecatble><assignable>additional authorized identified roles</assignable></selecatble>
-              <selecatble>no additional roles</selecatble>
+              <selectable>enrolled mobile devices</selectable>
+              <selectable>application access groups</selectable>
+              <selectable><assignable>additional authorized identified roles</assignable></selectable>
+              <selectable>no additional roles</selectable>
             </selectables>.</title>
           </f-element>
           <f-element id="fmt_smr.1.2(1)">
@@ -4789,7 +4799,11 @@ To do:
     </section>
   </chapter>
   <appendix id="optional" title="Optional Requirements">
-    As indicated in <secref linkend="ccl"/>, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of this <abbr linkend="PP"/>. Additionally, there are three other types of requirements specified in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and <appref linkend="objective"/>. The first type are requirements that can be included in the <abbr linkend="ST"/>, but do not have to be in order for a <abbr linkend="TOE"/> to claim conformance to this <abbr linkend="PP"/>. The second type (in <appref linkend="sel-based"/>) are requirements based on selections in the body of the <abbr linkend="PP"/>: if certain selections are made, then additional requirements in that appendix will need to be included. The third type (in <appref linkend="objective"/> are components that are not required in order to conform to this <abbr linkend="PP"/>, but will be included in the baseline requirements in future versions of this <abbr linkend="PP"/>, so adoption by vendors is encouraged. Note that the <abbr linkend="ST"/> author is responsible for ensuring that requirements in future versions of this <abbr linkend="PP"/>, so adoption by <abbr linkend="MDM"/> vendors is encouraged. Note that the <abbr linkend="ST"/> author is responsible for ensuring that requirements that may be associated with those in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and/or <appref linkend="objective"/> but are not listed (e.g., FMT-type requirements) are also included in the <abbr linkend="ST"/>. <h:br/><h:br/> This Appendix is divided into three subsections: optional requirements that may be performed by the <abbr linkend="TSF"/>, optional requirements that may be performed by the <abbr linkend="MDM"/> Server or its underlying platform, and optional requirements to support a Mobile Application Store Server. 
+    <!-- This text is auto populated -->
+    <!--  As indicated in <secref linkend="ccl"/>, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of this <abbr linkend="PP"/>. Additionally, there are three other types of requirements specified in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and <appref linkend="objective"/>. The first type are requirements that can be included in the <abbr linkend="ST"/>, but do not have to be in order for a <abbr linkend="TOE"/> to claim conformance to this <abbr linkend="PP"/>. The second type (in <appref linkend="sel-based"/>) are requirements based on selections in the body of the <abbr linkend="PP"/>: if certain selections are made, then additional requirements in that appendix will need to be included. The third type (in <appref linkend="objective"/> are components that are not required in order to conform to this <abbr linkend="PP"/>, but will be included in the baseline requirements in future versions of this <abbr linkend="PP"/>, so adoption by vendors is encouraged. Note that the <abbr linkend="ST"/> author is responsible for ensuring that requirements in future versions of this <abbr linkend="PP"/>, so adoption by <abbr linkend="MDM"/> vendors is encouraged. Note that the <abbr linkend="ST"/> author is responsible for ensuring that requirements that may be associated with those in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and/or <appref linkend="objective"/> but are not listed (e.g., FMT-type requirements) are also included in the <abbr linkend="ST"/>. <h:br/><h:br/> -->
+    
+    <!-- Is this true?? -->
+    This Appendix is divided into three subsections: optional requirements that may be performed by the <abbr linkend="TSF"/>, optional requirements that may be performed by the <abbr linkend="MDM"/> Server or its underlying platform, and optional requirements to support a Mobile Application Store Server. 
   </appendix>  
   <appendix id="sel-based" title="Selection-Based Requirements"> 
     As indicated in the introduction to this <abbr linkend="PP"/>, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of the <abbr linkend="PP"/>. There are additional requirements based on selections in the body of the <abbr linkend="PP"/>: if certain selections are made, then additional requirements below will need to be included. </appendix>
