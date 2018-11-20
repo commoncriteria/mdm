@@ -22,15 +22,15 @@ To do:
 - fix dead links to TLS, etc: NOTE: The TLS/DTLS links should be fixed
 - comment matrix >> mostly done, didnt see anything else critical
 - TLS: package and figure out how to use platform TLS with the TLS package: NOTE: most or all of these say something to the effect that protocol,etc. may be met with platform provided services - check FTP_TRP.1(1) - is this good enough?
-- Mas server
+- DONE: Mas server - Need to check references to MAS
 - incorporate evaluation activity for distributed TOE (SD B.4) (pulled it in the appendix but its ugly and might need to be fixed)
 - have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
 - unify the random use of  TOE/TSF/MDM server and MD user/agent
 - update TOE boundary section
 
 
-- Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2) 
-- DONE: Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(3) - removed, fmt_mof.1(4), fmt_smf.1(3)
+- Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2), fmt_mof.1(3)
+- DONE: Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(4), fmt_smf.1(3)
 -->
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
@@ -805,8 +805,13 @@ To do:
         <h:td>One</h:td> 
       </h:tr> 
       <h:tr>
-        <h:td>FTP_ITC.1</h:td>
+        <h:td>FTP_ITC.1(1)</h:td>
         <h:td>Inter-TSF Trusted Channel (Authorized IT Entities)</h:td>
+        <h:td>One</h:td> 
+      </h:tr>
+      <h:tr>
+        <h:td>FTP_ITC.1(2)</h:td>
+        <h:td>Inter-TSF Trusted Channel (MDM Agent)</h:td>
         <h:td>One</h:td> 
       </h:tr>
       <h:tr>
@@ -817,12 +822,12 @@ To do:
       <h:tr>
         <h:td>FTP_TRP.1(1)</h:td>
         <h:td>Trusted Path for Remote Administration</h:td>
-        <h:td>One</h:td> 
+        <h:td>Feature Dependent</h:td> <!-- Both MDM and MAS could allow for remote admin -->
       </h:tr>
       <h:tr>
         <h:td>FTP_TRP.1(2)</h:td>
         <h:td>Trusted Path for Enrollment</h:td>
-        <h:td>One</h:td> 
+        <h:td>Feature Dependent</h:td> <!-- Changed because Agent also needs to do this. -->
       </h:tr>
       <h:tr>
         <h:td>FTP_TRP.1(3)</h:td>
@@ -831,7 +836,7 @@ To do:
       </h:tr>     
     </h:table>
     <h:br/>
-    The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> must include a mapping of <abbr linkend="SFR"/>'s to each of the components of the <abbr linkend="TOE"/>. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities.) The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> may also introduce a "minimum configuration" and identify components that may have instances added to an operational configuration without affecting the validity of the <abbr linkend="CC"/> certification. <!--????-->[SD, B.4] describes Evaluation Activities relating to these equivalency aspects of a distributed <abbr linkend="TOE"/> (and hence what is expected in the <abbr linkend="ST"/>). 
+    The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> must include a mapping of <abbr linkend="SFR"/>'s to each of the components of the <abbr linkend="TOE"/>. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities.) The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> may also introduce a "minimum configuration" and identify components that may have instances added to an operational configuration without affecting the validity of the <abbr linkend="CC"/> certification. Appendix E describes Evaluation Activities relating to these equivalency aspects of a distributed <abbr linkend="TOE"/> (and hence what is expected in the <abbr linkend="ST"/>). 
   </chapter>
   <!--END Distributed <abbr linkend="TOE"/> -->
   <chapter title="Security Problem Description" id="spd">
@@ -1723,7 +1728,7 @@ To do:
               For distributed <abbr linkend="TOE"/>'s the handling of audit information might be more complicated than for <abbr linkend="TOE"/>'s consisting only of one component. There are a few basic requirements to be fulfilled:<h:br/><h:br/>
               <h:ul>
                 <h:li>Every component must be able to generate audit information.</h:li>
-                <h:li>Every component must either be able to buffer audit information and forward it to another <abbr linkend="TOE"/> component or to store audit information locally.</h:li>
+                <h:li>Every component must be able to buffer audit information and forward it to another <abbr linkend="TOE"/> component and optionally store audit information locally.</h:li>
                 <h:li>For the overall <abbr linkend="TOE"/> it must be possible to send out audit information to an external audit server.</h:li>
               </h:ul><h:br/>              
               In general, every component must be able to generate its own audit information. It would be possible that every component also stores its own audit information locally as well as every component could be able to send out audit data to an external audit server. It would also be sufficient that every component would be able to generate its own audit data and buffer it locally before the information is sent out to one or more other <abbr linkend="TOE"/> components for local storage and/or transmission to an external audit server. For the transfer of audit records between <abbr linkend="TOE"/> components the secure connection via FTP_ITC.1 or FPT_ITT.1 must be used.<h:br/><h:br/>
@@ -1784,7 +1789,7 @@ To do:
               
               The channel selection (for the registration channel) in <linkref linkend="FCO_CPC_EXT.1.2"/> is essentially a choice between the use of a normal secure channel that is equivalent to a channel used to communicate with external IT entities (FTP_ITC.1) or existing <abbr linkend="TOE"/> components (FPT_ITT.1), or else a separate type of channel that is specific to registration (FTP_TRP.1(3)). If the <abbr linkend="TOE"/> does not require a communications channel for registration (e.g. because the registration is achieved entirely by configuration actions by an Administrator at each of the components) then the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> is completed with the "No channel" option.<h:br/><h:br/>
               
-              If the <abbr linkend="ST"/> author selects the FTP_ITC.1/FPT_ITT.1 channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the <abbr linkend="TSS"/> identifies the relevant <abbr linkend="SFR"/> iteration that specifies the channel used. If the <abbr linkend="ST"/> author selects the FTP_TRP.1/Join channel type, then the <abbr linkend="TSS"/> (possibly with support from the operational guidance) describes details of the channel and the mechanisms that it uses (and describes how the registration process ensures that the channel can only be used by the intended joiner and gatekeeper). Note that the FTP_TRP.1(3) channel type may require support from security measures in the operational environment (see the definition of FTP_TRP.1(3) for details).<h:br/><h:br/>
+              If the <abbr linkend="ST"/> author selects the FTP_ITC.1/FPT_ITT.1 channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the <abbr linkend="TSS"/> identifies the relevant <abbr linkend="SFR"/> iteration that specifies the channel used. If the <abbr linkend="ST"/> author selects the FTP_TRP.1(3) channel type, then the <abbr linkend="TSS"/> (possibly with support from the operational guidance) describes details of the channel and the mechanisms that it uses (and describes how the registration process ensures that the channel can only be used by the intended joiner and gatekeeper). Note that the FTP_TRP.1(3) channel type may require support from security measures in the operational environment (see the definition of FTP_TRP.1(3) for details).<h:br/><h:br/>
               
               If the <abbr linkend="ST"/> author selects the FTP_ITC.1/FPT_ITT.1 channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the <abbr linkend="ST"/> identifies the registration channel as a separate iteration of FTP_ITC.1 or FPT_ITT.1 and gives the iteration identifier (e.g. "FPT_ITT.1/Join") in an <abbr linkend="ST"/> Application Note for FCO_CPC_EXT.1.<h:br/><h:br/>
               
@@ -4365,7 +4370,7 @@ To do:
             </note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of remote <abbr linkend="TOE"/> administration are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of <abbr linkend="TOE"/> administration are consistent with those specified in the requirement, and are included in the requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>
-              The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains instructions for establishing the remote administrative sessions for each supported method.<h:br/><h:br/>
               <Tests/>The evaluator shall also perform the following tests: <testlist>
                   <test>The evaluators shall ensure that communications using each specified (in the operational guidance) remote administration method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
@@ -4425,7 +4430,7 @@ To do:
               </note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of remote enrollment are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of enrollment are consistent with those specified in the requirement, and are included in the requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>
-              The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains instructions for establishing the enrollment sessions for each supported method.<h:br/><h:br/>
               <Tests/>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>: <testlist>
                   <test>The evaluators shall ensure that communications using each specified (in the operational guidance) enrollment method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
@@ -4485,15 +4490,14 @@ To do:
               The assignment in FTP_TRP.1.3(3) ensures that the <abbr linkend="ST"/> highlights any specific details needed to protect the registration environment. Note that when the <abbr linkend="ST"/> uses FTP_TRP.1(3) for the registration channel then this channel cannot be reused as the normal inter-component communication channel (the latter channel must meet FTP_ITC.1 or FPT_ITT.1). Specific requirements for Preparative Procedures relating to FTP_TRP.1(3) are defined in the Evaluation Activities.<h:br/><h:br/>
             </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4>
-              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of joining <abbr linkend="TOE"/> components are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of joining are consistent with those specified in the requirement, and are included in the requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of joining <abbr linkend="TOE"/> components are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of joining are consistent with those specified in the requirement, and are included in the requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>              
+              If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains instructions for joining <abbr linkend="TOE"/> components for each supported method.<h:br/><h:br/>
               <Tests/>The evaluator shall also perform the following tests: <testlist>
-                <test>The evaluators shall ensure that communications using each specified (in the operational guidance) joining method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
-                <test>For each method of joining supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote component to establish joining sessions without invoking the trusted path.</test><!--platform test?-->
-                <test>The evaluator shall ensure, for each method of joining, the channel data is not sent in plaintext.</test>
+                <test>The evaluator shall ensure that the communications path for joining components to the <abbr linkend="TSF"/> is tested for each distinct (nonequivalent) component type, setting up the connections as described in the guidance documentation and ensuring that communication is successful. In particular the evaluator shall confirm that requirements on environment protection for the registration process are consistent with observations made on the test configuration (for example, a requirement to isolate the components from the Internet during registration might be inconsistent with the need for a component to contact a license server). If no requirements on the registration environment are identified as necessary to protect confidentiality, then the evaluator shall confirm that the key used for registration can be configured (following the instructions in the guidance documentation) to be at least the same length as the key used for the internal <abbr linkend="TSF"/> channel that is being enabled. The evaluator shall confirm that the key used for the channel is unique to the pair of components (this is done by identifying the relevant key during the registration test: it is not necessary to examine the key value).</test>
+                <test>The evaluator shall follow the guidance documentation to ensure that in fact the communication channel can be enabled by an administrator for all the <abbr linkend="TOE"/> components identified in the guidance documentation as capable of initiation.</test>
+                <test>The evaluator shall ensure that if the guidance documentation states that the channel data is encrypted then the data observed on the channel is not plaintext.</test>
+                <test> The evaluator shall ensure that, for each different pair of nonequivalent component types that can use the registration channel, the connection is physically interrupted during a joining attempt. The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.</test>
               </testlist> Further assurance activities are associated with the specific protocols.
             </aactivity>
           </f-element>
