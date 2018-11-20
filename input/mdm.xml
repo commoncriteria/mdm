@@ -19,9 +19,9 @@ To do:
 - make links out of all the references to ITT/ITC sfr's
 - finish table 1, have to add where we think things belong
 - fix table 2 after mas server sfr's get figured out
-- fix dead links to TLS, etc
+- fix dead links to TLS, etc: NOTE: The TLS/DTLS links should be fixed
 - comment matrix
-- TLS: package and figure out how to use platform TLS with the TLS package
+- TLS: package and figure out how to use platform TLS with the TLS package: NOTE: most or all of these say something to the effect that protocol,etc. may be met with platform provided services - check FTP_TRP.1(1) - is this good enough?
 - Mas server
 - incorporate evaluation activity for distributed TOE (SD B.4) (pulled it in the appendix but its ugly and might need to be fixed)
 - have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
@@ -824,7 +824,7 @@ To do:
       <h:tr>
         <h:td>FTP_TRP.1(2)</h:td>
         <h:td>Trusted Path for Enrollment</h:td>
-        <h:td></h:td> 
+        <h:td>All</h:td> 
       </h:tr>
       <h:tr>
         <h:td>FTP_TRP.1(3)</h:td>
@@ -1009,8 +1009,8 @@ To do:
           <component-refer ref="FCS_CKM.1"/>
           <component-refer ref="FCS_CKM.2"/>
           <component-refer ref="FCS_COP.1(*)"/>
-          <component-refer ref="FCS_DTLSS_EXT.1"/>
-          <component-refer ref="FCS_DTLSC_EXT.1"/>
+          <component-refer ref="FCS_DTLSS_EXT.1 (TLS Package)"/>
+          <component-refer ref="FCS_DTLSC_EXT.1 (TLS Package)"/>
           <component-refer ref="FCS_HTTPS_EXT.1"/>
           <component-refer ref="FCS_IPSEC_EXT.1"/>
           <component-refer ref="FCS_IV_EXT.1"/>
@@ -1018,10 +1018,10 @@ To do:
           <component-refer ref="FCS_SSHS_EXT.1"/>
           <component-refer ref="FCS_STG_EXT.1"/>
           <component-refer ref="FCS_STG_EXT.2"/>
-          <component-refer ref="FCS_TLSC_EXT.1"/>
-          <component-refer ref="FCS_TLSC_EXT.2"/>
-          <component-refer ref="FCS_TLSS_EXT.1"/>
-          <component-refer ref="FCS_TLSS_EXT.2"/>
+          <component-refer ref="FCS_TLSC_EXT.1 (TLS Package)"/>
+          <component-refer ref="FCS_TLSC_EXT.2 (TLS Package)"/>
+          <component-refer ref="FCS_TLSS_EXT.1 (TLS Package)"/>
+          <component-refer ref="FCS_TLSS_EXT.2 (TLS Package)"/>
           <component-refer ref="FIA_X509_EXT.1(1)"/>
           <component-refer ref="FIA_X509_EXT.2"/>
           <component-refer ref="FIA_X509_EXT.3"/>
@@ -1184,6 +1184,7 @@ To do:
                   </h:ul>
                 </h:li>
               </h:ul>
+              Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services. <h:br/><h:br/>
             </note>
             <aactivity>
               <Guidance/>The evaluator shall check to ensure that the operational guidance contains instructions on how to access the <abbr linkend="MDM"/> Server's compliance reporting interface.<h:br/><h:br/>
@@ -1319,14 +1320,18 @@ To do:
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
-                  <!-- This is now replaced by FCS_TLSC_EXT.1 and FCS_TLSS_EXT.2 audits. Remove completely once sure this is correct.
-                    KIM - Audit of TLS and DTLS will remain in the base PP. Please update the name to correspond to package.
                   <h:TR>
-                    <h:TD>FCS_DTLS_EXT.1</h:TD>
+                    <!--TODO Check TLS reference-->
+                    <h:TD>FCS_DTLSC_EXT.1 (TLS Package)</h:TD>
                     <h:TD>Failure of the certificate validity check.</h:TD>
                     <h:TD>Issuer Name and Subject Name of certificate </h:TD>
                   </h:TR>
-                  -->
+                  <h:TR>
+                    <!--TODO Check TLS reference-->
+                    <h:TD>FCS_DTLSS_EXT.1 (TLS Package)</h:TD>
+                    <h:TD>Failure of the certificate validity check.</h:TD>
+                    <h:TD>Issuer Name and Subject Name of certificate </h:TD>
+                  </h:TR>
                   <h:TR>
                     <h:TD>FCS_HTTPS_EXT.1</h:TD>
                     <h:TD>Failure of the certificate validity check.</h:TD>
@@ -1356,24 +1361,24 @@ To do:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD rowspan="3">FCS_TLSC_EXT.1</h:TD>
+                    <h:TD rowspan="3">FCS_TLSC_EXT.1 (TLS Package)</h:TD>
                     <!-- Added certificate validity check to replace FCS_DTLS_EXT.1 audit -->
                     <h:TD>Failure to establish a TLS session.</h:TD><h:TD>Reason for failure.</h:TD></h:TR>
                   <h:TR><h:TD>Failure to verify presented identifier.</h:TD><h:TD>Presented identifier and reference identifier.</h:TD></h:TR>
                   <h:TR><h:TD>Failure of the certificate validity check.</h:TD><h:TD>Issuer Name and Subject Name of certificate.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_TLSC_EXT.2</h:TD>
+                    <h:TD>FCS_TLSC_EXT.2 (TLS Package)</h:TD>
                     <h:TD>None.</h:TD>
-                    <h:TD/>
+<!--                    <h:TD/>-->
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_TLSS_EXT.1</h:TD>
+                    <h:TD>FCS_TLSS_EXT.1 (TLS Package)</h:TD>
                     <h:TD>Failure to establish a TLS session.</h:TD>
                     <h:TD>Reason for failure.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_TLSS_EXT.2</h:TD>
+                    <h:TD>FCS_TLSS_EXT.2 (TLS Package)</h:TD>
                     <!-- Added this audit to replace FCS_DTLS_EXT.1 audit -->
                     <h:TD>Failure of the certificate validity check.</h:TD>
                     <h:TD>Issuer Name and Subject Name of certificate </h:TD>
@@ -1410,29 +1415,23 @@ To do:
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FIA_X509_EXT.3</h:TD>
-                    <h:TD>Generation of Certificate Request Message.<h:br/> Success or failure
-                      of verification.</h:TD>
-                    <h:TD>Content of Certificate Request Message.<h:br/>Issuer and Subject name
-                      of added certificate or reason for failure.</h:TD>
+                    <h:TD rowspan="2">FIA_X509_EXT.3</h:TD>
+                    <h:TD>Generation of Certificate Request Message.</h:TD><h:TD>Content of Certificate Request Message.</h:TD></h:TR> 
+                    <h:TR><h:TD>Success or failure of verification.</h:TD><h:TD>Issuer and Subject name of added certificate or reason for failure.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FIA_X509_EXT.4</h:TD>
-                    <h:TD>Generation of Certificate Enrollment Request.<h:br/> Success or
-                      failure of enrollment.<h:br/>Update of <abbr linkend="EST"/> Trust Anchor
-                      Database.</h:TD>
-                    <h:TD>Issuer and Subject name of <abbr linkend="EST"/> Server. Method of
+                    <h:TD rowspan="3">FIA_X509_EXT.4</h:TD>
+                    <h:TD>Generation of Certificate Enrollment Request.</h:TD><h:TD>Issuer and Subject name of <abbr linkend="EST"/> Server. Method of
                       authentication. Issuer and Subject name of certificate used to authenticate.
-                      Content of Certificate Request Message.<h:br/> Issuer and Subject name of
-                      added certificate or reason for failure.<h:br/> Subject name of added Root
-                      CA.</h:TD>
+                      Content of Certificate Request Message.</h:TD></h:TR>
+                    <h:TR><h:TD>Success or failure of enrollment.</h:TD><h:TD>Issuer and Subject name of added certificate or reason for failure.</h:TD></h:TR>
+                    <h:TR><h:TD>Update of <abbr linkend="EST"/> Trust Anchor Database.</h:TD><h:TD>Subject name of added Root CA.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FMT_MOF.1(1)</h:TD>
-                    <h:TD>Issuance of command to perform function.<h:br/> Change of policy
-                      settings.</h:TD>
-                    <h:TD>Command sent and identity of <abbr linkend="MDM"/> Agent
-                      recipient.<h:br/> Policy changed and value or full policy.</h:TD>
+                    <h:TD rowspan="2">FMT_MOF.1(1)</h:TD>
+                    <h:TD>Issuance of command to perform function.</h:TD><h:TD>Command sent and identity of <abbr linkend="MDM"/> 
+                      Agent recipient.</h:TD></h:TR>
+                    <h:TR><h:TD>Change of policy settings.</h:TD><h:TD>Policy changed and value or full policy.</h:TD>
                   </h:TR>
                   <h:TR>
                     <h:TD>FMT_MOF.1(2)</h:TD>
@@ -1643,12 +1642,12 @@ To do:
               storage of these audit records and the ability to allow the administrator to review these audit records is provided by 
               the operational environment. The <abbr linkend="TSF"/> may rely on the underlying operating system for this 
               functionality.<h:br/><h:br/> 
-              <!--TODO REVIEW FOR CORRECTNESS-->
+              
               Although the audit server is outside of the <abbr linkend="TOE"/>, the MDM Server should still be able to support 
               mutual authentication. There are no requirements levied on the audit server, but the client (MDM Server) should be 
               able to support TLS client certificate authentication. This way if the non-<abbr linkend="TOE"/> audit server does 
               support verifying client certs, the MDM Server is in a position to make use of that.<h:br/><h:br/>
-              <!--TODO END REVIEW-->
+              
               
               For distributed <abbr linkend="TOE"/>'s each component must be able to export audit data across a protected channel external (FTP_ITC.1) or intercomponent (FPT_ITT.1 or FTP_ITC.1) as appropriate. At least one component of the <abbr linkend="TOE"/> must be able to export audit records via FTP_ITC.1 such that all <abbr linkend="TOE"/> audit records can be exported to an external IT entity. 
               </note>
@@ -1675,12 +1674,12 @@ To do:
               administrator to review these audit records is provided by the operational environment. The <abbr linkend="TSF"/> may 
               rely on the underlying operating system for this functionality, and the first selection should be made 
               appropriately.<h:br/><h:br/> 
-              < TODO REVIEW FOR CORRECTNESS >
+              
               Although the audit server is outside of the <abbr linkend="TOE"/>, the MDM Server should still be able to support 
               mutual authentication. There are no requirements levied on the audit server, but the client (MDM Server) should be 
               able to support TLS client certificate authentication. This way if the non-<abbr linkend="TOE"/> audit server does 
               support verifying client certs, the MDM Server is in a position to make use of that.<h:br/><h:br/>
-              < TODO END REVIEW>
+              
             </note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided. <h:br/><h:br/> 
@@ -1692,7 +1691,7 @@ To do:
                 </testlist>
             </aactivity>
           </f-element>
-        </f-component>  
+        </f-component>
         -->
         <f-component id="fau_stg_ext.2" name="Audit Event Storage" status="sel-based">
           <selection-depends req="FAU_STG_EXT.1.1(1)" ids="FAU_STG.1_stored"/>
@@ -2610,7 +2609,6 @@ To do:
                 <h:li>FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
                   <h:ul>
                     <h:li>TLS_RSA_WITH_AES_128_CBC_SHA cannot be selected</h:li>
-                    <h:li>mutual authentication must be selected</h:li>
                     <h:li>session renegotiation must be selected</h:li>
                   </h:ul>
                 </h:li>
@@ -2820,81 +2818,9 @@ To do:
           </f-element>
         </f-component> 
         <!-- FCS_TLSC_EXT.1 removed -->
-        <f-component id="fcs_tlsc_ext.2" name="TLS Client Protocol" status="sel-based">
-          <selection-depends req="FCS_TLSC_EXT.1.1" ids="TLSC_ECC1,TLSC_ECC2,TLSC_ECC3,TLSC_ECC4"/>
-          <f-element id="fcs_tlsc_ext.2.1">
-            <!-- was FCS_TLSC_EXT.1.5 -->
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall present the Supported Elliptic Curves Extension in the Client
-              Hello with the following NIST curves: <selectables>
-                <selectable>secp256r1</selectable>
-                <selectable>secp384r1</selectable>
-                <selectable>secp521r1</selectable>
-              </selectables> and no other curves.</title>
-            <note role="application"> If any ciphersuites using ECDHE are selected in <linkref linkend="FCS_TLSC_EXT.1.1"/>, then <linkref linkend="FCS_TLSC_EXT.2.1"/> is required.<h:br/><h:br/> 
-              This requirement limits the elliptic curves allowed for
-              authentication and key agreement to the NIST curves from <linkref linkend="FCS_COP.1(3)"/>, <linkref linkend="FCS_CKM.1"/>, and
-              <linkref linkend="FCS_CKM.2"/>. This extension is required for clients supporting Elliptic Curve
-              ciphersuites.</note>
-            <aactivity>
-              <TSS/>The evaluator shall verify that <abbr linkend="TSS"/> describes the Supported
-                Elliptic Curves Extension and whether the required behavior is performed by default
-                or may be configured.<h:br/><h:br/>
-              <Guidance/>If the <abbr linkend="TSS"/> indicates that the Supported Elliptic Curves
-                Extension must be configured to meet the requirement, the evaluator shall verify
-                that AGD guidance includes configuration of the Supported Elliptic Curves
-                Extension.<h:br/><h:br/>
-              <Tests/>
-                <testlist>
-                  <test>The evaluator shall configure the server to perform an ECDHE key exchange
-                    message in the TLS connection using a non-supported ECDHE curve (for example,
-                    P-192) and shall verify that the <abbr linkend="TOE"/> disconnects after
-                    receiving the server's Key Exchange handshake message.</test>
-                </testlist>
-              </aactivity>
-          </f-element>
-<!--FCS_TLSS_EXT.1 Removed-->
-        <!--TODO FCS_TLSS_EXT.2 removed, but need to check to make sure that everything we need is included in TLS FCS_TLSS_EXT.1.3
-        </f-component>
-        <f-component id="fcs_tlss_ext.2" name="TLS Server Protocol—Elliptic Curves Extension" status="sel-based">
-          <selection-depends req="FCS_TLSS_EXT.1.1" ids="TLSS_ECC_1, TLSS_ECC_2, TLSS_ECC_3, TLSS_ECC_4"/>
-          <f-element id="fcs_tlss_ext.2.1">
-            <title>The <selectables>
-                <selectable>TSF</selectable>
-                <selectable><abbr linkend="TOE"/> platform</selectable>
-              </selectables> shall generate key agreement parameters <selectables>
-                <selectable>over NIST curves <selectables>
-                    <selectable>secp256r1</selectable>
-                    <selectable>secp384r1</selectable>
-                  </selectables> and no other curves</selectable>
-                <selectable>Diffie-Hellman parameters of size 2048 bits and <selectables>
-                    <selectable>3072 bits</selectable>
-                    <selectable>no other size</selectable>
-                  </selectables></selectable>
-              </selectables>.</title>
-            <note role="application"> This element may be omitted if no DHE or ECDHE ciphersuites
-              are selected in <linkref linkend="FCS_TLSS_EXT.1.1"/>.<h:br/><h:br/> If the <abbr linkend="ST"/> lists a DHE
-              ciphersuite in <linkref linkend="FCS_TLSS_EXT.1.1"/>, the <abbr linkend="ST"/> must include the
-              Diffie-Hellman selection in the requirement. <linkref linkend="FMT_SMF.1(1)"/> requires the configuration of
-              the key agreement parameters in order to establish the security strength of the TLS
-              connection. </note>
-            <aactivity>
-              <TSS/>The evaluator shall verify that the <abbr linkend="TSS"/> describes the key
-              agreement parameters of the server key exchange message.<h:br/><h:br/>
-              <Guidance/>The evaluator shall verify that any configuration guidance necessary to meet
-              the requirement must be contained in the AGD guidance.<h:br/><h:br/>
-              <Tests/>The evaluator shall attempt a connection using an ECDHE ciphersuite and a
-                configured curve and, using a packet analyzer, verify that the key agreement
-                parameters in the Key Exchange message are the ones configured. (Determining that
-                the size matches the expected size for the configured curve is sufficient.) The
-                evaluator shall repeat this test for each supported NIST Elliptic Curve and each
-                supported Diffie-Hellman key size.
-            </aactivity>
-          </f-element>
-          -->
-        </f-component> 
+        <!--FCS_TLSC_EXT.2 removed -->
+        <!--FCS_TLSS_EXT.1 Removed-->
+        <!--FCS_TLSS_EXT.2 removed-->
       </subsection>
       <subsection id="fia" title="Identification and Authentication (FIA)">
         <f-component id="fia_enr_ext.1" name="Enrollment of Mobile Device into Management">
@@ -3159,8 +3085,8 @@ To do:
               </selectables> to use X.509v3 certificates as defined by RFC 5280 to support authentication for 
               <selectables>
                 <selectable>IPsec</selectable>
-                <selectable>TLS</selectable>
                 <selectable>HTTPS</selectable>
+                <selectable>TLS</selectable>
                 <selectable>DTLS</selectable>
                 <selectable>SSH</selectable>
               </selectables>, and <selectables>
@@ -3170,10 +3096,22 @@ To do:
                 <selectable><assignable>other uses</assignable></selectable>
                 <selectable>no additional uses</selectable>
               </selectables></title>
-            <note role="application"> The <abbr linkend="ST"/> author's selection(s) shall match the selection of <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_ITC.1(1)"/>, and <linkref linkend="FPT_ITT.1"/>. Certificates may optionally be used for trusted updates of system software (<linkref linkend="FPT_TUD_EXT.1.3"/>) and software integrity verification (<linkref linkend="FPT_TST_EXT.1.2"/>). If some authentication services are provided by the <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author shall clearly identify which services are provided by the <abbr linkend="TOE"/> and which by the platform.<h:br/><h:br/> If code signing for integrity verification is selected, the <abbr linkend="MDM"/> vendor is not expected to digitally sign DLL's from other vendors that have been incorporated into their product.<h:br/><h:br/> 
+            <note role="application"> The <abbr linkend="ST"/> author's selection(s) shall match the selection 
+              of <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_ITC.1(1)"/>, and <linkref linkend="FPT_ITT.1"/>. 
+              Certificates may optionally be used for trusted updates of system software (<linkref linkend="FPT_TUD_EXT.1.3"/>) 
+              and software integrity verification (<linkref linkend="FPT_TST_EXT.1.2"/>). If some authentication services are 
+              provided by the <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author shall clearly 
+              identify which services are provided by the <abbr linkend="TOE"/> and which by the platform.<h:br/><h:br/> If code 
+              signing for integrity verification is selected, the <abbr linkend="MDM"/> vendor is not expected to digitally sign 
+              DLL's from other vendors that have been incorporated into their product.<h:br/><h:br/>
+              
               If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
-              If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
-              If "TLS", "HTTPS" or "DTLS" are selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. 
+              If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. It should be noted 
+              that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
+              If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in 
+              the <abbr linkend="ST"/>. <h:br/><h:br/>
+              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>. It should be
+              noted that due to constraints imposed by this PP that TLS_RSA_WITH_AES_128_CBC_SHA cannot be used.f
             </note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
@@ -3269,7 +3207,7 @@ To do:
           </f-element>
           <f-element id="fia_x509_ext.4.4">
             <title>The <abbr linkend="TSF"/> shall perform authentication of the <abbr linkend="EST"/> server using an Explicit Trust Anchor following the rules described in RFC 7030, section 3.6.1.</title>
-            <note role="application">EST also uses HTTPS as specified in <linkref linkend="FCS_HTTPS_EXT.1"/> to establish a secure connection to an <abbr linkend="EST"/> server, and thus, the <abbr linkend="ST"/> author must also include <linkref linkend="FCS_HTTPS_EXT.1"/> and <linkref linkend="FCS_TLSC_EXT.1"/> in the main body of the <abbr linkend="ST"/>. The separate Trust Anchor Database dedicated to <abbr linkend="EST"/> operations is described as Explicit Trust Anchors in RFC 7030.</note>
+            <note role="application">EST also uses HTTPS as specified in <linkref linkend="FCS_HTTPS_EXT.1"/> to establish a secure connection to an <abbr linkend="EST"/> server, and thus, the <abbr linkend="ST"/> author must also include <linkref linkend="FCS_HTTPS_EXT.1"/> in the main body of the <abbr linkend="ST"/>. The separate Trust Anchor Database dedicated to <abbr linkend="EST"/> operations is described as Explicit Trust Anchors in RFC 7030.</note>
           </f-element>
           <f-element id="fia_x509_ext.4.5">
             <title>The <abbr linkend="TSF"/> shall be capable of requesting server-provided private keys as specified in RFC 7030 Section 4.4.</title>
@@ -3288,7 +3226,7 @@ To do:
             <note role="application">The public key referenced in <linkref linkend="FIA_X509_EXT.4.7"/> is the public key portion of the public-private key pair generated by the <abbr linkend="TOE"/> as specified in <linkref linkend="FCS_CKM.1"/>.</note>
             <aactivity>
               <Guidance/>The evaluator shall check to ensure that the operational guidance contains instructions on requesting certificates from an <abbr linkend="EST"/> server, including generating a Certificate Request Message.<h:br/><h:br/>
-              <Tests/>The evaluator shall also perform the following tests. Other tests are performed in conjunction with the evaluation activity listed for <linkref linkend="FCS_TLSC_EXT.1"/>. <testlist>
+              <Tests/>The evaluator shall also perform the following tests. Other tests are performed in conjunction with the TLS evaluation activities.<testlist>
                   <test>The evaluator shall use the operational guidance to cause the <abbr linkend="TOE"/> to request certificate enrollment from an <abbr linkend="EST"/> server using the simple enrollment method described in RFC 7030 Section 4.2, authenticating the certificate request to the server using an existing certificate and private key as described by RFC 7030 Section 3.3.2. The evaluator shall confirm that the resulting certificate is successfully obtained and installed in the <abbr linkend="TOE"/> key store.</test>
                   <test>The evaluator shall use the operational guidance to cause the <abbr linkend="TOE"/> to request certificate enrollment from an <abbr linkend="EST"/> server using the simple enrollment method described in RFC 7030 Section 4.2, authenticating the certificate request to the server using a username and password as described by RFC 7030 Section 3.2.3. The evaluator shall confirm that the resulting certificate is successfully obtained and installed in the <abbr linkend="TOE"/> key store.</test>
                   <test>The evaluator shall modify the <abbr linkend="EST"/> server to return a certificate containing a different public key than the key included in the <abbr linkend="TOE"/>'s certificate request. The evaluator shall use the operational guidance to cause the <abbr linkend="TOE"/> to request certificate enrollment from an <abbr linkend="EST"/> server. The evaluator shall confirm that the <abbr linkend="TOE"/> does not accept the resulting certificate since the public key in the issued certificate does not match the public key in the certificate request.</test>
@@ -3809,7 +3747,8 @@ To do:
               <!-- need to review text below-->
               This channel may also be used as the registration channel for the registration process, as described in section 3.1 and FCO_CPC_EXT.1.2.<h:br/><h:br/>
               
-              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
+              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the 
+              following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
@@ -3992,6 +3931,7 @@ To do:
                 <selectable id="ITC_IPSEC_1">IPsec</selectable>
                 <selectable id="ITC_SSH_1">SSH</selectable>
                 <selectable id="ITC_TLS_1">TLS</selectable>
+                <selectable id="ITC_DTLS_1">DTLS</selectable>
                 <selectable id="ITC_HTTPS_1">HTTPS</selectable>
               </selectables> to provide a trusted communication channel between itself and authorized IT entities supporting the following capabilities: audit server, <selectables>
                 <selectable>authentication server</selectable>
@@ -4010,12 +3950,12 @@ To do:
               protocols. If an external authentication server is supported, then it is required to protect that connection with one 
               of the listed protocols. For any other external server, external communications are not required to be protected, but 
               if protection is claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
-              <!--TODO REVIEW FOR CORRECTNESS-->
+              
               For communications with any authorized IT entities outside of the <abbr linkend="TOE"/>, the MDM Server should still 
               be able to support mutual authentication. There are no requirements levied on the external entities, but the MDM Server 
               should be able to support mutual authentication. This way if the non-<abbr linkend="TOE"/> authorized 
               entity does support mutual authentication, the MDM Server is in a position to make use of that.<h:br/><h:br/>
-              <!--TODO END REVIEW-->
+              
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>.<h:br/><h:br/>
               If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
               If "SSH" is selected the Module for Secure Shell must be included in the <abbr linkend="ST"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
@@ -4129,14 +4069,14 @@ To do:
                 linkend="MDM"/> Server to the <abbr linkend="MDM"/> Agent. Either the <abbr
                 linkend="MDM"/> Agent or the <abbr linkend="MDM"/> Server is able to initiate the
               connection.<h:br/><h:br/> 
-              <!--TODO REVIEW FOR CORRECTNESS-->
+              
               For TLS connections between the MDM Server and Agent, the MDM Server is the Server side of the TLS connection, 
               therefore it is appropriate to include the selection-based FCS_TLSS SFRs in the ST, not FCS_TLSC SFRs. With respect 
               to mutual authentication, in cases where the Agent is outside of the <abbr linkend="TOE"/>, it should be verified 
               that the server can support mutual authentication, meaning that the server includes support for client-side certificates 
               for TLS mutual authentication post-enrollment. However, the client side is not evaluated since the agent is not in 
               the <abbr linkend="TOE"/>.<h:br/><h:br/>
-              <!--TODO END REVIEW-->
+              
               This trusted channel protects both the connection between an
               enrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server <!-- ToDo: The following may not be true -->and the
               connection between an unenrolled <abbr linkend="MDM"/> Agent and the <abbr
@@ -4390,6 +4330,7 @@ To do:
                   </h:ul>
                 </h:li>
             </h:ul>
+            Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services. <h:br/><h:br/>
             </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
@@ -4451,6 +4392,7 @@ To do:
                   </h:ul>
                 </h:li>
               </h:ul>
+              Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services. <h:br/><h:br/>
               </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
@@ -5002,11 +4944,11 @@ To do:
             certificate".</h:TD>
         </h:TR>
         <h:TR>
-          <h:TD>FCS_TLSC_EXT.1.1</h:TD>
+          <h:TD>FCS_TLSC_EXT.1.1 (from TLS Package)</h:TD>
           <h:TD>If included in <abbr linkend="ST"/>, select "TLS 1.2".</h:TD>
         </h:TR>
         <h:TR>
-          <h:TD>FCS_TLSC_EXT.2.1</h:TD>
+          <h:TD>FCS_TLSC_EXT.2.1 (from TLS Package)</h:TD>
           <h:TD>If included in <abbr linkend="ST"/>, select "secp384r1".</h:TD>
         </h:TR>
       </h:table>
