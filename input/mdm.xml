@@ -22,7 +22,7 @@ To do:
 - fix dead links to TLS, etc
 - comment matrix >> mostly done, didnt see anything else critical
 - TLS: package and figure out how to use platform TLS with the TLS package
-- Mas server
+- DONE: Mas server - Need to check references to MAS
 - incorporate evaluation activity for distributed TOE (SD B.4) (pulled it in the appendix but its ugly and might need to be fixed)
 - have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
 - unify the random use of  TOE/TSF/MDM server and MD user/agent
@@ -805,9 +805,14 @@ To do:
         <h:td>One</h:td> 
       </h:tr> 
       <h:tr>
-        <h:td>FTP_ITC.1</h:td>
+        <h:td>FTP_ITC.1(1)</h:td>
         <h:td>Inter-TSF Trusted Channel (Authorized IT Entities)</h:td>
         <h:td>One</h:td> 
+      </h:tr>
+      <h:tr>
+        <h:td>FTP_ITC.1(2)</h:td>
+        <h:td>Inter-TSF Trusted Channel (MDM Agent)</h:td>
+        <h:td></h:td> 
       </h:tr>
       <h:tr>
         <h:td>FTP_ITC_EXT.1</h:td>
@@ -817,12 +822,12 @@ To do:
       <h:tr>
         <h:td>FTP_TRP.1(1)</h:td>
         <h:td>Trusted Path for Remote Administration</h:td>
-        <h:td>One</h:td> 
+        <h:td>Feature Dependent</h:td> <!-- Both MDM and MAS could allow for remote admin -->
       </h:tr>
       <h:tr>
         <h:td>FTP_TRP.1(2)</h:td>
         <h:td>Trusted Path for Enrollment</h:td>
-        <h:td>One</h:td> 
+        <h:td>Feature Dependent</h:td> <!-- Changed because Agent also needs to do this. -->
       </h:tr>
       <h:tr>
         <h:td>FTP_TRP.1(3)</h:td>
