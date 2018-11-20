@@ -394,7 +394,7 @@ To do:
   <chapter title="Conformance Claims" id="ccl">
     <cclaims>
       <cclaim id="Conformance Statement">
-        <description> To be conformant to this PP, a <abbr linkend="ST"/> must demonstrate Exact
+        <!--  <description> To be conformant to this PP, a <abbr linkend="ST"/> must demonstrate Exact
           Conformance, a subset of Strict Conformance as defined in <cite linkend="bibCC"/> Part 1
           (ASE_CCL). The <abbr linkend="ST"/> must include all components in this PP that are: <h:ul>
             <h:li>unconditional (which are always required)</h:li>
@@ -419,7 +419,7 @@ To do:
       </cclaim>
       <cclaim id="Package Claim">
         <description>This PP does not claim conformance to any packages.</description>
-        <!-- TODO: TLS? -->
+        -->
       </cclaim>
     </cclaims>
   </chapter>
@@ -502,7 +502,7 @@ To do:
         <h:td>One</h:td>
       </h:tr>
       <h:tr>
-        <h:td>FAU_STG_EXT.1(1)</h:td>
+        <h:td>FAU_STG_EXT.1</h:td>
         <h:td>External Trail Storage</h:td>
         <h:td>All</h:td>
       </h:tr>
@@ -1646,8 +1646,8 @@ To do:
             </aactivity>
           </f-element>
         </f-component>      
-        <f-component id="fau_stg_ext.1(1)" name="External Trail Storage"> <!--free-->
-          <f-element id="fau_stg_ext.1.1(1)">
+        <f-component id="fau_stg_ext.1" name="External Trail Storage"> <!--free-->
+          <f-element id="fau_stg_ext.1.1">
             <title>The TSF shall be able to use a trusted channel per <linkref linkend="FTP_ITC.1(1)"/> to transmit audit data to an external IT entity and <selectables>
                 <selectable>store audit data locally</selectable>
                 <selectable>no other method</selectable>
@@ -1719,13 +1719,13 @@ To do:
         </f-component>
         -->
         <f-component id="fau_stg_ext.2" name="Audit Event Storage" status="sel-based">
-          <selection-depends req="FAU_STG_EXT.1.1(1)" ids="FAU_STG.1_stored"/>
+          <selection-depends req="FAU_STG_EXT.1.1" ids="FAU_STG.1_stored"/>
           <f-element id="fau_stg_ext.2.1"> <!--free-->
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
               </selectables> to protect the stored audit records in the audit trail from unauthorized modification.</title>
-            <note role="application">If "store audit data locally" is selected in <linkref linkend="FAU_STG_EXT.1.1(1)"/>, this <abbr linkend="SFR"/> shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> The purpose of this requirement is to ensure that audit records are stored securely. The <abbr linkend="ST"/> author is responsible for selecting whether audit records are maintained when audit storage or failure occurs. The <abbr linkend="ST"/> author must choose a means by which audit records are saved and select the events during which the records will be saved. The <abbr linkend="TSF"/> may rely on the underlying operating system for this functionality, and the first selection should be made appropriately.</note>
+            <note role="application">If "store audit data locally" is selected in <linkref linkend="FAU_STG_EXT.1.1"/>, this <abbr linkend="SFR"/> shall be included in the <abbr linkend="ST"/>.<h:br/><h:br/> The purpose of this requirement is to ensure that audit records are stored securely. The <abbr linkend="ST"/> author is responsible for selecting whether audit records are maintained when audit storage or failure occurs. The <abbr linkend="ST"/> author must choose a means by which audit records are saved and select the events during which the records will be saved. The <abbr linkend="TSF"/> may rely on the underlying operating system for this functionality, and the first selection should be made appropriately.</note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the audit record protection functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               If "implement functionality" is selected, the evaluator shall ensure that the <abbr linkend="TSS"/> describes how the audit records are protected from unauthorized modification or deletion. The evaluator shall ensure that the <abbr linkend="TOE"/> uses audit trail specific protection mechanisms.<h:br/><h:br/>
@@ -3629,7 +3629,7 @@ To do:
               Function specific application notes reference Mobile Device Fundamentals (MDF) <abbr linkend="PP"/> v3.1.<h:br/><h:br/> 
               Function <ctr-ref refid="smf12"/> may be satisfied for the BYOD use case by application blacklisting and/or disabling. In the case of BYOD, and enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not loose any information they might have in the application.<h:br/><h:br/>
               Function <ctr-ref refid="smf16"/> provides the <abbr linkend="MDM"/> server to display an alert to the user of the mobile device.<h:br/><h:br/> 
-              The audit records read according to Function <ctr-ref refid="smf19"/> are to be transmitted to an external audit server according to <linkref linkend="FAU_STG_EXT.1(1)"/>. The <abbr linkend="MDM"/> Server is not expected to retain those logs.<h:br/><h:br/> 
+              The audit records read according to Function <ctr-ref refid="smf19"/> are to be transmitted to an external audit server according to <linkref linkend="FAU_STG_EXT.1"/>. The <abbr linkend="MDM"/> Server is not expected to retain those logs.<h:br/><h:br/> 
               Function <ctr-ref refid="smf34"/> provides the ability to enable/disable policy for the list of protocols where the device acts as a server, such as a mobile hotspot.<h:br/><h:br/>  
               Function <ctr-ref refid="smf56"/> corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr linkend="MDM"/> Agent has not had a successful reachability event with the <abbr linkend="MDM"/> Server in the amount of time specified in 'a', then the agent shall perform the action selected in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each action could be associated with a different timeout in 'a'. If function <ctr-ref refid="smf56"/> is included in the <abbr linkend="ST"/>, than FPT_NET_EXT.1.1 shall be included in the Agent <abbr linkend="ST"/>. </note>
             <aactivity>
