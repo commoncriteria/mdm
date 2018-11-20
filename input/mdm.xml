@@ -27,7 +27,7 @@ To do:
 - have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
 - unify the random use of  TOE/TSF/MDM server and MD user/agent
 - update TOE boundary section
-- map new SFR's to o.things
+- DONE: map new SFR's to o.things
 
 
 - Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2), fmt_mof.1(3)
@@ -1121,7 +1121,7 @@ To do:
       <subsection id="fau" title="Security Audit (FAU)">
         <f-component id="fau_alt_ext.1" name="Server Alerts">
           <f-element id="fau_alt_ext.1.1">
-            <title>The <abbr linkend="MDM"/> Server shall alert the administrators in the event of any of the following: <h:ol type="a">
+            <title>The <abbr linkend="TSF"/> shall alert the administrators in the event of any of the following: <h:ol type="a">
                 <h:li>change in enrollment status</h:li>
                 <h:li>failure to apply policies to a mobile device</h:li>
                 <h:li><selectables><selectable><assignable>other events</assignable></selectable><selectable>no other events</selectable></selectables></h:li>
@@ -1144,7 +1144,7 @@ To do:
         </f-component>
         <f-component id="fau_crp_ext.1" name="Support for Compliance Reporting of Mobile Device Configuration" status="objective">
           <f-element id="fau_crp_ext.1.1">
-            <title> The <abbr linkend="MDM"/> Server shall provide <selectables><selectable>an interface that provides responses 
+            <title> The <abbr linkend="TSF"/> shall provide <selectables><selectable>an interface that provides responses 
               to queries about the configuration of enrolled devices</selectable><selectable>an interface that permits the export 
                 of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over an 
               authenticated <selectables>
@@ -1581,7 +1581,7 @@ To do:
         </f-component> 
         <f-component id="fau_net_ext.1" name="Network Reachability Review">
           <f-element id="fau_net_ext.1.1">
-            <title>The <abbr linkend="MDM"/> Server shall provide authorized administrators with the capability to read the network connectivity status of an enrolled agent.</title>
+            <title>The <abbr linkend="TSF"/> shall provide authorized administrators with the capability to read the network connectivity status of an enrolled agent.</title>
             <note role="application"> The <abbr linkend="MDM"/> Server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr linkend="EP"/>. This status may be determined sending an update request from the <abbr linkend="MDM"/> Server which the Agent is required to respond to or using scheduled periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
             <aactivity>
               <TSS/> The evaluator ensures that the <abbr linkend="TSS"/> describes how reachability events are implemented, for each supported mobile platform. The evaluator verifies that this description clearly indicates who (<abbr linkend="MDM"/> Agent or <abbr linkend="MDM"/> Server) initiates reachability events.<h:br/><h:br/>
@@ -1617,7 +1617,7 @@ To do:
         </f-component> 
         <f-component id="fau_sel.1" name="Security Audit Event Selection" status="optional">
           <f-element id="fau_sel.1.1">
-            <title> The <abbr linkend="MDM"/> Server shall <selectables>
+            <title> The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable></selectables>      
               to select the set of events to be audited from the set of all auditable events based on the following attributes:
@@ -2844,7 +2844,7 @@ To do:
       <subsection id="fia" title="Identification and Authentication (FIA)">
         <f-component id="fia_enr_ext.1" name="Enrollment of Mobile Device into Management">
           <f-element id="fia_enr_ext.1.1">
-            <title>The <abbr linkend="MDM"/> Server shall authenticate the remote user over a trusted channel during the enrollment of a mobile device.</title>
+            <title>The <abbr linkend="TSF"/> shall authenticate the remote user over a trusted channel during the enrollment of a mobile device.</title>
             <note role="application">The <abbr linkend="MDM"/> Server may use its own directory or a directory server to perform the authentication decision for users performing the remote enrollment of a mobile device.</note>
             <aactivity> 
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes the process of enrollment for each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>. This description shall include the trusted path used for enrollment (<linkref linkend="FTP_TRP.1(2)"/>), the method of user authentication (username/password, token, etc.), the method of authentication decision (local or remote authentication services), and the actions performed on the <abbr linkend="MDM"/> Server upon successful authentication. <h:br/><h:br/>
@@ -2856,7 +2856,7 @@ To do:
             </aactivity>
           </f-element>
           <f-element id="fia_enr_ext.1.2">
-            <title>The <abbr linkend="MDM"/> Server shall limit the user's enrollment of devices to devices specified by <selectables> <selectable>IMEI</selectable><selectable><assignable>a unique device ID</assignable></selectable></selectables> and <selectables>
+            <title>The <abbr linkend="TSF"/> shall limit the user's enrollment of devices to devices specified by <selectables> <selectable>IMEI</selectable><selectable><assignable>a unique device ID</assignable></selectable></selectables> and <selectables>
               <selectable>specific device models</selectable>
                 <selectable>a number of devices</selectable>
                 <selectable>specific time period</selectable>         
@@ -3356,7 +3356,7 @@ To do:
         </f-component> 
         <f-component id="fmt_pol_ext.1" name="Trusted Policy Update">
           <f-element id="fmt_pol_ext.1.1">
-            <title>The <abbr linkend="MDM"/> Server shall provide digitally signed policies and policy updates to the <abbr linkend="MDM"/> Agent.</title>
+            <title>The <abbr linkend="TSF"/> shall provide digitally signed policies and policy updates to the <abbr linkend="MDM"/> Agent.</title>
             <note role="application">The intent of this requirement is to cryptographically tie the policies to the enterprise that mandated the policy, not to
  protect the policies in transit (as they are already protected by <linkref linkend="FPT_ITT.1"/> or <linkref linkend="FTP_ITC.1(2)"/>). This is especially critical for users who connect to multiple enterprises.</note>
             <aactivity>
@@ -3635,7 +3635,7 @@ To do:
         </f-component>
         <f-component id="fmt_smf.1(2)" name="Specification of Management Functions (Server Configuration of Server)">
           <f-element id="fmt_smf.1.1(2)">
-            <title> The <abbr linkend="MDM"/> Server shall be capable of performing the following management functions: <h:ol type="a">
+            <title> The <abbr linkend="TSF"/> shall be capable of performing the following management functions: <h:ol type="a">
                 <h:li>choose X.509v3 certificates for <abbr linkend="MDM"/> Server use</h:li>
                 <h:li>configure the <selectables>
                     <selectable>devices specified by <selectables>
@@ -3854,7 +3854,7 @@ To do:
         </f-component> 
         <f-component id="fpt_tud_ext.1" name="Trusted Update">
           <f-element id="fpt_tud_ext.1.1">
-            <title>The <abbr linkend="MDM"/> Server shall provide Authorized Administrators the
+            <title>The <abbr linkend="TSF"/> shall provide Authorized Administrators the
               ability to query the current version of the <abbr linkend="MDM"/> Server
               software.</title>
             <note role="application">
