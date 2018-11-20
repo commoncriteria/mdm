@@ -29,8 +29,8 @@ To do:
 - update TOE boundary section
 
 
-- Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2) 
-- DONE: Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(3) - removed, fmt_mof.1(4), fmt_smf.1(3)
+- Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2), fmt_mof.1(3)
+- DONE: Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(4), fmt_smf.1(3)
 -->
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
@@ -812,7 +812,7 @@ To do:
       <h:tr>
         <h:td>FTP_ITC.1(2)</h:td>
         <h:td>Inter-TSF Trusted Channel (MDM Agent)</h:td>
-        <h:td></h:td> 
+        <h:td>One</h:td> 
       </h:tr>
       <h:tr>
         <h:td>FTP_ITC_EXT.1</h:td>
@@ -836,7 +836,7 @@ To do:
       </h:tr>     
     </h:table>
     <h:br/>
-    The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> must include a mapping of <abbr linkend="SFR"/>'s to each of the components of the <abbr linkend="TOE"/>. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities.) The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> may also introduce a "minimum configuration" and identify components that may have instances added to an operational configuration without affecting the validity of the <abbr linkend="CC"/> certification. <!--????-->[SD, B.4] describes Evaluation Activities relating to these equivalency aspects of a distributed <abbr linkend="TOE"/> (and hence what is expected in the <abbr linkend="ST"/>). 
+    The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> must include a mapping of <abbr linkend="SFR"/>'s to each of the components of the <abbr linkend="TOE"/>. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities.) The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> may also introduce a "minimum configuration" and identify components that may have instances added to an operational configuration without affecting the validity of the <abbr linkend="CC"/> certification. Appendix E describes Evaluation Activities relating to these equivalency aspects of a distributed <abbr linkend="TOE"/> (and hence what is expected in the <abbr linkend="ST"/>). 
   </chapter>
   <!--END Distributed <abbr linkend="TOE"/> -->
   <chapter title="Security Problem Description" id="spd">
@@ -1729,7 +1729,7 @@ To do:
               For distributed <abbr linkend="TOE"/>'s the handling of audit information might be more complicated than for <abbr linkend="TOE"/>'s consisting only of one component. There are a few basic requirements to be fulfilled:<h:br/><h:br/>
               <h:ul>
                 <h:li>Every component must be able to generate audit information.</h:li>
-                <h:li>Every component must either be able to buffer audit information and forward it to another <abbr linkend="TOE"/> component or to store audit information locally.</h:li>
+                <h:li>Every component must be able to buffer audit information and forward it to another <abbr linkend="TOE"/> component and optionally store audit information locally.</h:li>
                 <h:li>For the overall <abbr linkend="TOE"/> it must be possible to send out audit information to an external audit server.</h:li>
               </h:ul><h:br/>              
               In general, every component must be able to generate its own audit information. It would be possible that every component also stores its own audit information locally as well as every component could be able to send out audit data to an external audit server. It would also be sufficient that every component would be able to generate its own audit data and buffer it locally before the information is sent out to one or more other <abbr linkend="TOE"/> components for local storage and/or transmission to an external audit server. For the transfer of audit records between <abbr linkend="TOE"/> components the secure connection via FTP_ITC.1 or FPT_ITT.1 must be used.<h:br/><h:br/>
