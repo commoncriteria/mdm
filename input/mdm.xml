@@ -1334,13 +1334,11 @@ To do:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <!--TODO Check TLS reference-->
                     <h:TD>FCS_DTLSC_EXT.1 (TLS Package)</h:TD>
                     <h:TD>Failure of the certificate validity check.</h:TD>
                     <h:TD>Issuer Name and Subject Name of certificate </h:TD>
                   </h:TR>
                   <h:TR>
-                    <!--TODO Check TLS reference-->
                     <h:TD>FCS_DTLSS_EXT.1 (TLS Package)</h:TD>
                     <h:TD>Failure of the certificate validity check.</h:TD>
                     <h:TD>Issuer Name and Subject Name of certificate </h:TD>
@@ -2635,7 +2633,6 @@ To do:
                 <h:li>FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
                   <h:ul>
                     <h:li>TLS_RSA_WITH_AES_128_CBC_SHA cannot be selected</h:li>
-                    <h:li>session renegotiation must be selected</h:li>
                   </h:ul>
                 </h:li>
               </h:ul>              
@@ -3726,7 +3723,7 @@ To do:
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the administrator role and the powers granted to and limitations of the role.<h:br/><h:br/>
               <Guidance/>The evaluator shall review the operational guidance to ensure that it contains instructions for administering the <abbr linkend="TOE"/> and which interfaces are supported.<h:br/><h:br/>
-              <Tests/>In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the <abbr linkend="TOE"/> that conforms to the requirements of this <abbr linkend="PP"/> be tested; for instance, if the <abbr linkend="TOE"/> can be administered through a local hardware interface or TLS/HTTPS then both methods of administration must be exercised during the evaluation team's test activities. 
+              <Tests/>In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the <abbr linkend="TOE"/> that conforms to the requirements of this <abbr linkend="PP"/> be tested; for instance, if the <abbr linkend="TOE"/> can be administered through a local hardware interface or HTTPS then both methods of administration must be exercised during the evaluation team's test activities. 
             </aactivity>
           </f-element>
         </f-component> 
@@ -3742,7 +3739,7 @@ To do:
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the administrator role and the powers granted to and limitations of the role.<h:br/><h:br/>
               <Guidance/>The evaluator shall review the operational guidance to ensure that it contains instructions for administering the <abbr linkend="TOE"/> and which interfaces are supported.<h:br/><h:br/>
-              <Tests/>In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the <abbr linkend="TOE"/> that conforms to the requirements of this <abbr linkend="PP"/> be tested; for instance, if the <abbr linkend="TOE"/> can be administered through a local hardware interface or TLS/HTTPS then both methods of administration must be exercised during the evaluation team's test activities.
+              <Tests/>In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the <abbr linkend="TOE"/> that conforms to the requirements of this <abbr linkend="PP"/> be tested; for instance, if the <abbr linkend="TOE"/> can be administered through a local hardware interface or HTTPS then both methods of administration must be exercised during the evaluation team's test activities.
             </aactivity>
           </f-element>
         </f-component>      
@@ -4022,7 +4019,6 @@ To do:
                   <h:ul>
                     <h:li>TLS_RSA_WITH_AES_128_CBC_SHA cannot be selected</h:li>
                     <h:li>mutual authentication must be selected</h:li>
-                    <h:li>session renegotiation must be selected</h:li>
                   </h:ul>
                 </h:li>
                 <h:li>FCS_DTLSC_EXT.1.1 or FCS_DTLSS_EXT.1.1 (as appropriate):
@@ -4034,11 +4030,11 @@ To do:
               </h:ul> 
               Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided 
               services.<h:br/><h:br/> 
-              <!--TODO REMOVE! The requirement implies that not only are communications protected when they are initially established, but 
+              The requirement implies that not only are communications protected when they are initially established, but 
               also on resumption after an outage. It may be the case that some part of the <abbr linkend="TOE"/> setup involves 
               manually setting up tunnels to protect other communication, and if after an outage the <abbr linkend="TOE"/> attempts 
               to re-establish the communication automatically with (the necessary) manual intervention, there may be a window created 
-              where an attacker might be able to gain critical information or compromise a connection.<h:br/><h:br/> -->
+              where an attacker might be able to gain critical information or compromise a connection.<h:br/><h:br/>
             </note>
           </f-element>
           <f-element id="ftp_itc.1.2(1)">
@@ -4870,7 +4866,7 @@ To do:
     </section>
   </appendix> 
  
-<appendix id="equiv" title="MDM/MAS Server Software Equivalency Guidelines">
+<appendix id="equiv" title="MDM Software Equivalency Guidelines">
     <section id="mdm-intro" title="Introduction">
       The purpose of equivalence in PP-based evaluations is to find a balance between evaluation rigor and commercial practicability, to 
       ensure that evaluations meet customer expectations while recognizing that there is little to be gained from requiring that every 
@@ -5027,36 +5023,36 @@ To do:
     </section>
     <section id="platformequiv" title="Specific Guidance for Determining Platform Equivalence">
       Platform equivalence is used to determine the platforms that equivalent versions of a Product must be tested on. 
-      Platform equivalence analysis done for one MDM/MAS Server cannot be applied to another MDM/MAS Server.
-      Platform equivalence is not general, it is with respect to a particular MDM/MAS Server. 
+      Platform equivalence analysis done for one MDM cannot be applied to another MDM.
+      Platform equivalence is not general, it is with respect to a particular MDM. 
       <h:br /><h:br />
       Product Equivalency analysis must already have been done and Products have been determined to be equivalent.
       <h:br /><h:br />
       The platform can be hardware or virtual hardware, an operating system or similar entity, or a software execution 
-      environment such as a container. For purposes of determining equivalence for MDM/MAS Servers, we address each
+      environment such as a container. For purposes of determining equivalence for MDMs, we address each
       type of platform separately. In general, platform equivalence is based on differences in the interfaces between the 
       TOE and Platform that are relevant to the implementation of PP-specified security functionality.
       <h:br /><h:br />
       <subsection id="hardware-equiv" title="Platform Equivalence, Hardware/Virtual Hardware Platforms">
-        If an MDM/MAS Server runs directly on hardware without an operating system, or directly on virtualized 
+        If an MDM runs directly on hardware without an operating system, or directly on virtualized 
         hardware without an operating system, then platform equivalence is based on processor architecture and 
         instruction sets. In the case of virtualized hardware, it is the virtualized processor and architecture 
-        that are presented to the MDM/MAS Server that matters, not the physical hardware.
+        that are presented to the MDM that matters, not the physical hardware.
         <h:br /><h:br />
         Platforms with different processor architectures and instruction sets are not equivalent. This is not 
-        likely to be an issue for equivalency analysis for MDM/MAS Servers since there is likely to be a different 
-        version of the MDM/MAS Server for different hardware environments.
+        likely to be an issue for equivalency analysis for MDMs since there is likely to be a different 
+        version of the MDM for different hardware environments.
         Equivalency analysis becomes important when comparing processors with the same architecture. Processors 
         with the same architecture that have instruction sets that are subsets or supersets of each other are not
-        disqualified from being equivalent for purposes of an MDM/MAS Server evaluation. If the MDM/MAS Server takes the same 
+        disqualified from being equivalent for purposes of an MDM evaluation. If the MDM takes the same 
         code paths when executing PP-specified security functionality on different processors of the same family, 
-        then the processors can be considered equivalent with respect to that MDM/MAS Server.
-        For example, if an MDM/MAS Server follows one code path on platforms that support the AES-NI instruction 
+        then the processors can be considered equivalent with respect to that MDM.
+        For example, if an MDM follows one code path on platforms that support the AES-NI instruction 
         and another on platforms that do not, then those two platforms are not equivalent with respect to that 
-        MDM/MAS Server functionality. But if the MDM/MAS Server follows the same code path whether or not the platform 
+        MDM functionality. But if the MDM follows the same code path whether or not the platform 
         supports AES-NI, then the platforms are equivalent with respect to that functionality.
         <h:br /><h:br />
-        The platforms are equivalent with respect to the MDM/MAS Server if the platforms are equivalent with respect to all PP-specified
+        The platforms are equivalent with respect to the MDM if the platforms are equivalent with respect to all PP-specified
         security functionality.
         <h:table border="1">
           <h:tr class="header" bgcolor="#cccccc">
@@ -5067,13 +5063,13 @@ To do:
           <h:tr valign="top">
             <h:td valign="top">Platform Architectures</h:td>
             <h:td valign="top">Different</h:td>
-            <h:td valign="top">Platforms that present different processor architectures and instruction sets to the MDM/MAS Server are not equivalent.</h:td>
+            <h:td valign="top">Platforms that present different processor architectures and instruction sets to the MDM are not equivalent.</h:td>
           </h:tr>
           <h:tr>
             <h:td valign="top">PP-Specified Funtionality</h:td>
             <h:td valign="top">Same</h:td>
             <h:td valign="top">For platforms with the same processor architecture, the platforms are equivalent with
-              respect to the MDM/MAS Server if execution of all PP-specified security functionality follows the same code path on both platforms.</h:td>
+              respect to the MDM if execution of all PP-specified security functionality follows the same code path on both platforms.</h:td>
           </h:tr>
         </h:table>
         <h:b>Table 3. Factors for Determining Hardware/Virtual Hardware Platform Equivalence</h:b>
@@ -5082,8 +5078,8 @@ To do:
         
       </subsection>
       <subsection id="os-equiv" title="Platform Equivalence, OS Platforms">
-        For MDM/MAS Servers that are built for and run on operating systems, platform equivalence is 
-        determined by the interfaces between the MDM/MAS Server and the operating system that are relevant to PP-specified 
+        For MDMs that are built for and run on operating systems, platform equivalence is 
+        determined by the interfaces between the MDM and the operating system that are relevant to PP-specified 
         security functionality. Generally, these are the processor interface, device interfaces, and OS APIs. The following 
         factors applied in order:
         
@@ -5113,15 +5109,15 @@ To do:
             <h:td valign="top">Different</h:td>
             <h:td valign="top">Platforms from the same vendor and major version are not equivalent if there are
               differences in device interfaces and OS APIs that are relevant to the way the platform provides PP-specified 
-              security functionality to the MDM/MAS Server. </h:td>
+              security functionality to the MDM. </h:td>
           </h:tr>
           <h:tr valign="top">
             <h:td valign="top">Platform Interfaces</h:td>
             <h:td valign="top">Same</h:td>
             <h:td valign="top">Platforms from the same vendor and major version are equivalent if there are 
               no differences in device interfaces and OS APIs that are relevant to the way the platform 
-              provides PP-specified security functionality to the MDM/MAS Server, or if the Platform does 
-              not provide such functionality to the MDM/MAS Server.</h:td>
+              provides PP-specified security functionality to the MDM, or if the Platform does 
+              not provide such functionality to the MDM.</h:td>
           </h:tr>
           
         </h:table>
@@ -5131,9 +5127,9 @@ To do:
     
       </subsection>
       <subsection id="software-equiv" title="Software-based Execution Environment Platform Equivalence">
-        If an MDM/MAS Server is built for and runs in a non-OS software-based execution environment, such as a Container or 
+        If an MDM is built for and runs in a non-OS software-based execution environment, such as a Container or 
         Java Runtime, then the below criteria must be used to determine platform equivalence. The key point is that the 
-        underlying hardware (virtual or physical) and OS is not relevant to platform equivalence. This allows MDM/MAS Servers 
+        underlying hardware (virtual or physical) and OS is not relevant to platform equivalence. This allows MDMs 
         to be tested and run on software-based execution environments on any hardware, as in cloud deployments.
         
         <h:table border="1">
@@ -5160,7 +5156,7 @@ To do:
             <h:td valign="top">Same</h:td>
             <h:td valign="top">All other things being equal, execution environments are equivalent if there is no 
               significant difference in the interfaces through which the environments provide PP-specified security 
-              functionality to MDM/MAS Servers.</h:td>
+              functionality to MDMs.</h:td>
           </h:tr>
         </h:table>
         <h:b>Table 5. Factors for Software-based Execution Environment Platform Equivalence</h:b>
@@ -5175,7 +5171,7 @@ To do:
       <h:br /><h:br />
       The ST must describe all configurations evaluated down to processor manufacturer, model number, and microarchitecture version. 
       <h:br /><h:br />
-      The information regarding claimed equivalent configurations depends on the platform that the MDM/MAS Server was developed for and runs on.
+      The information regarding claimed equivalent configurations depends on the platform that the MDM was developed for and runs on.
       <h:br /><h:br />
       <h:b>Bare-Metal MDMs</h:b>
       <h:br /><h:br />
@@ -5185,9 +5181,9 @@ To do:
       differently to leverage platform differences (e.g., instruction set extensions) in the tested configuration versus the 
       claimed equivalent configuration. 
       <h:br /><h:br />
-      <h:b>Traditional MDM/MAS Servers</h:b>
+      <h:b>Traditional MDMs</h:b>
       <h:br /><h:br />
-      For MDM/MAS Servers that run with an operating system as their immediate platform, the claimed configuration must describe 
+      For MDMs that run with an operating system as their immediate platform, the claimed configuration must describe 
       the platform down to the specific operating system version. If the platform is a virtualization system, then the claimed 
       configuration must describe the platform down to the specific virtualization system version. The Vendor must describe the 
       differences in the TOE with respect to PP-specified security functionality and how the TOE functions differently to leverage
@@ -5197,7 +5193,7 @@ To do:
       <h:br /><h:br />
       <h:b>Software-Based Execution Environments</h:b>
       <h:br /><h:br />
-      For MDM/MAS Servers that run in a software-based execution environment such as a Java virtual machine or a Container, then 
+      For MDMs that run in a software-based execution environment such as a Java virtual machine or a Container, then 
       the claimed configuration must describe the platform down to the specific version of the software execution environment. 
       The Vendor must describe the differences in the TOE with respect to PP-specified security functionality and how the TOE 
       functions differently to leverage platform differences in the tested configuration versus the claimed equivalent 
