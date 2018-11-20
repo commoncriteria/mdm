@@ -27,6 +27,7 @@ To do:
 - have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
 - unify the random use of  TOE/TSF/MDM server and MD user/agent
 - update TOE boundary section
+- map new SFR's to o.things
 
 
 - Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2), fmt_mof.1(3)
@@ -1581,7 +1582,7 @@ To do:
         <f-component id="fau_net_ext.1" name="Network Reachability Review">
           <f-element id="fau_net_ext.1.1">
             <title>The <abbr linkend="MDM"/> Server shall provide authorized administrators with the capability to read the network connectivity status of an enrolled agent.</title>
-            <note role="application"> The <abbr linkend="MDM"/> Server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr linkend="EP"/>. This status may be determined using "polls" from the <abbr linkend="MDM"/> Server which the Agent is required to respond to or using scheduled periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
+            <note role="application"> The <abbr linkend="MDM"/> Server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr linkend="EP"/>. This status may be determined sending an update request from the <abbr linkend="MDM"/> Server which the Agent is required to respond to or using scheduled periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
             <aactivity>
               <TSS/> The evaluator ensures that the <abbr linkend="TSS"/> describes how reachability events are implemented, for each supported mobile platform. The evaluator verifies that this description clearly indicates who (<abbr linkend="MDM"/> Agent or <abbr linkend="MDM"/> Server) initiates reachability events.<h:br/><h:br/>
               <Guidance/> The evaluator shall verify that the guidance instructs administrators on the method of determining the network connectivity status of an enrolled agent.<h:br/><h:br/>
@@ -1616,7 +1617,10 @@ To do:
         </f-component> 
         <f-component id="fau_sel.1" name="Security Audit Event Selection" status="optional">
           <f-element id="fau_sel.1.1">
-            <title> The <abbr linkend="MDM"/> Server shall be able to select the set of events to be audited from the set of all auditable events based on the following attributes:
+            <title> The <abbr linkend="MDM"/> Server shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable></selectables>      
+              to select the set of events to be audited from the set of all auditable events based on the following attributes:
               <h:ol type="a">
                 <h:li>event type</h:li>
                 <h:li>success of auditable security events</h:li>
@@ -1626,6 +1630,7 @@ To do:
             </title>
             <note role="application">The intent of this requirement is to identify all criteria that can be selected to trigger an audit event. The <abbr linkend="ST"/> author must select whether the <abbr linkend="TSF"/> or the platform maintains the audit record. For the <abbr linkend="ST"/> author, the assignment is used to list any additional criteria or "none".</note>
             <aactivity>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <Guidance/>The evaluator shall review the administrative guidance to ensure that the guidance itemizes all event types, as well as describes all attributes that are to be selectable in accordance with the requirement, to include those attributes listed in the assignment. The administrative guidance shall also contain instructions on how to set the pre-selection as well as explain the syntax (if present) for multi-value pre- selection. The administrative guidance shall also identify those audit records that are always recorded, regardless of the selection criteria currently being enforced.<h:br/><h:br/>
               <Tests/>The evaluator shall also perform the following tests:<testlist>
                 <test>For each attribute listed in the requirement, the evaluator shall devise a test to show that selecting the attribute causes only audit events with that attribute (or those that are always recorded, as identified in the administrative guidance) to be recorded.</test>
