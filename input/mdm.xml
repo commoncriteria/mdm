@@ -15,23 +15,32 @@ To do:
 - ask Keven about <OSPs> tag, why do I have to wrap each <OSP> with an <OSPs>
 - cross references - search for Section & Appendix cross refs & adjust
 
-- edit fau_gen to make it applicable to any component of a distributed toe
+- Craig >> Search for your name in the comments
 - make links out of all the references to ITT/ITC sfr's
 - finish table 1, have to add where we think things belong >> done
 - fix table 2 after mas server sfr's get figured out
+- split table 2 (audit) into mandatory/selection based table and opt/obj table >> does not need to be completed before draft 2 goes out
 - fix dead links to TLS, etc: NOTE: The TLS/DTLS links should be fixed
 - comment matrix >> mostly done, didnt see anything else critical
 - TLS: package and figure out how to use platform TLS with the TLS package: NOTE: most or all of these say something to the effect that protocol,etc. may be met with platform provided services - check FTP_TRP.1(1) - is this good enough?
-- DONE: Mas server - Need to check references to MAS
+-  
 - incorporate evaluation activity for distributed TOE (SD B.4) (pulled it in the appendix but its ugly and might need to be fixed)
-- have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
+
 - unify the random use of  TOE/TSF/MDM server and MD user/agent
 - update TOE boundary section
-- DONE: map new SFR's to o.things
 
 
+NOTES:
 - Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg_ext.1.1(2), fmt_mof.1(3)
-- DONE: Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(4), fmt_smf.1(3)
+
+DONE:
+- map new SFR's to o.things
+- Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(4), fmt_smf.1(3)
+- Mas server - Need to check references to MAS
+- edit fau_gen to make it applicable to any component of a distributed toe
+- have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
+- NIAP comment matrix
+
 -->
 <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
@@ -394,6 +403,7 @@ To do:
   <chapter title="Conformance Claims" id="ccl">
     <cclaims>
       <cclaim id="Conformance Statement">
+        <description></description>
         <!--  <description> To be conformant to this PP, a <abbr linkend="ST"/> must demonstrate Exact
           Conformance, a subset of Strict Conformance as defined in <cite linkend="bibCC"/> Part 1
           (ASE_CCL). The <abbr linkend="ST"/> must include all components in this PP that are: <h:ul>
@@ -1130,6 +1140,7 @@ To do:
             <note role="application"> The <abbr linkend="MDM"/> Agent is required to report to the <abbr linkend="MDM"/> Server on successful application of policies on a managed mobile device, and failures can be inferred from the absence of such alerts. This requirement is intended to ensure that the <abbr linkend="MDM"/> Server notifies administrators when policies are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the mobile device.</note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes how the alert system is implemented. The evaluator shall also verify that a description of each assigned event is provided in the <abbr linkend="TSS"/>.<h:br/><h:br/>
+              <Guidance/>The evaluator shall examine the guidance document and verify that it describes how the alerts can be configured, if configurable.
               <Tests/> For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>: <testlist>
                 <test>The evaluator shall enroll a device and ensure that the <abbr linkend="MDM"/> server alerts the administrator of the change in enrollment status. The evaluator shall unenroll (retire) a device and ensure that the <abbr linkend="MDM"/> server alerts the administrator of the change in enrollment status.</test>
                 <test>The evaluator shall configure policies, which the <abbr linkend="MDM"/> agent should not be able to apply. These policies shall include:<h:ul>
@@ -3973,6 +3984,7 @@ To do:
           </f-element>
         </f-component>
         <f-component id="ftp_itc.1(1)" name="Inter-TSF Trusted Channel (Authorized IT Entities)"> <!-- MDM Server is the client for these connections (i.e. to external audit server), so likely will need to reference TLSC requirements -->
+          <!-- CRAIG: Why is .2/.3 freed and not .1?? -->
           <f-element id="ftp_itc.1.1(1)"> <!--free-->
             <title>The TSF shall use <selectables>
                 <selectable id="ITC_IPSEC_1">IPsec</selectable>
