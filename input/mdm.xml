@@ -15,7 +15,7 @@ To do:
 - ask Keven about <OSPs> tag, why do I have to wrap each <OSP> with an <OSPs>
 - cross references - search for Section & Appendix cross refs & adjust
 
-- Craig >> Search for your name in the comments
+- Make .1 of trusted channel/path freed
 - make links out of all the references to ITT/ITC sfr's
 - finish table 1, have to add where we think things belong >> done
 - fix table 2 after mas server sfr's get figured out
@@ -3986,13 +3986,16 @@ DONE:
         <f-component id="ftp_itc.1(1)" name="Inter-TSF Trusted Channel (Authorized IT Entities)"> <!-- MDM Server is the client for these connections (i.e. to external audit server), so likely will need to reference TLSC requirements -->
           <!-- CRAIG: Why is .2/.3 freed and not .1?? -->
           <f-element id="ftp_itc.1.1(1)"> <!--free-->
-            <title>The TSF shall use <selectables>
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to provide a trusted communication channel using <selectables>
                 <selectable id="ITC_IPSEC_1">IPsec</selectable>
                 <selectable id="ITC_SSH_1">SSH</selectable>
                 <selectable id="ITC_TLS_1">TLS</selectable>
                 <selectable id="ITC_DTLS_1">DTLS</selectable>
                 <selectable id="ITC_HTTPS_1">HTTPS</selectable>
-              </selectables> to provide a trusted communication channel between itself and authorized IT entities supporting the following capabilities: audit server, <selectables>
+              </selectables> between itself and authorized IT entities supporting the following capabilities: audit server, <selectables>
                 <selectable>authentication server</selectable>
                 <selectable><assignable>other capabilities</assignable></selectable>
               </selectables> that is logically distinct from other communication channels and provides assured identification of its end points and protection of the channel data from modification or disclosure.</title>
@@ -5442,10 +5445,14 @@ DONE:
   <extra-css>
 <!-- DO NOT DELETE -->
     
-    .SOlist .optional::after,
-    .SOlist .sel-based::after,
-    .SOlist .objective::after { 
+    .SOlist .optional::after {
     content: "(OPTIONAL)"
+    }  
+    .SOlist .sel-based::after {
+    content: "(SEL-BASED)"
+    }
+    .SOlist .objective::after { 
+    content: "(OBJECTIVE)"
     } 
     
   </extra-css>
