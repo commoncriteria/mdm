@@ -4424,13 +4424,23 @@ DONE:
         </f-component>
         <f-component id="ftp_trp.1(2)" name="Trusted Path (for Enrollment)">
           <f-element id="ftp_trp.1.1(2)"> <!--free-->
-            <title>The TSF shall use <selectables>
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to use <selectables>
                 <selectable id="TRP_TLS_2">TLS</selectable>
                 <selectable id="TRP_HTTPS_2">HTTPS</selectable>
               </selectables> to provide a trusted communication path between itself and MD users that is logically distinct 
               from other communication paths and provides assured identification of its endpoints and protection of the 
               communicated data from disclosure and detection of modification of the communicated data from 
               [modification, disclosure]. </title>
+            <aactivity>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+              of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+              how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+              the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+              of this evaluation activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="ftp_trp.1.2(2)"> <!--free-->
             <title>The TSF shall <selectables>
