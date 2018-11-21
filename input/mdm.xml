@@ -4349,14 +4349,24 @@ DONE:
         -->
         <f-component id="ftp_trp.1(1)" name="Trusted Path (for Remote Administration)">
           <f-element id="ftp_trp.1.1(1)"> <!--free-->
-            <title>The TSF shall use <selectables>
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to use <selectables>
                 <selectable id="TRP_IPSEC_1">IPsec</selectable>
                 <selectable id="TRP_TLS_1">TLS</selectable>
                 <selectable id="TRP_HTTPS_1">HTTPS</selectable>
                 <selectable id="TRP_SSH_1">SSH</selectable>
               </selectables> to provide a trusted communication path between itself and remote administrators that is logically 
               distinct from other communication paths and provides assured identification of its endpoints and protection of the 
-              communicated data from [modification, disclosure].</title>            
+              communicated data from [modification, disclosure].</title> 
+            <aactivity>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of 
+              the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how 
+              this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+              the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+              of this evaluation activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="ftp_trp.1.2(1)"> <!--free-->
             <title>The TSF shall <selectables>
