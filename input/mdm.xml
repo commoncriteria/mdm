@@ -326,16 +326,9 @@ DONE:
         and is out of scope of this <abbr linkend="PP"/>; however, <abbr linkend="MDM"/>s are
         required to indicate the mobile platforms supported by the <abbr linkend="MDM"/> Server and
         must be tested against the native <abbr linkend="MDM"/> agent of those platforms.
-        <h:br/>
-        <h:br/>
-        <!-- TODO: I still feel like we need to have some definition of what MAS functionality is. We just need minor tweaks to the definition below to include cloud. -->
-        <!--
-        The <h:b>MAS Server</h:b> is an application on a general-purpose platform or on a
-        network device, executing in a trusted network environment. The MAS Server may be separate
-        to or included in the <abbr linkend="MDM"/> Server. The MAS server hosts applications for
-        the enterprise, authenticates Agents, and securely transmits applications to enrolled mobile
-        devices.
-        -->
+        <h:br/><h:br/>
+        
+        The <h:b>MAS Server</h:b> is an application on a general-purpose platform or on a network device, executing in a trusted network environment. The MAS Server may be distributed component or included in the <abbr linkend="MDM"/> Server. The MAS server hosts applications for the enterprise, authenticates Agents, and securely transmits applications to enrolled mobile devices.
       </subsection>
     </section>
     <section id="usec" title="Use Cases"> This <abbr linkend="PP"/> defines 4 use cases:<h:br/>
@@ -1137,7 +1130,8 @@ DONE:
                 <h:li><selectables><selectable><assignable>other events</assignable></selectable><selectable>no other events</selectable></selectables></h:li>
               </h:ol>
             </title>
-            <note role="application"> The <abbr linkend="MDM"/> Agent is required to report to the <abbr linkend="MDM"/> Server on successful application of policies on a managed mobile device, and failures can be inferred from the absence of such alerts. This requirement is intended to ensure that the <abbr linkend="MDM"/> Server notifies administrators when policies are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the mobile device.</note>
+            <note role="application"> An alert can be defined as any form of providing straightaway notice to the administrator. An alert is different from an audit record, however the fact that an alert was sent should be audited per <linkref linkend="FAU_GEN.1"/>. Email, pop-up notifications, or other methods are acceptable forms of alerts.<h:br/><h:br/>            
+              The <abbr linkend="MDM"/> Agent is required to report to the <abbr linkend="MDM"/> Server on successful application of policies on a managed mobile device, and failures can be inferred from the absence of such alerts. This requirement is intended to ensure that the <abbr linkend="MDM"/> Server notifies administrators when policies are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the mobile device.</note>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes how the alert system is implemented. The evaluator shall also verify that a description of each assigned event is provided in the <abbr linkend="TSS"/>.<h:br/><h:br/>
               <Guidance/>The evaluator shall examine the guidance document and verify that it describes how the alerts can be configured, if configurable.
