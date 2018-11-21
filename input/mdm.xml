@@ -4114,7 +4114,10 @@ DONE:
         <f-component id="ftp_itc.1(2)" name="Inter-TSF Trusted Channel (MDM Agent)" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1" ids="AgentOutTOE_ftp"/>
           <f-element id="ftp_itc.1.1(2)">
-            <title>The <abbr linkend="TSF"/> shall use <selectables>
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to use <selectables>
                 <selectable id="ITC_TLS_2">TLS</selectable>
                 <selectable id="ITC_DTLS_2">DTLS</selectable>
                 <selectable id="ITC_HTTPS_2">HTTPS</selectable>
@@ -4178,6 +4181,13 @@ DONE:
               attempts to re-establish the communication automatically with (the necessary) manual intervention, there may be a 
               window created where an attacker might be able to gain critical information or compromise a connection.<h:br/><h:br/>
             </note>
+            <aactivity>
+              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> 
+              of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) 
+              how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by 
+              the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part 
+              of this evaluation activity).<h:br/><h:br/>
+            </aactivity>
           </f-element>
           <f-element id="ftp_itc.1.2(2)">
             <title>The <abbr linkend="TSF"/> shall <selectables>
