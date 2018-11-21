@@ -3786,7 +3786,10 @@ DONE:
         <f-component id="fpt_itt.1" name="Internal TOE TSF Data Transfer" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1" ids="AgentInTOE_fpt, DistributedTOE_MAS"/>
           <f-element id="fpt_itt.1.1">
-            <title>The <abbr linkend="TSF"/> shall protect all data from [disclosure and modification] through use of 
+            <title>The <abbr linkend="TSF"/> shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to protect all data from [disclosure and modification] through use of 
               <selectables>
                 <selectable id="ITT_IPSEC">IPsec</selectable>
                 <selectable id="ITT_TLS">TLS</selectable>
@@ -3823,6 +3826,7 @@ DONE:
                 <abbr linkend="TSS"/> in support of <abbr linkend="TOE"/> administration are
                 consistent with those specified in the requirement, and are included in the
                 requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <Guidance/>The evaluator shall confirm that the operational guidance contains
                 instructions for establishing the communication paths for each supported
                 method.<h:br/><h:br/>
