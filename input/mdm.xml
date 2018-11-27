@@ -328,7 +328,7 @@ DONE:
         must be tested against the native <abbr linkend="MDM"/> agent of those platforms.
         <h:br/><h:br/>
         
-        The <h:b>MAS Server</h:b> is an application on a general-purpose platform or on a network device, executing in a trusted network environment. The MAS Server may be distributed component or included in the <abbr linkend="MDM"/> Server. The MAS server hosts applications for the enterprise, authenticates Agents, and securely transmits applications to enrolled mobile devices.
+        The <h:b>MAS Server</h:b> is an application on a general-purpose platform or on a network device, executing in a trusted network environment. The MAS Server may be a component of a distributed <abbr linkend="TOE"/> or included in the <abbr linkend="MDM"/> Server. The MAS server hosts applications for the enterprise, authenticates Agents, and securely transmits applications to enrolled mobile devices.
       </subsection>
     </section>
     <section id="usec" title="Use Cases"> This <abbr linkend="PP"/> defines 4 use cases:<h:br/>
@@ -675,7 +675,7 @@ DONE:
       <h:tr>
         <h:td>FMT_MOF.1(4)</h:td>
         <h:td>Management of Functions in (MAS Server Downloads)</h:td>
-        <h:td></h:td> 
+        <h:td>Feature Dependent</h:td> 
       </h:tr>
 <!--      
       <h:tr>
@@ -714,7 +714,7 @@ DONE:
       <h:tr>
         <h:td>FMT_SMF.1(3)</h:td>
         <h:td>Specification of Management Functions (MAS Server)</h:td>
-        <h:td></h:td> 
+        <h:td>Feature Dependent</h:td> 
       </h:tr>    
       <h:tr>
         <h:td>FMT_SMR.1(1)</h:td>
@@ -1263,6 +1263,13 @@ DONE:
               <Tests/> When verifying the test results from <linkref linkend="FAU_GEN.1.1(1)"/>, the evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide, and that the fields in each audit record have the proper entries.<h:br/><h:br/> 
                 Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly. For example, testing performed to ensure that the administrative guidance provided is correct verifies that AGD_OPE.1 is satisfied and should address the invocation of the administrative actions that are needed to verify the audit records are generated as expected.<h:br/><h:br/> 
                 The Auditable Events table includes optional, selection-based and objective requirements. The auditing of these requirements are only required if the requirement is included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              <h:ul>
+                <h:li>(man) - mandatory requirement</h:li>
+                <h:li>(sel) - selection-based requirement</h:li>
+                <h:li>(obj) - objective requirement</h:li>
+                <h:li>(opt) - optional requirement</h:li>
+              </h:ul>
+              
                 <h:center><h:H4>Table 2: Auditable Events</h:H4></h:center>
                 <h:table>
                   <h:TR>
@@ -1271,70 +1278,70 @@ DONE:
                     <h:TH>Additional Audit Record Contents</h:TH>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FAU_ALT_EXT.1</h:TD>
+                    <h:TD>FAU_ALT_EXT.1 (man)</h:TD>
                     <h:TD>Type of alert.</h:TD>
                     <h:TD>Identity of Mobile Device that sent alert.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FAU_CRP_EXT.1</h:TD>
+                    <h:TD>FAU_CRP_EXT.1 (obj)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FAU_GEN.1</h:TD>
+                    <h:TD>FAU_GEN.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FAU_NET_EXT.1</h:TD>
+                    <h:TD>FAU_NET_EXT.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FAU_SAR.1</h:TD>
+                    <h:TD>FAU_SAR.1 (opt)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FAU_SEL.1</h:TD>
+                    <h:TD>FAU_SEL.1 (opt)</h:TD>
                     <h:TD>All modifications to the audit configuration that occur while the audit
                       collection functions are operating.</h:TD>
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FAU_STG_EXT.1</h:TD>
+                    <h:TD>FAU_STG_EXT.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FAU_STG_EXT.2</h:TD>
+                    <h:TD>FAU_STG_EXT.2 (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCO_CPC_EXT.1</h:TD>
+                    <h:TD>FCO_CPC_EXT.1 (obj)</h:TD>
                     <h:TD>Enabling communications between a pair of components.<h:br/> Disabling communications between a pair of components.</h:TD>
                     <h:TD>Identities of the endpoints pairs enabled or disabled.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_CKM_EXT.4</h:TD>
+                    <h:TD>FCS_CKM_EXT.4 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_CKM.1</h:TD>
+                    <h:TD>FCS_CKM.1 (man)</h:TD>
                     <h:TD> <selectables> <selectable>Failure of key generation activity for authentication keys</selectable>
                     <selectable>None</selectable></selectables></h:TD>
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_CKM.2</h:TD>
+                    <h:TD>FCS_CKM.2 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_COP.1(*)</h:TD>
+                    <h:TD>FCS_COP.1(*)(man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -1349,7 +1356,7 @@ DONE:
                     <h:TD>Issuer Name and Subject Name of certificate </h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_HTTPS_EXT.1</h:TD>
+                    <h:TD>FCS_HTTPS_EXT.1 (sel)</h:TD>
                     <h:TD>Failure of the certificate validity check.</h:TD>
                     <h:TD>Issuer Name and Subject Name of certificate. <selectables>
                       <selectable>User's authorization decision</selectable>
@@ -1357,22 +1364,22 @@ DONE:
                     </selectables></h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_IV_EXT.1</h:TD>
+                    <h:TD>FCS_IV_EXT.1 (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_RBG_EXT.1</h:TD>
+                    <h:TD>FCS_RBG_EXT.1 (man)</h:TD>
                     <h:TD>Failure of the randomization process.</h:TD>
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_STG_EXT.1</h:TD>
+                    <h:TD>FCS_STG_EXT.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_STG_EXT.2</h:TD>
+                    <h:TD>FCS_STG_EXT.2 (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -1401,42 +1408,42 @@ DONE:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FIA_ENR_EXT.1</h:TD>
+                    <h:TD>FIA_ENR_EXT.1 (man)</h:TD>
                     <h:TD>Failure of MD user authentication.</h:TD>
                     <h:TD>Presented username.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FIA_UAU_EXT.4(*)</h:TD>
+                    <h:TD>FIA_UAU_EXT.4(*) (man)</h:TD>
                     <h:TD>Attempt to reuse enrollment data.</h:TD>
                     <h:TD>Enrollment data.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FIA_UAU.1</h:TD>
+                    <h:TD>FIA_UAU.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FIA_X509_EXT.1(1)</h:TD>
+                    <h:TD>FIA_X509_EXT.1(1) (man)</h:TD>
                     <h:TD>Failure to validate X.509 certificate</h:TD>
                     <h:TD>Reason for failure.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FIA_X509_EXT.1(2)</h:TD>
+                    <h:TD>FIA_X509_EXT.1(2) (sel)</h:TD>
                     <h:TD>Failure to validate X.509 certificate</h:TD>
                     <h:TD>Reason for failure.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FIA_X509_EXT.2</h:TD>
+                    <h:TD>FIA_X509_EXT.2 (man)</h:TD>
                     <h:TD>Failure to establish connection to determine revocation status.</h:TD>
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD rowspan="2">FIA_X509_EXT.3</h:TD>
+                    <h:TD rowspan="2">FIA_X509_EXT.3 (obj)</h:TD>
                     <h:TD>Generation of Certificate Request Message.</h:TD><h:TD>Content of Certificate Request Message.</h:TD></h:TR> 
                     <h:TR><h:TD>Success or failure of verification.</h:TD><h:TD>Issuer and Subject name of added certificate or reason for failure.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD rowspan="3">FIA_X509_EXT.4</h:TD>
+                    <h:TD rowspan="3">FIA_X509_EXT.4 (obj)</h:TD>
                     <h:TD>Generation of Certificate Enrollment Request.</h:TD><h:TD>Issuer and Subject name of <abbr linkend="EST"/> Server. Method of
                       authentication. Issuer and Subject name of certificate used to authenticate.
                       Content of Certificate Request Message.</h:TD></h:TR>
@@ -1444,13 +1451,13 @@ DONE:
                     <h:TR><h:TD>Update of <abbr linkend="EST"/> Trust Anchor Database.</h:TD><h:TD>Subject name of added Root CA.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD rowspan="2">FMT_MOF.1(1)</h:TD>
+                    <h:TD rowspan="2">FMT_MOF.1(1) (man)</h:TD>
                     <h:TD>Issuance of command to perform function.</h:TD><h:TD>Command sent and identity of <abbr linkend="MDM"/> 
                       Agent recipient.</h:TD></h:TR>
                     <h:TR><h:TD>Change of policy settings.</h:TD><h:TD>Policy changed and value or full policy.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FMT_MOF.1(2)</h:TD>
+                    <h:TD>FMT_MOF.1(2) (man)</h:TD>
                     <h:TD>Enrollment by a user.</h:TD>
                     <h:TD>Identity of user.</h:TD>
                   </h:TR>
@@ -1462,94 +1469,106 @@ DONE:
                   </h:TR>
                   -->
                   <h:TR>
-                    <h:TD>FMT_MOF.1(4)</h:TD>
+                    <h:TD>FMT_MOF.1(4) (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FMT_POL_EXT.1</h:TD>
+                    <h:TD>FMT_POL_EXT.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FMT_SAE_EXT.1</h:TD>
+                    <h:TD>FMT_SAE_EXT.1 (obj)</h:TD>
                     <h:TD>Enrollment attempted after expiration of authentication data.</h:TD>
                     <h:TD>Identity of user.</h:TD>
-                  </h:TR> <h:TR>
-                    <h:TD>FMT_SMF.1(1)</h:TD>
+                  </h:TR> 
+                  <h:TR>
+                    <h:TD>FMT_SMF.1(1) (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FMT_SMF.1(2)</h:TD>
+                    <h:TD>FMT_SMF.1(2) (man)</h:TD>
                     <h:TD>Success or failure of function.</h:TD>
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FMT_SMF.1(3)</h:TD>
+                    <h:TD>FMT_SMF.1(3) (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FMT_SMR.1(*)</h:TD>
+                    <h:TD>FMT_SMR.1(1) (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FPT_API_EXT.1.1</h:TD>
+                    <h:TD>FMT_SMR.1(2) (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FPT_ITT.1</h:TD>
+                    <h:TD>FPT_API_EXT.1.1 (man)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FPT_ITT.1 (man)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Identity of initiator and recipient.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FPT_LIB_EXT.1.1</h:TD>
+                    <h:TD>FPT_LIB_EXT.1.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FPT_TST_EXT.1</h:TD>
+                    <h:TD>FPT_TST_EXT.1 (man)</h:TD>
                     <h:TD>Initiation of self-test. Failure of self-test.<h:br/> Detected
                       integrity violation.</h:TD>
                     <h:TD>Algorithm that caused failure.<h:br/> The <abbr linkend="TSF"/> code
                       file that caused the integrity violation.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FPT_TUD_EXT.1</h:TD>
+                    <h:TD>FPT_TUD_EXT.1 (man)</h:TD>
                     <h:TD>Success or failure of signature verification.</h:TD>
                     <h:TD> No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FTA_TAB.1</h:TD>
+                    <h:TD>FTA_TAB.1 (opt)</h:TD>
                     <h:TD>Change in banner setting.</h:TD>
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FTP_ITC.1(*)</h:TD>
+                    <h:TD>FTP_ITC.1(1) (man)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Non-<abbr linkend="TOE"/> endpoint of
                       connection.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FTP_ITC_EXT.1</h:TD>
+                    <h:TD>FTP_ITC.1(2) (sel)</h:TD>
+                    <h:TD>Initiation and termination of the trusted channel.</h:TD>
+                    <h:TD>Trusted channel protocol. Non-<abbr linkend="TOE"/> endpoint of
+                      connection.</h:TD>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FTP_ITC_EXT.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD></h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FTP_TRP.1(1)</h:TD>
+                    <h:TD>FTP_TRP.1(1) (man)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Identity of administrator.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FTP_TRP.1(2)</h:TD>
+                    <h:TD>FTP_TRP.1(2) (man)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FTP_TRP.1(3)</h:TD>
+                    <h:TD>FTP_TRP.1(3) (obj)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol.</h:TD>
                   </h:TR>
