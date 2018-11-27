@@ -28,6 +28,7 @@ To do:
 
 - unify the random use of  TOE/TSF/MDM server and MD user/agent
 - update TOE boundary section
+- add disclaimer to audit table that only those SFRs included in the ST are required to be audited. (I.e., if an objective SFR is not included then they do not have to audit it)
 
 
 NOTES:
@@ -215,78 +216,6 @@ DONE:
             and its functionality is available for use. </description></entry>       
       </glossary>
       </subsection>
-    
-      
-      <!-- 
-      <glossary>
-      
-        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device.</description></entry>
-        <entry><term><abbr title="Application Programming Interface">API</abbr></term>
-          <description>Application Programming Interface</description></entry>
-        <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for Information Technology Security Evaluation (International Standard ISO/IEC 15408).</description></entry>
-        <entry><term>Common Criteria Testing Laboratory</term><description>Within the context of the Common Criteria Evaluation and Validation Scheme (CCEVS), an IT security evaluation facility, accredited by the National Voluntary Laboratory Accreditation Program (NVLAP) and approved by the NIAP Validation Body to conduct Common Criteria-based evaluations.
-          </description></entry>
-        <entry><term><abbr title="Common Evaluation Methodology">CEM</abbr></term><description>Common Evaluation Methodology for Information Technology Security Evaluation. </description></entry>
-        <entry><term><abbr title="Critical Security Parameter">CSP</abbr></term><description>Critical Security Parameter</description></entry>
-        <entry><term>Data</term><description>Program/application or files that are stored or transmitted by a server or mobile device. </description></entry>
-        <entry><term><abbr title="Data Encryption Key">DEK</abbr></term><description>Data Encryption Key</description></entry>
-        <entry><term>Developer Modes</term><description>States in which additional services are available to a user in order to provide enhanced system access for debugging of software.</description></entry>
-        <entry><term>Enrolled State</term><description>The state in which a mobile device is managed by a policy from an <abbr linkend="MDM"/>. </description></entry>
-        <entry><term>Enterprise Applications</term><description>Applications that are provided and
-            managed by the enterprise as opposed to a public application store.
-          </description></entry>
-        <entry><term>Enterprise Data</term><description>Any data residing in enterprise servers or
-            temporarily stored on mobile devices to which the mobile device user is allowed access
-            according to the security policy defined by the enterprise and implemented by the
-            administrator. </description></entry>
-
-        <entry><term><abbr title="Enrollment over Secure Transport">EST</abbr></term><description>Enrollment over Secure Transport</description></entry>        
-
-        <entry><term><abbr title="Key Encryption Key">KEK</abbr></term><description>A key that is used to encrypt other keys,
-            such as data encryption keys (<abbr linkend="DEK"/>s) or storage repositories that
-            contain keys. </description></entry>
-        <entry><term>Locked State</term><description>Mobile device state where the device is powered
-            on but most functionality is unavailable for use without authentication.
-          </description></entry>
-        <entry><term><abbr title="Mobile Device">MD</abbr></term><description>Mobile
-            Device</description></entry>
-        <entry><term><abbr title="Mobile Device Management">MDM</abbr></term><description>Mobile
-            Device Management</description></entry>
-        <entry><term>Mobile Device User</term><description>The person who uses and is held
-            responsible for a mobile device. </description></entry>
-        <entry><term><abbr title="Module">Module</abbr></term><description>An implementation-independent set of security requirements for a specific subset of products described by a <abbr linkend="PP"/>.</description></entry>
-        <entry><term><abbr title="Operating System">OS</abbr></term><description>Software which runs at the highest
-            privilege level and can directly control hardware resources. Modern mobile devices
-            typically have at least two primary operating systems: one which runs on the cellular
-            baseband processor and one which runs on the application processor. The platform of the
-            application processor handles most user interaction and provides the execution
-            environment for apps. The platform of the cellular baseband processor handles
-            communications with the cellular network and may control other peripherals. The term
-              <abbr linkend="OS"/>, without context, may be assumed to refer to the platform of the
-            application processor. </description></entry>
-        <entry><term>Powered-Off State</term><description>Mobile device shutdown
-            state.</description></entry>
-        <entry><term>Protected Data</term><description>All non-TSF data on the mobile device,
-            including user or enterprise data. Protected data is encrypted while the mobile device
-            is in the powered-off state. This includes keys in software-based storage. May overlap
-            with sensitive data. </description></entry>
-        <entry><term><abbr title="Root Encryption key">REK</abbr></term><description>A key tied to a particular device that
-            is used to encrypt all other keys for that device. </description></entry>
-        <entry><term>Sensitive Data</term><description>Data that is encrypted by the mobile device.
-            May include all user or enterprise data or may be data for specific applications such as
-            emails, messaging, documents, calendar items, or contacts. May be protected while the
-            mobile device is in the locked state. Must include at minimum some keys in
-            software-based key storage. </description></entry>
-        <entry><term>Trust Anchor Database</term><description>A list of trusted root Certificate
-            Authority certificates. </description></entry>
-        <entry><term>TSF Data</term><description>Data for the operation of the <abbr linkend="TSF"/>
-            that is used to enforce its security requirements. </description></entry>
-        <entry><term>Unenrolled State</term><description>Mobile device state when it is not managed
-            by an <abbr linkend="MDM"/>. </description></entry>
-        <entry><term>Unlocked State</term><description>Mobile device state where it is powered on
-            and its functionality is available for use. </description></entry>
-      </glossary>
-      -->
     </section>
     <section id="cte" title="Compliant Targets of Evaluation">
       The Mobile Device Management (MDM) system consists of two primary components: the <abbr linkend="MDM"/> Server software and the <abbr linkend="MDM"/> Agent. Optionally, the <abbr linkend="MDM"/> system may consist of a separate Mobile Application Store (MAS) server. 
@@ -3267,13 +3196,21 @@ DONE:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
               </selectables> to require a unique certificate for each client device.</title>
-            <note role="application">Each client device will have a unique X.509v3 certificate for use by the <abbr linkend="MDM"/> Agent; the certificate is not to be reused among clients. This requirement is to ensure that the <abbr linkend="MDM"/> Server verifies that each client certificate is unique.</note>
+            <note role="application">Each client device will have a unique X.509v3 certificate for use by the <abbr linkend="MDM"/> Agent; the certificate is not to be reused among clients. This requirement is to ensure that the <abbr linkend="MDM"/> Server either provides an unique certificate or verifies that each client certificate is unique.</note>
             <aactivity>              
-              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
-              If "implement functionality" is selected then the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the methods to ensure that each client utilizes a unique certificate. <h:br/><h:br/>             
+              <TSS/> If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              If "implement functionality" is selected then the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the methods to ensure that each client utilizes a unique certificate. <h:br/><h:br/>            
               <Tests/>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<h:br/><h:br/>
               The evaluator shall utilize appropriate combinations of specialized operational environment and development tools (debuggers, simulators, etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds as needed to perform this test.<h:br/><h:br/> 
-              The evaluator shall initiate communications between the <abbr linkend="MDM"/> Server and a client device over a trusted channel established using the device's unique certificate, verifying that a successful communication channel was established. The evaluator shall then attempt to initiate communications between the <abbr linkend="MDM"/> Server and a second client device over a trusted channel established using the unique certificate from the first device, verifying that the <abbr linkend="MDM"/> Server rejects this attempt at communication. 
+              One of the following test must be performed depending on if the MDM agent allows for the loading of certificates.
+              <testlist>              
+                <test>[conditional] If the MDM agent allows for the loading of certificates:<h:br/>
+                  The evaluator shall initiate communications between the <abbr linkend="MDM"/> Server and a client device over a trusted channel established using the device's unique certificate, verifying that a successful communication channel was established. The evaluator shall then attempt to initiate communications between the <abbr linkend="MDM"/> Server and a second client device over a trusted channel established using the unique certificate from the first device, verifying that the <abbr linkend="MDM"/> Server rejects this attempt at communication.
+                </test>
+                <test>[conditional] If the MDM agent does not allow for the loading of certificates:<h:br/>
+                  The evaluator shall concurrently enroll 10 devices and ensure that the client certificate for each is unique, per the methods described in the TSS. 
+                </test>            
+              </testlist> 
             </aactivity>
           </f-element>
         </f-component> 
