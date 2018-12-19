@@ -231,7 +231,7 @@ DONE:
         may interact with the MAS Server to download and install enterprise applications. -->The <abbr
           linkend="MDM"/> Agent is addressed in the Module for <abbr linkend="MDM"/>
         Agents. If the <abbr linkend="MDM"/> Agent is installed on a mobile device as an application
-        developed by the <abbr linkend="MDM"/> developer, the <abbr linkend="EP"/> extends this
+        developed by the <abbr linkend="MDM"/> developer, the <abbr linkend="Module"/> extends this
           <abbr linkend="PP"/> and is included in the <abbr linkend="TOE"/>. In this case, the <abbr
           linkend="TOE"/> security functionality specified in this <abbr linkend="PP"/> must be
         addressed by the <abbr linkend="MDM"/> Agent in addition to the <abbr linkend="MDM"/>
@@ -1529,7 +1529,7 @@ DONE:
         <f-component id="fau_net_ext.1" name="Network Reachability Review">
           <f-element id="fau_net_ext.1.1">
             <title>The <abbr linkend="TSF"/> shall provide authorized administrators with the capability to read the network connectivity status of an enrolled agent.</title>
-            <note role="application"> The <abbr linkend="MDM"/> Server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr linkend="EP"/>. This status may be determined sending an update request from the <abbr linkend="MDM"/> Server which the Agent is required to respond to or using scheduled periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
+            <note role="application"> The <abbr linkend="MDM"/> Server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr linkend="Module"/>. This status may be determined by sending an update request from the <abbr linkend="MDM"/> Server which the Agent is required to respond to or by using scheduled periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
             <aactivity>
               <TSS/> The evaluator ensures that the <abbr linkend="TSS"/> describes how reachability events are implemented, for each supported mobile platform. The evaluator verifies that this description clearly indicates who (<abbr linkend="MDM"/> Agent or <abbr linkend="MDM"/> Server) initiates reachability events.<h:br/><h:br/>
               <Guidance/> The evaluator shall verify that the guidance instructs administrators on the method of determining the network connectivity status of an enrolled agent.<h:br/><h:br/>
@@ -2860,12 +2860,12 @@ DONE:
           </f-element>
           -->
         </f-component> 
-=======
+
         <!-- FCS_TLSC_EXT.1 removed -->
         <!--FCS_TLSC_EXT.2 removed -->
         <!--FCS_TLSS_EXT.1 Removed-->
         <!--FCS_TLSS_EXT.2 removed-->
->>>>>>> Distributed-TOE
+
       </subsection>
       <subsection id="fia" title="Identification and Authentication (FIA)">
         <f-component id="fia_enr_ext.1" name="Enrollment of Mobile Device into Management">
@@ -3498,7 +3498,7 @@ DONE:
                     <h:li>ability to specify security type</h:li>
                     <h:li>ability to specify authentication protocol</h:li>
                     <h:li>specify the client credentials to be used for authentication</h:li>
-                    <h:li><assignable>any additional WLAN management functions</assignable> (WLAN Client <abbr linkend="EP"/> Function 1)</h:li>
+                    <h:li><assignable>any additional WLAN management functions</assignable> (WLAN Client <abbr linkend="Module"/> Function 1)</h:li>
                   </h:ol>
                 </h:li>
                 <h:li>
@@ -3647,14 +3647,17 @@ DONE:
                     </selectable>
                   </selectables>
                 </selectable>
+                <selectable><ctr id="smf57" ctr-type="mgmt" pre=""></ctr>. enable/disable multi-user modes</selectable>
+                <selectable><ctr id="smf58" ctr-type="mgmt" pre=""></ctr>. enable/disable automatic updates of system software</selectable>
+                <selectable><ctr id="smf59" ctr-type="mgmt" pre=""></ctr>. enable/disable removable media</selectable>
                 <selectable>
-                  <ctr id="smf57" ctr-type="mgmt" pre=""></ctr>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies]. </selectable>
+                  <ctr id="smf60" ctr-type="mgmt" pre=""></ctr>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies]. </selectable>
               </selectables></h:ul>
             </title>
             <note role="application"> This requirement captures all the configuration functionality the <abbr linkend="TSF"/> provides the administrator to configure the <abbr linkend="MDM"/> Agent. This requirement is broken into two configurable areas: <abbr linkend="MDM"/> Agent commands and <abbr linkend="MDM"/> Agent policies. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> The <abbr linkend="ST"/> author shall not claim any functionality not provided by the Mobile Device. All selections and assignments performed by the <abbr linkend="ST"/> author in this requirement should match the selections and assignments of the validated Mobile Device <abbr linkend="ST"/>.<h:br/><h:br/> 
               Function-specific Application Notes:<h:br/><h:br/> 
               Function specific application notes reference Mobile Device Fundamentals (MDF) <abbr linkend="PP"/> v3.1.<h:br/><h:br/> 
-              Function <ctr-ref refid="smf12"/> may be satisfied for the BYOD use case by application blacklisting and/or disabling. In the case of BYOD, and enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not loose any information they might have in the application.<h:br/><h:br/>
+              Function <ctr-ref refid="smf12"/> may be satisfied for the BYOD use case by application blacklisting and/or disabling. In the case of BYOD, an enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not lose any information they might have in the application.<h:br/><h:br/>
               Function <ctr-ref refid="smf16"/> provides the <abbr linkend="MDM"/> server to display an alert to the user of the mobile device.<h:br/><h:br/> 
               The audit records read according to Function <ctr-ref refid="smf19"/> are to be transmitted to an external audit server according to <linkref linkend="FAU_STG_EXT.1"/>. The <abbr linkend="MDM"/> Server is not expected to retain those logs.<h:br/><h:br/> 
               Function <ctr-ref refid="smf34"/> provides the ability to enable/disable policy for the list of protocols where the device acts as a server, such as a mobile hotspot.<h:br/><h:br/>  
@@ -3692,7 +3695,7 @@ DONE:
                     <selectable><h:li>configure the length of time the enrollment authenticator is valid</h:li></selectable>
                     <selectable><h:li>configure the interaction between <abbr linkend="TOE"/> components</h:li></selectable>
                     <selectable><h:li>configure the cryptographic functionality</h:li></selectable>
-                    <selectable><assignable>other management functions</assignable></selectable><!--TD0370-->
+                    <selectable><h:li><assignable>other management functions</assignable></h:li></selectable><!--TD0370-->
                     <selectable><h:li>no other management functions</h:li></selectable>
                   </selectables>                
               </h:ol>
@@ -3782,7 +3785,7 @@ DONE:
           <f-element id="fpt_api_ext.1.1">
             <title>The TSF shall use only documented platform <abbr title="Application Programming Interface" linkend="API">API</abbr>'s.</title>
             <note role="application">
-              The definition of <h:i>documented</h:i> may vary depending upon whether the <abbr linkend="MDM"/> software is provided by a third party (who relies upon documented platform APIs) or by a platform vendor who may be able to guarantee support for platform <abbr title="Application Programming Interface" linkend="API">API</abbr>'s.
+              This requirement applies to the API's used when "invoke platform provided functionality" is selected in an SFR. The definition of <h:i>documented</h:i> may vary depending upon whether the <abbr linkend="MDM"/> software is provided by a third party (who relies upon documented platform APIs) or by a platform vendor who may be able to guarantee support for platform <abbr title="Application Programming Interface" linkend="API">API</abbr>'s.
             </note>
             <aactivity>
               <TSS/>The evaluator shall verify that the TSS<!--ST?--> lists the platform <abbr title="Application Programming Interface" linkend="API">API</abbr>'s used by the <abbr linkend="MDM"/> software. The evaluator shall then compare the list with the supported <abbr title="Application Programming Interface" linkend="API">API</abbr>'s (available through e.g. developer accounts, platform developer groups) and ensure that all <abbr title="Application Programming Interface" linkend="API">API</abbr>'s listed in the TSS are supported.
