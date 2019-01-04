@@ -492,7 +492,12 @@ DONE:
         <h:td>One</h:td> 
       </h:tr>
       <h:tr>
-        <h:td>FIA_UAU_EXT.4(*)</h:td>
+        <h:td>FIA_UAU_EXT.4(1)</h:td>
+        <h:td>User Authentication</h:td>
+        <h:td>One</h:td>
+      </h:tr>
+      <h:tr>
+        <h:td>FIA_UAU_EXT.4(2)</h:td>
         <h:td>User Authentication</h:td>
         <h:td>One</h:td>
       </h:tr>
@@ -572,7 +577,7 @@ DONE:
         <h:td>Feature Dependent</h:td> 
       </h:tr>
       <h:tr>
-        <h:td>FPT_API_EXT.1.1</h:td>
+        <h:td>FPT_API_EXT.1</h:td>
         <h:td>Use of Supported Services and API's</h:td>
         <h:td>All</h:td> 
       </h:tr>
@@ -582,7 +587,7 @@ DONE:
         <h:td>Feature Dependent</h:td> 
       </h:tr>
       <h:tr>
-        <h:td>FPT_LIB_EXT.1.1</h:td>
+        <h:td>FPT_LIB_EXT.1</h:td>
         <h:td>Use of Third Party Libraries</h:td>
         <h:td>All</h:td> 
       </h:tr>
@@ -775,8 +780,7 @@ DONE:
     <section id="sot" title="Security Objectives for the TOE">
       <SOs>
         <SO id="O.ACCOUNTABILITY">
-          <description>The <abbr linkend="TOE"/> must provide logging facilities which record
-            management actions undertaken by its administrators.</description>
+          <description>The <abbr linkend="TOE"/> must provide logging facilities which record management actions undertaken by its administrators.</description>
           <!-- TODO: are these component-refer tags correct? -->
           <component-refer ref="FAU_ALT_EXT.1"/>
           <component-refer ref="FAU_GEN.1(1)"/>
@@ -788,19 +792,16 @@ DONE:
           <component-refer ref="FAU_STG_EXT.2"/>
         </SO>
         <SO id="O.APPLY_POLICY">
-          <description>The <abbr linkend="TOE"/> must facilitate configuration and enforcement of
-            enterprise security policies on mobile devices via interaction with the mobile <abbr
-              linkend="OS"/> and the <abbr linkend="MDM"/> Server. This will include the initial
-            enrollment of the device into management through its entire lifecycle, including policy
-            updates and its possible unenrollment from management services.</description>
+          <description>The <abbr linkend="TOE"/> must facilitate configuration and enforcement of enterprise security policies on mobile devices via interaction with the mobile <abbr linkend="OS"/> and the <abbr linkend="MDM"/> Server. This will include the initial enrollment of the device into management through its entire lifecycle, including policy updates and its possible unenrollment from management services.</description>
           <!-- TODO: are these component-refer tags correct? -->
-          <component-refer ref="FAU_ALT_EXT.1"/>
-          <component-refer ref="FAU_GEN.1"/>
-          <component-refer ref="FAU_NET_EXT.1"/>
-          <component-refer ref="FAU_SAR.1"/>
-          <component-refer ref="FAU_SEL.1"/>
-          <component-refer ref="FAU_STG_EXT.1"/>
-          <component-refer ref="FAU_STG_EXT.2"/>
+          <component-refer ref="FIA_ENR_EXT.1"/>
+          <component-refer ref="FMT_MOF.1(1)"/>
+          <component-refer ref="FMT_MOF.1(2)"/>
+          <component-refer ref="FMT_MOF.1(4)"/>
+          <component-refer ref="FMT_SAE_EXT.1"/>
+          <component-refer ref="FMT_SMF.1(1)"/>
+          <component-refer ref="FMT_SMF.1(2)"/>
+          <component-refer ref="FMT_SMF.1(3)"/>
         </SO>
         <SO id="O.DATA_PROTECTION_TRANSIT">
           <description>Data exchanged between the <abbr linkend="MDM"/> Server and the <abbr linkend="MDM"/> Agent must be protected from being monitored, accessed, or altered.</description>
@@ -808,52 +809,62 @@ DONE:
           <component-refer ref="FCS_CKM_EXT.4"/>
           <component-refer ref="FCS_CKM.1"/>
           <component-refer ref="FCS_CKM.2"/>
-          <component-refer ref="FCS_COP.1(*)"/>
-          <component-refer ref="FCS_DTLSS_EXT.1 (TLS Package)"/>
-          <component-refer ref="FCS_DTLSC_EXT.1 (TLS Package)"/>
+          <component-refer ref="FCS_COP.1(1)"/>
+          <component-refer ref="FCS_COP.1(2)"/>
+          <component-refer ref="FCS_COP.1(3)"/>
+          <component-refer ref="FCS_COP.1(4)"/>
+          <!--  <component-refer ref="FCS_DTLSS_EXT.1 (TLS Package)"/>--> 
+          <!-- <component-refer ref="FCS_DTLSC_EXT.1 (TLS Package)"/> -->
           <component-refer ref="FCS_HTTPS_EXT.1"/>
-          <component-refer ref="FCS_IPSEC_EXT.1"/>
+         <!--   <component-refer ref="FCS_IPSEC_EXT.1"/>-->
           <component-refer ref="FCS_IV_EXT.1"/>
           <component-refer ref="FCS_RBG_EXT.1"/>
-          <component-refer ref="FCS_SSHS_EXT.1"/>
+          <!-- <component-refer ref="FCS_SSHS_EXT.1"/>  -->
           <component-refer ref="FCS_STG_EXT.1"/>
           <component-refer ref="FCS_STG_EXT.2"/>
-          <component-refer ref="FCS_TLSC_EXT.1 (TLS Package)"/>
-          <component-refer ref="FCS_TLSC_EXT.2 (TLS Package)"/>
-          <component-refer ref="FCS_TLSS_EXT.1 (TLS Package)"/>
-          <component-refer ref="FCS_TLSS_EXT.2 (TLS Package)"/>
-          <component-refer ref="FIA_X509_EXT.1(*)"/>
+          <!--<component-refer ref="FCS_TLSC_EXT.1 (TLS Package)"/> -->
+          <!--<component-refer ref="FCS_TLSC_EXT.2 (TLS Package)"/>  -->
+          <!--<component-refer ref="FCS_TLSS_EXT.1 (TLS Package)"/>  -->
+          <!--<component-refer ref="FCS_TLSS_EXT.2 (TLS Package)"/>  -->
+          <component-refer ref="FIA_X509_EXT.1(1)"/>
+          <component-refer ref="FIA_X509_EXT.1(2)"/>
           <component-refer ref="FIA_X509_EXT.2"/>
           <component-refer ref="FIA_X509_EXT.3"/>
           <component-refer ref="FIA_X509_EXT.4"/>
           <component-refer ref="FPT_ITT.1"/>
-          <component-refer ref="FTP_ITC.1(*)"/>
-          <component-refer ref="FTP_TRP.1(*)"/>
+          <component-refer ref="FTP_ITC_EXT.1"/>
+          <component-refer ref="FTP_ITC.1(1)"/>
+          <component-refer ref="FTP_ITC.1(2)"/>
+          <component-refer ref="FTP_TRP.1(1)"/>
+          <component-refer ref="FTP_TRP.1(2)"/>
         </SO>
         <SO id="O.INTEGRITY">
-          <description>The <abbr linkend="TOE"/> will provide the capability to perform self-tests
-            to ensure the integrity of critical functionality, software/firmware and data has been
-            maintained. The <abbr linkend="TOE"/> will also provide a means to verify the integrity
-            of downloaded updates.</description>
+          <description>The <abbr linkend="TOE"/> will provide the capability to perform self-tests to ensure the integrity of critical functionality, software/firmware and data has been maintained. The <abbr linkend="TOE"/> will also provide a means to verify the integrity of downloaded updates.</description>
           <component-refer ref="FIA_X509_EXT.2"/>
           <component-refer ref="FCO_CPC_EXT.1"/>
           <component-refer ref="FPT_TST_EXT.1"/>
           <component-refer ref="FPT_TUD_EXT.1"/>
         </SO>
         <SO id="O.MANAGEMENT">
-          <description>The <abbr linkend="TOE"/> provides access controls around its management
-            functionality.</description>
+          <description>The <abbr linkend="TOE"/> provides access controls around its management functionality.</description>
+          <component-refer ref="FAU_CRP_EXT.1"/>
           <component-refer ref="FIA_ENR_EXT.1"/>
+          <component-refer ref="FIA_UAU.1"/>
+          <component-refer ref="FIA_UAU_EXT.4(1)"/>
+          <component-refer ref="FIA_UAU_EXT.4(2)"/>
+          <component-refer ref="FMT_MOF.1(1)"/>
           <component-refer ref="FMT_MOF.1(2)"/>
+          <component-refer ref="FMT_MOF.1(4)"/>
           <component-refer ref="FMT_POL_EXT.1"/>
           <component-refer ref="FMT_SMF.1(1)"/>
+          <component-refer ref="FMT_SMF.1(2)"/>
+          <component-refer ref="FMT_SMF.1(3)"/>
+          <component-refer ref="FMT_SMR.1(1)"/>
+          <component-refer ref="FMT_SMR.1(2)"/>
+          <component-refer ref="FTA_TAB.1"/>
         </SO>
-    <SO id="O.Quality">
-        <description>To ensure quality of implementation, conformant <abbr title="Target of Evaluation" linkend="TOE">TOE</abbr>s
-            leverage services and <abbr title="Application Programming Interface" linkend="API">API</abbr>s provided by the runtime environment rather
-            than implementing their own versions of these services and APIs. This is especially
-            important for cryptographic services and other complex operations such as file and media
-            parsing. Leveraging this platform behavior relies upon using only documented and supported APIs.</description>
+    <SO id="O.QUALITY">
+        <description>To ensure quality of implementation, conformant <abbr title="Target of Evaluation" linkend="TOE">TOE</abbr>s leverage services and <abbr title="Application Programming Interface" linkend="API">API</abbr>s provided by the runtime environment rather than implementing their own versions of these services and APIs. This is especially important for cryptographic services and other complex operations such as file and media parsing. Leveraging this platform behavior relies upon using only documented and supported APIs.</description>
         <component-refer ref="fpt_api_ext.1"/>
         <component-refer ref="fpt_lib_ext.1"/>
         </SO>        
@@ -861,34 +872,23 @@ DONE:
     </section>
     <section id="sooe" title="Security Objectives for the Operational Environment">
       <SOEs>
-
         <SOE id="OE.COMPONENTS_RUNNING">
           <description>For distributed <abbr linkend="TOE"/>s the Administrator ensures that the availability of every <abbr linkend="TOE"/> component is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr linkend="TOE"/> components. The Administrator also ensures that it is checked as appropriate for every <abbr linkend="TOE"/> component that the audit functionality is running properly. </description>
-
         </SOE>
         <SOE id="OE.PROPER_ADMIN">
-          <description><abbr linkend="TOE"/> Administrators are trusted to follow and apply all
-            administrator guidance in a trusted manner.</description>
+          <description><abbr linkend="TOE"/> Administrators are trusted to follow and apply all administrator guidance in a trusted manner.</description>
         </SOE>
         <SOE id="OE.PROPER_USER">
-          <description>Users of the mobile device are trained to securely use the mobile device and
-            apply all guidance in a trusted manner.</description>
+          <description>Users of the mobile device are trained to securely use the mobile device and apply all guidance in a trusted manner.</description>
         </SOE>
         <SOE id="OE.IT_ENTERPRISE">
-          <description>The Enterprise IT infrastructure provides security for a network that is
-            available to the <abbr linkend="TOE"/> and mobile devices that prevents unauthorized
-            access.</description>
+          <description>The Enterprise IT infrastructure provides security for a network that is available to the <abbr linkend="TOE"/> and mobile devices that prevents unauthorized access.</description>
         </SOE>
-
         <SOE id="OE.MOBILE_DEVICE_PLATFORM">
-          <description>The <abbr linkend="MDM"/> Agent relies upon the trustworthy mobile platform
-            and hardware to provide policy enforcement as well as cryptographic services and data
-            protection. The mobile platform provides trusted updates and software integrity
-            verification of the <abbr linkend="MDM"/> Agent.</description>
+          <description>The <abbr linkend="MDM"/> Agent relies upon the trustworthy mobile platform and hardware to provide policy enforcement as well as cryptographic services and data protection. The mobile platform provides trusted updates and software integrity verification of the <abbr linkend="MDM"/> Agent.</description>
         </SOE>
         <SOE id="OE.TIMESTAMP">
-          <description>Reliable timestamp is provided by the operational environment for the <abbr
-              linkend="TOE"/>.</description>
+          <description>Reliable timestamp is provided by the operational environment for the <abbr linkend="TOE"/>.</description>
         </SOE>
         <SOE id="OE.WIRELESS_NETWORK">
           <description>A wireless network will be available to the mobile devices.</description>
@@ -941,7 +941,7 @@ DONE:
                 of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over an 
               authenticated <selectables>
                 <selectable>HTTPS</selectable>
-                <selectable>TLS</selectable>
+                <selectable>TLS</selectable> <!-- TODO: I have not updated this SFR to allow for the needed selections from the TLS package. Do we really need another trusted channel requirement or could we say per FTP_ITC.1(2)/FTP_ITT.1?? -->
                 <selectable>DTLS</selectable>
                 <selectable>IPsec</selectable>
                 <selectable>SSH</selectable>
@@ -1074,7 +1074,12 @@ DONE:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FAU_GEN.1 (man)</h:TD>
+                    <h:TD>FAU_GEN.1(1) (man)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FAU_GEN.1(2) (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -1127,7 +1132,22 @@ DONE:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_COP.1(*) (man)</h:TD>
+                    <h:TD>FCS_COP.1(1) (man)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCS_COP.1(2) (man)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCS_COP.1(3) (man)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCS_COP.1(4) (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -1198,7 +1218,12 @@ DONE:
                     <h:TD>Presented username.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FIA_UAU_EXT.4(*) (man)</h:TD>
+                    <h:TD>FIA_UAU_EXT.4(1) (obj)</h:TD>
+                    <h:TD>Attempt to reuse enrollment data.</h:TD>
+                    <h:TD>Enrollment data.</h:TD>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FIA_UAU_EXT.4(2) (obj)</h:TD>
                     <h:TD>Attempt to reuse enrollment data.</h:TD>
                     <h:TD>Enrollment data.</h:TD>
                   </h:TR>
@@ -1287,17 +1312,17 @@ DONE:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FPT_API_EXT.1.1 (man)</h:TD>
+                    <h:TD>FPT_API_EXT.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FPT_ITT.1 (man)</h:TD>
+                    <h:TD>FPT_ITT.1 (sel)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Identity of initiator and recipient.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FPT_LIB_EXT.1.1 (man)</h:TD>
+                    <h:TD>FPT_LIB_EXT.1 (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -1968,7 +1993,7 @@ DONE:
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_cop.1" name="Cryptographic Operation (Confidentiality Algorithms)">
+        <f-component id="fcs_cop.1(1)" name="Cryptographic Operation (Confidentiality Algorithms)">
           <f-element id="fcs_cop.1.1(1)">
             <title>Refinement: The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -2885,8 +2910,7 @@ DONE:
               that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
               If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in 
               the <abbr linkend="ST"/>. <h:br/><h:br/>
-              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>. It should be
-              noted that due to constraints imposed by this PP that TLS_RSA_WITH_AES_128_CBC_SHA cannot be used.f
+              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>. The ciphersuites selected from the TLS package must correspond with the algorithms and hash functions allowed in FCS_COP.1.
             </note>
             <aactivity>
               <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
@@ -3674,7 +3698,7 @@ DONE:
       </subsection>
       
       <subsection id="ftp" title="Trusted Path/Channels (FTP)">
-        <f-component name="Trusted Channel" id="ftp_itc_ext.1"> <!-- SFR that will specify if Agent is in the TOE-->
+        <f-component id="ftp_itc_ext.1" name="Trusted Channel" > <!-- SFR that will specify if Agent is in the TOE and/or if TOE is distributed-->
           <f-element id="ftp_itc_ext.1.1">
             <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself and <selectables linebreak="yes">              
               <selectable id="AgentInTOE">an MDM Agent that is internal to the TOE</selectable>
@@ -3684,19 +3708,13 @@ DONE:
              that is logically distinct from other communication channels, as specified in <selectables>
               <selectable id="AgentInTOE_fpt"><linkref linkend="FPT_ITT.1"/></selectable>
               <selectable id="AgentOutTOE_ftp"><linkref linkend="FTP_ITC.1(2)"/></selectable>
-            </selectables>
-              .</title>
+            </selectables>.</title>
             <note role="Application">
-              This <abbr linkend="SFR"/> describes the communication channels between the <abbr linkend="MDM"/> Server and an Agent that may or may not be in the <abbr linkend="TOE"/>, and 
-              optionally separate components comprising a distributed <abbr linkend="TOE"/>, to determine which selection-based <abbr linkend="SFR"/>'s will need to be included in the <abbr linkend="ST"/>. <h:br/><h:br/>
+              This <abbr linkend="SFR"/> describes the communication channels between the <abbr linkend="MDM"/> Server and an Agent that may or may not be in the <abbr linkend="TOE"/>, and optionally separate components comprising a distributed <abbr linkend="TOE"/>, to determine which selection-based <abbr linkend="SFR"/>'s will need to be included in the <abbr linkend="ST"/>. <h:br/><h:br/>
               
-              If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, then the communication channel between the Agent and <abbr linkend="MDM"/> Server is internal to the 
-              <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is internal to the <abbr linkend="TOE"/>" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1"/> shall be selected in the second selection and <linkref linkend="FPT_ITT.1"/> shall be included in the <abbr linkend="ST"/>. <h:br/><h:br/>
+              If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, then the communication channel between the Agent and <abbr linkend="MDM"/> Server is internal to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is internal to the <abbr linkend="TOE"/>" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1"/> shall be selected in the second selection and <linkref linkend="FPT_ITT.1"/> shall be included in the <abbr linkend="ST"/>. <h:br/><h:br/>
               
-              If the <abbr linkend="TOE"/> interoperates with an evaluated <abbr linkend="MDM"/> Agent built into a mobile device (i.e., the <abbr linkend="TOE"/> does not include an 
-              <abbr linkend="MDM"/> Agent), the communication channel between the Agent and <abbr linkend="MDM"/> Server is external to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is external to the <abbr linkend="TOE"/>" shall be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> shall be selected in 
-              the second selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the <abbr linkend="ST"/>. <h:br/><h:br/>
-              
+              If the <abbr linkend="TOE"/> interoperates with an evaluated <abbr linkend="MDM"/> Agent built into a mobile device (i.e., the <abbr linkend="TOE"/> does not include an <abbr linkend="MDM"/> Agent), the communication channel between the Agent and <abbr linkend="MDM"/> Server is external to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is external to the <abbr linkend="TOE"/>" shall be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> shall be selected in the second selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the <abbr linkend="ST"/>. <h:br/><h:br/> 
               If the <abbr linkend="TOE"/> is distributed then "other components comprising the distributed <abbr linkend="TOE"/>" shall be selected in the first selection and <linkref linkend="FPT_ITT.1"/> shall be selected in the second selection. <linkref linkend="FPT_ITT.1"/> shall be included in the <abbr linkend="ST"/> for all internal channels used to transfer <abbr linkend="TSF"/> data between <abbr linkend="TOE"/> components.
             </note>
               <aactivity>
@@ -3840,7 +3858,7 @@ DONE:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to use <selectables>
-                <selectable id="ITC_TLS_2">mutually authenticated TLS</selectable>
+                <selectable id="ITC_TLS_2">mutually authenticated TLS</selectable> 
                 <selectable id="ITC_DTLS_2">mutually authenticated DTLS</selectable>
                 <selectable id="ITC_HTTPS_2">HTTPS</selectable>
               </selectables> to provide a trusted communication channel between itself and another
@@ -3872,7 +3890,7 @@ DONE:
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
                     <h:li>either TLS or DTLS is selected depending on the selection made in FTP_ITC.1.1(2)</h:li>
-                    <h:li>server must be selected</h:li>
+                    <h:li>server must be selected</h:li> <!-- Have not updated SFR text to reflect this because may actually have a time when it is the client connecting to another IT entity. We could rewrite (1) and (2) so that (2) is only connection to an agent outside of the TOE and (1) is everything else to include audit and auth server. -->
                   </h:ul>
                 </h:li>
                 <h:li>FCS_TLSS_EXT.1.1:
@@ -3964,7 +3982,10 @@ DONE:
                 <selectable id="TRP_TLS_1">TLS</selectable>
                 <selectable id="TRP_HTTPS_1">HTTPS</selectable>
                 <selectable id="TRP_SSH_1">SSH</selectable>
-              </selectables> to provide a trusted communication path between itself and remote administrators that is logically 
+              </selectables> to provide a trusted communication path between itself as a <selectables>
+                <selectable>server</selectable>
+                <selectable>peer</selectable>
+              </selectables> and remote administrators that is logically 
               distinct from other communication paths and provides assured identification of its endpoints and protection of the 
               communicated data from [modification, disclosure].</title> 
             <aactivity>
@@ -4038,7 +4059,7 @@ DONE:
             </selectables> to use <selectables>
                 <selectable id="TRP_TLS_2">TLS</selectable>
                 <selectable id="TRP_HTTPS_2">HTTPS</selectable>
-              </selectables> to provide a trusted communication path between itself and MD users that is logically distinct 
+              </selectables> to provide a trusted communication path between itself (as a server) and MD users that is logically distinct 
               from other communication paths and provides assured identification of its endpoints and protection of the 
               communicated data from disclosure and detection of modification of the communicated data from 
               [modification, disclosure]. </title>
