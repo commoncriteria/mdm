@@ -659,6 +659,9 @@ DONE:
             <rationale>The threat T.MALICIOUS_APPS is countered by O.APPLY_POLICY and O.INTEGRITY
             </rationale>
           </objective-refer>
+          <objective-refer ref="O.INTEGRITY">
+            <rationale></rationale>
+          </objective-refer>
         </threat>
         <threat id="T.NETWORK_ATTACK">
           <description>An attacker may masquerade as <abbr linkend="MDM"/> Server and attempt to
@@ -841,6 +844,7 @@ DONE:
           <component-refer ref="FTP_ITC.1(2)"/>
           <component-refer ref="FTP_TRP.1(1)"/>
           <component-refer ref="FTP_TRP.1(2)"/>
+          <component-refer ref="FTP_TRP.1(3)"/>
         </SO>
         <SO id="O.INTEGRITY">
           <description>The <abbr linkend="TOE"/> will provide the capability to perform self-tests to ensure the integrity of critical functionality, software/firmware and data has been maintained. The <abbr linkend="TOE"/> will also provide a means to verify the integrity of downloaded updates.</description>
@@ -1161,9 +1165,19 @@ DONE:
                     <h:TD>Issuer Name and Subject Name of certificate </h:TD>
                   </h:TR>
                   <h:TR>
+                    <h:TD>FCS_DTLSC_EXT.2 (TLS Package)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
                     <h:TD>FCS_DTLSS_EXT.1 (TLS Package)</h:TD>
                     <h:TD>Failure of the certificate validity check.</h:TD>
                     <h:TD>Issuer Name and Subject Name of certificate </h:TD>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCS_DTLSS_EXT.2 (TLS Package)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
                   </h:TR>
                   <h:TR>
                     <h:TD>FCS_HTTPS_EXT.1 (sel)</h:TD>
@@ -1194,15 +1208,33 @@ DONE:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD rowspan="3">FCS_TLSC_EXT.1 (TLS Package)</h:TD>
-                    <!-- Added certificate validity check to replace FCS_DTLS_EXT.1 audit --> <!-- TODO: Why not just make a entry for FCS_DTLS_EXT.1? -->
+                    <h:TD>FCS_TLS_EXT.1 (TLS Package)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD rowspan="2">FCS_TLSC_EXT.1 (TLS Package)</h:TD>                   
                     <h:TD>Failure to establish a TLS session.</h:TD><h:TD>Reason for failure.</h:TD></h:TR>
                   <h:TR><h:TD>Failure to verify presented identifier.</h:TD><h:TD>Presented identifier and reference identifier.</h:TD></h:TR>
-                  <h:TR><h:TD>Failure of the certificate validity check.</h:TD><h:TD>Issuer Name and Subject Name of certificate.</h:TD>
-                  </h:TR>
                   <h:TR>
                     <h:TD>FCS_TLSC_EXT.2 (TLS Package)</h:TD>
                     <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCS_TLSC_EXT.3 (TLS Package)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCS_TLSC_EXT.4 (TLS Package)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCS_TLSC_EXT.5 (TLS Package)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD/>
                   </h:TR>
                   <h:TR>
                     <h:TD>FCS_TLSS_EXT.1 (TLS Package)</h:TD>
@@ -1210,10 +1242,18 @@ DONE:
                     <h:TD>Reason for failure.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD>FCS_TLSS_EXT.2 (TLS Package)</h:TD>
-                    <!-- Added this audit to replace FCS_DTLS_EXT.1 audit --> <!-- TODO: WHY-->
-                    <h:TD>Failure of the certificate validity check.</h:TD>
-                    <h:TD>Issuer Name and Subject Name of certificate </h:TD>
+                    <h:TD>FCS_TLSS_EXT.2 (TLS Package)</h:TD>                    
+                    <h:TD>None</h:TD>                    
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCS_TLSS_EXT.3 (TLS Package)</h:TD>                    
+                    <h:TD>None</h:TD>                    
+                    <h:TD/>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD>FCS_TLSS_EXT.4 (TLS Package)</h:TD>                    
+                    <h:TD>None</h:TD>                    
                     <h:TD/>
                   </h:TR>
                   <h:TR>
@@ -1240,7 +1280,7 @@ DONE:
                     <h:TD>FIA_X509_EXT.1(1) (man)</h:TD>
                     <h:TD>Failure to validate X.509 certificate</h:TD>
                     <h:TD>Reason for failure.</h:TD>
-                  </h:TR>
+                  </h:TR> 
                   <h:TR>
                     <h:TD>FIA_X509_EXT.1(2) (sel)</h:TD>
                     <h:TD>Failure to validate X.509 certificate</h:TD>
@@ -3927,8 +3967,7 @@ DONE:
                 <selectable id="ITC_TLS_2">mutually authenticated TLS</selectable> 
                 <selectable id="ITC_DTLS_2">mutually authenticated DTLS</selectable>
                 <selectable id="ITC_HTTPS_2">HTTPS</selectable>
-              </selectables> to provide a trusted communication channel between itself and another
-              trusted IT product that is logically distinct from other communication channels,
+              </selectables> to provide a trusted communication channel between itself (as a server) and the MDM Agent that is logically distinct from other communication channels,
               provides assured identification of its end points, protects channel data from
               disclosure, and detects modification of the channel data.</title>
             <note role="application"> The intent of the mandatory portion of the above requirement is to use the cryptographic protocols identified in the requirement to establish and maintain a trusted channel between the <abbr linkend="TOE"/> and the <abbr linkend="MDM"/> Agent. If the <abbr linkend="TOE"/> includes a separate MAS Server, this requirement also addresses the communication between the MAS Server and the <abbr linkend="MDM"/> Agent. <!-- Craig: You had the previous sentence commented out, but the MAS Server will use (2) for comms with Agent--> Only TLS, DTLS, or HTTPS are used in this trusted channel.<h:br/><h:br/> 
@@ -3956,7 +3995,7 @@ DONE:
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
                     <h:li>either TLS or DTLS is selected depending on the selection made in FTP_ITC.1.1(2)</h:li>
-                    <h:li>server must be selected</h:li> <!-- Have not updated SFR text to reflect this because may actually have a time when it is the client connecting to another IT entity. We could rewrite (1) and (2) so that (2) is only connection to an agent outside of the TOE and (1) is everything else to include audit and auth server. -->
+                    <h:li>server must be selected</h:li> 
                   </h:ul>
                 </h:li>
                 <h:li>FCS_TLSS_EXT.1.1:
@@ -3994,18 +4033,12 @@ DONE:
               of this evaluation activity).<h:br/><h:br/>
             </aactivity>
           </f-element>
-          <f-element id="ftp_itc.1.3(2)"> <!-- TODO: Craig - we need to chat about this one again. If you do not want to included the commented part then at a minimum we need to change MDM Server to TSF. -->
+          <f-element id="ftp_itc.1.3(2)"> 
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to initiate communication via the trusted channel for all communication between the <abbr linkend="MDM"/> Server and the <abbr
-                linkend="MDM"/> Agent <!-- and <selectables>
-                <selectable>all communication between the MAS Server and the <abbr linkend="MDM"/>
-                  Agent</selectable>
-                <selectable>no other communication</selectable>
-              </selectables>-->. </title>
-            <!--<note role="application">If the <abbr linkend="TOE"/> includes a separate MAS Server,
-              then "all communications between the MAS Server and the MDM Agent" shall be selected.</note>-->
+            </selectables> to initiate communication via the trusted channel for all communication between the <abbr linkend="TSF"/> and the <abbr
+                linkend="MDM"/> Agent </title>
             <aactivity>
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the
                 methods of Agent-Server communication are indicated, along with how those
@@ -4300,7 +4333,6 @@ DONE:
     </h:table>
     <section id="ase" title="Class ASE: Security Target"> 
       The <abbr linkend="ST"/> is evaluated as per ASE activities defined in the <abbr linkend="CEM"/>. In addition, there may be Assurance Activities specified within <secref linkend="req"/> and relevant appendices that call for necessary descriptions to be included in the <abbr linkend="TSS"/> that are specific to the <abbr linkend="TOE"/> technology type. 
-      <!-- NIAP: Need confirmation from NIAP that it is okay to add ase_tss.1 -->
       <subsection id="tss" title="TOE summary specification">
        <a-component id="ase_tss.1" name="TOE summary specification">
          <evalactionlabel title="Content and presentation elements:"/>
