@@ -53,31 +53,7 @@ DONE:
       <PPPubDate>2018-11-28</PPPubDate>
       <Keywords>Mobile Device Management; MDM</Keywords>
     </ReferenceTable>
-  </PPReference>
-  <!--  
-    <RevisionHistory role="draft">
-    <entry>
-      <version>1.0</version>
-      <date>2013-10-21</date>
-      <subject>Initial Release</subject>
-    </entry>
-    <entry>
-      <version>1.1</version>
-      <date>2014-02-07</date>
-      <subject>Typographical changes and clarifications to front-matter</subject>
-    </entry>
-    <entry>
-      <version>2.0</version>
-      <date>2014-12-31</date>
-      <subject> Separation of MDM Agent SFRs<h:br/>Updated cryptography, protocol, X.509
-        requirements.<h:br/> Updated management functions to match MDFPPv2.0.<h:br/> Included
-        SSH as a remote administration protocol.<h:br/> Removed IPsec as protocol to communicate
-        to MDM Agent.<h:br/> Added X509 enrollment objective requirement.<h:br/> Added Optional
-        Mobile Application Store requirements. </subject>
-    </entry>
-  </RevisionHistory>
-  -->
-  
+  </PPReference>  
   <RevisionHistory>
     <entry>
       <version>1.0</version>
@@ -111,10 +87,10 @@ DONE:
       <version>4.0</version>
       <date>2018-09-24</date>
       <subject>
-        Removed platform dependency
-        Removed TLS SFRs and utilize the TLS Functional Package
+        Updates to align with Technical Decisions<h:br/>
+        Removed platform dependency<h:br/>
+        Removed TLS SFRs and utilize the TLS Functional Package<h:br/>
         Allowed for a distributed TOE
-        <!-- TODO: Add items here for revision history -->
       </subject>
     </entry>
   </RevisionHistory>
@@ -158,7 +134,7 @@ DONE:
      </subsection>
       <subsection title="Technology Terms" id="techterms">
         <glossary>
-        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device. <!--This administrator is the Mobile Device Management (MDM) Administrator, acting through an <abbr linkend="MDM"/> Agent.--></description></entry>
+        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device.</description></entry>
         <entry><term><abbr title="Application Programming Interface">API</abbr></term>
           <description>Application Programming Interface</description></entry>
           <entry><term><abbr title="Critical Security Parameter">CSP</abbr></term><description>Critical Security Parameter</description></entry>
@@ -227,8 +203,7 @@ DONE:
         <h:br/><h:br/>
         The <h:b><abbr linkend="MDM"/> Agent</h:b> establishes a secure connection back to the
           <abbr linkend="MDM"/> Server controlled by an enterprise administrator and configures the
-        mobile device per the administrator's policies. <!--Optionally, the <abbr linkend="MDM"/> Agent
-        may interact with the MAS Server to download and install enterprise applications. -->The <abbr
+        mobile device per the administrator's policies. The <abbr
           linkend="MDM"/> Agent is addressed in the Module for <abbr linkend="MDM"/>
         Agents. If the <abbr linkend="MDM"/> Agent is installed on a mobile device as an application
         developed by the <abbr linkend="MDM"/> developer, the <abbr linkend="Module"/> extends this
@@ -871,7 +846,7 @@ DONE:
           <component-refer ref="FMT_SMR.1(2)"/>
           <component-refer ref="FTA_TAB.1"/>
         </SO>
-    <SO id="O.QUALITY">
+        <SO id="O.QUALITY">
         <description>To ensure quality of implementation, conformant <abbr title="Target of Evaluation" linkend="TOE">TOE</abbr>s leverage services and <abbr title="Application Programming Interface" linkend="API">API</abbr>s provided by the runtime environment rather than implementing their own versions of these services and APIs. This is especially important for cryptographic services and other complex operations such as file and media parsing. Leveraging this platform behavior relies upon using only documented and supported APIs.</description>
         <component-refer ref="fpt_api_ext.1"/>
         <component-refer ref="fpt_lib_ext.1"/>
@@ -1048,8 +1023,7 @@ DONE:
             </h:ul>
             </title>
             <note role="application"> This requirement outlines the information to be included in audit records. All audits must contain at least the information mentioned in <linkref linkend="FAU_GEN.1.2(1)"/>, but may contain more information which can be assigned. The <abbr linkend="ST"/> author shall identify in the <abbr linkend="TSS"/> which information of the audit record that is performed by the <abbr linkend="TSF"/> and that which is performed by the <abbr linkend="TOE"/> platform. <h:br/><h:br/>
-              <!-- TODO: If the MDM invokes the platform to audit an event for FAU_GEN.1.1(1), then are they guarenteed that the platform will provide them with the necessary information in the audit event? Need to make sure that this is in OS PP-->
-            
+              <!-- TODO: If the MDM invokes the platform to audit an event for FAU_GEN.1.1(1), then are they guarenteed that the platform will provide them with the necessary information in the audit event? Need to make sure that this is in OS PP-->           
             </note>
             <aactivity>
               <TSS/>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field.<h:br/><h:br/>
@@ -1062,8 +1036,7 @@ DONE:
                 <h:li>(sel) - selection-based requirement</h:li>
                 <h:li>(obj) - objective requirement</h:li>
                 <h:li>(opt) - optional requirement</h:li>
-              </h:ul>
-              
+              </h:ul>            
               <h:center><ctr ctr-type='Table' id="audit">: Auditable Events</ctr></h:center>
                 <h:table>
                   <h:TR>
@@ -4662,7 +4635,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
       accountable for security functionality that is implemented by platform layers that are abstracted away. The implication is that
       not all security functionality will necessarily be tested for all platform layers down to the hardware for all evaluated
       configurations, especially for applications developed for software-based execution environments such as containers. For these cases, 
-      the balancing of evaluation rigor and commercial practicability tips in favor of practicability. <!-- NIAP: Dianne and Mary may be providing updated verbiage --> Note that this does not affect the requirement that at least one product instance be fully tested on at least one platform with cryptography mapped to a CAVP certificate.
+      the balancing of evaluation rigor and commercial practicability tips in favor of practicability. Note that this does not affect the requirement that at least one product instance be fully tested on at least one platform with cryptography mapped to a CAVP certificate.
       <h:br />
       <h:br />
       Equivalency has two aspects:
