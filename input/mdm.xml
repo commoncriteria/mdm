@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
-
-
+<!-- <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> -->
+<?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
 <!--
 Check this:
@@ -40,7 +40,7 @@ DONE:
 - cross references - search for Section & Appendix cross refs & adjust
 
 -->
-<?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
 
 <PP type="pp" boilerplate="yes" xmlns="https://niap-ccevs.org/cc/v1" name="Mobile Device Management"
   xmlns:h="http://www.w3.org/1999/xhtml">
@@ -282,11 +282,19 @@ DONE:
       </usecases>
     </section>
   </chapter>
-  <chapter title="Conformance Claims" id="ccl">
-    <!-- NOTE: This section is autopopulated with bolierplate text -->
+  <chapter title="Conformance Claims" id="ccl" boilerplate="no">
     <cclaims>
       <cclaim id="Conformance Statement">
-        <description></description>
+        <description>An ST must claim exact conformance to this PP, as defined in the CC and CEM addenda for Exact Conformance, Selection-Based SFRs, and Optional SFRs (dated May 2017).  </description>
+      </cclaim>
+      <cclaim id="CC Conformance Claims">
+        <description>This PP is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Revision 5.</description>
+      </cclaim>
+      <cclaim id="PP Claim">
+        <description>This PP does not claim conformance to any Protection Profile.</description>
+      </cclaim>
+      <cclaim id="Package Claim">
+        <description>This PP is TLS Package Conformant.</description>
       </cclaim>
     </cclaims>
   </chapter>
@@ -1573,7 +1581,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
       </subsection>
   
       <subsection id="fco" title="Communication (FCO)">
-        <f-component id="fco_cpc_ext.1" name="Componenet Registration Channel Definition" status="objective">
+        <f-component id="fco_cpc_ext.1" name="Component Registration Channel Definition" status="objective">
           <f-element id="fco_cpc_ext.1.1">
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -1944,7 +1952,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                   <selectable>removal of power to the memory</selectable>
                   <selectable>destruction of reference to the key directly followed by a request for garbage collection</selectable>
                 </selectables></h:li>
-                <h:li>For non-volatile [that consists of the invocation of an interface provided by the underlying platform that <selectables>
+                <h:li>For non-volatile memory that consists of the invocation of an interface provided by the underlying platform that <selectables>
                   <selectable>logically addresses the storage location of the key and performs a <selectables>
                     <selectable>single</selectable>
                     <selectable> <assignable>ST author defined multi-pass</assignable> </selectable>
@@ -1964,7 +1972,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                   <selectable>consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
                     <selectable>consisting of zeroes</selectable>
                   </selectables></h:li>
-                <h:li>For non-volatile EEPROM, the destruction shall be executed by a single direct overwrite consisting of a pseudo random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>), followed by a read-verify.</h:li>
+                <h:li>For non-volatile EEPROM, the destruction shall be executed by a single direct overwrite consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>), followed by a read-verify.</h:li>
                 <h:li>For non-volatile flash memory, that is not wear-leveled, the destruction shall be executed <selectables>
                     <selectable>by a single direct overwrite consisting of zeros followed by a read-verify</selectable>
                     <selectable>by a block erase that erases the reference to memory that stores data as well as the data itself</selectable>
@@ -2758,7 +2766,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fia_x509_ext.1(1)" name="Validation of Certificates">
+        <f-component id="fia_x509_ext.1(1)" name="X.509 Certificate Validation">
           <f-element id="fia_x509_ext.1.1(1)">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -2820,7 +2828,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             </aactivity>
           </f-element>          
         </f-component>
-        <f-component id="fia_x509_ext.1(2)" name="Validation of Certificates" status="sel-based" >
+        <f-component id="fia_x509_ext.1(2)" name="X.509 Certificate Validation" status="sel-based" >
           <selection-depends req="FPT_ITT.1.1(1)" ids="ITT_IPSEC, ITT_HTTPS, ITT_TLS, ITT_DTLS"/>
           <f-element id="fia_x509_ext.1.1(2)">
             <title>The TSF shall <selectables>
@@ -2890,7 +2898,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fia_x509_ext.2" name="X509 Certificate Authentication">
+        <f-component id="fia_x509_ext.2" name="X.509 Certificate Authentication">
           <f-element id="fia_x509_ext.2.1">
             <title>The TSF shall <selectables> 
               <selectable>invoke platform-provided functionality</selectable>
@@ -2980,7 +2988,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fia_x509_ext.3" name="X509 Enrollment" status="objective">
+        <f-component id="fia_x509_ext.3" name="X.509 Enrollment" status="objective">
           <f-element id="fia_x509_ext.3.1">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -3015,7 +3023,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fia_x509_ext.4" name="Alternate X509 Enrollment" status="objective">
+        <f-component id="fia_x509_ext.4" name="Alternate X.509 Enrollment" status="objective">
           <f-element id="fia_x509_ext.4.1">
             <title>The <abbr linkend="TSF"/> shall use the Enrollment over Secure Transport (EST) protocol as specified in RFC 7030 to request certificate enrollment using the simple enrollment method described in RFC 7030 Section 4.2.</title>
           </f-element>
@@ -3036,7 +3044,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             <title>The <abbr linkend="TSF"/> shall be capable of updating its <abbr linkend="EST"/>-specific Trust Anchor Database using the "Root CA Key Update" process described in RFC 7030 Section 4.1.3.</title>
           </f-element>
           <f-element id="fia_x509_ext.4.7">
-            <title>The <abbr linkend="TSF"/> shall generate a Certificate Request Message for <abbr linkend="EST"/> as specified in RFC 2986 and be able to provide the following information in the request: public key and <selectables>
+            <title>The <abbr linkend="TSF"/> shall generate a Certificate Request Message for <abbr linkend="EST"/> as specified in RFC 2986 and be able to provide the following information in the request: public key and <selectables linebreak="yes">
                 <selectable>device- specific information</selectable>
                 <selectable>Common Name, Organization, Organizational Unit, and Country</selectable>
               </selectables>.</title>
