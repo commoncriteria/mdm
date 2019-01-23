@@ -930,12 +930,13 @@ DONE:
             <title> The <abbr linkend="TSF"/> shall provide <selectables><selectable>an interface that provides responses 
               to queries about the configuration of enrolled devices</selectable><selectable>an interface that permits the export 
                 of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over an 
-              authenticated <selectables>
+              authenticated <selectables linebreak="yes">
+                <!-- Craig: Do we really need another trusted channel requirement or could we say per FTP_ITC.1(2)/FTP_ITT.1?? -->
                 <selectable>HTTPS</selectable>
-                <selectable>TLS</selectable> <!-- TODO: I have not updated this SFR to allow for the needed selections from the TLS package. Do we really need another trusted channel requirement or could we say per FTP_ITC.1(2)/FTP_ITT.1?? -->
-                <selectable>DTLS</selectable>
-                <selectable>IPsec</selectable>
-                <selectable>SSH</selectable>
+                <selectable>mutually authenticated TLS in accordance with the Package for Transport Layer Security</selectable> 
+                <selectable>mutually authenticated DTLS in accordance with the Package for Transport Layer Security</selectable>
+                <selectable>IPsec in accordance with the PP-Module for VPN Client</selectable>
+                <selectable>SSH</selectable> <!-- TODO -->
               </selectables> trusted communication channel. The provided information for each enrolled mobile device includes: <h:ol type="a">
               <h:li>The current version of the MD firmware/software</h:li>
               <h:li>The current version of the hardware model of the device</h:li>
@@ -2433,7 +2434,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to implement HTTPS using TLS. 
+            </selectables> to implement HTTPS using TLS in accordance with the Package for Transport Layer Security . 
             </title>
             <note role="application">The TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
               <h:ul>
@@ -2918,7 +2919,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                 <selectable>no additional uses</selectable>
               </selectables></title>
             <note role="application"> The <abbr linkend="ST"/> author's selection(s) shall match the selection 
-              of <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_ITC.1(1)"/>, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/>. 
+              of <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_ITC.1(1)"/>, <linkref linkend="FTP_ITC.1(2)"/>, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/>. 
               Certificates may optionally be used for trusted updates of system software (<linkref linkend="FPT_TUD_EXT.1.3"/>) 
               and software integrity verification (<linkref linkend="FPT_TST_EXT.1.2"/>). If some authentication services are 
               provided by the <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author shall clearly 
@@ -3463,10 +3464,8 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               </h:ol>
             </title>
             <note role="application"> This requirement captures all the configuration functionality in the <abbr linkend="MDM"/> Server to configure the underlying <abbr linkend="MDM"/> Server. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the assignment statement.<h:br/><h:br/>
-              Function a can be met by relying on the platform to configure the certificates used by the <abbr linkend="MDM"/> server, however, the <abbr linkend="MDM"/> Server shall allow the administrator to choose which certificate is used for a specific functionality. The selection in b corresponds to the selection in <linkref linkend="FIA_ENR_EXT.1.2"/>. The selection in c.1 includes a function that corresponds to the selection in <linkref linkend="FIA_X509_EXT.2.2"/>. Function c.3 allows the administrator to configure periodicity of assigned commands, for example "read audit logs kept by the Mobile Device". In this way the administrator can configure the <abbr linkend="MDM"/> system to retrieve audit logs from the Mobile Device on a periodic, such as daily, basis in order to ensure freshness of log data and to minimize loss of audit logs. Function c.4 allows the administrator to configure the privacy-sensitive information that will and will not be collected from particular mobile devices to handle Bring Your Own Device environments where some information may not be appropriate to collect. Privacy sensitive information may include items such as device physical location and lists of installed personal applications, and would vary depending on the particular capabilities of the <abbr linkend="TOE"/> and <abbr linkend="MDM"/> agent. The <abbr linkend="TOE"/> should provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and define the information that will be collected from devices in each category. Function c.5 corresponds to configuring the length of time the user authenticator for enrollment is valid in <linkref linkend="FMT_SAE_EXT.1"/>. This function shall be included in the <abbr linkend="ST"/> if and only if <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>.<h:br/><h:br/>
-              
-              For distributed <abbr linkend="TOE"/>s the interaction between <abbr linkend="TOE"/> components will be configurable (see <linkref linkend="FCO_CPC_EXT.1"/>). Therefore, the <abbr linkend="ST"/> author includes the selection "Ability to configure the interaction between <abbr linkend="TOE"/> components" for distributed <abbr linkend="TOE"/>s. A simple example would be the change of communication protocol according to <linkref linkend="FPT_ITT.1(1)"/>. Another example would be changing the management of a <abbr linkend="TOE"/> component from direct remote administration to remote administration through another <abbr linkend="TOE"/> component. A more complex use case would be if the realization of an <abbr linkend="SFR"/> is achieved through two or more <abbr linkend="TOE"/> components and the responsibilities between the two or more components could be modified.<h:br/><h:br/>
-              
+              Function a can be met by relying on the platform to configure the certificates used by the <abbr linkend="MDM"/> server, however, the <abbr linkend="MDM"/> Server shall allow the administrator to choose which certificate is used for a specific functionality. The selection in b corresponds to the selection in <linkref linkend="FIA_ENR_EXT.1.2"/>. The selection in c.1 includes a function that corresponds to the selection in <linkref linkend="FIA_X509_EXT.2.2"/>. Function c.3 allows the administrator to configure periodicity of assigned commands, for example "read audit logs kept by the Mobile Device". In this way the administrator can configure the <abbr linkend="MDM"/> system to retrieve audit logs from the Mobile Device on a periodic, such as daily, basis in order to ensure freshness of log data and to minimize loss of audit logs. Function c.4 allows the administrator to configure the privacy-sensitive information that will and will not be collected from particular mobile devices to handle Bring Your Own Device environments where some information may not be appropriate to collect. Privacy sensitive information may include items such as device physical location and lists of installed personal applications, and would vary depending on the particular capabilities of the <abbr linkend="TOE"/> and <abbr linkend="MDM"/> agent. The <abbr linkend="TOE"/> should provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and define the information that will be collected from devices in each category. Function c.5 corresponds to configuring the length of time the user authenticator for enrollment is valid in <linkref linkend="FMT_SAE_EXT.1"/>. This function shall be included in the <abbr linkend="ST"/> if and only if <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>.<h:br/><h:br/>            
+              For distributed <abbr linkend="TOE"/>s the interaction between <abbr linkend="TOE"/> components will be configurable (see <linkref linkend="FCO_CPC_EXT.1"/>). Therefore, the <abbr linkend="ST"/> author includes the selection "Ability to configure the interaction between <abbr linkend="TOE"/> components" for distributed <abbr linkend="TOE"/>s. A simple example would be the change of communication protocol according to <linkref linkend="FPT_ITT.1(1)"/>. Another example would be changing the management of a <abbr linkend="TOE"/> component from direct remote administration to remote administration through another <abbr linkend="TOE"/> component. A more complex use case would be if the realization of an <abbr linkend="SFR"/> is achieved through two or more <abbr linkend="TOE"/> components and the responsibilities between the two or more components could be modified.<h:br/><h:br/>             
               For distributed <abbr linkend="TOE"/>s that implement a registration channel (as described in <linkref linkend="FCO_CPC_EXT.1.2"/>), the <abbr linkend="ST"/> author uses the selection "configure the cryptographic functionality" in this <abbr linkend="SFR"/>, and its corresponding mapping in the <abbr linkend="TSS"/>, to describe the configuration of any cryptographic aspects of the registration channel that can be modified by the operational environment in order to improve the channel security.              
             </note>
             <aactivity>
@@ -3523,8 +3522,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <Tests/>In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the <abbr linkend="TOE"/> that conforms to the requirements of this <abbr linkend="PP"/> be tested; for instance, if the <abbr linkend="TOE"/> can be administered through a local hardware interface or HTTPS then both methods of administration must be exercised during the evaluation team's test activities. 
             </aactivity>
           </f-element>
-        </f-component> 
-       
+        </f-component>      
         <f-component id="fmt_smr.1(2)" name="Security Management Roles (MAS Server)" status="sel-based">
           <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
           <f-element id="fmt_smr.1.1(2)">
@@ -3540,8 +3538,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             </aactivity>
           </f-element>
         </f-component>      
-      </subsection>
-      
+      </subsection>    
       <subsection id="fpt" title="Protection of the TSF (FPT)">
         <f-component id="fpt_api_ext.1" name="Use of Supported Services and APIs">
           <f-element id="fpt_api_ext.1.1">
@@ -3574,11 +3571,11 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to protect all data from [disclosure and modification] through use of 
-              <selectables>
-                <selectable id="ITT_IPSEC">IPsec</selectable>
-                <selectable id="ITT_TLS">mutually authenticated TLS</selectable>
+              <selectables linebreak="yes">
+                <selectable id="ITT_IPSEC">IPsec in accordance with the PP-Module for VPN Client</selectable>
+                <selectable id="ITT_TLS">mutually authenticated TLS in accordance with the Package for Transport Layer Security</selectable>
                 <selectable id="ITT_HTTPS">HTTPS</selectable>
-                <selectable id="ITT_DTLS">mutually authenticated DTLS</selectable>
+                <selectable id="ITT_DTLS">mutually authenticated DTLS in accordance with the Package for Transport Layer Security</selectable>
               </selectables> when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the second selection.<h:br/><h:br/> 
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(2)"/> should be included in the ST<h:br/><h:br/>
@@ -3631,9 +3628,9 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to protect all data from [disclosure and modification] through use of 
-              <selectables>
-                <selectable id="ITT_TLS">mutually authenticated TLS</selectable>                
-                <selectable id="ITT_DTLS">mutually authenticated DTLS</selectable>
+              <selectables linebreak="yes">
+                <selectable id="ITT_TLS">mutually authenticated TLS in accordance with the Package for Transport Layer Security</selectable>                
+                <selectable id="ITT_DTLS">mutually authenticated DTLS in accordance with the Package for Transport Layer Security</selectable>
                 <selectable id="ITT_HTTPS">HTTPS</selectable>
               </selectables> when it is transferred between the <abbr linkend="TSF"/> and <abbr linkend="MDM"/> Agent.</title>
             <note role="application">This requirement ensures all communications between the <abbr linkend="TSF"/> and <abbr linkend="MDM"/> Agent are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the second selection.<h:br/><h:br/> 
@@ -3693,8 +3690,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                 <selectable>TSF</selectable>
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables>-provided cryptographic services.</title>
-            <note role="application">While the <abbr linkend="TOE"/> is typically a software package running in the IT Environment, it is still capable of performing the self-test activities required above. It should be understood, however, that there is a significant dependency on the host environment in assessing the assurance provided by the tests mentioned above (meaning that if the host environment is compromised, the self-tests will not be meaningful).<h:br/><h:br/>
-              
+            <note role="application">While the <abbr linkend="TOE"/> is typically a software package running in the IT Environment, it is still capable of performing the self-test activities required above. It should be understood, however, that there is a significant dependency on the host environment in assessing the assurance provided by the tests mentioned above (meaning that if the host environment is compromised, the self-tests will not be meaningful).<h:br/><h:br/>           
               For distributed <abbr linkend="TOE"/>s all <abbr linkend="TOE"/> components have to perform self-tests. This does not necessarily mean that each <abbr linkend="TOE"/> component has to carry out the same self-tests: the <abbr linkend="ST"/> describes the applicability of the selection (i.e. when self-tests are run) and the final assignment (i.e. which self-tests are carried out) to each <abbr linkend="TOE"/> component.
             </note>
             <aactivity>
@@ -3711,9 +3707,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
         </f-component> 
         <f-component id="fpt_tud_ext.1" name="Trusted Update">
           <f-element id="fpt_tud_ext.1.1">
-            <title>The <abbr linkend="TSF"/> shall provide Authorized Administrators the
-              ability to query the current version of the <abbr linkend="MDM"/> Server
-              software.</title>
+            <title>The <abbr linkend="TSF"/> shall provide Authorized Administrators the ability to query the current version of the <abbr linkend="MDM"/> Server software.</title>
             <note role="application">
               For a distributed TOE, the method of determining the installed versions on each component of the <abbr linkend="TOE"/> is described in the operational guidance. 
             </note>
@@ -3736,10 +3730,8 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to provide a means to verify software updates to the <abbr linkend="TSF"/> using a digital signature mechanism prior to installing those updates.</title>
-            <note role="application">The software on the <abbr linkend="TSF"/> will occasionally need to be updated. This requirement is intended to ensure that the <abbr linkend="TSF"/> only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the <abbr linkend="TSF"/> software or hardware.<h:br/><h:br/>
-              
-              For distributed <abbr linkend="TOE"/>'s all <abbr linkend="TOE"/> components shall support Trusted Update. The verification of the signature or hash on the update shall either be done by each <abbr linkend="TOE"/> component itself (signature verification) or for each <abbr linkend="TOE"/> component (hash verification).<h:br/><h:br/>
-              
+            <note role="application">The software on the <abbr linkend="TSF"/> will occasionally need to be updated. This requirement is intended to ensure that the <abbr linkend="TSF"/> only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the <abbr linkend="TSF"/> software or hardware.<h:br/><h:br/>           
+              For distributed <abbr linkend="TOE"/>'s all <abbr linkend="TOE"/> components shall support Trusted Update. The verification of the signature or hash on the update shall either be done by each <abbr linkend="TOE"/> component itself (signature verification) or for each <abbr linkend="TOE"/> component (hash verification).<h:br/><h:br/>             
               Updating a distributed <abbr linkend="TOE"/> might lead to the situation where different <abbr linkend="TOE"/> components are running different software versions. Depending on the differences between the different software versions the impact of a mixture of different software versions might be no problem at all or critical to the proper functioning of the <abbr linkend="TOE"/>. The <abbr linkend="TSS"/> shall detail the mechanisms that support the continuous proper functioning of the <abbr linkend="TOE"/> during trusted update of distributed <abbr linkend="TOE"/>'s.
             </note>
             <aactivity>
@@ -3772,8 +3764,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             </aactivity>
           </f-element>
         </f-component>
-      </subsection>
-      
+      </subsection>  
       <subsection id="ftp" title="Trusted Path/Channels (FTP)">
         <f-component id="ftp_itc_ext.1" name="Trusted Channel" > <!-- SFR that will specify if Agent is in the TOE and/or if TOE is distributed-->
           <f-element id="ftp_itc_ext.1.1">
@@ -3788,10 +3779,8 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable id="AgentOutTOE_ftp"><linkref linkend="FTP_ITC.1(2)"/></selectable>
             </selectables>.</title>
             <note role="Application">
-              This <abbr linkend="SFR"/> describes the communication channels between the <abbr linkend="MDM"/> Server and an Agent that may or may not be in the <abbr linkend="TOE"/>, and optionally separate components comprising a distributed <abbr linkend="TOE"/>, to determine which selection-based <abbr linkend="SFR"/>'s will need to be included in the <abbr linkend="ST"/>. <h:br/><h:br/>
-              
-              If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, then the communication channel between the Agent and <abbr linkend="TSF"/> is internal to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is internal to the <abbr linkend="TOE"/>" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1(2)"/> shall be selected in the second selection and <linkref linkend="FPT_ITT.1(2)"/> shall be included in the <abbr linkend="ST"/>. <h:br/><h:br/>
-              
+              This <abbr linkend="SFR"/> describes the communication channels between the <abbr linkend="MDM"/> Server and an Agent that may or may not be in the <abbr linkend="TOE"/>, and optionally separate components comprising a distributed <abbr linkend="TOE"/>, to determine which selection-based <abbr linkend="SFR"/>'s will need to be included in the <abbr linkend="ST"/>. <h:br/><h:br/>            
+              If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, then the communication channel between the Agent and <abbr linkend="TSF"/> is internal to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is internal to the <abbr linkend="TOE"/>" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1(2)"/> shall be selected in the second selection and <linkref linkend="FPT_ITT.1(2)"/> shall be included in the <abbr linkend="ST"/>. <h:br/><h:br/>         
               If the <abbr linkend="TOE"/> interoperates with an evaluated <abbr linkend="MDM"/> Agent built into a mobile device (i.e., the <abbr linkend="TOE"/> does not include an <abbr linkend="MDM"/> Agent), the communication channel between the Agent and <abbr linkend="TSF"/> is external to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is external to the <abbr linkend="TOE"/>" shall be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> shall be selected in the second selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the <abbr linkend="ST"/>. <h:br/><h:br/> 
               If "other components comprising the distributed <abbr linkend="TOE"/>" is selected in the first selection then <linkref linkend="FPT_ITT.1(1)"/> shall be selected in the second selection. <linkref linkend="FPT_ITT.1(1)"/> shall be included in the <abbr linkend="ST"/> for all internal channels used to transfer <abbr linkend="TSF"/> data between <abbr linkend="TOE"/> components other than an <abbr linkend="MDM"/> Agent.
             </note>
@@ -3807,11 +3796,11 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to provide a trusted communication channel using <selectables>
-                <selectable id="ITC_IPSEC_1">IPsec</selectable>
-                <selectable id="ITC_SSH_1">SSH</selectable>
-                <selectable id="ITC_TLS_1">mutually authenticated TLS</selectable>
-                <selectable id="ITC_DTLS_1">mutually authenticated DTLS</selectable>
+            </selectables> to provide a trusted communication channel using <selectables linebreak="yes">
+              <selectable id="ITC_IPSEC_1">IPsec in accordance with the PP-Module for VPN Client</selectable>
+                <selectable id="ITC_SSH_1">SSH</selectable> <!-- TODO: Need to update. EP or Module? -->
+              <selectable id="ITC_TLS_1">mutually authenticated TLS in accordance with the Package for Transport Layer Security</selectable>
+              <selectable id="ITC_DTLS_1">mutually authenticated DTLS in accordance with the Package for Transport Layer Security</selectable>
                 <selectable id="ITC_HTTPS_1">HTTPS</selectable>
               </selectables> between itself and authorized IT entities supporting the following capabilities: audit server, <selectables>
                 <selectable>authentication server</selectable>
@@ -3935,10 +3924,10 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to use <selectables>
-                <selectable id="ITC_TLS_2">mutually authenticated TLS</selectable> 
-                <selectable id="ITC_DTLS_2">mutually authenticated DTLS</selectable>
-                <selectable id="ITC_HTTPS_2">HTTPS</selectable>
+            </selectables> to use <selectables linebreak="yes">
+              <selectable id="ITC_TLS_2">mutually authenticated TLS in accordance with the Package for Transport Layer Security</selectable> 
+              <selectable id="ITC_DTLS_2">mutually authenticated DTLS in accordance with the Package for Transport Layer Security</selectable>
+              <selectable id="ITC_HTTPS_2">HTTPS</selectable>
               </selectables> to provide a trusted communication channel between itself (as a server) and the MDM Agent that is logically distinct from other communication channels,
               provides assured identification of its end points, protects channel data from
               disclosure, and detects modification of the channel data.</title>
@@ -4048,11 +4037,11 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to use <selectables>
-                <selectable id="TRP_IPSEC_1">IPsec</selectable>
-                <selectable id="TRP_TLS_1">TLS</selectable>
+            </selectables> to use <selectables linebreak="yes">
+              <selectable id="TRP_IPSEC_1">IPsec in accordance with the PP-Module for VPN Client</selectable>
+              <selectable id="TRP_TLS_1">TLS in accordance with the Package for Transport Layer Security</selectable>
                 <selectable id="TRP_HTTPS_1">HTTPS</selectable>
-                <selectable id="TRP_SSH_1">SSH</selectable>
+                <selectable id="TRP_SSH_1">SSH</selectable> <!-- TODO -->
               </selectables> to provide a trusted communication path between itself as a <selectables>
                 <selectable>server</selectable>
                 <selectable>peer</selectable>
@@ -4127,8 +4116,8 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to use <selectables>
-                <selectable id="TRP_TLS_2">TLS</selectable>
+            </selectables> to use <selectables linebreak="yes">
+              <selectable id="TRP_TLS_2">TLS in accordance with the Package for Transport Layer Security</selectable>
                 <selectable id="TRP_HTTPS_2">HTTPS</selectable>
               </selectables> to provide a trusted communication path between itself (as a server) and MD users that is logically distinct 
               from other communication paths and provides assured identification of its endpoints and protection of the 
@@ -4233,12 +4222,10 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to require the use of the trusted path for [joining components to the <abbr linkend="TSF"/> under environmental constraints identified in <assignable>reference to operational guidance</assignable>].</title>
-            <note role="application">This <abbr linkend="SFR"/> implements one of the types of channel identified in the main selection for <linkref linkend="FCO_CPC_EXT.1.2"/>. The "joining component" in <linkref linkend="FTP_TRP.1(3)"/> is the IT entity that is attempting to join the distributed <abbr linkend="TOE"/> by using the registration process.<h:br/><h:br/>
-              
+            <note role="application">This <abbr linkend="SFR"/> implements one of the types of channel identified in the main selection for <linkref linkend="FCO_CPC_EXT.1.2"/>. The "joining component" in <linkref linkend="FTP_TRP.1(3)"/> is the IT entity that is attempting to join the distributed <abbr linkend="TOE"/> by using the registration process.<h:br/><h:br/>            
               The effect of this <abbr linkend="SFR"/> is to require the ability for components to communicate in a secure manner while the distributed <abbr linkend="TSF"/> is being created (or when adding components to an existing distributed <abbr linkend="TSF"/>). When creating the <abbr linkend="TSF"/> from the initial pair of components, either of these components may be identified as the <abbr linkend="TSF"/> for the purposes of satisfying the meaning of "<abbr linkend="TSF"/>" in this <abbr linkend="SFR"/>.<h:br/><h:br/>
               <!-- TODO: The below paragraph doesn’t really fit. Do we think this channel need to be encrypted or not?-->
-              The selection at the end of <linkref linkend="FTP_TRP.1.1(3)"/> recognises that in some cases confidentiality (i.e. protection of the data from disclosure) may not be provided by the channel. The <abbr linkend="ST"/> author distinguishes in the <abbr linkend="TSS"/> whether in this case the <abbr linkend="TOE"/> relies on the environment to provide confidentiality (as part of the constraints referenced in <linkref linkend="FTP_TRP.1.3(3)"/>) or whether the registration data exchanged does not require confidentiality (in which case this assertion must be justified). If "none" is selected, then this word may be omitted in the ST to improve readability.<h:br/><h:br/>
-              
+              The selection at the end of <linkref linkend="FTP_TRP.1.1(3)"/> recognises that in some cases confidentiality (i.e. protection of the data from disclosure) may not be provided by the channel. The <abbr linkend="ST"/> author distinguishes in the <abbr linkend="TSS"/> whether in this case the <abbr linkend="TOE"/> relies on the environment to provide confidentiality (as part of the constraints referenced in <linkref linkend="FTP_TRP.1.3(3)"/>) or whether the registration data exchanged does not require confidentiality (in which case this assertion must be justified). If "none" is selected, then this word may be omitted in the ST to improve readability.<h:br/><h:br/>             
               The assignment in <linkref linkend="FTP_TRP.1.3(3)"/> ensures that the <abbr linkend="ST"/> highlights any specific details needed to protect the registration environment. Note that when the <abbr linkend="ST"/> uses <linkref linkend="FTP_TRP.1(3)"/> for the registration channel then this channel cannot be reused as the normal inter-component communication channel (the latter channel must meet FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/>). Specific requirements for Preparative Procedures relating to <linkref linkend="FTP_TRP.1(3)"/> are defined in the Evaluation Activities.<h:br/><h:br/>
             </note>
             <aactivity>
