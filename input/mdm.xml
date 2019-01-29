@@ -3926,9 +3926,9 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to use <selectables linebreak="yes">
-              <selectable id="ITC_TLS_2">mutually authenticated TLS in accordance with the Package for Transport Layer Security</selectable> 
-              <selectable id="ITC_DTLS_2">mutually authenticated DTLS in accordance with the Package for Transport Layer Security</selectable>
-              <selectable id="ITC_HTTPS_2">HTTPS</selectable>
+              <selectable id="ITC_TLS_2">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable> 
+              <selectable id="ITC_DTLS_2">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
+              <selectable id="ITC_HTTPS_2">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables> to provide a trusted communication channel between itself (as a server) and the MDM Agent that is logically distinct from other communication channels,
               provides assured identification of its end points, protects channel data from
               disclosure, and detects modification of the channel data.</title>
@@ -3951,8 +3951,9 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               the <abbr linkend="TOE"/>.<h:br/><h:br/>
               
               This trusted channel protects the connection between an enrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server. FTP_TRP.1(2) provides a trusted channel to protect the connection between an unenrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server during the enrollment operation. <h:br/><h:br/> 
-              The trusted channel uses TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
-              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
+              The trusted channel uses TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>.<h:br/><h:br/>
+              If HTTPS is selected, <linkref linkend="FCS_HTTPS_EXT.1"/> is required.<h:br/><h:br/>
+              If the <abbr linkend="ST"/> author selects TLS or DTLS, the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
