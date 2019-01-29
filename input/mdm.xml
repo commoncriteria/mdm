@@ -1670,6 +1670,11 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                     </selectables> that meet the following: FIPS PUB 186-4, "Digital Signature Standard (DSS)", Appendix B.4
                 </selectable>
                 <selectable>FFC schemes using cryptographic key sizes of 2048-bit or greater that meet the following: FIPS PUB 186-4, "Digital Signature Standard (DSS)", Appendix B.1 </selectable>
+                <selectable>FFC schemes using Diffie-Hellman group 14 that meet the following: RFC3526, Section 3</selectable>
+                <selectable>FFC schemes using "safe-prime" groups that meet the following: 'NIST Special Publication 800-56A Revision 3, "Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography"', and <selectables>
+                  <selectable>RFC 3526</selectable>
+                  <selectable>RFC 7919</selectable>
+                </selectables></selectable>
               </selectables>.
             </title>
             <note role="application">The <abbr linkend="ST"/> author shall select all key generation
@@ -1788,7 +1793,9 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                   <h:li>q divides p-1</h:li>
                   <h:li>g^q mod p = 1</h:li>
                   <h:li>g^x mod p = y</h:li>
-                </h:ul> for each FFC parameter set and key pair. 
+                </h:ul> for each FFC parameter set and key pair.<h:br/><h:br/>
+              <h:h4>Diffie-Hellman Group 14 and FFC Schemes using "safe-prime" groups</h:h4>
+              Testing for FFC Schemes using Diffie-Hellman group 14 and/or "safe-prime" groups is done as part of testing in CKM.2.1.
             </aactivity>
           </f-element>
         </f-component> 
@@ -1801,12 +1808,18 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                 <selectable>RSA-based key establishment schemes that meets the following: NIST
                   Special Publication 800-56B, "Recommendation for Pair-Wise Key Establishment
                   Schemes Using Integer Factorization Cryptography"</selectable>
+                <selectable>RSA-based key establishment schemes that meet the following: RSAES-PKCS1-v1_5 as specified in Section 7.2 of RFC 8017, "Public-Key Cryptography Standards (PKCS) #1:RSA Cryptography Specifications Version 2.1"</selectable>
                 <selectable>Elliptic curve-based key establishment schemes that meets the following:
                   NIST Special Publication 800-56A, "Recommendation for Pair-Wise Key Establishment
                   Schemes Using Discrete Logarithm Cryptography"</selectable>
                 <selectable>Finite field-based key establishment schemes that meets the following:
                   NIST Special Publication 800-56A, "Recommendation for Pair-Wise Key Establishment
                   Schemes Using Discrete Logarithm Cryptography"</selectable>
+                <selectable>Key establishment schemes using Diffie-Hellman group 14 that meets the following: RFC 3526, Section 3</selectable>
+              <selectable>FFC schemes using "safe-prime" groups that meet the following: 'NIST Special Publication 800-56A Revision 3, "Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography"', and <selectables>
+                <selectable>RFC 3526</selectable>
+                <selectable>RFC 7919</selectable>
+              </selectables></selectable>
               </selectables>.
             </title>
             <note role="application">The <abbr linkend="ST"/> author shall select all key
@@ -1823,24 +1836,9 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <!-- TODO: Need to review this AA -->
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> of the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
-              <TSS/>The evaluator shall ensure that the supported key establishment schemes
-                correspond to the key generation schemes identified in <linkref linkend="FCS_CKM.1.1"/>. If the <abbr
-                  linkend="ST"/> specifies more than one scheme, the evaluator shall examine the
-                  <abbr linkend="TSS"/> to verify that it identifies the usage for each
-                scheme.<h:br/><h:br/> The evaluator shall ensure that the <abbr linkend="TSS"/> describes
-                how the <abbr linkend="TOE"/> handles decryption errors. In accordance with NIST
-                Special Publication 800-56B, the <abbr linkend="TOE"/> must not reveal the
-                particular error that occurred, either through the contents of any outputted or
-                logged error message or through timing variations. If KTS- OAEP is supported, the
-                evaluator shall create separate contrived ciphertext values that trigger each of the
-                three decryption error checks described in NIST Special Publication 800-56B section
-                7.2.2.3, ensure that each decryption attempt results in an error, and ensure that
-                any outputted or logged error message is identical for each. If KTS-KEM-KWS is
-                supported, the evaluator shall create separate contrived ciphertext values that
-                trigger each of the three decryption error checks described in NIST Special
-                Publication 800-56B section 7.2.3.3, ensure that each decryption attempt results in
-                an error, and ensure that any outputted or logged error message is identical for
-                each.<h:br/><h:br/> 
+              <TSS/>The evaluator shall ensure that the supported key establishment schemes correspond to the key generation schemes identified in <linkref linkend="FCS_CKM.1.1"/>. If the <abbr linkend="ST"/> specifies more than one scheme, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it identifies the usage for each scheme.<h:br/><h:br/> 
+              The evaluator shall ensure that the <abbr linkend="TSS"/> describes how the <abbr linkend="TOE"/> handles decryption errors. In accordance with NIST Special Publication 800-56B, the <abbr linkend="TOE"/> must not reveal the particular error that occurred, either through the contents of any outputted or logged error message or through timing variations. If KTS- OAEP is supported, the evaluator shall create separate contrived ciphertext values that trigger each of the three decryption error checks described in NIST Special Publication 800-56B section 7.2.2.3, ensure that each decryption attempt results in an error, and ensure that any outputted or logged error message is identical for each. If KTS-KEM-KWS is supported, the evaluator shall create separate contrived ciphertext values that trigger each of the three decryption error checks described in NIST Special Publication 800-56B section 7.2.3.3, ensure that each decryption attempt results in an error, and ensure that any outputted or logged error message is identical for each.<h:br/><h:br/>
+              If Diffie-Hellman group 14 is selected from FCS_CKM.2.1, the <abbr linkend="TSS"/> shall describe how the implementation meets RFC 3526 Section 3.<h:br/><h:br/>
               <Guidance/>The evaluator shall verify that the AGD guidance instructs the administrator
                 how to configure the <abbr linkend="TOE"/> to use the selected key establishment
               scheme(s).<h:br/><h:br/>
@@ -1937,7 +1935,13 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                 keying material (KeyData) is equivalent to the plaintext keying material in the test
                 vector. In cases where key confirmation is incorporated, the evaluator shall perform
                 the key confirmation steps and ensure that the outputted MacTag is equivalent to the
-                MacTag in the test vector. 
+                MacTag in the test vector.<h:br/><h:br/>
+                <h:h4>RSA-based key establishment</h:h4>
+                The evaluator shall verify the correctness of the TSF's implementation of RSAES-PKCS1-v1_5 by using a known good implementation for each protocol selected in FTP_TRP.1/Admin, FTP_TRP.1/Join, FTP_ITC.1, and FPT_ITT.1 that uses RSAES-PKCS1-v1_5. <!-- ToDo: Change these references -->
+              <h:h4>Diffie-Hellman Group 14</h:h4>
+              The evaluator shall verify the correctness of the TSF's implementation of Diffie-Hellman group 14 by using a known good implementation for each protocol selected in FTP_TRP.1/Admin, FTP_TRP.1/Join, FTP_ITC.1, and FPT_ITT.1 that uses Diffie-Hellman Group 14. <!-- ToDo: Change these references -->
+              <h:h4>FFC Schemes using "safe-prime" groups</h:h4>
+              The evaluator shall verify the correctness of the TSF's implementation of "safe-prime" groups by using a known good implementation for each protocol selected in FTP_TRP.1/Admin, FTP_TRP.1/Join, FTP_ITC.1, and FPT_ITT.1 that uses "safe-prime" groups. This test nust be performed for each "safe-prime" group that each protocol uses. <!-- ToDo: Change these references -->
             </aactivity>
           </f-element>
         </f-component> 
