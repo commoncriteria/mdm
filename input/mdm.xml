@@ -929,15 +929,11 @@ DONE:
           <f-element id="fau_crp_ext.1.1">
             <title> The <abbr linkend="TSF"/> shall provide <selectables><selectable>an interface that provides responses 
               to queries about the configuration of enrolled devices</selectable><selectable>an interface that permits the export 
-                of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over an 
-              authenticated <selectables linebreak="yes">
-                <!-- Todo:Craig: Do we really need another trusted channel requirement or could we say per FTP_ITC.1(2)/FTP_ITT.1?? -->
-                <selectable>HTTPS</selectable>
-                <selectable>mutually authenticated TLS in accordance with the Package for Transport Layer Security</selectable> 
-                <selectable>mutually authenticated DTLS in accordance with the Package for Transport Layer Security</selectable>
-                <selectable>IPsec in accordance with the PP-Module for VPN Client</selectable>
-                <selectable>SSH in accordance with the Extended Package for Secure Shell</selectable> 
-              </selectables> trusted communication channel. The provided information for each enrolled mobile device includes: <h:ol type="a">
+                of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over a 
+              channel that meets the secure channel requirements in <selectables linebreak="yes">
+                <selectable><linkref linkend="FTP_ITC.1(1)"/></selectable>
+                <selectable><linkref linkend="FPT_ITT.1(1)"/></selectable><!-- ToDo: ITT necessary? Only external entities? -->
+              </selectables>. The provided information for each enrolled mobile device includes: <h:ol type="a">
               <h:li>The current version of the MD firmware/software</h:li>
               <h:li>The current version of the hardware model of the device</h:li>
               <h:li>The current version of installed mobile applications</h:li>
@@ -955,9 +951,7 @@ DONE:
               Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report upon 
               endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile 
               as standards efforts mature.<h:br/><h:br/> 
-              If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>.<h:br/><h:br/> 
-              If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
-              If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              <!-- ToDo: need to make sure that if we remove the TLS selection and bring in itt/itc that their TLS selections mesh with the old ones below:
               If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
@@ -974,6 +968,7 @@ DONE:
                 </h:li>
               </h:ul>
               Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services. <h:br/><h:br/>
+              -->
             </note>
             <aactivity>
               <Guidance/>The evaluator shall check to ensure that the operational guidance contains instructions on how to access the <abbr linkend="MDM"/> Server's compliance reporting interface.<h:br/><h:br/>
