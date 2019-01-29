@@ -3798,11 +3798,11 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to provide a trusted communication channel using <selectables linebreak="yes">
-              <selectable id="ITC_IPSEC_1">IPsec in accordance with the PP-Module for VPN Client</selectable>
-                <selectable id="ITC_SSH_1">SSH in accordance with the Extended Package for Secure Shell</selectable>
-              <selectable id="ITC_TLS_1">mutually authenticated TLS in accordance with the Package for Transport Layer Security</selectable>
-              <selectable id="ITC_DTLS_1">mutually authenticated DTLS in accordance with the Package for Transport Layer Security</selectable>
-                <selectable id="ITC_HTTPS_1">HTTPS</selectable>
+              <selectable id="ITC_IPSEC_1">IPsec as defined in the PP-Module for VPN Client</selectable>
+              <selectable id="ITC_SSH_1">SSH as defined in the Extended Package for Secure Shell</selectable>
+              <selectable id="ITC_TLS_1">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
+              <selectable id="ITC_DTLS_1">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
+              <selectable id="ITC_HTTPS_1">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables> between itself and authorized IT entities supporting the following capabilities: audit server, <selectables>
                 <selectable>authentication server</selectable>
                 <selectable><assignable>other capabilities</assignable></selectable>
@@ -3827,10 +3827,10 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               entity does support mutual authentication, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>.<h:br/><h:br/>
-              If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
-              If "SSH" is selected the Extended Package for Secure Shell must be included in the <abbr linkend="ST"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
-              If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
-              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
+              If IPsec is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
+              If the <abbr linkend="ST"/> author selects SSH, the TSF must be validated against the EP for Secure Shell with the <abbr linkend="MDM"/> <abbr linkend="PP"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/> 
+              If HTTPS is selected, <linkref linkend="FCS_HTTPS_EXT.1"/> is required.<h:br/><h:br/>
+              If the <abbr linkend="ST"/> author selects TLS or DTLS, the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
