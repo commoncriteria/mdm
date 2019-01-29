@@ -940,10 +940,7 @@ DONE:
             <title> The <abbr linkend="TSF"/> shall provide <selectables><selectable>an interface that provides responses 
               to queries about the configuration of enrolled devices</selectable><selectable>an interface that permits the export 
                 of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over a 
-              channel that meets the secure channel requirements in <selectables linebreak="yes">
-                <selectable><linkref linkend="FTP_ITC.1(1)"/></selectable>
-                <selectable><linkref linkend="FPT_ITT.1(1)"/></selectable><!-- ToDo: ITT necessary? Only external entities? -->
-              </selectables>. The provided information for each enrolled mobile device includes: <h:ol type="a">
+              channel that meets the secure channel requirements in <linkref linkend="FTP_ITC.1(1)"/>. The provided information for each enrolled mobile device includes: <h:ol type="a">
               <h:li>The current version of the MD firmware/software</h:li>
               <h:li>The current version of the hardware model of the device</h:li>
               <h:li>The current version of installed mobile applications</h:li>
@@ -961,24 +958,6 @@ DONE:
               Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report upon 
               endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile 
               as standards efforts mature.<h:br/><h:br/> 
-              <!-- ToDo: need to make sure that if we remove the TLS selection and bring in itt/itc that their TLS selections mesh with the old ones below:
-              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
-              <h:ul>
-                <h:li>FCS_TLS_EXT.1: 
-                  <h:ul>
-                    <h:li>either TLS or DTLS is selected depending on the selection made in FAU_CRP_EXT.1.1</h:li>
-                    <h:li>server must be selected</h:li>
-                  </h:ul>
-                </h:li>
-                <h:li>FCS_TLSS_EXT.1.1:
-                  <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
-                    <h:li>mutual authentication must be selected</h:li>
-                  </h:ul>
-                </h:li>
-              </h:ul>
-              Protocol, RBG, Certificate validation, algorithm, and similar services may be met with platform provided services. <h:br/><h:br/>
-              -->
             </note>
             <aactivity>
               <Guidance/>The evaluator shall check to ensure that the operational guidance contains instructions on how to access the <abbr linkend="MDM"/> Server's compliance reporting interface.<h:br/><h:br/>
@@ -1937,7 +1916,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                 the key confirmation steps and ensure that the outputted MacTag is equivalent to the
                 MacTag in the test vector.<h:br/><h:br/>
                 <h:h4>RSA-based key establishment</h:h4>
-                The evaluator shall verify the correctness of the TSF's implementation of RSAES-PKCS1-v1_5 by using a known good implementation for each protocol selected in FTP_TRP.1/Admin, FTP_TRP.1/Join, FTP_ITC.1, and FPT_ITT.1 that uses RSAES-PKCS1-v1_5. <!-- ToDo: Change these references -->
+              The evaluator shall verify the correctness of the TSF's implementation of RSAES-PKCS1-v1_5 by using a known good implementation for each protocol selected in FTP_TRP.1(1), FTP_TRP.1(3), FTP_ITC.1, and FPT_ITT.1 that uses RSAES-PKCS1-v1_5. <!-- ToDo: Change these references -->
               <h:h4>Diffie-Hellman Group 14</h:h4>
               The evaluator shall verify the correctness of the TSF's implementation of Diffie-Hellman group 14 by using a known good implementation for each protocol selected in FTP_TRP.1/Admin, FTP_TRP.1/Join, FTP_ITC.1, and FPT_ITT.1 that uses Diffie-Hellman Group 14. <!-- ToDo: Change these references -->
               <h:h4>FFC Schemes using "safe-prime" groups</h:h4>
@@ -3586,12 +3565,13 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                 <selectable id="ITT_TLS">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
                 <selectable id="ITT_DTLS">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
                 <selectable id="ITT_HTTPS">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
-                <!-- C ToDo: Why no SSH selection? -->
+                <selectable id="ITT_SSH">SSH as defined in the Extended Package for Secure Shell</selectable>
               </selectables> when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the second selection.<h:br/><h:br/> 
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(2)"/> should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>              
               If IPsec is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
-              If HTTPS is selected, <linkref linkend="FCS_HTTPS_EXT.1"/> is required.<h:br/><h:br/>          
+              If HTTPS is selected, <linkref linkend="FCS_HTTPS_EXT.1"/> is required.<h:br/><h:br/>
+              If the <abbr linkend="ST"/> author selects SSH, the <abbr linkend="TSF"/> must be validated against the EP for Secure Shell with the <abbr linkend="MDM"/> <abbr linkend="PP"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/>
               If the <abbr linkend="ST"/> author selects TLS or DTLS, the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
@@ -4406,6 +4386,9 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             </a-element>
             <a-element id="AGD_PRE.1.2C">
               <title>The preparative procedures shall describe all the steps necessary for secure installation of the <abbr linkend="TOE"/> and for the secure preparation of the operational environment in accordance with the security objectives for the operational environment as described in the <abbr linkend="ST"/>.</title>
+              <note role="application">It is recognised that the application of these requirements will vary depending on aspects such as whether the TOE is delivered in an operational state, or whether it has to be installed at the TOE owner's site, etc.<h:br/><h:br/>
+                It might also be the case that no installation is necessary, for example as a Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyse installation procedures and thus this requirement is implicitly satisfied.
+              </note>
             </a-element>          
           <evalactionlabel title="Evaluator action elements:"/>
             <a-element id="AGD_PRE.1.1E">
@@ -4442,7 +4425,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
       </subsection>
       <subsection id="alc_cms" title="TOE CM Coverage (ALC_CMS.1)">
         <a-component id="alc_cms.1" name="TOE CM Coverage (ALC_CMS.1)">
-          This component is targeted at identifying the Given the scope of the <abbr linkend="TOE"/> and its associated evaluation evidence requirements, this component's assurance activities are covered by the assurance activities listed for ALC_CMC.1. 
+          Given the scope of the <abbr linkend="TOE"/> and its associated evaluation evidence requirements, this component's assurance activities are covered by the assurance activities listed for ALC_CMC.1. 
           <evalactionlabel title="Developer action elements:"/>
             <a-element id="alc_cms.1.1d">
               <title>The developer shall provide a configuration list for the <abbr linkend="TOE"/>.</title>
