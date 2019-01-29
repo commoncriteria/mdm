@@ -3573,17 +3573,16 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>implement functionality</selectable>
             </selectables> to protect all data from [disclosure and modification] through use of 
               <selectables linebreak="yes">
-                <selectable id="ITT_IPSEC">IPsec in accordance with the PP-Module for VPN Client</selectable>
-                <selectable id="ITT_TLS">mutually authenticated TLS in accordance with the Package for Transport Layer Security</selectable>
-                <selectable id="ITT_HTTPS">HTTPS</selectable>
-                <selectable id="ITT_DTLS">mutually authenticated DTLS in accordance with the Package for Transport Layer Security</selectable>
+                <selectable id="ITT_IPSEC">IPsec as defined in the PP-Module for VPN Client</selectable>
+                <selectable id="ITT_TLS">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="ITT_DTLS">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="ITT_HTTPS">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>                
               </selectables> when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the second selection.<h:br/><h:br/> 
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. If "IPsec" is selected the Module for IPsec VPN Clients must be included in the <abbr linkend="ST"/>. If "HTTPS" is selected the appropriate selection-based <abbr linkend="SFR"/>s from Appendix B must be included in the <abbr linkend="ST"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(2)"/> should be included in the ST<h:br/><h:br/>
-                           
-              This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>
-              
-              If "TLS" or "DTLS" is selected the TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(2)"/> should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>              
+              If IPsec is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
+              If HTTPS is selected, <linkref linkend="FCS_HTTPS_EXT.1"/> is required.<h:br/><h:br/>          
+              If the <abbr linkend="ST"/> author selects TLS or DTLS, the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
