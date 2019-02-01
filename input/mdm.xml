@@ -3548,23 +3548,27 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
         <f-component id="fpt_itt.1(1)" name="Internal TOE TSF Data Transfer" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1" ids="AgentInTOE_fpt, DistributedTOE_MAS"/>
           <f-element id="fpt_itt.1.1(1)">
-            <title>The <abbr linkend="TSF"/> shall <selectables>
-              <selectable>invoke platform-provided functionality</selectable>
-              <selectable>implement functionality</selectable>
-            </selectables> to protect all data from [disclosure and modification] through use of 
-              <selectables linebreak="yes">
+            <title>The <abbr linkend="TSF"/> shall <selectables linebreak="yes">
+              <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
+                <selectable id="ITT_IPSEC">IPsec</selectable>
+                <selectable id="ITT_TLS">mutually authenticated TLS</selectable>
+                <selectable id="ITT_DTLS">mutually authenticated DTLS</selectable>
+                <selectable id="ITT_HTTPS">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITT_SSH">SSH</selectable>
+              </selectables></selectable>
+              <selectable>implement functionality using <selectables linebreak="yes">
                 <selectable id="ITT_IPSEC">IPsec as defined in the PP-Module for VPN Client</selectable>
                 <selectable id="ITT_TLS">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
                 <selectable id="ITT_DTLS">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
                 <selectable id="ITT_HTTPS">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
                 <selectable id="ITT_SSH">SSH as defined in the Extended Package for Secure Shell</selectable>
-              </selectables> when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
+              </selectables></selectable></selectables> to protect all data from [disclosure and modification] when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the second selection.<h:br/><h:br/> 
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(2)"/> should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>              
-              If IPsec is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
+              If "IPsec as defined in the PP-Module for VPN Client" is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
               If HTTPS is selected, <linkref linkend="FCS_HTTPS_EXT.1"/> is required.<h:br/><h:br/>
-              If the <abbr linkend="ST"/> author selects SSH, the <abbr linkend="TSF"/> must be validated against the EP for Secure Shell with the <abbr linkend="MDM"/> <abbr linkend="PP"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/>
-              If the <abbr linkend="ST"/> author selects TLS or DTLS, the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
+              If the <abbr linkend="ST"/> author selects "SSH as defined in the Extended Package for Secure Shell", the <abbr linkend="TSF"/> must be validated against the EP for Secure Shell with the <abbr linkend="MDM"/> <abbr linkend="PP"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/>
+              If the <abbr linkend="ST"/> author selects "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security", the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
