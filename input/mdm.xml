@@ -3797,7 +3797,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectables>
                 <selectable>authentication server</selectable>
                 <selectable><assignable>other capabilities</assignable></selectable>
-              </selectables> that is logically distinct from other communication channels and provides assured identification of its end points and protection of the channel data from modification or disclosure.</title>
+              </selectables> that is logically distinct from other communication channels and provides assured identification of its end points and protection of the channel data from modification and disclosure.</title>
             <note role="application">The intent of the mandatory portion of the above requirement is to use the cryptographic 
               protocols identified in the requirement to establish and maintain a trusted channel with authorized IT entities 
               that the <abbr linkend="TOE"/> interacts with to perform its functions.<h:br/><h:br/> 
@@ -3914,15 +3914,16 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           <selection-depends req="ftp_itc_ext.1.1" ids="AgentOutTOE_ftp"/>
           <f-element id="ftp_itc.1.1(2)">
             <title>The <abbr linkend="TSF"/> shall <selectables>
-              <selectable>invoke platform-provided functionality</selectable>
-              <selectable>implement functionality</selectable>
-            </selectables> to use <selectables linebreak="yes">
-              <selectable id="ITC_TLS_2">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable> 
-              <selectable id="ITC_DTLS_2">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
-              <selectable id="ITC_HTTPS_2">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
-              </selectables> to provide a trusted communication channel between itself (as a server) and the MDM Agent that is logically distinct from other communication channels,
-              provides assured identification of its end points, protects channel data from
-              disclosure, and detects modification of the channel data.</title>
+              <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
+                <selectable id="ITC_TLS_2">mutually authenticated TLS</selectable> 
+                <selectable id="ITC_DTLS_2">mutually authenticated DTLS</selectable>
+                <selectable id="ITC_HTTPS_2">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+              </selectables></selectable>
+              <selectable>implement functionality using <selectables linebreak="yes">
+                <selectable id="ITC_TLS_2">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable> 
+                <selectable id="ITC_DTLS_2">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="ITC_HTTPS_2">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+              </selectables></selectable></selectables> to provide a trusted communication channel between itself (as a server) and the MDM Agent that is logically distinct from other communication channels, provides assured identification of its end points, protects channel data from disclosure, and detects modification of the channel data.</title>
             <note role="application"> The intent of the mandatory portion of the above requirement is to use the cryptographic protocols identified in the requirement to establish and maintain a trusted channel between the <abbr linkend="TOE"/> and the <abbr linkend="MDM"/> Agent. If the <abbr linkend="TOE"/> includes a separate MAS Server, this requirement also addresses the communication between the MAS Server and the <abbr linkend="MDM"/> Agent. <!-- Craig: You had the previous sentence commented out, but the MAS Server will use (2) for comms with Agent--> Only TLS, DTLS, or HTTPS are used in this trusted channel.<h:br/><h:br/> 
               This requirement is to ensure that the transmission of any audit
               logs, mobile device information data (software version, hardware model, and
@@ -3944,7 +3945,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               This trusted channel protects the connection between an enrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server. FTP_TRP.1(2) provides a trusted channel to protect the connection between an unenrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server during the enrollment operation. <h:br/><h:br/> 
               The trusted channel uses TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>.<h:br/><h:br/>
               If HTTPS is selected, <linkref linkend="FCS_HTTPS_EXT.1"/> is required.<h:br/><h:br/>
-              If the <abbr linkend="ST"/> author selects TLS or DTLS, the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
+              If the <abbr linkend="ST"/> author selects "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security", the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
