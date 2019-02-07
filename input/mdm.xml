@@ -1784,9 +1784,6 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to implement cryptographic key establishment in accordance with a specified cryptographic key establishment method: <selectables linebreak="yes">
-                <selectable>RSA-based key establishment schemes that meets the following: NIST
-                  Special Publication 800-56B, "Recommendation for Pair-Wise Key Establishment
-                  Schemes Using Integer Factorization Cryptography"</selectable>
                 <selectable>RSA-based key establishment schemes that meet the following: RSAES-PKCS1-v1_5 as specified in Section 7.2 of RFC 8017, "Public-Key Cryptography Standards (PKCS) #1:RSA Cryptography Specifications Version 2.1"</selectable>
                 <selectable>Elliptic curve-based key establishment schemes that meets the following:
                   NIST Special Publication 800-56A, "Recommendation for Pair-Wise Key Establishment
@@ -1802,17 +1799,12 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               </selectables>.
             </title>
             <note role="application">The <abbr linkend="ST"/> author shall select all key
-              establishment schemes used for the selected cryptographic protocols. The RSA-based key
-              establishment schemes are described in Section 9 of NIST SP 800-56B; however, Section
-              9 relies on implementation of other sections in SP 800-56B. If the <abbr linkend="TOE"
-              /> acts as a receiver in the RSA key establishment scheme, the <abbr linkend="TOE"/>
-              does not need to implement RSA key generation.<h:br/><h:br/> The elliptic curves used for
-              the key establishment scheme shall correlate with the curves specified in <linkref linkend="FCS_CKM.1.1"/>.
+              establishment schemes used for the selected cryptographic protocols.<h:br/><h:br/>
+              The elliptic curves used for the key establishment scheme shall correlate with the curves specified in <linkref linkend="FCS_CKM.1.1"/>.
               <h:br/><h:br/> The domain parameters used for the finite field-based key establishment
               scheme are specified by the key generation according to <linkref linkend="FCS_CKM.1.1"/>.</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <!-- TODO: Need to review this AA -->
               <TSS/>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
               <TSS/>The evaluator shall ensure that the supported key establishment schemes correspond to the key generation schemes identified in <linkref linkend="FCS_CKM.1.1"/>. If the <abbr linkend="ST"/> specifies more than one scheme, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it identifies the usage for each scheme.<h:br/><h:br/> 
@@ -1878,43 +1870,6 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                 vectors to emulate the key agreement scheme using the corresponding parameters. The
                 evaluator shall compare the <abbr linkend="TOE"/>'s results with the results using a
                 known good implementation verifying that the <abbr linkend="TOE"/> detects these errors.<h:br/><h:br/>
-                <h:h4>SP800-56B Key Establishment Schemes</h:h4> The evaluator shall verify that
-                the <abbr linkend="TSS"/> describes whether the <abbr linkend="TOE"/> acts as a
-                sender, a recipient, or both for RSA-based key establishment schemes.<h:br/><h:br/> If
-                the <abbr linkend="TOE"/> acts as a sender, the following evaluation activity shall
-                be performed to ensure the proper operation of every <abbr linkend="TOE"/> supported
-                combination of RSA-based key establishment scheme:<h:br/><h:br/> To conduct this test the
-                evaluator shall generate or obtain test vectors from a known good implementation of
-                the <abbr linkend="TOE"/> supported schemes. For each combination of supported key
-                establishment scheme and its options (with or without key confirmation if supported,
-                for each supported key confirmation MAC function if key confirmation is supported,
-                and for each supported mask generation function if KTS-OAEP is supported), the
-                tester shall generate 10 sets of test vectors. Each test vector shall include the
-                RSA public key, the plaintext keying material, any additional input parameters if
-                applicable, the MacKey and MacTag if key confirmation is incorporated, and the
-                outputted ciphertext. For each test vector, the evaluator shall perform a key
-                establishment encryption operation on the <abbr linkend="TOE"/> with the same inputs
-                (in cases where key confirmation is incorporated, the test shall use the MacKey from
-                the test vector instead of the randomly generated MacKey used in normal operation)
-                and ensure that the outputted ciphertext is equivalent to the ciphertext in the test
-                vector.<h:br/><h:br/> If the <abbr linkend="TOE"/> acts as a receiver, the following
-                assurance activities shall be performed to ensure the proper operation of every
-                  <abbr linkend="TOE"/> supported combination of RSA-based key establishment
-                scheme:<h:br/><h:br/> To conduct this test the evaluator shall generate or obtain test
-                vectors from a known good implementation of the <abbr linkend="TOE"/> supported
-                schemes. For each combination of supported key establishment scheme and its options
-                (with our without key confirmation if supported, for each supported key confirmation
-                MAC function if key confirmation is supported, and for each supported mask
-                generation function if KTS-OAEP is supported), the tester shall generate 10 sets of
-                test vectors. Each test vector shall include the RSA private key, the plaintext
-                keying material (KeyData), any additional input parameters if applicable, the MacTag
-                in cases where key confirmation is incorporated, and the outputted ciphertext. For
-                each test vector, the evaluator shall perform the key establishment decryption
-                operation on the <abbr linkend="TOE"/> and ensure that the outputted plaintext
-                keying material (KeyData) is equivalent to the plaintext keying material in the test
-                vector. In cases where key confirmation is incorporated, the evaluator shall perform
-                the key confirmation steps and ensure that the outputted MacTag is equivalent to the
-                MacTag in the test vector.<h:br/><h:br/>
                 <h:h4>RSA-based key establishment</h:h4>
               The evaluator shall verify the correctness of the TSF's implementation of RSAES-PKCS1-v1_5 by using a known good implementation for each protocol selected in FTP_TRP.1(1), FTP_TRP.1(2), FTP_TRP.1(3), FTP_ITC.1(1), FTP_ITC.1(2), FPT_ITT.1(1), and FPT_ITT.1(2) that uses RSAES-PKCS1-v1_5. <!-- ToDo: Change these references -->
               <h:h4>Diffie-Hellman Group 14</h:h4>
