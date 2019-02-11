@@ -2548,7 +2548,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
         <f-component id="fcs_stg_ext.1" name="Cryptographic Key Storage">
           <f-element id="fcs_stg_ext.1.1">
             <title>The TSF shall utilize <selectables>
-              <selectable> platform-provided key storage</selectable> <!--TODO: want to discuss if we can make this one generic like the rest-->
+              <selectable> platform-provided key storage</selectable>
               <selectable id="fcs_stg_enc"> encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
               </selectables> for all persistent secrets and private keys.</title>
             <!--TODO: check this note and aa-->
@@ -3504,18 +3504,18 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           <f-element id="fpt_itt.1.1(1)">
             <title>The <abbr linkend="TSF"/> shall <selectables linebreak="yes">
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
-                <selectable id="ITT_IPSEC">IPsec</selectable>
-                <selectable id="ITT_TLS">mutually authenticated TLS</selectable>
-                <selectable id="ITT_DTLS">mutually authenticated DTLS</selectable>
-                <selectable id="ITT_HTTPS">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
-                <selectable id="ITT_SSH">SSH</selectable>
+                <selectable id="ITT1_IPSEC_INVOKE">IPsec</selectable>
+                <selectable id="ITT1_TLS_INVOKE">mutually authenticated TLS</selectable>
+                <selectable id="ITT1_DTLS_INVOKE">mutually authenticated DTLS</selectable>
+                <selectable id="ITT1_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITT1_SSH_INVOKE">SSH</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITT_IPSEC">IPsec as defined in the PP-Module for VPN Client</selectable>
-                <selectable id="ITT_TLS">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
-                <selectable id="ITT_DTLS">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
-                <selectable id="ITT_HTTPS">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
-                <selectable id="ITT_SSH">SSH as defined in the Extended Package for Secure Shell</selectable>
+                <selectable id="ITT1_IPSEC_IMPLEMENT">IPsec as defined in the PP-Module for VPN Client</selectable>
+                <selectable id="ITT1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="ITT1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="ITT1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITT1_SSH_IMPLEMENT">SSH as defined in the Extended Package for Secure Shell</selectable>
               </selectables></selectable></selectables> to protect all data from [disclosure and modification] when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the second selection.<h:br/><h:br/> 
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(2)"/> should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>              
@@ -3566,14 +3566,14 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           <f-element id="fpt_itt.1.1(2)">
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
-                <selectable id="ITT_TLS">mutually authenticated TLS</selectable>                
-                <selectable id="ITT_DTLS">mutually authenticated DTLS</selectable>
-                <selectable id="ITT_HTTPS">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITT2_TLS_INVOKE">mutually authenticated TLS</selectable>                
+                <selectable id="ITT2_DTLS_INVOKE">mutually authenticated DTLS</selectable>
+                <selectable id="ITT2_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITT_TLS">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>                
-                <selectable id="ITT_DTLS">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
-                <selectable id="ITT_HTTPS">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITT2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>                
+                <selectable id="ITT2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="ITT2_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></selectable></selectables> to protect all data from [disclosure and modification] when it is transferred between the <abbr linkend="TSF"/> and <abbr linkend="MDM"/> Agent.</title>
             <note role="application">This requirement ensures all communications between the <abbr linkend="TSF"/> and <abbr linkend="MDM"/> Agent are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the second selection.<h:br/><h:br/> 
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(1)"/> should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>              
