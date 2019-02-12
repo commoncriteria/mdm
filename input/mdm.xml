@@ -2354,7 +2354,12 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           </f-element>
         </f-component> 
         <f-component id="fcs_https_ext.1" name="HTTPS Protocol" status="sel-based">
-          <selection-depends req="FTP_TRP.1.1(1)" ids="TRP_HTTPS_1"/><selection-depends req="FTP_TRP.1.1(2)" ids="TRP_HTTPS_2"/><selection-depends req="FTP_ITC.1.1(1)" ids="ITC_HTTPS_1"/><selection-depends req="FTP_ITC.1.1(2)" ids="ITC_HTTPS_2"/><selection-depends req="FPT_ITT.1.1(1)" ids="ITT1_HTTPS"/><selection-depends req="FPT_ITT.1.1(2)" ids="ITT2_HTTPS"/>
+          <selection-depends req="FTP_TRP.1.1(1)" ids="TRP1_HTTPS_INVOKE, TRP1_HTTPS_IMPLEMENT"/>
+          <selection-depends req="FTP_TRP.1.1(2)" ids="TRP2_HTTPS_INVOKE, TRP2_HTTPS_IMPLEMENT"/>
+          <selection-depends req="FTP_ITC.1.1(1)" ids="ITC1_HTTPS_INVOKE, ITC1_HTTPS_IMPLEMENT"/>
+          <selection-depends req="FTP_ITC.1.1(2)" ids="ITC2_HTTPS_INVOKE, ITC2_HTTPS_IMPLEMENT"/>
+          <selection-depends req="FPT_ITT.1.1(1)" ids="ITT1_HTTPS_INVOKE, ITT1_HTTPS_IMPLEMENT"/>
+          <selection-depends req="FPT_ITT.1.1(2)" ids="ITT2_HTTPS_INVOKE, ITT2_HTTPS_IMPLEMENT"/>
           <f-element id="fcs_https_ext.1.1">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -2764,7 +2769,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           </f-element>          
         </f-component>
         <f-component id="fia_x509_ext.1(2)" name="X.509 Certificate Validation" status="sel-based" >
-          <selection-depends req="FPT_ITT.1.1(1)" ids="ITT_IPSEC, ITT_HTTPS, ITT_TLS, ITT_DTLS"/>
+          <selection-depends req="FPT_ITT.1.1(1)" ids="ITT1_IPSEC_IMPLEMENT, ITT1_HTTPS_IMPLEMENT, ITT1_HTTPS_INVOKE, ITT1_TLS_IMPLEMENT, ITT1_DTLS_IMPLEMENT"/>
           <f-element id="fia_x509_ext.1.1(2)">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -3500,7 +3505,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           </f-element>
         </f-component>         
         <f-component id="fpt_itt.1(1)" name="Internal TOE TSF Data Transfer" status="sel-based">
-          <selection-depends req="ftp_itc_ext.1.1" ids="AgentInTOE_fpt, DistributedTOE_MAS"/>
+          <selection-depends req="ftp_itc_ext.1.1" ids="ITC_DISTRIBUTED_TOE"/>
           <f-element id="fpt_itt.1.1(1)">
             <title>The <abbr linkend="TSF"/> shall <selectables linebreak="yes">
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
@@ -3562,7 +3567,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           </f-element>
         </f-component>
         <f-component id="fpt_itt.1(2)" name="Internal TOE TSF Data Transfer (To MDM Agent)" status="sel-based">
-          <selection-depends req="ftp_itc_ext.1.1" ids="AgentInTOE_fpt, DistributedTOE_MAS"/>
+          <selection-depends req="ftp_itc_ext.1.1" ids="ITC_AgentInTOE"/>
           <f-element id="fpt_itt.1.1(2)">
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
@@ -3709,14 +3714,14 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
         <f-component id="ftp_itc_ext.1" name="Trusted Channel" > <!-- SFR that will specify if Agent is in the TOE and/or if TOE is distributed-->
           <f-element id="ftp_itc_ext.1.1">
             <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself and <selectables linebreak="yes">              
-              <selectable id="AgentInTOE">an MDM Agent that is internal to the TOE</selectable>
-              <selectable id="AgentOutTOE">an MDM Agent that is external to the TOE</selectable>
-              <selectable>other components comprising the distributed TOE</selectable>
+              <selectable id="ITC_AgentInTOE">an MDM Agent that is internal to the TOE</selectable>
+              <selectable id="ITC_AgentOutTOE">an MDM Agent that is external to the TOE</selectable>
+              <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
             </selectables>
              that is logically distinct from other communication channels, as specified in <selectables>
-              <selectable id="AgentInTOE_fpt1"><linkref linkend="FPT_ITT.1(1)"/></selectable>
-               <selectable id="AgentInTOE_fpt2"><linkref linkend="FPT_ITT.1(2)"/></selectable>
-              <selectable id="AgentOutTOE_ftp"><linkref linkend="FTP_ITC.1(2)"/></selectable>
+              <selectable id="ITC_DISTRIBUTED_TOE_ITT1"><linkref linkend="FPT_ITT.1(1)"/></selectable>
+               <selectable id="ITC_AgentInTOE_ITT2"><linkref linkend="FPT_ITT.1(2)"/></selectable>
+              <selectable id="ITC_AgentOutTOE_ITC"><linkref linkend="FTP_ITC.1(2)"/></selectable>
             </selectables>.</title>
             <note role="Application">
               This <abbr linkend="SFR"/> describes the communication channels between the <abbr linkend="MDM"/> Server and an Agent that may or may not be in the <abbr linkend="TOE"/>, and optionally separate components comprising a distributed <abbr linkend="TOE"/>, to determine which selection-based <abbr linkend="SFR"/>'s will need to be included in the <abbr linkend="ST"/>. <h:br/><h:br/>            
@@ -3735,18 +3740,18 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           <f-element id="ftp_itc.1.1(1)"> 
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
-                <selectable id="ITC_IPSEC_1">IPsec</selectable>
-                <selectable id="ITC_SSH_1">SSH</selectable>
-                <selectable id="ITC_TLS_1">mutually authenticated TLS</selectable>
-                <selectable id="ITC_DTLS_1">mutually authenticated DTLS</selectable>
-                <selectable id="ITC_HTTPS_1">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITC1_IPSEC_INVOKE">IPsec</selectable>
+                <selectable id="ITC1_SSH_INVOKE">SSH</selectable>
+                <selectable id="ITC1_TLS_INVOKE">mutually authenticated TLS</selectable>
+                <selectable id="ITC1_DTLS_INVOKE">mutually authenticated DTLS</selectable>
+                <selectable id="ITC1_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITC_IPSEC_1">IPsec as defined in the PP-Module for VPN Client</selectable>
-                <selectable id="ITC_SSH_1">SSH as defined in the Extended Package for Secure Shell</selectable>
-                <selectable id="ITC_TLS_1">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
-                <selectable id="ITC_DTLS_1">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
-                <selectable id="ITC_HTTPS_1">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITC1_IPSEC_IMPLEMENT">IPsec as defined in the PP-Module for VPN Client</selectable>
+                <selectable id="ITC1_SSH_IMPLEMENT">SSH as defined in the Extended Package for Secure Shell</selectable>
+                <selectable id="ITC1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="ITC1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="ITC1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></selectable></selectables> to provide a trusted communication channel between itself and authorized IT entities supporting the following capabilities: audit server,
               <selectables>
                 <selectable>authentication server</selectable>
@@ -3869,14 +3874,14 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           <f-element id="ftp_itc.1.1(2)">
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
-                <selectable id="ITC_TLS_2">mutually authenticated TLS</selectable> 
-                <selectable id="ITC_DTLS_2">mutually authenticated DTLS</selectable>
-                <selectable id="ITC_HTTPS_2">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITC2_TLS_INVOKE">mutually authenticated TLS</selectable> 
+                <selectable id="ITC2_DTLS_INVOKE">mutually authenticated DTLS</selectable>
+                <selectable id="ITC2_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITC_TLS_2">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable> 
-                <selectable id="ITC_DTLS_2">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
-                <selectable id="ITC_HTTPS_2">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITC2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable> 
+                <selectable id="ITC2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="ITC2_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></selectable></selectables> to provide a trusted communication channel between itself (as a server) and the MDM Agent that is logically distinct from other communication channels, provides assured identification of its end points, protects channel data from disclosure, and detects modification of the channel data.</title>
             <note role="application"> The intent of the mandatory portion of the above requirement is to use the cryptographic protocols identified in the requirement to establish and maintain a trusted channel between the <abbr linkend="TOE"/> and the <abbr linkend="MDM"/> Agent. If the <abbr linkend="TOE"/> includes a separate MAS Server, this requirement also addresses the communication between the MAS Server and the <abbr linkend="MDM"/> Agent. <!-- Craig: You had the previous sentence commented out, but the MAS Server will use (2) for comms with Agent--> Only TLS, DTLS, or HTTPS are used in this trusted channel.<h:br/><h:br/> 
               This requirement is to ensure that the transmission of any audit
@@ -3984,16 +3989,16 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           <f-element id="ftp_trp.1.1(1)">
             <title>The TSF shall <selectables linebreak="yes">
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
-                <selectable id="TRP_IPSEC_1">IPsec</selectable>
-                <selectable id="TRP_TLS_1">TLS</selectable>
-                <selectable id="TRP_HTTPS_1">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
-                <selectable id="TRP_SSH_1">SSH</selectable>
+                <selectable id="TRP1_IPSEC_INVOKE">IPsec</selectable>
+                <selectable id="TRP1_TLS_INVOKE">TLS</selectable>
+                <selectable id="TRP1_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="TRP1_SSH_INVOKE">SSH</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
-                <selectable id="TRP_IPSEC_1">IPsec as defined in the PP-Module for VPN Client</selectable>
-                <selectable id="TRP_TLS_1">TLS as defined in the Package for Transport Layer Security</selectable>
-                <selectable id="TRP_HTTPS_1">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
-                <selectable id="TRP_SSH_1">SSH as defined in the Extended Package for Secure Shell</selectable>
+                <selectable id="TRP1_IPSEC_IMPLEMENT">IPsec as defined in the PP-Module for VPN Client</selectable>
+                <selectable id="TRP1_TLS_IMPLEMENT">TLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="TRP1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="TRP1_SSH_IMPLEMENT">SSH as defined in the Extended Package for Secure Shell</selectable>
               </selectables></selectable></selectables> to provide a trusted communication path between itself as a <selectables>
                 <selectable>server</selectable>
                 <selectable>peer</selectable>
@@ -4063,12 +4068,12 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           <f-element id="ftp_trp.1.1(2)">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
-                <selectable id="TRP_TLS_2">TLS</selectable>
-                <selectable id="TRP_HTTPS_2">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="TRP2_TLS_INVOKE">TLS</selectable>
+                <selectable id="TRP2_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
-                <selectable id="TRP_TLS_2">TLS as defined in the Package for Transport Layer Security</selectable>
-                <selectable id="TRP_HTTPS_2">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="TRP2_TLS_IMPLEMENT">TLS as defined in the Package for Transport Layer Security</selectable>
+                <selectable id="TRP2_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></selectable>
             </selectables> to provide a trusted communication path between itself (as a server) and MD users that is logically distinct 
               from other communication paths and provides assured identification of its endpoints and protection of the 
