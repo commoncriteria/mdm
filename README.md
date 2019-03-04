@@ -1,6 +1,6 @@
 Protection Profile for Mobile Device Management 
 ===========
-[![Build Status](https://travis-ci.org/commoncriteria/mdm.svg?branch=master)](https://travis-ci.org/commoncriteria/mdm) 
+[![Build Status](https://travis-ci.com/commoncriteria/mdm.svg?branch=master)](https://travis-ci.com/commoncriteria/mdm) 
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/mdm.svg?maxAge=2592000)](https://github.com/commoncriteria/mdm/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
