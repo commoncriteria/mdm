@@ -2361,19 +2361,10 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
           <selection-depends req="FPT_ITT.1.1(1)" ids="ITT1_HTTPS_INVOKE, ITT1_HTTPS_IMPLEMENT"/>
           <selection-depends req="FPT_ITT.1.1(2)" ids="ITT2_HTTPS_INVOKE, ITT2_HTTPS_IMPLEMENT"/>
           <f-element id="fcs_https_ext.1.1">
-            <title>The TSF shall <selectables>
-              <selectable>invoke platform-provided functionality</selectable>
-              <selectable>implement functionality</selectable>
-            </selectables> to implement the HTTPS protocol that complies with RFC 2818.</title>
-            <aactivity>
-              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).
-            </aactivity>
+            <title>The TSF shall implement the HTTPS protocol that complies with RFC 2818.</title>
           </f-element>
           <f-element id="fcs_https_ext.1.2">
-            <title>The TSF shall <selectables>
-              <selectable>invoke platform-provided functionality</selectable>
-              <selectable>implement functionality</selectable>
-            </selectables> to implement HTTPS using TLS in accordance with the Package for Transport Layer Security . 
+            <title>The TSF shall implement HTTPS using TLS in accordance with the Package for Transport Layer Security . 
             </title>
             <note role="application">The TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
               <h:ul>
@@ -2391,10 +2382,9 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               </h:ul>         
               Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with RFC 5280.</note>
             <aactivity>
-              <TSS/>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <Tests/>
                 <testlist>
-                  <test>The evaluator shall attempt to establish an HTTPS connection with a web server, observe the traffic with a packet analyzer, and verify that the connection succeeds and that the traffic is identified as TLS or HTTPS.</test>
+                  <test>The evaluator shall attempt to establish an HTTPS connection with a web server, observe the traffic with a packet analyzer, and verify that the connection succeeds and that the traffic is identified as TLS or HTTPS.</test><h:br/>
                   Other tests are performed in conjunction with the TLS evaluation activities.<h:br/><h:br/> 
                 </testlist>
             </aactivity>
@@ -3512,7 +3502,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                 <selectable id="ITT1_IPSEC_INVOKE">IPsec</selectable>
                 <selectable id="ITT1_TLS_INVOKE">mutually authenticated TLS</selectable>
                 <selectable id="ITT1_DTLS_INVOKE">mutually authenticated DTLS</selectable>
-                <selectable id="ITT1_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITT1_HTTPS_INVOKE">HTTPS</selectable>
                 <selectable id="ITT1_SSH_INVOKE">SSH</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
@@ -3573,7 +3563,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="ITT2_TLS_INVOKE">mutually authenticated TLS</selectable>                
                 <selectable id="ITT2_DTLS_INVOKE">mutually authenticated DTLS</selectable>
-                <selectable id="ITT2_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITT2_HTTPS_INVOKE">HTTPS</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
                 <selectable id="ITT2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>                
@@ -3744,7 +3734,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
                 <selectable id="ITC1_SSH_INVOKE">SSH</selectable>
                 <selectable id="ITC1_TLS_INVOKE">mutually authenticated TLS</selectable>
                 <selectable id="ITC1_DTLS_INVOKE">mutually authenticated DTLS</selectable>
-                <selectable id="ITC1_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITC1_HTTPS_INVOKE">HTTPS</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
                 <selectable id="ITC1_IPSEC_IMPLEMENT">IPsec as defined in the PP-Module for VPN Client</selectable>
@@ -3876,7 +3866,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="ITC2_TLS_INVOKE">mutually authenticated TLS</selectable> 
                 <selectable id="ITC2_DTLS_INVOKE">mutually authenticated DTLS</selectable>
-                <selectable id="ITC2_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="ITC2_HTTPS_INVOKE">HTTPS</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
                 <selectable id="ITC2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable> 
@@ -3991,7 +3981,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="TRP1_IPSEC_INVOKE">IPsec</selectable>
                 <selectable id="TRP1_TLS_INVOKE">TLS</selectable>
-                <selectable id="TRP1_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="TRP1_HTTPS_INVOKE">HTTPS</selectable>
                 <selectable id="TRP1_SSH_INVOKE">SSH</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
@@ -4069,7 +4059,7 @@ All <abbr linkend="TOE"/> components shall be able to generate their own audit d
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="TRP2_TLS_INVOKE">TLS</selectable>
-                <selectable id="TRP2_HTTPS_INVOKE">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
+                <selectable id="TRP2_HTTPS_INVOKE">HTTPS</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
                 <selectable id="TRP2_TLS_IMPLEMENT">TLS as defined in the Package for Transport Layer Security</selectable>
