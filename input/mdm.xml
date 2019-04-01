@@ -97,7 +97,8 @@ DONE:
 
   <chapter id="int" title="Introduction">
     <section id="ov" title="Overview"> 
-      Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network resources.<h:br/><h:br/> This document provides a baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> System, which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce the security policies, and network access control servers, are out of scope. </section>
+      Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network resources.<h:br/><h:br/> 
+      This document provides a baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> system, which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce the security policies and network access control servers are out of scope. </section>
 
    <section id="terms" title="Terms">
      <subsection id="ccterms" title="Common Criteria Terms">
@@ -136,10 +137,10 @@ DONE:
         <glossary>
         <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device.</description></entry>
         <entry><term><abbr title="Application Programming Interface">API</abbr></term>
-          <description>Application Programming Interface</description></entry>
-          <entry><term><abbr title="Critical Security Parameter">CSP</abbr></term><description>Critical Security Parameter</description></entry>
-        <entry><term>Data</term><description>Program/application or files that are stored or transmitted by a server or mobile device. </description></entry>
-        <entry><term><abbr title="Data Encryption Key">DEK</abbr></term><description>Data Encryption Key</description></entry>
+          <description>A specification of routines, data structures, object classes, and variables that allows an application to make use of services provided by another software component, such as a library. <abbr linkend="API"/>'s are often provided for a set of libraries included with the platform.</description></entry>
+          <entry><term><abbr title="Critical Security Parameter">CSP</abbr></term><description>Security-related information whose disclosure or modification can compromise the security of a cryptographic module and/or authentication system.</description></entry>
+          <entry><term>Data</term><description>Program or application or data files that are stored or transmitted by a server or <abbr linkend="MD"/>. </description></entry>
+          <entry><term><abbr title="Data Encryption Key">DEK</abbr></term><description>A key used to encrypt data-at-rest.</description></entry>
         <entry><term>Developer Modes</term><description>States in which additional services are available to a user in order to provide enhanced system access for debugging of software.</description></entry>
         <entry><term>Enrolled State</term><description>The state in which a mobile device is managed by a policy from an <abbr linkend="MDM"/>. </description></entry>
         <entry><term>Enterprise Applications</term><description>Applications that are provided and
@@ -149,19 +150,16 @@ DONE:
             temporarily stored on mobile devices to which the mobile device user is allowed access
             according to the security policy defined by the enterprise and implemented by the
             administrator. </description></entry>
-        <entry><term><abbr title="Enrollment over Secure Transport">EST</abbr></term><description>Enrollment over Secure Transport</description></entry>
+          <entry><term><abbr title="Enrollment over Secure Transport">EST</abbr></term><description>Cryptographic protocol that describes an X.509 certificate management protocol targeting public key infrastructure (PKI) clients that need to acquire client certificates and associated certificate authority (CA) certificates.</description></entry>
         <entry><term><abbr title="Key Encryption Key">KEK</abbr></term><description>A key that is used to encrypt other keys,
-            such as data encryption keys (<abbr linkend="DEK"/>s) or storage repositories that
-            contain keys. </description></entry>
+            such as (<abbr linkend="DEK"/>s) or storage repositories that contain keys. </description></entry>
         <entry><term>Locked State</term><description>Mobile device state where the device is powered
             on but most functionality is unavailable for use without authentication.
           </description></entry>
-        <entry><term><abbr title="Mobile Device">MD</abbr></term><description>Mobile
-            Device</description></entry>
-        <entry><term><abbr title="Mobile Device Management">MDM</abbr></term><description>Mobile
-            Device Management</description></entry>
+          <entry><term><abbr title="Mobile Device">MD</abbr></term><description>A device which is composed of a hardware platform and its system software. The device typically provides wireless connectivity and may include software for functions like secure messaging, email, web, VPN connection, and VoIP (Voice over IP), for access to the protected enterprise network, enterprise data and applications, and for communicating to other <abbr linkend="MD"/>s.</description></entry>
+          <entry><term><abbr title="Mobile Device Management">MDM</abbr></term><description>Products that allow enterprises to apply security policies to <abbr linkend="MD"/>s. This system consists of two primary components: the <abbr linkend="MDM"/> Server and the <abbr linkend="MDM"/> Agent.</description></entry>
         <entry><term>Mobile Device User</term><description>The person who uses and is held
-            responsible for a mobile device. </description></entry>
+          responsible for a <abbr linkend="MD"/>. </description></entry>
         <entry><term><abbr title="Operating System">OS</abbr></term><description>Software which runs at the highest
             privilege level and can directly control hardware resources. Modern mobile devices
             typically have at least two primary operating systems: one which runs on the cellular
@@ -177,7 +175,7 @@ DONE:
             including user or enterprise data. Protected data is encrypted while the mobile device
             is in the powered-off state. This includes keys in software-based storage. May overlap
             with sensitive data. </description></entry>
-        <entry><term><abbr title="Root Encryption key">REK</abbr></term><description>A key tied to a particular device that
+        <entry><term><abbr title="Root Encryption Key">REK</abbr></term><description>A key tied to a particular device that
             is used to encrypt all other keys for that device. </description></entry>
         <entry><term>Sensitive Data</term><description>Data that is encrypted by the mobile device.
             May include all user or enterprise data or may be data for specific applications such as
@@ -1409,9 +1407,7 @@ DONE:
             </h:ol></title>
             <note role="application">The <abbr linkend="MDM"/> Agent is required to report to the MAS Server on successful receipt of an application or update on a managed mobile device, and failures can be inferred from the absence of such alerts.</note>
             <aactivity>
-              <TSS>
-              The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a format for audit records.<h:br/><h:br/>
-	      </TSS>
+              <TSS>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a format for audit records.<h:br/><h:br/></TSS>
               <Guidance> The evaluator shall check the administrative guide and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field.<h:br/><h:br/> </Guidance>
               <Tests>The evaluator shall verify that when an application or update push fails, that the audit records generated match the format specified in the guidance and that the fields in each audit record have the proper entries.</Tests>
             </aactivity>
@@ -1528,7 +1524,7 @@ DONE:
               For distributed <abbr linkend="TOE"/>'s each component must be able to export audit data across a protected channel external (FTP_ITC.1) or intercomponent (<linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or FTP_ITC.1) as appropriate. At least one component of the <abbr linkend="TOE"/> must be able to export audit records via <linkref linkend="FTP_ITC.1(1)"/> such that all <abbr linkend="TOE"/> audit records can be exported to an external IT entity. 
               </note>
             <aactivity>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided. <h:br/><h:br/></TSS>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided.<h:br/><h:br/></TSS>
               <Guidance> The evaluator shall also examine the operational guidance to determine that it describes the relationship between the local audit data and the audit data that are sent to the audit log server. For example, when an audit event is generated, is it simultaneously sent to the external server and the local store, or is the local store used as a buffer and "cleared" periodically by sending the data to the audit server.<h:br/><h:br/> 
               The evaluator shall also examine the operational guidance to ensure it describes how to establish the trusted channel to the audit server, as well as describe any requirements on the audit server (particular audit server protocol, version of the protocol required, etc.), as well as configuration of the <abbr  linkend="TOE"/> needed to communicate with the audit server. <h:br/><h:br/></Guidance>
               <Tests> Testing of the trusted channel mechanism will be performed as specified in the associated assurance activities for the particular trusted channel mechanism.<h:br/><h:br/> 
