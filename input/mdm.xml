@@ -278,7 +278,7 @@ DONE:
         <description>An Security Target (<abbr linkend="ST"/>) must claim exact conformance to this <abbr linkend="PP"/>, as defined in the <abbr linkend="CC"/> and CEM addenda for Exact Conformance, Selection-Based <abbr linkend="SFR"/>s, and Optional <abbr linkend="SFR"/>s (dated May 2017).  </description>
       </cclaim>
       <cclaim id="CC Conformance Claims">
-        <description>This <abbr linkend="PP"/> is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Revision 5.</description>
+        <description>This <abbr linkend="PP"/> is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Release 5.</description>
       </cclaim>
       <cclaim id="PP Claim">
         <description>This <abbr linkend="PP"/> does not claim conformance to any <abbr linkend="PP"/>.</description>
@@ -312,7 +312,7 @@ DONE:
     The final approach (Figure 4) supports use cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or <linkref linkend="FTP_ITC.1(1)"/>.<h:br/><h:br/>
     <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id="DTF3"/>
     <h:br/><h:br/>
-    In each case, during the registration process, the security administrator must positively enable the joining components before it can act as part of the <abbr linkend="TSF"/>. Figure 5 illustrates the approaches that this enablement step may take;<h:br/><h:br/>
+    In each case, during the registration process, the administrator must positively enable the joining components before it can act as part of the <abbr linkend="TSF"/>. Figure 5 illustrates the approaches that this enablement step may take;<h:br/><h:br/>
     <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id="DTF4"/>
     <h:br/><h:br/>
     Note that in the case where no registration channel is required, that is the joiner and gatekeeper are directly configured (Figure 4), enablement is implied as part of this direct configuration process.<h:br/><h:br/>
@@ -706,7 +706,7 @@ DONE:
             limits its network role to providing <abbr linkend="MDM"/> functionality. </description>
           <objective-refer ref="OE.MOBILE_DEVICE_PLATFORM">
             <rationale>The operational environment objective OE.MOBILE_DEVICE_PLATFORM is realized
-              through A.MOBILE_DEVICE_PLATFORM.</rationale>
+              through A.MDM_SERVER_PLATFORM.</rationale>
           </objective-refer>
         </assumption>
         <assumption id="A.PROPER_ADMIN">
@@ -3167,7 +3167,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
           </f-element>
           <f-element id="fmt_sae_ext.1.2">
             <title>The <abbr linkend="TSF"/> shall be able to deny enrollment after the expiration time for the enrollment authentication data has passed.</title>
-            <note role="application"> This requirement references the user authenticator used for device enrollment in management in <linkref linkend="FIA_ENR_EXT.1.1"/>. The user authenticator shall only be valid for a configurable time limit. If the authenticator is expired, even if entered correctly, enrollment shall not occur. <h:br/><h:br/> The length of the time the authenticator is valid for is configured per function g in <linkref linkend="FMT_SMF.1(2)"/>. If <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>, then function g shall be selected in <linkref linkend="FMT_SMF.1(2)"/>. </note>
+            <note role="application"> This requirement references the user authenticator used for device enrollment in management in <linkref linkend="FIA_ENR_EXT.1.1"/>. The user authenticator shall only be valid for a configurable time limit. If the authenticator is expired, even if entered correctly, enrollment shall not occur. <h:br/><h:br/> The length of the time the authenticator is valid for is configured per function c.5 in <linkref linkend="FMT_SMF.1(2)"/>. If <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>, then function g shall be selected in <linkref linkend="FMT_SMF.1(2)"/>. </note>
             <aactivity>
               <TSS>The evaluator shall verify that the <abbr linkend="TSS"/> contains a description of the process of enrollment for each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>. This description shall the method of user authentication (username/password, token, etc.).<h:br/><h:br/></TSS>
               <Guidance>The evaluator shall check to ensure that the operational guidance contains instructions to configure the expiration time for each method of user authentication listed in the <abbr linkend="TSS"/>.<h:br/><h:br/></Guidance>
