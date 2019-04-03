@@ -639,11 +639,10 @@ DONE:
             attacker may insert malicious code into the <abbr linkend="TOE"/>, resulting in the
             compromise of <abbr linkend="TOE"/> or <abbr linkend="TOE"/> data.</description>
           <objective-refer ref="O.APPLY_POLICY">
-            <rationale>The threat T.MALICIOUS_APPS is countered by O.APPLY_POLICY and O.INTEGRITY
-            </rationale>
+            <rationale>The threat T.MALICIOUS_APPS is countered by O.APPLY_POLICY as this provides the capability to limit the ability to install applications on the <abbr linkend="MD"/>.</rationale>
           </objective-refer>
           <objective-refer ref="O.INTEGRITY">
-            <rationale></rationale>
+            <rationale>The threat T.MALICIOUS_APPS is countered by O.INTEGRITY as this provides the capability to perform self-tests to ensure the integrity of critical functionality, software/firmware and data has been maintained.</rationale>
           </objective-refer>
         </threat>
         <threat id="T.NETWORK_ATTACK">
@@ -651,8 +650,7 @@ DONE:
             compromise the integrity of the mobile device by sending malicious management
             commands.</description>
           <objective-refer ref="O.DATA_PROTECTION_TRANSIT">
-            <rationale>The threat T.NETWORK_ATTACK is countered by O.DATA_PROTECTION_TRANSIT
-            </rationale>
+            <rationale>The threat T.NETWORK_ATTACK is countered by O.DATA_PROTECTION_TRANSIT as this provides authentication of the endpoints of a trusted communication path.</rationale>
           </objective-refer>
         </threat>
         <threat id="T.NETWORK_EAVESDROP">
@@ -660,7 +658,12 @@ DONE:
             network infrastructure. Attackers may monitor and gain access to data exchanged
             between the <abbr linkend="MDM"/> Server and other endpoints.</description>
           <objective-refer ref="O.DATA_PROTECTION_TRANSIT">
-            <rationale>The threat T.NETWORK_EAVESDROP is countered by O.DATA_PROTECTION_TRANSIT
+            <rationale>The threat T.NETWORK_EAVESDROP is countered by O.DATA_PROTECTION_TRANSIT as this provides the capability to communicate using one (or more) standard protocols as a means to maintain the confidentiality of data that are transmitted outside and within the TOE.
+            </rationale>
+          </objective-refer>
+          <objective-refer ref="O.QUALITY">
+            <rationale>
+              The threat T.NETWORK_EAVESDROP is countered by O.QUALITY as this provides the capability to invoke platform resources to ensure quality of implementation.
             </rationale>
           </objective-refer>
         </threat>
@@ -670,11 +673,10 @@ DONE:
             mobile device platform, the <abbr linkend="TOE"/> configures features, which address
             these threats.</description>
           <objective-refer ref="O.APPLY_POLICY">
-            <rationale>The threat T.PHYSICAL_ACCESS is countered by O.APPLY_POLICY </rationale>
+            <rationale>The threat T.PHYSICAL_ACCESS is countered by O.APPLY_POLICY as this provides the capability to configure and apply security policies to ensure the Mobile Device can protect user and enterprise data that it may store or process.</rationale>
           </objective-refer>
         </threat>
       </threats>
-
     </section>
     <section id="asp" title="Assumptions">
       <assumptions>
@@ -736,12 +738,7 @@ DONE:
           <objective-refer ref="O.ACCOUNTABILITY">
             <rationale>The organizational security policy O.ACCOUNTABILITY is realized through
               P.ACCOUNTABILITY.</rationale>
-          </objective-refer>
-          <objective-refer ref="OE.TIMESTAMP">
-            <rationale>The organizational security policy OE.TIMESTAMPis realized through
-              P.ACCOUNTABILITY.</rationale>
-          </objective-refer>
-          
+          </objective-refer>         
         </OSP>
         <OSP id="P.ADMIN">
           <description>The configuration of the mobile device security functions must adhere to the
@@ -883,9 +880,11 @@ DONE:
         <SOE id="OE.MOBILE_DEVICE_PLATFORM">
           <description>The <abbr linkend="MDM"/> Agent relies upon the trustworthy mobile platform and hardware to provide policy enforcement as well as cryptographic services and data protection. The mobile platform provides trusted updates and software integrity verification of the <abbr linkend="MDM"/> Agent.</description>
         </SOE>
+        <!-- TODO Do we need this? Not mapped to anything...
         <SOE id="OE.TIMESTAMP">
           <description>Reliable timestamp is provided by the operational environment for the <abbr linkend="TOE"/>.</description>
         </SOE>
+        -->
         <SOE id="OE.WIRELESS_NETWORK">
           <description>A wireless network will be available to the mobile devices.</description>
         </SOE>
@@ -900,9 +899,9 @@ DONE:
     The <abbr linkend="SFR"/>s included in this section are derived from Part 2 of the Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional components.
     <h:br/><h:br/>
     For a distributed <abbr linkend="TOE"/>, the <abbr linkend="ST"/> author should reference <ctr-ref refid="distTOE"/> for guidance on how each <abbr linkend="SFR"/> should be met. The table details whether <abbr linkend="SFR"/>s should be met by all <abbr linkend="TOE"/> components, by at least one <abbr linkend="TOE"/> component or whether they are dependent upon the feature being implemented by the <abbr linkend="TOE"/> component. The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> must include a mapping of <abbr linkend="SFR"/>s to each of the components of the <abbr linkend="TOE"/>. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities.)
-    <section id="teaa" title="Test Environment for Assurance Activities"> 
-      As described in the assurance activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents and <abbr linkend="MD"/> platforms with which an <abbr linkend="MDM"/> Server operates. The identified assurance activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent and platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/>      
-      The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Assurance Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Module for Mobile Device Management Agents. </section>
+    <section id="teaa" title="Test Environment for Evaluation Activities"> 
+      As described in the evaluation activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents and <abbr linkend="MD"/> platforms with which an <abbr linkend="MDM"/> Server operates. The identified evaluation activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent and platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/>      
+      The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Module for Mobile Device Management Agents. </section>
     <section id="tsfr" title="TOE Security Functional Requirements">
       <subsection id="fau" title="Security Audit (FAU)">
         <f-component id="fau_alt_ext.1" name="Server Alerts">
@@ -985,12 +984,12 @@ DONE:
               </selectables>.</h:li>
             </h:ol>
             </title>
-            <note role="application"> This requirement outlines the events for which an audit record shall be generated by either the <abbr linkend="MDM"/> System or the <abbr linkend="MDM"/> Server platform. Each of these audit records may be written by the <abbr linkend="MDM"/> System or may be dispatched to the operating system on which it runs. It is acceptable to select both "invoke platform-provided functionality" and "implement functionality." It should be specified which auditable events are completed by the MDM System and which are completed by the <abbr linkend="MDM"/> platform. <h:br/><h:br/>
+            <note role="application"> This requirement outlines the events for which an audit record must be generated by either the <abbr linkend="MDM"/> System or the <abbr linkend="MDM"/> Server platform. Each of these audit records may be written by the <abbr linkend="MDM"/> System or may be dispatched to the operating system on which it runs. It is acceptable to select both "invoke platform-provided functionality" and "implement functionality." It should be specified which auditable events are completed by the MDM System and which are completed by the <abbr linkend="MDM"/> platform. <h:br/><h:br/>
               The <abbr linkend="ST"/> author can include other auditable events in the assignment; they are not limited to the list presented. All audits must contain at least the information mentioned in <linkref linkend="FAU_GEN.1.2(1)"/>, but may contain more information which can be assigned.<h:br/><h:br/> 
               For distributed <abbr linkend="TOE"/>s each component must generate an audit record for each of the <abbr linkend="SFR"/>s that it implements. If more than one <abbr linkend="TOE"/> component is involved when an audit event is triggered, the event has to be audited on each component (e.g. rejection of a connection by one component while attempting to establish a secure communication channel between two components should result in an audit event being generated by both components). This is not limited to error cases but also includes events about successful actions like successful build up/tear down of a secure communication channel between <abbr linkend="TOE"/> components.<h:br/><h:br/>
               Item a above requires the audtiting of the start-up and shutdown of the given component of the <abbr linkend="MDM"/> System. If the <abbr linkend="TOE"/> is distributed, this applies to all components. If the <abbr linkend="TOE"/> is not distributed then <abbr linkend="MDM"/> System is equivalent to <abbr linkend="MDM"/> Server.<h:br/><h:br/>
               Item b above requires all administrative actions to be auditable. Administrative actions refer to any management functions specified by <linkref linkend="FMT_MOF.1(1)"/>. Thus no additional specification for the auditability of these actions is specified in <ctr-ref refid="audit"/> aside from those that require additional record content. If the <abbr linkend="TOE"/> is distributed and the given component does not deal with setting the policy applied to the MDM Agent, it is acceptable to not have any administrative actions to audit.<h:br/><h:br/> 
-              Item c includes those commands, which may be performed automatically based on triggers or on a schedule. If the <abbr linkend="TOE"/> component, if distributed, interacts directly with the MDM Agent, then "Commands issued to an MDM Agent" shall be selected. If the <abbr linkend="TOE"/> component, if distributed, does not interact directly with the MDM Agent, then it is acceptable to select "none".<h:br/><h:br/> 
+              Item c includes those commands, which may be performed automatically based on triggers or on a schedule. If the <abbr linkend="TOE"/> component, if distributed, interacts directly with the MDM Agent, then "Commands issued to an MDM Agent" must be selected. If the <abbr linkend="TOE"/> component, if distributed, does not interact directly with the MDM Agent, then it is acceptable to select "none".<h:br/><h:br/> 
               Depending on the specific requirements selected by the <abbr linkend="ST"/> author from Security Functional Requirements, Optional Requirements, Selection-Based Requirements, and Objective Requirements, the <abbr linkend="ST"/> author should include the appropriate auditable event from <ctr-ref refid="audit"/> in the <abbr linkend="ST"/> for the requirements selected.<h:br/><h:br/>       
             </note>
             <aactivity>
@@ -1014,7 +1013,7 @@ DONE:
               <h:li><assignable>other audit relevant information</assignable>.</h:li>
             </h:ul>
             </title>
-            <note role="application"> This requirement outlines the information to be included in audit records. All audits must contain at least the information mentioned in <linkref linkend="FAU_GEN.1.2(1)"/>, but may contain more information which can be assigned. The <abbr linkend="ST"/> author shall identify in the <abbr linkend="TSS"/> which information of the audit record that is performed by the <abbr linkend="TSF"/> and that which is performed by the <abbr linkend="TOE"/> platform. <h:br/><h:br/>
+            <note role="application"> This requirement outlines the information to be included in audit records. All audits must contain at least the information mentioned in <linkref linkend="FAU_GEN.1.2(1)"/>, but may contain more information which can be assigned. The <abbr linkend="ST"/> author must identify in the <abbr linkend="TSS"/> which information of the audit record that is performed by the <abbr linkend="TSF"/> and that which is performed by the <abbr linkend="TOE"/> platform. <h:br/><h:br/>
               <!-- TODO: If the MDM invokes the platform to audit an event for FAU_GEN.1.1(1), then are they guarenteed that the platform will provide them with the necessary information in the audit event? Need to make sure that this is in OS PP-->           
             </note>
             <aactivity>
@@ -1417,7 +1416,7 @@ DONE:
               <h:li><assignable>other audit relevant information</assignable></h:li>
             </h:ul>
             </title>
-            <note role="application">All audits must contain at least the information mentioned in <linkref linkend="FAU_GEN.1.2(2)"/>, but may contain more information which can be assigned. The <abbr linkend="ST"/> author shall identify in the <abbr linkend="TSS"/> which information of the audit record that is performed by the <abbr linkend="TSF"/> and that which is performed by the <abbr linkend="TOE"/> platform.</note>
+            <note role="application">All audits must contain at least the information mentioned in <linkref linkend="FAU_GEN.1.2(2)"/>, but may contain more information which can be assigned. The <abbr linkend="ST"/> author must identify in the <abbr linkend="TSS"/> which information of the audit record that is performed by the <abbr linkend="TSF"/> and that which is performed by the <abbr linkend="TOE"/> platform.</note>
             <aactivity>
               <TSS>The evaluator shall check the <abbr linkend="TSS"/> and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field.<h:br/><h:br/>
 	      </TSS>
@@ -1497,9 +1496,9 @@ DONE:
                 <selectable>no other method</selectable>
                 </selectables>.
             </title>
-            <note role="application">The <abbr linkend="TOE"/> shall be capable of transmitting audit data to an external entity 
+            <note role="application">The <abbr linkend="TOE"/> must be capable of transmitting audit data to an external entity 
               using a trusted channel as specified in <linkref linkend="FTP_ITC.1(1)"/> and optionally can store audit data locally. 
-              If "store audit data locally" is selected, then <linkref linkend="FAU_STG_EXT.2.1"/> shall be included in the 
+              If "store audit data locally" is selected, then <linkref linkend="FAU_STG_EXT.2.1"/> must be included in the 
               <abbr linkend="ST"/>.<h:br/><h:br/> 
               
               This requirement only applies to audit data maintained by the <abbr linkend="TSF"/>, not audit data that is maintained 
@@ -1524,7 +1523,7 @@ DONE:
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided.<h:br/><h:br/></TSS>
               <Guidance> The evaluator shall also examine the operational guidance to determine that it describes the relationship between the local audit data and the audit data that are sent to the audit log server. For example, when an audit event is generated, is it simultaneously sent to the external server and the local store, or is the local store used as a buffer and "cleared" periodically by sending the data to the audit server.<h:br/><h:br/> 
               The evaluator shall also examine the operational guidance to ensure it describes how to establish the trusted channel to the audit server, as well as describe any requirements on the audit server (particular audit server protocol, version of the protocol required, etc.), as well as configuration of the <abbr  linkend="TOE"/> needed to communicate with the audit server. <h:br/><h:br/></Guidance>
-              <Tests> Testing of the trusted channel mechanism will be performed as specified in the associated assurance activities for the particular trusted channel mechanism.<h:br/><h:br/> 
+              <Tests> Testing of the trusted channel mechanism will be performed as specified in the associated evaluation activities for the particular trusted channel mechanism.<h:br/><h:br/> 
                 The evaluator shall perform the following test for this requirement: <testlist>
                   <test>The evaluator shall establish a session between the <abbr linkend="TOE"/> and the audit server according to the configuration guidance provided. The evaluator shall then examine the traffic that passes between the audit server and the <abbr linkend="TOE"/> during several activities of the evaluator's choice designed to generate audit data to be transferred to the audit server. The evaluator shall observe that these data are not able to be viewed in the clear during this transfer, and that they are successfully received by the audit server. The evaluator shall record the particular software (name, version) used on the audit server during testing. </test>
                 </testlist></Tests>
@@ -1666,7 +1665,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 </selectables></selectable>
               </selectables>.
             </title>
-            <note role="application">The <abbr linkend="ST"/> author shall select all key generation
+            <note role="application">The <abbr linkend="ST"/> author must select all key generation
               schemes used for key establishment and <abbr linkend="MDM"/> authentication. When key
               generation is used for key establishment, the schemes in <linkref linkend="FCS_CKM.2.1"/> and selected
               cryptographic protocols must match the selection. When key generation is used for
@@ -1809,9 +1808,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </selectables></selectable>
               </selectables>.
             </title>
-            <note role="application">The <abbr linkend="ST"/> author shall select all key
+            <note role="application">The <abbr linkend="ST"/> author must select all key
               establishment schemes used for the selected cryptographic protocols.<h:br/><h:br/> 
-              The elliptic curves used for the key establishment scheme shall correlate with the curves specified in <linkref linkend="FCS_CKM.1.1"/>.<h:br/><h:br/> 
+              The elliptic curves used for the key establishment scheme must correlate with the curves specified in <linkref linkend="FCS_CKM.1.1"/>.<h:br/><h:br/> 
               The domain parameters used for the finite field-based key establishment scheme are specified by the key generation according to <linkref linkend="FCS_CKM.1.1"/>.
             </note>
             <aactivity>
@@ -1954,7 +1953,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
           </f-element>
           <f-element id="fcs_ckm_ext.4.2"> <!--will have to edit this one to remove platform requirements-->
             <title>The <abbr linkend="TSF"/> shall destroy all plaintext keying material and critical security parameters (<abbr linkend="CSP"/>s) when no longer needed.</title>
-            <note role="application">Key destruction procedures are performed in accordance with <linkref linkend="FCS_CKM_EXT.4.1"/>. Even if "invoking platform-provided functionality" is selected in <linkref linkend="FCS_CKM_EXT.4.1"/>, the <abbr linkend="TSF"/> shall determine when the plaintext keying material and <abbr linkend="CSP"/> are no longer needed and thus should be destroyed. The <abbr linkend="TSF"/> shall "release" the key material and <abbr linkend="CSP"/> when no longer needed, regardless if the <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform destroys the key material and <abbr linkend="CSP"/>s.<h:br/><h:br/> For the purposes of this requirement, plaintext keying material refers to authentication data, authorization data, secret/private symmetric keys, data used to derive keys, etc.</note>
+            <note role="application">Key destruction procedures are performed in accordance with <linkref linkend="FCS_CKM_EXT.4.1"/>. Even if "invoking platform-provided functionality" is selected in <linkref linkend="FCS_CKM_EXT.4.1"/>, the <abbr linkend="TSF"/> must determine when the plaintext keying material and <abbr linkend="CSP"/> are no longer needed and thus should be destroyed. The <abbr linkend="TSF"/> must "release" the key material and <abbr linkend="CSP"/> when no longer needed, regardless if the <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform destroys the key material and <abbr linkend="CSP"/>s.<h:br/><h:br/> 
+              For the purposes of this requirement, plaintext keying material refers to authentication data, authorization data, secret/private symmetric keys, data used to derive keys, etc.</note>
             <aactivity> 
               Evaluation Activity Note:<h:br/><h:br/> The evaluation activity used is dependent on the selection made in <linkref linkend="FCS_CKM_EXT.4.1"/>. <h:br/><h:br/>
               <TSS> The evaluator shall check to ensure the <abbr linkend="TSS"/> lists each type of plaintext key material and <abbr linkend="CSP"/> (authentication data, authorization data, secret/private symmetric keys, data used to derive keys, etc.) and its origin and storage location.<h:br/><h:br/> The evaluator shall verify that the <abbr linkend="TSS"/> describes when each type of key material and <abbr linkend="CSP"/> is no longer needed.<h:br/><h:br/> <!-- ToDo: this might be asking too much. If they implement platform functionality they might not have access to the keys?-->              
@@ -2198,7 +2198,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               strength of the algorithm used (for example, SHA-256 for 128-bit keys).</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the hash functionality is invoked for each digest size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this assurance activity).<h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the hash functionality is invoked for each digest size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
               The evaluator shall check that the association of the hash function with other
                   <abbr linkend="TSF"/> cryptographic functions (for example, the digital signature
@@ -2416,15 +2416,15 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
           </f-element> 
         </f-component> 
         <f-component id="fcs_iv_ext.1" name="Initialization Vector Generation" status="sel-based">
-          <selection-depends req="FCS_STG_EXT.2.1" ids="fcs_stg_enc"/>
+          <selection-depends req="FCS_STG_EXT.1.1" ids="fcs_stg_enc"/>
+          <!--<selection-depends req="FCS_STG_EXT.2.1" ids="fcs_stg_enc"/>-->
           <f-element id="fcs_iv_ext.1.1">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to generate IVs in accordance with <ctr-ref refid="iv"/>.</title>
             <note role="application">This requirement must be included in the <abbr linkend="ST"/>
-              if <linkref linkend="FCS_STG_EXT.2.1"/> is included in the <abbr linkend="ST"/>, meaning that the selection
-              in <linkref linkend="FCS_STG_EXT.1"/> indicates that the <abbr linkend="TSF"/> is protecting private keys
+              if the selection in <linkref linkend="FCS_STG_EXT.1"/> indicates that the <abbr linkend="TSF"/> is protecting private keys
               and persistent secrets with encryption rather than the platform-provided key
               storage.<h:br/><h:br/> <ctr-ref refid="iv"/> lists the requirements for composition of IVs according to
               the corresponding NIST Special Publications for each cipher mode. The composition of
@@ -2577,7 +2577,10 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <selectable id="fcs_stg_enc"> encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
               </selectables> for all persistent secrets and private keys.</title>
             <!--TODO: check this note and aa-->
-            <note role="application">This requirement ensures that persistent secrets (credentials, secret keys) and private keys are stored securely when not in use. If some secrets/keys are manipulated by the <abbr linkend="TOE"/> and others are manipulated by the platform, then both of the selections can be specified by the <abbr linkend="ST"/> author and the <abbr linkend="ST"/> author must identify in the <abbr linkend="TSS"/> those keys which are manipulated by the <abbr linkend="TOE"/> and those by the platform. <h:br/><h:br/> If the <abbr linkend="TSF"/> is an application, and not a dedicated server, then it should store its private keys in the platform-provided key storage.<h:br/><h:br/> The <abbr linkend="ST"/> author is responsible for selecting the manner in which the keys are stored and where they are stored in the selections above. </note>
+            <note role="application">This requirement ensures that persistent secrets (credentials, secret keys) and private keys are stored securely when not in use. If some secrets/keys are manipulated by the <abbr linkend="TOE"/> and others are manipulated by the platform, then both of the selections can be specified by the <abbr linkend="ST"/> author and the <abbr linkend="ST"/> author must identify in the <abbr linkend="TSS"/> those keys which are manipulated by the <abbr linkend="TOE"/> and those by the platform. <h:br/><h:br/> 
+              If "encryption as specified in <linkref linkend="FCS_STG_EXT.2"/>" is selected then <linkref linkend="FCS_STG_EXT.2"/> and <linkref linkend="FCS_IV_EXT.1"/> must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              If the <abbr linkend="TSF"/> is an application, and not a dedicated server, then it should store its private keys in the platform-provided key storage.<h:br/><h:br/> 
+              The <abbr linkend="ST"/> author is responsible for selecting the manner in which the keys are stored and where they are stored in the selections above. </note>
             <aactivity>
               <TSS>Regardless of whether this requirement is met by the <abbr linkend="TSF"/> or the <abbr linkend="TOE"/> platform, the evaluator will check the <abbr linkend="TSS"/> to ensure that it lists each persistent secret (credential, secret key) and private key needed to meet the requirements in the <abbr linkend="ST"/>. For each of these items, the evaluator will confirm that the <abbr linkend="TSS"/> lists for what purpose it is used, and how it is stored. The evaluator then performs the following actions. <h:br/><h:br/>
               Persistent secrets and private keys manipulated by the <abbr linkend="TOE"/> platform:<h:br/><h:br/> 
@@ -2604,7 +2607,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </selectables> .</title>
             <note role="application">This requirement states that keys used by the <abbr linkend="TSF"/> shall not be kept in plaintext. The intent of this requirement is to ensure that the private keys, credentials, and persistent secrets cannot be accessed in the <abbr linkend="TOE"/> in an unencrypted state, allowing an attacker to access keys without having to exhaust the AES key space. <h:br/><h:br/> 
               This requirement must be including in the <abbr linkend="ST"/> if the selection in <linkref linkend="FCS_STG_EXT.1"/> indicates that the <abbr linkend="TSF"/> is protecting private keys and persistent secrets with encryption rather than the platform-provided key storage.<h:br/><h:br/> 
-              If this requirement is included in the <abbr linkend="ST"/>, <linkref linkend="FCS_IV_EXT.1"/> must also be included.</note>
+              <!--If this requirement is included in the <abbr linkend="ST"/>, <linkref linkend="FCS_IV_EXT.1"/> must also be included.--></note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes in detail how user credentials, persistent secret and private keys are stored and encrypted. The evaluator shall review the <abbr linkend="TSS"/> to determine that it makes a case that key material is not written unencrypted to persistent memory and that it identifies the mode of encryption.<h:br/><h:br/>
               If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the key encryption functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
@@ -2665,7 +2668,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <selectable>implement functionality </selectable>
               </selectables> that requires each user to be successfully authenticated with the Server before allowing any other <abbr linkend="TSF"/>-mediated actions on behalf of that user.</title>
             <note role="application">This requirement ensures that any user attempting to access the <abbr linkend="TSF"/> must be authenticated. These users may be administrators attempting to administer the <abbr linkend="TOE"/> or ordinary users attempting to enroll for management by the <abbr linkend="MDM"/> system. The <abbr linkend="ST"/> author is responsible for assigning the list of actions that can take place before this authentication. The <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform may utilize enterprise authentication to meet this requirement.<h:br/><h:br/>
-              For distributed <abbr linkend="TOE"/>s at least one <abbr linkend="TOE"/> component has to support the authentication of Administrators but not necessarily all <abbr linkend="TOE"/> components. In case not all <abbr linkend="TOE"/> components support authentication for Administrators the <abbr linkend="TSS"/> shall describe how Administrators are authenticated and identified.
+              For distributed <abbr linkend="TOE"/>s at least one <abbr linkend="TOE"/> component has to support the authentication of Administrators but not necessarily all <abbr linkend="TOE"/> components. In case not all <abbr linkend="TOE"/> components support authentication for administrators the <abbr linkend="TSS"/> must describe how administrators are authenticated and identified.
             </note>
             <aactivity>              
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/></TSS>
@@ -2683,10 +2686,10 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               related to <assignable>identified authentication mechanism(s)</assignable>. </title>
             <note role="application">This requirement references the authentication mechanism(s)
               used to authenticate the user for enrollment in <linkref linkend="FIA_ENR_EXT.1.1"/>. If a username and
-              password is used to authenticate the user for enrollment, the password shall not be
+              password is used to authenticate the user for enrollment, the password must not be
               reused. Thus if the user has two devices enrolled in management or needs to re-enroll
-              the same device (i.e., after a device wipe), the password shall be different for each
-              enrollment. Additionally, if two different users are enrolling the password shall be
+              the same device (i.e., after a device wipe), the password must be different for each
+              enrollment. Additionally, if two different users are enrolling the password must be
               different for each user. </note>
             <aactivity>
               <TSS>The evaluator shall verify that the <abbr linkend="TSS"/> contains a description
@@ -2712,12 +2715,12 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 <selectable>IMEI</selectable>
                 <selectable><assignable>a unique device ID</assignable></selectable>
               </selectables> related to limiting the user's enrollment of devices. </title>
-            <note role="application"> The <abbr linkend="MDM"/> server shall not allow two devices
+            <note role="application"> The <abbr linkend="MDM"/> server must not allow two devices
               to be enrolled using the same unique identifier. The unique identifier is specified in
               <linkref linkend="FIA_ENR_EXT.1.2"/>.<h:br/><h:br/> <linkref linkend="FIA_UAU_EXT.4.1(2)"/>  can only be included in the <abbr
                 linkend="ST"/> if "devices specified by IMEI" or "device specified by <assignable>a
                 unique device ID</assignable> is selected in <linkref linkend="FIA_ENR_EXT.1.2"/>. The same selection
-              shall be completed for this requirement. </note>
+              must be completed for this requirement. </note>
             <aactivity>
               <TSS>The evaluator shall verify that the <abbr linkend="TSS"/> contains a description of the policy to limit the user's enrollment of devices.<h:br/><h:br/></TSS>
               <Guidance>The evaluator shall ensure that the administrative guidance describes the
@@ -2762,14 +2765,14 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 </h:li>
               </h:ul>
             </title>
-            <note role="application"> <linkref linkend="FIA_X509_EXT.1.1(1)"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author shall select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
+            <note role="application"> <linkref linkend="FIA_X509_EXT.1.1(1)"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
               The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br/><h:br/>
 	      </TSS>
-              <Tests>The tests described must be performed in conjunction with the other certificate services assurance activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least three certificates: the node certificate to be tested, an Intermediate CA, and the self-signed Root CA. 
+              <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least three certificates: the node certificate to be tested, an Intermediate CA, and the self-signed Root CA. 
               <testlist>
                   <test>The evaluator shall load a certificate or certificates as trusted CAs needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator shall then delete one of the certificates, and show that the function fails.</test>
                   <test>The evaluator shall demonstrate that validating an expired certificate results in the function failing.</test>
@@ -2794,7 +2797,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
               <Tests>
 		<h:h4>If "implement functionality" is selected:</h:h4>
-		The tests described must be performed in conjunction with the other certificate services assurance activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
+		The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
               <testlist>
                   <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate does not contain the basicConstraints extension. The validation of the certificate path fails.</test>
                   <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate has the cA flag in the basicConstraints extension not set. The validation of the certificate path fails.</test>
@@ -2835,16 +2838,16 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             <note role="application"> 
               <linkref linkend="FIA_X509_EXT.1.1(2)"/> should be chosen if the <abbr linkend="TOE"/> is distributed and the protocol(s) selected in <linkref linkend="FPT_ITT.1(1)"/> utilize X.509 certificates for peer authentication. In this case, the use of revocation list checking is optional as there are additional requirements surrounding the enabling and disabling of the ITT channel as defined in <linkref linkend="FCO_CPC_EXT.1"/>. If revocation checking is not supported, the <abbr linkend="ST"/> author should select no revocation method. However, if certificate revocation checking is supported, the <abbr linkend="ST"/> author selects whether this is performed using OCSP or CRLs.<h:br/><h:br/>
               
-              The <abbr linkend="TSS"/> shall describe when revocation checking is performed. It is expected that revocation checking is performed when a certificate is used in an authentication step. It is not sufficient to verify the status of a X.509 certificate only when it is loaded onto the device.<h:br/><h:br/>
+              The <abbr linkend="TSS"/> must describe when revocation checking is performed. It is expected that revocation checking is performed when a certificate is used in an authentication step. It is not sufficient to verify the status of a X.509 certificate only when it is loaded onto the device.<h:br/><h:br/>
               
-              This <abbr linkend="SFR"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author shall select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
+              This <abbr linkend="SFR"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
               The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br/><h:br/>
 	      </TSS>
-              <Tests>The tests described must be performed in conjunction with the other certificate services assurance activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA. 
+              <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA. 
               <testlist>
                 <test>The evaluator shall load a certificate or certificates as trusted CAs needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator shall then delete one of the certificates, and show that the function fails.</test>
                 <test>The evaluator shall demonstrate that validating an expired certificate results in the function failing.</test>
@@ -2868,7 +2871,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
 	      </TSS>
               <Tests><h:h4>If "implement functionality" is selected:</h:h4>
-              The tests described must be performed in conjunction with the other certificate services assurance activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
+              The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
               <testlist>
                 <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate does not contain the basicConstraints extension. The validation of the certificate path fails.</test>
                 <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate has the cA flag in the basicConstraints extension not set. The validation of the certificate path fails.</test>
@@ -2911,11 +2914,11 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </selectables>.</selectable>
               </selectables> 
               </title>
-            <note role="application"> The <abbr linkend="ST"/> author's selection(s) shall match the selection 
+            <note role="application"> The <abbr linkend="ST"/> author's selection(s) must match the selection 
               of <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_ITC.1(1)"/>, <linkref linkend="FTP_ITC.1(2)"/>, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/>. 
               Certificates may optionally be used for trusted updates of system software (<linkref linkend="FPT_TUD_EXT.1.3"/>) 
               and software integrity verification (<linkref linkend="FPT_TST_EXT.1.2"/>). If some authentication services are 
-              provided by the <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author shall clearly 
+              provided by the <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author must clearly 
               identify which services are provided by the <abbr linkend="TOE"/> and which by the platform.<h:br/><h:br/> If code 
               signing for integrity verification is selected, the <abbr linkend="MDM"/> vendor is not expected to digitally sign 
               DLL's from other vendors that have been incorporated into their product.<h:br/><h:br/>
@@ -2948,7 +2951,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 <selectable>accept the certificate</selectable>
                 <selectable>not accept the certificate</selectable>
               </selectables>.</title>
-            <note role="application">Often a connection must be established to perform a verification of the revocation status of a certificate - either to download a CRL or to perform OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate is valid according to all other rules in <linkref linkend="FIA_X509_EXT.1(1)"/>, the behavior indicated in the second selection shall determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in <linkref linkend="FIA_X509_EXT.1(1)"/>. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must also select function d in <linkref linkend="FMT_SMF.1(2)"/>.<h:br/><h:br/>
+            <note role="application">Often a connection must be established to perform a verification of the revocation status of a certificate - either to download a CRL or to perform OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate is valid according to all other rules in <linkref linkend="FIA_X509_EXT.1(1)"/>, the behavior indicated in the second selection must determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in <linkref linkend="FIA_X509_EXT.1(1)"/>. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must also select function d in <linkref linkend="FMT_SMF.1(2)"/>.<h:br/><h:br/>
               If the <abbr linkend="TOE"/> is distributed and <linkref linkend="FIA_X509_EXT.1(2)"/> is selected, then certificate revocation checking is optional. This is due to additional authorization actions being performed in the enabling and disabling of the intra-<abbr linkend="TOE"/> trusted channel as defined in <linkref linkend="FCO_CPC_EXT.1"/>. In this case, a connection is not required to determine certificate validity and this <abbr linkend="SFR"/> is trivially satisfied.            
             </note>
             <aactivity>
@@ -3117,7 +3120,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </selectables></h:li>
               </h:ul> to [authorized administrators].</title>
             <note role="application">This requirement outlines the functions that administrators will have the power to enable, disable, modify, and monitor functions and policies listed in <linkref linkend="FMT_SMF.1(1)"/>. It also includes functions necessary to maintain and configure the <abbr linkend="MDM"/> Server itself.<h:br/><h:br/>
-              "Enable, disable and modify policies listed in <linkref linkend="FMT_SMF.1(3)"/>" shall be selected if the <abbr linkend="TOE"/> includes MAS functionality and <linkref linkend="FMT_SMF.1(3)"/>, <linkref linkend="FAU_GEN.1(2)"/>, <linkref linkend="FMT_MOF.1(4)"/>, <linkref linkend="FMT_SMR.1(2)"/> shall be included in the <abbr linkend="ST"/>.          
+              "Enable, disable and modify policies listed in <linkref linkend="FMT_SMF.1(3)"/>" must be selected if the <abbr linkend="TOE"/> includes MAS functionality and <linkref linkend="FMT_SMF.1(3)"/>, <linkref linkend="FAU_GEN.1(2)"/>, <linkref linkend="FMT_MOF.1(4)"/>, <linkref linkend="FMT_SMR.1(2)"/> must be included in the <abbr linkend="ST"/>.          
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> and user documents to ensure that they describe what security management functions are restricted to the administrator and what actions can be taken for each management function. The evaluator shall verify that the security management functions are restricted to authorized administrators and the administrator is only able to take the actions as described in the user documents.<h:br/><h:br/></TSS>
@@ -3172,7 +3175,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
           </f-element>
           <f-element id="fmt_sae_ext.1.2">
             <title>The <abbr linkend="TSF"/> shall be able to deny enrollment after the expiration time for the enrollment authentication data has passed.</title>
-            <note role="application"> This requirement references the user authenticator used for device enrollment in management in <linkref linkend="FIA_ENR_EXT.1.1"/>. The user authenticator shall only be valid for a configurable time limit. If the authenticator is expired, even if entered correctly, enrollment shall not occur. <h:br/><h:br/> The length of the time the authenticator is valid for is configured per function c.5 in <linkref linkend="FMT_SMF.1(2)"/>. If <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>, then function g shall be selected in <linkref linkend="FMT_SMF.1(2)"/>. </note>
+            <note role="application"> This requirement references the user authenticator used for device enrollment in management in <linkref linkend="FIA_ENR_EXT.1.1"/>. The user authenticator must only be valid for a configurable time limit. If the authenticator is expired, even if entered correctly, enrollment must not occur. <h:br/><h:br/> The length of the time the authenticator is valid for is configured per function c.5 in <linkref linkend="FMT_SMF.1(2)"/>. If <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>, then function g must be selected in <linkref linkend="FMT_SMF.1(2)"/>. </note>
             <aactivity>
               <TSS>The evaluator shall verify that the <abbr linkend="TSS"/> contains a description of the process of enrollment for each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>. This description shall the method of user authentication (username/password, token, etc.).<h:br/><h:br/></TSS>
               <Guidance>The evaluator shall check to ensure that the operational guidance contains instructions to configure the expiration time for each method of user authentication listed in the <abbr linkend="TSS"/>.<h:br/><h:br/></Guidance>
@@ -3421,14 +3424,14 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                   <ctr id="smf60" ctr-type="mgmt" pre=""></ctr>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies]. </selectable>
               </selectables></h:ul>
             </title>
-            <note role="application"> This requirement captures all the configuration functionality the <abbr linkend="TSF"/> provides the administrator to configure the <abbr linkend="MDM"/> Agent. This requirement is broken into two configurable areas: <abbr linkend="MDM"/> Agent commands and <abbr linkend="MDM"/> Agent policies. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> The <abbr linkend="ST"/> author shall not claim any functionality not provided by the Mobile Device. All selections and assignments performed by the <abbr linkend="ST"/> author in this requirement should match the selections and assignments of the validated Mobile Device <abbr linkend="ST"/>.<h:br/><h:br/> 
+            <note role="application"> This requirement captures all the configuration functionality the <abbr linkend="TSF"/> provides the administrator to configure the <abbr linkend="MDM"/> Agent. This requirement is broken into two configurable areas: <abbr linkend="MDM"/> Agent commands and <abbr linkend="MDM"/> Agent policies. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> The <abbr linkend="ST"/> author must not claim any functionality not provided by the Mobile Device. All selections and assignments performed by the <abbr linkend="ST"/> author in this requirement should match the selections and assignments of the validated Mobile Device <abbr linkend="ST"/>.<h:br/><h:br/> 
               Function-specific Application Notes:<h:br/><h:br/> 
               Function-specific application notes reference Mobile Device Fundamentals (MDF) <abbr linkend="PP"/> v3.1.<h:br/><h:br/> 
               Function <ctr-ref refid="smf12"/> may be satisfied for the BYOD use case by application blacklisting and/or disabling. In the case of BYOD, an enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not lose any information they might have in the application.<h:br/><h:br/>
               Function <ctr-ref refid="smf16"/> provides the <abbr linkend="MDM"/> server to display an alert to the user of the mobile device.<h:br/><h:br/> 
               The audit records read according to Function <ctr-ref refid="smf19"/> are to be transmitted to an external audit server according to <linkref linkend="FAU_STG_EXT.1"/>. The <abbr linkend="MDM"/> Server is not expected to retain those logs.<h:br/><h:br/> 
               Function <ctr-ref refid="smf34"/> provides the ability to enable/disable policy for the list of protocols where the device acts as a server, such as a mobile hotspot.<h:br/><h:br/>  
-              Function <ctr-ref refid="smf56"/> corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr linkend="MDM"/> Agent has not had a successful reachability event with the <abbr linkend="MDM"/> Server in the amount of time specified in 'a', then the agent shall perform the action selected in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each action could be associated with a different timeout in 'a'. If function <ctr-ref refid="smf56"/> is included in the <abbr linkend="ST"/>, than FPT_NET_EXT.1.1 shall be included in the Agent <abbr linkend="ST"/>. </note>
+              Function <ctr-ref refid="smf56"/> corresponds to FPT_NET_EXT.1.1 in Agent. If the <abbr linkend="MDM"/> Agent has not had a successful reachability event with the <abbr linkend="MDM"/> Server in the amount of time specified in 'a', then the agent must perform the action selected in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each action could be associated with a different timeout in 'a'. If function <ctr-ref refid="smf56"/> is included in the <abbr linkend="ST"/>, than FPT_NET_EXT.1.1 must be included in the Agent <abbr linkend="ST"/>. </note>
             <aactivity>
               <TSS> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed. The evaluator shall examine the <abbr linkend="TSS"/> to verify that any differences between management functions and policies for each supported <abbr linkend="MDM"/> Agent/platform are listed. The evaluator shall also examine the <abbr linkend="ST"/> of the claimed Mobile Device to verify that the selections and assignments in the functions and policies in the <abbr linkend="TSS"/> do not exceed the capabilities of the supported MD. <h:br/><h:br/>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it identifies the management functions implemented for each supported <abbr linkend="MDM"/> Agent/platform, which are likely to be subsets of all of the management functions available to the administrator on the <abbr linkend="MDM"/> Server.<h:br/><h:br/></TSS>
               <Tests>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<testlist>
@@ -3469,7 +3472,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </h:ol>
             </title>
             <note role="application"> This requirement captures all the configuration functionality in the <abbr linkend="MDM"/> Server to configure the underlying <abbr linkend="MDM"/> Server. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the assignment statement.<h:br/><h:br/>
-              Function a can be met by relying on the platform to configure the certificates used by the <abbr linkend="MDM"/> server, however, the <abbr linkend="MDM"/> Server shall allow the administrator to choose which certificate is used for a specific functionality. The selection in b corresponds to the selection in <linkref linkend="FIA_ENR_EXT.1.2"/>. The selection in c.1 includes a function that corresponds to the selection in <linkref linkend="FIA_X509_EXT.2.2"/>. Function c.3 allows the administrator to configure periodicity of assigned commands, for example "read audit logs kept by the Mobile Device". In this way the administrator can configure the <abbr linkend="MDM"/> system to retrieve audit logs from the Mobile Device on a periodic, such as daily, basis in order to ensure freshness of log data and to minimize loss of audit logs. Function c.4 allows the administrator to configure the privacy-sensitive information that will and will not be collected from particular mobile devices to handle BYOD environments where some information may not be appropriate to collect. Privacy sensitive information may include items such as device physical location and lists of installed personal applications, and would vary depending on the particular capabilities of the <abbr linkend="TOE"/> and <abbr linkend="MDM"/> agent. The <abbr linkend="TOE"/> should provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and define the information that will be collected from devices in each category. Function c.5 corresponds to configuring the length of time the user authenticator for enrollment is valid in <linkref linkend="FMT_SAE_EXT.1"/>. This function shall be included in the <abbr linkend="ST"/> if and only if <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>.<h:br/><h:br/>            
+              Function a can be met by relying on the platform to configure the certificates used by the <abbr linkend="MDM"/> server, however, the <abbr linkend="MDM"/> Server must allow the administrator to choose which certificate is used for a specific functionality. The selection in b corresponds to the selection in <linkref linkend="FIA_ENR_EXT.1.2"/>. The selection in c.1 includes a function that corresponds to the selection in <linkref linkend="FIA_X509_EXT.2.2"/>. Function c.3 allows the administrator to configure periodicity of assigned commands, for example "read audit logs kept by the Mobile Device". In this way the administrator can configure the <abbr linkend="MDM"/> system to retrieve audit logs from the Mobile Device on a periodic, such as daily, basis in order to ensure freshness of log data and to minimize loss of audit logs. Function c.4 allows the administrator to configure the privacy-sensitive information that will and will not be collected from particular mobile devices to handle BYOD environments where some information may not be appropriate to collect. Privacy sensitive information may include items such as device physical location and lists of installed personal applications, and would vary depending on the particular capabilities of the <abbr linkend="TOE"/> and <abbr linkend="MDM"/> agent. The <abbr linkend="TOE"/> should provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and define the information that will be collected from devices in each category. Function c.5 corresponds to configuring the length of time the user authenticator for enrollment is valid in <linkref linkend="FMT_SAE_EXT.1"/>. This function must be included in the <abbr linkend="ST"/> if and only if <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>.<h:br/><h:br/>            
               For distributed <abbr linkend="TOE"/>s the interaction between <abbr linkend="TOE"/> components will be configurable (see <linkref linkend="FCO_CPC_EXT.1"/>). Therefore, the <abbr linkend="ST"/> author includes the selection "Ability to configure the interaction between <abbr linkend="TOE"/> components" for distributed <abbr linkend="TOE"/>s. A simple example would be the change of communication protocol according to <linkref linkend="FPT_ITT.1(1)"/>. Another example would be changing the management of a <abbr linkend="TOE"/> component from direct remote administration to remote administration through another <abbr linkend="TOE"/> component. A more complex use case would be if the realization of an <abbr linkend="SFR"/> is achieved through two or more <abbr linkend="TOE"/> components and the responsibilities between the two or more components could be modified.<h:br/><h:br/>             
               For distributed <abbr linkend="TOE"/>s that implement a registration channel (as described in <linkref linkend="FCO_CPC_EXT.1.2"/>), the <abbr linkend="ST"/> author uses the selection "configure the cryptographic functionality" in this <abbr linkend="SFR"/>, and its corresponding mapping in the <abbr linkend="TSS"/>, to describe the configuration of any cryptographic aspects of the registration channel that can be modified by the operational environment in order to improve the channel security.              
             </note>
@@ -3500,7 +3503,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </h:ol>
             </title>
             <note role="application">This requirement captures all the configuration functionality in the MAS Server to configure the underlying MAS Server. The <abbr linkend="ST"/> author can add more commands and configuration policies by completing the assignment statement. <h:br/><h:br/>
-              The MAS Server shall be able to create groups to configure which applications a user can access based on which group they are in. If the MAS Server uses the groups defined by the <abbr linkend="MDM"/>, then it must communicate with the <abbr linkend="MDM"/> Server (if separate server) to determine which applications the user can access.
+              The MAS Server must be able to create groups to configure which applications a user can access based on which group they are in. If the MAS Server uses the groups defined by the <abbr linkend="MDM"/>, then it must communicate with the <abbr linkend="MDM"/> Server (if separate server) to determine which applications the user can access.
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed.<h:br/><h:br/>The evaluator shall examine the <abbr linkend="TSS"/> to determine if the MAS Server creates its own groups or relies on the groups specified by the <abbr linkend="MDM"/> Server.<h:br/><h:br/></TSS>
@@ -3519,8 +3522,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
           </f-element>
           <f-element id="fmt_smr.1.2(1)">
             <title>The TSF shall be able to associate users with roles.</title>
-            <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role shall be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>              
-              For distributed <abbr linkend="TOE"/>s, not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfill this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to <linkref linkend="FIA_UAU.1"/>. For the other <abbr linkend="TOE"/> components authentication as Administrator can be realized through the use of a trusted channel (either according to FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/>) from a component that supports the authentication of Administrators according to <linkref linkend="FIA_UAU.1"/>. The identification of users according to <linkref linkend="FIA_UAU.1.2"/> and the association of users with roles according to <linkref linkend="FMT_SMR.1.2(1)"/> is done through the components that support the authentication of Administrators according to <linkref linkend="FIA_UAU.1"/>.   
+            <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>              
+              For distributed <abbr linkend="TOE"/>s, not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfill this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to <linkref linkend="FIA_UAU.1"/>. For the other <abbr linkend="TOE"/> components authentication can be realized through the use of a trusted channel (either according to FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/>) from a component that supports the authentication of users according to <linkref linkend="FIA_UAU.1"/>. The identification of users according to <linkref linkend="FIA_UAU.1.2"/> and the association of users with roles according to <linkref linkend="FMT_SMR.1.2(1)"/> is done through the components that support the authentication of users according to <linkref linkend="FIA_UAU.1"/>.   
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the administrator role and the powers granted to and limitations of the role.<h:br/><h:br/></TSS>
@@ -3536,7 +3539,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
           </f-element>
           <f-element id="fmt_smr.1.2(2)">
             <title>The MAS Server shall be able to associate users with roles.</title>
-            <note role="application">It is envisioned that the MAS Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role shall be supported. If no additional roles are supported, then "no additional roles" is stated. The MD user role is used for enrollment of mobile devices to the MAS according to <linkref linkend="FIA_ENR_EXT.1"/>.</note>
+            <note role="application">It is envisioned that the MAS Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is stated. The MD user role is used for enrollment of mobile devices to the MAS according to <linkref linkend="FIA_ENR_EXT.1"/>.</note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the administrator role and the powers granted to and limitations of the role.<h:br/><h:br/></TSS>
               <Guidance>The evaluator shall review the operational guidance to ensure that it contains instructions for administering the <abbr linkend="TOE"/> and which interfaces are supported.<h:br/><h:br/></Guidance>
@@ -3628,7 +3631,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                     and ensuring that communication is successful.</test>
                   <test>The evaluator shall ensure, for each method of communication, the channel
                     data is not sent in plaintext.</test>
-                </testlist> Further assurance activities are associated with the specific protocols.
+                </testlist> Further evaluation activities are associated with the specific protocols.
 	      </Tests>
               </aactivity>
           </f-element>
@@ -3685,7 +3688,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                   and ensuring that communication is successful.</test>
                 <test>The evaluator shall ensure, for each method of communication, the channel
                   data is not sent in plaintext.</test>
-              </testlist> Further assurance activities are associated with the specific protocols.
+              </testlist> Further evaluation activities are associated with the specific protocols.
 	      </Tests>
             </aactivity>
           </f-element>
@@ -3744,8 +3747,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <selectable>implement functionality</selectable>
             </selectables> to provide a means to verify software updates to the <abbr linkend="TSF"/> using a digital signature mechanism prior to installing those updates.</title>
             <note role="application">The software on the <abbr linkend="TSF"/> will occasionally need to be updated. This requirement is intended to ensure that the <abbr linkend="TSF"/> only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the <abbr linkend="TSF"/> software or hardware.<h:br/><h:br/>           
-              For distributed <abbr linkend="TOE"/>s all <abbr linkend="TOE"/> components shall support Trusted Update. The verification of the signature or hash on the update shall either be done by each <abbr linkend="TOE"/> component itself (signature verification) or for each <abbr linkend="TOE"/> component (hash verification).<h:br/><h:br/>             
-              Updating a distributed <abbr linkend="TOE"/> might lead to the situation where different <abbr linkend="TOE"/> components are running different software versions. Depending on the differences between the different software versions the impact of a mixture of different software versions might be no problem at all or critical to the proper functioning of the <abbr linkend="TOE"/>. The <abbr linkend="TSS"/> shall detail the mechanisms that support the continuous proper functioning of the <abbr linkend="TOE"/> during trusted update of distributed <abbr linkend="TOE"/>s.
+              For distributed <abbr linkend="TOE"/>s all <abbr linkend="TOE"/> components must support Trusted Update. The verification of the signature or hash on the update must either be done by each <abbr linkend="TOE"/> component itself (signature verification) or for each <abbr linkend="TOE"/> component (hash verification).<h:br/><h:br/>             
+              Updating a distributed <abbr linkend="TOE"/> might lead to the situation where different <abbr linkend="TOE"/> components are running different software versions. Depending on the differences between the different software versions the impact of a mixture of different software versions might be no problem at all or critical to the proper functioning of the <abbr linkend="TOE"/>. The <abbr linkend="TSS"/> must detail the mechanisms that support the continuous proper functioning of the <abbr linkend="TOE"/> during trusted update of distributed <abbr linkend="TOE"/>s.
             </note>
             <aactivity>
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
@@ -3794,9 +3797,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </selectables>.</title>
             <note role="Application">
               This <abbr linkend="SFR"/> describes the communication channels between the <abbr linkend="MDM"/> Server and an Agent that may or may not be in the <abbr linkend="TOE"/>, and optionally separate components comprising a distributed <abbr linkend="TOE"/>, to determine which selection-based <abbr linkend="SFR"/>s will need to be included in the <abbr linkend="ST"/>. <h:br/><h:br/>            
-              If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, then the communication channel between the Agent and <abbr linkend="TSF"/> is internal to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is internal to the <abbr linkend="TOE"/>" shall be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1(2)"/> shall be selected in the second selection and <linkref linkend="FPT_ITT.1(2)"/> shall be included in the <abbr linkend="ST"/>. <h:br/><h:br/>         
-              If the <abbr linkend="TOE"/> interoperates with an evaluated <abbr linkend="MDM"/> Agent built into a mobile device (i.e., the <abbr linkend="TOE"/> does not include an <abbr linkend="MDM"/> Agent), the communication channel between the Agent and <abbr linkend="TSF"/> is external to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is external to the <abbr linkend="TOE"/>" shall be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> shall be selected in the second selection and <linkref linkend="FTP_ITC.1(2)"/> shall be included in the <abbr linkend="ST"/>. <h:br/><h:br/> 
-              If "other components comprising the distributed <abbr linkend="TOE"/>" is selected in the first selection then <linkref linkend="FPT_ITT.1(1)"/> shall be selected in the second selection. <linkref linkend="FPT_ITT.1(1)"/> shall be included in the <abbr linkend="ST"/> for all internal channels used to transfer <abbr linkend="TSF"/> data between <abbr linkend="TOE"/> components other than an <abbr linkend="MDM"/> Agent.
+              If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, then the communication channel between the Agent and <abbr linkend="TSF"/> is internal to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is internal to the <abbr linkend="TOE"/>" must be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1(2)"/> must be selected in the second selection and <linkref linkend="FPT_ITT.1(2)"/> must be included in the <abbr linkend="ST"/>. <h:br/><h:br/>         
+              If the <abbr linkend="TOE"/> interoperates with an evaluated <abbr linkend="MDM"/> Agent built into a mobile device (i.e., the <abbr linkend="TOE"/> does not include an <abbr linkend="MDM"/> Agent), the communication channel between the Agent and <abbr linkend="TSF"/> is external to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is external to the <abbr linkend="TOE"/>" must be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> must be selected in the second selection and <linkref linkend="FTP_ITC.1(2)"/> must be included in the <abbr linkend="ST"/>. <h:br/><h:br/> 
+              If "other components comprising the distributed <abbr linkend="TOE"/>" is selected in the first selection then <linkref linkend="FPT_ITT.1(1)"/> must be selected in the second selection. <linkref linkend="FPT_ITT.1(1)"/> must be included in the <abbr linkend="ST"/> for all internal channels used to transfer <abbr linkend="TSF"/> data between <abbr linkend="TOE"/> components other than an <abbr linkend="MDM"/> Agent.
             </note>
               <aactivity>
                 <TSS>The evaluator shall ensure that the TSS contains whether the MDM Server communication channel is internal or external to the <abbr linkend="TOE"/>. <h:br/><h:br/> </TSS>
@@ -3938,7 +3941,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                   <test>The evaluator shall ensure, for each communication channel with the <abbr
                       linkend="MDM"/> Server, that a protocol analyzer identifies the traffic as the
                     protocol under testing.</test>
-                </testlist> Further assurance activities are associated with the specific
+                </testlist> Further evaluation activities are associated with the specific
                 protocols.
 	      </Tests>
             </aactivity>
@@ -4059,7 +4062,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                   <test>The evaluator shall ensure, for each communication channel with the <abbr
                       linkend="MDM"/> Server, that a protocol analyzer identifies the traffic as the
                     protocol under testing.</test>
-                    </testlist> Further assurance activities are associated with the specific protocols.
+                    </testlist> Further evaluation activities are associated with the specific protocols.
 	      </Tests>
               </aactivity>
           </f-element>
@@ -4141,7 +4144,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                   <test>The evaluators shall ensure that communications using each specified (in the operational guidance) remote administration method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
                   <test>For each method of remote administration supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote user to establish remote administrative sessions without invoking the trusted path.</test>
                   <test>The evaluator shall ensure, for each method of remote administration, the channel data is not sent in plaintext.</test>
-                  </testlist> Further assurance activities are associated with the specific protocols.
+                  </testlist> Further evaluation activities are associated with the specific protocols.
 		  </Tests>
             </aactivity>
           </f-element>
@@ -4215,7 +4218,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                   <test>The evaluators shall ensure that communications using each specified (in the operational guidance) enrollment method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
                   <test>For each method of enrollment supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote user to establish enrollment sessions without invoking the trusted path.</test>
                   <test>The evaluator shall ensure, for each method enrollment, the channel data is not sent in plaintext. </test>
-                  </testlist> Further assurance activities are associated with the specific protocols.
+                  </testlist> Further evaluation activities are associated with the specific protocols.
 	      </Tests>
             </aactivity>
           </f-element>
@@ -4275,7 +4278,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 <test>The evaluator shall follow the guidance documentation to ensure that in fact the communication channel can be enabled by an administrator for all the <abbr linkend="TOE"/> components identified in the guidance documentation as capable of initiation.</test>
                 <test>The evaluator shall ensure that if the guidance documentation states that the channel data is encrypted then the data observed on the channel is not plaintext.</test>
                 <test> The evaluator shall ensure that, for each different pair of nonequivalent component types that can use the registration channel, the connection is physically interrupted during a joining attempt. The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.</test>
-		</testlist> Further assurance activities are associated with the specific protocols.
+		</testlist> Further evaluation activities are associated with the specific protocols.
 		</Tests>
             </aactivity>
           </f-element>
@@ -4285,9 +4288,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
   </chapter>
   <chapter id="sar" title="Security Assurance Requirements"> 
     The Security Objectives for the <abbr linkend="TOE"/> in <secref linkend="req"/> were constructed to address threats identified in <secref linkend="threats"/>. The Security Functional Requirements (<abbr linkend="SFR"/>s) in <secref linkend="req"/> are a formal instantiation of the Security Objectives. The <abbr linkend="PP"/> identifies the Security Assurance Requirements (<abbr linkend="SAR"/>s) to frame the extent to which the evaluator assesses the documentation applicable for the evaluation and performs independent testing. <h:br/><h:br/> 
-    This section lists the set of <abbr linkend="SAR"/>s from <abbr linkend="CC"/> part 3 that are required in evaluations against this <abbr linkend="PP"/>. Individual Assurance Activities (AAs) to be performed are specified both in <secref linkend="req"/> as well as in this section. <h:br/><h:br/> 
+    This section lists the set of <abbr linkend="SAR"/>s from <abbr linkend="CC"/> part 3 that are required in evaluations against this <abbr linkend="PP"/>. Individual Evaluation Activities (AAs) to be performed are specified both in <secref linkend="req"/> as well as in this section. <h:br/><h:br/> 
     The general model for evaluation of <abbr linkend="TOE"/>s against <abbr linkend="ST"/>s written to conform to this <abbr linkend="PP"/> is as follows: <h:br/><h:br/> 
-    After the <abbr linkend="ST"/> has been approved for evaluation, the <abbr class="expanded" title="Information Technology Security Evaluation Facility">ITSEF</abbr> will obtain the <abbr linkend="TOE"/>, supporting environmental IT, and the administrative/user guides for the <abbr linkend="TOE"/>. The ITSEF is expected to perform actions mandated by the Common Evaluation Methodology (CEM) for the ASE and ALC <abbr linkend="SAR"/>s. The ITSEF also performs the Assurance Activities contained within <secref linkend="req"/>, which are intended to be an interpretation of the other <abbr linkend="CEM"/> assurance requirements as they apply to the specific technology instantiated in the <abbr linkend="TOE"/>. The Assurance Activities that are captured in <secref linkend="req"/> also provide clarification as to what the developer needs to provide to demonstrate the <abbr linkend="TOE"/> is compliant with the <abbr linkend="PP"/>. <h:br/><h:br/>
+    After the <abbr linkend="ST"/> has been approved for evaluation, the <abbr class="expanded" title="Information Technology Security Evaluation Facility">ITSEF</abbr> will obtain the <abbr linkend="TOE"/>, supporting environmental IT, and the administrative/user guides for the <abbr linkend="TOE"/>. The ITSEF is expected to perform actions mandated by the Common Evaluation Methodology (CEM) for the ASE and ALC <abbr linkend="SAR"/>s. The ITSEF also performs the Evaluation Activities contained within <secref linkend="req"/>, which are intended to be an interpretation of the other <abbr linkend="CEM"/> assurance requirements as they apply to the specific technology instantiated in the <abbr linkend="TOE"/>. The Evaluation Activities that are captured in <secref linkend="req"/> also provide clarification as to what the developer needs to provide to demonstrate the <abbr linkend="TOE"/> is compliant with the <abbr linkend="PP"/>. <h:br/><h:br/>
     The <abbr linkend="TOE"/> security assurance requirements are identified in <ctr-ref refid="sar"/>. 
     <h:center><h:H4><ctr ctr-type="Table" id="sar">:Security Assurance Requirements</ctr></h:H4></h:center>
     <h:table>
@@ -4330,7 +4333,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
       </h:TR>
     </h:table>
     <section id="ase" title="Class ASE: Security Target"> 
-      The <abbr linkend="ST"/> is evaluated as per ASE activities defined in the <abbr linkend="CEM"/>. In addition, there may be Assurance Activities specified within <secref linkend="req"/> and relevant appendices that call for necessary descriptions to be included in the <abbr linkend="TSS"/> that are specific to the <abbr linkend="TOE"/> technology type. 
+      The <abbr linkend="ST"/> is evaluated as per ASE activities defined in the <abbr linkend="CEM"/>. In addition, there may be Evaluation Activities specified within <secref linkend="req"/> and relevant appendices that call for necessary descriptions to be included in the <abbr linkend="TSS"/> that are specific to the <abbr linkend="TOE"/> technology type. 
       <subsection id="tss" title="TOE summary specification">
        <a-component id="ase_tss.1" name="TOE summary specification">
          <evalactionlabel title="Content and presentation elements:"/>
@@ -4343,13 +4346,13 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
     <section id="adv" title="Class ADV: Development"> 
       The design information about the <abbr linkend="TOE"/> is contained in the guidance documentation available to the end user as well as the <abbr linkend="TSS"/> portion of the <abbr linkend="ST"/>, and any additional information required by this <abbr linkend="PP"/> that is not to be made public (e.g., Entropy Essay). <subsection id="fsp" title="Basic Functional Specification (ADV_FSP.1)">
         <a-component id="adv_fsp.1" name="Basic Functional Specification (ADV_FSP.1)"> 
-          The functional specification describes the Target Security Functions Interfaces (TSFIs). It is not necessary to have a formal or complete specification of these interfaces. Additionally, because <abbr linkend="TOE"/>s conforming to this <abbr linkend="PP"/> will necessarily have interfaces to the Operational Environment that are not directly invokable by <abbr linkend="TOE"/> users, there is little point specifying that such interfaces be described in and of themselves since only indirect testing of such interfaces may be possible. For this <abbr linkend="PP"/>, the activities for this family should focus on understanding the interfaces presented in the <abbr linkend="TSS"/> in response to the functional requirements and the interfaces presented in the AGD documentation. No additional "functional specification" documentation is necessary to satisfy the assurance activities specified.<h:br/><h:br/> The interfaces that need to be evaluated are characterized through the information needed to perform the assurance activities listed, rather than as an independent, abstract list. <evalactionlabel title="Developer action elements:"/>
+          The functional specification describes the Target Security Functions Interfaces (TSFIs). It is not necessary to have a formal or complete specification of these interfaces. Additionally, because <abbr linkend="TOE"/>s conforming to this <abbr linkend="PP"/> will necessarily have interfaces to the Operational Environment that are not directly invokable by <abbr linkend="TOE"/> users, there is little point specifying that such interfaces be described in and of themselves since only indirect testing of such interfaces may be possible. For this <abbr linkend="PP"/>, the activities for this family should focus on understanding the interfaces presented in the <abbr linkend="TSS"/> in response to the functional requirements and the interfaces presented in the AGD documentation. No additional "functional specification" documentation is necessary to satisfy the evaluation activities specified.<h:br/><h:br/> The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list. <evalactionlabel title="Developer action elements:"/>
             <a-element id="ADV_FSP.1.1D">
               <title>The developer shall provide a functional specification.</title>
             </a-element>
             <a-element id="ADV_FSP.1.2D">
               <title>The developer shall provide a tracing from the functional specification to the <abbr linkend="SFR"/>s.</title>
-              <note role="application">As indicated in the introduction to this section, the functional specification is comprised of the information contained in the AGD_OPE and AGD_PRE documentation. The developer may reference a website accessible to application developers and the evaluator. The assurance activities in the functional requirements point to evidence that should exist in the documentation and <abbr linkend="TSS"/> section; since these are directly associated with the <abbr linkend="SFR"/>s, the tracing in element ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary. </note>
+              <note role="application">As indicated in the introduction to this section, the functional specification is comprised of the information contained in the AGD_OPE and AGD_PRE documentation. The developer may reference a website accessible to application developers and the evaluator. The evaluation activities in the functional requirements point to evidence that should exist in the documentation and <abbr linkend="TSS"/> section; since these are directly associated with the <abbr linkend="SFR"/>s, the tracing in element ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary. </note>
             </a-element>          
           <evalactionlabel title="Content and presentation elements:"/>
             <a-element id="ADV_FSP.1.1C">
@@ -4371,7 +4374,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             <a-element id="ADV_FSP.1.2E">
               <title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of the <abbr linkend="SFR"/>s.</title>
               <aactivity>
-                There are no specific assurance activities associated with these <abbr linkend="SAR"/>s, except ensuring the information is provided. The functional specification documentation is provided to support the evaluation activities described in Section 5 and the relevant appendices, and other activities described for AGD, ATE, and AVA <abbr linkend="SAR"/>s. The requirements on the content of the functional specification information is implicitly assessed by virtue of the other assurance activities being performed; if the evaluator is unable to perform an activity because there is insufficient interface information, then an adequate functional specification has not been provided.
+                There are no specific evaluation activities associated with these <abbr linkend="SAR"/>s, except ensuring the information is provided. The functional specification documentation is provided to support the evaluation activities described in Section 5 and the relevant appendices, and other activities described for AGD, ATE, and AVA <abbr linkend="SAR"/>s. The requirements on the content of the functional specification information is implicitly assessed by virtue of the other evaluation activities being performed; if the evaluator is unable to perform an activity because there is insufficient interface information, then an adequate functional specification has not been provided.
               </aactivity>
             </a-element>          
         </a-component>
@@ -4384,14 +4387,14 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         <h:li>instructions to successfully install the <abbr linkend="TSF"/> in that environment</h:li>
         <h:li>instructions to manage the security of the <abbr linkend="TSF"/> as a product and as a component of the larger operational environment</h:li>
         <h:li>instructions to provide a protected administrative capability</h:li>
-      </h:ul> Guidance pertaining to particular security functionality must also be provided; requirements on such guidance are contained in the assurance activities specified with each requirement. <subsection id="agd_ope"
+      </h:ul> Guidance pertaining to particular security functionality must also be provided; requirements on such guidance are contained in the evaluation activities specified with each requirement. <subsection id="agd_ope"
         title="Operational User Guidance (AGD_OPE.1)">
         <a-component id="agd_ope.1" name="Operational User Guidance (AGD_OPE.1)">
           <evalactionlabel title="Developer action elements:"/>
             <a-element id="AGD_OPE.1.1D">
               <title>The developer shall provide operational user guidance.</title>
               <note role="application">The operational user guidance does not have to be contained in a single document. Guidance to users, administrators and application developers can be spread among documents or web pages. Where appropriate, the guidance documentation is expressed in the eXtensible Configuration Checklist Description Format (XCCDF) to support security automation.<h:br/><h:br/> 
-                Rather than repeat information here, the developer should review the assurance activities for this component to ascertain the specifics of the guidance that the evaluator will be checking for. This will provide the necessary information for the preparation of acceptable guidance. </note>
+                Rather than repeat information here, the developer should review the evaluation activities for this component to ascertain the specifics of the guidance that the evaluator will be checking for. This will provide the necessary information for the preparation of acceptable guidance. </note>
             </a-element>
           <evalactionlabel title="Content and presentation elements:"/>
             <a-element id="AGD_OPE.1.1C">
@@ -4420,7 +4423,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             <a-element id="AGD_OPE.1.1E">
               <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
               <aactivity> 
-                Some of the contents of the operational guidance will be verified by the assurance activities in Sections 4.2, 4.3, and 4.4and evaluation of the <abbr linkend="TOE"/> according to the <abbr linkend="CEM"/>. The following additional information is also required.<h:br/><h:br/> If cryptographic functions are provided by the <abbr linkend="TOE"/>, the operational guidance shall contain instructions for configuring the cryptographic engine associated with the evaluated configuration of the <abbr linkend="TOE"/>. It shall provide a warning to the administrator that use of other cryptographic engines was not evaluated nor tested during the <abbr linkend="CC"/> evaluation of the <abbr linkend="TOE"/>.<h:br/><h:br/> The documentation must describe the process for verifying updates to the <abbr linkend="TOE"/> by verifying a digital signature - this may be done by the <abbr linkend="TOE"/> or the underlying platform. The evaluator shall verify that this process includes the following steps:<h:br/><h:br/> Instructions for obtaining the update itself. This should include instructions for making the update accessible to the <abbr linkend="TOE"/> (e.g., placement in a specific directory).<h:br/><h:br/> Instructions for initiating the update process, as well as discerning whether the process was successful or unsuccessful. This includes generation of the hash/digital signature.<h:br/><h:br/> The <abbr linkend="TOE"/> will likely contain security functionality that does not fall in the scope of evaluation under this <abbr linkend="PP"/>. The operational guidance shall make it clear to an administrator which security functionality is covered by the evaluation activities. 
+                Some of the contents of the operational guidance will be verified by the evaluation activities in Sections 4.2, 4.3, and 4.4and evaluation of the <abbr linkend="TOE"/> according to the <abbr linkend="CEM"/>. The following additional information is also required.<h:br/><h:br/> If cryptographic functions are provided by the <abbr linkend="TOE"/>, the operational guidance shall contain instructions for configuring the cryptographic engine associated with the evaluated configuration of the <abbr linkend="TOE"/>. It shall provide a warning to the administrator that use of other cryptographic engines was not evaluated nor tested during the <abbr linkend="CC"/> evaluation of the <abbr linkend="TOE"/>.<h:br/><h:br/> The documentation must describe the process for verifying updates to the <abbr linkend="TOE"/> by verifying a digital signature - this may be done by the <abbr linkend="TOE"/> or the underlying platform. The evaluator shall verify that this process includes the following steps:<h:br/><h:br/> Instructions for obtaining the update itself. This should include instructions for making the update accessible to the <abbr linkend="TOE"/> (e.g., placement in a specific directory).<h:br/><h:br/> Instructions for initiating the update process, as well as discerning whether the process was successful or unsuccessful. This includes generation of the hash/digital signature.<h:br/><h:br/> The <abbr linkend="TOE"/> will likely contain security functionality that does not fall in the scope of evaluation under this <abbr linkend="PP"/>. The operational guidance shall make it clear to an administrator which security functionality is covered by the evaluation activities. 
               </aactivity>
             </a-element>          
         </a-component>
@@ -4430,7 +4433,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
           <evalactionlabel title="Developer action elements:"/>
             <a-element id="AGD_PRE.1.1D">
               <title>The developer shall provide the <abbr linkend="TOE"/>, including its preparative procedures.</title>
-              <note role="application">As with the operational guidance, the developer should look to the assurance activities to determine the required content with respect to preparative procedures.</note>
+              <note role="application">As with the operational guidance, the developer should look to the evaluation activities to determine the required content with respect to preparative procedures.</note>
             </a-element>          
           <evalactionlabel title="Content and presentation elements:"/>
             <a-element id="AGD_PRE.1.1C">
@@ -4477,7 +4480,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
       </subsection>
       <subsection id="alc_cms" title="TOE CM Coverage (ALC_CMS.1)">
         <a-component id="alc_cms.1" name="TOE CM Coverage (ALC_CMS.1)">
-          Given the scope of the <abbr linkend="TOE"/> and its associated evaluation evidence requirements, this component's assurance activities are covered by the assurance activities listed for ALC_CMC.1. 
+          Given the scope of the <abbr linkend="TOE"/> and its associated evaluation evidence requirements, this component's evaluation activities are covered by the evaluation activities listed for ALC_CMC.1. 
           <evalactionlabel title="Developer action elements:"/>
             <a-element id="alc_cms.1.1d">
               <title>The developer shall provide a configuration list for the <abbr linkend="TOE"/>.</title>
@@ -4493,7 +4496,10 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             <a-element id="alc_cms.1.1e">
               <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
               <aactivity>The "evaluation evidence required by the <abbr linkend="SAR"/>s" in this
-                  <abbr linkend="PP"/> is limited to the information in the <abbr linkend="ST"/> coupled with the guidance provided to administrators and users under the AGD requirements. By ensuring that the <abbr linkend="TOE"/> is specifically identified and that this identification is consistent in the <abbr linkend="ST"/> and in the AGD guidance (as done in the evaluation activity for ALC_CMC.1), the evaluator implicitly confirms the information required by this component.<h:br/><h:br/> Life-cycle support is targeted aspects of the developer's life-cycle and instructions to providers of applications for the developer's devices, rather than an in-depth examination of the <abbr linkend="TSF"/> manufacturer's development and configuration management process. This is not meant to diminish the critical role that a developer's practices play in contributing to the overall trustworthiness of a product; rather, it's a reflection on the information to be made available for evaluation.<h:br/><h:br/> The evaluator shall ensure that the developer has identified (in public-facing development documentation for their platform) one or more development environments appropriate for use in developing applications for the developer's platform. For each of these development environments, the developer shall provide information on how to configure the environment to ensure that buffer overflow protection mechanisms in the environment(s) are invoked (e.g., compiler flags). The evaluator shall ensure that this documentation also includes an indication of whether such protections are on by default, or have to be specifically enabled.<h:br/><h:br/> The evaluator shall ensure that the <abbr linkend="TSF"/> is uniquely identified (with respect to other products from the <abbr linkend="TSF"/> vendor), and that documentation provided by the developer in association with the requirements in the <abbr linkend="ST"/> is associated with the <abbr linkend="TSF"/> using this unique identification.<h:br/><h:br/>
+                  <abbr linkend="PP"/> is limited to the information in the <abbr linkend="ST"/> coupled with the guidance provided to administrators and users under the AGD requirements. By ensuring that the <abbr linkend="TOE"/> is specifically identified and that this identification is consistent in the <abbr linkend="ST"/> and in the AGD guidance (as done in the evaluation activity for ALC_CMC.1), the evaluator implicitly confirms the information required by this component.<h:br/><h:br/> 
+                Life-cycle support is targeted aspects of the developer's life-cycle and instructions to providers of applications for the developer's devices, rather than an in-depth examination of the <abbr linkend="TSF"/> manufacturer's development and configuration management process. This is not meant to diminish the critical role that a developer's practices play in contributing to the overall trustworthiness of a product; rather, it's a reflection on the information to be made available for evaluation.<h:br/><h:br/> 
+                <!-- TODO:Is this necessary?: The evaluator shall ensure that the developer has identified (in public-facing development documentation for their platform) one or more development environments appropriate for use in developing applications for the developer's platform. For each of these development environments, the developer shall provide information on how to configure the environment to ensure that buffer overflow protection mechanisms in the environment(s) are invoked (e.g., compiler flags). The evaluator shall ensure that this documentation also includes an indication of whether such protections are on by default, or have to be specifically enabled.<h:br/><h:br/> -->
+                The evaluator shall ensure that the <abbr linkend="TSF"/> is uniquely identified (with respect to other products from the <abbr linkend="TSF"/> vendor), and that documentation provided by the developer in association with the requirements in the <abbr linkend="ST"/> is associated with the <abbr linkend="TSF"/> using this unique identification.<h:br/><h:br/>
               </aactivity>
             </a-element>          
         </a-component>
@@ -4503,7 +4509,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         Testing is specified for functional aspects of the system as well as aspects that take advantage of design or implementation weaknesses. The former is done through the ATE_IND family, while the latter is through the AVA_VAN family. At the assurance level specified in this <abbr linkend="PP"/>, testing is based on advertised functionality and interfaces with dependency on the availability of design information. One of the primary outputs of the evaluation process is the test report as specified in the following requirements.<h:br/><h:br/> Since many of the APIs are not exposed at the user interface (e.g., touch screen), the ability to stimulate the necessary interfaces requires a developer's test environment. This test environment will allow the evaluator, for example, to access APIs and view file system information that is not available on consumer mobile devices. 
       <subsection id="ate_ind" title="Independent Testing - Conformance (ATE_IND)">
         <a-component id="ate_ind.1" name="Independent Testing - Conformance (ATE_IND.1)"> 
-          Testing is performed to confirm the functionality described in the <abbr linkend="TSS"/> as well as the administrative (including configuration and operational) documentation provided. The focus of the testing is to confirm that the requirements specified in Sections 5.3, and 5.4 are being met, although some additional testing is specified for <abbr linkend="SAR"/>s in Section 6. The Assurance Activities identify the additional testing activities associated with these components. The evaluator produces a test report documenting the plan for and results of testing, as well as coverage arguments focused on the platform/<abbr linkend="TOE"/> combinations that are claiming conformance to this <abbr linkend="PP"/>.
+          Testing is performed to confirm the functionality described in the <abbr linkend="TSS"/> as well as the administrative (including configuration and operational) documentation provided. The focus of the testing is to confirm that the requirements specified in Sections 5.3, and 5.4 are being met, although some additional testing is specified for <abbr linkend="SAR"/>s in Section 6. The Evaluation Activities identify the additional testing activities associated with these components. The evaluator produces a test report documenting the plan for and results of testing, as well as coverage arguments focused on the platform/<abbr linkend="TOE"/> combinations that are claiming conformance to this <abbr linkend="PP"/>.
             <evalactionlabel title="Developer action elements:"/>
             <a-element id="ate_ind.1.1d">
               <title>The developer shall provide the <abbr linkend="TOE"/> for testing.</title>
@@ -4518,7 +4524,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </a-element>
             <a-element id="ate_ind.1.2e">
               <title>The evaluator shall test a subset of the <abbr linkend="TSF"/> to confirm that the <abbr linkend="TSF"/> operates as specified.</title>
-              <aactivity> The evaluator shall prepare a test plan and report documenting the testing aspects of the system. The test plan covers all of the testing actions contained in the <abbr linkend="CEM"/> and the body of this <abbr linkend="PP"/>'s Assurance Activities. While it is not necessary to have one test case per test listed in an evaluation activity, the evaluator must document in the test plan that each applicable testing requirement in the <abbr linkend="ST"/> is covered.<h:br/><h:br/> 
+              <aactivity> The evaluator shall prepare a test plan and report documenting the testing aspects of the system. The test plan covers all of the testing actions contained in the <abbr linkend="CEM"/> and the body of this <abbr linkend="PP"/>'s Evaluation Activities. While it is not necessary to have one test case per test listed in an evaluation activity, the evaluator must document in the test plan that each applicable testing requirement in the <abbr linkend="ST"/> is covered.<h:br/><h:br/> 
                 The test plan identifies the platforms to be tested, and for those platforms not included in the test plan but included in the <abbr linkend="ST"/>, the test plan provides a justification for not testing the platforms. This justification must address the differences between the tested platforms and the untested platforms, and make an argument that the differences do not affect the testing to be performed. It is not sufficient to merely assert that the differences have no affect; rationale must be provided. If all platforms claimed in the <abbr linkend="ST"/> are tested, then no rationale is necessary.<h:br/><h:br/> 
                 The test plan describes the composition of each platform to be tested, and any setup that is necessary beyond what is contained in the  part of a test or as a standard pre-test condition. This may include special test drivers or tools. For each driver or tool, an argument (not just an assertion) should be provided that the driver or tool will not adversely affect the performance of the functionality by the <abbr linkend="TOE"/> and its platform. This also includes the configuration of the cryptographic engine to be used. The cryptographic algorithms implemented by this engine are those specified by this <abbr linkend="PP"/> and used by the cryptographic protocols being evaluated (IPsec, TLS/HTTPS, SSH).<h:br/><h:br/> 
                 The test plan identifies high-level test objectives as well as the test procedures to be followed to achieve those objectives. These procedures include expected results. The test report (which could just be an annotated version of the test plan) details the activities that took place when the test procedures were executed, and includes the actual results of the tests. This shall be a cumulative account, so if there was a test run that resulted in a failure; a fix installed; and then a successful re-run of the test, the report would show a "fail" and "pass" result (and the supporting details), and not just the "pass" result.<h:br/><h:br/>
