@@ -508,7 +508,12 @@ DONE:
         <h:td><linkref linkend="FIA_X509_EXT.4"/></h:td>
         <h:td>Alternate X.509 Enrollment</h:td>
         <h:td>Feature Dependent</h:td> <!-- Needed for Agent -->
-      </h:tr>      
+      </h:tr>
+      <h:tr>
+        <h:td><linkref linkend="FIA_X509_EXT.5"/></h:td>
+        <h:td>X.509 Unique Certificate</h:td>
+        <h:td>One</h:td> <!-- Needed for Agent -->
+      </h:tr>       
       <h:tr>
         <h:td><linkref linkend="FMT_MOF.1(1)"/></h:td>
         <h:td>Management of functions behaviour</h:td>
@@ -826,6 +831,7 @@ DONE:
           <component-refer ref="FIA_X509_EXT.2"/>
           <component-refer ref="FIA_X509_EXT.3"/>
           <component-refer ref="FIA_X509_EXT.4"/>
+          <component-refer ref="FIA_X509_EXT.5"/>
           <component-refer ref="FPT_ITT.1(1)"/>
           <component-refer ref="FPT_ITT.1(2)"/>
           <component-refer ref="FTP_ITC_EXT.1"/>
@@ -1272,6 +1278,11 @@ DONE:
                       Content of Certificate Request Message.</h:TD></h:TR>
                     <h:TR><h:TD>Success or failure of enrollment.</h:TD><h:TD>Issuer and Subject name of added certificate or reason for failure.</h:TD></h:TR>
                     <h:TR><h:TD>Update of <abbr linkend="EST"/> Trust Anchor Database.</h:TD><h:TD>Subject name of added Root CA.</h:TD>
+                  </h:TR>
+                  <h:TR>
+                    <h:TD><linkref linkend="FIA_X509_EXT.5"/> (man)</h:TD>
+                    <h:TD>None.</h:TD>
+                    <h:TD></h:TD>
                   </h:TR>
                   <h:TR>
                     <h:TD rowspan="2"><linkref linkend="FMT_MOF.1(1)"/> (man)</h:TD>
@@ -2968,29 +2979,6 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 		</Tests>
             </aactivity>
           </f-element>
-          <f-element id="fia_x509_ext.2.3">
-            <title>The TSF shall <selectables>
-              <selectable>invoke platform-provided functionality</selectable>
-              <selectable>implement functionality</selectable>
-              </selectables> to require a unique certificate for each client device.</title>
-            <note role="application">Each client device will have a unique X.509v3 certificate for use by the <abbr linkend="MDM"/> Agent; the certificate is not to be reused among clients. This requirement is to ensure that the <abbr linkend="MDM"/> Server either provides a unique certificate or verifies that each client certificate is unique.</note>
-            <aactivity>              
-              <TSS> If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
-              If "implement functionality" is selected then the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the methods to ensure that each client utilizes a unique certificate. <h:br/><h:br/>            </TSS>
-              <Tests>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<h:br/><h:br/>
-              The evaluator shall utilize appropriate combinations of specialized operational environment and development tools (debuggers, simulators, etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds as needed to perform this test.<h:br/><h:br/> 
-              One of the following tests must be performed depending on whether the MDM agent allows for the loading of certificates.
-              <testlist>              
-                <test>[conditional] If the MDM agent allows for the loading of certificates:<h:br/>
-                  The evaluator shall initiate communications between the <abbr linkend="MDM"/> Server and a client device over a trusted channel established using the device's unique certificate, verifying that a successful communication channel was established. The evaluator shall then attempt to initiate communications between the <abbr linkend="MDM"/> Server and a second client device over a trusted channel established using the unique certificate from the first device, verifying that the <abbr linkend="MDM"/> Server rejects this attempt at communication.
-                </test>
-                <test>[conditional] If the MDM agent does not allow for the loading of certificates:<h:br/>
-                  The evaluator shall concurrently enroll 10 devices and ensure that the client certificate for each is unique, per the methods described in the TSS. 
-                </test>            
-              </testlist>
-	      </Tests>
-            </aactivity>
-          </f-element>
         </f-component> 
         <f-component id="fia_x509_ext.3" name="X.509 Enrollment" status="objective">
           <f-element id="fia_x509_ext.3.1">
@@ -3108,7 +3096,32 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 		  </Tests>
             </aactivity>
           </f-element>
-        </f-component>  
+        </f-component> 
+        <f-component id="fia_x509_ext.5" name="X.509 Unique Certificate">
+          <f-element id="fia_x509_ext.5.1">
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality</selectable>
+              <selectable>implement functionality</selectable>
+            </selectables> to require a unique certificate for each client device.</title>
+            <note role="application">Each client device will have a unique X.509v3 certificate for use by the <abbr linkend="MDM"/> Agent; the certificate is not to be reused among clients. This requirement is to ensure that the <abbr linkend="MDM"/> Server either provides a unique certificate or verifies that each client certificate is unique.</note>
+            <aactivity>              
+              <TSS> If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+                If "implement functionality" is selected then the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the methods to ensure that each client utilizes a unique certificate. <h:br/><h:br/>            </TSS>
+              <Tests>For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>:<h:br/><h:br/>
+                The evaluator shall utilize appropriate combinations of specialized operational environment and development tools (debuggers, simulators, etc.) for the <abbr linkend="TOE"/> and instrumented <abbr linkend="TOE"/> builds as needed to perform this test.<h:br/><h:br/> 
+                One of the following tests must be performed depending on whether the MDM agent allows for the loading of certificates.
+                <testlist>              
+                  <test>[conditional] If the MDM agent allows for the loading of certificates:<h:br/>
+                    The evaluator shall initiate communications between the <abbr linkend="MDM"/> Server and a client device over a trusted channel established using the device's unique certificate, verifying that a successful communication channel was established. The evaluator shall then attempt to initiate communications between the <abbr linkend="MDM"/> Server and a second client device over a trusted channel established using the unique certificate from the first device, verifying that the <abbr linkend="MDM"/> Server rejects this attempt at communication.
+                  </test>
+                  <test>[conditional] If the MDM agent does not allow for the loading of certificates:<h:br/>
+                    The evaluator shall concurrently enroll 10 devices and ensure that the client certificate for each is unique, per the methods described in the TSS. 
+                  </test>            
+                </testlist>
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
       </subsection>
       <subsection id="fmt" title="Security Management (FMT)">
         <f-component id="fmt_mof.1(1)" name="Management of Functions Behavior">
