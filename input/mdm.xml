@@ -24,7 +24,7 @@ NOTES:
 
 DONE:
 - map new SFR's to o.things
-- Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(4), fmt_smf.1(3)
+- Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(3), fmt_smf.1(3)
 - Mas server - Need to check references to MAS
 - edit fau_gen to make it applicable to any component of a distributed toe
 - have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
@@ -525,7 +525,7 @@ DONE:
         <h:td>Feature Dependent</h:td> 
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FMT_MOF.1(4)"/></h:td>
+        <h:td><linkref linkend="FMT_MOF.1(3)"/></h:td>
         <h:td>Management of Functions in (MAS Server Downloads)</h:td>
         <h:td>Feature Dependent</h:td> 
       </h:tr>
@@ -797,7 +797,7 @@ DONE:
           <component-refer ref="FIA_ENR_EXT.1"/>
           <component-refer ref="FMT_MOF.1(1)"/>
           <component-refer ref="FMT_MOF.1(2)"/>
-          <component-refer ref="FMT_MOF.1(4)"/>
+          <component-refer ref="FMT_MOF.1(3)"/>
           <component-refer ref="FMT_SAE_EXT.1"/>
           <component-refer ref="FMT_SMF.1(1)"/>
           <component-refer ref="FMT_SMF.1(2)"/>
@@ -857,7 +857,7 @@ DONE:
           <component-refer ref="FIA_UAU_EXT.4(2)"/>
           <component-refer ref="FMT_MOF.1(1)"/>
           <component-refer ref="FMT_MOF.1(2)"/>
-          <component-refer ref="FMT_MOF.1(4)"/>
+          <component-refer ref="FMT_MOF.1(3)"/>
           <component-refer ref="FMT_POL_EXT.1"/>
           <component-refer ref="FMT_SMF.1(1)"/>
           <component-refer ref="FMT_SMF.1(2)"/>
@@ -1296,7 +1296,7 @@ DONE:
                     <h:TD>Identity of user.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FMT_MOF.1(4)"/> (sel)</h:TD>
+                    <h:TD><linkref linkend="FMT_MOF.1(3)"/> (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -1998,7 +1998,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component> 
         <f-component id="fcs_cop.1(1)" name="Cryptographic Operation (Confidentiality Algorithms)">
           <f-element id="fcs_cop.1.1(1)">
-            <title>Refinement: The TSF shall <selectables>
+            <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable></selectables> 
               to perform encryption/decryption in accordance with a specified cryptographic algorithm:
@@ -2653,7 +2653,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 <selectable><assignable>other features</assignable></selectable>
                 <selectable>no other features</selectable>
               </selectables>. </title>
-            <note role="application"> This requirement is designed to permit the enterprise to restrict users' enrollment of devices.<h:br/><h:br/> In the next version of this Protection Profile, a unique device ID will be required to limit the user's enrollment. The unique device ID can be the IMEI or an ID specific to a particular platform. </note>         
+            <note role="application"> This requirement is designed to permit the enterprise to restrict users' enrollment of devices. A unique device ID is required to limit the user's enrollment. The unique device ID can be the IMEI or an ID specific to a particular platform. </note>         
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it implements a policy to limit the user's enrollment of devices.<h:br/><h:br/></TSS>
               <Guidance>The evaluator shall ensure that the administrative guidance describes the method(s) of restricting user enrollment and that it instructs the administrator how to configure the restrictions.<h:br/><h:br/>
@@ -3126,7 +3126,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
       <subsection id="fmt" title="Security Management (FMT)">
         <f-component id="fmt_mof.1(1)" name="Management of Functions Behavior">
           <f-element id="fmt_mof.1.1(1)">
-            <title>Refinement: The TSF shall restrict the ability to perform the functions <h:ul>
+            <title><h:b>Refinement:</h:b> The TSF shall restrict the ability to perform the functions <h:ul>
                 <h:li>listed in <linkref linkend="FMT_SMF.1(1)"/></h:li>
                 <h:li>enable, disable, and modify policies listed in <linkref linkend="FMT_SMF.1(1)"/></h:li>
                 <h:li>listed in <linkref linkend="FMT_SMF.1(2)"/></h:li>
@@ -3136,7 +3136,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </selectables></h:li>
               </h:ul> to [authorized administrators].</title>
             <note role="application">This requirement outlines the functions that administrators will have the power to enable, disable, modify, and monitor functions and policies listed in <linkref linkend="FMT_SMF.1(1)"/>. It also includes functions necessary to maintain and configure the <abbr linkend="MDM"/> Server itself.<h:br/><h:br/>
-              "Enable, disable and modify policies listed in <linkref linkend="FMT_SMF.1(3)"/>" must be selected if the <abbr linkend="TOE"/> includes MAS functionality and <linkref linkend="FMT_SMF.1(3)"/>, <linkref linkend="FAU_GEN.1(2)"/>, <linkref linkend="FMT_MOF.1(4)"/>, <linkref linkend="FMT_SMR.1(2)"/> must be included in the <abbr linkend="ST"/>.          
+              "Enable, disable and modify policies listed in <linkref linkend="FMT_SMF.1(3)"/>" must be selected if the <abbr linkend="TOE"/> includes MAS functionality and <linkref linkend="FMT_SMF.1(3)"/>, <linkref linkend="FAU_GEN.1(2)"/>, <linkref linkend="FMT_MOF.1(3)"/>, <linkref linkend="FMT_SMR.1(2)"/> must be included in the <abbr linkend="ST"/>.          
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> and user documents to ensure that they describe what security management functions are restricted to the administrator and what actions can be taken for each management function. The evaluator shall verify that the security management functions are restricted to authorized administrators and the administrator is only able to take the actions as described in the user documents.<h:br/><h:br/></TSS>
@@ -3151,7 +3151,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component>
         <f-component id="fmt_mof.1(2)" name="Management of Functions Behavior (Enrollment)">
           <f-element id="fmt_mof.1.1(2)">
-            <title>Refinement: The <h:b><abbr linkend="MDM"/> Server</h:b> shall restrict the ability to <h:i>[initiate the enrollment process]</h:i> to <h:i>[authorized administrators and MD users]</h:i>.</title>
+            <title><h:b>Refinement:</h:b> The <h:b><abbr linkend="MDM"/> Server</h:b> shall restrict the ability to <h:i>[initiate the enrollment process]</h:i> to <h:i>[authorized administrators and MD users]</h:i>.</title>
             <note role="application">This requirement outlines the enrollment functions that both administrators and MD users may perform. The enrollment actions are identified in the <abbr linkend="TSS"/> as a part of <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/> The authorized administrator does not remotely initiate enrollment of the mobile devices that are in the possession of users but may enroll mobile devices when they are in the possession of the administrator, for example, before distributing the mobile devices to the users. </note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes how unauthorized users are prevented from enrolling in the <abbr linkend="MDM"/> services.<h:br/><h:br/></TSS>
@@ -3159,9 +3159,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fmt_mof.1(4)" name="Management of Functions in (MAS Server Downloads)" status="sel-based">
+        <f-component id="fmt_mof.1(3)" name="Management of Functions in (MAS Server Downloads)" status="sel-based">
           <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
-          <f-element id="fmt_mof.1.1(4)">
+          <f-element id="fmt_mof.1.1(3)">
             <title>The MAS Server shall restrict the ability to download applications, allowing only enrolled mobile devices that are compliant with <abbr linkend="MDM"/> policies and assigned to a user in the application access group to perform this function.</title>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to determine that all methods of initiating an application download or update push are specified.<h:br/><h:br/></TSS>
@@ -3551,7 +3551,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         <f-component id="fmt_smr.1(2)" name="Security Management Roles (MAS Server)" status="sel-based">
           <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
           <f-element id="fmt_smr.1.1(2)">
-            <title>Refinement: The TSF shall additionally maintain the roles enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
+            <title><h:b>Refinement:</h:b> The TSF shall additionally maintain the roles enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
           </f-element>
           <f-element id="fmt_smr.1.2(2)">
             <title>The MAS Server shall be able to associate users with roles.</title>
