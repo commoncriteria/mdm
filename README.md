@@ -16,7 +16,7 @@ A list of products that have passed evaluation against this Protection Profile c
 * [Protection Profile for Mobile Device Management](https://commoncriteria.github.io/pp/mdm/mdm-release.pdf) (pdf)
 
 ## Release Version
-* [Protection Profile for Mobile Device Management](https://www.niap-ccevs.org/Profile/Info.cfm?id=392)
+* [Protection Profile for Mobile Device Management](https://www.niap-ccevs.org/Profile/Info.cfm?PPID=428)
 
 ## Contributing
 
