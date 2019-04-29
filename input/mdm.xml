@@ -1830,8 +1830,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS>
               The evaluator shall ensure that the supported key establishment schemes correspond to the key generation schemes identified in <linkref linkend="FCS_CKM.1.1"/>. If the <abbr linkend="ST"/> specifies more than one scheme, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it identifies the usage for each scheme.<h:br/><h:br/> 
               The evaluator shall ensure that the <abbr linkend="TSS"/> describes how the <abbr linkend="TOE"/> handles decryption errors. In accordance with NIST Special Publication 800-56B, the <abbr linkend="TOE"/> must not reveal the particular error that occurred, either through the contents of any outputted or logged error message or through timing variations. If KTS-OAEP is supported, the evaluator shall create separate contrived ciphertext values that trigger each of the three decryption error checks described in NIST Special Publication 800-56B section 7.2.2.3, ensure that each decryption attempt results in an error, and ensure that any outputted or logged error message is identical for each. If KTS-KEM-KWS is supported, the evaluator shall create separate contrived ciphertext values that trigger each of the three decryption error checks described in NIST Special Publication 800-56B section 7.2.3.3, ensure that each decryption attempt results in an error, and ensure that any outputted or logged error message is identical for each.<h:br/><h:br/>
               If Diffie-Hellman group 14 is selected from FCS_CKM.2.1, the <abbr linkend="TSS"/> shall describe how the implementation meets RFC 3526 Section 3.<h:br/><h:br/>
@@ -2019,9 +2020,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the encryption/decryption functionality is invoked for each mode and key size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
-	      </TSS>
-	      <Tests>
+	      </TSS>	      
               <h:h4>If "implement functionality" is selected:</h:h4>
+              <Tests>
               <testlist><h:b><h:u>AES-CBC Tests</h:u></h:b>
                 <test>AES-CBC Known Answer Tests<h:br/><h:br/> 
                   There are four Known Answer Tests (KATs), described below. In all KATs, the plaintext, ciphertext, and IV values shall be 128-bit blocks. The results from each test may either be obtained by the evaluator directly or by supplying the inputs to the implementer and receiving the results in response. To determine correctness, the evaluator shall compare the resulting values to those obtained by submitting the same inputs to a known good implementation.<h:br/><h:br/> 
@@ -2187,7 +2188,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 AES-KWP authenticated-decryption.
                 </test>
               </testlist>
-	      </Tests>
+              </Tests>
             </aactivity>
           </f-element>
         </f-component> 
@@ -2213,8 +2214,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               strength of the algorithm used (for example, SHA-256 for 128-bit keys).</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the hash functionality is invoked for each digest size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the hash functionality is invoked for each digest size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS>
               The evaluator shall check that the association of the hash function with other
                   <abbr linkend="TSF"/> cryptographic functions (for example, the digital signature
                 verification function) is documented in the <abbr linkend="TSS"/>. The evaluator
@@ -2226,8 +2228,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 length (in bits) of the message to be hashed is divisible by 8. The second mode is
                 the bit-oriented mode. In this mode the <abbr linkend="TSF"/> hashes messages of
                 arbitrary length. As there are different tests for each mode, an indication is given
-                in the following sections for the bit-oriented vs. the byte-oriented testmacs.<h:br/><h:br/>
-		</TSS>
+                in the following sections for the bit-oriented vs. the byte-oriented testmacs.</TSS><h:br/><h:br/>
+              
               <Tests>The evaluator shall perform all of the following tests for each hash algorithm
                 implemented by the <abbr linkend="TSF"/> and used to satisfy the requirements of
                 this <abbr linkend="PP"/>.<h:br/><h:br/> 
@@ -2306,9 +2308,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server;
                 nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part
                 of this evaluation activity).<h:br/><h:br/>
-	      </TSS>
-	      <Tests>
+	      </TSS>	      
                <h:h4>If "implement functionality" is selected:</h:h4>
+              <Tests>
                 <testlist><h:b><h:u>ECDSA Algorithm Tests</h:u></h:b><h:br/><h:br/>
                 <test>ECDSA FIPS 186-4 Signature Generation Test<h:br/><h:br/> For each
                 supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the
@@ -2377,12 +2379,13 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be
                 noted that this may be through a mechanism that is not implemented by the <abbr
                   linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the
-                <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+                <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS>
               The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it specifies
                 the following values used by the HMAC function: key length, hash function used,
-                block size, and output MAC length used.<h:br/><h:br/>
-		</TSS>
+                block size, and output MAC length used.</TSS><h:br/><h:br/>
+		
               <Tests>For each of the supported parameter sets, the evaluator shall compose 15 sets
                 of test data. Each set shall consist of a key and message data. The evaluator shall
                 have the <abbr linkend="TSF"/> generate HMAC tags for these sets of test data. The
@@ -2515,8 +2518,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the IV generation is invoked for each mode selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the IV generation is invoked for each mode selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS>
               The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it details the encryption of user credentials, persistent secrets, and private keys and the generation of the IVs used for that encryption.<h:br/><h:br/></TSS>
               <Tests>The evaluator shall ensure that the generation of IVs for each key encrypted by the same <abbr linkend="KEK"/> meets <ctr-ref refid="iv"/>.
 	      </Tests>
@@ -2539,8 +2543,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the RBG functionality is invoked for each operation they are used for in the <abbr linkend="MDM"/> Server (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
 	      </TSS>
-              <Tests>
 		<h:h4>If "implement functionality" is selected:</h:h4>
+                <Tests>
 		The evaluator shall perform the following tests.<h:br/><h:br/> The evaluator shall perform 15 trials for the RNG implementation. If the RNG is configurable, the evaluator shall perform 15 trials for each configuration. The evaluator shall also confirm that the operational guidance contains appropriate instructions for configuring the RNG  functionality.<h:br/><h:br/> 
               If the RNG has prediction resistance enabled, each trial consists of (1) instantiate DRBG, (2) generate the first block of random bits, (3) generate a second block of random bits, and (4) uninstantiate. The evaluator verifies that the second block of random bits is the expected value. The evaluator shall generate eight input values for each trial. The first is a count (0 - 14). The next three are entropy input, nonce, and personalization string for the instantiate operation. The next two are additional input and entropy input for the first call to generate. The final two are additional input and entropy input for the second call to generate. These values are randomly generated. "generate one block of random bits" means to generate random bits with number of returned bits equal to the Output Block Length (as defined in NIST SP 800-90A).<h:br/><h:br/> 
               If the RNG does not have prediction resistance, each trial consists of (1) instantiate DRBG, (2) generate the first block of random bits (3) reseed, (4) generate a second block of random bits, and (5) uninstantiate. The evaluator verifies that the second block of random bits is the expected value. The evaluator shall generate eight input values for each trial. The first is a count (0 - 14). The next three are entropy input, nonce, and personalization string for the instantiate operation. The fifth value is additional input to the first call to generate. The sixth and seventh are additional input and entropy input to the call to reseed. The final value is additional input to the second generate call.<h:br/><h:br/> 
@@ -2783,8 +2787,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             <note role="application"> <linkref linkend="FIA_X509_EXT.1.1(1)"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS>
               The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br/><h:br/>
 	      </TSS>
               <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least three certificates: the node certificate to be tested, an Intermediate CA, and the self-signed Root CA. 
@@ -2808,10 +2813,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             <note role="application">This requirement applies to certificates that are used and processed by the <abbr linkend="TOE"/> or platform and restricts the certificates that may be added as trusted CA certificates.</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
-	      </TSS>
-              <Tests>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>	      
 		<h:h4>If "implement functionality" is selected:</h:h4>
+                <Tests>
 		The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
               <testlist>
                   <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate does not contain the basicConstraints extension. The validation of the certificate path fails.</test>
@@ -2858,8 +2862,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               This <abbr linkend="SFR"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS>
               The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br/><h:br/>
 	      </TSS>
               <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA. 
@@ -2885,7 +2890,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
 	      </TSS>
-              <Tests><h:h4>If "implement functionality" is selected:</h:h4>
+              <h:h4>If "implement functionality" is selected:</h:h4>
+                <Tests>
               The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
               <testlist>
                 <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate does not contain the basicConstraints extension. The validation of the certificate path fails.</test>
