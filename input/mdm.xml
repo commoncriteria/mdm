@@ -110,10 +110,8 @@ DONE:
           </description></entry>
         <entry><term><abbr title="Common Evaluation Methodology">CEM</abbr></term><description>Common Evaluation Methodology for Information Technology Security Evaluation. </description></entry>
 		<entry><term><abbr title="Extended Package">EP</abbr></term><description>An implementation-independent set of security requirements for a category of products, which extends those in a Protection Profile.</description></entry>
-        <entry><term><abbr title="Protection Profile Module">PP-Module</abbr></term><description>An implementation-independent statement of security needs for a <abbr linkend="TOE"/> type complementary to one or more Base Protection Profiles..</description></entry>
-        <entry><term><abbr title="Protection Profile">PP</abbr></term><description>An
-            implementation-independent set of security requirements for a category of products.
-          </description></entry>
+        <entry><term><abbr title="Protection Profile">PP</abbr></term><description>An implementation-independent set of security requirements for a category of products. </description></entry>
+       <entry><term><abbr title="Protection Profile Module">PP-Module</abbr></term><description>An implementation-independent statement of security needs for a <abbr linkend="TOE"/> type complementary to one or more Base Protection Profiles..</description></entry>
         <entry><term><abbr title="Security Assurance Requirement">SAR</abbr></term><description>A
             requirement for how the <abbr linkend="TOE"/>s proper implementation of the <abbr
               linkend="SFR"/>s is verified by an evaluator. </description></entry>
@@ -203,9 +201,9 @@ DONE:
         The <h:b><abbr linkend="MDM"/> Agent</h:b> establishes a secure connection back to the
           <abbr linkend="MDM"/> Server controlled by an enterprise administrator and configures the
         mobile device per the administrator's policies. The <abbr
-          linkend="MDM"/> Agent is addressed in the Module for <abbr linkend="MDM"/>
+          linkend="MDM"/> Agent is addressed in the <abbr linkend="PP-Module"/> for <abbr linkend="MDM"/>
         Agents. If the <abbr linkend="MDM"/> Agent is installed on a mobile device as an application
-        developed by the <abbr linkend="MDM"/> developer, the <abbr linkend="Module"/> extends this
+        developed by the <abbr linkend="MDM"/> developer, the <abbr linkend="PP-Module"/> extends this
           <abbr linkend="PP"/> and is included in the <abbr linkend="TOE"/>. In this case, the <abbr
           linkend="TOE"/> security functionality specified in this <abbr linkend="PP"/> must be
         addressed by the <abbr linkend="MDM"/> Agent in addition to the <abbr linkend="MDM"/>
@@ -288,10 +286,10 @@ DONE:
         <description>This <abbr linkend="PP"/> is TLS Package Version 1.1 Conformant.</description>
       </cclaim>
       <cclaim id="Module Claim">
-        <description>The following <abbr linkend="PP"/>s and PP-Modules are allowed to be specified in a PP-Configuration with this <abbr linkend="PP"/>.
+        <description>The following <abbr linkend="PP"/>s and <abbr linkend="PP-Module"/>s are allowed to be specified in a PP-Configuration with this <abbr linkend="PP"/>.
           <h:ul>
-            <h:li>PP-Module for MDM Agent, Version 1.0<!-- C ToDo: add date/update --></h:li>
-            <h:li>PP-Module for VPN Client, Version 2.1</h:li>
+            <h:li><abbr linkend="PP-Module"/> for MDM Agent, Version 1.0<!-- C ToDo: add date/update --></h:li>
+            <h:li><abbr linkend="PP-Module"/> for VPN Client, Version 2.1</h:li>
             <h:li>Protection Profile for Mobile Device Fundamentals, Version 3.1 </h:li>
             <h:li>Protection Profile for Application Software, Version 1.3 <!-- C ToDo: add date/update --></h:li>
           </h:ul>
@@ -911,7 +909,7 @@ DONE:
     For a distributed <abbr linkend="TOE"/>, the <abbr linkend="ST"/> author should reference <ctr-ref refid="distTOE"/> for guidance on how each <abbr linkend="SFR"/> should be met. The table details whether <abbr linkend="SFR"/>s should be met by all <abbr linkend="TOE"/> components, by at least one <abbr linkend="TOE"/> component or whether they are dependent upon the feature being implemented by the <abbr linkend="TOE"/> component. The <abbr linkend="ST"/> for a distributed <abbr linkend="TOE"/> must include a mapping of <abbr linkend="SFR"/>s to each of the components of the <abbr linkend="TOE"/>. (Note that this deliverable is examined as part of the ASE_TSS.1 and AVA_VAN.1 Evaluation Activities.)
     <section id="teaa" title="Test Environment for Evaluation Activities"> 
       As described in the evaluation activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents and <abbr linkend="MD"/> platforms with which an <abbr linkend="MDM"/> Server operates. The identified evaluation activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent and platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/>      
-      The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the Module for Mobile Device Management Agents. </section>
+      The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the <abbr linkend="PP-Module"/> for Mobile Device Management Agents. </section>
     <section id="tsfr" title="TOE Security Functional Requirements">
       <subsection id="fau" title="Security Audit (FAU)">
         <f-component id="fau_alt_ext.1" name="Server Alerts">
@@ -1446,7 +1444,7 @@ DONE:
         <f-component id="fau_net_ext.1" name="Network Reachability Review">
           <f-element id="fau_net_ext.1.1">
             <title>The <abbr linkend="TSF"/> shall provide authorized administrators with the capability to read the network connectivity status of an enrolled agent.</title>
-            <note role="application"> The <abbr linkend="MDM"/> Server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr linkend="Module"/>. This status may be determined by sending an update request from the <abbr linkend="MDM"/> Server which the Agent is required to respond to or by using scheduled periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
+            <note role="application"> The <abbr linkend="MDM"/> Server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr linkend="PP-Module"/>. This status may be determined by sending an update request from the <abbr linkend="MDM"/> Server which the Agent is required to respond to or by using scheduled periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
             <aactivity>
               <TSS> The evaluator ensures that the <abbr linkend="TSS"/> describes how reachability events are implemented, for each supported mobile platform. The evaluator verifies that this description clearly indicates who (<abbr linkend="MDM"/> Agent or <abbr linkend="MDM"/> Server) initiates reachability events.<h:br/><h:br/></TSS>
               <Guidance> The evaluator shall verify that the guidance instructs administrators on the method of determining the network connectivity status of an enrolled agent.<h:br/><h:br/></Guidance>
@@ -2920,7 +2918,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 <selectable>no additional uses</selectable>
               </selectables></selectable>                
               <selectable>implement functionality to use X.509v3 certificates as defined by RFC 5280 to support authentication for <selectables linebreak="yes">
-                <selectable>IPsec as defined in the PP-Module for VPN Client</selectable>
+                <selectable>IPsec as defined in the <abbr linkend="PP-Module"/> for VPN Client</selectable>
                 <selectable>HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
                 <selectable>TLS as defined in the Package for Transport Layer Security</selectable>
                 <selectable>DTLS as defined in the Package for Transport Layer Security</selectable>
@@ -3291,7 +3289,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                     <h:li>ability to specify security type</h:li>
                     <h:li>ability to specify authentication protocol</h:li>
                     <h:li>specify the client credentials to be used for authentication</h:li>
-                    <h:li><assignable>any additional WLAN management functions</assignable> (WLAN Client <abbr linkend="Module"/> Function 1)</h:li>
+                      <h:li><assignable>any additional WLAN management functions</assignable> (WLAN Client <abbr linkend="PP-Module"/> Function 1)</h:li>
                   </h:ol>
                 </h:li>
                 <h:li>
@@ -3608,7 +3606,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 <selectable id="ITT1_SSH_INVOKE">SSH</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITT1_IPSEC_IMPLEMENT">IPsec as defined in the PP-Module for VPN Client</selectable>
+                <selectable id="ITT1_IPSEC_IMPLEMENT">IPsec as defined in the <abbr linkend="PP-Module"/> for VPN Client</selectable>
                 <selectable id="ITT1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
                 <selectable id="ITT1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
                 <selectable id="ITT1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
@@ -3616,7 +3614,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </selectables></selectable></selectables> to protect all data from [disclosure and modification] when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined in the protocol chosen in the second selection.<h:br/><h:br/> 
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(2)"/> should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>              
-              If "IPsec as defined in the PP-Module for VPN Client" is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
+              If "IPsec as defined in the <abbr linkend="PP-Module"/> for VPN Client" is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client <abbr linkend="PP-Module"/>.<h:br/><h:br/>
               If the <abbr linkend="ST"/> author selects "SSH as defined in the Extended Package for Secure Shell", the <abbr linkend="TSF"/> must be validated against the EP for Secure Shell with the <abbr linkend="MDM"/> <abbr linkend="PP"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/>
               If the <abbr linkend="ST"/> author selects "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security", the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
@@ -3841,7 +3839,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 <selectable id="ITC1_HTTPS_INVOKE">HTTPS</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITC1_IPSEC_IMPLEMENT">IPsec as defined in the PP-Module for VPN Client</selectable>
+                <selectable id="ITC1_IPSEC_IMPLEMENT">IPsec as defined in the <abbr linkend="PP-Module"/> for VPN Client</selectable>
                 <selectable id="ITC1_SSH_IMPLEMENT">SSH as defined in the Extended Package for Secure Shell</selectable>
                 <selectable id="ITC1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</selectable>
                 <selectable id="ITC1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</selectable>
@@ -3871,7 +3869,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               entity does support mutual authentication, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               
               The trusted channel uses IPsec, TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>.<h:br/><h:br/>
-              If "IPsec as defined in the PP-Module for VPN Client" is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
+              If "IPsec as defined in the <abbr linkend="PP-Module"/> for VPN Client" is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client <abbr linkend="PP-Module"/>.<h:br/><h:br/>
               If the <abbr linkend="ST"/> author selects "SSH as defined in the Extended Package for Secure Shell", the TSF must be validated against the EP for Secure Shell with the <abbr linkend="MDM"/> <abbr linkend="PP"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/>
               If the <abbr linkend="ST"/> author selects "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security", the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
@@ -4096,7 +4094,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 <selectable id="TRP1_SSH_INVOKE">SSH</selectable>
               </selectables></selectable>
               <selectable>implement functionality using <selectables linebreak="yes">
-                <selectable id="TRP1_IPSEC_IMPLEMENT">IPsec as defined in the PP-Module for VPN Client</selectable>
+                <selectable id="TRP1_IPSEC_IMPLEMENT">IPsec as defined in the <abbr linkend="PP-Module"/> for VPN Client</selectable>
                 <selectable id="TRP1_TLS_IMPLEMENT">TLS as defined in the Package for Transport Layer Security</selectable>
                 <selectable id="TRP1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
                 <selectable id="TRP1_SSH_IMPLEMENT">SSH as defined in the Extended Package for Secure Shell</selectable>
@@ -4135,7 +4133,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               the <abbr linkend="TOE"/> by remote administrators is performed over this path. The data passed in this trusted 
               communication channel are encrypted as defined in the protocol chosen in the first selection. The <abbr linkend="ST"/> 
               author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>.<h:br/><h:br/>
-              If "IPsec as defined in the PP-Module for VPN Client" is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>              
+              If "IPsec as defined in the <abbr linkend="PP-Module"/> for VPN Client" is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client <abbr linkend="PP-Module"/>.<h:br/><h:br/>              
               If the <abbr linkend="ST"/> author selects "SSH as defined in the Extended Package for Secure Shell", the TSF must be validated against the EP for Secure Shell with the <abbr linkend="MDM"/> <abbr linkend="PP"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/>
               If the <abbr linkend="ST"/> author selects "TLS as defined in the Package for Transport Layer Security" the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
