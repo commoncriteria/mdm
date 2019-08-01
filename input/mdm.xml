@@ -586,7 +586,7 @@ DONE:
       <h:tr>
         <h:td><linkref linkend="FPT_TST_EXT.1"/></h:td>
         <h:td>Functionality Testing</h:td>
-        <h:td>All</h:td> 
+        <h:td>All (except for <abbr linkend="MDM"/> Agent components)</h:td> 
       </h:tr>
       <h:tr>
         <h:td><linkref linkend="FPT_TUD_EXT.1"/></h:td>
@@ -3726,7 +3726,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 <selectable><abbr linkend="TOE"/> platform</selectable>
               </selectables>-provided cryptographic services.</title>
             <note role="application">While the <abbr linkend="TOE"/> is typically a software package running in the IT Environment, it is still capable of performing the self-test activities required above. It should be understood, however, that there is a significant dependency on the host environment in assessing the assurance provided by the tests mentioned above (meaning that if the host environment is compromised, the self-tests will not be meaningful).<h:br/><h:br/>           
-              For distributed <abbr linkend="TOE"/>s all <abbr linkend="TOE"/> components have to perform self-tests. This does not necessarily mean that each <abbr linkend="TOE"/> component has to carry out the same self-tests: the <abbr linkend="ST"/> describes the applicability of the selection (i.e. when self-tests are run) and the final assignment (i.e. which self-tests are carried out) to each <abbr linkend="TOE"/> component.
+              For distributed <abbr linkend="TOE"/>s all <abbr linkend="TOE"/> components (except the <abbr linkend="MDM"/> Agent components) have to perform self-tests. This does not necessarily mean that each <abbr linkend="TOE"/> component has to carry out the same self-tests: the <abbr linkend="ST"/> describes the applicability of the selection (i.e. when self-tests are run) and the final assignment (i.e. which self-tests are carried out) to each <abbr linkend="TOE"/> component.
             </note>
             <aactivity>
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>         
@@ -3742,9 +3742,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component> 
         <f-component id="fpt_tud_ext.1" name="Trusted Update">
           <f-element id="fpt_tud_ext.1.1">
-            <title>The <abbr linkend="TSF"/> shall provide Authorized Administrators the ability to query the current version of the <abbr linkend="MDM"/> Server software.</title>
+            <title>The <abbr linkend="TSF"/> shall provide Authorized Administrators the ability to query the current version of the software.</title>
             <note role="application">
-              For a distributed TOE, the method of determining the installed versions on each component of the <abbr linkend="TOE"/> is described in the operational guidance. 
+              For a distributed <abbr linkend="TOE"/>, the method of determining the installed versions on each component of the <abbr linkend="TOE"/> is described in the operational guidance. In the requirement, "software" refers to the component of the distributed <abbr linkend="TOE"/> to which the requirement is being applied. 
             </note>
             <aactivity>
               <Guidance>The evaluator shall ensure that the administrator guidance includes instructions for determining the current version of the <abbr linkend="TOE"/>.<h:br/><h:br/></Guidance>
