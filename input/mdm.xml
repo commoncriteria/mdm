@@ -99,97 +99,69 @@ DONE:
     <section id="ov" title="Overview"> 
       Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network resources.<h:br/><h:br/> 
       This document provides a baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> system, which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce the security policies and network access control servers are out of scope. </section>
-
-   <section id="terms" title="Terms">
-     <subsection id="ccterms" title="Common Criteria Terms">
-     <glossary>    
-       <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for
-            Information Technology Security Evaluation (International Standard ISO/IEC 15408).
-          </description></entry>
-        <entry><term>Common Criteria Testing Laboratory</term><description>Within the context of the Common Criteria Evaluation and Validation Scheme (CCEVS), an IT security evaluation facility, accredited by the National Voluntary Laboratory Accreditation Program (NVLAP) and approved by the NIAP Validation Body to conduct Common Criteria-based evaluations.
-          </description></entry>
-        <entry><term><abbr title="Common Evaluation Methodology">CEM</abbr></term><description>Common Evaluation Methodology for Information Technology Security Evaluation. </description></entry>
-		<entry><term><abbr title="Extended Package">EP</abbr></term><description>An implementation-independent set of security requirements for a category of products, which extends those in a Protection Profile.</description></entry>
-        <entry><term><abbr title="Protection Profile">PP</abbr></term><description>An implementation-independent set of security requirements for a category of products. </description></entry>
-       <entry><term><abbr title="Protection Profile Module">PP-Module</abbr></term><description>An implementation-independent statement of security needs for a <abbr linkend="TOE"/> type complementary to one or more Base Protection Profiles..</description></entry>
-        <entry><term><abbr title="Security Assurance Requirement">SAR</abbr></term><description>A
-            requirement for how the <abbr linkend="TOE"/>s proper implementation of the <abbr
-              linkend="SFR"/>s is verified by an evaluator. </description></entry>
-        <entry><term><abbr title="Security Functional Requirement">SFR</abbr></term><description>A
-            requirement for security enforcement by the <abbr linkend="TOE"/>.
-          </description></entry>
-        <entry><term><abbr title="Security Target">ST</abbr></term><description>A set of
-            implementation-dependent security requirements for a specific product.
-          </description></entry>
-        <entry><term><abbr title="Target of Evaluation">TOE</abbr></term><description>The product
-            under evaluation.</description></entry>
-        <entry><term><abbr title="TOE Security Functionality">TSF</abbr></term><description>The
-            security functionality of the product under evaluation. </description></entry>
-        <entry><term><abbr title="TOE Summary Specification">TSS</abbr></term><description>A
-            description of how a <abbr linkend="TOE"/> satisfies the <abbr linkend="SFR"/>s in an
-              <abbr linkend="ST"/>. </description></entry>
-        <entry><term>TSF Data</term><description>Data for the operation of the <abbr linkend="TSF"/>
-            that is used to enforce its security requirements. </description></entry>     
-      </glossary>
-     </subsection>
-      <subsection title="Technology Terms" id="techterms">
-        <glossary>
-        <entry><term>Administrator</term><description>The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device.</description></entry>
-        <entry><term><abbr title="Application Programming Interface">API</abbr></term>
-          <description>A specification of routines, data structures, object classes, and variables that allows an application to make use of services provided by another software component, such as a library. <abbr linkend="API"/>'s are often provided for a set of libraries included with the platform.</description></entry>
-          <entry><term><abbr title="Critical Security Parameter">CSP</abbr></term><description>Security-related information whose disclosure or modification can compromise the security of a cryptographic module and/or authentication system.</description></entry>
-          <entry><term>Data</term><description>Program or application or data files that are stored or transmitted by a server or <abbr linkend="MD"/>. </description></entry>
-          <entry><term><abbr title="Data Encryption Key">DEK</abbr></term><description>A key used to encrypt data-at-rest.</description></entry>
-        <entry><term>Developer Modes</term><description>States in which additional services are available to a user in order to provide enhanced system access for debugging of software.</description></entry>
-        <entry><term>Enrolled State</term><description>The state in which a mobile device is managed by a policy from an <abbr linkend="MDM"/>. </description></entry>
-        <entry><term>Enterprise Applications</term><description>Applications that are provided and
+      <tech-terms>
+	<term full="Administrator" >
+	  The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device.
+	</term>
+	<term full="API Application Programming Interface " abbr="API">
+	  A specification of routines, data structures, object classes, and variables that allows an application to make use of services provided by another software component, such as a library.
+	  APIs are often provided for a set of libraries included with the platform.
+	</term>
+        <term full="Critical Security Parameter" abbr="CSP">
+	  Security-related information whose disclosure or modification can compromise the security of a cryptographic module and/or authentication system.
+	</term>
+        <term full="Data">
+	  Program or application or data files that are stored or transmitted by a server or MD.
+	</term>
+        <term full="Data Encryption Key" abbr="DEK">A key used to encrypt data-at-rest.</term>
+        <term full="Developer Modes" >States in which additional services are available to a user in order to provide enhanced system access for debugging of software.</term>
+        <term full="Enrolled State" >The state in which a mobile device is managed by a policy from an MDM.</term>
+        <term full="Enterprise Applications" >Applications that are provided and
             managed by the enterprise as opposed to a public application store.
-          </description></entry>
-        <entry><term>Enterprise Data</term><description>Any data residing in enterprise servers or
+          </term>
+        <term full="Enterprise Data" >Any data residing in enterprise servers or
             temporarily stored on mobile devices to which the mobile device user is allowed access
             according to the security policy defined by the enterprise and implemented by the
-            administrator. </description></entry>
-          <entry><term><abbr title="Enrollment over Secure Transport">EST</abbr></term><description>Cryptographic protocol that describes an X.509 certificate management protocol targeting public key infrastructure (PKI) clients that need to acquire client certificates and associated certificate authority (CA) certificates.</description></entry>
-        <entry><term><abbr title="Key Encryption Key">KEK</abbr></term><description>A key that is used to encrypt other keys,
-            such as (<abbr linkend="DEK"/>s) or storage repositories that contain keys. </description></entry>
-        <entry><term>Locked State</term><description>Mobile device state where the device is powered
+            administrator. </term>
+          <term full="Enrollment over Secure Transport" abbr="EST">Cryptographic protocol that describes an X.509 certificate management protocol targeting public key infrastructure (PKI) clients that need to acquire client certificates and associated certificate authority (CA) certificates.</term>
+        <term full="Key Encryption Key" abbr="KEK">A key that is used to encrypt other keys,
+            such as (DEKs) or storage repositories that contain keys. </term>
+        <term full="Locked State" >Mobile device state where the device is powered
             on but most functionality is unavailable for use without authentication.
-          </description></entry>
-          <entry><term><abbr title="Mobile Device">MD</abbr></term><description>A device which is composed of a hardware platform and its system software. The device typically provides wireless connectivity and may include software for functions like secure messaging, email, web, VPN connection, and VoIP (Voice over IP), for access to the protected enterprise network, enterprise data and applications, and for communicating to other <abbr linkend="MD"/>s.</description></entry>
-          <entry><term><abbr title="Mobile Device Management">MDM</abbr></term><description>Products that allow enterprises to apply security policies to <abbr linkend="MD"/>s. This system consists of two primary components: the <abbr linkend="MDM"/> Server and the <abbr linkend="MDM"/> Agent.</description></entry>
-        <entry><term>Mobile Device User</term><description>The person who uses and is held
-          responsible for a <abbr linkend="MD"/>. </description></entry>
-        <entry><term><abbr title="Operating System">OS</abbr></term><description>Software which runs at the highest
+          </term>
+          <term full="Mobile Device" abbr="MD">A device which is composed of a hardware platform and its system software. The device typically provides wireless connectivity and may include software for functions like secure messaging, email, web, VPN connection, and VoIP (Voice over IP), for access to the protected enterprise network, enterprise data and applications, and for communicating to other <abbr linkend="MD"/>s.</term>
+          <term full="Mobile Device Management" abbr="MDM">Products that allow enterprises to apply security policies to <abbr linkend="MD"/>s. This system consists of two primary components: the MDM Server and the MDM Agent.</term>
+        <term full="Mobile Device User" >The person who uses and is held
+          responsible for an MD. </term>
+        <term full="Operating System" abbr="OS">Software which runs at the highest
             privilege level and can directly control hardware resources. Modern mobile devices
             typically have at least two primary operating systems: one which runs on the cellular
             baseband processor and one which runs on the application processor. The platform of the
             application processor handles most user interaction and provides the execution
             environment for apps. The platform of the cellular baseband processor handles
             communications with the cellular network and may control other peripherals. The term
-              <abbr linkend="OS"/>, without context, may be assumed to refer to the platform of the
-            application processor. </description></entry>
-        <entry><term>Powered-Off State</term><description>Mobile device shutdown
-            state.</description></entry>
-        <entry><term>Protected Data</term><description>All non-TSF data on the mobile device,
+              OS, without context, may be assumed to refer to the platform of the
+            application processor. </term>
+        <term full="Powered-Off State" >Mobile device shutdown
+            state.</term>
+        <term full="Protected Data" >All non-TSF data on the mobile device,
             including user or enterprise data. Protected data is encrypted while the mobile device
             is in the powered-off state. This includes keys in software-based storage. May overlap
-            with sensitive data. </description></entry>
-        <entry><term><abbr title="Root Encryption Key">REK</abbr></term><description>A key tied to a particular device that
-            is used to encrypt all other keys for that device. </description></entry>
-        <entry><term>Sensitive Data</term><description>Data that is encrypted by the mobile device.
+            with sensitive data. </term>
+        <term full="Root Encryption Key" abbr="REK">A key tied to a particular device that
+            is used to encrypt all other keys for that device. </term>
+        <term full="Sensitive Data" >Data that is encrypted by the mobile device.
             May include all user or enterprise data or may be data for specific applications such as
             emails, messaging, documents, calendar items, or contacts. May be protected while the
             mobile device is in the locked state. Must include at minimum some keys in
-            software-based key storage. </description></entry>
-       <entry><term>Trust Anchor Database</term><description>A list of trusted root Certificate
-            Authority certificates. </description></entry>
-       <entry><term>Unenrolled State</term><description>Mobile device state when it is not managed
-            by an <abbr linkend="MDM"/>. </description></entry>
-       <entry><term>Unlocked State</term><description>Mobile device state where it is powered on
-            and its functionality is available for use. </description></entry>       
-      </glossary>
-      </subsection>
-    </section>
+            software-based key storage. </term>
+       <term full="Trust Anchor Database" >A list of trusted root Certificate
+            Authority certificates. </term>
+       <term full="Unenrolled State" >Mobile device state when it is not managed
+            by an MDM.</term>
+       <term full="Unlocked State" >Mobile device state where it is powered on
+            and its functionality is available for use. </term>       
+      </tech-terms>
     <section id="cte" title="Compliant Targets of Evaluation">
       The Mobile Device Management (MDM) system consists of two primary components: the <abbr linkend="MDM"/> Server software and the <abbr linkend="MDM"/> Agent. Optionally, the <abbr linkend="MDM"/> system may consist of a separate Mobile Application Store (MAS) server. 
       <subsection id="tb" title="TOE Boundary"> The <abbr linkend="MDM"/> system operational environment consists of the mobile device on which the <abbr linkend="MDM"/> Agent resides, the platform on which the <abbr linkend="MDM"/> Server runs, and an untrusted wireless network over which they communicate, as pictured below.
@@ -273,19 +245,19 @@ DONE:
   </chapter>
   <chapter title="Conformance Claims" id="ccl" boilerplate="no">
     <cclaims>
-      <cclaim id="Conformance Statement">
+      <cclaim title="Conformance Statement">
         <description>An Security Target (<abbr linkend="ST"/>) must claim exact conformance to this <abbr linkend="PP"/>, as defined in the <abbr linkend="CC"/> and CEM addenda for Exact Conformance, Selection-Based <abbr linkend="SFR"/>s, and Optional <abbr linkend="SFR"/>s (dated May 2017).  </description>
       </cclaim>
-      <cclaim id="CC Conformance Claims">
+      <cclaim title="CC Conformance Claims">
         <description>This <abbr linkend="PP"/> is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Release 5.</description>
       </cclaim>
-      <cclaim id="PP Claim">
+      <cclaim title="PP Claim">
         <description>This <abbr linkend="PP"/> does not claim conformance to any <abbr linkend="PP"/>.</description>
       </cclaim>
-      <cclaim id="Package Claim">
+      <cclaim title="Package Claim">
         <description>This <abbr linkend="PP"/> is TLS Package Version 1.1 Conformant.</description>
       </cclaim>
-      <cclaim id="Module Claim">
+      <cclaim title="Module Claim">
         <description>The following <abbr linkend="PP"/>s and <abbr linkend="PP-Module"/>s are allowed to be specified in a PP-Configuration with this <abbr linkend="PP"/>.
           <h:ul>
             <h:li><abbr linkend="PP-Module"/> for MDM Agent, Version 1.0<!-- C ToDo: add date/update --></h:li>
