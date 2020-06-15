@@ -273,21 +273,21 @@ DONE:
   <chapter title="Introduction to Distributed TOEs" id="idt">
     This <abbr linkend="PP"/> includes support for distributed <abbr linkend="MDM"/> <abbr linkend="TOE"/>s. <abbr linkend="MDM"/>'s can sometimes be composed of multiple components operating as a logical whole. Frequently we see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different architectures; but fundamentally, they are variations of the following model where the <abbr linkend="SFR"/>s of this <abbr linkend="PP"/> can only be fulfilled if the components are deployed and operate together. To be considered a distributed <abbr linkend="TOE"/>, a minimum of two interconnected components are required.
     <section title="Registration of components of a distributed TOE" id="rcd"></section>
-    When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/> This requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or <linkref linkend="FTP_ITC.1(1)"/> to protect the registration exchange.<h:br/><h:br/>
+    When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/> This requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or FTP_ITC.1/INTER_XFER_IT to protect the registration exchange.<h:br/><h:br/>
 
-    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1(1)/FPT_ITT.1(2) or FTP_ITC.1(1)" id="DTF1"/>
+    <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1(1)/FPT_ITT.1(2) or FTP_ITC.1/INTER_XFER_IT" id="DTF1"/>
     <h:br/><h:br/>
     The second approach (Figure 3) uses an alternative registration channel and supports use cases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
-    <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1(3)" id="DTF2"/>
+    <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1/TRUSTPATH_JOIN" id="DTF2"/>
     <h:br/><h:br/>
-    The final approach (Figure 4) supports use cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or <linkref linkend="FTP_ITC.1(1)"/>.<h:br/><h:br/>
+    The final approach (Figure 4) supports use cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or FTP_ITC.1/INTER_XFER_IT.<h:br/><h:br/>
     <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id="DTF3"/>
     <h:br/><h:br/>
     In each case, during the registration process, the administrator must positively enable the joining components before it can act as part of the <abbr linkend="TSF"/>. Figure 5 illustrates the approaches that this enablement step may take;<h:br/><h:br/>
     <figure entity="images/DistributedToeFig4.png" title="Joiner enablement options for Distributed TOE's" id="DTF4"/>
     <h:br/><h:br/>
     Note that in the case where no registration channel is required, that is the joiner and gatekeeper are directly configured (Figure 4), enablement is implied as part of this direct configuration process.<h:br/><h:br/>
-    After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an <abbr linkend="ST"/> as an instance of <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or <linkref linkend="FTP_ITC.1(1)"/> in terms of Section 6 and Appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of <linkref linkend="FTP_ITC.1(1)"/> and <linkref linkend="FTP_TRP.1(1)"/>). 
+    After registration the components will communicate between themselves using a normal SSH/TLS/DTLS/IPsec/HTTPS channel (which is specified in an <abbr linkend="ST"/> as an instance of <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or FTP_ITC.1/INTER_XFER_IT in terms of Section 6 and Appendix A). This channel for intercomponent communications is specified at the top level with the new (extended) <abbr linkend="SFR"/> <linkref linkend="FCO_CPC_EXT.1"/> and is in addition to the other communication channels required for communication with entities outside the <abbr linkend="TOE"/> (which are specified in an <abbr linkend="ST"/> as instances of FTP_ITC.1/INTER_XFER_IT and FTP_TRP.1/TRUSTPATH_REM_ADMIN. 
     <section title="Allocation of requirements in distributed TOEs" id="ard"></section>
     For a distributed <abbr linkend="TOE"/>, the security functional requirements in this <abbr linkend="PP"/> need to be met by the <abbr linkend="TOE"/> as a whole, but not all <abbr linkend="SFR"/>s will necessarily be implemented by all components. The following categories are defined in order to specify when each <abbr linkend="SFR"/> must be implemented by a component:<h:br/>
     <h:ul>
@@ -571,12 +571,12 @@ DONE:
         <h:td>One</h:td> 
       </h:tr> 
       <h:tr>
-        <h:td><linkref linkend="FTP_ITC.1(1)"/></h:td>
+        <h:td>FTP_ITC.1/INTER_XFER_IT</h:td>
         <h:td>Inter-TSF Trusted Channel (Authorized IT Entities)</h:td>
         <h:td>One</h:td> 
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FTP_ITC.1(2)"/></h:td>
+        <h:td>FTP_ITC.1/INTER_TSF_XFER_AGENT</h:td>
         <h:td>Inter-TSF Trusted Channel (MDM Agent)</h:td>
         <h:td>One</h:td> 
       </h:tr>
@@ -586,17 +586,17 @@ DONE:
         <h:td>One</h:td> 
       </h:tr> 
       <h:tr>
-        <h:td><linkref linkend="FTP_TRP.1(1)"/></h:td>
+        <h:td>FTP_TRP.1/TRUSTPATH_REM_ADMIN</h:td>
         <h:td>Trusted Path for Remote Administration</h:td>
         <h:td>Feature Dependent</h:td> <!-- Both MDM and MAS could allow for remote admin -->
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FTP_TRP.1(2)"/></h:td>
+        <h:td>FTP_TRP.1/TRUSTPATH_ENROLL</h:td>
         <h:td>Trusted Path for Enrollment</h:td>
         <h:td>Feature Dependent</h:td> <!-- Changed because Agent also needs to do this. -->
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FTP_TRP.1(3)"/></h:td>
+        <h:td>FTP_TRP.1/TRUSTPATH_JOIN</h:td>
         <h:td>Trusted Path for Joining</h:td>
         <h:td>Feature Dependent</h:td> 
       </h:tr>     
@@ -608,7 +608,7 @@ DONE:
   <chapter title="Security Problem Description" id="spd">
     <section title="Threats" id="threats">
       <threats>
-        <threat id="T.MALICIOUS_APPS">
+        <threat name="T.MALICIOUS_APPS">
           <description>Malicious or flawed application threats exist because apps loaded onto a
             mobile device may include malicious or exploitable code. An administrator of the <abbr
               linkend="MDM"/> or mobile device user may inadvertently import malicious code, or an
@@ -621,7 +621,7 @@ DONE:
             <rationale>The threat T.MALICIOUS_APPS is countered by O.INTEGRITY as this provides the capability to perform self-tests to ensure the integrity of critical functionality, software/firmware and data has been maintained.</rationale>
           </objective-refer>
         </threat>
-        <threat id="T.NETWORK_ATTACK">
+        <threat name="T.NETWORK_ATTACK">
           <description>An attacker may masquerade as an <abbr linkend="MDM"/> Server and attempt to
             compromise the integrity of the mobile device by sending malicious management
             commands.</description>
@@ -629,7 +629,7 @@ DONE:
             <rationale>The threat T.NETWORK_ATTACK is countered by O.DATA_PROTECTION_TRANSIT as this provides authentication of the endpoints of a trusted communication path.</rationale>
           </objective-refer>
         </threat>
-        <threat id="T.NETWORK_EAVESDROP">
+        <threat name="T.NETWORK_EAVESDROP">
           <description>An attacker is positioned on a communications channel or elsewhere on the
             network infrastructure. Attackers may monitor and gain access to data exchanged
             between the <abbr linkend="MDM"/> Server and other endpoints.</description>
@@ -643,7 +643,7 @@ DONE:
             </rationale>
           </objective-refer>
         </threat>
-        <threat id="T.PHYSICAL_ACCESS">
+        <threat name="T.PHYSICAL_ACCESS">
           <description>The mobile device may be lost or stolen, and an unauthorized individual may
             attempt to access user data. Although these attacks are primarily directed against the
             mobile device platform, the <abbr linkend="TOE"/> configures features, which address
@@ -656,14 +656,15 @@ DONE:
     </section>
     <section id="asp" title="Assumptions">
       <assumptions>
-        <assumption id="A.COMPONENTS_RUNNING (applies to distributed TOEs only)">
-          <description>For distributed <abbr linkend="TOE"/>s it is assumed that the availability of all <abbr linkend="TOE"/> components is checked as
+        <assumption name="A.COMPONENTS_RUNNING">
+          <description>This assumption applies to distributed TOEs only.
+	  For distributed TOEs it is assumed that the availability of all <abbr linkend="TOE"/> components is checked as
             appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr linkend="TOE"/> components. It is also assumed that in addition to the availability of all components it is also checked as appropriate that the audit functionality is running properly on all <abbr linkend="TOE"/> components.</description>
           <objective-refer ref="OE.COMPONENTS_RUNNING">
             <rationale>The operational environment objective OE.COMPONENTS_RUNNING is realized through A.COMPONENTS_RUNNING.</rationale>
           </objective-refer>
         </assumption>
-        <assumption id="A.CONNECTIVITY">
+        <assumption name="A.CONNECTIVITY">
           <description>The <abbr linkend="TOE"/> relies on network connectivity to carry out its
             management activities. The <abbr linkend="TOE"/> will robustly handle instances when
             connectivity is unavailable or unreliable.</description>
@@ -672,7 +673,7 @@ DONE:
               A.CONNECTIVITY.</rationale>
           </objective-refer>
         </assumption>
-        <assumption id="A.MDM_SERVER_PLATFORM">
+        <assumption name="A.MDM_SERVER_PLATFORM">
           <description> The <abbr linkend="MDM"/> Server relies upon a trustworthy platform and
             local network from which it provides administrative capabilities. <h:br/><h:br/> 
             The <abbr linkend="MDM"/> Server relies on this platform to provide a range of
@@ -691,7 +692,7 @@ DONE:
               through A.MDM_SERVER_PLATFORM.</rationale>
           </objective-refer>
         </assumption>
-        <assumption id="A.PROPER_ADMIN">
+        <assumption name="A.PROPER_ADMIN">
           <description>One or more competent, trusted personnel who are not careless, willfully
             negligent, or hostile, are assigned and authorized as the <abbr linkend="TOE"/>
             Administrators, and do so using and abiding by guidance documentation.</description>
@@ -700,7 +701,7 @@ DONE:
               A.PROPER_ADMIN.</rationale>
           </objective-refer>
         </assumption>
-        <assumption id="A.PROPER_USER">
+        <assumption name="A.PROPER_USER">
           <description>Mobile device users are not willfully negligent or hostile, and use the
             device within compliance of a reasonable Enterprise security policy. </description>
           <objective-refer ref="OE.PROPER_USER">
@@ -712,7 +713,7 @@ DONE:
     </section>
     <section id="osp" title="Organizational Security Policies">
       <OSPs>
-        <OSP id="P.ACCOUNTABILITY">
+        <OSP name="P.ACCOUNTABILITY">
           <description>Personnel operating the <abbr linkend="TOE"/> shall be accountable for their
             actions within the <abbr linkend="TOE"/>.</description>
           <objective-refer ref="O.ACCOUNTABILITY">
@@ -720,7 +721,7 @@ DONE:
               P.ACCOUNTABILITY.</rationale>
           </objective-refer>         
         </OSP>
-        <OSP id="P.ADMIN">
+        <OSP name="P.ADMIN">
           <description>The configuration of the mobile device security functions must adhere to the
             Enterprise security policy.</description>
           <objective-refer ref="OE.PROPER_ADMIN">
@@ -728,7 +729,7 @@ DONE:
               OE.PROPER_ADMIN.</rationale>
           </objective-refer>
         </OSP>
-        <OSP id="P.DEVICE_ENROLL">
+        <OSP name="P.DEVICE_ENROLL">
           <description>A mobile device must be enrolled for a specific user by the administrator of
             the <abbr linkend="MDM"/> prior to being used in the Enterprise network by the
             user.</description>
@@ -737,7 +738,7 @@ DONE:
               OE.IT_ENTERPRISE.</rationale>
           </objective-refer>
         </OSP>
-        <OSP id="P.NOTIFY">
+        <OSP name="P.NOTIFY">
           <description>The mobile user must immediately notify the administrator if a mobile device
             is lost or stolen so that the administrator may apply remediation actions via the <abbr
               linkend="MDM"/> system.</description>
@@ -752,123 +753,63 @@ DONE:
   <chapter id="so" title="Security Objectives">
     <section id="sot" title="Security Objectives for the TOE">
       <SOs>
-        <SO id="O.ACCOUNTABILITY">
+        <SO name="O.ACCOUNTABILITY">
           <description>The <abbr linkend="TOE"/> must provide logging facilities which record management actions undertaken by its administrators.</description>
-          <component-refer ref="FAU_ALT_EXT.1"/>
-          <component-refer ref="FAU_GEN.1(1)"/>
-          <component-refer ref="FAU_GEN.1(2)"/>
-          <component-refer ref="FAU_NET_EXT.1"/>
-          <component-refer ref="FAU_SAR.1"/>
-          <component-refer ref="FAU_SEL.1"/>
-          <component-refer ref="FAU_STG_EXT.1"/>
-          <component-refer ref="FAU_STG_EXT.2"/>
+	  <addressed-by>FAU_ALT_EXT.1, FAU_GEN.1(1), FAU_GEN.1(2), FAU_NET_EXT.1, FAU_SAR.1, FAU_SEL.1, FAU_STG_EXT.1, FAU_STG_EXT.2</addressed-by>
+	  <rationale>FILL IN </rationale>
         </SO>
-        <SO id="O.APPLY_POLICY">
+        <SO name="O.APPLY_POLICY">
           <description>The <abbr linkend="TOE"/> must facilitate configuration and enforcement of enterprise security policies on mobile devices via interaction with the mobile <abbr linkend="OS"/> and the <abbr linkend="MDM"/> Server. This will include the initial enrollment of the device into management through its entire lifecycle, including policy updates and its possible unenrollment from management services.</description>
-          <component-refer ref="FIA_ENR_EXT.1"/>
-          <component-refer ref="FMT_MOF.1(1)"/>
-          <component-refer ref="FMT_MOF.1(2)"/>
-          <component-refer ref="FMT_MOF.1(3)"/>
-          <component-refer ref="FMT_SAE_EXT.1"/>
-          <component-refer ref="FMT_SMF.1(1)"/>
-          <component-refer ref="FMT_SMF.1(2)"/>
-          <component-refer ref="FMT_SMF.1(3)"/>
+	  <addressed-by>FIA_ENR_EXT.1, FMT_MOF.1(1), FMT_MOF.1(2), FMT_MOF.1(3), FMT_SAE_EXT.1, FMT_SMF.1(1), FMT_SMF.1(2), FMT_SMF.1(3)</addressed-by>
+	  <rationale>FILL IN </rationale>
         </SO>
-        <SO id="O.DATA_PROTECTION_TRANSIT">
+        <SO name="O.DATA_PROTECTION_TRANSIT">
           <description>Data exchanged between the <abbr linkend="MDM"/> Server and the <abbr linkend="MDM"/> Agent must be protected from being monitored, accessed, or altered.</description>
-          <component-refer ref="FAU_STG_EXT.1"/>
-          <component-refer ref="FCS_CKM_EXT.4"/>
-          <component-refer ref="FCS_CKM.1"/>
-          <component-refer ref="FCS_CKM.2"/>
-          <component-refer ref="FCS_COP.1(1)"/>
-          <component-refer ref="FCS_COP.1(2)"/>
-          <component-refer ref="FCS_COP.1(3)"/>
-          <component-refer ref="FCS_COP.1(4)"/>
-          <!--  <component-refer ref="FCS_DTLSS_EXT.1 (TLS Package)"/>--> 
-          <!-- <component-refer ref="FCS_DTLSC_EXT.1 (TLS Package)"/> -->
-          <component-refer ref="FCS_HTTPS_EXT.1"/>
-         <!--   <component-refer ref="FCS_IPSEC_EXT.1"/>-->
-          <component-refer ref="FCS_IV_EXT.1"/>
-          <component-refer ref="FCS_RBG_EXT.1"/>
-          <!-- <component-refer ref="FCS_SSHS_EXT.1"/>  -->
-          <component-refer ref="FCS_STG_EXT.1"/>
-          <component-refer ref="FCS_STG_EXT.2"/>
-          <!--<component-refer ref="FCS_TLSC_EXT.1 (TLS Package)"/> -->
-          <!--<component-refer ref="FCS_TLSC_EXT.2 (TLS Package)"/>  -->
-          <!--<component-refer ref="FCS_TLSS_EXT.1 (TLS Package)"/>  -->
-          <!--<component-refer ref="FCS_TLSS_EXT.2 (TLS Package)"/>  -->
-          <component-refer ref="FIA_X509_EXT.1(1)"/>
-          <component-refer ref="FIA_X509_EXT.1(2)"/>
-          <component-refer ref="FIA_X509_EXT.2"/>
-          <component-refer ref="FIA_X509_EXT.3"/>
-          <component-refer ref="FIA_X509_EXT.4"/>
-          <component-refer ref="FIA_X509_EXT.5"/>
-          <component-refer ref="FPT_ITT.1(1)"/>
-          <component-refer ref="FPT_ITT.1(2)"/>
-          <component-refer ref="FTP_ITC_EXT.1"/>
-          <component-refer ref="FTP_ITC.1(1)"/>
-          <component-refer ref="FTP_ITC.1(2)"/>
-          <component-refer ref="FTP_TRP.1(1)"/>
-          <component-refer ref="FTP_TRP.1(2)"/>
-          <component-refer ref="FTP_TRP.1(3)"/>
+	  <addressed-by>FAU_STG_EXT.1, FCS_CKM_EXT.4, FCS_CKM.1, FCS_CKM.2, FCS_COP.1(1), FCS_COP.1(2), FCS_COP.1(3), FCS_COP.1(4), <!--FCS_DTLSS_EXT.1(TLSPackage), --><!--FCS_DTLSC_EXT.1(TLSPackage), -->FCS_HTTPS_EXT.1, <!--FCS_IPSEC_EXT.1, -->FCS_IV_EXT.1, FCS_RBG_EXT.1, <!--FCS_SSHS_EXT.1, -->FCS_STG_EXT.1, FCS_STG_EXT.2, <!--FCS_TLSC_EXT.1(TLSPackage), --><!--FCS_TLSC_EXT.2(TLSPackage), --><!--FCS_TLSS_EXT.1(TLSPackage), --><!--FCS_TLSS_EXT.2(TLSPackage), -->FIA_X509_EXT.1(1), FIA_X509_EXT.1(2), FIA_X509_EXT.2, FIA_X509_EXT.3, FIA_X509_EXT.4, FIA_X509_EXT.5, FPT_ITT.1(1), FPT_ITT.1(2), FTP_ITC_EXT.1, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, FTP_TRP.1/TRUSTPATH_REM_ADMIN, FTP_TRP.1/TRUSTPATH_ENROLL, FTP_TRP.1/TRUSTPATH_JOIN</addressed-by>
+	  <rationale>FILL IN </rationale>
         </SO>
-        <SO id="O.INTEGRITY">
+        <SO name="O.INTEGRITY">
           <description>The <abbr linkend="TOE"/> will provide the capability to perform self tests to ensure the integrity of critical functionality, software, firmware, and data has been maintained. The <abbr linkend="TOE"/> will also provide a means to verify the integrity of downloaded updates.</description>
-          <component-refer ref="FIA_X509_EXT.2"/>
-          <component-refer ref="FCO_CPC_EXT.1"/>
-          <component-refer ref="FPT_TST_EXT.1"/>
-          <component-refer ref="FPT_TUD_EXT.1"/>
+	  <addressed-by>FIA_X509_EXT.2, FCO_CPC_EXT.1, FPT_TST_EXT.1, FPT_TUD_EXT.1, </addressed-by>
+	  <rationale>FILL IN </rationale>
         </SO>
-        <SO id="O.MANAGEMENT">
+        <SO name="O.MANAGEMENT">
           <description>The <abbr linkend="TOE"/> provides access controls around its management functionality.</description>
-          <component-refer ref="FAU_CRP_EXT.1"/>
-          <component-refer ref="FIA_ENR_EXT.1"/>
-          <component-refer ref="FIA_UAU.1"/>
-          <component-refer ref="FIA_UAU_EXT.4(1)"/>
-          <component-refer ref="FIA_UAU_EXT.4(2)"/>
-          <component-refer ref="FMT_MOF.1(1)"/>
-          <component-refer ref="FMT_MOF.1(2)"/>
-          <component-refer ref="FMT_MOF.1(3)"/>
-          <component-refer ref="FMT_POL_EXT.1"/>
-          <component-refer ref="FMT_SMF.1(1)"/>
-          <component-refer ref="FMT_SMF.1(2)"/>
-          <component-refer ref="FMT_SMF.1(3)"/>
-          <component-refer ref="FMT_SMR.1(1)"/>
-          <component-refer ref="FMT_SMR.1(2)"/>
-          <component-refer ref="FTA_TAB.1"/>
+	  <addressed-by>FAU_CRP_EXT.1, FIA_ENR_EXT.1, FIA_UAU.1, FIA_UAU_EXT.4(1), FIA_UAU_EXT.4(2), FMT_MOF.1(1), FMT_MOF.1(2), FMT_MOF.1(3), FMT_POL_EXT.1, FMT_SMF.1(1), FMT_SMF.1(2), FMT_SMF.1(3), FMT_SMR.1(1), FMT_SMR.1(2), FTA_TAB.1, </addressed-by>
+	  <rationale>FILL IN </rationale>
         </SO>
-        <SO id="O.QUALITY">
+        <SO name="O.QUALITY">
         <description>To ensure quality of implementation, conformant <abbr title="Target of Evaluation" linkend="TOE">TOE</abbr>s leverage services and <abbr title="Application Programming Interface" linkend="API">API</abbr>s provided by the runtime environment rather than implementing their own versions of these services and APIs. This is especially important for cryptographic services and other complex operations such as file and media parsing. Leveraging this platform behavior relies upon using only documented and supported APIs.</description>
-        <component-refer ref="fpt_api_ext.1"/>
-        <component-refer ref="fpt_lib_ext.1"/>
+        <addressed-by>FPT_API_EXT.1, FPT_LIB_EXT.1</addressed-by>
+	<rationale>FILL IN </rationale>
         </SO>        
       </SOs>
     </section>
     <section id="sooe" title="Security Objectives for the Operational Environment">
       <SOEs>
-        <SOE id="OE.COMPONENTS_RUNNING">
+        <SOE name="OE.COMPONENTS_RUNNING">
           <description>For distributed <abbr linkend="TOE"/>s the administrator ensures that the availability of every <abbr linkend="TOE"/> component is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr linkend="TOE"/> components. The administrator also ensures that it is checked as appropriate for every <abbr linkend="TOE"/> component that the audit functionality is running properly. </description>
         </SOE>
-        <SOE id="OE.PROPER_ADMIN">
+        <SOE name="OE.PROPER_ADMIN">
           <description><abbr linkend="TOE"/> Administrators are trusted to follow and apply all administrator guidance in a trusted manner.</description>
         </SOE>
-        <SOE id="OE.PROPER_USER">
+        <SOE name="OE.PROPER_USER">
           <description>Users of the mobile device are trained to securely use the mobile device and apply all guidance in a trusted manner.</description>
         </SOE>
-        <SOE id="OE.IT_ENTERPRISE">
+        <SOE name="OE.IT_ENTERPRISE">
           <description>The enterprise IT infrastructure provides security for a network that is available to the <abbr linkend="TOE"/> and mobile devices that prevents unauthorized access.</description>
         </SOE>
         <!--
-        <SOE id="OE.MOBILE_DEVICE_PLATFORM">
+        <SOE name="OE.MOBILE_DEVICE_PLATFORM">
           <description>The <abbr linkend="MDM"/> Agent relies upon the trustworthy mobile platform and hardware to provide policy enforcement as well as cryptographic services and data protection. The mobile platform provides trusted updates and software integrity verification of the <abbr linkend="MDM"/> Agent.</description>
         </SOE>-->        
-        <SOE id="OE.TIMESTAMP">
+        <SOE name="OE.TIMESTAMP">
           <description>Reliable timestamp is provided by the operational environment for the <abbr linkend="TOE"/>.</description>
         </SOE>        
-        <SOE id="OE.WIRELESS_NETWORK">
+        <SOE name="OE.WIRELESS_NETWORK">
           <description>A wireless network will be available to the mobile devices.</description>
         </SOE>
-      </SOEs>
+ </SOEs>
     </section>
     <section title="Security Objectives Rationale" id="secobjrat">
     </section>
@@ -882,10 +823,10 @@ DONE:
     <section id="teaa" title="Test Environment for Evaluation Activities"> 
       As described in the evaluation activities below, the <abbr linkend="ST"/> for an <abbr linkend="MDM"/> system is required to list all the supported <abbr linkend="MDM"/> Agents and <abbr linkend="MD"/> platforms with which an <abbr linkend="MDM"/> Server operates. The identified evaluation activities for testing that includes the use of an Agent should be completed for each <abbr linkend="MDM"/> Agent and platform listed in the <abbr linkend="ST"/>.<h:br/><h:br/>      
       The evaluator's activities for testing that include use of an Agent will ensure that the Server interacts appropriately with the Agent (i.e. sends a policy update to the Agent), but will not ensure that the Agent handles the received data correctly (i.e. appropriately applies the policy to the device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals <abbr linkend="PP"/> or the <abbr linkend="PP-Module"/> for Mobile Device Management Agents. </section>
-    <section id="tsfr" title="TOE Security Functional Requirements">
+    <section id="tsfr" title="Security Functional Requirements">
       <subsection id="fau" title="Security Audit (FAU)">
-        <f-component id="fau_alt_ext.1" name="Server Alerts">
-          <f-element id="fau_alt_ext.1.1">
+        <f-component cc-id="fau_alt_ext.1" name="Server Alerts">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall alert the administrators in the event of any of the following: <h:ol type="a">
                 <h:li>Change in enrollment status</h:li>
                 <h:li>Failure to apply policies to a mobile device</h:li>
@@ -895,7 +836,7 @@ DONE:
             <note role="application"> An alert can be defined as any form of providing straightaway notice to the administrator. An alert is different from an audit record, however the fact that an alert was sent should be audited per FAU_GEN.1. Email, pop-up notifications, or other methods are acceptable forms of alerts.<h:br/><h:br/>            
               The <abbr linkend="MDM"/> Agent is required to report to the <abbr linkend="MDM"/> Server on successful application of policies on a managed mobile device, and failures can be inferred from the absence of such alerts. This requirement is intended to ensure that the <abbr linkend="MDM"/> Server notifies administrators when policies are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the mobile device.</note>
             <aactivity>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes how the alert system is implemented. The evaluator shall also verify that a description of each assigned event is provided in the <abbr linkend="TSS"/>.</TSS><h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes how the alert system is implemented. The evaluator shall also verify that a description of each assigned event is provided in the <abbr linkend="TSS"/>.</TSS>
               <Guidance>The evaluator shall examine the guidance document and verify that it describes how the alerts can be configured, if configurable.</Guidance>
               <Tests> For each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>: <testlist>
                 <test>The evaluator shall enroll a device and ensure that the <abbr linkend="MDM"/> server alerts the administrator of the change in enrollment status. The evaluator shall unenroll (retire) a device and ensure that the <abbr linkend="MDM"/> server alerts the administrator of the change in enrollment status.</test>
@@ -910,12 +851,12 @@ DONE:
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fau_crp_ext.1" name="Support for Compliance Reporting of Mobile Device Configuration" status="objective">
-          <f-element id="fau_crp_ext.1.1">
+        <f-component cc-id="fau_crp_ext.1" name="Support for Compliance Reporting of Mobile Device Configuration" status="objective">
+          <f-element>
             <title> The <abbr linkend="TSF"/> shall provide <selectables><selectable>an interface that provides responses 
               to queries about the configuration of enrolled devices</selectable><selectable>an interface that permits the export 
                 of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over a 
-              channel that meets the secure channel requirements in <linkref linkend="FTP_ITC.1(1)"/>. The provided information for each enrolled mobile device includes: <h:ol type="a">
+              channel that meets the secure channel requirements in FTP_ITC.1/INTER_XFER_IT. The provided information for each enrolled mobile device includes: <h:ol type="a">
               <h:li>The current version of the MD firmware/software</h:li>
               <h:li>The current version of the hardware model of the device</h:li>
               <h:li>The current version of installed mobile applications</h:li>
@@ -945,8 +886,9 @@ DONE:
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fau_gen.1(1)" name="Audit Data Generation">
-          <f-element id="fau_gen.1.1(1)">
+        <f-component cc-id="fau_gen.1" name="Audit Data Generation"
+		     iteration="AUDITGEN">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -983,7 +925,7 @@ DONE:
 	      </Tests>
             </aactivity>
           </f-element>
-          <f-element id="fau_gen.1.2(1)">
+          <f-element>
             <title> The TSF shall record within each <abbr linkend="TSF"/> audit record at least the following information: <h:ul>
               <h:li>date and time of the event</h:li>
               <h:li>type of event</h:li>
@@ -1343,13 +1285,13 @@ DONE:
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FTP_ITC.1(1)"/> (man)</h:TD>
+                    <h:TD>FTP_ITC.1/INTER_XFER_IT</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Non-<abbr linkend="TOE"/> endpoint of
                       connection.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FTP_ITC.1(2)"/> (sel)</h:TD>
+                    <h:TD>FTP_ITC.1/INTER_TSF_XFER_AGENT (sel)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Non-<abbr linkend="TOE"/> endpoint of
                       connection.</h:TD>
@@ -1360,17 +1302,17 @@ DONE:
                     <h:TD></h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FTP_TRP.1(1)"/> (man)</h:TD>
+                    <h:TD>FTP_TRP.1/TRUSTPATH_REM_ADMIN (man)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol. Identity of administrator.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FTP_TRP.1(2)"/> (man)</h:TD>
+                    <h:TD>FTP_TRP.1/TRUSTPATH_ENROLL (man)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FTP_TRP.1(3)"/> (obj)</h:TD>
+                    <h:TD>FTP_TRP.1/TRUSTPATH_JOIN (obj)</h:TD>
                     <h:TD>Initiation and termination of the trusted channel.</h:TD>
                     <h:TD>Trusted channel protocol.</h:TD>
                   </h:TR>
@@ -1379,9 +1321,9 @@ DONE:
             </aactivity>
           </f-element>
         </f-component>        
-        <f-component id="fau_gen.1(2)" name="Audit Generation (MAS Server)" status="sel-based">
-          <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
-          <f-element id="fau_gen.1.1(2)">
+        <f-component cc-id="fau_gen.1" name="Audit Generation (MAS Server)" status="sel-based" iteration="MAS_SERVER">
+          <selection-depends req="restrictfunc" ids="mas"/>
+          <f-element>
             <title><h:b>Refinement:</h:b> The MAS Server shall be able to generate an audit record of the following auditable events: <h:ol type="a">
               <h:li>Failure to push a new application on a managed mobile device</h:li>
               <h:li>Failure to update an existing application on a managed mobile device.</h:li>
@@ -1393,7 +1335,7 @@ DONE:
               <Tests>The evaluator shall verify that when an application or update push fails, that the audit records generated match the format specified in the guidance and that the fields in each audit record have the proper entries.</Tests>
             </aactivity>
           </f-element>
-          <f-element id="fau_gen.1.2(2)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The <selectables><selectable>MAS Server</selectable><selectable>MAS Server platform</selectable></selectables> shall record within each <abbr linkend="TSF"/> audit record at least the following information: <h:ul>
               <h:li>date and time of the event</h:li>
               <h:li>type of event</h:li>
@@ -1413,8 +1355,8 @@ DONE:
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fau_net_ext.1" name="Network Reachability Review">
-          <f-element id="fau_net_ext.1.1">
+        <f-component cc-id="fau_net_ext.1" name="Network Reachability Review">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall provide authorized administrators with the capability to read the network connectivity status of an enrolled agent.</title>
             <note role="application"> The <abbr linkend="MDM"/> Server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr linkend="MDM"/> Agent <abbr linkend="PP-Module"/>. This status may be determined by sending an update request from the <abbr linkend="MDM"/> Server which the Agent is required to respond to or by using scheduled periodic notifications of connectivity initiated by the <abbr linkend="MDM"/> Agent. </note>
             <aactivity>
@@ -1426,8 +1368,8 @@ DONE:
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fau_sar.1" name="Audit Review" status="optional">
-          <f-element id="fau_sar.1.1">
+        <f-component cc-id="fau_sar.1" name="Audit Review" status="optional">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1436,7 +1378,7 @@ DONE:
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/></TSS>
             </aactivity>
           </f-element>
-          <f-element id="fau_sar.1.2">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1450,8 +1392,8 @@ DONE:
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fau_sel.1" name="Security Audit Event Selection" status="optional">
-          <f-element id="fau_sel.1.1">
+        <f-component cc-id="fau_sel.1" name="Security Audit Event Selection" status="optional">
+          <f-element>
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable></selectables>      
@@ -1474,15 +1416,15 @@ DONE:
             </aactivity>
           </f-element>
         </f-component>      
-        <f-component id="fau_stg_ext.1" name="External Trail Storage">
-          <f-element id="fau_stg_ext.1.1">
-            <title>The TSF shall be able to use a trusted channel per <linkref linkend="FTP_ITC.1(1)"/> to transmit audit data to an external IT entity and <selectables>
+        <f-component cc-id="fau_stg_ext.1" name="External Trail Storage">
+          <f-element id="exttrailsto">
+            <title>The TSF shall be able to use a trusted channel per FTP_ITC.1/INTER_XFER_IT to transmit audit data to an external IT entity and <selectables>
                 <selectable>store audit data locally</selectable>
                 <selectable>no other method</selectable>
                 </selectables>.
             </title>
             <note role="application">The <abbr linkend="TOE"/> must be capable of transmitting audit data to an external entity 
-              using a trusted channel as specified in <linkref linkend="FTP_ITC.1(1)"/> and optionally can store audit data locally. 
+              using a trusted channel as specified in FTP_ITC.1/INTER_XFER_IT and optionally can store audit data locally. 
               If "store audit data locally" is selected, then <linkref linkend="FAU_STG_EXT.2.1"/> must be included in the 
               <abbr linkend="ST"/>.<h:br/><h:br/> 
               
@@ -1502,7 +1444,7 @@ DONE:
               support verifying client certs, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               
               
-              For distributed <abbr linkend="TOE"/>s each component must be able to export audit data across a protected channel external (FTP_ITC.1) or intercomponent (<linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or FTP_ITC.1) as appropriate. At least one component of the <abbr linkend="TOE"/> must be able to export audit records via <linkref linkend="FTP_ITC.1(1)"/> such that all <abbr linkend="TOE"/> audit records can be exported to an external IT entity. 
+              For distributed <abbr linkend="TOE"/>s each component must be able to export audit data across a protected channel external (FTP_ITC.1) or intercomponent (<linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or FTP_ITC.1) as appropriate. At least one component of the <abbr linkend="TOE"/> must be able to export audit records via FTP_ITC.1/INTER_XFER_IT such that all <abbr linkend="TOE"/> audit records can be exported to an external IT entity. 
               </note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided.<h:br/><h:br/></TSS>
@@ -1515,9 +1457,9 @@ DONE:
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fau_stg_ext.2" name="Audit Event Storage" status="sel-based">
-          <selection-depends req="FAU_STG_EXT.1.1" ids="FAU_STG.1_stored"/>
-          <f-element id="fau_stg_ext.2.1">
+        <f-component cc-id="fau_stg_ext.2" name="Audit Event Storage" status="sel-based">
+          <selection-depends req="exttrailsto" ids="FAU_STG.1_stored"/>
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1553,12 +1495,13 @@ DONE:
 
 All <abbr linkend="TOE"/> components shall be able to generate its own audit data according to FAU_GEN.1 for all <abbr linkend="SFR"/>s that it implements. For distributed <abbr linkend="TOE"/>s, a mapping shall be provided to show which auditable events according to FAU_GEN.1 are covered by which components (also giving a justification that the records generated by each component cover all the <abbr linkend="SFR"/>s that it implements). The overall <abbr linkend="TOE"/> has to provide audit information about all events defined for FAU_GEN.1. As a result, at least one <abbr linkend="TOE"/> component has to be assigned to every auditable event defined for FAU_GEN.1. The part of the mapping related to <ctr-ref ref-id="audit"/> shall be consistent with the mapping of <abbr linkend="SFR"/>s to <abbr linkend="TOE"/> components for ASE_TSS.1 in the sense that all components defined as generating audit information for a particular SFR should also contribute to that SFR in the mapping for ASE_TSS.1. This applies not only to audit events defined for mandatory <abbr linkend="SFR"/>s but also to all audit events for optional, selection-based, and objective <abbr linkend="SFR"/>s as defined in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and <appref linkend="objective"/>.<h:br/><h:br/>
               
-              If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"/> or <linkref linkend="FAU_STG_EXT.2"/> are selected in the <abbr linkend="ST"/> derived from this <abbr linkend="PP"/>, then the <abbr linkend="SFR"/> mapping for ASE_TSS.1 must include a specific identification of the <abbr linkend="TOE"/> components to which they apply.
+If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"/> or <linkref linkend="FAU_STG_EXT.2"/> are selected in the <abbr linkend="ST"/> derived from this <abbr linkend="PP"/>, then the <abbr linkend="SFR"/> mapping for ASE_TSS.1 must include a specific identification of the <abbr linkend="TOE"/> components to which they apply.
+
       </subsection>
   
       <subsection id="fco" title="Communication (FCO)">
-        <f-component id="fco_cpc_ext.1" name="Component Registration Channel Definition" status="objective">
-          <f-element id="fco_cpc_ext.1.1">
+        <f-component cc-id="fco_cpc_ext.1" name="Component Registration Channel Definition" status="objective">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1568,7 +1511,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="fco_cpc_ext.1.2">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1581,7 +1524,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                     <selectable>FPT_ITT.1(2)</selectable>
                 </selectables>
                 </selectable>
-                <selectable>A channel that meets the secure registration channel requirements in FTP_TRP.1(3)</selectable>
+                <selectable>A channel that meets the secure registration channel requirements in FTP_TRP.1/TRUSTPATH_JOIN</selectable>
                 <selectable>No channel</selectable>
               </selectables>
               for at least <abbr linkend="TSF"/> data.
@@ -1591,7 +1534,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="fco_cpc_ext.1.3">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1601,9 +1544,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               
               The intention of this requirement is to ensure that there is a registration process that includes a positive enablement step by an administrator before components joining a distributed <abbr linkend="TOE"/> can communicate with the other components of the <abbr linkend="TOE"/> and before the new component can act as part of the <abbr linkend="TSF"/>. The registration process may itself involve communication with the joining component: many implementations use a bespoke process for this, and the security requirements for the "registration communication" are then defined in <linkref linkend="FCO_CPC_EXT.1.2"/>. Use of this "registration communication" channel is not deemed inconsistent with the requirement of <linkref linkend="FCO_CPC_EXT.1.1"/> (i.e. the registration channel can be used before the enablement step, but only in order to complete the registration process).<h:br/><h:br/>
               
-              The channel selection (for the registration channel) in <linkref linkend="FCO_CPC_EXT.1.2"/> is essentially a choice between the use of a normal secure channel that is equivalent to a channel used to communicate with external IT entities (FTP_ITC.1) or existing <abbr linkend="TOE"/> components (<linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/>), or else a separate type of channel that is specific to registration (<linkref linkend="FTP_TRP.1(3)"/>). If the <abbr linkend="TOE"/> does not require a communications channel for registration (e.g. because the registration is achieved entirely by configuration actions by an administrator at each of the components) then the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> is completed with the "No channel" option.<h:br/><h:br/>
+              The channel selection (for the registration channel) in <linkref linkend="FCO_CPC_EXT.1.2"/> is essentially a choice between the use of a normal secure channel that is equivalent to a channel used to communicate with external IT entities (FTP_ITC.1) or existing <abbr linkend="TOE"/> components (<linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/>), or else a separate type of channel that is specific to registration (FTP_TRP.1/TRUSTPATH_JOIN). If the <abbr linkend="TOE"/> does not require a communications channel for registration (e.g. because the registration is achieved entirely by configuration actions by an administrator at each of the components) then the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> is completed with the "No channel" option.<h:br/><h:br/>
               
-              If the <abbr linkend="ST"/> author selects the FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the <abbr linkend="TSS"/> identifies the relevant <abbr linkend="SFR"/> iteration that specifies the channel used. If the <abbr linkend="ST"/> author selects the <linkref linkend="FTP_TRP.1(3)"/> channel type, then the <abbr linkend="TSS"/> (possibly with support from the operational guidance) describes details of the channel and the mechanisms that it uses (and describes how the registration process ensures that the channel can only be used by the intended joiner and gatekeeper). Note that the <linkref linkend="FTP_TRP.1(3)"/> channel type may require support from security measures in the operational environment (see the definition of <linkref linkend="FTP_TRP.1(3)"/> for details).<h:br/><h:br/>
+              If the <abbr linkend="ST"/> author selects the FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the <abbr linkend="TSS"/> identifies the relevant <abbr linkend="SFR"/> iteration that specifies the channel used. If the <abbr linkend="ST"/> author selects the FTP_TRP.1/TRUSTPATH_JOIN channel type, then the <abbr linkend="TSS"/> (possibly with support from the operational guidance) describes details of the channel and the mechanisms that it uses (and describes how the registration process ensures that the channel can only be used by the intended joiner and gatekeeper). Note that the FTP_TRP.1/TRUSTPATH_JOIN channel type may require support from security measures in the operational environment (see the definition of FTP_TRP.1/TRUSTPATH_JOIN for details).<h:br/><h:br/>
               
               If the <abbr linkend="ST"/> author selects the FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> channel type in the main selection in <linkref linkend="FCO_CPC_EXT.1.2"/> then the <abbr linkend="ST"/> identifies the registration channel as a separate iteration of FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> and gives the iteration identifier (e.g. "FPT_ITT.1/Join") in an <abbr linkend="ST"/> Application Note for <linkref linkend="FCO_CPC_EXT.1"/>.<h:br/><h:br/>
               
@@ -1627,8 +1570,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component>        
       </subsection>
       <subsection id="fcs" title="Cryptographic Support (FCS)"> 
-        <f-component id="fcs_ckm.1" name="Cryptographic Key Generation">
-          <f-element id="fcs_ckm.1.1">
+        <f-component cc-id="fcs_ckm.1" name="Cryptographic Key Generation">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1662,10 +1605,10 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               the <abbr linkend="TOE"/> does not need to implement key generation.
             </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the key generation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4>
-                <TSS>The evaluator shall ensure that the <abbr linkend="TSS"/> identifies the key
+              <TSS><h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+	      The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the key generation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              <h:h4>If "implement functionality" is selected</h:h4>:
+                The evaluator shall ensure that the <abbr linkend="TSS"/> identifies the key
                 sizes supported by the <abbr linkend="TOE"/>. If the <abbr linkend="ST"/> specifies
                 more than one scheme, the evaluator shall examine the <abbr linkend="TSS"/> to
               verify that it identifies the usage for each scheme.<h:br/><h:br/></TSS>
@@ -1773,8 +1716,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_ckm.2" name="Cryptographic Key Establishment">
-          <f-element id="fcs_ckm.2.1">
+        <f-component cc-id="fcs_ckm.2" name="Cryptographic Key Establishment">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1800,9 +1743,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the key establishment functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).
               <h:h4>If "implement functionality" is selected:</h:h4>
-              <TSS>
               The evaluator shall ensure that the supported key establishment schemes correspond to the key generation schemes identified in <linkref linkend="FCS_CKM.1.1"/>. If the <abbr linkend="ST"/> specifies more than one scheme, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it identifies the usage for each scheme.<h:br/><h:br/> 
               The evaluator shall ensure that the <abbr linkend="TSS"/> describes how the <abbr linkend="TOE"/> handles decryption errors. In accordance with NIST Special Publication 800-56B, the <abbr linkend="TOE"/> must not reveal the particular error that occurred, either through the contents of any outputted or logged error message or through timing variations. If KTS-OAEP is supported, the evaluator shall create separate contrived ciphertext values that trigger each of the three decryption error checks described in NIST Special Publication 800-56B section 7.2.2.3, ensure that each decryption attempt results in an error, and ensure that any outputted or logged error message is identical for each. If KTS-KEM-KWS is supported, the evaluator shall create separate contrived ciphertext values that trigger each of the three decryption error checks described in NIST Special Publication 800-56B section 7.2.3.3, ensure that each decryption attempt results in an error, and ensure that any outputted or logged error message is identical for each.<h:br/><h:br/>
               If Diffie-Hellman group 14 is selected from FCS_CKM.2.1, the <abbr linkend="TSS"/> shall describe how the implementation meets RFC 3526 Section 3.<h:br/><h:br/>
@@ -1869,17 +1811,17 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 evaluator shall compare the <abbr linkend="TOE"/>s results with the results using a
                 known good implementation verifying that the <abbr linkend="TOE"/> detects these errors.<h:br/><h:br/>
                 <h:h4>RSA-based key establishment</h:h4>
-              The evaluator shall verify the correctness of the TSF's implementation of RSAES-PKCS1-v1_5 by using a known good implementation for each protocol selected in <linkref linkend="FTP_TRP.1(1)"/>, <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_TRP.1(3)"/>, <linkref linkend="FTP_ITC.1(1)"/>, <linkref linkend="FTP_ITC.1(2)"/>, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/> that uses RSAES-PKCS1-v1_5.
+              The evaluator shall verify the correctness of the TSF's implementation of RSAES-PKCS1-v1_5 by using a known good implementation for each protocol selected in FTP_TRP.1/TRUSTPATH_REM_ADMIN, FTP_TRP.1/TRUSTPATH_ENROLL, FTP_TRP.1/TRUSTPATH_JOIN, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/> that uses RSAES-PKCS1-v1_5.
               <h:h4>Diffie-Hellman Group 14</h:h4>
-              The evaluator shall verify the correctness of the TSF's implementation of Diffie-Hellman group 14 by using a known good implementation for each protocol selected in <linkref linkend="FTP_TRP.1(1)"/>, <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_TRP.1(3)"/>, <linkref linkend="FTP_ITC.1(1)"/>, <linkref linkend="FTP_ITC.1(2)"/>, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/> that uses Diffie-Hellman Group 14.
+              The evaluator shall verify the correctness of the TSF's implementation of Diffie-Hellman group 14 by using a known good implementation for each protocol selected in FTP_TRP.1/TRUSTPATH_REM_ADMIN, FTP_TRP.1/TRUSTPATH_ENROLL, FTP_TRP.1/TRUSTPATH_JOIN, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/> that uses Diffie-Hellman Group 14.
               <h:h4>FFC Schemes using "safe-prime" groups</h:h4>
-              The evaluator shall verify the correctness of the TSF's implementation of "safe-prime" groups by using a known good implementation for each protocol selected in <linkref linkend="FTP_TRP.1(1)"/>, <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_TRP.1(3)"/>, <linkref linkend="FTP_ITC.1(1)"/>, <linkref linkend="FTP_ITC.1(2)"/>, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/> that uses "safe-prime" groups. This test must be performed for each "safe-prime" group that each protocol uses.
+              The evaluator shall verify the correctness of the TSF's implementation of "safe-prime" groups by using a known good implementation for each protocol selected in FTP_TRP.1/TRUSTPATH_REM_ADMIN, FTP_TRP.1/TRUSTPATH_ENROLL, FTP_TRP.1/TRUSTPATH_JOIN, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/> that uses "safe-prime" groups. This test must be performed for each "safe-prime" group that each protocol uses.
 	      </Tests>
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
-          <f-element id="fcs_ckm_ext.4.1">
+        <f-component cc-id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
+          <f-element>
             <!-- TODO: Will need to modify this SFR more b/c if invoke platform-provided key destruction is chosen then will likely not be able to specify how the platform destroys it. Joe McDaniels has many different version of this SFR that we can try to use.
             AA has not been updated.-->
             <title> The TSF shall destroy plaintext keying material and critical security parameters by <selectables>
@@ -1937,7 +1879,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <TSS>If "invoking platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the key destruction functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS>
             </aactivity>
           </f-element>
-          <f-element id="fcs_ckm_ext.4.2"> <!--will have to edit this one to remove platform requirements-->
+          <f-element> <!--will have to edit this one to remove platform requirements-->
             <title>The <abbr linkend="TSF"/> shall destroy all plaintext keying material and critical security parameters (<abbr linkend="CSP"/>s) when no longer needed.</title>
             <note role="application">Key destruction procedures are performed in accordance with <linkref linkend="FCS_CKM_EXT.4.1"/>. Even if "invoking platform-provided functionality" is selected in <linkref linkend="FCS_CKM_EXT.4.1"/>, the <abbr linkend="TSF"/> must determine when the plaintext keying material and <abbr linkend="CSP"/> are no longer needed and thus should be destroyed. The <abbr linkend="TSF"/> must "release" the key material and <abbr linkend="CSP"/> when no longer needed, regardless if the <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform destroys the key material and <abbr linkend="CSP"/>s.<h:br/><h:br/> 
               For the purposes of this requirement, plaintext keying material refers to authentication data, authorization data, secret/private symmetric keys, data used to derive keys, etc.</note>
@@ -1968,8 +1910,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_cop.1(1)" name="Cryptographic Operation (Confidentiality Algorithms)">
-          <f-element id="fcs_cop.1.1(1)">
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Confidentiality Algorithms)" iteration="CONFALG">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable></selectables> 
@@ -1988,11 +1930,13 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </title>
             <note role="application">For the second selection of <linkref linkend="FCS_COP.1.1(1)"/> , the <abbr linkend="ST"/> author should choose the mode or modes in which AES operates in the trusted channel protocols. For the third selection, the <abbr linkend="ST"/> author should choose the key sizes that are supported by this functionality.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the encryption/decryption functionality is invoked for each mode and key size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+
+              <TSS>
+		<h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+		The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the encryption/decryption functionality is invoked for each mode and key size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
 	      </TSS>	      
-              <h:h4>If "implement functionality" is selected:</h:h4>
               <Tests>
+		<h:h4>If "implement functionality" is selected:</h:h4>		
               <testlist><h:b><h:u>AES-CBC Tests</h:u></h:b>
                 <test>AES-CBC Known Answer Tests<h:br/><h:br/> 
                   There are four Known Answer Tests (KATs), described below. In all KATs, the plaintext, ciphertext, and IV values shall be 128-bit blocks. The results from each test may either be obtained by the evaluator directly or by supplying the inputs to the implementer and receiving the results in response. To determine correctness, the evaluator shall compare the resulting values to those obtained by submitting the same inputs to a known good implementation.<h:br/><h:br/> 
@@ -2162,8 +2106,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_cop.1(2)" name="Cryptographic Operation (Hashing Algorithms)">
-          <f-element id="fcs_cop.1.1(2)">
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Hashing Algorithms)" iteration="HASHALG">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
                 <selectable>invoke platform-provided functionality</selectable>
                 <selectable>implement functionality </selectable>
@@ -2184,9 +2128,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               strength of the algorithm used (for example, SHA-256 for 128-bit keys).</note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the hash functionality is invoked for each digest size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the hash functionality is invoked for each digest size selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
               <h:h4>If "implement functionality" is selected:</h:h4>
-              <TSS>
               The evaluator shall check that the association of the hash function with other
                   <abbr linkend="TSF"/> cryptographic functions (for example, the digital signature
                 verification function) is documented in the <abbr linkend="TSS"/>. The evaluator
@@ -2198,7 +2141,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 length (in bits) of the message to be hashed is divisible by 8. The second mode is
                 the bit-oriented mode. In this mode the <abbr linkend="TSF"/> hashes messages of
                 arbitrary length. As there are different tests for each mode, an indication is given
-                in the following sections for the bit-oriented vs. the byte-oriented testmacs.</TSS><h:br/><h:br/>
+                in the following sections for the bit-oriented vs. the byte-oriented testmacs.</TSS>
               
               <Tests>The evaluator shall perform all of the following tests for each hash algorithm
                 implemented by the <abbr linkend="TSF"/> and used to satisfy the requirements of
@@ -2250,8 +2193,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_cop.1(3)" name="Cryptographic Operation (Signature Algorithms)">
-          <f-element id="fcs_cop.1.1(3)">
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Signature Algorithms)" iteration="SIGALG">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality </selectable>
@@ -2279,8 +2222,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
                 nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part
                 of this evaluation activity).<h:br/><h:br/>
 	      </TSS>	      
-               <h:h4>If "implement functionality" is selected:</h:h4>
               <Tests>
+		<h:h4>If "implement functionality" is selected:</h:h4>		
                 <testlist><h:b><h:u>ECDSA Algorithm Tests</h:u></h:b><h:br/><h:br/>
                 <test>ECDSA FIPS 186-4 Signature Generation Test<h:br/><h:br/> For each
                 supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the
@@ -2319,8 +2262,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_cop.1(4)" name="Cryptographic Operation (Keyed-Hash Message Authentication)">
-          <f-element id="fcs_cop.1.1(4)">
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Keyed-Hash Message Authentication)" iteration="KEYHASH">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality </selectable>
@@ -2343,18 +2286,19 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               selection should be consistent with the overall strength of the algorithm used for
               <linkref linkend="FCS_COP.1(3)"/>.</note>
             <aactivity> 
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported
+              <TSS>
+		<h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+		The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported
                 platform) how the keyed-hash functionality is invoked for each mode and key size
                 selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be
                 noted that this may be through a mechanism that is not implemented by the <abbr
                   linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the
-                <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4>
-              <TSS>
+                <abbr linkend="TSS"/> as part of this evaluation activity).
+		<h:br/><h:br/>
+              <h:h4>If "implement functionality" is selected:</h:h4>		  
               The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it specifies
                 the following values used by the HMAC function: key length, hash function used,
-                block size, and output MAC length used.</TSS><h:br/><h:br/>
+                block size, and output MAC length used.</TSS>
 		
               <Tests>For each of the supported parameter sets, the evaluator shall compose 15 sets
                 of test data. Each set shall consist of a key and message data. The evaluator shall
@@ -2365,17 +2309,17 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_https_ext.1" name="HTTPS Protocol" status="sel-based">
-          <selection-depends req="FTP_TRP.1.1(1)" ids="TRP1_HTTPS_INVOKE, TRP1_HTTPS_IMPLEMENT"/>
-          <selection-depends req="FTP_TRP.1.1(2)" ids="TRP2_HTTPS_INVOKE, TRP2_HTTPS_IMPLEMENT"/>
-          <selection-depends req="FTP_ITC.1.1(1)" ids="ITC1_HTTPS_INVOKE, ITC1_HTTPS_IMPLEMENT"/>
-          <selection-depends req="FTP_ITC.1.1(2)" ids="ITC2_HTTPS_INVOKE, ITC2_HTTPS_IMPLEMENT"/>
-          <selection-depends req="FPT_ITT.1.1(1)" ids="ITT1_HTTPS_INVOKE, ITT1_HTTPS_IMPLEMENT"/>
-          <selection-depends req="FPT_ITT.1.1(2)" ids="ITT2_HTTPS_INVOKE, ITT2_HTTPS_IMPLEMENT"/>
-          <f-element id="fcs_https_ext.1.1">
+        <f-component cc-id="fcs_https_ext.1" name="HTTPS Protocol" status="sel-based">
+          <selection-depends req="trustpath-rem-admin"  ids="TRP1_HTTPS_INVOKE, TRP1_HTTPS_IMPLEMENT"/>
+          <selection-depends req="trustpath-enroll"     ids="TRP2_HTTPS_INVOKE, TRP2_HTTPS_IMPLEMENT"/>
+          <selection-depends req="fel-inter-xfer-it"    ids="ITC1_HTTPS_INVOKE, ITC1_HTTPS_IMPLEMENT"/>
+          <selection-depends req="inter-tsf-xfer-agent" ids="ITC2_HTTPS_INVOKE, ITC2_HTTPS_IMPLEMENT"/>
+          <selection-depends req="fel-interxfer"        ids="ITT1_HTTPS_INVOKE, ITT1_HTTPS_IMPLEMENT"/>
+          <selection-depends req="fel-interxfer-agent"  ids="ITT2_HTTPS_INVOKE, ITT2_HTTPS_IMPLEMENT"/>
+          <f-element>
             <title>The TSF shall implement the HTTPS protocol that complies with RFC 2818.</title>
           </f-element>
-          <f-element id="fcs_https_ext.1.2">
+          <f-element>
             <title>The TSF shall implement HTTPS using TLS in accordance with the Package for Transport Layer Security . 
             </title>
             <note role="application">The TLS Functional Package must be included in the <abbr linkend="ST"/>, with the following selections made:
@@ -2403,10 +2347,10 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element> 
         </f-component> 
-        <f-component id="fcs_iv_ext.1" name="Initialization Vector Generation" status="sel-based">
+        <f-component cc-id="fcs_iv_ext.1" name="Initialization Vector Generation" status="sel-based">
           <selection-depends req="FCS_STG_EXT.1.1" ids="fcs_stg_enc"/>
           <!--<selection-depends req="FCS_STG_EXT.2.1" ids="fcs_stg_enc"/>-->
-          <f-element id="fcs_iv_ext.1.1">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -2497,8 +2441,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_rbg_ext.1" name="Extended: Random Bit Generation">
-          <f-element id="fcs_rbg_ext.1.1">
+        <f-component cc-id="fcs_rbg_ext.1" name="Extended: Random Bit Generation">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality </selectable>
@@ -2526,7 +2470,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </Tests>
               </aactivity>
           </f-element>
-          <f-element id="fcs_rbg_ext.1.2">
+          <f-element>
             <title> The deterministic RBG shall be seeded by an entropy source that accumulates
               entropy from <selectables>
                 <selectable>a software-based noise source</selectable>
@@ -2559,8 +2503,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_stg_ext.1" name="Cryptographic Key Storage">
-          <f-element id="fcs_stg_ext.1.1">
+        <f-component cc-id="fcs_stg_ext.1" name="Cryptographic Key Storage">
+          <f-element>
             <title>The TSF shall utilize <selectables>
               <selectable> platform-provided key storage</selectable>
               <selectable id="fcs_stg_enc"> encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
@@ -2581,9 +2525,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fcs_stg_ext.2" name="Encrypted Cryptographic Key Storage" status="sel-based">
+        <f-component cc-id="fcs_stg_ext.2" name="Encrypted Cryptographic Key Storage" status="sel-based">
           <selection-depends req="FCS_STG_EXT.1.1" ids="fcs_stg_enc"/>
-          <f-element id="fcs_stg_ext.2.1">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -2606,12 +2550,12 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component> 
       </subsection>
       <subsection id="fia" title="Identification and Authentication (FIA)">
-        <f-component id="fia_enr_ext.1" name="Enrollment of Mobile Device into Management">
-          <f-element id="fia_enr_ext.1.1">
+        <f-component cc-id="fia_enr_ext.1" name="Enrollment of Mobile Device into Management">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall authenticate the remote users over a trusted channel during the enrollment of a mobile device.</title>
             <note role="application">The <abbr linkend="MDM"/> Server may use its own directory or a directory server to perform the authentication decision for users performing the remote enrollment of a mobile device.</note>
             <aactivity> 
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes the process of enrollment for each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>. This description shall include the trusted path used for enrollment (<linkref linkend="FTP_TRP.1(2)"/>), the method of user authentication (username/password, token, etc.), the method of authentication decision (local or remote authentication services), and the actions performed on the <abbr linkend="MDM"/> Server upon successful authentication. <h:br/><h:br/></TSS>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> and verify that it describes the process of enrollment for each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>. This description shall include the trusted path used for enrollment (FTP_TRP.1/TRUSTPATH_ENROLL), the method of user authentication (username/password, token, etc.), the method of authentication decision (local or remote authentication services), and the actions performed on the <abbr linkend="MDM"/> Server upon successful authentication. <h:br/><h:br/></TSS>
               <Tests>
                 <testlist>
                 <test>The evaluator shall attempt to enroll a device without providing correct credentials. The evaluator shall verify that the device is not enrolled and that the described enrollment actions are not taken.</test>
@@ -2620,7 +2564,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </Tests>
             </aactivity>
           </f-element>
-          <f-element id="fia_enr_ext.1.2">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall limit the user's enrollment of devices to devices specified by <selectables> <selectable>IMEI</selectable><selectable><assignable>a unique device ID</assignable></selectable></selectables> and <selectables>
               <selectable>specific device models</selectable>
                 <selectable>a number of devices</selectable>
@@ -2640,8 +2584,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fia_uau.1" name="Timing of Authentication">
-          <f-element id="fia_uau.1.1">
+        <f-component cc-id="fia_uau.1" name="Timing of Authentication">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality </selectable>
@@ -2651,7 +2595,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="fia_uau.1.2">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality </selectable>
@@ -2669,8 +2613,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fia_uau_ext.4(1)" name="User Authentication (Re-Use Prevention)" status="objective">
-          <f-element id="fia_uau_ext.4.1(1)">
+        <f-component cc-id="fia_uau_ext.4(1)" name="User Authentication (Re-Use Prevention)" status="objective">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall prevent reuse of enrollment authentication data
               related to <assignable>identified authentication mechanism(s)</assignable>. </title>
             <note role="application">This requirement references the authentication mechanism(s)
@@ -2698,8 +2642,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fia_uau_ext.4(2)" name="User Authentication (Re-Use Prevention for Device Enrollment)" status="objective">
-          <f-element id="fia_uau_ext.4.1(2)">
+        <f-component cc-id="fia_uau_ext.4(2)" name="User Authentication (Re-Use Prevention for Device Enrollment)" status="objective">
+          <f-element>
             <title> The <abbr linkend="TSF"/> shall prevent reuse of <selectables>
                 <selectable>IMEI</selectable>
                 <selectable><assignable>a unique device ID</assignable></selectable>
@@ -2729,8 +2673,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fia_x509_ext.1(1)" name="X.509 Certificate Validation">
-          <f-element id="fia_x509_ext.1.1(1)">
+        <f-component cc-id="fia_x509_ext.1(1)" name="X.509 Certificate Validation">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -2775,7 +2719,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </Tests>
             </aactivity>
           </f-element>
-          <f-element id="fia_x509_ext.1.2(1)">
+          <f-element>
             <title>The TSF shall <selectables>
                 <selectable>invoke platform-provided functionality</selectable>
                 <selectable>implement functionality</selectable> 
@@ -2796,9 +2740,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>          
         </f-component>
-        <f-component id="fia_x509_ext.1(2)" name="X.509 Certificate Validation" status="sel-based" >
+        <f-component cc-id="fia_x509_ext.1(2)" name="X.509 Certificate Validation" status="sel-based" >
           <selection-depends req="FPT_ITT.1.1(1)" ids="ITT1_IPSEC_IMPLEMENT, ITT1_HTTPS_IMPLEMENT, ITT1_HTTPS_INVOKE, ITT1_TLS_IMPLEMENT, ITT1_DTLS_IMPLEMENT"/>
-          <f-element id="fia_x509_ext.1.1(2)">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -2850,7 +2794,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </Tests>
             </aactivity>
           </f-element>
-          <f-element id="fia_x509_ext.1.2(2)">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable> 
@@ -2872,8 +2816,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fia_x509_ext.2" name="X.509 Certificate Authentication">
-          <f-element id="fia_x509_ext.2.1">
+        <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication">
+          <f-element>
             <title>The TSF shall <selectables> 
               <selectable>invoke platform-provided functionality to use X.509v3 certificates as defined by RFC 5280 to support authentication for <selectables>
                 <selectable>IPsec</selectable>
@@ -2906,7 +2850,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </selectables> 
               </title>
             <note role="application"> The <abbr linkend="ST"/> author's selection(s) must match the selection 
-              of <linkref linkend="FTP_TRP.1(2)"/>, <linkref linkend="FTP_ITC.1(1)"/>, <linkref linkend="FTP_ITC.1(2)"/>, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/>. 
+              of FTP_TRP.1/TRUSTPATH_ENROLL, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, <linkref linkend="FPT_ITT.1(1)"/>, and <linkref linkend="FPT_ITT.1(2)"/>. 
               Certificates may optionally be used for trusted updates of system software (<linkref linkend="FPT_TUD_EXT.1.3"/>) 
               and software integrity verification (<linkref linkend="FPT_TST_EXT.1.2"/>). If some authentication services are 
               provided by the <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author must clearly 
@@ -2927,7 +2871,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="fia_x509_ext.2.2">
+          <f-element>
             <title> When the 
               <selectables>
                 <selectable>TSF</selectable>
@@ -2957,8 +2901,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fia_x509_ext.3" name="X.509 Enrollment" status="objective">
-          <f-element id="fia_x509_ext.3.1">
+        <f-component cc-id="fia_x509_ext.3" name="X.509 Enrollment" status="objective">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -2975,7 +2919,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/></TSS>
             </aactivity>
           </f-element>
-          <f-element id="fia_x509_ext.3.2"> <!--free--><!--check-->
+          <f-element> <!--free--><!--check-->
             <title>The TSF shall<selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -2993,33 +2937,33 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fia_x509_ext.4" name="Alternate X.509 Enrollment" status="objective">
-          <f-element id="fia_x509_ext.4.1">
+        <f-component cc-id="fia_x509_ext.4" name="Alternate X.509 Enrollment" status="objective">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall use the Enrollment over Secure Transport (EST) protocol as specified in RFC 7030 to request certificate enrollment using the simple enrollment method described in RFC 7030 Section 4.2.</title>
           </f-element>
-          <f-element id="fia_x509_ext.4.2">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall be capable of authenticating <abbr linkend="EST"/> requests using an existing certificate and corresponding private key as specified by RFC 7030 Section 3.3.2.</title>
           </f-element>
-          <f-element id="fia_x509_ext.4.3">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall be capable of authenticating <abbr linkend="EST"/> requests using HTTP Basic Authentication with a username and password as specified by RFC 7030 Section 3.2.3.</title>
           </f-element>
-          <f-element id="fia_x509_ext.4.4">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall perform authentication of the <abbr linkend="EST"/> server using an Explicit Trust Anchor following the rules described in RFC 7030, section 3.6.1.</title>
             <note role="application">EST also uses HTTPS as specified in <linkref linkend="FCS_HTTPS_EXT.1"/> to establish a secure connection to an <abbr linkend="EST"/> server, and thus, the <abbr linkend="ST"/> author must also include <linkref linkend="FCS_HTTPS_EXT.1"/> in the main body of the <abbr linkend="ST"/>. The separate Trust Anchor Database dedicated to <abbr linkend="EST"/> operations is described as Explicit Trust Anchors in RFC 7030.</note>
           </f-element>
-          <f-element id="fia_x509_ext.4.5">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall be capable of requesting server-provided private keys as specified in RFC 7030 Section 4.4.</title>
           </f-element>
-          <f-element id="fia_x509_ext.4.6">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall be capable of updating its <abbr linkend="EST"/>-specific Trust Anchor Database using the "Root CA Key Update" process described in RFC 7030 Section 4.1.3.</title>
           </f-element>
-          <f-element id="fia_x509_ext.4.7">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall generate a Certificate Request Message for <abbr linkend="EST"/> as specified in RFC 2986 and be able to provide the following information in the request: public key and <selectables linebreak="yes">
                 <selectable>device-specific information</selectable>
                 <selectable>Common Name, Organization, Organizational Unit, and Country</selectable>
               </selectables>.</title>
           </f-element>
-          <f-element id="fia_x509_ext.4.8">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall validate the chain of certificates from the Root CA certificate in the Trust Anchor Database to the <abbr linkend="EST"/> Server CA certificate upon receiving a CA Certificates Response. </title>
             <note role="application">The public key referenced in <linkref linkend="FIA_X509_EXT.4.7"/> is the public key portion of the public-private key pair generated by the <abbr linkend="TOE"/> as specified in <linkref linkend="FCS_CKM.1"/>.</note>
             <aactivity>
@@ -3074,8 +3018,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fia_x509_ext.5" name="X.509 Unique Certificate">
-          <f-element id="fia_x509_ext.5.1">
+        <f-component cc-id="fia_x509_ext.5" name="X.509 Unique Certificate">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -3101,8 +3045,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component>
       </subsection>
       <subsection id="fmt" title="Security Management (FMT)">
-        <f-component id="fmt_mof.1(1)" name="Management of Functions Behavior">
-          <f-element id="fmt_mof.1.1(1)">
+        <f-component cc-id="fmt_mof.1" name="Management of Functions Behavior" iteration="FUNCBE">
+          <f-element id="restrictfunc">
             <title><h:b>Refinement:</h:b> The TSF shall restrict the ability to perform the functions <h:ul>
                 <h:li>listed in <linkref linkend="FMT_SMF.1(1)"/></h:li>
                 <h:li>enable, disable, and modify policies listed in <linkref linkend="FMT_SMF.1(1)"/></h:li>
@@ -3126,8 +3070,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fmt_mof.1(2)" name="Management of Functions Behavior (Enrollment)">
-          <f-element id="fmt_mof.1.1(2)">
+        <f-component cc-id="fmt_mof.1(2)" name="Management of Functions Behavior (Enrollment)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The <h:b><abbr linkend="MDM"/> Server</h:b> shall restrict the ability to <h:i>[initiate the enrollment process]</h:i> to <h:i>[authorized administrators and MD users]</h:i>.</title>
             <note role="application">This requirement outlines the enrollment functions that both administrators and MD users may perform. The enrollment actions are identified in the <abbr linkend="TSS"/> as a part of <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/> The authorized administrator does not remotely initiate enrollment of the mobile devices that are in the possession of users but may enroll mobile devices when they are in the possession of the administrator, for example, before distributing the mobile devices to the users. </note>
             <aactivity>
@@ -3136,9 +3080,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fmt_mof.1(3)" name="Management of Functions in (MAS Server Downloads)" status="sel-based">
+        <f-component cc-id="fmt_mof.1(3)" name="Management of Functions in (MAS Server Downloads)" status="sel-based">
           <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
-          <f-element id="fmt_mof.1.1(3)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The MAS Server shall restrict the ability to download applications, allowing only enrolled mobile devices that are compliant with <abbr linkend="MDM"/> policies and assigned to a user in the application access group to perform this function.</title>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to determine that all methods of initiating an application download or update push are specified.<h:br/><h:br/></TSS>
@@ -3149,11 +3093,11 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fmt_pol_ext.1" name="Trusted Policy Update">
-          <f-element id="fmt_pol_ext.1.1">
+        <f-component cc-id="fmt_pol_ext.1" name="Trusted Policy Update">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall provide digitally signed policies and policy updates to the <abbr linkend="MDM"/> Agent.</title>
             <note role="application">The intent of this requirement is to cryptographically tie the policies to the enterprise that mandated the policy, not to
-              protect the policies in transit (as they are already protected by <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or <linkref linkend="FTP_ITC.1(2)"/>). This is especially critical for users who connect to multiple enterprises.</note>
+              protect the policies in transit (as they are already protected by <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/> or FTP_ITC.1/INTER_TSF_XFER_AGENT). This is especially critical for users who connect to multiple enterprises.</note>
             <aactivity>
               <TSS>Policies must be digitally signed by the enterprise using the algorithms in <linkref linkend="FCS_COP.1(3)"/>. The evaluator shall ensure that the <abbr linkend="TSS"/> describes how policies are digitally signed by the <abbr linkend="TSF"/>.<h:br/><h:br/></TSS>
               <Guidance>If applicable, the evaluator shall verify that the AGD guidance instructs administrators on configuring the Enterprise certificate to be used for signing policies or signing the policies before applying them.<h:br/><h:br/> </Guidance>
@@ -3162,11 +3106,11 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fmt_sae_ext.1" name="Security Attribute Expiration" status="objective">
-          <f-element id="fmt_sae_ext.1.1">
+        <f-component cc-id="fmt_sae_ext.1" name="Security Attribute Expiration" status="objective">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall be capable to specify a configurable expiration time for enrollment authentication data. </title>
           </f-element>
-          <f-element id="fmt_sae_ext.1.2">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall be able to deny enrollment after the expiration time for the enrollment authentication data has passed.</title>
             <note role="application"> This requirement references the user authenticator used for device enrollment in management in <linkref linkend="FIA_ENR_EXT.1.1"/>. The user authenticator must only be valid for a configurable time limit. If the authenticator is expired, even if entered correctly, enrollment must not occur. <h:br/><h:br/> The length of the time the authenticator is valid for is configured per function c.5 in <linkref linkend="FMT_SMF.1(2)"/>. If <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>, then function g must be selected in <linkref linkend="FMT_SMF.1(2)"/>. </note>
             <aactivity>
@@ -3181,8 +3125,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
           </f-element>
         </f-component>  
         
-        <f-component id="fmt_smf.1(1)" name="Specification of Management Functions (Server configuration of Agent)">
-          <f-element id="fmt_smf.1.1(1)">
+        <f-component cc-id="fmt_smf.1(1)" name="Specification of Management Functions (Server configuration of Agent)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The <h:b><abbr linkend="MDM"/> Server</h:b> shall be capable of <h:b>communicating the following commands to the <abbr linkend="MDM"/> Agent: </h:b>
               <h:ul style="list-style-type:none">
                 <h:li><ctr id="smf1" ctr-type="mgmt" pre=""></ctr>. transition to the locked state (MDF Function 6)</h:li>
@@ -3434,8 +3378,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fmt_smf.1(2)" name="Specification of Management Functions (Server Configuration of Server)">
-          <f-element id="fmt_smf.1.1(2)">
+        <f-component cc-id="fmt_smf.1(2)" name="Specification of Management Functions (Server Configuration of Server)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall be capable of performing the following management functions: <h:ol type="a">
                 <h:li>choose X.509v3 certificates for <abbr linkend="MDM"/> Server use</h:li>
                 <h:li>configure the <selectables>
@@ -3473,7 +3417,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <TSS> The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes each management function listed. For function c.4, the evaluator shall examine the <abbr linkend="TSS"/> to ensure that it describes the privacy-sensitive information that the <abbr linkend="TOE"/> has the capability to collect from enrolled mobile devices.<h:br/><h:br/> </TSS>
               <Guidance> The evaluator shall verify the AGD guidance includes detailed instructions of what options are available and how to configure each management functional capability listed.<h:br/><h:br/> </Guidance>
               <Tests> The tests of functions b, c.1, c.2, and c.5 are performed in conjunction with the use of the function. Test 3 also covers function c.4. The evaluator shall perform the following test: <testlist>
-                <test>The evaluator shall configure the <abbr linkend="TSF"/> authentication certificate(s) and verify that the correct certificate is used in established trusted connections (<linkref linkend="FPT_ITT.1(1)"/>, <linkref linkend="FPT_ITT.1(2)"/>, <linkref linkend="FTP_ITC.1(1)"/>, and <linkref linkend="FTP_TRP.1(2)"/>).</test>
+                <test>The evaluator shall configure the <abbr linkend="TSF"/> authentication certificate(s) and verify that the correct certificate is used in established trusted connections (<linkref linkend="FPT_ITT.1(1)"/>, <linkref linkend="FPT_ITT.1(2)"/>, FTP_ITC.1/INTER_XFER_IT, and FTP_TRP.1/TRUSTPATH_ENROLL).</test>
                   <test>(conditional) The evaluator shall configure the periodicity for the assigned list of commands to the agent for several configured time periods and shall verify that the <abbr linkend="MDM"/> Server performs the commands schedule.</test>
                   <test>(conditional) The evaluator shall design and perform tests to demonstrate that the assigned function may be configured and that the intended behavior of the function is enacted by the <abbr linkend="MDM"/> Server.</test>
                 </testlist>
@@ -3481,9 +3425,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fmt_smf.1(3)" name="Specification of Management Functions (MAS Server)" status="sel-based">
+        <f-component cc-id="fmt_smf.1(3)" name="Specification of Management Functions (MAS Server)" status="sel-based">
           <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
-          <f-element id="fmt_smf.1.1(3)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The MAS Server shall be capable of performing the following management functions:
               <h:ol type="a">
                 <h:li>Configure application access groups</h:li>
@@ -3506,14 +3450,14 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fmt_smr.1(1)" name="Security Management Roles">
-          <f-element id="fmt_smr.1.1(1)">
+        <f-component cc-id="fmt_smr.1(1)" name="Security Management Roles">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall maintain the roles administrator, MD user, and <selectables>
               <selectable><assignable>additional authorized identified roles</assignable></selectable>
               <selectable>no additional roles</selectable>
             </selectables>.</title>
           </f-element>
-          <f-element id="fmt_smr.1.2(1)">
+          <f-element>
             <title>The TSF shall be able to associate users with roles.</title>
             <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to <linkref linkend="FIA_ENR_EXT.1"/>.<h:br/><h:br/>              
               For distributed <abbr linkend="TOE"/>s, not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfill this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to <linkref linkend="FIA_UAU.1"/>. For the other <abbr linkend="TOE"/> components authentication can be realized through the use of a trusted channel (either according to FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/>) from a component that supports the authentication of users according to <linkref linkend="FIA_UAU.1"/>. The identification of users according to <linkref linkend="FIA_UAU.1.2"/> and the association of users with roles according to <linkref linkend="FMT_SMR.1.2(1)"/> is done through the components that support the authentication of users according to <linkref linkend="FIA_UAU.1"/>.   
@@ -3525,12 +3469,12 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>      
-        <f-component id="fmt_smr.1(2)" name="Security Management Roles (MAS Server)" status="sel-based">
+        <f-component cc-id="fmt_smr.1(2)" name="Security Management Roles (MAS Server)" status="sel-based">
           <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
-          <f-element id="fmt_smr.1.1(2)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall additionally maintain the roles enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
           </f-element>
-          <f-element id="fmt_smr.1.2(2)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The MAS Server shall be able to associate users with roles.</title>
             <note role="application">It is envisioned that the MAS Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is stated. The MD user role is used for enrollment of mobile devices to the MAS according to <linkref linkend="FIA_ENR_EXT.1"/>.</note>
             <aactivity>
@@ -3542,8 +3486,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component>      
       </subsection>    
       <subsection id="fpt" title="Protection of the TSF (FPT)">
-        <f-component id="fpt_api_ext.1" name="Use of Supported Services and APIs">
-          <f-element id="fpt_api_ext.1.1">
+        <f-component cc-id="fpt_api_ext.1" name="Use of Supported Services and APIs">
+          <f-element>
             <title>The TSF shall use only documented platform <abbr title="Application Programming Interface" linkend="API">API</abbr>'s.</title>
             <note role="application">
               This requirement applies to the APIs used when "invoke platform provided functionality" is selected in an SFR. The definition of <h:i>documented</h:i> may vary depending upon whether the <abbr linkend="MDM"/> software is provided by a third party (who relies upon documented platform APIs) or by a platform vendor who may be able to guarantee support for platform <abbr title="Application Programming Interface" linkend="API">API</abbr>'s.
@@ -3553,8 +3497,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fpt_lib_ext.1" name="Use of Third Party Libraries">
-          <f-element id="fpt_lib_ext.1.1">
+        <f-component cc-id="fpt_lib_ext.1" name="Use of Third Party Libraries">
+          <f-element>
             <title> The <abbr linkend="MDM"/> software shall be packaged with only
               <assignable>list of third-party libraries</assignable>. 
             </title>
@@ -3566,9 +3510,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>         
-        <f-component id="fpt_itt.1(1)" name="Internal TOE TSF Data Transfer" status="sel-based">
+        <f-component cc-id="fpt_itt.1" name="Internal TOE TSF Data Transfer" status="sel-based" iteration="INTER_XFER">
           <selection-depends req="ftp_itc_ext.1.1" ids="ITC_DISTRIBUTED_TOE"/>
-          <f-element id="fpt_itt.1.1(1)">
+          <f-element id="fel-interxfer">
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables linebreak="yes">
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="ITT1_IPSEC_INVOKE">IPsec</selectable>
@@ -3628,9 +3572,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fpt_itt.1(2)" name="Internal TOE TSF Data Transfer (MDM Agent)" status="sel-based">
+        <f-component cc-id="fpt_itt.1" iteration="INTERXFER_AGENT" name="Internal TOE TSF Data Transfer (MDM Agent)" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1" ids="ITC_AgentInTOE"/>
-          <f-element id="fpt_itt.1.1(2)">
+          <f-element id="fel-interxfer-agent">
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="ITT2_TLS_INVOKE">mutually authenticated TLS</selectable>                
@@ -3684,11 +3628,11 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fpt_tst_ext.1" name="Functionality Testing">
-          <f-element id="fpt_tst_ext.1.1">
+        <f-component cc-id="fpt_tst_ext.1" name="Functionality Testing">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall run a suite of self tests during initial start-up (power on) to demonstrate correct operation of the <abbr linkend="TSF"/>.</title>
           </f-element>
-          <f-element id="fpt_tst_ext.1.2">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -3712,8 +3656,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component id="fpt_tud_ext.1" name="Trusted Update">
-          <f-element id="fpt_tud_ext.1.1">
+        <f-component cc-id="fpt_tud_ext.1" name="Trusted Update">
+          <f-element>
             <title>The <abbr linkend="TSF"/> shall provide Authorized Administrators the ability to query the current version of the software.</title>
             <note role="application">
               For a distributed <abbr linkend="TOE"/>, the method of determining the installed versions on each component of the <abbr linkend="TOE"/> is described in the operational guidance. In the requirement, "software" refers to the component of the distributed <abbr linkend="TOE"/> to which the requirement is being applied. 
@@ -3723,7 +3667,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <Tests>The evaluator shall query the <abbr linkend="TSF"/> for the current version of the software according to the AGD guidance and shall verify that the current version matches that of the documented and installed version.</Tests>
             </aactivity>
           </f-element>
-          <f-element id="fpt_tud_ext.1.2">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -3732,7 +3676,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/></TSS>
             </aactivity>
           </f-element>
-          <f-element id="fpt_tud_ext.1.3">
+          <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -3755,8 +3699,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component>    
       </subsection>  
       <subsection id="fta" title="TOE Access (FTA)">
-        <f-component id="fta_tab.1" name="Default TOE Access Banners" status="optional">
-          <f-element id="fta_tab.1.1">
+        <f-component cc-id="fta_tab.1" name="Default TOE Access Banners" status="optional">
+          <f-element>
             <title><h:b>Refinement:</h:b> Before establishing a user session, the TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -3774,8 +3718,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component>
       </subsection>  
       <subsection id="ftp" title="Trusted Path/Channels (FTP)">
-        <f-component id="ftp_itc_ext.1" name="Trusted Channel" > <!-- SFR that will specify if Agent is in the TOE and/or if TOE is distributed-->
-          <f-element id="ftp_itc_ext.1.1">
+        <f-component cc-id="ftp_itc_ext.1" name="Trusted Channel" > <!-- SFR that will specify if Agent is in the TOE and/or if TOE is distributed-->
+          <f-element id="fel-itc-ext">
             <title>The <abbr linkend="TSF"/> shall provide a communication channel between itself and <selectables linebreak="yes">              
               <selectable id="ITC_AgentInTOE">an MDM Agent that is internal to the TOE</selectable>
               <selectable id="ITC_AgentOutTOE">an MDM Agent that is external to the TOE</selectable>
@@ -3784,24 +3728,24 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
              that is logically distinct from other communication channels, as specified in <selectables>
               <selectable id="ITC_DISTRIBUTED_TOE_ITT1"><linkref linkend="FPT_ITT.1(1)"/></selectable>
                <selectable id="ITC_AgentInTOE_ITT2"><linkref linkend="FPT_ITT.1(2)"/></selectable>
-              <selectable id="ITC_AgentOutTOE_ITC"><linkref linkend="FTP_ITC.1(2)"/></selectable>
+              <selectable id="ITC_AgentOutTOE_ITC">FTP_ITC.1/INTER_TSF_XFER_AGENT</selectable>
             </selectables>.</title>
             <note role="Application">
               This <abbr linkend="SFR"/> describes the communication channels between the <abbr linkend="MDM"/> Server and an Agent that may or may not be in the <abbr linkend="TOE"/>, and optionally separate components comprising a distributed <abbr linkend="TOE"/>, to determine which selection-based <abbr linkend="SFR"/>s will need to be included in the <abbr linkend="ST"/>. <h:br/><h:br/>            
               If the <abbr linkend="TOE"/> includes an <abbr linkend="MDM"/> Agent, then the communication channel between the Agent and <abbr linkend="TSF"/> is internal to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is internal to the <abbr linkend="TOE"/>" must be selected in the first selection. Additionally <linkref linkend="FPT_ITT.1(2)"/> must be selected in the second selection and <linkref linkend="FPT_ITT.1(2)"/> must be included in the <abbr linkend="ST"/>. <h:br/><h:br/>         
-              If the <abbr linkend="TOE"/> interoperates with an evaluated <abbr linkend="MDM"/> Agent built into a mobile device (i.e., the <abbr linkend="TOE"/> does not include an <abbr linkend="MDM"/> Agent), the communication channel between the Agent and <abbr linkend="TSF"/> is external to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is external to the <abbr linkend="TOE"/>" must be selected in the first selection. Additionally <linkref linkend="FTP_ITC.1(2)"/> must be selected in the second selection and <linkref linkend="FTP_ITC.1(2)"/> must be included in the <abbr linkend="ST"/>. <h:br/><h:br/> 
+              If the <abbr linkend="TOE"/> interoperates with an evaluated <abbr linkend="MDM"/> Agent built into a mobile device (i.e., the <abbr linkend="TOE"/> does not include an <abbr linkend="MDM"/> Agent), the communication channel between the Agent and <abbr linkend="TSF"/> is external to the <abbr linkend="TOE"/> and thus "an <abbr linkend="MDM"/> Agent that is external to the <abbr linkend="TOE"/>" must be selected in the first selection. Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the <abbr linkend="ST"/>. <h:br/><h:br/> 
               If "other components comprising the distributed <abbr linkend="TOE"/>" is selected in the first selection then <linkref linkend="FPT_ITT.1(1)"/> must be selected in the second selection. <linkref linkend="FPT_ITT.1(1)"/> must be included in the <abbr linkend="ST"/> for all internal channels used to transfer <abbr linkend="TSF"/> data between <abbr linkend="TOE"/> components other than an <abbr linkend="MDM"/> Agent.
             </note>
               <aactivity>
                 <TSS>The evaluator shall ensure that the TSS contains whether the MDM Server communication channel is internal or external to the <abbr linkend="TOE"/>. <h:br/><h:br/> </TSS>
                 <Tests>
-                This testing can be completed in conjunction with the testing for FPT_ITT.1(1)/FPT_ITT.1(2), FTP_ITC.1(2) or FTP_ITC.1(3).               
+                This testing can be completed in conjunction with the testing for FPT_ITT.1(1)/FPT_ITT.1(2), FTP_ITC.1/INTER_TSF_XFER_AGENT or FTP_ITC.1(3).               
 		</Tests>
               </aactivity>
           </f-element>
         </f-component>
-        <f-component id="ftp_itc.1(1)" name="Inter-TSF Trusted Channel (Authorized IT Entities)"> 
-          <f-element id="ftp_itc.1.1(1)"> 
+        <f-component cc-id="ftp_itc.1" iteration="INTER_XFER_IT" name="Inter-TSF Trusted Channel (Authorized IT Entities)"> 
+          <f-element id="fel-inter-xfer-it"> 
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="ITC1_IPSEC_INVOKE">IPsec</selectable>
@@ -3826,7 +3770,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               that the <abbr linkend="TOE"/> interacts with to perform its functions.<h:br/><h:br/> 
               Protection (by one of the listed protocols) is required at least for communications with the server that collects 
               the audit information. If it communicates with an authentication server (e.g., RADIUS), then the <abbr linkend="ST"/> 
-              author chooses "authentication server" in <linkref linkend="FTP_ITC.1.1(1)"/> and this connection must be protected 
+              author chooses "authentication server" in FTP_ITC.1.1/INTER_XFER_IT and this connection must be protected 
               by one of the listed protocols. If other authorized IT entities (e.g., NTP server) are protected, the 
               <abbr linkend="ST"/> author makes the appropriate assignments (for those entities) and selections (for the protocols 
               that are used to protect those connections).<h:br/><h:br/> 
@@ -3847,7 +3791,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
-                    <h:li>either TLS or DTLS is selected depending on the selection made in FTP_ITC.1.1(1)</h:li>
+                    <h:li>either TLS or DTLS is selected depending on the selection made in FTP_ITC.1.1/INTER_XFER_IT</h:li>
                     <h:li>either client or server is selected as appropriate</h:li>
                   </h:ul>
                 </h:li>
@@ -3881,7 +3825,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="ftp_itc.1.2(1)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -3895,13 +3839,13 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="ftp_itc.1.3(1)">
+          <f-element id="fel-itc-init">
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to initiate communication via the trusted channel for <assignable>list of services for which the TSF is able to initiate communications</assignable>.</title>
             <note role="application">While there are no requirements on the party initiating the
-              communication, the <abbr linkend="ST"/> author lists in the assignment for <linkref linkend="FTP_ITC.1.3(1)"/>
+              communication, the <abbr linkend="ST"/> author lists in the assignment for <linkref linkend="fel-itc-init"/>
               the services for which the <abbr linkend="TOE"/> can initiate the communication with
               the authorized IT entity.</note>
             <aactivity>
@@ -3937,9 +3881,9 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="ftp_itc.1(2)" name="Inter-TSF Trusted Channel (MDM Agent)" status="sel-based">
-          <selection-depends req="ftp_itc_ext.1.1" ids="AgentOutTOE_ftp"/>
-          <f-element id="ftp_itc.1.1(2)">
+        <f-component cc-id="ftp_itc.1" iteration="INTER_TSF_XFER_AGENT" name="Inter-TSF Trusted Channel (MDM Agent)" status="sel-based">
+          <selection-depends req="fel-itc-ext" ids="AgentOutTOE_ftp"/>
+          <f-element id="inter-tsf-xfer-agent">
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="ITC2_TLS_INVOKE">mutually authenticated TLS</selectable> 
@@ -3969,13 +3913,13 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               for TLS mutual authentication post-enrollment. However, the client side is not evaluated since the agent is not in 
               the <abbr linkend="TOE"/>.<h:br/><h:br/>
               
-              This trusted channel protects the connection between an enrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server. FTP_TRP.1(2) provides a trusted channel to protect the connection between an unenrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server during the enrollment operation. <h:br/><h:br/> 
+              This trusted channel protects the connection between an enrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server. FTP_TRP.1/TRUSTPATH_ENROLL provides a trusted channel to protect the connection between an unenrolled <abbr linkend="MDM"/> Agent and the <abbr linkend="MDM"/> Server during the enrollment operation. <h:br/><h:br/> 
               The trusted channel uses TLS, DTLS, or HTTPS as the protocol that preserves the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>.<h:br/><h:br/>
               If the <abbr linkend="ST"/> author selects "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security", the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
-                    <h:li>either TLS or DTLS is selected depending on the selection made in FTP_ITC.1.1(2)</h:li>
+                    <h:li>either TLS or DTLS is selected depending on the selection made in FTP_ITC.1.1/INTER_TSF_XFER_AGENT</h:li>
                     <h:li>server must be selected</h:li> 
                   </h:ul>
                 </h:li>
@@ -4002,7 +3946,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="ftp_itc.1.2(2)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -4016,7 +3960,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="ftp_itc.1.3(2)"> 
+          <f-element> 
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -4056,8 +4000,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               </aactivity>
           </f-element>
         </f-component>
-        <f-component id="ftp_trp.1(1)" name="Trusted Path (for Remote Administration)">
-          <f-element id="ftp_trp.1.1(1)">
+        <f-component cc-id="ftp_trp.1" iteration="TRUSTPATH_REM_ADMIN" name="Trusted Path (for Remote Administration)">
+          <f-element id="trustpath-rem-admin">
             <title><h:b>Refinement:</h:b> The TSF shall <selectables linebreak="yes">
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="TRP1_IPSEC_INVOKE">IPsec</selectable>
@@ -4082,7 +4026,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="ftp_trp.1.2(1)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -4095,7 +4039,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="ftp_trp.1.3(1)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -4137,8 +4081,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="ftp_trp.1(2)" name="Trusted Path (for Enrollment)">
-          <f-element id="ftp_trp.1.1(2)">
+        <f-component cc-id="ftp_trp.1" iteration="TRUSTPATH_ENROLL" name="Trusted Path (for Enrollment)">
+          <f-element id="trustpath-enroll">
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
                 <selectable id="TRP2_TLS_INVOKE">TLS</selectable>
@@ -4160,7 +4104,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               of this evaluation activity).<h:br/><h:br/>
             </TSS></aactivity>
           </f-element>
-          <f-element id="ftp_trp.1.2(2)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -4169,7 +4113,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
             </TSS></aactivity>
           </f-element>
-          <f-element id="ftp_trp.1.3(2)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -4210,8 +4154,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="ftp_trp.1(3)" name="Trusted Path (for Joining)" status="objective">
-          <f-element id="ftp_trp.1.1(3)">
+        <f-component cc-id="ftp_trp.1" name="Trusted Path (for Joining)" iteration="TRUSTPATH_JOIN" status="objective">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -4231,7 +4175,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
 	      </TSS>
             </aactivity>
           </f-element>
-          <f-element id="ftp_trp.1.2(3)">
+          <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -4246,15 +4190,15 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
               of this evaluation activity).<h:br/><h:br/></TSS>
             </aactivity>
           </f-element>
-          <f-element id="ftp_trp.1.3(3)"> 
+          <f-element> 
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to require the use of the trusted path for [joining components to the <abbr linkend="TSF"/> under environmental constraints identified in <assignable>reference to operational guidance</assignable>].</title>
-            <note role="application">This <abbr linkend="SFR"/> implements one of the types of channel identified in the main selection for <linkref linkend="FCO_CPC_EXT.1.2"/>. The "joining component" in <linkref linkend="FTP_TRP.1(3)"/> is the IT entity that is attempting to join the distributed <abbr linkend="TOE"/> by using the registration process.<h:br/><h:br/>            
+            <note role="application">This <abbr linkend="SFR"/> implements one of the types of channel identified in the main selection for <linkref linkend="FCO_CPC_EXT.1.2"/>. The "joining component" in FTP_TRP.1/TRUSTPATH_JOIN is the IT entity that is attempting to join the distributed <abbr linkend="TOE"/> by using the registration process.<h:br/><h:br/>            
               The effect of this <abbr linkend="SFR"/> is to require the ability for components to communicate in a secure manner while the distributed <abbr linkend="TSF"/> is being created (or when adding components to an existing distributed <abbr linkend="TSF"/>). When creating the <abbr linkend="TSF"/> from the initial pair of components, either of these components may be identified as the <abbr linkend="TSF"/> for the purposes of satisfying the meaning of "<abbr linkend="TSF"/>" in this <abbr linkend="SFR"/>.<h:br/><h:br/>
-              The selection at the end of <linkref linkend="FTP_TRP.1.1(3)"/> recognises that in some cases confidentiality (i.e. protection of the data from disclosure) may not be provided by the channel. The <abbr linkend="ST"/> author distinguishes in the <abbr linkend="TSS"/> whether in this case the <abbr linkend="TOE"/> relies on the environment to provide confidentiality (as part of the constraints referenced in <linkref linkend="FTP_TRP.1.3(3)"/>) or whether the registration data exchanged does not require confidentiality (in which case this assertion must be justified). If "none" is selected, then this word may be omitted in the ST to improve readability.<h:br/><h:br/>             
-              The assignment in <linkref linkend="FTP_TRP.1.3(3)"/> ensures that the <abbr linkend="ST"/> highlights any specific details needed to protect the registration environment. Note that when the <abbr linkend="ST"/> uses <linkref linkend="FTP_TRP.1(3)"/> for the registration channel then this channel cannot be reused as the normal inter-component communication channel (the latter channel must meet FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/>). Specific requirements for Preparative Procedures relating to <linkref linkend="FTP_TRP.1(3)"/> are defined in the Evaluation Activities.<h:br/><h:br/>
+              The selection at the end of FTP_TRP.1/TRUSTPATH_JOIN recognises that in some cases confidentiality (i.e. protection of the data from disclosure) may not be provided by the channel. The <abbr linkend="ST"/> author distinguishes in the <abbr linkend="TSS"/> whether in this case the <abbr linkend="TOE"/> relies on the environment to provide confidentiality (as part of the constraints referenced in <linkref linkend="FTP_TRP.1.3(3)"/>) or whether the registration data exchanged does not require confidentiality (in which case this assertion must be justified). If "none" is selected, then this word may be omitted in the ST to improve readability.<h:br/><h:br/>             
+              The assignment in <linkref linkend="FTP_TRP.1.3(3)"/> ensures that the <abbr linkend="ST"/> highlights any specific details needed to protect the registration environment. Note that when the <abbr linkend="ST"/> uses FTP_TRP.1/TRUSTPATH_JOIN for the registration channel then this channel cannot be reused as the normal inter-component communication channel (the latter channel must meet FTP_ITC.1 or <linkref linkend="FPT_ITT.1(1)"/>/<linkref linkend="FPT_ITT.1(2)"/>). Specific requirements for Preparative Procedures relating to FTP_TRP.1/TRUSTPATH_JOIN are defined in the Evaluation Activities.<h:br/><h:br/>
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of joining <abbr linkend="TOE"/> components are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of joining are consistent with those specified in the requirement, and are included in the requirements in the <abbr linkend="ST"/>.<h:br/><h:br/>              
@@ -4272,9 +4216,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         </f-component>
       </subsection>
     </section>
-  </chapter>
-  <chapter id="sar" title="Security Assurance Requirements"> 
-    The Security Objectives for the <abbr linkend="TOE"/> in <secref linkend="req"/> were constructed to address threats identified in <secref linkend="threats"/>. The Security Functional Requirements (<abbr linkend="SFR"/>s) in <secref linkend="req"/> are a formal instantiation of the Security Objectives. The <abbr linkend="PP"/> identifies the Security Assurance Requirements (<abbr linkend="SAR"/>s) to frame the extent to which the evaluator assesses the documentation applicable for the evaluation and performs independent testing. <h:br/><h:br/> 
+    <section title="Security Assurance Requirements" id="SARs">
+    The Security Objectives for the <abbr linkend="TOE"/> in <secref linkend="req"/> were constructed to address threats identified in <secref linkend="threats"/>. The Security Functional Requirements (<abbr linkend="SFR"/>s) in <secref linkend="req"/> are a formal instantiation of the Security Objectives. The <abbr linkend="PP"/> identifies the Security Assurance Requirements (<abbr linkend="SAR"/>s) to frame the extent to which the evaluator assesses the documentation applicable for the evaluation and performs independent testing. <h:br/>
     This section lists the set of <abbr linkend="SAR"/>s from <abbr linkend="CC"/> part 3 that are required in evaluations against this <abbr linkend="PP"/>. Individual Evaluation Activities (AAs) to be performed are specified both in <secref linkend="req"/> as well as in this section. <h:br/><h:br/> 
     The general model for evaluation of <abbr linkend="TOE"/>s against <abbr linkend="ST"/>s written to conform to this <abbr linkend="PP"/> is as follows: <h:br/><h:br/> 
     After the <abbr linkend="ST"/> has been approved for evaluation, the <abbr class="expanded" title="Information Technology Security Evaluation Facility">ITSEF</abbr> will obtain the <abbr linkend="TOE"/>, supporting environmental IT, and the administrative/user guides for the <abbr linkend="TOE"/>. The ITSEF is expected to perform actions mandated by the Common Evaluation Methodology (CEM) for the ASE and ALC <abbr linkend="SAR"/>s. The ITSEF also performs the Evaluation Activities contained within <secref linkend="req"/>, which are intended to be an interpretation of the other <abbr linkend="CEM"/> assurance requirements as they apply to the specific technology instantiated in the <abbr linkend="TOE"/>. The Evaluation Activities that are captured in <secref linkend="req"/> also provide clarification as to what the developer needs to provide to demonstrate the <abbr linkend="TOE"/> is compliant with the <abbr linkend="PP"/>. <h:br/><h:br/>
@@ -4319,7 +4262,7 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
         <h:TD> Vulnerability survey (AVA_VAN.1) </h:TD>
       </h:TR>
     </h:table>
-    <section id="ase" title="Class ASE: Security Target"> 
+    <subsection id="ase" title="Class ASE: Security Target"> 
       The <abbr linkend="ST"/> is evaluated as per ASE activities defined in the <abbr linkend="CEM"/>. In addition, there may be Evaluation Activities specified within <secref linkend="req"/> and relevant appendices that call for necessary descriptions to be included in the <abbr linkend="TSS"/> that are specific to the <abbr linkend="TOE"/> technology type. 
       <subsection id="tss" title="TOE summary specification">
        <a-component id="ase_tss.1" name="TOE summary specification">
@@ -4331,7 +4274,8 @@ All <abbr linkend="TOE"/> components shall be able to generate its own audit dat
       </subsection>
     </section>
     <section id="adv" title="Class ADV: Development"> 
-      The design information about the <abbr linkend="TOE"/> is contained in the guidance documentation available to the end user as well as the <abbr linkend="TSS"/> portion of the <abbr linkend="ST"/>, and any additional information required by this <abbr linkend="PP"/> that is not to be made public (e.g., Entropy Essay). <subsection id="fsp" title="Basic Functional Specification (ADV_FSP.1)">
+      The design information about the <abbr linkend="TOE"/> is contained in the guidance documentation available to the end user as well as the <abbr linkend="TSS"/> portion of the <abbr linkend="ST"/>, and any additional information required by this <abbr linkend="PP"/> that is not to be made public (e.g., Entropy Essay).
+      <subsection id="fsp" title="Basic Functional Specification (ADV_FSP.1)">
         <a-component id="adv_fsp.1" name="Basic Functional Specification (ADV_FSP.1)"> 
           The functional specification describes the Target Security Functions Interfaces (TSFIs). It is not necessary to have a formal or complete specification of these interfaces. Additionally, because <abbr linkend="TOE"/>s conforming to this <abbr linkend="PP"/> will necessarily have interfaces to the Operational Environment that are not directly invokable by <abbr linkend="TOE"/> users, there is little point specifying that such interfaces be described in and of themselves since only indirect testing of such interfaces may be possible. For this <abbr linkend="PP"/>, the activities for this family should focus on understanding the interfaces presented in the <abbr linkend="TSS"/> in response to the functional requirements and the interfaces presented in the AGD documentation. No additional "functional specification" documentation is necessary to satisfy the evaluation activities specified.<h:br/><h:br/> The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list. <evalactionlabel title="Developer action elements:"/>
             <a-element id="ADV_FSP.1.1D">
