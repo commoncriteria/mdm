@@ -4264,20 +4264,19 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
     </h:table>
     <subsection id="ase" title="Class ASE: Security Target"> 
       The <abbr linkend="ST"/> is evaluated as per ASE activities defined in the <abbr linkend="CEM"/>. In addition, there may be Evaluation Activities specified within <secref linkend="req"/> and relevant appendices that call for necessary descriptions to be included in the <abbr linkend="TSS"/> that are specific to the <abbr linkend="TOE"/> technology type. 
-      <subsection id="tss" title="TOE summary specification">
        <a-component id="ase_tss.1" name="TOE summary specification">
          <evalactionlabel title="Content and presentation elements:"/>
          <a-element id="ASE_TSS.1.1C">
            <title>The TOE summary specification shall describe how the TOE meets each SFR.</title>
          </a-element>        
        </a-component>     
-      </subsection>
-    </section>
-    <section id="adv" title="Class ADV: Development"> 
+    </subsection>
+
+    <subsection id="adv" title="Class ADV: Development"> 
       The design information about the <abbr linkend="TOE"/> is contained in the guidance documentation available to the end user as well as the <abbr linkend="TSS"/> portion of the <abbr linkend="ST"/>, and any additional information required by this <abbr linkend="PP"/> that is not to be made public (e.g., Entropy Essay).
-      <subsection id="fsp" title="Basic Functional Specification (ADV_FSP.1)">
         <a-component id="adv_fsp.1" name="Basic Functional Specification (ADV_FSP.1)"> 
-          The functional specification describes the Target Security Functions Interfaces (TSFIs). It is not necessary to have a formal or complete specification of these interfaces. Additionally, because <abbr linkend="TOE"/>s conforming to this <abbr linkend="PP"/> will necessarily have interfaces to the Operational Environment that are not directly invokable by <abbr linkend="TOE"/> users, there is little point specifying that such interfaces be described in and of themselves since only indirect testing of such interfaces may be possible. For this <abbr linkend="PP"/>, the activities for this family should focus on understanding the interfaces presented in the <abbr linkend="TSS"/> in response to the functional requirements and the interfaces presented in the AGD documentation. No additional "functional specification" documentation is necessary to satisfy the evaluation activities specified.<h:br/><h:br/> The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list. <evalactionlabel title="Developer action elements:"/>
+          The functional specification describes the Target Security Functions Interfaces (TSFIs). It is not necessary to have a formal or complete specification of these interfaces. Additionally, because <abbr linkend="TOE"/>s conforming to this <abbr linkend="PP"/> will necessarily have interfaces to the Operational Environment that are not directly invokable by <abbr linkend="TOE"/> users, there is little point specifying that such interfaces be described in and of themselves since only indirect testing of such interfaces may be possible. For this <abbr linkend="PP"/>, the activities for this family should focus on understanding the interfaces presented in the <abbr linkend="TSS"/> in response to the functional requirements and the interfaces presented in the AGD documentation. No additional "functional specification" documentation is necessary to satisfy the evaluation activities specified.<h:br/><h:br/> The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list.
+	  <evalactionlabel title="Developer action elements:"/>
             <a-element id="ADV_FSP.1.1D">
               <title>The developer shall provide a functional specification.</title>
             </a-element>
@@ -4310,16 +4309,14 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </a-element>          
         </a-component>
       </subsection>
-    </section>
-    <section id="agd" title="Class AGD: Guidance Documentation"> 
+    <subsection id="agd" title="Class AGD: Guidance Documentation"> 
       The guidance documents will be provided with the <abbr linkend="ST"/>. Guidance must include a description of how the IT personnel verifies that the Operational Environment can fulfill its role for the security functionality. The documentation should be in an informal style and readable by the IT personnel.<h:br/><h:br/> 
       Guidance must be provided for every operational environment that the product supports as claimed in the <abbr linkend="ST"/>. This guidance includes:<h:br/><h:br/>
       <h:ul>
         <h:li>instructions to successfully install the <abbr linkend="TSF"/> in that environment</h:li>
         <h:li>instructions to manage the security of the <abbr linkend="TSF"/> as a product and as a component of the larger operational environment</h:li>
         <h:li>instructions to provide a protected administrative capability</h:li>
-      </h:ul> Guidance pertaining to particular security functionality must also be provided; requirements on such guidance are contained in the evaluation activities specified with each requirement. <subsection id="agd_ope"
-        title="Operational User Guidance (AGD_OPE.1)">
+      </h:ul> Guidance pertaining to particular security functionality must also be provided; requirements on such guidance are contained in the evaluation activities specified with each requirement. 
         <a-component id="agd_ope.1" name="Operational User Guidance (AGD_OPE.1)">
           <evalactionlabel title="Developer action elements:"/>
             <a-element id="AGD_OPE.1.1D">
@@ -4388,10 +4385,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </a-element>          
         </a-component>
       </subsection>
-    </section>
-    <section id="alc" title="Class ALC: Life-cycle Support">
+    <subsection id="alc" title="Class ALC: Life-cycle Support">
       At the assurance level provided for <abbr linkend="TOE"/>s conformant to this <abbr linkend="PP"/>, life-cycle support is limited to end-user visible aspects of the life-cycle, rather than an examination of the <abbr linkend="TOE"/> vendor's development and configuration management process. This is not meant to diminish the critical role that a developer's practices play in contributing to the overall trustworthiness of a product; rather, it's a reflection on the information to be made available for evaluation at this assurance level. 
-      <subsection id="alc_cmc" title="Labeling of the TOE (ALC_CMC.1)">
         <a-component id="alc_cmc.1" name="Labeling of the TOE( ALC_CMC.1)">
           This component is targeted at identifying the <abbr linkend="TOE"/> such that it can be distinguished from other products or versions from the same vendor and can be easily specified when being procured by an end user. 
           <evalactionlabel title="Developer action elements:"/>
@@ -4438,10 +4433,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </a-element>          
         </a-component>
       </subsection>
-    </section>
-      <section id="ate-tests" title="Class ATE: Tests"> 
+      <subsection id="ate-tests" title="Class ATE: Tests"> 
         Testing is specified for functional aspects of the system as well as aspects that take advantage of design or implementation weaknesses. The former is done through the ATE_IND family, while the latter is through the AVA_VAN family. At the assurance level specified in this <abbr linkend="PP"/>, testing is based on advertised functionality and interfaces with dependency on the availability of design information. One of the primary outputs of the evaluation process is the test report as specified in the following requirements.<h:br/><h:br/> Since many of the APIs are not exposed at the user interface (e.g., touch screen), the ability to stimulate the necessary interfaces requires a developer's test environment. This test environment will allow the evaluator, for example, to access APIs and view file system information that is not available on consumer mobile devices. 
-      <subsection id="ate_ind" title="Independent Testing - Conformance (ATE_IND)">
         <a-component id="ate_ind.1" name="Independent Testing - Conformance (ATE_IND.1)"> 
           Testing is performed to confirm the functionality described in the <abbr linkend="TSS"/> as well as the administrative (including configuration and operational) documentation provided. The focus of the testing is to confirm that the requirements specified in Sections 5.3, and 5.4 are being met, although some additional testing is specified for <abbr linkend="SAR"/>s in Section 6. The Evaluation Activities identify the additional testing activities associated with these components. The evaluator produces a test report documenting the plan for and results of testing, as well as coverage arguments focused on the platform/<abbr linkend="TOE"/> combinations that are claiming conformance to this <abbr linkend="PP"/>.
             <evalactionlabel title="Developer action elements:"/>
@@ -4466,10 +4459,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </a-element>          
         </a-component>
       </subsection>
-    </section>
-    <section id="ava" title="Class AVA: Vulnerability Analysis">
+    <subsection id="ava" title="Class AVA: Vulnerability Analysis">
       For the first generation of this protection profile, the evaluation lab is expected to survey open sources to discover what vulnerabilities have been discovered in these types of products. In most cases, these vulnerabilities will require sophistication beyond that of a basic attacker. Until penetration tools are created and uniformly distributed to the evaluation labs, the evaluator will not be expected to test for these vulnerabilities in the <abbr linkend="TOE"/>. The labs will be expected to comment on the likelihood of these vulnerabilities given the documentation provided by the vendor. This information will be used in the development of penetration testing tools and for the development of future protection profiles. 
-      <subsection id="ava_van" title="Vulnerability Survey (AVA_VAN.1)">
         <a-component id="ava_van.1" name="Vulnerability Survey (AVA_VAN.1)">
           <evalactionlabel title="Developer action elements:"/>
             <a-element id="ava_van.1.1d">
