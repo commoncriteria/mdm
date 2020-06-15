@@ -10,8 +10,10 @@ fia_x509_ext.1(1) => fia_x509_ext.1/CERTVAL_MAN
 fia_x509_ext.1(2) => fia_x509_ext.1/CERTVAL_SEL
 fmt_mof.1(1) => fmt_mof.1/FUNCBE
 fmt_mof.1(2) => fmt_mof.1/MANAGEMENT_ENROLL
-fmt_mof.1(3) => fmt_mof.1/MANAGEMENT_MAS_DOWNLOAD
-
+fmt_mof.1(3) => fmt_mof.1/MANAGEMENT_MAS
+FMT_SMF.1(1) => FMT_SMF.1/SERVER_CONF_AGENT
+FMT_SMF.1(2) => FMT_SMF.1/SERVER_CONF_SERVER
+FMT_SMF.1(3) => FMT_SMF.1/MAS
 -->
 <!--
 Check this:
@@ -506,7 +508,7 @@ DONE:
         <h:td>Feature Dependent</h:td> 
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FMT_MOF.1(3)"/></h:td>
+        <h:td>FMT_MOF.1/MANAGEMENT_MAS</h:td>
         <h:td>Management of Functions in (MAS Server Downloads)</h:td>
         <h:td>Feature Dependent</h:td> 
       </h:tr>
@@ -521,17 +523,17 @@ DONE:
         <h:td>One</h:td> 
       </h:tr>      
       <h:tr>
-        <h:td><linkref linkend="FMT_SMF.1(1)"/></h:td>
+        <h:td>FMT_SMF.1/SERVER_CONF_AGENT"/></h:td>
         <h:td>Specification of Management Functions (Server configuration of Agent)</h:td>
         <h:td>One</h:td> 
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FMT_SMF.1(2)"/></h:td>
+        <h:td>FMT_SMF.1/SERVER_CONF_SERVER</h:td>
         <h:td>Specification of Management Functions (Server configuration of Server)</h:td>
         <h:td>Feature Dependent</h:td> 
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FMT_SMF.1(3)"/></h:td>
+        <h:td>FMT_SMF.1/MAS</h:td>
         <h:td>Specification of Management Functions (MAS Server)</h:td>
         <h:td>Feature Dependent</h:td> 
       </h:tr>    
@@ -770,7 +772,10 @@ DONE:
         </SO>
         <SO name="O.APPLY_POLICY">
           <description>The <abbr linkend="TOE"/> must facilitate configuration and enforcement of enterprise security policies on mobile devices via interaction with the mobile <abbr linkend="OS"/> and the <abbr linkend="MDM"/> Server. This will include the initial enrollment of the device into management through its entire lifecycle, including policy updates and its possible unenrollment from management services.</description>
-	  <addressed-by>FIA_ENR_EXT.1, FMT_MOF.1/FUNCBE, FMT_MOF.1/MANAGEMENT_ENROLL, FMT_MOF.1(3), FMT_SAE_EXT.1, FMT_SMF.1(1), FMT_SMF.1(2), FMT_SMF.1(3)</addressed-by>
+	  <addressed-by>
+	    FIA_ENR_EXT.1, FMT_MOF.1/FUNCBE, FMT_MOF.1/MANAGEMENT_ENROLL, FMT_MOF.1/MANAGEMENT_MAS, FMT_SAE_EXT.1,
+	    FMT_SMF.1/SERVER_CONF_AGENT, FMT_SMF.1/SERVER_CONF_SERVER,FMT_SMF.1/MAS
+	  </addressed-by>
 	  <rationale>FILL IN </rationale>
         </SO>
         <SO name="O.DATA_PROTECTION_TRANSIT">
@@ -785,7 +790,7 @@ DONE:
         </SO>
         <SO name="O.MANAGEMENT">
           <description>The <abbr linkend="TOE"/> provides access controls around its management functionality.</description>
-	  <addressed-by>FAU_CRP_EXT.1, FIA_ENR_EXT.1, FIA_UAU.1, FIA_UAU_EXT.4/REUSE, FIA_UAU_EXT.4(2), FMT_MOF.1/FUNCBE, FMT_MOF.1/MANAGEMENT_ENROLL, FMT_MOF.1(3), FMT_POL_EXT.1, FMT_SMF.1(1), FMT_SMF.1(2), FMT_SMF.1(3), FMT_SMR.1(1), FMT_SMR.1(2), FTA_TAB.1, </addressed-by>
+	  <addressed-by>FAU_CRP_EXT.1, FIA_ENR_EXT.1, FIA_UAU.1, FIA_UAU_EXT.4/REUSE, FIA_UAU_EXT.4(2), FMT_MOF.1/FUNCBE, FMT_MOF.1/MANAGEMENT_ENROLL, FMT_MOF.1/MANAGEMENT_MAS, FMT_POL_EXT.1, FMT_SMF.1/SERVER_CONF_AGENT, FMT_SMF.1/SERVER_CONF_SERVER, FMT_SMF.1/MAS, FMT_SMR.1(1), FMT_SMR.1(2), FTA_TAB.1, </addressed-by>
 	  <rationale>FILL IN </rationale>
         </SO>
         <SO name="O.QUALITY">
@@ -1219,7 +1224,7 @@ DONE:
                     <h:TD>Identity of user.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FMT_MOF.1(3)"/> (sel)</h:TD>
+                    <h:TD>FMT_MOF.1/MANAGEMENT_MAS (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -1234,17 +1239,17 @@ DONE:
                     <h:TD>Identity of user.</h:TD>
                   </h:TR> 
                   <h:TR>
-                    <h:TD><linkref linkend="FMT_SMF.1(1)"/> (man)</h:TD>
+                    <h:TD>FMT_SMF.1/SERVER_CONF_AGENT (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FMT_SMF.1(2)"/> (man)</h:TD>
+                    <h:TD>FMT_SMF.1/SERVER_CONF_SERVER (man)</h:TD>
                     <h:TD>Success or failure of function.</h:TD>
                     <h:TD>No additional information.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FMT_SMF.1(3)"/> (sel)</h:TD>
+                    <h:TD>FMT_SMF.1/MAS (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -2738,8 +2743,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             <aactivity>
               <TSS>
 		<h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-		The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>	      
-		
+		The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS>
                 <Tests>
 		  <h:h4>If "implement functionality" is selected:</h:h4>
 		  The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
@@ -2899,7 +2903,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
                 <selectable>accept the certificate</selectable>
                 <selectable>not accept the certificate</selectable>
               </selectables>.</title>
-            <note role="application">Often a connection must be established to perform a verification of the revocation status of a certificate - either to download a CRL or to perform OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate is valid according to all other rules in FIA_X509_EXT.1/CERTVAL_MAN, the behavior indicated in the second selection must determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1/CERTVAL_MAN. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must also select function d in <linkref linkend="FMT_SMF.1(2)"/>.<h:br/><h:br/>
+            <note role="application">Often a connection must be established to perform a verification of the revocation status of a certificate - either to download a CRL or to perform OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate is valid according to all other rules in FIA_X509_EXT.1/CERTVAL_MAN, the behavior indicated in the second selection must determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1/CERTVAL_MAN. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must also select function d in FMT_SMF.1/SERVER_CONF_SERVER.<h:br/><h:br/>
               If the <abbr linkend="TOE"/> is distributed and FIA_X509_EXT.1/CERTVAL_SEL is selected, then certificate revocation checking is optional. This is due to additional authorization actions being performed in the enabling and disabling of the intra-<abbr linkend="TOE"/> trusted channel as defined in <linkref linkend="FCO_CPC_EXT.1"/>. In this case, a connection is not required to determine certificate validity and this <abbr linkend="SFR"/> is trivially satisfied.            
             </note>
             <aactivity>
@@ -3061,23 +3065,23 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
         <f-component cc-id="fmt_mof.1" name="Management of Functions Behavior" iteration="FUNCBE">
           <f-element id="restrictfunc">
             <title><h:b>Refinement:</h:b> The TSF shall restrict the ability to perform the functions <h:ul>
-                <h:li>listed in <linkref linkend="FMT_SMF.1(1)"/></h:li>
-                <h:li>enable, disable, and modify policies listed in <linkref linkend="FMT_SMF.1(1)"/></h:li>
-                <h:li>listed in <linkref linkend="FMT_SMF.1(2)"/></h:li>
+                <h:li>listed in FMT_SMF.1/SERVER_CONF_AGENT</h:li>
+                <h:li>enable, disable, and modify policies listed in FMT_SMF.1/SERVER_CONF_AGENT</h:li>
+                <h:li>listed in FMT_SMF.1/SERVER_CONF_SERVER</h:li>
               <h:li><selectables>
-                <selectable id="mas">enable, disable and modify policies listed in <linkref linkend="FMT_SMF.1(3)"/></selectable> <!-- NOTE: This is the hook to bring in MAS -->
+                <selectable id="mas">enable, disable and modify policies listed in FMT_SMF.1/MAS</selectable> <!-- NOTE: This is the hook to bring in MAS -->
                 <selectable>no other functions</selectable>
               </selectables></h:li>
               </h:ul> to [authorized administrators].</title>
-            <note role="application">This requirement outlines the functions that administrators will have the power to enable, disable, modify, and monitor functions and policies listed in <linkref linkend="FMT_SMF.1(1)"/>. It also includes functions necessary to maintain and configure the <abbr linkend="MDM"/> Server itself.<h:br/><h:br/>
-              "Enable, disable and modify policies listed in <linkref linkend="FMT_SMF.1(3)"/>" must be selected if the <abbr linkend="TOE"/> includes MAS functionality and <linkref linkend="FMT_SMF.1(3)"/>, <linkref linkend="FAU_GEN.1(2)"/>, <linkref linkend="FMT_MOF.1(3)"/>, <linkref linkend="FMT_SMR.1(2)"/> must be included in the <abbr linkend="ST"/>.          
+            <note role="application">This requirement outlines the functions that administrators will have the power to enable, disable, modify, and monitor functions and policies listed in FMT_SMF.1/SERVER_CONF_AGENT. It also includes functions necessary to maintain and configure the <abbr linkend="MDM"/> Server itself.<h:br/><h:br/>
+              "Enable, disable and modify policies listed in FMT_SMF.1/MAS" must be selected if the <abbr linkend="TOE"/> includes MAS functionality and FMT_SMF.1/MAS, <linkref linkend="FAU_GEN.1(2)"/>, FMT_MOF.1/MANAGEMENT_MAS, <linkref linkend="FMT_SMR.1(2)"/> must be included in the <abbr linkend="ST"/>.          
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> and user documents to ensure that they describe what security management functions are restricted to the administrator and what actions can be taken for each management function. The evaluator shall verify that the security management functions are restricted to authorized administrators and the administrator is only able to take the actions as described in the user documents.<h:br/><h:br/></TSS>
               <Tests>
               <testlist>
-                <test>The evaluator shall attempt to access the functions and policies in <linkref linkend="FMT_SMF.1(1)"/> as an unauthorized user and verify that the attempt fails.</test> 
-                <test>[conditional] The evaluator shall attempt to access the functions and policies in <linkref linkend="FMT_SMF.1(3)"/> as an unauthorized user and verify that the attempt fails.</test>
+                <test>The evaluator shall attempt to access the functions and policies in FMT_SMF.1/SERVER_CONF_AGENT as an unauthorized user and verify that the attempt fails.</test> 
+                <test>[conditional] The evaluator shall attempt to access the functions and policies in FMT_SMF.1/MAS as an unauthorized user and verify that the attempt fails.</test>
               </testlist>
 	      </Tests>
             </aactivity>
@@ -3093,7 +3097,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component>
-        <f-component cc-id="fmt_mof.1(3)" name="Management of Functions in (MAS Server Downloads)" status="sel-based">
+        <f-component cc-id="fmt_mof.1" iteration="MANAGEMENT_MAS" name="Management of Functions in (MAS Server Downloads)" status="sel-based">
           <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
           <f-element>
             <title><h:b>Refinement:</h:b> The MAS Server shall restrict the ability to download applications, allowing only enrolled mobile devices that are compliant with <abbr linkend="MDM"/> policies and assigned to a user in the application access group to perform this function.</title>
@@ -3114,7 +3118,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             <aactivity>
               <TSS>Policies must be digitally signed by the enterprise using the algorithms in <linkref linkend="FCS_COP.1(3)"/>. The evaluator shall ensure that the <abbr linkend="TSS"/> describes how policies are digitally signed by the <abbr linkend="TSF"/>.<h:br/><h:br/></TSS>
               <Guidance>If applicable, the evaluator shall verify that the AGD guidance instructs administrators on configuring the Enterprise certificate to be used for signing policies or signing the policies before applying them.<h:br/><h:br/> </Guidance>
-              <Tests>The evaluator shall perform a policy update in accordance with <linkref linkend="FMT_SMF.1(1)"/>. The evaluator shall examine the policy either at the <abbr linkend="MDM"/> Server, in transmission, or at the <abbr linkend="MDM"/> agent, and verify the <abbr linkend="TSF"/> signs the update and provides it to the <abbr linkend="MDM"/> Agent.
+              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the <abbr linkend="MDM"/> Server, in transmission, or at the <abbr linkend="MDM"/> agent, and verify the <abbr linkend="TSF"/> signs the update and provides it to the <abbr linkend="MDM"/> Agent.
 	      </Tests>
             </aactivity>
           </f-element>
@@ -3125,7 +3129,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
           <f-element>
             <title>The <abbr linkend="TSF"/> shall be able to deny enrollment after the expiration time for the enrollment authentication data has passed.</title>
-            <note role="application"> This requirement references the user authenticator used for device enrollment in management in <linkref linkend="FIA_ENR_EXT.1.1"/>. The user authenticator must only be valid for a configurable time limit. If the authenticator is expired, even if entered correctly, enrollment must not occur. <h:br/><h:br/> The length of the time the authenticator is valid for is configured per function c.5 in <linkref linkend="FMT_SMF.1(2)"/>. If <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>, then function g must be selected in <linkref linkend="FMT_SMF.1(2)"/>. </note>
+            <note role="application"> This requirement references the user authenticator used for device enrollment in management in <linkref linkend="FIA_ENR_EXT.1.1"/>. The user authenticator must only be valid for a configurable time limit. If the authenticator is expired, even if entered correctly, enrollment must not occur. <h:br/><h:br/> The length of the time the authenticator is valid for is configured per function c.5 in FMT_SMF.1/SERVER_CONF_SERVER. If <linkref linkend="FMT_SAE_EXT.1"/> is included in the <abbr linkend="ST"/>, then function g must be selected in FMT_SMF.1/SERVER_CONF_SERVER. </note>
             <aactivity>
               <TSS>The evaluator shall verify that the <abbr linkend="TSS"/> contains a description of the process of enrollment for each <abbr linkend="MDM"/> Agent/platform listed as supported in the <abbr linkend="ST"/>. This description shall the method of user authentication (username/password, token, etc.).<h:br/><h:br/></TSS>
               <Guidance>The evaluator shall check to ensure that the operational guidance contains instructions to configure the expiration time for each method of user authentication listed in the <abbr linkend="TSS"/>.<h:br/><h:br/></Guidance>
@@ -3138,7 +3142,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component>  
         
-        <f-component cc-id="fmt_smf.1(1)" name="Specification of Management Functions (Server configuration of Agent)">
+        <f-component cc-id="fmt_smf.1" iteration="SERVER_CONF_AGENT"
+		     name="Specification of Management Functions (Server configuration of Agent)">
           <f-element>
             <title><h:b>Refinement:</h:b> The <h:b><abbr linkend="MDM"/> Server</h:b> shall be capable of <h:b>communicating the following commands to the <abbr linkend="MDM"/> Agent: </h:b>
               <h:ul style="list-style-type:none">
@@ -3391,7 +3396,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component>
-        <f-component cc-id="fmt_smf.1(2)" name="Specification of Management Functions (Server Configuration of Server)">
+        <f-component cc-id="fmt_smf.1" iteration="SERVER_CONF_SERVER" name="Specification of Management Functions (Server Configuration of Server)">
           <f-element>
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall be capable of performing the following management functions: <h:ol type="a">
                 <h:li>choose X.509v3 certificates for <abbr linkend="MDM"/> Server use</h:li>
@@ -3438,7 +3443,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component cc-id="fmt_smf.1(3)" name="Specification of Management Functions (MAS Server)" status="sel-based">
+        <f-component cc-id="fmt_smf.1" name="Specification of Management Functions (MAS Server)" status="sel-based">
           <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
           <f-element>
             <title><h:b>Refinement:</h:b> The MAS Server shall be capable of performing the following management functions:
