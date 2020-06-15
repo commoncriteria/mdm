@@ -2,7 +2,13 @@
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
 <!-- <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> -->
 <?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-
+<!--
+Partial mapping from old iteration to new
+fia_uau_ext.4(1) => fia_uau_ext.4/REUSE
+fia_uau_ext.4(2) => fia_uau_ext.4/REUSE_ENROLL
+fia_x509_ext.1(1) => fia_x509_ext.1/CERTVAL_MAN
+fia_x509_ext.1(2) => fia_x509_ext.1/CERTVAL_SEL
+-->
 <!--
 Check this:
 - the objective-refer info in the threats & assumptions sections is not in the 
@@ -446,7 +452,7 @@ DONE:
         <h:td>One</h:td> 
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FIA_UAU_EXT.4(1)"/></h:td>
+        <h:td>FIA_UAU_EXT.4/REUSE</h:td>
         <h:td>User Authentication</h:td>
         <h:td>One</h:td>
       </h:tr>
@@ -456,12 +462,12 @@ DONE:
         <h:td>One</h:td>
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FIA_X509_EXT.1(1)"/></h:td>
+        <h:td>FIA_X509_EXT.1/CERTVAL_MAN</h:td>
         <h:td>X.509 Certification Validation</h:td>
         <h:td>Feature Dependent</h:td> 
       </h:tr> 
       <h:tr>
-        <h:td><linkref linkend="FIA_X509_EXT.1(2)"/></h:td>
+        <h:td>FIA_X509_EXT.1/CERTVAL_SEL</h:td>
         <h:td>X.509 Certification Validation</h:td>
         <h:td>Feature Dependent</h:td> <!-- Needed for Agent -->
       </h:tr> 
@@ -765,7 +771,7 @@ DONE:
         </SO>
         <SO name="O.DATA_PROTECTION_TRANSIT">
           <description>Data exchanged between the <abbr linkend="MDM"/> Server and the <abbr linkend="MDM"/> Agent must be protected from being monitored, accessed, or altered.</description>
-	  <addressed-by>FAU_STG_EXT.1, FCS_CKM_EXT.4, FCS_CKM.1, FCS_CKM.2, FCS_COP.1(1), FCS_COP.1(2), FCS_COP.1(3), FCS_COP.1(4), <!--FCS_DTLSS_EXT.1(TLSPackage), --><!--FCS_DTLSC_EXT.1(TLSPackage), -->FCS_HTTPS_EXT.1, <!--FCS_IPSEC_EXT.1, -->FCS_IV_EXT.1, FCS_RBG_EXT.1, <!--FCS_SSHS_EXT.1, -->FCS_STG_EXT.1, FCS_STG_EXT.2, <!--FCS_TLSC_EXT.1(TLSPackage), --><!--FCS_TLSC_EXT.2(TLSPackage), --><!--FCS_TLSS_EXT.1(TLSPackage), --><!--FCS_TLSS_EXT.2(TLSPackage), -->FIA_X509_EXT.1(1), FIA_X509_EXT.1(2), FIA_X509_EXT.2, FIA_X509_EXT.3, FIA_X509_EXT.4, FIA_X509_EXT.5, FPT_ITT.1(1), FPT_ITT.1(2), FTP_ITC_EXT.1, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, FTP_TRP.1/TRUSTPATH_REM_ADMIN, FTP_TRP.1/TRUSTPATH_ENROLL, FTP_TRP.1/TRUSTPATH_JOIN</addressed-by>
+	  <addressed-by>FAU_STG_EXT.1, FCS_CKM_EXT.4, FCS_CKM.1, FCS_CKM.2, FCS_COP.1(1), FCS_COP.1(2), FCS_COP.1(3), FCS_COP.1(4), <!--FCS_DTLSS_EXT.1(TLSPackage), --><!--FCS_DTLSC_EXT.1(TLSPackage), -->FCS_HTTPS_EXT.1, <!--FCS_IPSEC_EXT.1, -->FCS_IV_EXT.1, FCS_RBG_EXT.1, <!--FCS_SSHS_EXT.1, -->FCS_STG_EXT.1, FCS_STG_EXT.2, <!--FCS_TLSC_EXT.1(TLSPackage), --><!--FCS_TLSC_EXT.2(TLSPackage), --><!--FCS_TLSS_EXT.1(TLSPackage), --><!--FCS_TLSS_EXT.2(TLSPackage), -->FIA_X509_EXT.1/CERTVAL_MAN, FIA_X509_EXT.1/CERTVAL_SEL, FIA_X509_EXT.2, FIA_X509_EXT.3, FIA_X509_EXT.4, FIA_X509_EXT.5, FPT_ITT.1(1), FPT_ITT.1(2), FTP_ITC_EXT.1, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, FTP_TRP.1/TRUSTPATH_REM_ADMIN, FTP_TRP.1/TRUSTPATH_ENROLL, FTP_TRP.1/TRUSTPATH_JOIN</addressed-by>
 	  <rationale>FILL IN </rationale>
         </SO>
         <SO name="O.INTEGRITY">
@@ -775,7 +781,7 @@ DONE:
         </SO>
         <SO name="O.MANAGEMENT">
           <description>The <abbr linkend="TOE"/> provides access controls around its management functionality.</description>
-	  <addressed-by>FAU_CRP_EXT.1, FIA_ENR_EXT.1, FIA_UAU.1, FIA_UAU_EXT.4(1), FIA_UAU_EXT.4(2), FMT_MOF.1(1), FMT_MOF.1(2), FMT_MOF.1(3), FMT_POL_EXT.1, FMT_SMF.1(1), FMT_SMF.1(2), FMT_SMF.1(3), FMT_SMR.1(1), FMT_SMR.1(2), FTA_TAB.1, </addressed-by>
+	  <addressed-by>FAU_CRP_EXT.1, FIA_ENR_EXT.1, FIA_UAU.1, FIA_UAU_EXT.4/REUSE, FIA_UAU_EXT.4(2), FMT_MOF.1(1), FMT_MOF.1(2), FMT_MOF.1(3), FMT_POL_EXT.1, FMT_SMF.1(1), FMT_SMF.1(2), FMT_SMF.1(3), FMT_SMR.1(1), FMT_SMR.1(2), FTA_TAB.1, </addressed-by>
 	  <rationale>FILL IN </rationale>
         </SO>
         <SO name="O.QUALITY">
@@ -1150,7 +1156,7 @@ DONE:
                     <h:TD>Presented username.</h:TD>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FIA_UAU_EXT.4(1)"/> (obj)</h:TD>
+                    <h:TD>FIA_UAU_EXT.4/REUSE (obj)</h:TD>
                     <h:TD>Attempt to reuse enrollment data.</h:TD>
                     <h:TD>Enrollment data.</h:TD>
                   </h:TR>
@@ -1165,12 +1171,12 @@ DONE:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FIA_X509_EXT.1(1)"/> (man)</h:TD>
+                    <h:TD>FIA_X509_EXT.1/CERTVAL_MAN (man)</h:TD>
                     <h:TD>Failure to validate X.509 certificate</h:TD>
                     <h:TD>Reason for failure.</h:TD>
                   </h:TR> 
                   <h:TR>
-                    <h:TD><linkref linkend="FIA_X509_EXT.1(2)"/> (sel)</h:TD>
+                    <h:TD>FIA_X509_EXT.1/CERTVAL_SEL (sel)</h:TD>
                     <h:TD>Failure to validate X.509 certificate</h:TD>
                     <h:TD>Reason for failure.</h:TD>
                   </h:TR>
@@ -2348,7 +2354,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element> 
         </f-component> 
         <f-component cc-id="fcs_iv_ext.1" name="Initialization Vector Generation" status="sel-based">
-          <selection-depends req="FCS_STG_EXT.1.1" ids="fcs_stg_enc"/>
+          <selection-depends req="fel-crypto-key-store" ids="fcs_stg_enc"/>
           <!--<selection-depends req="FCS_STG_EXT.2.1" ids="fcs_stg_enc"/>-->
           <f-element>
             <title>The TSF shall <selectables>
@@ -2432,9 +2438,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the IV generation is invoked for each mode selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the IV generation is invoked for each mode selected in the <abbr linkend="MDM"/> Server's <abbr linkend="ST"/> (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).
               <h:h4>If "implement functionality" is selected:</h:h4>
-              <TSS>
               The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it details the encryption of user credentials, persistent secrets, and private keys and the generation of the IVs used for that encryption.<h:br/><h:br/></TSS>
               <Tests>The evaluator shall ensure that the generation of IVs for each key encrypted by the same <abbr linkend="KEK"/> meets <ctr-ref ref-id="iv"/>.
 	      </Tests>
@@ -2454,11 +2459,12 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
               </selectables>.</title>
             <note role="application">The <abbr linkend="ST"/> author should select whether the server provides its own DRBG or uses the platforms. SP 800-90A contains three different methods of generating random numbers; each of these, in turn, depends on underlying cryptographic primitives (hash functions/ciphers). The <abbr linkend="ST"/> author will select the function used, and include the specific underlying cryptographic primitives used in the requirement or in the <abbr linkend="TSS"/>. While any of the identified hash functions (SHA-224, SHA-256, SHA-384, SHA-512) are allowed for Hash_DRBG or HMAC_DRBG, only AES-based implementations for CTR_DRBG are allowed.</note>
             <aactivity> 
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the RBG functionality is invoked for each operation they are used for in the <abbr linkend="MDM"/> Server (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
+              <TSS>
+		<h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+		The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the RBG functionality is invoked for each operation they are used for in the <abbr linkend="MDM"/> Server (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/>
 	      </TSS>
-		<h:h4>If "implement functionality" is selected:</h:h4>
-                <Tests>
+              <Tests>
+		<h:h4>If "implement functionality" is selected:</h:h4>		
 		The evaluator shall perform the following tests.<h:br/><h:br/> The evaluator shall perform 15 trials for the RNG implementation. If the RNG is configurable, the evaluator shall perform 15 trials for each configuration. The evaluator shall also confirm that the operational guidance contains appropriate instructions for configuring the RNG  functionality.<h:br/><h:br/> 
               If the RNG has prediction resistance enabled, each trial consists of (1) instantiate DRBG, (2) generate the first block of random bits, (3) generate a second block of random bits, and (4) uninstantiate. The evaluator verifies that the second block of random bits is the expected value. The evaluator shall generate eight input values for each trial. The first is a count (0 - 14). The next three are entropy input, nonce, and personalization string for the instantiate operation. The next two are additional input and entropy input for the first call to generate. The final two are additional input and entropy input for the second call to generate. These values are randomly generated. "generate one block of random bits" means to generate random bits with number of returned bits equal to the Output Block Length (as defined in NIST SP 800-90A).<h:br/><h:br/> 
               If the RNG does not have prediction resistance, each trial consists of (1) instantiate DRBG, (2) generate the first block of random bits (3) reseed, (4) generate a second block of random bits, and (5) uninstantiate. The evaluator verifies that the second block of random bits is the expected value. The evaluator shall generate eight input values for each trial. The first is a count (0 - 14). The next three are entropy input, nonce, and personalization string for the instantiate operation. The fifth value is additional input to the first call to generate. The sixth and seventh are additional input and entropy input to the call to reseed. The final value is additional input to the second generate call.<h:br/><h:br/> 
@@ -2504,7 +2510,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component> 
         <f-component cc-id="fcs_stg_ext.1" name="Cryptographic Key Storage">
-          <f-element>
+          <f-element id="fel-crypto-key-store">
             <title>The TSF shall utilize <selectables>
               <selectable> platform-provided key storage</selectable>
               <selectable id="fcs_stg_enc"> encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
@@ -2526,7 +2532,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component> 
         <f-component cc-id="fcs_stg_ext.2" name="Encrypted Cryptographic Key Storage" status="sel-based">
-          <selection-depends req="FCS_STG_EXT.1.1" ids="fcs_stg_enc"/>
+          <selection-depends req="fel-crypto-key-store" ids="fcs_stg_enc"/>
           <f-element>
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -2613,7 +2619,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component cc-id="fia_uau_ext.4(1)" name="User Authentication (Re-Use Prevention)" status="objective">
+        <f-component cc-id="fia_uau_ext.4" iteration="REUSE" name="User Authentication (Re-Use Prevention)" status="objective">
           <f-element>
             <title>The <abbr linkend="TSF"/> shall prevent reuse of enrollment authentication data
               related to <assignable>identified authentication mechanism(s)</assignable>. </title>
@@ -2642,7 +2648,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component>
-        <f-component cc-id="fia_uau_ext.4(2)" name="User Authentication (Re-Use Prevention for Device Enrollment)" status="objective">
+        <f-component cc-id="fia_uau_ext.4" iteration="REUSE_ENROLL" name="User Authentication (Re-Use Prevention for Device Enrollment)" status="objective">
           <f-element>
             <title> The <abbr linkend="TSF"/> shall prevent reuse of <selectables>
                 <selectable>IMEI</selectable>
@@ -2673,8 +2679,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component cc-id="fia_x509_ext.1(1)" name="X.509 Certificate Validation">
-          <f-element>
+        <f-component cc-id="fia_x509_ext.1" iteration="CERTVAL_MAN" name="X.509 Certificate Validation">
+          <f-element id="fel-x509-man">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -2698,12 +2704,12 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
                 </h:li>
               </h:ul>
             </title>
-            <note role="application"> <linkref linkend="FIA_X509_EXT.1.1(1)"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
+            <note role="application"> <linkref linkend="fel-x509-man"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
-              <h:h4>If "implement functionality" is selected:</h:h4>
               <TSS>
+		<h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+		The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).
+		<h:h4>If "implement functionality" is selected:</h:h4>
               The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br/><h:br/>
 	      </TSS>
               <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least three certificates: the node certificate to be tested, an Intermediate CA, and the self-signed Root CA. 
@@ -2726,11 +2732,13 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
               </selectables> to treat a certificate as a CA certificate only if the basicConstraints extension is present and the CA flag is set to TRUE.</title>
             <note role="application">This requirement applies to certificates that are used and processed by the <abbr linkend="TOE"/> or platform and restricts the certificates that may be added as trusted CA certificates.</note>
             <aactivity>
-              <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>	      
-		<h:h4>If "implement functionality" is selected:</h:h4>
+              <TSS>
+		<h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
+		The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>	      
+		
                 <Tests>
-		The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
+		  <h:h4>If "implement functionality" is selected:</h:h4>
+		  The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
               <testlist>
                   <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate does not contain the basicConstraints extension. The validation of the certificate path fails.</test>
                   <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate has the cA flag in the basicConstraints extension not set. The validation of the certificate path fails.</test>
@@ -2740,9 +2748,9 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>          
         </f-component>
-        <f-component cc-id="fia_x509_ext.1(2)" name="X.509 Certificate Validation" status="sel-based" >
+        <f-component cc-id="fia_x509_ext.1" iteration="CERTVAL_SEL" name="X.509 Certificate Validation" status="sel-based" >
           <selection-depends req="FPT_ITT.1.1(1)" ids="ITT1_IPSEC_IMPLEMENT, ITT1_HTTPS_IMPLEMENT, ITT1_HTTPS_INVOKE, ITT1_TLS_IMPLEMENT, ITT1_DTLS_IMPLEMENT"/>
-          <f-element>
+          <f-element id="fel-x509-sel">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -2769,16 +2777,15 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </h:ul>
             </title>
             <note role="application"> 
-              <linkref linkend="FIA_X509_EXT.1.1(2)"/> should be chosen if the <abbr linkend="TOE"/> is distributed and the protocol(s) selected in <linkref linkend="FPT_ITT.1(1)"/> utilize X.509 certificates for peer authentication. In this case, the use of revocation list checking is optional as there are additional requirements surrounding the enabling and disabling of the ITT channel as defined in <linkref linkend="FCO_CPC_EXT.1"/>. If revocation checking is not supported, the <abbr linkend="ST"/> author should select no revocation method. However, if certificate revocation checking is supported, the <abbr linkend="ST"/> author selects whether this is performed using OCSP or CRLs.<h:br/><h:br/>
+              <linkref linkend="fel-x509-sel"/> should be chosen if the <abbr linkend="TOE"/> is distributed and the protocol(s) selected in <linkref linkend="FPT_ITT.1(1)"/> utilize X.509 certificates for peer authentication. In this case, the use of revocation list checking is optional as there are additional requirements surrounding the enabling and disabling of the ITT channel as defined in <linkref linkend="FCO_CPC_EXT.1"/>. If revocation checking is not supported, the <abbr linkend="ST"/> author should select no revocation method. However, if certificate revocation checking is supported, the <abbr linkend="ST"/> author selects whether this is performed using OCSP or CRLs.<h:br/><h:br/>
               
               The <abbr linkend="TSS"/> must describe when revocation checking is performed. It is expected that revocation checking is performed when a certificate is used in an authentication step. It is not sufficient to verify the status of a X.509 certificate only when it is loaded onto the device.<h:br/><h:br/>
               
               This <abbr linkend="SFR"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
-              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS><h:br/><h:br/>
+              <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).
               <h:h4>If "implement functionality" is selected:</h:h4>
-              <TSS>
               The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br/><h:br/>
 	      </TSS>
               <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA. 
@@ -2886,8 +2893,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
                 <selectable>accept the certificate</selectable>
                 <selectable>not accept the certificate</selectable>
               </selectables>.</title>
-            <note role="application">Often a connection must be established to perform a verification of the revocation status of a certificate - either to download a CRL or to perform OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate is valid according to all other rules in <linkref linkend="FIA_X509_EXT.1(1)"/>, the behavior indicated in the second selection must determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in <linkref linkend="FIA_X509_EXT.1(1)"/>. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must also select function d in <linkref linkend="FMT_SMF.1(2)"/>.<h:br/><h:br/>
-              If the <abbr linkend="TOE"/> is distributed and <linkref linkend="FIA_X509_EXT.1(2)"/> is selected, then certificate revocation checking is optional. This is due to additional authorization actions being performed in the enabling and disabling of the intra-<abbr linkend="TOE"/> trusted channel as defined in <linkref linkend="FCO_CPC_EXT.1"/>. In this case, a connection is not required to determine certificate validity and this <abbr linkend="SFR"/> is trivially satisfied.            
+            <note role="application">Often a connection must be established to perform a verification of the revocation status of a certificate - either to download a CRL or to perform OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate is valid according to all other rules in FIA_X509_EXT.1/CERTVAL_MAN, the behavior indicated in the second selection must determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1/CERTVAL_MAN. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must also select function d in <linkref linkend="FMT_SMF.1(2)"/>.<h:br/><h:br/>
+              If the <abbr linkend="TOE"/> is distributed and FIA_X509_EXT.1/CERTVAL_SEL is selected, then certificate revocation checking is optional. This is due to additional authorization actions being performed in the enabling and disabling of the intra-<abbr linkend="TOE"/> trusted channel as defined in <linkref linkend="FCO_CPC_EXT.1"/>. In this case, a connection is not required to determine certificate validity and this <abbr linkend="SFR"/> is trivially satisfied.            
             </note>
             <aactivity>
               <TSS>The evaluator shall check the <abbr linkend="TSS"/> to ensure that it describes how the <abbr linkend="TOE"/> chooses which certificates to use, and any necessary instructions in the administrative guidance for configuring the operating environment so that the <abbr linkend="TOE"/> can use the certificates.<h:br/><h:br/>
@@ -3529,7 +3536,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
                 <selectable id="ITT1_SSH_IMPLEMENT">SSH as defined in the Extended Package for Secure Shell</selectable>
               </selectables></selectable></selectables> to protect all data from [disclosure and modification] when it is transferred between separate parts of the <abbr linkend="TOE"/>.</title>
             <note role="application">This requirement ensures all communications between components of a distributed <abbr linkend="TOE"/> are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined in the protocol chosen in the second selection.<h:br/><h:br/> 
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(2)"/> should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>              
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication FIA_X509_EXT.1/CERTVAL_SEL should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>              
               If "IPsec as defined in the <abbr linkend="PP-Module"/> for VPN Client" is selected, the <abbr linkend="TSF"/> must claim conformance to a PP-Configuration that includes the VPN Client <abbr linkend="PP-Module"/>.<h:br/><h:br/>
               If the <abbr linkend="ST"/> author selects "SSH as defined in the Extended Package for Secure Shell", the <abbr linkend="TSF"/> must be validated against the EP for Secure Shell with the <abbr linkend="MDM"/> <abbr linkend="PP"/>. It should be noted that due to constraints imposed by this PP that sha1 cannot be used.<h:br/><h:br/>
               If the <abbr linkend="ST"/> author selects "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security", the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
@@ -3587,7 +3594,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
                 <selectable id="ITT2_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></selectable></selectables> to protect all data from [disclosure and modification] when it is transferred between the <abbr linkend="TSF"/> and <abbr linkend="MDM"/> Agent.</title>
             <note role="application">This requirement ensures all communications between the <abbr linkend="TSF"/> and <abbr linkend="MDM"/> Agent are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined in the protocol chosen in the second selection.<h:br/><h:br/> 
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication <linkref linkend="FIA_X509_EXT.1(1)"/> should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>                           
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr linkend="MDM"/> communications. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>. To support mutual authentication FIA_X509_EXT.1/CERTVAL_MAN should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <linkref linkend="FCO_CPC_EXT.1.2"/>.<h:br/><h:br/>                           
               If the <abbr linkend="ST"/> author selects "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security", the <abbr linkend="TSF"/> must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
