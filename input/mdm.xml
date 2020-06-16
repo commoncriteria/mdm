@@ -1353,7 +1353,7 @@ DONE:
           </f-element>
         </f-component>        
         <f-component cc-id="fau_gen.1" name="Audit Generation (MAS Server)" status="sel-based" iteration="MAS_SERVER">
-          <selection-depends req="restrictfunc" ids="mas"/>
+          <selection-depends req="fel-gen-mas" ids="mas"/>
           <f-element>
             <title><h:b>Refinement:</h:b> The MAS Server shall be able to generate an audit record of the following auditable events: <h:ol type="a">
               <h:li>Failure to push a new application on a managed mobile device</h:li>
@@ -1380,7 +1380,7 @@ DONE:
 	      </TSS>
               <Guidance>The evaluator shall check the administrative guide and ensure that it provides a format for audit records. Each audit record format type must be covered, along with a brief description of each field. The evaluator shall check to make sure that the description of the fields contains the information required in <linkref linkend="fel-stg-ext-func"/>.<h:br/><h:br/>
 	      </Guidance>
-              <Tests>When verifying the test results from <linkref linkend="FAU_GEN.1.1(2)"/>, the evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide, and that the fields in each audit record have the proper entries.<h:br/><h:br/> 
+              <Tests>When verifying the test results from <linkref linkend="fel-gen-mas"/>, the evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide, and that the fields in each audit record have the proper entries.<h:br/><h:br/> 
               Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly. For example, testing performed to ensure that the administrative guidance provided is correct verifies that AGD_OPE.1 is satisfied and should address the invocation of the administrative actions that are needed to verify the audit records are generated as expected.
 	      </Tests>
             </aactivity>
@@ -3085,7 +3085,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
       </subsection>
       <subsection id="fmt" title="Security Management (FMT)">
         <f-component cc-id="fmt_mof.1" name="Management of Functions Behavior" iteration="FUNCBE">
-          <f-element id="restrictfunc">
+          <f-element id="fel-gen-mas">
             <title><h:b>Refinement:</h:b> The TSF shall restrict the ability to perform the functions <h:ul>
                 <h:li>listed in FMT_SMF.1/SERVER_CONF_AGENT</h:li>
                 <h:li>enable, disable, and modify policies listed in FMT_SMF.1/SERVER_CONF_AGENT</h:li>
@@ -3123,7 +3123,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component>
         <f-component cc-id="fmt_mof.1" iteration="MANAGEMENT_MAS" name="Management of Functions in (MAS Server Downloads)" status="sel-based">
-          <selection-depends req="restrictfunc" ids="mas"/>
+          <selection-depends req="fel-gen-mas" ids="mas"/>
           <f-element>
             <title><h:b>Refinement:</h:b> The MAS Server shall restrict the ability to download applications, allowing only enrolled mobile devices that are compliant with <abbr linkend="MDM"/> policies and assigned to a user in the application access group to perform this function.</title>
             <aactivity>
@@ -3469,7 +3469,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component> 
         <f-component cc-id="fmt_smf.1" name="Specification of Management Functions (MAS Server)" status="sel-based">
-          <selection-depends req="restrictfunc" ids="mas"/>
+          <selection-depends req="fel-gen-mas" ids="mas"/>
           <f-element>
             <title><h:b>Refinement:</h:b> The MAS Server shall be capable of performing the following management functions:
               <h:ol type="a">
@@ -3513,7 +3513,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component>      
         <f-component cc-id="fmt_smr.1" iteration="SECMAN_ROLES_MAS" name="Security Management Roles (MAS Server)" status="sel-based">
-          <selection-depends req="restrictfunc" ids="mas"/>
+          <selection-depends req="fel-gen-mas" ids="mas"/>
           <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall additionally maintain the roles enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
           </f-element>
