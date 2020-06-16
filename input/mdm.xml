@@ -4288,7 +4288,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
     </h:table>
     <subsection id="ase" title="Class ASE: Security Target"> 
       The <abbr linkend="ST"/> is evaluated as per ASE activities defined in the <abbr linkend="CEM"/>. In addition, there may be Evaluation Activities specified within <secref linkend="req"/> and relevant appendices that call for necessary descriptions to be included in the <abbr linkend="TSS"/> that are specific to the <abbr linkend="TOE"/> technology type. 
-       <a-component id="ase_tss.1" name="TOE summary specification">
+       <a-component cc-id="ase_tss.1" name="TOE summary specification">
          <a-element type="C">
            <title>The TOE summary specification shall describe how the TOE meets each SFR.</title>
          </a-element>        
@@ -4297,7 +4297,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
 
     <subsection id="adv" title="Class ADV: Development"> 
       The design information about the <abbr linkend="TOE"/> is contained in the guidance documentation available to the end user as well as the <abbr linkend="TSS"/> portion of the <abbr linkend="ST"/>, and any additional information required by this <abbr linkend="PP"/> that is not to be made public (e.g., Entropy Essay).
-        <a-component id="adv_fsp.1" name="Basic Functional Specification (ADV_FSP.1)"> 
+        <a-component cc-id="adv_fsp.1" name="Basic Functional Specification (ADV_FSP.1)"> 
           The functional specification describes the Target Security Functions Interfaces (TSFIs). It is not necessary to have a formal or complete specification of these interfaces. Additionally, because <abbr linkend="TOE"/>s conforming to this <abbr linkend="PP"/> will necessarily have interfaces to the Operational Environment that are not directly invokable by <abbr linkend="TOE"/> users, there is little point specifying that such interfaces be described in and of themselves since only indirect testing of such interfaces may be possible. For this <abbr linkend="PP"/>, the activities for this family should focus on understanding the interfaces presented in the <abbr linkend="TSS"/> in response to the functional requirements and the interfaces presented in the AGD documentation. No additional "functional specification" documentation is necessary to satisfy the evaluation activities specified.<h:br/><h:br/> The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list.
             <a-element type="D">
               <title>The developer shall provide a functional specification.</title>
@@ -4337,7 +4337,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
         <h:li>instructions to manage the security of the <abbr linkend="TSF"/> as a product and as a component of the larger operational environment</h:li>
         <h:li>instructions to provide a protected administrative capability</h:li>
       </h:ul> Guidance pertaining to particular security functionality must also be provided; requirements on such guidance are contained in the evaluation activities specified with each requirement. 
-        <a-component id="agd_ope.1" name="Operational User Guidance (AGD_OPE.1)">
+        <a-component cc-id="agd_ope.1" name="Operational User Guidance (AGD_OPE.1)">
             <a-element type="D">
               <title>The developer shall provide operational user guidance.</title>
               <note role="application">The operational user guidance does not have to be contained in a single document. Guidance to users, administrators and application developers can be spread among documents or web pages. Where appropriate, the guidance documentation is expressed in the eXtensible Configuration Checklist Description Format (XCCDF) to support security automation.<h:br/><h:br/> 
@@ -4374,7 +4374,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
         </a-component>
       </subsection>
       <subsection id="agd_pre" title="Preparative Procedures (AGD_PRE.1)">
-        <a-component id="agd_pre.1" name="Preparative Procedures (AGD_PRE.1)">
+        <a-component cc-id="agd_pre.1" name="Preparative Procedures (AGD_PRE.1)">
             <a-element type="D">
               <title>The developer shall provide the <abbr linkend="TOE"/>, including its preparative procedures.</title>
               <note role="application">As with the operational guidance, the developer should look to the evaluation activities to determine the required content with respect to preparative procedures.</note>
@@ -4401,7 +4401,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
       </subsection>
     <subsection id="alc" title="Class ALC: Life-cycle Support">
       At the assurance level provided for <abbr linkend="TOE"/>s conformant to this <abbr linkend="PP"/>, life-cycle support is limited to end-user visible aspects of the life-cycle, rather than an examination of the <abbr linkend="TOE"/> vendor's development and configuration management process. This is not meant to diminish the critical role that a developer's practices play in contributing to the overall trustworthiness of a product; rather, it's a reflection on the information to be made available for evaluation at this assurance level. 
-        <a-component id="alc_cmc.1" name="Labeling of the TOE( ALC_CMC.1)">
+        <a-component cc-id="alc_cmc.1" name="Labeling of the TOE( ALC_CMC.1)">
           This component is targeted at identifying the <abbr linkend="TOE"/> such that it can be distinguished from other products or versions from the same vendor and can be easily specified when being procured by an end user. 
             <a-element type="D">
               <title>The developer shall provide the <abbr linkend="TOE"/> and a reference for the <abbr linkend="TOE"/>.</title>
@@ -4416,7 +4416,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
         </a-component>
       </subsection>
       <subsection id="alc_cms" title="TOE CM Coverage (ALC_CMS.1)">
-        <a-component id="alc_cms.1" name="TOE CM Coverage (ALC_CMS.1)">
+        <a-component cc-id="alc_cms.1" name="TOE CM Coverage (ALC_CMS.1)">
           Given the scope of the <abbr linkend="TOE"/> and its associated evaluation evidence requirements, this component's evaluation activities are covered by the evaluation activities listed for ALC_CMC.1. 
             <a-element type="D">
               <title>The developer shall provide a configuration list for the <abbr linkend="TOE"/>.</title>
@@ -4443,7 +4443,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
       </subsection>
       <subsection id="ate-tests" title="Class ATE: Tests"> 
         Testing is specified for functional aspects of the system as well as aspects that take advantage of design or implementation weaknesses. The former is done through the ATE_IND family, while the latter is through the AVA_VAN family. At the assurance level specified in this <abbr linkend="PP"/>, testing is based on advertised functionality and interfaces with dependency on the availability of design information. One of the primary outputs of the evaluation process is the test report as specified in the following requirements.<h:br/><h:br/> Since many of the APIs are not exposed at the user interface (e.g., touch screen), the ability to stimulate the necessary interfaces requires a developer's test environment. This test environment will allow the evaluator, for example, to access APIs and view file system information that is not available on consumer mobile devices. 
-        <a-component id="ate_ind.1" name="Independent Testing - Conformance (ATE_IND.1)"> 
+        <a-component cc-id="ate_ind.1" name="Independent Testing - Conformance (ATE_IND.1)"> 
           Testing is performed to confirm the functionality described in the <abbr linkend="TSS"/> as well as the administrative (including configuration and operational) documentation provided. The focus of the testing is to confirm that the requirements specified in Sections 5.3, and 5.4 are being met, although some additional testing is specified for <abbr linkend="SAR"/>s in Section 6. The Evaluation Activities identify the additional testing activities associated with these components. The evaluator produces a test report documenting the plan for and results of testing, as well as coverage arguments focused on the platform/<abbr linkend="TOE"/> combinations that are claiming conformance to this <abbr linkend="PP"/>.
             <a-element type="D">
               <title>The developer shall provide the <abbr linkend="TOE"/> for testing.</title>
@@ -4466,7 +4466,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
       </subsection>
     <subsection id="ava" title="Class AVA: Vulnerability Analysis">
       For the first generation of this protection profile, the evaluation lab is expected to survey open sources to discover what vulnerabilities have been discovered in these types of products. In most cases, these vulnerabilities will require sophistication beyond that of a basic attacker. Until penetration tools are created and uniformly distributed to the evaluation labs, the evaluator will not be expected to test for these vulnerabilities in the <abbr linkend="TOE"/>. The labs will be expected to comment on the likelihood of these vulnerabilities given the documentation provided by the vendor. This information will be used in the development of penetration testing tools and for the development of future protection profiles. 
-        <a-component id="ava_van.1" name="Vulnerability Survey (AVA_VAN.1)">
+        <a-component cc-id="ava_van.1" name="Vulnerability Survey (AVA_VAN.1)">
             <a-element type="D">
               <title>The developer shall provide the <abbr linkend="TOE"/> for testing.</title>
             </a-element>          
@@ -4556,17 +4556,21 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
     
     Extra instances of a <abbr linkend="TOE"/> component must have the same hardware and software as the original component included in the evaluated configuration.<h:br/><h:br/>
     <section title="Evaluator Actions for Assessing the ST" id="sec1">
-      <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to identify any extra instances of <abbr linkend="TOE"/> components allowed in the <abbr linkend="ST"/> and shall examine the description of how the additional components maintain the <abbr linkend="SFR"/>s to confirm that it is consistent with the role that the component plays in the evaluated configuration. For example: the secure channels used by the extra component for intra-<abbr linkend="TOE"/> communications (FPT_ITT) and external communications (FTP_ITC) must be consistent, the audit information generated by the extra component must be maintained, and the management of the extra component must be consistent with that used for the original instance of the component in the minimum configuration.
-      </TSS>
+      <h:h4>TSS</h:h4>
+      The evaluator shall examine the <abbr linkend="TSS"/> to identify any extra instances of <abbr linkend="TOE"/> components allowed in the <abbr linkend="ST"/> and shall examine the description of how the additional components maintain the <abbr linkend="SFR"/>s to confirm that it is consistent with the role that the component plays in the evaluated configuration. For example: the secure channels used by the extra component for intra-<abbr linkend="TOE"/> communications (FPT_ITT) and external communications (FTP_ITC) must be consistent, the audit information generated by the extra component must be maintained, and the management of the extra component must be consistent with that used for the original instance of the component in the minimum configuration.
     </section>
     <section title="Evaluator Actions for Assessing the Guidance Documentation" id="sec2">
-      <Guidance>The evaluator shall examine the description of the extra instances of <abbr linkend="TOE"/> components in the guidance documentation to confirm that they are consistent with those identified as allowed in the <abbr linkend="ST"/>. This includes confirmation that the result of applying the guidance documentation to configure the extra component will leave the <abbr linkend="TOE"/> in a state such that the claims for <abbr linkend="SFR"/> support in each component are as described in the <abbr linkend="ST"/> and therefore that all <abbr linkend="SFR"/>s continue to be met when the extra components are present.<h:br/><h:br/>
+      <h:h4>Guidance</h:h4>
+w      <!-- <Guidance> -->
+	The evaluator shall examine the description of the extra instances of <abbr linkend="TOE"/> components in the guidance documentation to confirm that they are consistent with those identified as allowed in the <abbr linkend="ST"/>. This includes confirmation that the result of applying the guidance documentation to configure the extra component will leave the <abbr linkend="TOE"/> in a state such that the claims for <abbr linkend="SFR"/> support in each component are as described in the <abbr linkend="ST"/> and therefore that all <abbr linkend="SFR"/>s continue to be met when the extra components are present.<h:br/><h:br/>
       
       The evaluator shall examine the secure communications described for the extra components to confirm that they are the same as described for the components in the minimum configuration (additional connections between allowed extra components and the components in the minimum configuration are allowed of course).<h:br/><h:br/>
-      </Guidance>
+      <!-- </Guidance> -->
     </section> 
     <section title="Evaluator Actions for Testing the TOE" id="sec3">
-      <Tests>The evaluator tests the <abbr linkend="TOE"/> in the minimum configuration as defined in the <abbr linkend="ST"/> (and the guidance documentation).<h:br/><h:br/>
+      <h:h4>Tests</h:h4>
+      <!-- <Tests> -->
+	The evaluator tests the <abbr linkend="TOE"/> in the minimum configuration as defined in the <abbr linkend="ST"/> (and the guidance documentation).<h:br/><h:br/>
       
       If the description of the use of extra components in the <abbr linkend="ST"/> and guidance documentation identifies any difference in the <abbr linkend="SFR"/>s allocated to a component, or the scope of the <abbr linkend="SFR"/>s involved (e.g. if different selections apply to different instances of the component) then the evaluator tests these additional <abbr linkend="SFR"/> cases that were not included in the minimum configuration.<h:br/><h:br/>
       
@@ -4576,7 +4580,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
         <h:li>Audit: the evaluator confirms that the audit records from different instances of a component can be distinguished so that it is clear which instance generated the record.</h:li>
         <h:li>Management: if the extra component manages other components in the distributed <abbr linkend="TOE"/> then the evaluator shall follow the guidance documentation to confirm that management via the extra component uses the same roles and role holders for administrators as for the component in the minimum configuration.</h:li>
       </h:ul>
-      </Tests>
+      <!-- </Tests> -->
     </section>
   </appendix> 
  
