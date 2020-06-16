@@ -1859,7 +1859,7 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
               <selectable>invoking platform-provided functionality with the following rules: <h:ul>
                 <h:li>For volatile memory, the destruction shall be executed by <selectables>
                   <selectable>a single direct overwrite consisting of <selectables>
-                    <selectable>a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
+                    <selectable>a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in FCS_RBG_EXT.1)</selectable>
                     <selectable>zeroes</selectable>
                     <selectable>ones</selectable>
                     <selectable>a new value of a key</selectable>
@@ -1873,7 +1873,7 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
                     <selectable>single</selectable>
                     <selectable> <assignable>ST author defined multi-pass</assignable> </selectable>
                   </selectables> direct overwrite consisting of <selectables>
-                      <selectable>a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
+                      <selectable>a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in FCS_RBG_EXT.1)</selectable>
                       <selectable>zeroes</selectable>
                       <selectable>ones</selectable>
                       <selectable>a new value of a key</selectable>
@@ -1885,10 +1885,10 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
               </h:ul></selectable>
               <selectable>implementing key destruction in accordance with the following rules: <h:ul>
                 <h:li>For volatile memory, the destruction shall be executed by a single direct overwrite <selectables>
-                  <selectable>consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>)</selectable>
+                  <selectable>consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in FCS_RBG_EXT.1)</selectable>
                     <selectable>consisting of zeroes</selectable>
                   </selectables></h:li>
-                <h:li>For non-volatile EEPROM, the destruction shall be executed by a single direct overwrite consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in <linkref linkend="FCS_RBG_EXT.1"/>), followed by a read-verify.</h:li>
+                <h:li>For non-volatile EEPROM, the destruction shall be executed by a single direct overwrite consisting of a pseudo-random pattern using the <abbr linkend="TSF"/>/Platform RBG (as specified in FCS_RBG_EXT.1), followed by a read-verify.</h:li>
                 <h:li>For non-volatile flash memory, that is not wear-leveled, the destruction shall be executed <selectables>
                     <selectable>by a single direct overwrite consisting of zeros followed by a read-verify</selectable>
                     <selectable>by a block erase that erases the reference to memory that stores data as well as the data itself</selectable>
@@ -2538,11 +2538,11 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
           <f-element id="fel-crypto-key-store">
             <title>The TSF shall utilize <selectables>
               <selectable> platform-provided key storage</selectable>
-              <selectable id="fcs_stg_enc"> encryption as specified in <linkref linkend="FCS_STG_EXT.2"/></selectable>
+              <selectable id="fcs_stg_enc"> encryption as specified in FCS_STG_EXT.2</selectable>
               </selectables> for all persistent secrets and private keys.</title>
             <!--TODO: check this note and aa-->
             <note role="application">This requirement ensures that persistent secrets (credentials, secret keys) and private keys are stored securely when not in use. If some secrets/keys are manipulated by the <abbr linkend="TOE"/> and others are manipulated by the platform, then both of the selections can be specified by the <abbr linkend="ST"/> author and the <abbr linkend="ST"/> author must identify in the <abbr linkend="TSS"/> those keys which are manipulated by the <abbr linkend="TOE"/> and those by the platform. <h:br/><h:br/> 
-              If "encryption as specified in <linkref linkend="FCS_STG_EXT.2"/>" is selected then <linkref linkend="FCS_STG_EXT.2"/> and <linkref linkend="FCS_IV_EXT.1"/> must be included in the <abbr linkend="ST"/>.<h:br/><h:br/>
+              If "encryption as specified in FCS_STG_EXT.2" is selected then FCS_STG_EXT.2 and FCS_IV_EXT.1 must be included in the ST.<h:br/><h:br/>
               If the <abbr linkend="TSF"/> is an application, and not a dedicated server, then it should store its private keys in the platform-provided key storage.<h:br/><h:br/> 
               The <abbr linkend="ST"/> author is responsible for selecting the manner in which the keys are stored and where they are stored in the selections above. </note>
             <aactivity>
