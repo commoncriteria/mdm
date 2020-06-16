@@ -4,6 +4,8 @@
 <?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <!--
 Partial mapping from old iteration to new
+FAU_GEN.1(1) => FAU_GEN.1/AUDITGEN
+FAU_GEN.1(2) => FAU_GEN.1/MAS_SERVER
 FPT_ITT.1(1) => FPT_ITT.1/INTER_XFER
 FPT_ITT.1(2) => FPT_ITT.1/INTER_XFER_AGENT
 fia_uau_ext.4(1) => fia_uau_ext.4/REUSE
@@ -331,12 +333,12 @@ DONE:
         <h:td>One</h:td>
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FAU_GEN.1(1)"/></h:td>
+        <h:td>FAU_GEN.1/AUDITGEN</h:td>
         <h:td>Audit Data Generation</h:td>
         <h:td>All</h:td>
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FAU_GEN.1(2)"/></h:td>
+        <h:td>FAU_GEN.1/MAS_SERVER</h:td>
         <h:td>Audit Data Generation</h:td>
         <h:td>Feature Dependent</h:td>
       </h:tr>
@@ -771,7 +773,7 @@ DONE:
       <SOs>
         <SO name="O.ACCOUNTABILITY">
           <description>The <abbr linkend="TOE"/> must provide logging facilities which record management actions undertaken by its administrators.</description>
-	  <addressed-by>FAU_ALT_EXT.1, FAU_GEN.1(1), FAU_GEN.1(2), FAU_NET_EXT.1, FAU_SAR.1, FAU_SEL.1, FAU_STG_EXT.1, FAU_STG_EXT.2</addressed-by>
+	  <addressed-by>FAU_ALT_EXT.1, FAU_GEN.1/AUDITGEN, FAU_GEN.1/MAS_SERVER, FAU_NET_EXT.1, FAU_SAR.1, FAU_SEL.1, FAU_STG_EXT.1, FAU_STG_EXT.2</addressed-by>
 	  <rationale>FILL IN </rationale>
         </SO>
         <SO name="O.APPLY_POLICY">
@@ -989,12 +991,12 @@ DONE:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FAU_GEN.1(1)"/> (man)</h:TD>
+                    <h:TD>FAU_GEN.1/AUDITGEN (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FAU_GEN.1(2)"/> (sel)</h:TD>
+                    <h:TD>FAU_GEN.1/MAS_SERVER (sel)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -2761,7 +2763,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>          
         </f-component>
         <f-component cc-id="fia_x509_ext.1" iteration="CERTVAL_SEL" name="X.509 Certificate Validation" status="sel-based" >
-          <selection-depends req="FPT_ITT.1.1(1)" ids="ITT1_IPSEC_IMPLEMENT, ITT1_HTTPS_IMPLEMENT, ITT1_HTTPS_INVOKE, ITT1_TLS_IMPLEMENT, ITT1_DTLS_IMPLEMENT"/>
+          <selection-depends req="fel-interxfer" ids="ITT1_IPSEC_IMPLEMENT, ITT1_HTTPS_IMPLEMENT, ITT1_HTTPS_INVOKE, ITT1_TLS_IMPLEMENT, ITT1_DTLS_IMPLEMENT"/>
           <f-element id="fel-x509-sel">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -3492,7 +3494,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component>      
         <f-component cc-id="fmt_smr.1" iteration="SECMAN_ROLES_MAS" name="Security Management Roles (MAS Server)" status="sel-based">
-          <selection-depends req="fmt_mof.1.1(1)" ids="mas"/>
+          <selection-depends req="restrictfunc" ids="mas"/>
           <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall additionally maintain the roles enrolled mobile devices, application access groups, and <assignable>additional authorized identified roles</assignable>.</title>
           </f-element>
@@ -3533,7 +3535,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component>         
         <f-component cc-id="fpt_itt.1" name="Internal TOE TSF Data Transfer" status="sel-based" iteration="INTER_XFER">
-          <selection-depends req="ftp_itc_ext.1.1" ids="ITC_DISTRIBUTED_TOE"/>
+          <selection-depends req="fel-itc-ext" ids="ITC_DISTRIBUTED_TOE"/>
           <f-element id="fel-interxfer">
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables linebreak="yes">
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
@@ -3558,7 +3560,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
-                    <h:li>either TLS or DTLS is selected depending on the selection made in FPT_ITT.1.1(1)</h:li>
+                    <h:li>either TLS or DTLS is selected depending on the selection made in </h:li>
                     <h:li>either client or server is selected as appropriate</h:li>
                   </h:ul>
                 </h:li>
@@ -3595,7 +3597,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component>
         <f-component cc-id="fpt_itt.1" iteration="INTER_XFER_AGENT" name="Internal TOE TSF Data Transfer (MDM Agent)" status="sel-based">
-          <selection-depends req="ftp_itc_ext.1.1" ids="ITC_AgentInTOE"/>
+          <selection-depends req="fel-itc-ext" ids="ITC_AgentInTOE"/>
           <f-element id="fel-interxfer-agent">
             <title><h:b>Refinement:</h:b> The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality to use <selectables linebreak="yes">
