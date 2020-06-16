@@ -4,6 +4,10 @@
 <?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <!--
 Partial mapping from old iteration to new
+FCS_COP.1(1) => FCS_COP.1/CONF_ALG
+FCS_COP.1(2) => FCS_COP.1/HASH_ALG
+FCS_COP.1(3) => FCS_COP.1/SIGN_ALG
+FCS_COP.1(4) => FCS_COP.1/KEY_HASH
 FAU_GEN.1(1) => FAU_GEN.1/AUDITGEN
 FAU_GEN.1(2) => FAU_GEN.1/MAS_SERVER
 FPT_ITT.1(1) => FPT_ITT.1/INTER_XFER
@@ -388,22 +392,22 @@ DONE:
         <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr> 
       <h:tr>
-        <h:td><linkref linkend="FCS_COP.1.1(1)"/></h:td>
+        <h:td>FCS_COP.1.1/CONF_ALG</h:td>
         <h:td>Cryptographic Operation (Confidentiality Algorithms)</h:td>
         <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr>
       <h:tr>
-        <h:td><linkref linkend="FCS_COP.1.1(2)"/></h:td>
+        <h:td>FCS_COP.1.1/HASH_ALG</h:td>
         <h:td>Cryptographic Operation (Hashing Algorithms)</h:td>
         <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr> 
       <h:tr>
-        <h:td><linkref linkend="FCS_COP.1.1(3)"/></h:td>
+        <h:td>FCS_COP.1.1/SIGN_ALG</h:td>
         <h:td>Cryptographic Operation (Signature Algorithms)</h:td>
         <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr> 
       <h:tr>
-        <h:td><linkref linkend="FCS_COP.1.1(4)"/></h:td>
+        <h:td>FCS_COP.1.1/KEY_HASH</h:td>
         <h:td>Cryptographic Operation (Keyed-Hash Message Authentication)</h:td>
         <h:td>All</h:td> <!-- Good, Needed for Agent -->
       </h:tr> 
@@ -786,7 +790,12 @@ DONE:
         </SO>
         <SO name="O.DATA_PROTECTION_TRANSIT">
           <description>Data exchanged between the <abbr linkend="MDM"/> Server and the <abbr linkend="MDM"/> Agent must be protected from being monitored, accessed, or altered.</description>
-	  <addressed-by>FAU_STG_EXT.1, FCS_CKM_EXT.4, FCS_CKM.1, FCS_CKM.2, FCS_COP.1(1), FCS_COP.1(2), FCS_COP.1(3), FCS_COP.1(4), <!--FCS_DTLSS_EXT.1(TLSPackage), --><!--FCS_DTLSC_EXT.1(TLSPackage), -->FCS_HTTPS_EXT.1, <!--FCS_IPSEC_EXT.1, -->FCS_IV_EXT.1, FCS_RBG_EXT.1, <!--FCS_SSHS_EXT.1, -->FCS_STG_EXT.1, FCS_STG_EXT.2, <!--FCS_TLSC_EXT.1(TLSPackage), --><!--FCS_TLSC_EXT.2(TLSPackage), --><!--FCS_TLSS_EXT.1(TLSPackage), --><!--FCS_TLSS_EXT.2(TLSPackage), -->FIA_X509_EXT.1/CERTVAL_MAN, FIA_X509_EXT.1/CERTVAL_SEL, FIA_X509_EXT.2, FIA_X509_EXT.3, FIA_X509_EXT.4, FIA_X509_EXT.5, FPT_ITT.1/INTER_XFER, FPT_ITT.1/INTER_XFER_AGENT, FTP_ITC_EXT.1, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, FTP_TRP.1/TRUSTPATH_REM_ADMIN, FTP_TRP.1/TRUSTPATH_ENROLL, FTP_TRP.1/TRUSTPATH_JOIN</addressed-by>
+	  <addressed-by>FAU_STG_EXT.1, FCS_CKM_EXT.4, FCS_CKM.1, FCS_CKM.2,
+	  FCS_COP.1/CONF_ALG,
+	  FCS_COP.1/HASH_ALG,
+	  FCS_COP.1/SIGN_ALG,
+	  FCS_COP.1/KEY_HASH
+	  <!--FCS_DTLSS_EXT.1(TLSPackage), --><!--FCS_DTLSC_EXT.1(TLSPackage), -->FCS_HTTPS_EXT.1, <!--FCS_IPSEC_EXT.1, -->FCS_IV_EXT.1, FCS_RBG_EXT.1, <!--FCS_SSHS_EXT.1, -->FCS_STG_EXT.1, FCS_STG_EXT.2, <!--FCS_TLSC_EXT.1(TLSPackage), --><!--FCS_TLSC_EXT.2(TLSPackage), --><!--FCS_TLSS_EXT.1(TLSPackage), --><!--FCS_TLSS_EXT.2(TLSPackage), -->FIA_X509_EXT.1/CERTVAL_MAN, FIA_X509_EXT.1/CERTVAL_SEL, FIA_X509_EXT.2, FIA_X509_EXT.3, FIA_X509_EXT.4, FIA_X509_EXT.5, FPT_ITT.1/INTER_XFER, FPT_ITT.1/INTER_XFER_AGENT, FTP_ITC_EXT.1, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, FTP_TRP.1/TRUSTPATH_REM_ADMIN, FTP_TRP.1/TRUSTPATH_ENROLL, FTP_TRP.1/TRUSTPATH_JOIN</addressed-by>
 	  <rationale>FILL IN </rationale>
         </SO>
         <SO name="O.INTEGRITY">
@@ -1049,22 +1058,22 @@ DONE:
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FCS_COP.1(1)"/> (man)</h:TD>
+                    <h:TD>FCS_COP.1/CONF_ALG (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FCS_COP.1(2)"/> (man)</h:TD>
+                    <h:TD>FCS_COP.1/HASH_ALG (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FCS_COP.1(3)"/> (man)</h:TD>
+                    <h:TD>FCS_COP.1/SIGN_ALG (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
                   <h:TR>
-                    <h:TD><linkref linkend="FCS_COP.1(4)"/> (man)</h:TD>
+                    <h:TD>FCS_COP.1/KEY_HASH (man)</h:TD>
                     <h:TD>None.</h:TD>
                     <h:TD/>
                   </h:TR>
@@ -1931,8 +1940,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Confidentiality Algorithms)" iteration="CONFALG">
-          <f-element>
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Confidentiality Algorithms)" iteration="CONF_ALG">
+          <f-element id="fel-conf-alg">
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable></selectables> 
@@ -1949,7 +1958,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
                 <selectable>256-bit</selectable>
               </selectables>
             </title>
-            <note role="application">For the second selection of <linkref linkend="FCS_COP.1.1(1)"/> , the <abbr linkend="ST"/> author should choose the mode or modes in which AES operates in the trusted channel protocols. For the third selection, the <abbr linkend="ST"/> author should choose the key sizes that are supported by this functionality.</note>
+            <note role="application">For the second selection of <linkref linkend="fel-conf-alg"/> , the <abbr linkend="ST"/> author should choose the mode or modes in which AES operates in the trusted channel protocols. For the third selection, the <abbr linkend="ST"/> author should choose the key sizes that are supported by this functionality.</note>
             <aactivity>
 
               <TSS>
@@ -2127,8 +2136,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Hashing Algorithms)" iteration="HASHALG">
-          <f-element>
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Hashing Algorithms)" iteration="HASH_ALG">
+          <f-element id="fel-hash-alg">
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
                 <selectable>invoke platform-provided functionality</selectable>
                 <selectable>implement functionality </selectable>
@@ -2214,8 +2223,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Signature Algorithms)" iteration="SIGALG">
-          <f-element>
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Signature Algorithms)" iteration="SIGN_ALG">
+          <f-element id="fel-sign-alg">
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality </selectable>
@@ -2283,7 +2292,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             </aactivity>
           </f-element>
         </f-component> 
-        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Keyed-Hash Message Authentication)" iteration="KEYHASH">
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Keyed-Hash Message Authentication)" iteration="KEY_HASH">
           <f-element>
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -2305,7 +2314,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
               various cryptographic protocols used by the <abbr linkend="TOE"/> (e.g., trusted
               channel). The hash selection must support the message digest size selection. The hash
               selection should be consistent with the overall strength of the algorithm used for
-              <linkref linkend="FCS_COP.1(3)"/>.</note>
+              FCS_COP.1/SIGN_ALG.</note>
             <aactivity> 
               <TSS>
 		<h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
@@ -3122,7 +3131,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             <note role="application">The intent of this requirement is to cryptographically tie the policies to the enterprise that mandated the policy, not to
               protect the policies in transit (as they are already protected by FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or FTP_ITC.1/INTER_TSF_XFER_AGENT). This is especially critical for users who connect to multiple enterprises.</note>
             <aactivity>
-              <TSS>Policies must be digitally signed by the enterprise using the algorithms in <linkref linkend="FCS_COP.1(3)"/>. The evaluator shall ensure that the <abbr linkend="TSS"/> describes how policies are digitally signed by the <abbr linkend="TSF"/>.<h:br/><h:br/></TSS>
+              <TSS>Policies must be digitally signed by the enterprise using the algorithms in FCS_COP.1/SIGN_ALG. The evaluator shall ensure that the <abbr linkend="TSS"/> describes how policies are digitally signed by the <abbr linkend="TSF"/>.<h:br/><h:br/></TSS>
               <Guidance>If applicable, the evaluator shall verify that the AGD guidance instructs administrators on configuring the Enterprise certificate to be used for signing policies or signing the policies before applying them.<h:br/><h:br/> </Guidance>
               <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the <abbr linkend="MDM"/> Server, in transmission, or at the <abbr linkend="MDM"/> agent, and verify the <abbr linkend="TSF"/> signs the update and provides it to the <abbr linkend="MDM"/> Agent.
 	      </Tests>
@@ -5022,15 +5031,15 @@ w      <!-- <Guidance> -->
           <h:TD>Select "RSA schemes" or select "ECC schemes".</h:TD>
         </h:TR>
         <h:TR>
-          <h:TD>FCS_COP.1.1(1)</h:TD>
+          <h:TD><linkref linkend="fel-conf-alg"/></h:TD>
           <h:TD>Select 256 bits</h:TD>
         </h:TR>
         <h:TR>
-          <h:TD>FCS_COP.1.1(2)</h:TD>
+          <h:TD><linkref linkend="fel-hash-alg"/></h:TD>
           <h:TD>Select SHA-384</h:TD>
         </h:TR>
         <h:TR>
-          <h:TD>FCS_COP.1.1(3)</h:TD>
+          <h:TD><linkref linkend="fel-sign-alg"/></h:TD>
           <h:TD>Select RSA with key size of 3072 or select ECC schemes.</h:TD>
         </h:TR>
         <h:TR>
