@@ -2674,14 +2674,16 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component>
         <f-component cc-id="fia_uau_ext.4" iteration="REUSE_ENROLL" name="User Authentication (Re-Use Prevention for Device Enrollment)" status="objective">
-          <f-element>
+          <f-element id="fel-uau-reuse">
             <title> The <abbr linkend="TSF"/> shall prevent reuse of <selectables>
                 <selectable>IMEI</selectable>
                 <selectable><assignable>a unique device ID</assignable></selectable>
               </selectables> related to limiting the user's enrollment of devices. </title>
-            <note role="application"> The <abbr linkend="MDM"/> server must not allow two devices
-              to be enrolled using the same unique identifier. The unique identifier is specified in
-              <linkref linkend="fel-enr-limit"/>.<h:br/><h:br/> <linkref linkend="FIA_UAU_EXT.4.1(2)"/>  can only be included in the <abbr
+              <note role="application">
+		The MDM server must not allow two devices to be enrolled using the same unique identifier.
+	    The unique identifier is specified in
+              <linkref linkend="fel-enr-limit"/>.<h:br/><h:br/>
+	      <linkref linkend="fel-uau-reuse"/>  can only be included in the <abbr
                 linkend="ST"/> if "devices specified by IMEI" or "device specified by <assignable>a
                 unique device ID</assignable> is selected in <linkref linkend="fel-enr-limit"/>. The same selection
               must be completed for this requirement. </note>
