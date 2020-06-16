@@ -2729,7 +2729,11 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
                 </h:li>
               </h:ul>
             </title>
-            <note role="application"> <linkref linkend="fel-x509-man"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
+            <note role="application">
+	      <linkref linkend="fel-x509-man"/> lists the rules for validating certificates.
+	    The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs.
+	    FIA_X509_EXT.2 requires that certificates are used for trusted channels; this use requires that the <h:i>extendedKeyUsage</h:i> rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/>
+	    Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
             <aactivity>
               <TSS>
 		<h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
@@ -2737,7 +2741,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
 		<h:h4>If "implement functionality" is selected:</h:h4>
               The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br/><h:br/>
 	      </TSS>
-              <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least three certificates: the node certificate to be tested, an Intermediate CA, and the self-signed Root CA. 
+              <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="fel-x509-tsf"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least three certificates: the node certificate to be tested, an Intermediate CA, and the self-signed Root CA. 
               <testlist>
                   <test>The evaluator shall load a certificate or certificates as trusted CAs needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator shall then delete one of the certificates, and show that the function fails.</test>
                   <test>The evaluator shall demonstrate that validating an expired certificate results in the function failing.</test>
@@ -2762,7 +2766,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
 		The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).</TSS>
                 <Tests>
 		  <h:h4>If "implement functionality" is selected:</h:h4>
-		  The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
+		  The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="fel-x509-tsf"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
               <testlist>
                   <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate does not contain the basicConstraints extension. The validation of the certificate path fails.</test>
                   <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate has the cA flag in the basicConstraints extension not set. The validation of the certificate path fails.</test>
@@ -2805,14 +2809,16 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
               
               The <abbr linkend="TSS"/> must describe when revocation checking is performed. It is expected that revocation checking is performed when a certificate is used in an authentication step. It is not sufficient to verify the status of a X.509 certificate only when it is loaded onto the device.<h:br/><h:br/>
               
-              This <abbr linkend="SFR"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs. <linkref linkend="FIA_X509_EXT.2"/> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br/><h:br/> Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
+              This <abbr linkend="SFR"/> lists the rules for validating certificates. The <abbr linkend="ST"/> author must select whether revocation status is verified using OCSP or CRLs.
+	      FIA_X509_EXT.2 requires that certificates are used for trusted channels; this use requires that the <h:i>extendedKeyUsage</h:i> rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding <h:i>extendedKeyUsage</h:i>.<h:br/><h:br/>
+	    Regardless of the selection of implement functionality or invoke platform-provided functionality, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform. </note>
             <aactivity>
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how the certificate validation functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).
               <h:h4>If "implement functionality" is selected:</h:h4>
               The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br/><h:br/>
 	      </TSS>
-              <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA. 
+              <Tests>The tests described must be performed in conjunction with the other certificate services evaluation activities, including each of the functions in <linkref linkend="fel-x509-tsf"/>. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA. 
               <testlist>
                 <test>The evaluator shall load a certificate or certificates as trusted CAs needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator shall then delete one of the certificates, and show that the function fails.</test>
                 <test>The evaluator shall demonstrate that validating an expired certificate results in the function failing.</test>
@@ -2839,7 +2845,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
               
               <Tests>
 		<h:h4>If "implement functionality" is selected:</h:h4>		
-              The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="FIA_X509_EXT.2.1"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
+              The tests described must be performed in conjunction with the other certificate services evaluation activities, including the functions in <linkref linkend="fel-x509-tsf"/>. The evaluator shall create a chain of at least four certificates: the node certificate to be tested, two Intermediate CAs, and the self-signed Root CA.
               <testlist>
                 <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate does not contain the basicConstraints extension. The validation of the certificate path fails.</test>
                 <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>s certificate has the cA flag in the basicConstraints extension not set. The validation of the certificate path fails.</test>
@@ -2850,7 +2856,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           </f-element>
         </f-component>
         <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication">
-          <f-element>
+          <f-element id="fel-x509-tsf">
             <title>The TSF shall <selectables> 
               <selectable>invoke platform-provided functionality to use X.509v3 certificates as defined by RFC 5280 to support authentication for <selectables>
                 <selectable>IPsec</selectable>
