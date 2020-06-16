@@ -1532,7 +1532,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
   
       <subsection id="fco" title="Communication (FCO)">
         <f-component cc-id="fco_cpc_ext.1" name="Component Registration Channel Definition" status="objective">
-          <f-element>
+          <f-element id="fel-cpc">
             <title>The <abbr linkend="TSF"/> shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1573,7 +1573,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
             <note role="application">
               This <abbr linkend="SFR"/> is only applicable if the <abbr linkend="TOE"/> is distributed and therefore has multiple components that need to communicate via an internal <abbr linkend="TSF"/> channel. When creating the <abbr linkend="TSF"/> from the initial pair of components, either of these components may be identified as the <abbr linkend="TSF"/> for the purposes of satisfying the meaning of "<abbr linkend="TSF"/>" in this <abbr linkend="SFR"/>. <h:br/><h:br/>
               
-              The intention of this requirement is to ensure that there is a registration process that includes a positive enablement step by an administrator before components joining a distributed <abbr linkend="TOE"/> can communicate with the other components of the <abbr linkend="TOE"/> and before the new component can act as part of the <abbr linkend="TSF"/>. The registration process may itself involve communication with the joining component: many implementations use a bespoke process for this, and the security requirements for the "registration communication" are then defined in <linkref linkend="fel-cpc-func"/>. Use of this "registration communication" channel is not deemed inconsistent with the requirement of <linkref linkend="FCO_CPC_EXT.1.1"/> (i.e. the registration channel can be used before the enablement step, but only in order to complete the registration process).<h:br/><h:br/>
+              The intention of this requirement is to ensure that there is a registration process that includes a positive enablement step by an administrator before components joining a distributed <abbr linkend="TOE"/> can communicate with the other components of the <abbr linkend="TOE"/> and before the new component can act as part of the <abbr linkend="TSF"/>. The registration process may itself involve communication with the joining component: many implementations use a bespoke process for this, and the security requirements for the "registration communication" are then defined in <linkref linkend="fel-cpc-func"/>. Use of this "registration communication" channel is not deemed inconsistent with the requirement of <linkref linkend="fel-cpc"/> (i.e. the registration channel can be used before the enablement step, but only in order to complete the registration process).<h:br/><h:br/>
               
               The channel selection (for the registration channel) in <linkref linkend="fel-cpc-func"/> is essentially a choice between the use of a normal secure channel that is equivalent to a channel used to communicate with external IT entities (FTP_ITC.1) or existing <abbr linkend="TOE"/> components (FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT), or else a separate type of channel that is specific to registration (FTP_TRP.1/TRUSTPATH_JOIN). If the <abbr linkend="TOE"/> does not require a communications channel for registration (e.g. because the registration is achieved entirely by configuration actions by an administrator at each of the components) then the main selection in <linkref linkend="fel-cpc-func"/> is completed with the "No channel" option.<h:br/><h:br/>
               
@@ -3505,7 +3505,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
           <f-element>
             <title>The TSF shall be able to associate users with roles.</title>
             <note role="application">It is envisioned that the <abbr linkend="MDM"/> Server will be configured and maintained by different user roles. The assignment is used by the <abbr linkend="ST"/> author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the <abbr linkend="MDM"/> according to FIA_ENR_EXT.1.<h:br/><h:br/>              
-              For distributed <abbr linkend="TOE"/>s, not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfill this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to <linkref linkend="FIA_UAU.1"/>. For the other <abbr linkend="TOE"/> components authentication can be realized through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT) from a component that supports the authentication of users according to <linkref linkend="FIA_UAU.1"/>. The identification of users according to <linkref linkend="FIA_UAU.1.2"/> and the association of users with roles according to <linkref linkend="FMT_SMR.1.2(1)"/> is done through the components that support the authentication of users according to <linkref linkend="FIA_UAU.1"/>.   
+              For distributed <abbr linkend="TOE"/>s, not every <abbr linkend="TOE"/> component is required to implement its own user management to fulfill this <abbr linkend="SFR"/>. At least one component has to support authentication and identification of users according to FIA_UAU.1. For the other <abbr linkend="TOE"/> components authentication can be realized through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT) from a component that supports the authentication of users according to FIA_UAU.1. The identification of users according to <linkref linkend="FIA_UAU.1.2"/> and the association of users with roles according to <linkref linkend="FMT_SMR.1.2(1)"/> is done through the components that support the authentication of users according to FIA_UAU.1.   
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes the administrator role and the powers granted to and limitations of the role.<h:br/><h:br/></TSS>
@@ -3771,8 +3771,8 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
               <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
             </selectables>
              that is logically distinct from other communication channels, as specified in <selectables>
-              <selectable id="ITC_DISTRIBUTED_TOE_ITT1"><linkref linkend="FPT_ITT.1(1)"/></selectable>
-               <selectable id="ITC_AgentInTOE_ITT2"><linkref linkend="FPT_ITT.1(2)"/></selectable>
+              <selectable id="ITC_DISTRIBUTED_TOE_ITT1">FPT_ITT.1/INTER_XFER"/></selectable>
+               <selectable id="ITC_AgentInTOE_ITT2">FPT_ITT.1/INTER_XFER_AGENT</selectable>
               <selectable id="ITC_AgentOutTOE_ITC">FTP_ITC.1/INTER_TSF_XFER_AGENT</selectable>
             </selectables>.</title>
             <note role="Application">
