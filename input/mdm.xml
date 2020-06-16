@@ -4289,8 +4289,7 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
     <subsection id="ase" title="Class ASE: Security Target"> 
       The <abbr linkend="ST"/> is evaluated as per ASE activities defined in the <abbr linkend="CEM"/>. In addition, there may be Evaluation Activities specified within <secref linkend="req"/> and relevant appendices that call for necessary descriptions to be included in the <abbr linkend="TSS"/> that are specific to the <abbr linkend="TOE"/> technology type. 
        <a-component id="ase_tss.1" name="TOE summary specification">
-         <evalactionlabel title="Content and presentation elements:"/>
-         <a-element id="ASE_TSS.1.1C">
+         <a-element type="C">
            <title>The TOE summary specification shall describe how the TOE meets each SFR.</title>
          </a-element>        
        </a-component>     
@@ -4300,32 +4299,29 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
       The design information about the <abbr linkend="TOE"/> is contained in the guidance documentation available to the end user as well as the <abbr linkend="TSS"/> portion of the <abbr linkend="ST"/>, and any additional information required by this <abbr linkend="PP"/> that is not to be made public (e.g., Entropy Essay).
         <a-component id="adv_fsp.1" name="Basic Functional Specification (ADV_FSP.1)"> 
           The functional specification describes the Target Security Functions Interfaces (TSFIs). It is not necessary to have a formal or complete specification of these interfaces. Additionally, because <abbr linkend="TOE"/>s conforming to this <abbr linkend="PP"/> will necessarily have interfaces to the Operational Environment that are not directly invokable by <abbr linkend="TOE"/> users, there is little point specifying that such interfaces be described in and of themselves since only indirect testing of such interfaces may be possible. For this <abbr linkend="PP"/>, the activities for this family should focus on understanding the interfaces presented in the <abbr linkend="TSS"/> in response to the functional requirements and the interfaces presented in the AGD documentation. No additional "functional specification" documentation is necessary to satisfy the evaluation activities specified.<h:br/><h:br/> The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list.
-	  <evalactionlabel title="Developer action elements:"/>
-            <a-element id="ADV_FSP.1.1D">
+            <a-element type="D">
               <title>The developer shall provide a functional specification.</title>
             </a-element>
-            <a-element id="ADV_FSP.1.2D">
+            <a-element type="D">
               <title>The developer shall provide a tracing from the functional specification to the <abbr linkend="SFR"/>s.</title>
               <note role="application">As indicated in the introduction to this section, the functional specification is comprised of the information contained in the AGD_OPE and AGD_PRE documentation. The developer may reference a website accessible to application developers and the evaluator. The evaluation activities in the functional requirements point to evidence that should exist in the documentation and <abbr linkend="TSS"/> section; since these are directly associated with the <abbr linkend="SFR"/>s, the tracing in element ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary. </note>
             </a-element>          
-          <evalactionlabel title="Content and presentation elements:"/>
-            <a-element id="ADV_FSP.1.1C">
+            <a-element type="C">
               <title>The functional specification shall describe the purpose and method of use for each <abbr linkend="SFR"/>- enforcing and <abbr linkend="SFR"/>-supporting TSFI.</title>
             </a-element>
-            <a-element id="ADV_FSP.1.2C">
+            <a-element type="C">
               <title>The functional specification shall identify all parameters associated with each <abbr linkend="SFR"/>-enforcing and <abbr linkend="SFR"/>-supporting TSFI.</title>
             </a-element>
-            <a-element id="ADV_FSP.1.3C">
+            <a-element type="C">
               <title>The functional specification shall provide rationale for the implicit categorization of interfaces as <abbr linkend="SFR"/>-non-interfering.</title>
             </a-element>
-            <a-element id="ADV_FSP.1.4C">
+            <a-element type="C">
               <title>The tracing shall demonstrate that the <abbr linkend="SFR"/>s trace to TSFIs in the functional specification.</title>
-            </a-element>          
-          <evalactionlabel title="Evaluator action elements:"/>
-            <a-element id="ADV_FSP.1.1E">
+            </a-element>
+            <a-element type="E">
               <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
             </a-element>
-            <a-element id="ADV_FSP.1.2E">
+            <a-element type="E">
               <title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of the <abbr linkend="SFR"/>s.</title>
               <aactivity>
                 There are no specific evaluation activities associated with these <abbr linkend="SAR"/>s, except ensuring the information is provided. The functional specification documentation is provided to support the evaluation activities described in Section 5 and the relevant appendices, and other activities described for AGD, ATE, and AVA <abbr linkend="SAR"/>s. The requirements on the content of the functional specification information is implicitly assessed by virtue of the other evaluation activities being performed; if the evaluator is unable to perform an activity because there is insufficient interface information, then an adequate functional specification has not been provided.
@@ -4342,37 +4338,34 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
         <h:li>instructions to provide a protected administrative capability</h:li>
       </h:ul> Guidance pertaining to particular security functionality must also be provided; requirements on such guidance are contained in the evaluation activities specified with each requirement. 
         <a-component id="agd_ope.1" name="Operational User Guidance (AGD_OPE.1)">
-          <evalactionlabel title="Developer action elements:"/>
-            <a-element id="AGD_OPE.1.1D">
+            <a-element type="D">
               <title>The developer shall provide operational user guidance.</title>
               <note role="application">The operational user guidance does not have to be contained in a single document. Guidance to users, administrators and application developers can be spread among documents or web pages. Where appropriate, the guidance documentation is expressed in the eXtensible Configuration Checklist Description Format (XCCDF) to support security automation.<h:br/><h:br/> 
                 Rather than repeat information here, the developer should review the evaluation activities for this component to ascertain the specifics of the guidance that the evaluator will be checking for. This will provide the necessary information for the preparation of acceptable guidance. </note>
             </a-element>
-          <evalactionlabel title="Content and presentation elements:"/>
-            <a-element id="AGD_OPE.1.1C">
+            <a-element type="C">
               <title>The operational user guidance shall describe, for each user role, the user-accessible functions and privileges that should be controlled in a secure processing environment, including appropriate warnings.</title>
               <note role="application">User and administrator are to be considered in the definition of user role.</note>
             </a-element>
-            <a-element id="AGD_OPE.1.2C">
+            <a-element type="C">
               <title>The operational user guidance shall describe, for each user role, how to use the available interfaces provided by the <abbr linkend="TOE"/> in a secure manner.</title>
             </a-element>
-            <a-element id="AGD_OPE.1.3C">
+            <a-element type="C">
               <title>The operational user guidance shall describe, for each user role, the available functions and interfaces, in particular all security parameters under the control of the user, indicating secure values as appropriate.</title>
             </a-element>
-            <a-element id="AGD_OPE.1.4C">
+            <a-element type="C">
               <title>The operational user guidance shall, for each user role, clearly present each type of security-relevant event relative to the user-accessible functions that need to be performed, including changing the security characteristics of entities under the control of the <abbr linkend="TSF"/>.</title>
             </a-element>
-            <a-element id="AGD_OPE.1.5C">
+            <a-element type="C">
               <title>The operational user guidance shall identify all possible modes of operation of the <abbr linkend="TOE"/> (including operation following failure or operational error), their consequences, and implications for maintaining secure operation.</title>
             </a-element>
-            <a-element id="AGD_OPE.1.6C">
+            <a-element type="C">
               <title>The operational user guidance shall, for each user role, describe the security measures to be followed in order to fulfill the security objectives for the operational environment as described in the <abbr linkend="ST"/>.</title>
             </a-element>
-            <a-element id="AGD_OPE.1.7C">
+            <a-element type="C">
               <title>The operational user guidance shall be clear and reasonable.</title>
             </a-element>          
-          <evalactionlabel title="Evaluator action elements:"/>
-            <a-element id="AGD_OPE.1.1E">
+            <a-element type="E">
               <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
               <aactivity> 
                 Some of the contents of the operational guidance will be verified by the evaluation activities in Sections 4.2, 4.3, and 4.4and evaluation of the <abbr linkend="TOE"/> according to the <abbr linkend="CEM"/>. The following additional information is also required.<h:br/><h:br/> If cryptographic functions are provided by the <abbr linkend="TOE"/>, the operational guidance shall contain instructions for configuring the cryptographic engine associated with the evaluated configuration of the <abbr linkend="TOE"/>. It shall provide a warning to the administrator that use of other cryptographic engines was not evaluated nor tested during the <abbr linkend="CC"/> evaluation of the <abbr linkend="TOE"/>.<h:br/><h:br/> The documentation must describe the process for verifying updates to the <abbr linkend="TOE"/> by verifying a digital signature - this may be done by the <abbr linkend="TOE"/> or the underlying platform. The evaluator shall verify that this process includes the following steps:<h:br/><h:br/> Instructions for obtaining the update itself. This should include instructions for making the update accessible to the <abbr linkend="TOE"/> (e.g., placement in a specific directory).<h:br/><h:br/> Instructions for initiating the update process, as well as discerning whether the process was successful or unsuccessful. This includes generation of the hash/digital signature.<h:br/><h:br/> The <abbr linkend="TOE"/> will likely contain security functionality that does not fall in the scope of evaluation under this <abbr linkend="PP"/>. The operational guidance shall make it clear to an administrator which security functionality is covered by the evaluation activities. 
@@ -4382,26 +4375,23 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
       </subsection>
       <subsection id="agd_pre" title="Preparative Procedures (AGD_PRE.1)">
         <a-component id="agd_pre.1" name="Preparative Procedures (AGD_PRE.1)">
-          <evalactionlabel title="Developer action elements:"/>
-            <a-element id="AGD_PRE.1.1D">
+            <a-element type="D">
               <title>The developer shall provide the <abbr linkend="TOE"/>, including its preparative procedures.</title>
               <note role="application">As with the operational guidance, the developer should look to the evaluation activities to determine the required content with respect to preparative procedures.</note>
             </a-element>          
-          <evalactionlabel title="Content and presentation elements:"/>
-            <a-element id="AGD_PRE.1.1C">
+            <a-element type="C">
               <title>The preparative procedures shall describe all the steps necessary for secure acceptance of the delivered <abbr linkend="TOE"/> in accordance with the developer's delivery procedures.</title>
             </a-element>
-            <a-element id="AGD_PRE.1.2C">
+            <a-element type="C">
               <title>The preparative procedures shall describe all the steps necessary for secure installation of the <abbr linkend="TOE"/> and for the secure preparation of the operational environment in accordance with the security objectives for the operational environment as described in the <abbr linkend="ST"/>.</title>
               <note role="application">It is recognised that the application of these requirements will vary depending on aspects such as whether the TOE is delivered in an operational state, or whether it has to be installed at the TOE owner's site, etc.<h:br/><h:br/>
                 It might also be the case that no installation is necessary, for example as a Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyse installation procedures and thus this requirement is implicitly satisfied.
               </note>
             </a-element>          
-          <evalactionlabel title="Evaluator action elements:"/>
-            <a-element id="AGD_PRE.1.1E">
+            <a-element type="E">
               <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
             </a-element>
-            <a-element id="AGD_PRE.1.2E">
+            <a-element type="E">
               <title>The evaluator shall apply the preparative procedures to confirm that the <abbr linkend="TOE"/> can be prepared securely for operation.</title>
               <aactivity>
                 As indicated in the introduction above, there are significant expectations with respect to the documentation, especially when configuring the operational environment to support <abbr linkend="TOE"/> functional requirements. The evaluator shall check to ensure that the guidance provided for the <abbr linkend="TOE"/> adequately addresses all platforms claimed for the <abbr linkend="TOE"/> in the <abbr linkend="ST"/>.
@@ -4413,16 +4403,13 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
       At the assurance level provided for <abbr linkend="TOE"/>s conformant to this <abbr linkend="PP"/>, life-cycle support is limited to end-user visible aspects of the life-cycle, rather than an examination of the <abbr linkend="TOE"/> vendor's development and configuration management process. This is not meant to diminish the critical role that a developer's practices play in contributing to the overall trustworthiness of a product; rather, it's a reflection on the information to be made available for evaluation at this assurance level. 
         <a-component id="alc_cmc.1" name="Labeling of the TOE( ALC_CMC.1)">
           This component is targeted at identifying the <abbr linkend="TOE"/> such that it can be distinguished from other products or versions from the same vendor and can be easily specified when being procured by an end user. 
-          <evalactionlabel title="Developer action elements:"/>
-            <a-element id="alc_cmc.1.1d">
+            <a-element type="D">
               <title>The developer shall provide the <abbr linkend="TOE"/> and a reference for the <abbr linkend="TOE"/>.</title>
             </a-element>          
-          <evalactionlabel title="Content and presentation elements:"/>
-            <a-element id="alc_cmc.1.1c">
+            <a-element type="C">
               <title>The <abbr linkend="TOE"/> shall be labeled with its unique reference.</title>
             </a-element>          
-          <evalactionlabel title="Evaluator action elements:"/>
-            <a-element id="alc_cmc.1.1e">
+            <a-element type="E">
               <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
               <aactivity>The evaluator shall check the <abbr linkend="ST"/> to ensure that it contains an identifier (such as a product name/version number) that specifically identifies the version that meets the requirements of the <abbr linkend="ST"/>. Further, the evaluator shall check the AGD guidance and <abbr linkend="TOE"/> samples received for testing to ensure that the version number is consistent with that in the <abbr linkend="ST"/>. If the vendor maintains a website advertising the <abbr linkend="TOE"/>, the evaluator shall examine the information on the website to ensure that the information in the <abbr linkend="ST"/> is sufficient to distinguish the product.</aactivity>
             </a-element>          
@@ -4431,19 +4418,16 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
       <subsection id="alc_cms" title="TOE CM Coverage (ALC_CMS.1)">
         <a-component id="alc_cms.1" name="TOE CM Coverage (ALC_CMS.1)">
           Given the scope of the <abbr linkend="TOE"/> and its associated evaluation evidence requirements, this component's evaluation activities are covered by the evaluation activities listed for ALC_CMC.1. 
-          <evalactionlabel title="Developer action elements:"/>
-            <a-element id="alc_cms.1.1d">
+            <a-element type="D">
               <title>The developer shall provide a configuration list for the <abbr linkend="TOE"/>.</title>
             </a-element>          
-          <evalactionlabel title="Content and presentation elements:"/>
-            <a-element id="alc_cms.1.1c">
+            <a-element type="C">
               <title>The configuration list shall include the following: the <abbr linkend="TOE"/> itself; and the evaluation evidence required by the <abbr linkend="SAR"/>s.</title>
             </a-element>
-            <a-element id="alc_cms.1.2c">
+            <a-element type="C">
               <title>The configuration list shall uniquely identify the configuration items.</title>
             </a-element>          
-          <evalactionlabel title="Evaluator action elements:"/>
-            <a-element id="alc_cms.1.1e">
+            <a-element type="E">
               <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
               <note role="application">
                 In cases where the <abbr linkend="MDM"/> software is Software as a Service, running in a cloud environment where they have little to no control of the operating system and underlying hardware, the evaluated configuration is considered a snapshot of the <abbr linkend="MDM"/> software with the OS and/or VM versions used at the time of testing. 
@@ -4461,19 +4445,16 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
         Testing is specified for functional aspects of the system as well as aspects that take advantage of design or implementation weaknesses. The former is done through the ATE_IND family, while the latter is through the AVA_VAN family. At the assurance level specified in this <abbr linkend="PP"/>, testing is based on advertised functionality and interfaces with dependency on the availability of design information. One of the primary outputs of the evaluation process is the test report as specified in the following requirements.<h:br/><h:br/> Since many of the APIs are not exposed at the user interface (e.g., touch screen), the ability to stimulate the necessary interfaces requires a developer's test environment. This test environment will allow the evaluator, for example, to access APIs and view file system information that is not available on consumer mobile devices. 
         <a-component id="ate_ind.1" name="Independent Testing - Conformance (ATE_IND.1)"> 
           Testing is performed to confirm the functionality described in the <abbr linkend="TSS"/> as well as the administrative (including configuration and operational) documentation provided. The focus of the testing is to confirm that the requirements specified in Sections 5.3, and 5.4 are being met, although some additional testing is specified for <abbr linkend="SAR"/>s in Section 6. The Evaluation Activities identify the additional testing activities associated with these components. The evaluator produces a test report documenting the plan for and results of testing, as well as coverage arguments focused on the platform/<abbr linkend="TOE"/> combinations that are claiming conformance to this <abbr linkend="PP"/>.
-            <evalactionlabel title="Developer action elements:"/>
-            <a-element id="ate_ind.1.1d">
+            <a-element type="D">
               <title>The developer shall provide the <abbr linkend="TOE"/> for testing.</title>
             </a-element>          
-          <evalactionlabel title="Content and presentation elements:"/>
-            <a-element id="ate_ind.1.1c">
+            <a-element type="C">
               <title>The <abbr linkend="TOE"/> shall be suitable for testing.</title>
             </a-element>          
-          <evalactionlabel title="Evaluator action elements:"/>
-            <a-element id="ate_ind.1.1e">
+            <a-element type="E">
               <title>The evaluator <h:i>shall confirm</h:i> that the information provided meets all requirements for content and presentation of evidence.</title>
             </a-element>
-            <a-element id="ate_ind.1.2e">
+            <a-element type="E">
               <title>The evaluator shall test a subset of the <abbr linkend="TSF"/> to confirm that the <abbr linkend="TSF"/> operates as specified.</title>
               <aactivity> The evaluator shall prepare a test plan and report documenting the testing aspects of the system. The test plan covers all of the testing actions contained in the <abbr linkend="CEM"/> and the body of this <abbr linkend="PP"/>'s Evaluation Activities. While it is not necessary to have one test case per test listed in an evaluation activity, the evaluator must document in the test plan that each applicable testing requirement in the <abbr linkend="ST"/> is covered.<h:br/><h:br/> 
                 The test plan identifies the platforms to be tested, and for those platforms not included in the test plan but included in the <abbr linkend="ST"/>, the test plan provides a justification for not testing the platforms. This justification must address the differences between the tested platforms and the untested platforms, and make an argument that the differences do not affect the testing to be performed. It is not sufficient to merely assert that the differences have no affect; rationale must be provided. If all platforms claimed in the <abbr linkend="ST"/> are tested, then no rationale is necessary.<h:br/><h:br/> 
@@ -4486,22 +4467,19 @@ If one or more of the optional audit components <linkref linkend="FAU_STG_EXT.1"
     <subsection id="ava" title="Class AVA: Vulnerability Analysis">
       For the first generation of this protection profile, the evaluation lab is expected to survey open sources to discover what vulnerabilities have been discovered in these types of products. In most cases, these vulnerabilities will require sophistication beyond that of a basic attacker. Until penetration tools are created and uniformly distributed to the evaluation labs, the evaluator will not be expected to test for these vulnerabilities in the <abbr linkend="TOE"/>. The labs will be expected to comment on the likelihood of these vulnerabilities given the documentation provided by the vendor. This information will be used in the development of penetration testing tools and for the development of future protection profiles. 
         <a-component id="ava_van.1" name="Vulnerability Survey (AVA_VAN.1)">
-          <evalactionlabel title="Developer action elements:"/>
-            <a-element id="ava_van.1.1d">
+            <a-element type="D">
               <title>The developer shall provide the <abbr linkend="TOE"/> for testing.</title>
             </a-element>          
-          <evalactionlabel title="Content and presentation elements:"/>
-            <a-element id="ava_van.1.1c">
+            <a-element type="C">
               <title>The <abbr linkend="TOE"/> shall be suitable for testing.</title>
             </a-element>          
-          <evalactionlabel title="Evaluator action elements:"/>
-            <a-element id="ava_van.1.1e">
+            <a-element type="E">
               <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
             </a-element>
-            <a-element id="ava_van.1.2e">
+            <a-element type="E">
               <title>The evaluator shall perform a search of public domain sources to identify potential vulnerabilities in the <abbr linkend="TOE"/>.</title>
             </a-element>
-            <a-element id="ava_van.1.3e">
+            <a-element type="E">
               <title>The evaluator shall conduct penetration testing, based on the identified potential vulnerabilities, to determine that the <abbr linkend="TOE"/> is resistant to attacks performed by an attacker possessing Basic attack potential.</title>
               <aactivity>As with ATE_IND, the evaluator shall generate a report to document their findings with respect to this requirement. This report could physically be part of the overall test report mentioned in ATE_IND, or a separate document. The evaluator performs a search of public information to determine the vulnerabilities that have been found in network infrastructure devices and the implemented communication protocols in general, as well as those that pertain to the particular <abbr linkend="TOE"/>. The evaluator documents the sources consulted and the vulnerabilities found in the report. For each vulnerability found, the evaluator either provides a rationale with respect to its non-applicability, or the evaluator formulates a test (using the guidelines provided in ATE_IND) to confirm the vulnerability, if suitable. Suitability is determined by assessing the attack vector needed to take advantage of the vulnerability. If exploiting the vulnerability requires expert skills and an electron microscope, for instance, then a test would not be suitable and an appropriate justification would be formulated.
               </aactivity>
