@@ -1626,7 +1626,7 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
             </title>
             <note role="application">The <abbr linkend="ST"/> author must select all key generation
               schemes used for key establishment and <abbr linkend="MDM"/> authentication. When key
-              generation is used for key establishment, the schemes in <linkref linkend="FCS_CKM.2.1"/> and selected
+              generation is used for key establishment, the schemes in <linkref linkend="fel-ckm"/> and selected
               cryptographic protocols must match the selection. When key generation is used for
                 <abbr linkend="MDM"/> authentication, the public key is expected to be associated
               with an X.509v3 certificate.<h:br/><h:br/> If the <abbr linkend="TOE"/> only acts as a
@@ -1742,13 +1742,13 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
                   <h:li>g^x mod p = y</h:li>
                 </h:ul> for each FFC parameter set and key pair.<h:br/><h:br/>
               <h:h4>Diffie-Hellman Group 14 and FFC Schemes using "safe-prime" groups</h:h4>
-              Testing for FFC Schemes using Diffie-Hellman group 14 and/or "safe-prime" groups is done as part of testing in <linkref linkend="fcs_ckm.2.1"/>.
+              Testing for FFC Schemes using Diffie-Hellman group 14 and/or "safe-prime" groups is done as part of testing in <linkref linkend="fel-ckm"/>.
 	      </Tests>
             </aactivity>
           </f-element>
         </f-component> 
         <f-component cc-id="fcs_ckm.2" name="Cryptographic Key Establishment">
-          <f-element>
+          <f-element id="fel-ckm">
             <title><h:b>Refinement:</h:b> The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
@@ -1852,7 +1852,7 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
           </f-element>
         </f-component> 
         <f-component cc-id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
-          <f-element>
+          <f-element id="fel-ckm-ext-func">
             <!-- TODO: Will need to modify this SFR more b/c if invoke platform-provided key destruction is chosen then will likely not be able to specify how the platform destroys it. Joe McDaniels has many different version of this SFR that we can try to use.
             AA has not been updated.-->
             <title> The TSF shall destroy plaintext keying material and critical security parameters by <selectables>
@@ -1912,10 +1912,10 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
           </f-element>
           <f-element> <!--will have to edit this one to remove platform requirements-->
             <title>The <abbr linkend="TSF"/> shall destroy all plaintext keying material and critical security parameters (<abbr linkend="CSP"/>s) when no longer needed.</title>
-            <note role="application">Key destruction procedures are performed in accordance with <linkref linkend="FCS_CKM_EXT.4.1"/>. Even if "invoking platform-provided functionality" is selected in <linkref linkend="FCS_CKM_EXT.4.1"/>, the <abbr linkend="TSF"/> must determine when the plaintext keying material and <abbr linkend="CSP"/> are no longer needed and thus should be destroyed. The <abbr linkend="TSF"/> must "release" the key material and <abbr linkend="CSP"/> when no longer needed, regardless if the <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform destroys the key material and <abbr linkend="CSP"/>s.<h:br/><h:br/> 
+            <note role="application">Key destruction procedures are performed in accordance with <linkref linkend="fel-ckm-ext-func"/>. Even if "invoking platform-provided functionality" is selected in <linkref linkend="fel-ckm-ext-func"/>, the <abbr linkend="TSF"/> must determine when the plaintext keying material and <abbr linkend="CSP"/> are no longer needed and thus should be destroyed. The <abbr linkend="TSF"/> must "release" the key material and <abbr linkend="CSP"/> when no longer needed, regardless if the <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform destroys the key material and <abbr linkend="CSP"/>s.<h:br/><h:br/> 
               For the purposes of this requirement, plaintext keying material refers to authentication data, authorization data, secret/private symmetric keys, data used to derive keys, etc.</note>
             <aactivity> 
-              Evaluation Activity Note:<h:br/><h:br/> The evaluation activity used is dependent on the selection made in <linkref linkend="FCS_CKM_EXT.4.1"/>. <h:br/><h:br/>
+              Evaluation Activity Note:<h:br/><h:br/> The evaluation activity used is dependent on the selection made in <linkref linkend="fel-ckm-ext-func"/>. <h:br/><h:br/>
               <TSS> The evaluator shall check to ensure the <abbr linkend="TSS"/> lists each type of plaintext key material and <abbr linkend="CSP"/> (authentication data, authorization data, secret/private symmetric keys, data used to derive keys, etc.) and its origin and storage location.<h:br/><h:br/> The evaluator shall verify that the <abbr linkend="TSS"/> describes when each type of key material and <abbr linkend="CSP"/> is no longer needed.<h:br/><h:br/> <!-- ToDo: this might be asking too much. If they implement platform functionality they might not have access to the keys?-->              
               <h:h4>If "invoke platform-provided functionality" is selected:</h:h4>
               <!--><TSS> For each platform listed in the <abbr linkend="ST"/>, the evaluator shall
@@ -2892,7 +2892,7 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
               </title>
             <note role="application"> The <abbr linkend="ST"/> author's selection(s) must match the selection 
               of FTP_TRP.1/TRUSTPATH_ENROLL, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, FPT_ITT.1/INTER_XFER, and FPT_ITT.1/INTER_XFER_AGENT. 
-              Certificates may optionally be used for trusted updates of system software (<linkref linkend="FPT_TUD_EXT.1.3"/>) 
+              Certificates may optionally be used for trusted updates of system software (<linkref linkend="fel-tud-func"/>) 
               and software integrity verification (<linkref linkend="FPT_TST_EXT.1.2"/>). If some authentication services are 
               provided by the <abbr linkend="TOE"/> and others by the platform, the <abbr linkend="ST"/> author must clearly 
               identify which services are provided by the <abbr linkend="TOE"/> and which by the platform.<h:br/><h:br/> If code 
@@ -3721,7 +3721,7 @@ If one or more of the optional audit components FAU_STG_EXT.1 or FAU_STG_EXT.2 a
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr linkend="MDM"/> Server; nonetheless, that mechanism will be identified in the <abbr linkend="TSS"/> as part of this evaluation activity).<h:br/><h:br/></TSS>
             </aactivity>
           </f-element>
-          <f-element>
+          <f-element id="fel-tud-func">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
