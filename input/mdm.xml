@@ -5039,6 +5039,46 @@ w      <!-- <Guidance> -->
       
     </section>
   </appendix>
+	
+	<!-- Appendix: Implicity Satisfied Requirements -->
+	<appendix title="Implicitly Satisfied Requirements" id="satisfiedreqs">
+		This appendix lists requirements that should be considered satisfied by products successfully evaluated against this PP-Module.
+		However, these requirements are not featured explicitly as SFRs and should not be included in the ST. They are not included as standalone 
+		SFRs because it would increase the time, cost, and complexity of evaluation. This approach is permitted by [CC] Part 1, 8.2 Dependencies
+		between components.<h:p/>
+		This information benefits systems engineering activities which call for inclusion of particular security controls. Evaluation against
+		the PP-Module provides evidence that these controls are present and have been evaluated.<h:p/>
+		<h:b><ctr ctr-type="Table" pre="Table " id="imp-sat-reqs-table">: Implicitly Satisfied Requirements</ctr></h:b>
+    		<h:table>	
+	<h:tr class="header"><h:td>Requirement</h:td><h:td>Rationale for Satisfaction</h:td></h:tr>
+	<h:tr>
+	<h:td>FMT_MTD.1 – Management of TSF Data</h:td>
+	<h:td>
+		FAU_SEL.1 has a dependency on FMT_MTD.1 because the configuration settings that determine what events are audited is considered to be
+		TSF data. While FAU_SEL.1 determines the extent to which the TOE’s audit function is configured, it relies on FMT_MTD.1 to determine the
+		administrative roles that are permitted to manipulate this data.<h:p/>
+		The PP allows FAU_SEL.1 to be implemented either by the TSF or by the TOE platform because the TOE may rely on the audit functionality
+		provided by the OS it runs on. If this is configured entirely through the platform, the administrator does not necessarily need to be
+		authenticated by the TOE to do this. Therefore, requiring FMT_MTD.1 does not make sense in this situation. If this is configured through 
+		the TOE, it can be implied from a review of FMT_SMR.1(1) that the ‘MD user’ role cannot perform this function as they lack the authority
+		to manage the TSF. It is therefore understood that this function can be performed by the ‘administrator’ role or potentially by one or more
+		roles specified by the ST author if the selection to specify additional roles is chosen. An additional SFR that explicitly identifies the roles
+		permitted to manage this function is redundant in this context.<h:p/>
+	</h:td>
+	</h:tr>
+	<h:tr>
+	<h:td>FPT_STM.1 – Reliable time stamps</h:td>
+	<h:td>
+	  	The PP’s iterations of FAU_GEN.1 as well as its cryptographic functionality have a dependency on FPT_STM.1 because audit records require accurate 
+		timestamps as well as some cryptographic operations, such as determining if a presented X.509 certificate is expired. The TOE is installed
+		on a general-purpose computer or specialized network device that is assumed to have the ability to provide certain functions to the TOE as 
+		specified in A.MDM_SERVER_PLATFORM. This assumption explicitly lists ‘reliable timestamps’ as a function that the TSF is expected to have 
+		available to it.<h:p/>
+	</h:td>
+	</h:tr>
+    </h:table>
+  </appendix>
+
  
   <appendix id="use-case" title="Use Case Templates"> 
     The following use case templates list those selections, assignments, and objective requirements that best support the use cases identified by this Protection Profile. Note that the templates assume that all <abbr linkend="SFR"/>s listed in Section 5 are included in the <abbr linkend="ST"/>, not just those listed in the templates. These templates and deviations from the template should be identified in the Security Target to assist customers with making risk-based purchasing decisions. Products that do not meet these templates are not precluded from use in the scenarios identified by this Protection Profile. Where selections for a particular requirement are not identified in a use case template, all available selections are equally applicable to the use case. 
