@@ -119,15 +119,19 @@ DONE:
 
   <chapter id="int" title="Introduction">
     <section id="ov" title="Overview"> 
-      Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network resources.<h:br/><h:br/> 
-      This document provides a baseline set of Security Functional Requirements (SFRs) for an <abbr linkend="MDM"/> system, which is the Target of Evaluation (<abbr linkend="TOE"/>). The <abbr linkend="MDM"/> System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce the security policies and network access control servers are out of scope. </section>
+      Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of 
+	    these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network
+	    resources.<h:br/><h:br/> 
+      This document provides a baseline set of Security Functional Requirements (SFRs) for an MDM system, which is the Target of Evaluation (TOE). The MDM 
+	    System is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce 
+	    the security policies and network access control servers are out of scope. </section>
       <tech-terms>
 	<term full="Administrator" >
 	  The person who is responsible for management activities, including setting the policy that is applied by the enterprise on the mobile device.
 	</term>
 	<term full="API Application Programming Interface " abbr="API">
-	  A specification of routines, data structures, object classes, and variables that allows an application to make use of services provided by another software component, such as a library.
-	  APIs are often provided for a set of libraries included with the platform.
+	  A specification of routines, data structures, object classes, and variables that allows an application to make use of services provided by another
+		software component, such as a library. APIs are often provided for a set of libraries included with the platform.
 	</term>
         <term full="Critical Security Parameter" abbr="CSP">
 	  Security-related information whose disclosure or modification can compromise the security of a cryptographic module and/or authentication system.
@@ -136,7 +140,8 @@ DONE:
 	  Program or application or data files that are stored or transmitted by a server or MD.
 	</term>
         <term full="Data Encryption Key" abbr="DEK">A key used to encrypt data-at-rest.</term>
-        <term full="Developer Modes" >States in which additional services are available to a user in order to provide enhanced system access for debugging of software.</term>
+        <term full="Developer Modes" >States in which additional services are available to a user in order to provide enhanced system access for debugging of
+		software.</term>
         <term full="Enrolled State" >The state in which a mobile device is managed by a policy from an MDM.</term>
         <term full="Enterprise Applications" >Applications that are provided and
             managed by the enterprise as opposed to a public application store.
@@ -145,14 +150,15 @@ DONE:
             temporarily stored on mobile devices to which the mobile device user is allowed access
             according to the security policy defined by the enterprise and implemented by the
             administrator. </term>
-          <term full="Enrollment over Secure Transport" abbr="EST">Cryptographic protocol that describes an X.509 certificate management protocol targeting public key infrastructure (PKI) clients that need to acquire client certificates and associated certificate authority (CA) certificates.</term>
+          <term full="Enrollment over Secure Transport" abbr="EST">Cryptographic protocol that describes an X.509 certificate management protocol targeting
+		  public key infrastructure (PKI) clients that need to acquire client certificates and associated certificate authority (CA) certificates.</term>
         <term full="Key Encryption Key" abbr="KEK">A key that is used to encrypt other keys,
             such as (DEKs) or storage repositories that contain keys. </term>
         <term full="Locked State" >Mobile device state where the device is powered
             on but most functionality is unavailable for use without authentication.
           </term>
           <term full="Mobile Device" abbr="MD">A device which is composed of a hardware platform and its system software. The device typically provides wireless connectivity and may include software for functions like secure messaging, email, web, VPN connection, and VoIP (Voice over IP), for access to the protected enterprise network, enterprise data and applications, and for communicating to other <abbr linkend="MD"/>s.</term>
-          <term full="Mobile Device Management" abbr="MDM">Products that allow enterprises to apply security policies to <abbr linkend="MD"/>s. This system consists of two primary components: the MDM Server and the MDM Agent.</term>
+          <term full="Mobile Device Management" abbr="MDM">Products that allow enterprises to apply security policies to MDs. This system consists of two primary components: the MDM Server and the MDM Agent.</term>
         <term full="Mobile Device User" >The person who uses and is held
           responsible for an MD. </term>
         <term full="Operating System" abbr="OS">Software which runs at the highest
@@ -185,55 +191,67 @@ DONE:
             and its functionality is available for use. </term>       
       </tech-terms>
     <section id="cte" title="Compliant Targets of Evaluation">
-      The Mobile Device Management (MDM) system consists of two primary components: the <abbr linkend="MDM"/> Server software and the <abbr linkend="MDM"/> Agent. Optionally, the <abbr linkend="MDM"/> system may consist of a separate Mobile Application Store (MAS) server. 
-      <subsection id="tb" title="TOE Boundary"> The <abbr linkend="MDM"/> system operational environment consists of the mobile device on which the <abbr linkend="MDM"/> Agent resides, the platform on which the <abbr linkend="MDM"/> Server runs, and an untrusted wireless network over which they communicate, as pictured below.
+      The Mobile Device Management (MDM) system consists of two primary components: the MDM Server software and the MDM Agent. Optionally, the MDM system may
+	    consist of a separate Mobile Application Store (MAS) server. 
+      <subsection id="tb" title="TOE Boundary"> The MDM system operational environment consists of the mobile device on which the MDM Agent resides, 
+	      the platform on which the MDM Server runs, and an untrusted wireless network over which they communicate, as pictured below.
         <h:br/><h:br/>
         <figure entity="images/MDMserveroperatingenvironment.jpg" title="MDM System Operating Environment" id="agentoperatingenvironment"/>
         <h:br/><h:br/>
-        The <h:b><abbr linkend="MDM"/> Server</h:b> is software (an application, service, etc.) on a general-purpose platform, a network device, or cloud architecture executing in a trusted network environment. The <abbr linkend="MDM"/> Server provides administration of the mobile device policies and reporting on mobile device behavior. The <abbr linkend="MDM"/> Server is responsible for managing device enrollment, configuring and sending policies to the <abbr linkend="MDM"/> Agents, collecting reports on device status, and sending commands to the Agents. The <abbr linkend="MDM"/> Server may be standalone or distributed, where a distributed <abbr linkend="TOE"/> is one that requires multiple distinct components to operate as a logical whole in order to fulfill the requirements of this PP (a more extensive description of distributed <abbr linkend="MDM"/>s is given in section 3).
+        The <h:b>MDM Server</h:b> is software (an application, service, etc.) on a general-purpose platform, a network device, or cloud architecture executing
+	      in a trusted network environment. The MDM Server provides administration of the mobile device policies and reporting on mobile device behavior.
+	      The MDM Server is responsible for managing device enrollment, configuring and sending policies to the MDM Agents, collecting reports on device
+	      status, and sending commands to the Agents. The MDM Server may be standalone or distributed, where a distributed TOE is one that requires
+	      multiple distinct components to operate as a logical whole in order to fulfill the requirements of this PP (a more extensive description of 
+	      distributed MDMs is given in section 3).
         <h:br/><h:br/>
-        The <h:b><abbr linkend="MDM"/> Agent</h:b> establishes a secure connection back to the
-          <abbr linkend="MDM"/> Server controlled by an enterprise administrator and configures the
-        mobile device per the administrator's policies. The <abbr
-          linkend="MDM"/> Agent is addressed in the <abbr linkend="PP-Module"/> for <abbr linkend="MDM"/>
-        Agents. If the <abbr linkend="MDM"/> Agent is installed on a mobile device as an application
-        developed by the <abbr linkend="MDM"/> developer, the <abbr linkend="PP-Module"/> extends this
-          <abbr linkend="PP"/> and is included in the <abbr linkend="TOE"/>. In this case, the <abbr
-          linkend="TOE"/> security functionality specified in this <abbr linkend="PP"/> must be
-        addressed by the <abbr linkend="MDM"/> Agent in addition to the <abbr linkend="MDM"/>
-        Server. Otherwise, the <abbr linkend="MDM"/> Agent is provided by the mobile device vendor
-        and is out of scope of this <abbr linkend="PP"/>; however, <abbr linkend="MDM"/>s are
-        required to indicate the mobile platforms supported by the <abbr linkend="MDM"/> Server and
-        must be tested against the native <abbr linkend="MDM"/> agent of those platforms.
+        The <h:b>MDM Agent</h:b> establishes a secure connection back to the
+          MDM Server controlled by an enterprise administrator and configures the
+        mobile device per the administrator's policies. The MDM Agent is addressed in the PP-Module for MDM
+        Agents. If the MDM Agent is installed on a mobile device as an application
+        developed by the MDM developer, the PP-Module extends this PP and is included in the TOE. In this case, the TOE security 
+	functionality specified in this PP must be
+        addressed by the MDM Agent in addition to the MDM
+        Server. Otherwise, the MDM Agent is provided by the mobile device vendor
+        and is out of scope of this PP; however, MDMs are
+        required to indicate the mobile platforms supported by the MDM Server and
+        must be tested against the native MDM agent of those platforms.
         <h:br/><h:br/>
         
-        The <h:b>Mobile Application Store (MAS)</h:b> hosts applications for the enterprise, authenticates Agents, and securely transmits applications to enrolled mobile devices.The MAS functionality can be included as part of the MDM Server Software or can be logically distinct. If the MAS functionality is on a physically separate server, then the <abbr linkend="TOE"/> is distributed with the MDM Server and MAS Server being separate components.
+        The <h:b>Mobile Application Store (MAS)</h:b> hosts applications for the enterprise, authenticates Agents, and securely transmits 
+	      applications to enrolled mobile devices.The MAS functionality can be included as part of the MDM Server Software or can be logically
+	      distinct. If the MAS functionality is on a physically separate server, then the TOE is distributed with the MDM Server and MAS Server being 
+	      separate components.
         
       </subsection>
     </section>
-    <section id="usec" title="Use Cases"> This <abbr linkend="PP"/> defines four use cases:<h:br/>
+    <section id="usec" title="Use Cases"> This PP defines four use cases:<h:br/>
       <usecases>
         <usecase title="Enterprise-owned device for general-purpose enterprise use" id="uc1">
           <description>An enterprise-owned device for general-purpose business use is commonly
             called Corporately Owned, Personally Enabled (COPE). This use case entails a significant
             degree of enterprise control over configuration and software inventory. Enterprise
-            administrators use an <abbr linkend="MDM"/> product to establish policies on the mobile
-            devices prior to user issuance. Users may use internet connectivity to browse the web, access corporate mail, or run enterprise applications, but this connectivity may be under
+            administrators use an MDM product to establish policies on the mobile
+            devices prior to user issuance. Users may use internet connectivity to browse the web, access corporate mail, or run enterprise 
+		  applications, but this connectivity may be under
             significant control of the enterprise. The user may also be expected to store data and
             use applications for personal, non-enterprise use. The enterprise administrator uses the
-              <abbr linkend="MDM"/> product to deploy security policies and query mobile device
-            status. The <abbr linkend="MDM"/> may issue commands for remediation
+              MDM product to deploy security policies and query mobile device
+            status. The MDM may issue commands for remediation
             actions.</description>
         </usecase>
         <usecase title="Enterprise-owned device for specialized, high-security use" id="uc2">
-          <description>An enterprise-owned device with intentionally limited network connectivity, tightly controlled configuration, and limited software inventory is appropriate for specialized, high-security use cases. As in the previous use case, the <abbr linkend="MDM"/> product is used to establish such policies on mobile devices prior to issuance to users. The device may not be permitted connectivity to any external
+          <description>An enterprise-owned device with intentionally limited network connectivity, tightly controlled configuration,
+		  and limited software inventory is appropriate for specialized, high-security use cases. As in the previous use case, the MDM
+		  product is used to establish such policies on mobile devices prior to issuance to users. The device may not be permitted
+		  connectivity to any external
             peripherals. It may only be able to communicate via its Wi-Fi or cellular radios with
             the enterprise-run network, which may not even permit connectivity to the internet. Use
             of the device may require compliance with usage policies that are more restrictive than
             those in any general-purpose use case, yet may mitigate risks to highly sensitive
             information. Based upon the operation environment and the acceptable risk level of the
             enterprise, those security functional requirements outlined in Section 5 of this
-            <abbr linkend="PP"/> along with the selections in the Use Case 2 template defined in
+            PP along with the selections in the Use Case 2 template defined in
             Appendix G are sufficient for the high-security use case.</description>
         </usecase>
         <usecase title="Personally-owned device for personal and enterprise use" id="uc3">
@@ -248,19 +266,23 @@ DONE:
             access to the enterprise network, the enterprise will require certain security policies,
             for example a password or screen lock policy and health reporting, such as the
             integrity of the mobile device system software, before allowing access. The
-            administrator of the <abbr linkend="MDM"/> can establish remediation actions, such as
+            administrator of the MDM can establish remediation actions, such as
             wipe of the enterprise data, for non-compliant devices. These controls could potentially
             be enforced by a separation mechanism built-in to the device itself to distinguish
             between enterprise and personal activities, or by a third-party application that
             provides access to enterprise resources and leverages security capabilities provided by
             the mobile device. Based upon the operational environment and the acceptable risk level
             of the enterprise, those security functional requirements outlined in Section 5 of this
-            <abbr linkend="PP"/> along with the selections in the Use Case 3 template defined in
+            PP along with the selections in the Use Case 3 template defined in
             Appendix G are sufficient for the secure implementation of this BYOD use case.
           </description>
         </usecase>
         <usecase title="Personally owned device for personal and limited enterprise use" id="uc4">
-          <description>A personally owned device may also be given access to limited enterprise services such as enterprise email. The enterprise may not need to enforce any security policies on this device because the user does not have full access to the enterprise or enterprise data. However, the enterprise may want secure email and web browsing with assurance that the services being provided to those clients by the mobile device are not compromised. Based upon the operational environment and the acceptable risk level of the enterprise, those security functional requirements outlined in Section 5 of this <abbr linkend="PP"/> are sufficient for the secure implementation of this BYOD use case.</description>
+          <description>A personally owned device may also be given access to limited enterprise services such as enterprise email. The enterprise may not
+		  need to enforce any security policies on this device because the user does not have full access to the enterprise or enterprise data.
+		  However, the enterprise may want secure email and web browsing with assurance that the services being provided to those clients by the
+		  mobile device are not compromised. Based upon the operational environment and the acceptable risk level of the enterprise, those security
+		  functional requirements outlined in Section 5 of this PP are sufficient for the secure implementation of this BYOD use case.</description>
         </usecase>
       </usecases>
     </section>
@@ -268,22 +290,23 @@ DONE:
   <chapter title="Conformance Claims" id="ccl" boilerplate="no">
     <cclaims>
       <cclaim title="Conformance Statement">
-        <description>An Security Target (<abbr linkend="ST"/>) must claim exact conformance to this <abbr linkend="PP"/>, as defined in the <abbr linkend="CC"/> and CEM addenda for Exact Conformance, Selection-Based <abbr linkend="SFR"/>s, and Optional <abbr linkend="SFR"/>s (dated May 2017).  </description>
+        <description>A Security Target (ST) must claim exact conformance to this PP, as defined in the CC and CEM addenda for Exact Conformance, 
+		Selection-Based SFRs, and Optional SFRs (dated May 2017).  </description>
       </cclaim>
       <cclaim title="CC Conformance Claims">
-        <description>This <abbr linkend="PP"/> is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Release 5.</description>
+        <description>This PP is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Release 5.</description>
       </cclaim>
       <cclaim title="PP Claim">
-        <description>This <abbr linkend="PP"/> does not claim conformance to any <abbr linkend="PP"/>.</description>
+        <description>This PP does not claim conformance to any PP.</description>
       </cclaim>
       <cclaim title="Package Claim">
-        <description>This <abbr linkend="PP"/> is TLS Package Version 1.1 Conformant.</description>
+        <description>This PP is TLS Package Version 1.1 Conformant.</description>
       </cclaim>
       <cclaim title="Module Claim">
-        <description>The following <abbr linkend="PP"/>s and <abbr linkend="PP-Module"/>s are allowed to be specified in a PP-Configuration with this <abbr linkend="PP"/>.
+        <description>The following PPs and PP-Modules are allowed to be specified in a PP-Configuration with this PP.
           <h:ul>
-            <h:li><abbr linkend="PP-Module"/> for MDM Agent, Version 1.0<!-- C ToDo: add date/update --></h:li>
-            <h:li><abbr linkend="PP-Module"/> for VPN Client, Version 2.1</h:li>
+            <h:li>PP-Module for MDM Agent, Version 1.0<!-- C ToDo: add date/update --></h:li>
+            <h:li>PP-Module for VPN Client, Version 2.1</h:li>
             <h:li>Protection Profile for Mobile Device Fundamentals, Version 3.1 </h:li>
             <h:li>Protection Profile for Application Software, Version 1.3 <!-- C ToDo: add date/update --></h:li>
           </h:ul>
@@ -293,16 +316,31 @@ DONE:
   </chapter>
 
   <chapter title="Introduction to Distributed TOEs" id="idt">
-    This <abbr linkend="PP"/> includes support for distributed <abbr linkend="MDM"/> <abbr linkend="TOE"/>s. <abbr linkend="MDM"/>'s can sometimes be composed of multiple components operating as a logical whole. Frequently we see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different architectures; but fundamentally, they are variations of the following model where the <abbr linkend="SFR"/>s of this <abbr linkend="PP"/> can only be fulfilled if the components are deployed and operate together. To be considered a distributed <abbr linkend="TOE"/>, a minimum of two interconnected components are required.
+    This PP includes support for distributed MDM TOEs. MDMs can sometimes be composed of multiple components operating as a logical whole. Frequently we
+	  see this architecture when dealing with products hosted in the cloud and offered as Software as a Service. There are a number of different
+	  architectures; but fundamentally, they are variations of the following model where the SFRs of this PP can only be fulfilled if the components 
+	  are deployed and operate together. To be considered a distributed TOE, a minimum of two interconnected components are required.
     <section title="Registration of components of a distributed TOE" id="rcd"></section>
-    When dealing with a distributed <abbr linkend="TOE"/>, a number of separate components need to be brought together in the operational environment in order to create the <abbr linkend="TOE"/> This requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for creation of the <abbr linkend="TOE"/> is to have a "registration process" in which components "join" the <abbr linkend="TOE"/>. The registration process starts with two components, one of which (the "joiner") is about to join an existing <abbr linkend="TOE"/> by registering with the other (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a distributed <abbr linkend="TOE"/> registration approach which uses an instance of FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or FTP_ITC.1/INTER_XFER_IT to protect the registration exchange.<h:br/><h:br/>
+    When dealing with a distributed TOE, a number of separate components need to be brought together in the operational environment in order to create the TOE.
+	  This requires that trusted communications channels are set up between certain pairs of components (it is assumed that all components need to
+	  communicate with at least one other component, but not that all components need to communicate with all other components). The underlying model for
+	  creation of the TOE is to have a "registration process" in which components "join" the TOE. The registration
+	  process starts with two components, one of which (the "joiner") is about to join an existing TOE by registering with the other
+	  (the "gatekeeper"). The two components will use one or more specified authentication and communication channel options so that the components
+	  authenticate each other and protect any sensitive data that is transmitted during the registration process (e.g. a key might be sent by a gatekeeper 
+	  to the joiner as a result of the registration). The following figures illustrate the three supported registration models. The figure illustrates a
+	  distributed TOE registration approach which uses an instance of FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or
+	  FTP_ITC.1/INTER_XFER_IT to protect the registration exchange.<h:br/><h:br/>
 
     <figure entity="images/DistributedToeFig1.png" title="Distributed TOE registration using channel satisfying FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or FTP_ITC.1/INTER_XFER_IT" id="DTF1"/>
     <h:br/><h:br/>
-    The second approach (Figure 3) uses an alternative registration channel and supports use cases where the channel relies on environmental security constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
+    The second approach (Figure 3) uses an alternative registration channel and supports use cases where the channel relies on environmental security
+	  constraints to provide the necessary protection of the registration exchange.<h:br/><h:br/>
     <figure entity="images/DistributedToeFig2.png" title="Distributed TOE registration using channel satisfying FTP_TRP.1/TRUSTPATH_JOIN" id="DTF2"/>
     <h:br/><h:br/>
-    The final approach (Figure 4) supports use cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or FTP_ITC.1/INTER_XFER_IT.<h:br/><h:br/>
+    The final approach (Figure 4) supports use cases where registration is performed manually through direct configuration of both the Joiner and Gatekeeper 
+	  devices. Once configured, the two components establish an internal <abbr linkend="TSF"/> channel that satisfies
+	  FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or FTP_ITC.1/INTER_XFER_IT.<h:br/><h:br/>
     <figure entity="images/DistributedToeFig3.png" title="Distributed TOE registration without a registration channel" id="DTF3"/>
     <h:br/><h:br/>
     In each case, during the registration process, the administrator must positively enable the joining components before it can act as part of the <abbr linkend="TSF"/>. Figure 5 illustrates the approaches that this enablement step may take;<h:br/><h:br/>
@@ -777,42 +815,107 @@ DONE:
     <section id="sot" title="Security Objectives for the TOE">
       <SOs>
         <SO name="O.ACCOUNTABILITY">
-          <description>The <abbr linkend="TOE"/> must provide logging facilities which record management actions undertaken by its administrators.</description>
-	  <addressed-by>FAU_ALT_EXT.1, FAU_GEN.1/AUDITGEN, FAU_GEN.1/MAS_SERVER, FAU_NET_EXT.1, FAU_SAR.1, FAU_SEL.1, FAU_STG_EXT.1, FAU_STG_EXT.2</addressed-by>
-	  <rationale>FILL IN </rationale>
+          <description>The TOE must provide logging facilities which record management actions undertaken by its administrators.</description>
+		<addressed-by>FAU_ALT_EXT.1</addressed-by><rationale>The PP includes FAU_ALT_EXT.1 to define the ability of the TSF to generate alerts when certain actions occur.</rationale>
+		<addressed-by>FAU_GEN.1/AUDITGEN</addressed-by><rationale>The PP includes FAU_GEN.1/AUDITGEN to require the TSF to generate audit records of security-relevant events, including management actions.</rationale>
+		<addressed-by>FAU_GEN.1/MAS_SERVER (sel-based)</addressed-by><rationale>The PP includes FAU_GEN.1/MAS_SERVER to require the TSF to generate records of MAS Server functionality if the TSF supports this capability.</rationale>
+		<addressed-by>FAU_NET_EXT.1</addressed-by><rationale>The PP includes FAU_NET_EXT.1 to require the TSF to record the connectivity status of enrolled agents.</rationale>
+		<addressed-by>FAU_SAR.1 (optional)</addressed-by><rationale>The PP includes FAU_SAR.1 to optionally require the TSF to provide a method to review stored audit data.</rationale>
+		<addressed-by>FAU_SEL.1 (optional)</addressed-by><rationale>The PP includes FAU_SEL.1 to optionally require the TSF to define the actions that are accounted for.</rationale>
+		<addressed-by>FAU_STG_EXT.1</addressed-by><rationale>The PP includes FAU_STG_EXT.1 for the TSF to securely transmit its audit data to an external entity.</rationale>
+		<addressed-by>FAU_STG_EXT.2 (sel-based)</addressed-by><rationale>The PP includes FAU_STG_EXT.2 to require the TSF to protect stored audit records from unauthorized modification if these records are stored locally.</rationale>
+<!-- ? -->	<addressed-by>FAU_CRP_EXT.1 (objective)</addressed-by><rationale>The PP includes FAU_CRP_EXT.1 to optionally require the TSF to collect information about the configuration of enrolled devices.</rationale>
         </SO>
         <SO name="O.APPLY_POLICY">
-          <description>The <abbr linkend="TOE"/> must facilitate configuration and enforcement of enterprise security policies on mobile devices via interaction with the mobile <abbr linkend="OS"/> and the <abbr linkend="MDM"/> Server. This will include the initial enrollment of the device into management through its entire lifecycle, including policy updates and its possible unenrollment from management services.</description>
-	  <addressed-by>
-	    FIA_ENR_EXT.1, FMT_MOF.1/FUNCBE, FMT_MOF.1/MANAGEMENT_ENROLL, FMT_MOF.1/MANAGEMENT_MAS, FMT_SAE_EXT.1,
-	    FMT_SMF.1/SERVER_CONF_AGENT, FMT_SMF.1/SERVER_CONF_SERVER,FMT_SMF.1/MAS
-	  </addressed-by>
-	  <rationale>FILL IN </rationale>
+          <description>The TOE must facilitate configuration and enforcement of enterprise security policies on mobile devices via interaction
+		  with the mobile OS and the MDM Server. This includes the initial enrollment of the device into management through its entire
+		  lifecycle, including policy updates and its possible unenrollment from management services.</description>
+	  	<addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>The PP includes FIA_ENR_EXT.1 for the TSF to perform the initial enrollment of devices into management, including applying restrictions on what devices can be enrolled.</rationale>
+		<addressed-by>FMT_MOF.1/FUNCBE</addressed-by><rationale>The PP includes FMT_MOF.1/FUNCBE to define the supported TSF management functions, including those used to enable, disable, and apply policies to enrolled devices.</rationale>
+		<addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_ENROLL for the TSF to restrict the enrollment process to authorized administrators and mobile device users.</rationale>
+		<addressed-by>FMT_MOF.1/MANAGEMENT_MAS</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_MAS to enforce restrictions on access to the MAS Server from enrolled devices based on applied policies.</rationale>
+		<addressed-by>FMT_SAE_EXT.1 (objective)</addressed-by><rationale>The PP includes FMT_SAE_EXT.1 for the TSF to enforce restriction on agent enrollment by limiting the length of time that enrollment authentication data is valid.</rationale>
+	 	<addressed-by>FMT_SMF.1/SERVER_CONF_AGENT (sel-based)</addressed-by><rationale>The PP includes FMT_SMF.1/SERVER_CONF_AGENT to specify that the TSF is capable of sending configuration information and enterprise security policies to an MDM Agent.</rationale>
+		<addressed-by>FMT_SMR.1/SERVER_CONF_SERVER (sel-based)</addressed-by><rationale>The PP includes FMT_SMR.1/SERVER_CONF_SERVER to define roles on the MAS Server, if this capability is supported, that are used to determine the extent to which enrolled devices can access data on the MAS Server.</rationale>
+		<addressed-by>FMT_SMF.1/MAS (sel-based)</addressed-by><rationale>The PP includes FMT_SMF.1/MAS to specify that the TSF is capable of configuring the MAS Server to enforce restrictions on enrolled devices attempting to access it.</rationale>
+<!-- ? -->	<addressed-by>FIA_UAU_EXT.4/1 (objective)</addressed-by><rationale>The PP includes FIA_UAU_EXT.4/1 to optionally require the TSF to limit enrollment through the prevention of reuse of enrollment authentication data.</rationale>
+<!-- ? -->	<addressed-by>FIA_UAU_EXT.4/2 (objective)</addressed-by><rationale>The PP includes FIA_UAU_EXT.4/2 to provide access controls to prevent the reuse of enrollment data related to device enrollment. The TSF shall prevent two devices to be enrolled using the same unique identifier.</rationale>
+<!-- ? -->	<addressed-by>FMT_SAE_EXT.1 (objective)</addressed-by><rationale>The PP includes FMT_SAE_EXT.1 for the TSF to enforce restriction on agent enrollment by limiting the length of time that enrollment authentication data is valid.</rationale>
         </SO>
         <SO name="O.DATA_PROTECTION_TRANSIT">
-          <description>Data exchanged between the <abbr linkend="MDM"/> Server and the <abbr linkend="MDM"/> Agent must be protected from being monitored, accessed, or altered.</description>
-	  <addressed-by>FAU_STG_EXT.1, FCS_CKM_EXT.4, FCS_CKM.1, FCS_CKM.2,
-	  FCS_COP.1/CONF_ALG,
-	  FCS_COP.1/HASH_ALG,
-	  FCS_COP.1/SIGN_ALG,
-	  FCS_COP.1/KEY_HASH
-	  <!--FCS_DTLSS_EXT.1(TLSPackage), --><!--FCS_DTLSC_EXT.1(TLSPackage), -->FCS_HTTPS_EXT.1, <!--FCS_IPSEC_EXT.1, -->FCS_IV_EXT.1, FCS_RBG_EXT.1, <!--FCS_SSHS_EXT.1, -->FCS_STG_EXT.1, FCS_STG_EXT.2, <!--FCS_TLSC_EXT.1(TLSPackage), --><!--FCS_TLSC_EXT.2(TLSPackage), --><!--FCS_TLSS_EXT.1(TLSPackage), --><!--FCS_TLSS_EXT.2(TLSPackage), -->FIA_X509_EXT.1/CERTVAL_MAN, FIA_X509_EXT.1/CERTVAL_SEL, FIA_X509_EXT.2, FIA_X509_EXT.3, FIA_X509_EXT.4, FIA_X509_EXT.5, FPT_ITT.1/INTER_XFER, FPT_ITT.1/INTER_XFER_AGENT, FTP_ITC_EXT.1, FTP_ITC.1/INTER_XFER_IT, FTP_ITC.1/INTER_TSF_XFER_AGENT, FTP_TRP.1/TRUSTPATH_REM_ADMIN, FTP_TRP.1/TRUSTPATH_ENROLL, FTP_TRP.1/TRUSTPATH_JOIN</addressed-by>
-	  <rationale>FILL IN </rationale>
+          <description>Data exchanged between the MDM Server and the MDM Agent must be protected from being monitored, accessed, or altered.</description>
+<!-- ? -->	<addressed-by>FAU_CRP_EXT.1 (objective)</addressed-by><rationale>The PP includes FAU_CRP_EXT.1 to require certain data to be collected from remote agents using a secure channel.</rationale>
+		<addressed-by>FAU_STG_EXT.1</addressed-by><rationale>The PP includes FAU_STG_EXT.1 which requires the TSF to use a trusted channel for the external transmission of audit data.</rationale>
+<!-- ? -->	<addressed-by>FCO_CPC_EXT.1 (objective)</addressed-by><rationale>The PP includes FCO_CPC_EXT.1 to define secure connectivity between different TOE components, including security of data in transit.</rationale>
+		<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>The PP includes FCS_CKM_EXT.4 to ensure that the TSF destroys plaintext keying material and critical security parameters when no longer needed in support of securing data in transit.</rationale>
+		<addressed-by>FCS_CKM.1</addressed-by><rationale>The PP includes FCS_CKM.1 to define whether the TSF or the platform generates asymmetric keys that are used in support of securing data in transit.</rationale>
+		<addressed-by>FCS_CKM.2</addressed-by><rationale>The PP includes FCS_CKM.2 to define whether the TSF or the platform performs key establishment in support of securing data in transit.</rationale>
+	  	<addressed-by>FCS_COP.1/CONF_ALG</addressed-by><rationale>The PP includes FCS_COP.1/CONF_ALG to define the symmetric AES encryption algorithms used in support of securing data in transit.</rationale>
+	  	<addressed-by>FCS_COP.1/HASH_ALG</addressed-by><rationale>The PP includes FCS_COP.1/HASH_ALG to define the hash algorithms used in support of securing data in transit.</rationale>
+	  	<addressed-by>FCS_COP.1/SIGN_ALG</addressed-by><rationale>The PP includes FCS_COP.1/SIGN_ALG to define the digital signature algorithms used in support of securing data in transit.</rationale>
+	  	<addressed-by>FCS_COP.1/KEY_HASH</addressed-by><rationale>The PP includes FCS_COP.1/KEY)HASH to define the HMAC algorithms used in support of securing data in transit.</rationale>
+	  	<!--FCS_DTLSS_EXT.1(TLSPackage), --><!--FCS_DTLSC_EXT.1(TLSPackage), -->
+		<addressed-by>FCS_HTTPS_EXT.1 (sel-based)</addressed-by><rationale>The PP includes FCS_HTTPS_EXT.1 to define the TOE’s support for the HTTPS trusted communications protocol.</rationale>
+		<!--FCS_IPSEC_EXT.1, -->
+		<addressed-by>FCS_IV_EXT.1 (sel-based)</addressed-by><rationale>The PP includes FCS_IV_EXT.1 to define the initialization vector generation to ensure secure implementation of cryptography used to secure data in transit.</rationale>
+		<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>The PP includes FCS_RBG_EXT.1 to define whether random bit generation services are implemented by the TSF or the platform. The TOE may rely on the use of a random bit generator to create keys that are subsequently used in support of securing data in transit.</rationale>
+		<!--FCS_SSHS_EXT.1, -->
+		<addressed-by>FCS_STG_EXT.1</addressed-by><rationale>The PP includes FCS_STG_EXT.1 to define whether the TSF or the Operational Environment protects key data that may be used in support of securing data in transit.</rationale>
+		<addressed-by>FCS_STG_EXT.2 (sel-based)</addressed-by><rationale>The PP includes FCS_STG_EXT.2 to define the method the TSF uses to protect stored key data that may be used in support of securing data in transit.</rationale>
+		<!--FCS_TLSC_EXT.1(TLSPackage), --><!--FCS_TLSC_EXT.2(TLSPackage), --><!--FCS_TLSS_EXT.1(TLSPackage), --><!--FCS_TLSS_EXT.2(TLSPackage), -->
+<!-- ? -->	<addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>The PP includes FIA_ENR_EXT.1 which requires the TSF to use a trusted channel for the agent enrollment process.</rationale>
+		<addressed-by>FIA_X509_EXT.1/CERTVAL_MAN</addressed-by><rationale>The PP includes FIA_X509_EXT.1/CERTVAL_MAN to define validation rules for X.509 certificates that may be used in support of securing data in transit.</rationale>
+		<addressed-by>FIA_X509_EXT.1/CERTVAL_SEL (sel-based)</addressed-by><rationale>The PP includes FIA_X509_EXT.1/CERTVAL_SEL to define validation rules for X.509 certificates that may be used in support of securing data in transit in the specific case where the TOE is distributed across multiple remote nodes.</rationale>
+		<addressed-by>FIA_X509_EXT.2</addressed-by><rationale>The PP includes FIA_X509_EXT.2 to define the TOE functions that support the use of X.509 certificates. This includes protection of data in transit.</rationale>
+		<addressed-by>FIA_X509_EXT.3 (objective)</addressed-by><rationale>The PP includes FIA_X509_EXT.3 to define X.509 enrollment activities using PKCS#10 to allow the TOE to obtain a signed certificate for use when establishing trusted communications.</rationale>
+		<addressed-by>FIA_X509_EXT.4 (objective)</addressed-by><rationale>The PP includes FIA_X509_EXT.3 to define X.509 enrollment activities using EST to allow the TOE to obtain a signed certificate for use when establishing trusted communications.</rationale>
+		<addressed-by>FIA_X509_EXT.5</addressed-by><rationale>The PP includes FIA_X509_EXT.5 to require the TSF to enforce uniqueness for client certificates that are used in support of securing data in transit.</rationale>
+		<addressed-by>FPT_ITT.1/INTER_XFER (sel-based)</addressed-by><rationale>The PP includes FPT_ITT.1/INTER_XFER to define how data is secured in transit between TOE components if the MDM server itself is distributed.</rationale>
+		<addressed-by>FPT_ITT.1/INTER_XFER_AGENT (sel-based)</addressed-by><rationale>The PP includes FPT_ITT.1/INTER_XFER_AGENT to define how data is secured in transit between the MDM server and MDM agent if both are part of the TOE.</rationale>
+		<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>The PP includes FTP_ITC_EXT.1 to define the trusted channels used by the TOE where security of data in transit is enforced.</rationale>
+		<addressed-by>FTP_ITC.1/INTER_XFER_IT</addressed-by><rationale>The PP includes FTP_ITC.1/INTER_XFER_IT to define a trusted communication channel between itself and trusted external servers.</rationale>
+		<addressed-by>FTP_ITC.1/INTER_TSF_XFER_AGENT</addressed-by><rationale>The PP includes FTP_ITC.1/INTER_TSF_XFER_AGENT to define a trusted communication channel between itself and an MDM agent if the MDM agent is not part of the TOE.</rationale>
+		<addressed-by>FTP_TRP.1/TRUSTPATH_REM_ADMIN</addressed-by><rationale>The PP includes FTP_TRP.1/TRUSTPATH_REM_ADMIN to define requirements for securing data in transit for administrative communications.</rationale>
+		<addressed-by>FTP_TRP.1/TRUSTPATH_ENROLL</addressed-by><rationale>The PP includes FTP_TRP.1/TRUSTPATH_ENROLL to define requirements for securing data in transit for agent enrollment.</rationale>
+		<addressed-by>FTP_TRP.1/TRUSTPATH_JOIN</addressed-by><rationale>The PP includes FTP_TRP.1/TRUSTPATH_JOIN to define requirements for securing data in transit between TOE components when establishing initial connectivity if the MDM server itself is distributed and a separate registration channel is used.</rationale>
         </SO>
         <SO name="O.INTEGRITY">
-          <description>The <abbr linkend="TOE"/> will provide the capability to perform self tests to ensure the integrity of critical functionality, software, firmware, and data has been maintained. The <abbr linkend="TOE"/> will also provide a means to verify the integrity of downloaded updates.</description>
-	  <addressed-by>FIA_X509_EXT.2, FCO_CPC_EXT.1, FPT_TST_EXT.1, FPT_TUD_EXT.1, </addressed-by>
-	  <rationale>FILL IN </rationale>
+          <description>The TOE will provide the capability to perform self tests to ensure the integrity of critical functionality, software, firmware, 
+		  and data has been maintained. The TOE will also provide a means to verify the integrity of downloaded updates.</description>
+<!-- ? -->  	<addressed-by>FCS_COP.1/HASH_ALG</addressed-by><rationale>The PP includes FCS_COP.1/HASH_ALG to require the TSF to include a mechanism to cryptographically assert and verity the integrity of data using a hash algorithm.</rationale>
+<!-- ? -->  	<addressed-by>FCS_COP.1/SIG_ALG</addressed-by><rationale>The PP includes FCS_COP.1(3) to require the TSF to include a mechanism to cryptographically assert and verify the integrity of data using a digital signature.</rationale>
+	  	<addressed-by>FIA_X509_EXT.2</addressed-by><rationale>The PP includes FIA_X509_EXT.2 to define the TOE functions that support the use of X.509 certificates. This includes code signing for system software updates, integrity verification, and policy signing.</rationale>
+<!-- ? -->	<addressed-by>FMT_POL_EXT.1</addressed-by><rationale>The PP includes FMT_POL_EXT.1 to ensure the integrity of the policies and policy updates to the MDM Agent are digitally signed to protect their integrity.</rationale>
+<!-- ?? -->	<addressed-by>FCO_CPC_EXT.1</addressed-by><rationale>The PP includes FCO_CPC_EXT.1 to define secure connectivity between different TOE components, including security of data in transit.</rationale>
+		<addressed-by>FPT_TST_EXT.1</addressed-by><rationale>The PP includes FPT_TST_EXT.1 to require The TSF to run a suite of self tests to ensure the correct operation of the TSF and the integrity of stored TSF executable code.</rationale>
+		<addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>The PP includes FPT_TUD_EXT.1 to define requirements for trusted update of TSF executable code, including that the integrity of this update data can be verified.</rationale>
         </SO>
         <SO name="O.MANAGEMENT">
-          <description>The <abbr linkend="TOE"/> provides access controls around its management functionality.</description>
-	  <addressed-by>FAU_CRP_EXT.1, FIA_ENR_EXT.1, FIA_UAU.1, FIA_UAU_EXT.4/REUSE, FIA_UAU_EXT.4(2), FMT_MOF.1/FUNCBE, FMT_MOF.1/MANAGEMENT_ENROLL, FMT_MOF.1/MANAGEMENT_MAS, FMT_POL_EXT.1, FMT_SMF.1/SERVER_CONF_AGENT, FMT_SMF.1/SERVER_CONF_SERVER, FMT_SMF.1/MAS, FMT_SMR.1/SECMAN_ROLES, FMT_SMR.1/SECMAN_ROLES_MAS, FTA_TAB.1, </addressed-by>
-	  <rationale>FILL IN </rationale>
+          <description>The TOE provides access controls around its management functionality.</description>
+<!-- ?? -->  	<addressed-by>FAU_CRP_EXT.1 (objective)</addressed-by><rationale>The PP includes FAU_CRP_EXT.1 to require certain data to be collected from remote agents using a secure channel.</rationale>
+		<addressed-by>FAU_SAR.1 (optional)</addressed-by><rationale>The PP includes FAU_SAR.1 to optionally require the TSF to implement management functionality to review audit data that is restricted to authorized users.</rationale>
+<!-- ? -->	<addressed-by>FAU_SEL.1 (optional)</addressed-by><rationale>The PP includes FAU_SEL.1 to optionally require the TSF to implement management functionality for configuring the events that are audited.</rationale>
+<!-- ?? -->	<addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>The PP includes FIA_ENR_EXT.1 which requires the TSF to use a trusted channel for the agent enrollment process.</rationale>
+		<addressed-by>FIA_UAU.1</addressed-by><rationale>The PP includes FIA_UAU.1 to require the TSF to enforce access control on its management interface by requiring user authentication.</rationale>
+<!-- ? -->	<addressed-by>FIA_UAU_EXT.4/REUSE (objective)</addressed-by><rationale>The PP includes FIA_UAU_EXT.4/REUSE to optionally require the TSF to limit enrollment through the prevention of reuse of enrollment authentication data.</rationale>
+<!-- ? -->	<addressed-by>FIA_UAU_EXT.4/2 (objective)</addressed-by><rationale>The PP includes FIA_UAU_EXT.4(2) to provide access controls to prevent the reuse of enrollment data related to device enrollment. The TSF shall prevent two devices to be enrolled using the same unique identifier.</rationale>
+		<addressed-by>FMT_MOF.1/FUNCBE</addressed-by><rationale>The PP includes FMT_MOF.1/FUNCBE for the TSF to restrict the functions to enable, disable, modify, and monitor functions and policies to authorized administrators.</rationale>
+		<addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_ENROLL to restrict the enrollment process to authorized administrators and mobile device users.</rationale>
+<!-- ? -->	<addressed-by>FMT_MOF.1/MANAGEMENT_MAS</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_MAS to enforce restrictions on access to the MAS Server from enrolled devices based on applied policies.</rationale>
+<!-- ?? -->	<addressed-by>FMT_POL_EXT.1</addressed-by><rationale>The PP includes FMT_POL_EXT.1 to ensure the integrity of the policies and policy updates to the MDM Agent are digitally signed to protect their integrity.</rationale>
+		<addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by><rationale>The PP includes FMT_SMF.1/SERVER_CONF_AGENT to define the security-relevant management functions that the MDM server is capable of communicating to the MDM Agent.</rationale>
+		<addressed-by>FMT_SMF.1/SERVER_CONF_SERVER</addressed-by><rationale>The PP includes FMT_SMF.1/SERVER_CONF_SERVER to define the security-relevant management functions that the MDM server has for its own configuration.</rationale>
+		<addressed-by>FMT_SMF.1/MAS</addressed-by><rationale>The PP includes FMT_SMF.1/MAS to define the MAS Server management functionality if this capability is supported.</rationale>
+		<addressed-by>FMT_SMR.1/SECMAN_ROLES</addressed-by><rationale>The PP includes FMT_SMR.1/SECMAN_ROLES to define the security management roles that are used as the basis for access control enforcement.</rationale>
+		<addressed-by>FMT_SMR.1/SECMAN_ROLES_MAS (sel-based)</addressed-by>The PP includes FMT_SMR.1/SECMAN_ROLES_MAS to define the management roles that apply to the MAS Server if this capability is supported.<rationale></rationale>
+		<addressed-by>FTA_TAB.1 (optional)</addressed-by><rationale>The PP includes FTA_TAB.1 to display an Administrator-specified advisory notice and consent warning message regarding use of the TOE.</rationale>
         </SO>
         <SO name="O.QUALITY">
-        <description>To ensure quality of implementation, conformant <abbr title="Target of Evaluation" linkend="TOE">TOE</abbr>s leverage services and <abbr title="Application Programming Interface" linkend="API">API</abbr>s provided by the runtime environment rather than implementing their own versions of these services and APIs. This is especially important for cryptographic services and other complex operations such as file and media parsing. Leveraging this platform behavior relies upon using only documented and supported APIs.</description>
-        <addressed-by>FPT_API_EXT.1, FPT_LIB_EXT.1</addressed-by>
-	<rationale>FILL IN </rationale>
+        <description>To ensure quality of implementation, conformant TOEs leverage services and APIs provided by the runtime environment rather than
+		implementing their own versions of these services and APIs. This is especially important for cryptographic services and other complex 
+		operations such as file and media parsing. Leveraging this platform behavior relies upon using only documented and supported APIs.</description>
+        	<addressed-by>FPT_API_EXT.1</addressed-by><rationale>The PP includes FPT_API_EXT.1 to enforce quality of implementation by ensuring that the MDM software uses only documented platform APIs to supports its security functionality.</rationale>
+		<addressed-by>FPT_LIB_EXT.1</addressed-by><rationale>The PP includes FPT_LIB_EXT.1 to enforce quality of implementation by ensuring that the MDM software does not include any unnecessary or unexpected third-party libraries which could present a privacy threat or vulnerability.</rationale>
         </SO>        
       </SOs>
     </section>
