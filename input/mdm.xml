@@ -1191,12 +1191,11 @@ DONE:
 								</selectables>
 						</h:li>
 						<h:li>Specifically defined auditable events listed in <xref to="atref-mandatory"/></h:li>
-                        <h:li><refinement><selectables>
+                        <h:li><refinement><selectables linebreak="yes">
                             <selectable id="sel-at2">Auditable events defined in <xref g="atref-optional-dep"></xref>for Strictly Optional SFRs</selectable>
 							<selectable id="sel-at3">Auditable events defined in <xref g="atref-objective-dep"></xref>for Objective SFRs</selectable>
                             <selectable id="sel-at4">Auditable events defined in <xref g="atref-sel-based-dep"></xref>for Selection-Based SFRs</selectable>
 							<selectable id="sel-attls">Auditable events defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
-							<selectable id="sel-atssh">Auditable events defined in the audit table for the SSH Functional Package (see <xref to="atref-pkgs"/>)</selectable>
                             <selectable>no other auditable events</selectable>
 						</selectables></refinement></h:li>
 						<h:li>
@@ -1230,7 +1229,32 @@ DONE:
 				not interact directly with the MDM Agent, then it is acceptable to select "none".<h:br/><h:br/> 
 				Depending on the specific requirements selected by the ST author from Security Functional Requirements, Optional Requirements, Selection-Based
 				Requirements, and Objective Requirements, the ST author should include the appropriate auditable event from <xref to="atref-mandatory"/> in
-				the ST for the requirements selected.<h:br/><h:br/>       
+				the ST for the requirements selected.<h:br/><h:br/> 
+							<h:b><ctr ctr-type='Table' id="atref-pkgs">: Auditable Events for Functional Packages</ctr></h:b><h:br/>							
+							<h:table>
+								<h:tr class="header"><h:td>Requirement</h:td><h:td>Auditable Events</h:td><h:td>Additional Audit Record Contents</h:td></h:tr>
+
+								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
+								<h:td>Failure to establish a TLS session.</h:td>
+								<h:td>Reason for failure.</h:td></h:tr>
+								
+								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
+								<h:td>Failure to verify presented identifier.</h:td>
+								<h:td>Presented identifier and reference identifier.</h:td></h:tr>
+
+								<h:tr><h:td>FCS_TLSS_EXT.1</h:td>
+								<h:td>Failure to establish a TLS session.</h:td>
+								<h:td>Reason for failure.</h:td></h:tr>
+
+								<h:tr><h:td>FCS_DTLSC_EXT.1</h:td>
+								<h:td>Failure of the certificate validity check.</h:td>
+								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
+							
+								<h:tr><h:td>FCS_DTLSS_EXT.1</h:td>
+								<h:td>Failure of the certificate validity check.</h:td>
+								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
+							</h:table>
+				
             </note>
             <aactivity>
               <TSS>The evaluator shall check the TSS and ensure that it lists all of the auditable events. The evaluator shall check to make sure that every
@@ -1266,6 +1290,13 @@ DONE:
               <h:li>subject identity</h:li>
               <h:li>(if relevant) the outcome (success or failure) of the event</h:li>
               <h:li>additional information in <xref to="atref-mandatory"/></h:li>
+              <h:li><refinement><selectables linebreak="yes">
+                    <selectable id="sel-at2">Additional information defined in <xref g="atref-optional-dep"></xref>for Strictly Optional SFRs</selectable>
+					<selectable id="sel-at3">Additional information defined in <xref g="atref-objective-dep"></xref>for Objective SFRs</selectable>
+                    <selectable id="sel-at4">Additional information defined in <xref g="atref-sel-based-dep"></xref>for Selection-Based SFRs</selectable>
+					<selectable id="sel-attls">Additional information defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
+                    <selectable>no other auditable events</selectable>
+				</selectables></refinement></h:li>
               <h:li><assignable>other audit relevant information</assignable>.</h:li>
             </h:ul>
             </title>
@@ -1275,31 +1306,6 @@ DONE:
 		    TOE platform. <h:br/><h:br/>
               <!-- TODO: If the MDM invokes the platform to audit an event for FAU_GEN.1.1(1), then are they guarenteed that the platform will provide them 
 		with the necessary information in the audit event? Need to make sure that this is in OS PP-->  
-
-							<h:b><ctr ctr-type='Table' id="atref-pkgs">: Auditable Events for Functional Packages</ctr></h:b><h:br/>							
-							<h:table>
-								<h:tr class="header"><h:td>Requirement</h:td><h:td>Auditable Events</h:td><h:td>Additional Audit Record Contents</h:td></h:tr>
-
-								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
-								<h:td>Failure to establish a TLS session.</h:td>
-								<h:td>Reason for failure.</h:td></h:tr>
-								
-								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
-								<h:td>Failure to verify presented identifier.</h:td>
-								<h:td>Presented identifier and reference identifier.</h:td></h:tr>
-
-								<h:tr><h:td>FCS_TLSS_EXT.1</h:td>
-								<h:td>Failure to establish a TLS session.</h:td>
-								<h:td>Reason for failure.</h:td></h:tr>
-
-								<h:tr><h:td>FCS_DTLSC_EXT.1</h:td>
-								<h:td>Failure of the certificate validity check.</h:td>
-								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
-							
-								<h:tr><h:td>FCS_DTLSS_EXT.1</h:td>
-								<h:td>Failure of the certificate validity check.</h:td>
-								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
-							</h:table>
             </note>
             <aactivity>
               <TSS>The evaluator shall check the TSS and ensure that it provides a format for audit records. Each audit record format type must be covered, 
