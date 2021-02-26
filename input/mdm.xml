@@ -1192,9 +1192,9 @@ DONE:
 						</h:li>
 						<h:li>Specifically defined auditable events listed in <xref to="atref-mandatory"/></h:li>
                         <h:li><refinement><selectables linebreak="yes">
-                            <selectable id="sel-at2">Auditable events defined in <xref g="atref-optional-dep"></xref>for Strictly Optional SFRs</selectable>
-							<selectable id="sel-at3">Auditable events defined in <xref g="atref-objective-dep"></xref>for Objective SFRs</selectable>
-                            <selectable id="sel-at4">Auditable events defined in <xref g="atref-sel-based-dep"></xref>for Selection-Based SFRs</selectable>
+                            <selectable id="sel-at2">Auditable events defined in <xref g="atref-optional-dep"/>for Strictly Optional SFRs</selectable>
+							<selectable id="sel-at3">Auditable events defined in <xref g="atref-objective-dep"/>for Objective SFRs</selectable>
+                            <selectable id="sel-at4">Auditable events defined in <xref g="atref-sel-based-dep"/>for Selection-Based SFRs</selectable>
 							<selectable id="sel-attls">Auditable events defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
                             <selectable>no other auditable events</selectable>
 						</selectables></refinement></h:li>
@@ -1291,10 +1291,10 @@ DONE:
               <h:li>(if relevant) the outcome (success or failure) of the event</h:li>
               <h:li>additional information in <xref to="atref-mandatory"/></h:li>
               <h:li><refinement><selectables linebreak="yes">
-                    <selectable id="sel-at2">Additional information defined in <xref g="atref-optional-dep"></xref>for Strictly Optional SFRs</selectable>
-					<selectable id="sel-at3">Additional information defined in <xref g="atref-objective-dep"></xref>for Objective SFRs</selectable>
-                    <selectable id="sel-at4">Additional information defined in <xref g="atref-sel-based-dep"></xref>for Selection-Based SFRs</selectable>
-					<selectable id="sel-attls">Additional information defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
+                    <selectable id="sel-at2-i">Additional information defined in <xref g="atref-optional-dep"/>for Strictly Optional SFRs</selectable>
+					<selectable id="sel-at3-i">Additional information defined in <xref g="atref-objective-dep"/>for Objective SFRs</selectable>
+                    <selectable id="sel-at4-i">Additional information defined in <xref g="atref-sel-based-dep"/>for Selection-Based SFRs</selectable>
+					<selectable id="sel-attls-i">Additional information defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
                     <selectable>no other auditable events</selectable>
 				</selectables></refinement></h:li>
               <h:li><assignable>other audit relevant information</assignable>.</h:li>
@@ -4285,10 +4285,35 @@ DONE:
                   </selectables></h:li>               
               </h:ol>
             </title>
-            <note role="application"> This requirement captures all the configuration functionality in the MDM Server to configure the underlying MDM Server. The ST author can add more commands and configuration policies by completing the assignment statement.<h:br/><h:br/>
-              Function a can be met by relying on the platform to configure the certificates used by the MDM server, however, the MDM Server must allow the administrator to choose which certificate is used for a specific functionality. The selection in b corresponds to the selection in <xref to="fel-enr-limit"/>. The selection in c.1 includes a function that corresponds to the selection in <xref to="fel-x509-fail"/>. Function c.3 allows the administrator to configure periodicity of assigned commands, for example "read audit logs kept by the Mobile Device". In this way the administrator can configure the MDM system to retrieve audit logs from the Mobile Device on a periodic, such as daily, basis in order to ensure freshness of log data and to minimize loss of audit logs. Function c.4 allows the administrator to configure the privacy-sensitive information that will and will not be collected from particular mobile devices to handle BYOD environments where some information may not be appropriate to collect. Privacy sensitive information may include items such as device physical location and lists of installed personal applications, and would vary depending on the particular capabilities of the TOE and MDM agent. The TOE should provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and define the information that will be collected from devices in each category. Function c.5 corresponds to configuring the length of time the user authenticator for enrollment is valid in FMT_SAE_EXT.1. This function must be included in the ST if and only if FMT_SAE_EXT.1 is included in the ST.<h:br/><h:br/>            
-              For distributed TOEs the interaction between TOE components will be configurable (see FCO_CPC_EXT.1). Therefore, the ST author includes the selection "Ability to configure the interaction between TOE components" for distributed TOEs. A simple example would be the change of communication protocol according to FPT_ITT.1/INTER_XFER. Another example would be changing the management of a TOE component from direct remote administration to remote administration through another TOE component. A more complex use case would be if the realization of an SFR is achieved through two or more TOE components and the responsibilities between the two or more components could be modified.<h:br/><h:br/>             
-              For distributed TOEs that implement a registration channel (as described in <xref to="fel-cpc-func"/>), the ST author uses the selection "configure the cryptographic functionality" in this SFR, and its corresponding mapping in the TSS, to describe the configuration of any cryptographic aspects of the registration channel that can be modified by the operational environment in order to improve the channel security.              
+            <note role="application"> This requirement captures all the configuration functionality in the MDM Server to configure 
+			the underlying MDM Server. The ST author can add more commands and configuration policies by completing the assignment
+			statement.<h:br/><h:br/>
+              Function a can be met by relying on the platform to configure the certificates used by the MDM server, however, the 
+			  MDM Server must allow the administrator to choose which certificate is used for a specific functionality. The 
+			  selection in b corresponds to the selection in <xref to="fel-enr-limit"/>. The selection in c.1 includes a function 
+			  that corresponds to the selection in <xref to="fel-x509-fail"/>. Function c.3 allows the administrator to configure
+			  periodicity of assigned commands, for example "read audit logs kept by the Mobile Device". In this way the 
+			  administrator can configure the MDM system to retrieve audit logs from the Mobile Device on a periodic, such as
+			  daily, basis in order to ensure freshness of log data and to minimize loss of audit logs. Function c.4 allows the
+			  administrator to configure the privacy-sensitive information that will and will not be collected from particular
+			  mobile devices to handle BYOD environments where some information may not be appropriate to collect. Privacy
+			  sensitive information may include items such as device physical location and lists of installed personal
+			  applications, and would vary depending on the particular capabilities of the TOE and MDM agent. The TOE should
+			  provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and 
+			  define the information that will be collected from devices in each category. Function c.5 corresponds to 
+			  configuring the length of time the user authenticator for enrollment is valid in FMT_SAE_EXT.1. This function
+			  must be included in the ST if and only if FMT_SAE_EXT.1 is included in the ST.<h:br/><h:br/>            
+              For distributed TOEs the interaction between TOE components will be configurable (see FCO_CPC_EXT.1). Therefore,
+			  the ST author includes the selection "Ability to configure the interaction between TOE components" for distributed 
+			  TOEs. A simple example would be the change of communication protocol according to FPT_ITT.1/INTER_XFER. Another
+			  example would be changing the management of a TOE component from direct remote administration to remote
+			  administration through another TOE component. A more complex use case would be if the realization of an SFR is 
+			  achieved through two or more TOE components and the responsibilities between the two or more components could 
+			  be modified.<h:br/><h:br/>             
+              For distributed TOEs that implement a registration channel (as described in <xref to="fel-cpc-func"/>), the ST
+			  author uses the selection "configure the cryptographic functionality" in this SFR, and its corresponding mapping 
+			  in the TSS, to describe the configuration of any cryptographic aspects of the registration channel that can be
+			  modified by the operational environment in order to improve the channel security.              
             </note>
             <aactivity>
               <TSS> The evaluator shall examine the TSS to ensure that it describes each management function listed. For function c.4, the evaluator shall examine the TSS to ensure that it describes the privacy-sensitive information that the TOE has the capability to collect from enrolled mobile devices.<h:br/><h:br/> </TSS>
@@ -5250,7 +5275,13 @@ DONE:
     <section id="adv" title="Class ADV: Development"> 
       The design information about the TOE is contained in the guidance documentation available to the end user as well as the TSS portion of the ST, and any additional information required by this PP that is not to be made public (e.g., Entropy Essay).
         <a-component cc-id="adv_fsp.1" name="Basic Functional Specification (ADV_FSP.1)"> 
-          The functional specification describes the Target Security Functions Interfaces (TSFIs). It is not necessary to have a formal or complete specification of these interfaces. Additionally, because TOEs conforming to this PP will necessarily have interfaces to the Operational Environment that are not directly invokable by TOE users, there is little point specifying that such interfaces be described in and of themselves since only indirect testing of such interfaces may be possible. For this PP, the activities for this family should focus on understanding the interfaces presented in the TSS in response to the functional requirements and the interfaces presented in the AGD documentation. No additional "functional specification" documentation is necessary to satisfy the evaluation activities specified.<h:br/><h:br/> The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list.
+          The functional specification describes the Target Security Functions Interfaces (TSFIs). It is not necessary to have 
+		  a formal or complete specification of these interfaces. Additionally, because TOEs conforming to this PP will 
+		  necessarily have interfaces to the Operational Environment that are not directly invokable by TOE users, there is 
+		  little point specifying that such interfaces be described in and of themselves since only indirect testing of such
+		  interfaces may be possible. For this PP, the activities for this family should focus on understanding the interfaces 
+		  presented in the TSS in response to the functional requirements and the interfaces presented in the AGD documentation.
+		  No additional "functional specification" documentation is necessary to satisfy the evaluation activities specified.<h:br/><h:br/> The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list.
             <a-element type="D">
               <title>The developer shall provide a functional specification.</title>
             </a-element>
@@ -5416,21 +5447,47 @@ DONE:
               <title>The TOE shall be suitable for testing.</title>
             </a-element>          
             <a-element type="E">
-              <title>The evaluator <h:i>shall confirm</h:i> that the information provided meets all requirements for content and presentation of evidence.</title>
+              <title>The evaluator <h:i>shall confirm</h:i> that the information provided meets all requirements for content 
+			  and presentation of evidence.</title>
             </a-element>
             <a-element type="E">
               <title>The evaluator shall test a subset of the TSF to confirm that the TSF operates as specified.</title>
-              <aactivity> The evaluator shall prepare a test plan and report documenting the testing aspects of the system. The test plan covers all of the testing
-			  actions contained in the CEM and the body of this PP's Evaluation Activities. While it is not necessary to have one test case per test listed in an evaluation activity, the evaluator must document in the test plan that each applicable testing requirement in the ST is covered.<h:br/><h:br/> 
-                The test plan identifies the platforms to be tested, and for those platforms not included in the test plan but included in the ST, the test plan provides a justification for not testing the platforms. This justification must address the differences between the tested platforms and the untested platforms, and make an argument that the differences do not affect the testing to be performed. It is not sufficient to merely assert that the differences have no affect; rationale must be provided. If all platforms claimed in the ST are tested, then no rationale is necessary.<h:br/><h:br/> 
-                The test plan describes the composition of each platform to be tested, and any setup that is necessary beyond what is contained in the  part of a test or as a standard pre-test condition. This may include special test drivers or tools. For each driver or tool, an argument (not just an assertion) should be provided that the driver or tool will not adversely affect the performance of the functionality by the TOE and its platform. This also includes the configuration of the cryptographic engine to be used. The cryptographic algorithms implemented by this engine are those specified by this PP and used by the cryptographic protocols being evaluated (IPsec, TLS/HTTPS, SSH).<h:br/><h:br/> 
-                The test plan identifies high-level test objectives as well as the test procedures to be followed to achieve those objectives. These procedures include expected results. The test report (which could just be an annotated version of the test plan) details the activities that took place when the test procedures were executed, and includes the actual results of the tests. This shall be a cumulative account, so if there was a test run that resulted in a failure; a fix installed; and then a successful re-run of the test, the report would show a "fail" and "pass" result (and the supporting details), and not just the "pass" result.<h:br/><h:br/>
+              <aactivity> The evaluator shall prepare a test plan and report documenting the testing aspects of the system. The
+			  test plan covers all of the testing
+			  actions contained in the CEM and the body of this PP's Evaluation Activities. While it is not necessary to have 
+			  one test case per test listed in an evaluation activity, the evaluator must document in the test plan that each 
+			  applicable testing requirement in the ST is covered.<h:br/><h:br/> 
+                The test plan identifies the platforms to be tested, and for those platforms not included in the test plan but
+				included in the ST, the test plan provides a justification for not testing the platforms. This justification
+				must address the differences between the tested platforms and the untested platforms, and make an argument that
+				the differences do not affect the testing to be performed. It is not sufficient to merely assert that the
+				differences have no affect; rationale must be provided. If all platforms claimed in the ST are tested, then
+				no rationale is necessary.<h:br/><h:br/> 
+                The test plan describes the composition of each platform to be tested, and any setup that is necessary beyond
+				what is contained in the  part of a test or as a standard pre-test condition. This may include special test
+				drivers or tools. For each driver or tool, an argument (not just an assertion) should be provided that the 
+				driver or tool will not adversely affect the performance of the functionality by the TOE and its platform.
+				This also includes the configuration of the cryptographic engine to be used. The cryptographic algorithms 
+				implemented by this engine are those specified by this PP and used by the cryptographic protocols being
+				evaluated (IPsec, TLS/HTTPS, SSH).<h:br/><h:br/> 
+                The test plan identifies high-level test objectives as well as the test procedures to be followed to achieve 
+				those objectives. These procedures include expected results. The test report (which could just be an annotated 
+				version of the test plan) details the activities that took place when the test procedures were executed, and
+				includes the actual results of the tests. This shall be a cumulative account, so if there was a test run that
+				resulted in a failure; a fix installed; and then a successful re-run of the test, the report would show a
+				"fail" and "pass" result (and the supporting details), and not just the "pass" result.<h:br/><h:br/>
               </aactivity>
             </a-element>          
         </a-component>
       </section>
     <section id="ava" title="Class AVA: Vulnerability Analysis">
-      For the first generation of this protection profile, the evaluation lab is expected to survey open sources to discover what vulnerabilities have been discovered in these types of products. In most cases, these vulnerabilities will require sophistication beyond that of a basic attacker. Until penetration tools are created and uniformly distributed to the evaluation labs, the evaluator will not be expected to test for these vulnerabilities in the TOE. The labs will be expected to comment on the likelihood of these vulnerabilities given the documentation provided by the vendor. This information will be used in the development of penetration testing tools and for the development of future protection profiles. 
+      For the first generation of this protection profile, the evaluation lab is expected to survey open sources to discover 
+	  what vulnerabilities have been discovered in these types of products. In most cases, these vulnerabilities will require 
+	  sophistication beyond that of a basic attacker. Until penetration tools are created and uniformly distributed to the
+	  evaluation labs, the evaluator will not be expected to test for these vulnerabilities in the TOE. The labs will be 
+	  expected to comment on the likelihood of these vulnerabilities given the documentation provided by the vendor. This
+	  information will be used in the development of penetration testing tools and for the development of future protection 
+	  profiles. 
         <a-component cc-id="ava_van.1" name="Vulnerability Survey (AVA_VAN.1)">
             <a-element type="D">
               <title>The developer shall provide the TOE for testing.</title>
@@ -5439,14 +5496,27 @@ DONE:
               <title>The TOE shall be suitable for testing.</title>
             </a-element>          
             <a-element type="E">
-              <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
+              <title>The evaluator shall confirm that the information provided meets all requirements for content and 
+			  presentation of evidence.</title>
             </a-element>
             <a-element type="E">
-              <title>The evaluator shall perform a search of public domain sources to identify potential vulnerabilities in the TOE.</title>
+              <title>The evaluator shall perform a search of public domain sources to identify potential vulnerabilities in 
+			  the TOE.</title>
             </a-element>
             <a-element type="E">
-              <title>The evaluator shall conduct penetration testing, based on the identified potential vulnerabilities, to determine that the TOE is resistant to attacks performed by an attacker possessing Basic attack potential.</title>
-              <aactivity>As with ATE_IND, the evaluator shall generate a report to document their findings with respect to this requirement. This report could physically be part of the overall test report mentioned in ATE_IND, or a separate document. The evaluator performs a search of public information to determine the vulnerabilities that have been found in network infrastructure devices and the implemented communication protocols in general, as well as those that pertain to the particular TOE. The evaluator documents the sources consulted and the vulnerabilities found in the report. For each vulnerability found, the evaluator either provides a rationale with respect to its non-applicability, or the evaluator formulates a test (using the guidelines provided in ATE_IND) to confirm the vulnerability, if suitable. Suitability is determined by assessing the attack vector needed to take advantage of the vulnerability. If exploiting the vulnerability requires expert skills and an electron microscope, for instance, then a test would not be suitable and an appropriate justification would be formulated.
+              <title>The evaluator shall conduct penetration testing, based on the identified potential vulnerabilities, to 
+			  determine
+			  that the TOE is resistant to attacks performed by an attacker possessing Basic attack potential.</title>
+              <aactivity>As with ATE_IND, the evaluator shall generate a report to document their findings with respect to this
+			  requirement. This report could physically be part of the overall test report mentioned in ATE_IND, or a separate
+			  document. The evaluator performs a search of public information to determine the vulnerabilities that have been
+			  found in network infrastructure devices and the implemented communication protocols in general, as well as those
+			  that pertain to the particular TOE. The evaluator documents the sources consulted and the vulnerabilities found
+			  in the report. For each vulnerability found, the evaluator either provides a rationale with respect to its 
+			  non-applicability, or the evaluator formulates a test (using the guidelines provided in ATE_IND) to confirm
+			  the vulnerability, if suitable. Suitability is determined by assessing the attack vector needed to take
+			  advantage of the vulnerability. If exploiting the vulnerability requires expert skills and an electron
+			  microscope, for instance, then a test would not be suitable and an appropriate justification would be formulated.
               </aactivity>
             </a-element>          
         </a-component>
@@ -5458,14 +5528,39 @@ DONE:
     <!-- Note: This text is auto populated -->
   </appendix>  
   <appendix id="sel-based" title="Selection-Based Requirements"> 
-    As indicated in the introduction to this PP, the baseline requirements (those that must be performed by the TOE or its underlying platform) are contained in the body of the PP. There are additional requirements based on selections in the body of the PP: If certain selections are made, then additional requirements below will need to be included. </appendix>
+    As indicated in the introduction to this PP, the baseline requirements (those that must be performed by the TOE or its
+	underlying platform) are contained in the body of the PP. There are additional requirements based on selections in the body 
+	of the PP: If certain selections are made, then additional requirements below will need to be included. </appendix>
   <appendix id="objective" title="Objective Requirements"> 
-    As indicated in the introduction to this PP, the baseline requirements (those that must be performed by the TOE or its underlying platform) are contained in the body of this PP. There are additional requirements that specify security functionality that is desirable and these requirements are contained in this Appendix. It is expected that these requirements will transition from objective requirements to baseline requirements in future versions of this PP.<h:br/><h:br/> At any time these may be included in the ST such that the TOE is still conformant to this PP.<h:br/><h:br/> This Appendix is divided into two subsections: objective requirements that may be performed by the TSF and objective requirements that may be performed by the MDM Agent or its underlying platform.<h:br/><h:br/>
+    As indicated in the introduction to this PP, the baseline requirements (those that must be performed by the TOE or its 
+	underlying platform) are contained in the body of this PP. There are additional requirements that specify security 
+	functionality that is desirable and these requirements are contained in this Appendix. It is expected that these 
+	requirements will transition from objective requirements to baseline requirements in future versions of this PP.<h:br/><h:br/> 
+	At any time these may be included in the ST such that the TOE is still conformant to this PP.<h:br/><h:br/> This Appendix is 
+	divided into two subsections: objective requirements that may be performed by the TSF and objective requirements that may be
+	performed by the MDM Agent or its underlying platform.<h:br/><h:br/>
   </appendix>
+  
 
   <appendix id="entropy" title="Entropy Documentation and Assessment"> 
-    This appendix describes the required supplementary information for each entropy source used by the TOE.<h:br/><h:br/> The documentation of the entropy source(s) should be detailed enough that, after reading, the evaluator will thoroughly understand the entropy source and why it can be relied upon to provide sufficient entropy. This documentation should include multiple detailed sections: design description, entropy justification, operating conditions, and health testing. This documentation is not required to be part of the TSS. <h:br/><h:br/>
-    <section id="design-description" title="Design Description"> Documentation shall include the design of each entropy source as a whole, including the interaction of all entropy source components. Any information that can be shared regarding the design should also be included for any third-party entropy sources that are included in the product.<h:br/><h:br/> The documentation will describe the operation of the entropy source to include, how entropy is produced, and how unprocessed (raw) data can be obtained from within the entropy source for testing purposes. The documentation should walk through the entropy source design indicating where the entropy comes from, where the entropy output is passed next, any post-processing of the raw outputs (hash, XOR, etc.), if/where it is stored, and finally, how it is output from the entropy source. Any conditions placed on the process (e.g., blocking) should also be described in the entropy source design. Diagrams and examples are encouraged.<h:br/><h:br/> This design must also include a description of the content of the security boundary of the entropy source and a description of how the security boundary ensures that an adversary outside the boundary cannot affect the entropy rate.<h:br/><h:br/> If implemented, the design description shall include a description of how third-party applications can add entropy to the RBG. A description of any RBG state saving between power-off and power-on shall be included.<h:br/><h:br/>
+    This appendix describes the required supplementary information for each entropy source used by the TOE.<h:br/><h:br/> The 
+	documentation of the entropy source(s) should be detailed enough that, after reading, the evaluator will thoroughly 
+	understand the entropy source and why it can be relied upon to provide sufficient entropy. This documentation should 
+	include multiple detailed sections: design description, entropy justification, operating conditions, and health testing. 
+	This documentation is not required to be part of the TSS. <h:br/><h:br/>
+    <section id="design-description" title="Design Description"> Documentation shall include the design of each entropy source
+	as a whole, including the interaction of all entropy source components. Any information that can be shared regarding the
+	design should also be included for any third-party entropy sources that are included in the product.<h:br/><h:br/> The
+	documentation will describe the operation of the entropy source to include, how entropy is produced, and how unprocessed 
+	(raw) data can be obtained from within the entropy source for testing purposes. The documentation should walk through the
+	entropy source design indicating where the entropy comes from, where the entropy output is passed next, any post-processing 
+	of the raw outputs (hash, XOR, etc.), if/where it is stored, and finally, how it is output from the entropy source. Any 
+	conditions placed on the process (e.g., blocking) should also be described in the entropy source design. Diagrams and
+	examples are encouraged.<h:br/><h:br/> This design must also include a description of the content of the security boundary 
+	of the entropy source and a description of how the security boundary ensures that an adversary outside the boundary cannot 
+	affect the entropy rate.<h:br/><h:br/> If implemented, the design description shall include a description of how third-party
+	applications can add entropy to the RBG. A description of any RBG state saving between power-off and power-on shall be 
+	included.<h:br/><h:br/>
     </section>
     <section id="entropy-justification" title="Entropy Justification"> There should be a technical argument for where
       the unpredictability in the source comes from and why there is confidence in the entropy
