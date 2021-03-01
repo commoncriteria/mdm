@@ -4,6 +4,7 @@ Protection Profile for Mobile Device Management
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/mdm.svg?maxAge=2592000)](https://github.com/commoncriteria/mdm/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
+
 This repository hosts the draft version of the Protection Profile for Mobile Device Management based on the 
 [Essential Security Requirements (ESR)](https://commoncriteria.github.io/pp/mdm/mdm-esr.html) for this technology class of 
 products. This repository is used to facilitate collaboration and development on the draft document. 
