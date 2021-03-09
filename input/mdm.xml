@@ -97,9 +97,9 @@ DONE:
   <PPReference>
     <ReferenceTable>
       <PPTitle>Protection Profile for Mobile Device Management</PPTitle>
-      <PPVersion>4.x Draft</PPVersion>
+      <PPVersion>4.0b Draft</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2021-03-04</PPPubDate>
+      <PPPubDate>2021-03-09</PPPubDate>
       <Keywords>Mobile Device Management; MDM</Keywords>
     </ReferenceTable>
   </PPReference>  
@@ -728,8 +728,8 @@ DONE:
 			There are a few basic requirements to be fulfilled:<h:br/><h:br/>
               <h:ul>
                 <h:li>Every component must be able to generate audit information.</h:li>
-                <h:li>Every component must be able to buffer audit information and forward it to another TOE component and optionally store audit information
-			locally.</h:li>
+                <h:li>Every component must be able to buffer audit information and forward it to another TOE component or an external audit server. Optionally,
+			each componemt may store audit information locally.</h:li>
                 <h:li>For the overall TOE it must be possible to send out audit information to an external audit server.</h:li>
               </h:ul><h:br/>              
 			In general, every component must be able to generate its own audit information. It would be possible that every component also stores its own audit 
@@ -4206,13 +4206,29 @@ DONE:
                 <selectable>TSF</selectable>
                 <selectable>TOE platform</selectable>
               </selectables>-provided cryptographic services.</title>
-            <note role="application">While the TOE is typically a software package running in the IT Environment, it is still capable of performing the self-test activities required above. It should be understood, however, that there is a significant dependency on the host environment in assessing the assurance provided by the tests mentioned above (meaning that if the host environment is compromised, the self-tests will not be meaningful).<h:br/><h:br/>           
-              For distributed TOEs all TOE components (except the MDM Agent components) have to perform self-tests. This does not necessarily mean that each TOE component has to carry out the same self-tests: the ST describes the applicability of the selection (i.e. when self-tests are run) and the final assignment (i.e. which self-tests are carried out) to each TOE component.
+            <note role="application">While the TOE is typically a software package running in the IT Environment, it is still capable of performing the
+		    self-test activities required above. It should be understood, however, that there is a significant dependency on the host environment 
+		    in assessing the assurance provided by the tests mentioned above (meaning that if the host environment is compromised, the self-tests will 
+		    not be meaningful).<h:br/><h:br/>           
+              For distributed TOEs, all TOE components (except the MDM Agent components) have to perform self-tests. This does not necessarily mean that each 
+		    TOE component has to carry out the same self-tests: the ST describes the applicability of the selection (i.e. when self-tests are run) and
+		    the final assignment (i.e. which self-tests are carried out) to each TOE component.
             </note>
             <aactivity>
-              <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the TSS to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the MDM Server; nonetheless, that mechanism will be identified in the TSS as part of this evaluation activity).<h:br/><h:br/>         
-              If "implement functionality" is selected, the evaluator shall examine the TSS to ensure that it details the self-tests that are run by the TSF on start-up; this description should include an outline of what the tests are actually doing (e.g., rather than saying "memory is tested", a description similar to "memory is tested by writing a value to each memory location and reading it back to ensure it is identical to what was written" shall be used). The evaluator shall ensure that the TSS makes an argument that the tests are sufficient to demonstrate that the TSF is operating correctly.<h:br/><h:br/> 
-              The evaluator shall examine the TSS to ensure that it describes how to verify the integrity of stored TSF executable code when it is loaded for execution. The evaluator shall ensure that the TSS makes an argument that the tests are sufficient to demonstrate that the integrity of stored TSF executable code has not been compromised. The evaluator also ensures that the TSS (or the operational guidance) describes the actions that take place for successful (e.g. hash verified) and unsuccessful e.g., hash not verified) cases.<h:br/><h:br/></TSS>
+              <TSS>
+		      If "invoke platform-provided functionality" is selected, the evaluator shall examine the TSS to verify that it describes (for each 
+		      supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented
+		      by the MDM Server; nonetheless, that mechanism will be identified in the TSS as part of this evaluation activity).<h:br/><h:br/>         
+              If "implement functionality" is selected, the evaluator shall examine the TSS to ensure that it details the self-tests that are run by the TSF on
+		      start-up; this description should include an outline of what the tests are actually doing (e.g., rather than saying "memory is tested", a 
+		      description similar to "memory is tested by writing a value to each memory location and reading it back to ensure it is identical to what
+		      was written" shall be used). The evaluator shall ensure that the TSS makes an argument that the tests are sufficient to demonstrate that
+		      the TSF is operating correctly.<h:br/><h:br/> 
+              The evaluator shall examine the TSS to ensure that it describes how to verify the integrity of stored TSF executable code when it is loaded for
+		      execution. The evaluator shall ensure that the TSS makes an argument that the tests are sufficient to demonstrate that the integrity of 
+		      stored TSF executable code has not been compromised. The evaluator also ensures that the TSS (or the operational guidance) describes the
+		      actions that take place for successful (e.g. hash verified) and unsuccessful e.g., hash not verified) cases.<h:br/><h:br/>
+		</TSS>
               <Tests>The evaluator shall perform the following tests:
               <testlist>
                 <test>The evaluator performs the integrity check on a known good TSF executable and verifies that the check is successful.</test>
@@ -4237,7 +4253,8 @@ DONE:
           <f-element id="fpt-tud-ext-1e1">
             <title>The TSF shall provide Authorized Administrators the ability to query the current version of the software.</title>
             <note role="application">
-              For a distributed TOE, the method of determining the installed versions on each component of the TOE is described in the operational guidance. In the requirement, "software" refers to the component of the distributed TOE to which the requirement is being applied. 
+              For a distributed TOE, the method of determining the installed versions on each component of the TOE is described in the operational guidance.
+		    In the requirement, "software" refers to the component of the distributed TOE to which the requirement is being applied. 
             </note>
             <aactivity>
               <Guidance>The evaluator shall ensure that the administrator guidance includes instructions for determining the current version of the TOE.<h:br/><h:br/></Guidance>
