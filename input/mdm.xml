@@ -97,7 +97,7 @@ DONE:
   <PPReference>
     <ReferenceTable>
       <PPTitle>Protection Profile for Mobile Device Management</PPTitle>
-      <PPVersion>4.0b Draft</PPVersion>
+      <PPVersion>4.0c Draft</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2021-03-09</PPPubDate>
       <Keywords>Mobile Device Management; MDM</Keywords>
@@ -3866,7 +3866,9 @@ DONE:
                   <ctr id="smf60" ctr-type="mgmt" pre=""></ctr>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies]. </selectable>
               </selectables></h:ul>
             </title>
-            <note role="application"> This requirement captures all the configuration functionality the TSF provides the administrator to configure the MDM Agent. This requirement is broken into two configurable areas: MDM Agent commands and MDM Agent policies. The ST author can add more commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> The ST author must not claim any functionality not provided by the Mobile Device. All selections and assignments performed by the ST author in this requirement should match the selections and assignments of the validated Mobile Device ST.<h:br/><h:br/> 
+            <note role="application"> This requirement captures all the configuration functionality the TSF provides the administrator to configure the MDM
+		    Agent. This requirement is broken into two configurable areas: MDM Agent commands and MDM Agent policies. The ST author can add more
+		    commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> 
               Function-specific Application Notes:<h:br/><h:br/> 
               Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v3.1.<h:br/><h:br/> 
               Function <xref to="smf12"/> may be satisfied for the BYOD use case by application blacklisting and/or disabling. In the case of BYOD, an enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not lose any information they might have in the application.<h:br/><h:br/>
@@ -3875,7 +3877,13 @@ DONE:
               Function <xref to="smf34"/> provides the ability to enable/disable policy for the list of protocols where the device acts as a server, such as a mobile hotspot.<h:br/><h:br/>  
               Function <xref to="smf56"/> corresponds to FPT_NET_EXT.1.1 in Agent. If the MDM Agent has not had a successful reachability event with the MDM Server in the amount of time specified in 'a', then the agent must perform the action selected in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each action could be associated with a different timeout in 'a'. If function <xref to="smf56"/> is included in the ST, than FPT_NET_EXT.1.1 must be included in the Agent ST. </note>
             <aactivity>
-              <TSS> The evaluator shall examine the TSS to ensure that it describes each management function listed. The evaluator shall examine the TSS to verify that any differences between management functions and policies for each supported MDM Agent/platform are listed. The evaluator shall also examine the ST of the claimed Mobile Device to verify that the selections and assignments in the functions and policies in the TSS do not exceed the capabilities of the supported MD. <h:br/><h:br/>The evaluator shall examine the TSS to ensure that it identifies the management functions implemented for each supported MDM Agent/platform, which are likely to be subsets of all of the management functions available to the administrator on the MDM Server.<h:br/><h:br/></TSS>
+              <TSS>The evaluator shall examine the TSS to ensure that it describes each management function claimed. The evaluator shall examine the TSS to
+		      ensure that it identifies the management functions implemented for each supported MDM Agent/platform, which are likely to be subsets of 
+		      all of the management functions available to the administrator on the MDM Server. The evaluator shall examine the TSS to verify that any
+		      differences between management functions and policies for each supported MDM Agent/platform are clearly indicated.<h:br/><h:br/>
+		      The evaluator shall determine if the Mobile Device has been evaluated. If so, the evaluator shall examine the TSS to verify that it 
+		      clearly identifies which management functions match the selections and assignments of the evaluated Mobile Device and which management 
+		      functions were not evaluated.<h:br/><h:br/></TSS>
               <Tests>For each MDM Agent/platform listed as supported in the ST:<testlist>
                   <test>The evaluator shall verify the ability to command each MDM Agent functional capability and configure each MDM Agent policy listed above.</test>
                 </testlist>
