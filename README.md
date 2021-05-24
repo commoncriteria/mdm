@@ -1,6 +1,7 @@
 Protection Profile for Mobile Device Management 
 ===========
-![Build](https://github.com/commoncriteria/mdm/workflows/Build/badge.svg)
+[![Build](https://github.com/commoncriteria/mdm/workflows/Build/badge.svg)](https://github.com/commoncriteria/mdm/actions/workflows/build.yml)
+[![Validate](https://github.com/commoncriteria/mdm/workflows/Validate/badge.svg)](https://github.com/commoncriteria/mdm/actions/workflows/validate.yml)
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/mdm.svg?maxAge=2592000)](https://github.com/commoncriteria/mdm/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
