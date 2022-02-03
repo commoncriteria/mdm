@@ -1,7 +1,17 @@
 Protection Profile for Mobile Device Management 
 ===========
-[![Build](https://github.com/commoncriteria/mdm/workflows/Build/badge.svg)](https://github.com/commoncriteria/mdm/actions/workflows/build.yml)
-[![Validate](https://github.com/commoncriteria/mdm/workflows/Validate/badge.svg)](https://github.com/commoncriteria/mdm/actions/workflows/validate.yml)
+![Master Badges](https://img.shields.io/badge/Build-master-black.svg)
+![Build](https://github.com/commoncriteria/mdm/workflows/Build/badge.svg)
+![Validate](https://github.com/commoncriteria/mdm/workflows/Validate/badge.svg)
+
+![Last QuickBuilt Branch](https://raw.githubusercontent.com/commoncriteria/mdm/gh-pages/build-branch-badge.svg)
+[![Validation](https://raw.githubusercontent.com/commoncriteria/mdm/gh-pages/validation.svg)](https://github.com/commoncriteria/mdm/blob/gh-pages/ValidationReport.txt)
+[![SanityChecks](https://raw.githubusercontent.com/commoncriteria/mdm/gh-pages/warnings.svg)](https://github.com/commoncriteria/mdm/blob/gh-pages/SanityChecksOutput.md)
+[![SpellCheck](https://raw.githubusercontent.com/commoncriteria/mdm/gh-pages/spell-badge.svg)](https://github.com/commoncriteria/mdm/blob/gh-pages/SpellCheckReport.txt)
+[![QuickBuild](https://github.com/commoncriteria/mdm/actions/workflows/quick_build.yml/badge.svg)](https://commoncriteria.github.io/mdm)
+
+
+
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/mdm.svg?maxAge=2592000)](https://github.com/commoncriteria/mdm/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
