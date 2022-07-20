@@ -81,12 +81,6 @@ jobs:
            done;
            echo "</ol></body></html>") > index.html
  
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@4.0.0
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: output # The folder the action should deploy.
-
     - name: Prepare environment
       id: coverage
       run: |
@@ -107,7 +101,6 @@ jobs:
          echo ::set-output name=COLOR::$(if [ -s output/SanityChecksOutput.md ]; then echo red; else echo green; fi )
       id: status
       
-
     - uses: actions/checkout@v1
       with:
         ref: ${{ steps.coverage.outputs.branch }}
@@ -204,3 +197,11 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ steps.coverage.outputs.branch }}
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.0.0
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: output # The folder the action should deploy.
+
+        
