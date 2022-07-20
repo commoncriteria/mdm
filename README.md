@@ -22,7 +22,6 @@ See the [release](#Release-Version) section if you are looking for the officiall
 A list of products that have passed evaluation against this Protection Profile can be found [here](https://www.niap-ccevs.org/Profile/Info.cfm?id=392).
 
 ## Draft Version
-
 * [Protection Profile for Mobile Device Management](https://commoncriteria.github.io/pp/mdm/mdm-release.html) (html)
 * [Protection Profile for Mobile Device Management](https://commoncriteria.github.io/pp/mdm/mdm-release.pdf) (pdf)
 * [Output from Latest Build](https://commoncriteria.github.io/mdm)
