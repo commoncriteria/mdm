@@ -1,0 +1,7 @@
+* Warning: Detected an empty _p_ element./PP[1]""/section[6]""/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/section[6]""/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/appendix[7]"This appe"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/appendix[7]"This appe"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/appendix[7]"This appe"/h:table[1]""/h:tr[2]""/h:td[2]"FAU_SEL.1"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/appendix[7]"This appe"/h:table[1]""/h:tr[2]""/h:td[2]"FAU_SEL.1"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/appendix[7]"This appe"/h:table[1]""/h:tr[3]""/h:td[2]"The PP’s "/h:p[1]""
