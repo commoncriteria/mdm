@@ -6,7 +6,6 @@ on:
     - '*'
     - '!gh-pages'
 
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -32,7 +31,6 @@ jobs:
 
     - name: Quick Build
       run: |
-        mkdir output || true
         WARN_PATH="output/SanityChecksOutput.md" make release 
 
     - name: PDFify
@@ -62,7 +60,6 @@ jobs:
     #   uses: actions/setup-java@v1.4.3
     #   with:
     #     java-version: 1.8
-
     # - name: Get DaisyDiff
     #   run: wget -O- https://github.com/AndroidKitKat/ExecuteDaisy/archive/master.zip | jar -x
       
@@ -83,6 +80,12 @@ jobs:
            done;
            echo "</ol></body></html>") > index.html
  
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.0.0
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: output # The folder the action should deploy.
+
     - name: Prepare environment
       id: coverage
       run: |
@@ -103,6 +106,7 @@ jobs:
          echo ::set-output name=COLOR::$(if [ -s output/SanityChecksOutput.md ]; then echo red; else echo green; fi )
       id: status
       
+
     - uses: actions/checkout@v1
       with:
         ref: ${{ steps.coverage.outputs.branch }}
@@ -199,11 +203,3 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ steps.coverage.outputs.branch }}
-
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@4.0.0
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: output # The folder the action should deploy.
-
-        
