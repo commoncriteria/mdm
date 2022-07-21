@@ -25,9 +25,9 @@ jobs:
 
     # Create the directory where badges will be saved, if needed
     - name: Create destination directory
-      env:
-        BADGE_PATH: output
-      run: mkdir -p "${BADGE_PATH%/*}"
+      run: mkdir -p output
+      # env:
+      #   BADGE_PATH: ${{ steps.coverage.outputs.path }}
       
     # Get current banch name to use it as dest directory
     - name: Extract branch name
@@ -60,7 +60,8 @@ jobs:
 
     - id: tdate
       run: |
-        echo "##[set-output name=TDATE;]$(cd transforms && git log -1 --format=%cs)"
+        echo "##[set-output name=TDATE;]$(cd transforms && git log -1 --format=%cs)" 
+
       
     # - name: Setup Java JDK
     #   uses: actions/setup-java@v1.4.3
@@ -86,12 +87,6 @@ jobs:
            done;
            echo "</ol></body></html>") > index.html
  
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@4.0.0
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: output # The folder the action should deploy.
-
     - name: Prepare environment
       id: coverage
       run: |
@@ -176,8 +171,16 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add transforms.svg warnings.svg validation.svg build-branch-badge.svg spell-badge.svg
+        git add output
         git commit -m "Add/Update badges"
+
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.0.0
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: output # The folder the action should deploy.
+
         
         # - name: Upload badge as artifact
     # - name: Upload badge as artifact
