@@ -62,6 +62,14 @@ jobs:
       run: |
         echo "##[set-output name=TDATE;]$(cd transforms && git log -1 --format=%cs)" 
 
+    - name: debug1
+      run: pwd
+      
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.0.0
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: output # The folder the action should deploy.
       
     # - name: Setup Java JDK
     #   uses: actions/setup-java@v1.4.3
@@ -87,7 +95,8 @@ jobs:
            done;
            echo "</ol></body></html>") > index.html;
           cd ..
- 
+
+          
     - name: Prepare environment
       id: coverage
       run: |
@@ -178,12 +187,6 @@ jobs:
         git add output
         git commit -m "Add/Update badges"
 
-
-    # - name: Deploy 🚀
-    #   uses: JamesIves/github-pages-deploy-action@4.0.0
-    #   with:
-    #     branch: gh-pages # The branch the action should deploy to.
-    #     folder: output # The folder the action should deploy.
 
         
         # - name: Upload badge as artifact
