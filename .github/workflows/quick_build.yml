@@ -23,6 +23,12 @@ jobs:
     - name: Install Jing
       run: wget -O - https://github.com/relaxng/jing-trang/releases/download/V20181222/jing-20181222.zip | jar -x
 
+    # Create the directory where badges will be saved, if needed
+    - name: Create destination directory
+      env:
+        BADGE_PATH: output
+      run: mkdir -p "${BADGE_PATH%/*}"
+      
     # Get current banch name to use it as dest directory
     - name: Extract branch name
       shell: bash
@@ -111,12 +117,6 @@ jobs:
       with:
         ref: ${{ steps.coverage.outputs.branch }}
 
-    # Create the directory where badges will be saved, if needed
-    - name: Create destination directory
-      env:
-        BADGE_PATH: ${{ steps.coverage.outputs.path }}
-      run: mkdir -p "${BADGE_PATH%/*}"
-      
      # Use the output from the `coverage` step
     - name: Generate the spelling badge SVG image
       uses: emibcn/badge-action@v1
