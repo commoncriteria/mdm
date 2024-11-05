@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
 <!-- <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> -->
-<!-- ?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!--
 Partial mapping from old iteration to new
 FCS_COP.1(1) => FCS_COP.1/CONF_ALG
 FCS_COP.1(2) => FCS_COP.1/HASH_ALG
@@ -95,7 +96,7 @@ DONE:
 
 -->
 
-<PP boilerplate="yes" xmlns="https://niap-ccevs.org/cc/v1"  target-products="MDMs"
+<PP boilerplate="yes" xmlns="https://niap-ccevs.org/cc/v1"  target-product="MDM" target-products="MDMs"
   xmlns:sec="https://niap-ccevs.org/cc/v1/section" xmlns:h="http://www.w3.org/1999/xhtml">
     
   <PPReference>
@@ -780,10 +781,10 @@ DONE:
 	</section>
 	
 	<!-- 4. Security Problem Description -->
-	<section title="Security Problem Description" id="spd">
+  <sec:Security_Problem_Definition>
 	
 		<!-- 4.2 Threats -->
-		<section title="Threats" id="threats">
+		<sec:Threats>
 			<threats>
 				<threat name="T.MALICIOUS_APPS">
 					<description>Malicious or flawed application threats exist because apps loaded onto a
@@ -833,10 +834,10 @@ DONE:
 					</objective-refer>
 				</threat>
 			</threats>
-		</section>
+		</sec:Threats>
 		
 		<!-- 4.2 Assumptions -->
-		<section id="asp" title="Assumptions">
+		<sec:Assumptions>
 			<assumptions>
 				<assumption name="A.COMPONENTS_RUNNING">
 					<description>This assumption applies to distributed TOEs only.
@@ -892,10 +893,10 @@ DONE:
 					</objective-refer>
 				</assumption>
 			</assumptions>
-		</section>
+		</sec:Assumptions>
 		
 		<!-- 4.3 Organizational Security Policies -->
-		<section id="osp" title="Organizational Security Policies">
+    <sec:Organizational_Security_Policies>
 			<OSPs>
 				<OSP name="P.ACCOUNTABILITY">
 					<description>Personnel operating the TOE shall be accountable for their actions within the TOE.</description>
@@ -929,8 +930,8 @@ DONE:
 					</objective-refer>
 				</OSP>
 			</OSPs>
-		</section>
-	</section>
+		</sec:Organizational_Security_Policies>
+	</sec:Security_Problem_Definition>
 	
 	
 	<!-- 5. Security Objectives -->
@@ -1049,7 +1050,7 @@ DONE:
     </section>
 	  
 	<!-- 5.2 Securioty Objectives for the Operational Environment -->
-    <section id="sooe" title="Security Objectives for the Operational Environment">
+	  <sec:Security_Objectives_for_the_Operational_Environment>
       <SOEs>
         <SOE name="OE.COMPONENTS_RUNNING">
           <description>For distributed TOEs the administrator ensures that the availability of every TOE component is checked as appropriate to reduce the 
@@ -1078,7 +1079,7 @@ DONE:
           <description>A wireless network will be available to the mobile devices.</description>
         </SOE>
 	</SOEs>
-    </section>
+    </sec:Security_Objectives_for_the_Operational_Environment>
 	
 		<!-- 5.3 Security Objectives Rationale (auto-generated -->
 		<section title="Security Objectives Rationale" id="secobjrat"/>
