@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<technical-decisions xmlns:h="http://www.w3.org/1999/xhtml"
+                     xmlns="https://niap-ccevs.org/cc/v1">
+    <bunch>
+        <applies-to max-inclusive="4.0" name="Mobile Device Management"/>
+
+        <decision id='0479'>
+            <notes>FMT_SMF.1(1) Reliance on MDF Evals</notes>
+
+            <change xpath=".//f-element[@id='fmt_smf.1.1(1)']" mode="replace">
+                <f-element id="fmt_smf.1.1(1)">
+                    <title>The
+                        <h:b>
+                            <abbr linkend="MDM"/>
+                            Server
+                        </h:b>
+                        shall be capable of
+                        <h:b>communicating the following commands to the
+                            <abbr linkend="MDM"/>
+                            Agent:
+                        </h:b>
+                        <h:ul style="list-style-type:none">
+                            <h:li><ctr id="smf1" ctr-type="mgmt" pre=""></ctr>. transition to the locked state (MDF
+                                Function 6)
+                            </h:li>
+                            <h:li><ctr id="smf2" ctr-type="mgmt" pre=""></ctr>. full wipe of protected data (MDF
+                                Function 7)
+                            </h:li>
+                            <h:li><ctr id="smf3" ctr-type="mgmt" pre=""></ctr>. unenroll from management
+                            </h:li>
+                            <h:li><ctr id="smf4" ctr-type="mgmt" pre=""></ctr>. install policies
+                            </h:li>
+                            <h:li><ctr id="smf5" ctr-type="mgmt" pre=""></ctr>. query connectivity status
+                            </h:li>
+                            <h:li><ctr id="smf6" ctr-type="mgmt" pre=""></ctr>. query the current version of the MD
+                                firmware/software
+                            </h:li>
+                            <h:li><ctr id="smf7" ctr-type="mgmt" pre=""></ctr>. query the current version of the
+                                hardware model of the device
+                            </h:li>
+                            <h:li><ctr id="smf8" ctr-type="mgmt" pre=""></ctr>. query the current version of installed
+                                mobile applications
+                            </h:li>
+                            <h:li><ctr id="smf9" ctr-type="mgmt" pre=""></ctr>. import X.509v3 certificates into the
+                                Trust Anchor Database (MDF Function 11)
+                            </h:li>
+                            <h:li><ctr id="smf10" ctr-type="mgmt" pre=""></ctr>. install applications (MDF Function 16)
+                            </h:li>
+                            <h:li><ctr id="smf11" ctr-type="mgmt" pre=""></ctr>. update system software (MDF Function
+                                15)
+                            </h:li>
+                            <h:li><ctr id="smf12" ctr-type="mgmt" pre=""></ctr>. remove applications (MDF Function 14)
+                            </h:li>
+                        </h:ul>
+                        <h:b>and the following commands to the
+                            <abbr linkend="MDM"/>
+                            Agent:
+                        </h:b>
+                        <h:br/>
+                        <selectables>
+                            <selectable><ctr id="smf13" ctr-type="mgmt" pre=""></ctr>. remove Enterprise applications
+                                (MDF Function 17)
+                            </selectable>
+                            <selectable><ctr id="smf14" ctr-type="mgmt" pre=""></ctr>. wipe Enterprise data (MDF
+                                Function 28)
+                            </selectable>
+                            <selectable><ctr id="smf15" ctr-type="mgmt" pre=""></ctr>. remove imported X.509v3
+                                certificates and
+                                <selectables linebreak="yes">
+                                    <selectable>no other X.509v3 certificates</selectable>
+                                    <selectable>
+                                        <assignable>list of other categories of X.509v3 certificates</assignable>
+                                    </selectable>
+                                </selectables>
+                                in the Trust Anchor Database (MDF Function 12)
+                            </selectable>
+                            <selectable>
+                                <ctr id="smf16" ctr-type="mgmt" pre=""></ctr>. alert the user
+                            </selectable>
+                            <selectable>
+                                <ctr id="smf17" ctr-type="mgmt" pre=""></ctr>. import keys/secrets into the secure key
+                                storage (MDF Function 9)
+                            </selectable>
+                            <selectable>
+                                <ctr id="smf18" ctr-type="mgmt" pre=""></ctr>. destroy imported keys/secrets and
+                                <selectables linebreak="yes">
+                                    <selectable>no other keys/secrets</selectable>
+                                    <selectable>
+                                        <assignable>list of other categories of keys/secrets</assignable>
+                                    </selectable>
+                                </selectables>
+                                in the secure key storage (MDF Function 10)
+                            </selectable>
+                            <selectable>
+                                <ctr id="smf19" ctr-type="mgmt" pre=""></ctr>. read audit logs kept by the MD (MDF
+                                Function 32)
+                            </selectable>
+                            <selectable>
+                                <ctr id="smf20" ctr-type="mgmt" pre=""></ctr>. retrieve MD-software integrity
+                                verification values (MDF Function 38)
+                            </selectable>
+                            <selectable>
+                                <ctr id="smf21" ctr-type="mgmt" pre=""></ctr>. approve exceptions for sharing data
+                                between
+                                <selectables linebreak="yes">
+                                    <selectable>application processes</selectable>
+                                    <selectable>group of application processes</selectable>
+                                </selectables>
+                                (MDF Function 42)
+                            </selectable>
+                            <selectable>
+                                <ctr id="smf22" ctr-type="mgmt" pre=""></ctr>. place applications into application
+                                process groups based on
+                                <assignable>application characteristics</assignable>
+                                (MDF Function 43)
+                            </selectable>
+                            <selectable>
+                                <ctr id="smf23" ctr-type="mgmt" pre=""></ctr>. revoke Biometric template
+                            </selectable>
+                            <selectable>
+                                <ctr id="smf24" ctr-type="mgmt" pre=""></ctr>.
+                                <assignable>list of other management functions to be provided by the MD</assignable>
+                            </selectable>
+                            <selectable>no other management functions</selectable>
+                        </selectables>
+                        <h:b>and the following MD configuration policies</h:b>:
+                        <h:br/>
+                        <h:br/>
+                        <h:ul style="list-style-type:none">
+                            <h:li>
+                                <ctr id="smf25" ctr-type="mgmt" pre=""></ctr>. password policy:
+                                <h:ol type="a">
+                                    <h:li>minimum password length</h:li>
+                                    <h:li>minimum password complexity</h:li>
+                                    <h:li>maximum password lifetime (MDF Function 1)</h:li>
+                                </h:ol>
+                            </h:li>
+                            <h:li>
+                                <ctr id="smf26" ctr-type="mgmt" pre=""></ctr>. session locking policy:
+                                <h:ol type="a">
+                                    <h:li>screen-lock enabled/disabled</h:li>
+                                    <h:li>screen lock timeout</h:li>
+                                    <h:li>number of authentication failures (MDF Function 2)</h:li>
+                                </h:ol>
+                            </h:li>
+                            <h:li>
+                                <ctr id="smf27" ctr-type="mgmt" pre=""></ctr>. wireless networks (SSIDs) to which the MD
+                                may connect (MDF Function 2)
+                            </h:li>
+                            <h:li>
+                                <ctr id="smf28" ctr-type="mgmt" pre=""></ctr>. security policy for each wireless
+                                network:
+                                <h:ol type="a">
+                                    <h:li>
+                                        <selectables linebreak="yes">
+                                            <selectable>specify the CA(s) from which the MD will accept WLAN
+                                                authentication server certificate(s)
+                                            </selectable>
+                                            <selectable>specify the FQDN(s) of acceptable WLAN authentication server
+                                                certificate(s)
+                                            </selectable>
+                                        </selectables>
+                                    </h:li>
+                                    <h:li>ability to specify security type</h:li>
+                                    <h:li>ability to specify authentication protocol</h:li>
+                                    <h:li>specify the client credentials to be used for authentication</h:li>
+                                    <h:li>
+                                        <assignable>any additional WLAN management functions</assignable>
+                                        (WLAN Client
+                                        <abbr linkend="Module"/>
+                                        Function 1)
+                                    </h:li>
+                                </h:ol>
+                            </h:li>
+                            <h:li>
+                                <ctr id="smf29" ctr-type="mgmt" pre=""></ctr>. application installation policy by
+                                <selectables linebreak="yes">
+                                    <selectable>specifying authorized application repository(s)</selectable>
+                                    <selectable>specifying a set of allowed applications and versions (an application
+                                        whitelist)
+                                    </selectable>
+                                    <selectable>denying application installation</selectable>
+                                </selectables>
+                                , (MDF Function 8)
+                            </h:li>
+                            <h:li>
+                                <ctr id="smf30" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for <assignable>
+                                list of audio or visual collection devices
+                            </assignable> across device,
+                                <selectables linebreak="yes">
+                                    <selectable>on a per-app basis</selectable>
+                                    <selectable>on a per-group of applications processes basis</selectable>
+                                    <selectable>no other method</selectable>
+                                </selectables>
+                                , (MDF Function 5)
+                            </h:li>
+                        </h:ul>
+                        <h:b>and the following MD configuration policies</h:b>:
+                        <h:br/>
+                        <h:br/>
+                        <h:ul style="list-style-type:none">
+                            <selectables linebreak="yes">
+                                <selectable>
+                                    <ctr id="smf31" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for the VPN
+                                    protection across MD,
+                                    <selectables linebreak="yes">
+                                        <selectable>on a per-app basis</selectable>
+                                        <selectable>on a per-group of application processes basis</selectable>
+                                        <selectable>no other method</selectable>
+                                    </selectables>
+                                    (MDF Function 3)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf32" ctr-type="mgmt" pre=""></ctr>. enable/disable policy
+                                    for <assignable>list of radios</assignable>, (MDF Function 4)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf33" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for data
+                                    signaling over
+                                    <assignable>list of externally accessible hardware ports</assignable>, (MDF Function
+                                    24)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf34" ctr-type="mgmt" pre=""></ctr>. enable/disable policy
+                                    for <assignable>list of protocols where the device acts as a server</assignable>,
+                                    (MDF Function 25)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf35" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for developer
+                                    modes, (MDF Function 26)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf36" ctr-type="mgmt" pre=""></ctr>. enable policy for data-at-rest
+                                    protection, (MDF Function 20)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf37" ctr-type="mgmt" pre=""></ctr>. enable policy for removable media's
+                                    data-at-rest protection, (MDF Function 21)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf38" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for local
+                                    authentication bypass, (MDF Function 27)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf39" ctr-type="mgmt" pre=""></ctr>. the Bluetooth trusted channel policy:
+                                    <h:br/>
+                                    <h:ol type="a">
+                                        <h:li>enable/disable the Discoverable mode (for BR/EDR)</h:li>
+                                        <h:li>change the Bluetooth device name,
+                                            <selectables linebreak="yes">
+                                                <selectable>allow/disallow additional wireless technologies to be used
+                                                    with Bluetooth
+                                                </selectable>
+                                                <selectable>disable/enable Advertising (for LE)</selectable>
+                                                <selectable>disable/enable the Connection mode</selectable>
+                                                <selectable>disable/enable the Bluetooth services and/or profiles
+                                                    available on the device
+                                                </selectable>
+                                                <selectable>specify minimum level of security for each pairing
+                                                </selectable>
+                                                <selectable>configure allowable methods of Out of Band pairing
+                                                </selectable>
+                                                <selectable>no other Bluetooth configuration</selectable>
+                                            </selectables>
+                                            (MDF Function 18)
+                                        </h:li>
+                                    </h:ol>
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf40" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for display
+                                    notification in the locked state of
+                                    <h:br/>
+                                    <h:ol type="a">
+                                        <selectables linebreak="yes">
+                                            <selectable>email notifications</selectable>
+                                            <selectable>calendar appointments</selectable>
+                                            <selectable>contact associated with phone call notification</selectable>
+                                            <selectable>text message notification</selectable>
+                                            <selectable>other application-based notifications</selectable>
+                                            <selectable>none</selectable>
+                                        </selectables>
+                                        (MDF Function 19)
+                                    </h:ol>
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf41" ctr-type="mgmt" pre=""></ctr>. policy for establishing a trusted
+                                    channel or disallowing establishment if the MD cannot establish a connection to
+                                    determine the validity of a certificate, (MDF Function 30)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf42" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for the
+                                    cellular protocols used to connect to cellular network base stations, (MDF Function
+                                    31)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf43" ctr-type="mgmt" pre=""></ctr>. policy for import and removal by
+                                    applications of X.509v3 certificates in the Trust Anchor Database, (MDF Function 29)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf44" ctr-type="mgmt" pre=""></ctr>.
+                                    <selectables linebreak="yes">
+                                        <selectable>certificate</selectable>
+                                        <selectable>public-key</selectable>
+                                    </selectables>
+                                    used to validate digital signature on applications, (MDF Function 33)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf45" ctr-type="mgmt" pre=""></ctr>. policy for exceptions for shared use
+                                    of keys/secrets by multiple applications, (MDF Function 34)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf46" ctr-type="mgmt" pre=""></ctr>. policy for exceptions for destruction
+                                    of keys/secrets by applications that did not import the key/secret, (MDF Function
+                                    35)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf47" ctr-type="mgmt" pre=""></ctr>. the unlock banner policy, (MDF
+                                    Function 36)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf48" ctr-type="mgmt" pre=""></ctr>. configure the auditable items (MDF
+                                    Function 37)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf49" ctr-type="mgmt" pre=""></ctr>. enable/disable
+                                    <selectables linebreak="yes">
+                                        <selectable>USB mass storage mode</selectable>
+                                        <selectable>USB data transfer without user authentication</selectable>
+                                        <selectable>USB data transfer without authentication of the connection system
+                                        </selectable>
+                                    </selectables>
+                                    (MDF Function 39)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf50" ctr-type="mgmt" pre=""></ctr>. enable/disable backup of
+                                    <selectables linebreak="yes">
+                                        <selectable>all applications</selectable>
+                                        <selectable>selected applications</selectable>
+                                        <selectable>selected groups of applications</selectable>
+                                        <selectable>configuration data</selectable>
+                                    </selectables>
+                                    to
+                                    <selectables>
+                                        <selectable>locally connected system</selectable>
+                                        <selectable>remote system</selectable>
+                                    </selectables>
+                                    (MDF Function 40)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf51" ctr-type="mgmt" pre=""></ctr>. enable/disable
+                                    <selectables linebreak="yes">
+                                        <selectable>Hotspot functionality authenticated by
+                                            <selectables>
+                                                <selectable>pre-shared key</selectable>
+                                                <selectable>passcode</selectable>
+                                                <selectable>no authentication</selectable>
+                                            </selectables>
+                                        </selectable>
+                                        <selectable>USB tethering authenticated by
+                                            <selectables>
+                                                <selectable>pre-shared key</selectable>
+                                                <selectable>passcode</selectable>
+                                                <selectable>no authentication</selectable>
+                                            </selectables>
+                                        </selectable>
+                                    </selectables>
+                                    (MDF Function 41)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf52" ctr-type="mgmt" pre=""></ctr>. enable/disable location services:
+                                    <h:br/>
+                                    <selectables linebreak="yes">
+                                        <selectable>across device</selectable>
+                                        <selectable>on a per-app basis</selectable>
+                                        <selectable>on a per-group of application processes basis</selectable>
+                                        <selectable>no other method</selectable>
+                                    </selectables>
+                                    (MDF Function 22)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf53" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for user
+                                    unenrollment
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf54" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for the
+                                    Always-On VPN protection across device (MDF Function 45)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf55" ctr-type="mgmt" pre=""></ctr>. enable/disable policy for use of
+                                    Biometric Authentication Factor (MDF Function 23)
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf56" ctr-type="mgmt" pre=""></ctr>. Connectivity timeout policy:
+                                    <selectables linebreak="yes">
+                                        <selectable>allowed
+                                            <selectables>
+                                                <selectable>number of missed reachability events</selectable>
+                                                <selectable>length of time without server connectivity</selectable>
+                                            </selectables>
+                                        </selectable>
+                                        <selectable>when server connectivity timeout is exceeded agent shall
+                                            <selectables>
+                                                <selectable>disable user password</selectable>
+                                                <selectable>wipe device</selectable>
+                                            </selectables>
+                                            and
+                                            <selectables>
+                                                <selectable>
+                                                    <assignable>other action</assignable>
+                                                </selectable>
+                                                <selectable>none</selectable>
+                                            </selectables>
+                                        </selectable>
+                                    </selectables>
+                                </selectable>
+                                <selectable><ctr id="smf57" ctr-type="mgmt" pre=""></ctr>. enable/disable multi-user
+                                    modes
+                                </selectable>
+                                <selectable><ctr id="smf58" ctr-type="mgmt" pre=""></ctr>. enable/disable automatic
+                                    updates of system software
+                                </selectable>
+                                <selectable><ctr id="smf59" ctr-type="mgmt" pre=""></ctr>. enable/disable removable
+                                    media
+                                </selectable>
+                                <selectable>
+                                    <ctr id="smf60" ctr-type="mgmt" pre=""></ctr>. <assignable>list of other policies to
+                                    be provided by the MD</assignable>, no other policies].
+                                </selectable>
+                            </selectables>
+                        </h:ul>
+                    </title>
+                    <note role="application">This requirement captures all the configuration functionality the
+                        <abbr linkend="TSF"/>
+                        provides the administrator to configure the
+                        <abbr linkend="MDM"/>
+                        Agent. This requirement is broken into two configurable areas:
+                        <abbr linkend="MDM"/>
+                        Agent commands and
+                        <abbr linkend="MDM"/>
+                        Agent policies. The
+                        <abbr linkend="ST"/>
+                        author can add more commands and configuration policies by completing the appropriate assignment
+                        statements.
+                        <h:br/>
+                        <h:br/>
+                        Function-specific Application Notes:
+                        <h:br/>
+                        <h:br/>
+                        Function-specific application notes reference Mobile Device Fundamentals (MDF)
+                        <abbr linkend="PP"/>
+                        v3.1.
+                        <h:br/>
+                        <h:br/>
+                        Function
+                        <ctr-ref ref-id="smf12"/>
+                        may be satisfied for the BYOD use case by application blacklisting and/or disabling. In the case
+                        of BYOD, an enterprise may not want to remove "personal" applications, thus for that use case
+                        disabling the application rather than removing it would allow the user to not lose any
+                        information they might have in the application.
+                        <h:br/>
+                        <h:br/>
+                        Function
+                        <ctr-ref ref-id="smf16"/>
+                        provides the
+                        <abbr linkend="MDM"/>
+                        server to display an alert to the user of the mobile device.
+                        <h:br/>
+                        <h:br/>
+                        The audit records read according to Function
+                        <ctr-ref ref-id="smf19"/>
+                        are to be transmitted to an external audit server according to<linkref linkend="FAU_STG_EXT.1"/>
+                        . The
+                        <abbr linkend="MDM"/>
+                        Server is not expected to retain those logs.
+                        <h:br/>
+                        <h:br/>
+                        Function
+                        <ctr-ref ref-id="smf34"/>
+                        provides the ability to enable/disable policy for the list of protocols where the device acts as
+                        a server, such as a mobile hotspot.
+                        <h:br/>
+                        <h:br/>
+                        Function
+                        <ctr-ref ref-id="smf56"/>
+                        corresponds to FPT_NET_EXT.1.1 in Agent. If the
+                        <abbr linkend="MDM"/>
+                        Agent has not had a successful reachability event with the
+                        <abbr linkend="MDM"/>
+                        Server in the amount of time specified in 'a', then the agent must perform the action selected
+                        in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each
+                        action could be associated with a different timeout in 'a'. If function
+                        <ctr-ref ref-id="smf56"/>
+                        is included in the<abbr linkend="ST"/>, than FPT_NET_EXT.1.1 must be included in the Agent<abbr
+                                linkend="ST"/>.
+                    </note>
+                    <aactivity>
+                        <TSS>The evaluator shall examine the
+                            <abbr linkend="TSS"/>
+                            to ensure that it describes each management function claimed. The evaluator shall examine
+                            the
+                            <abbr linkend="TSS"/>
+                            to ensure that it identifies the management functions implemented for each supported
+                            <abbr linkend="MDM"/>
+                            Agent/platform, which are likely to be subsets of all of the management functions available
+                            to the administrator on the
+                            <abbr linkend="MDM"/>
+                            Server. The evaluator shall examine the
+                            <abbr linkend="TSS"/>
+                            to verify that any differences between management functions and policies for each supported
+                            <abbr linkend="MDM"/>
+                            Agent/platform are clearly indicated.
+                            <h:br/>
+                            <h:br/>
+                            The evaluator shall determine if the Mobile Device has been evaluated. If so, the evaluator
+                            shall examine the
+                            <abbr linkend="TSS"/>
+                            to verify that it clearly identifies which management functions match the selections and
+                            assignments of the evaluated Mobile Device and which management functions were not
+                            evaluated.
+                            <h:br/>
+                            <h:br/>
+                        </TSS>
+                        <Tests>For each
+                            <abbr linkend="MDM"/>
+                            Agent/platform listed as supported in the<abbr linkend="ST"/>:
+                            <testlist>
+                                <test>The evaluator shall verify the ability to command each
+                                    <abbr linkend="MDM"/>
+                                    Agent functional capability and configure each
+                                    <abbr linkend="MDM"/>
+                                    Agent policy listed above.
+                                </test>
+                            </testlist>
+                        </Tests>
+                    </aactivity>
+                </f-element>
+            </change>
+
+        </decision>
+    </bunch>
+</technical-decisions>
