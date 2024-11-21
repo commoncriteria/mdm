@@ -61,6 +61,7 @@
   
       <release-notes><h:h3>TDs Applied</h:h3></release-notes><pp-preferences>
 <!--        <pp-pref name="display-audit-with-sfrs">0</pp-pref> -->
+
         <audit-events-in-sfrs/>
     </pp-preferences>
 
@@ -241,24 +242,24 @@
 	</section>
   
 	<!-- 2. Conformance Claims -->
-	<section title="Conformance Claims" id="sec-unique-id" boilerplate="no">
-		<CClaimsInfo cc-version="cc-2022r1">
-		  <cc-st-conf>exact</cc-st-conf>
-		  <cc-pt2-conf>extended</cc-pt2-conf>
-		  <cc-pt3-conf>conformant</cc-pt3-conf>
-		  <cc-pp-conf/>
-		  <cc-pp-config-with>
-		    <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 3.3</PP-cc-ref>
-		    <PP-cc-ref>Protection Profile for Application Software, Version 1.4</PP-cc-ref>
-		    <Mod-cc-ref>PP-Module for MDM Agents, Version 1.0</Mod-cc-ref>
-		    <Mod-cc-ref>PP-Module for VPN Client, Version 2.5</Mod-cc-ref>		    
-		  </cc-pp-config-with>
-		  <cc-pkg-claim>
-		    <FP-cc-ref conf="conformant">Functional Package for TLS Version 1.1 </FP-cc-ref>
-		    <FP-cc-ref conf="conformant">Functional Package for SSH Version 1.0</FP-cc-ref>
-		    <FP-cc-ref conf="conformant">Assurance Package for Flaw Remediation V1.0</FP-cc-ref>
-		  </cc-pkg-claim>
-		</CClaimsInfo>	  
+	<section title="Conformance Claims" id="ccl" boilerplate="no">
+	  <CClaimsInfo cc-version="cc-2022r1">
+	    <cc-st-conf>exact</cc-st-conf>
+	    <cc-pt2-conf>extended</cc-pt2-conf>
+	    <cc-pt3-conf>conformant</cc-pt3-conf>
+	    <cc-pp-conf/>
+	    <cc-pp-config-with>
+	      <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 3.3</PP-cc-ref>
+	      <PP-cc-ref>Protection Profile for Application Software, Version 1.4</PP-cc-ref>
+	      <Mod-cc-ref>PP-Module for MDM Agents, Version 1.0</Mod-cc-ref>
+	      <Mod-cc-ref>PP-Module for VPN Client, Version 2.5</Mod-cc-ref>
+	    </cc-pp-config-with>
+	    <cc-pkg-claim>
+	      <FP-cc-ref conf="conformant">Functional Package for TLS, Version 1.1</FP-cc-ref>
+	      <FP-cc-ref conf="conformant">Functional Package for SSH, Version 1.0</FP-cc-ref>
+	      <FP-cc-ref conf="conformant">Assurance Package for Flaw Remediation, Version 1.0</FP-cc-ref>
+	    </cc-pkg-claim>
+	  </CClaimsInfo>	  
 	</section>
 
 	<!-- Introduction to Distributed TOEs -->
@@ -1407,7 +1408,8 @@
               support verifying client certs, the MDM Server is in a position to make use of that.<h:br/><h:br/>
               
               
-              For distributed TOEs each component must be able to export audit data across a protected channel external (FTP_ITC.1) or inter-component
+              For distributed TOEs each component must be able to export audit data across a
+              protected channel external (FTP_ITC.1) or inter-component
 		    (FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or FTP_ITC.1) as appropriate. At least one component of the TOE must be able to export 
 		    audit records via FTP_ITC.1/INTER_XFER_IT such that all TOE audit records can be exported to an external IT entity. 
               </note>
@@ -2943,7 +2945,7 @@
                     user's enrollment to a specific unique device ID and enroll a device with that
                     device ID. The evaluator shall attempt to enroll a second device with the same
                     unique device ID. (The evaluator may need to wipe the device without network
-                    connectivity, so the device is unenrolled but the MDM server
+                    connectivity, so the device is un-enrolled but the MDM server
                     considers the device still enrolled.) The evaluator shall verify that the second
                     enrollment using the same unique device ID fails.</test>
                 </testlist>
