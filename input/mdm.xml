@@ -160,6 +160,7 @@ DONE:
   
       <pp-preferences>
 <!--        <pp-pref name="display-audit-with-sfrs">0</pp-pref> -->
+<using-cc2022/>
         <audit-events-in-sfrs/>
     </pp-preferences>
 
@@ -340,24 +341,38 @@ DONE:
 	</section>
   
 	<!-- 2. Conformance Claims -->
-	<section title="Conformance Claims" id="sec-unique-id" boilerplate="no">
-		<CClaimsInfo cc-version="cc-2022r1">
-		  <cc-st-conf>exact</cc-st-conf>
-		  <cc-pt2-conf>extended</cc-pt2-conf>
-		  <cc-pt3-conf>conformant</cc-pt3-conf>
-		  <cc-pp-conf/>
-		  <cc-pp-config-with>
-		    <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 3.3</PP-cc-ref>
-		    <PP-cc-ref>Protection Profile for Application Software, Version 1.4</PP-cc-ref>
-		    <Mod-cc-ref>PP-Module for MDM Agents, Version 1.0</Mod-cc-ref>
-		    <Mod-cc-ref>PP-Module for VPN Client, Version 2.5</Mod-cc-ref>		    
-		  </cc-pp-config-with>
-		  <cc-pkg-claim>
-		    <FP-cc-ref conf="conformant">Functional Package for TLS Version 1.1 </FP-cc-ref>
-		    <FP-cc-ref conf="conformant">Functional Package for SSH Version 1.0</FP-cc-ref>
-		    <FP-cc-ref conf="conformant">Assurance Package for Flaw Remediation V1.0</FP-cc-ref>
-		  </cc-pkg-claim>
-		</CClaimsInfo>	  
+	<section title="Conformance Claims" id="ccl" boilerplate="no">
+		<cclaims>
+			<cclaim name="Conformance Statement">
+				<description>A Security Target (ST) must claim exact conformance to this PP, as defined in the CC and CEM addenda for Exact Conformance, 
+					Selection-Based SFRs, and Optional SFRs (dated May 2017).  </description>
+			</cclaim>
+			<cclaim name="CC Conformance Claims">
+				<description>This PP is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, Release 5.</description>
+			</cclaim>
+			<cclaim name="PP Claim">
+				<description>This PP does not claim conformance to any PP.</description>
+			</cclaim>
+			<cclaim name="Package Claim">				
+				  <description>
+				    <h:ul>
+				      <h:li>This PP is TLS Package Version 1.1 Conformant.</h:li>
+				      <h:li>This PP is SSH Package Version 1.0 Conformant.</h:li>
+			        <h:li>This PP is Assurance Package for Flaw Remediation Version 1.0 Conformant.</h:li>
+				  </h:ul>
+				  </description>
+			</cclaim>
+			<cclaim name="Module Claim">
+				<description>The following PPs and PP-Modules are allowed to be specified in a PP-Configuration with this PP.
+					<h:ul>
+						<h:li>PP-Module for MDM Agents, Version 1.0</h:li>
+						<h:li>PP-Module for VPN Client, Version 2.5</h:li>
+						<h:li>Protection Profile for Mobile Device Fundamentals, Version 3.3</h:li>
+						<h:li>Protection Profile for Application Software, Version 1.4</h:li>
+					</h:ul>
+				</description>
+			</cclaim>
+		</cclaims>
 	</section>
 
 	<!-- Introduction to Distributed TOEs -->
