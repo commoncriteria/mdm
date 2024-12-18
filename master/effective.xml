@@ -4850,10 +4850,21 @@
               <assignable>list of third-party libraries</assignable>. 
             </title>
             <note role="application"> 
-              This requirement applies to libraries used when "implement functionality" is selected in an SFR. The intention of this requirement is for the evaluator to document which software libraries the MDM software is including in case vulnerabilities are later discovered with those libraries.
+              The intention of this requirement is for the ST author to document which software
+              libraries (including version numbers) the MDM software is including in case 
+              vulnerabilities are later discovered with those libraries. For cloud services, the
+              assignment can be completed with a reference to a non-public library document as an
+              annex for those libraries that are not or cannot be made public.
             </note>
             <aactivity> 
-              <TSS> The evaluator shall verify that the TSS lists the libraries used by the MDM software. The evaluator shall verify that libraries found to be packaged with or employed by the MDM software are limited to those in the assignment.</TSS>
+              <TSS> The evaluator shall verify that the TSS lists the libraries used by the MDM
+                software or the public libraries used by the cloud MDM services. The evaluator
+                shall verify that libraries found to be packaged with or employed by the MDM 
+                software are limited to those in the assignment.<h:br/><h:br/>
+                <h:b>Library Document</h:b><h:br/><h:br/>
+                (conditional: The TOE is a cloud MDM service) The evaluator shall verify that the
+                non-public library document lists the libraries used by the MDM service.
+              </TSS>
               <Guidance>TBD</Guidance>
               <Tests>TBD</Tests>
             </aactivity>
