@@ -1594,7 +1594,7 @@ DONE:
 		</f-component>      
 		
         <f-component cc-id="fau_stg.1" name="External Trail Storage">
-          <f-element id="fel-stg">
+          <f-element id="fau-stg-1e1">
             <title>The TSF shall be able to <h:b>transmit the generated audit data to an external IT
               entity using a trusted channel according to FTP_ITC.1/INTER_XFER_IT</h:b>, store
               generated audit data on the 
@@ -1654,7 +1654,7 @@ DONE:
 		</f-component>
 		
         <f-component cc-id="fau_stg_ext.2" name="Audit Event Storage" status="sel-based">
-         <depends cc-id="fau_stg.1"/>          
+         <depends on="fau-stg-1e1"/>          
           <consistency-rationale/>
           <comp-lev>defines requirements for protecting stored audit data.</comp-lev>
           <management>There are no management activities foreseen.</management>
@@ -3055,7 +3055,7 @@ DONE:
         </f-component>    
         
         <f-component cc-id="fcs_rbg.2" name="Random Bit Generation (External Seeding)"  status="sel-based">
-          <depends cc-id="fcs_rbg.1"/>
+          <depends id="fel-rbg-init-seed"/>          
           <f-element id="fe1-rbg-seed">
             <title>
               The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable>
@@ -3082,7 +3082,7 @@ DONE:
         </f-component>
         
         <f-component cc-id="fcs_rbg.3" name="Random Bit Generation (Internal Seeding - Single Source)" status="sel-based">
-          <depends cc-id="fcs_rbg.1"/>
+          <depends id="fel-rbg-init-seed"/>
           <f-element id="fel-rbg-seed-int-sing">
             <title>
               The TSF shall be able to seed the RBG using a <selectables onlyone="yes">
@@ -3107,7 +3107,7 @@ DONE:
         </f-component>
         
         <f-component cc-id="fcs_rbg.4" name="Random Bit Generation (Internal Seeding - Multiple Sources)" status="sel-based">
-          <depends cc-id="fcs_rbg.1"/>
+          <depends id="fel-rbg-init-seed"/>
           <f-element id="fel-rbg-seed-int-mult">
             <title>
               The TSF shall be able to seed the RBG using <selectables>
@@ -3133,7 +3133,7 @@ DONE:
         </f-component>
         
         <f-component cc-id="fcs_rbg.5" name="Random Bit Generation (Combining Noise Sources)" status="sel-based">
-          <depends cc-id="fcs_rbg.1"/>          
+          <depends id="fel-rbg-init-seed"/>          
           <f-element id="fel-rbg-comb">
             <title>
               The TSF shall <assignable>combining operation</assignable> <selectables>
@@ -3201,7 +3201,7 @@ DONE:
 		</f-component> 
 		
         <f-component cc-id="fcs_stg_ext.2" name="Encrypted Cryptographic Key Storage" status="sel-based">
-          <depends on-sel="fcs_stg_enc"/>
+          <depends id="fel-crypto-key-store"/>
           <consistency-rationale/>
           <comp-lev>defines requirements for preventing access to private keys and persistent
             secrets.</comp-lev>
@@ -3359,7 +3359,7 @@ DONE:
 		</f-component> 
 		
 		    <f-component cc-id="fia_tok_ext.1" name="Client Tokens" status="sel-based">
-		      <depends cc-id="fia_cli_ext.1"/>		        
+		      <depends id="fia-cli-ext-1"/>		        
 		      <consistency-rationale/>
 		      <comp-lev>defines requirements for generating unique tokens.</comp-lev>
 		      <management>There are no management activities foreseen.</management>
