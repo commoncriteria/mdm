@@ -1496,7 +1496,7 @@
 		</f-component>      
 		
         <f-component cc-id="fau_stg.1" name="External Trail Storage">
-          <f-element id="fel-stg">
+          <f-element id="fau-stg-1e1">
             <title>The TSF shall be able to <h:b>transmit the generated audit data to an external IT
               entity using a trusted channel according to FTP_ITC.1/INTER_XFER_IT</h:b>, store
               generated audit data on the 
@@ -1556,7 +1556,7 @@
 		</f-component>
 		
         <f-component cc-id="fau_stg_ext.2" name="Audit Event Storage" status="sel-based">
-         <depends cc-id="fau_stg.1"/>          
+          <depends on="fau-stg-1e1"/>          
           <consistency-rationale/>
           <comp-lev>defines requirements for protecting stored audit data.</comp-lev>
           <management>There are no management activities foreseen.</management>
@@ -1568,7 +1568,7 @@
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
               </selectables> to protect the stored audit data in the audit trail from unauthorized modification.</title>
-            <note role="application">If "store audit data locally" is selected in <xref to="fel-stg"/>, this SFR shall be included in the ST.<h:br/><h:br/> 
+            <note role="application">If "store audit data locally" is selected in <xref to="fau-stg-1e1"/>, this SFR shall be included in the ST.<h:br/><h:br/> 
 			The purpose of this requirement is to ensure that audit data are stored securely. The ST author
 			is responsible for selecting whether audit data 
 			are maintained when audit storage or failure occurs. The ST author must choose a means by which
@@ -2955,7 +2955,7 @@
         </f-component>    
         
         <f-component cc-id="fcs_rbg.2" name="Random Bit Generation (External Seeding)" status="sel-based">
-          <depends cc-id="fcs_rbg.1"/>
+          <depends id="fel-rbg-init-seed"/>          
           <f-element id="fe1-rbg-seed">
             <title>
               The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable>
@@ -2982,7 +2982,7 @@
         </f-component>
         
         <f-component cc-id="fcs_rbg.3" name="Random Bit Generation (Internal Seeding - Single Source)" status="sel-based">
-          <depends cc-id="fcs_rbg.1"/>
+          <depends id="fel-rbg-init-seed"/>
           <f-element id="fel-rbg-seed-int-sing">
             <title>
               The TSF shall be able to seed the RBG using a <selectables onlyone="yes">
@@ -3007,7 +3007,7 @@
         </f-component>
         
         <f-component cc-id="fcs_rbg.4" name="Random Bit Generation (Internal Seeding - Multiple Sources)" status="sel-based">
-          <depends cc-id="fcs_rbg.1"/>
+          <depends id="fel-rbg-init-seed"/>
           <f-element id="fel-rbg-seed-int-mult">
             <title>
               The TSF shall be able to seed the RBG using <selectables>
@@ -3033,7 +3033,7 @@
         </f-component>
         
         <f-component cc-id="fcs_rbg.5" name="Random Bit Generation (Combining Noise Sources)" status="sel-based">
-          <depends cc-id="fcs_rbg.1"/>          
+          <depends id="fel-rbg-init-seed"/>          
           <f-element id="fel-rbg-comb">
             <title>
               The TSF shall <assignable>combining operation</assignable> <selectables>
@@ -3101,7 +3101,7 @@
 		</f-component> 
 		
         <f-component cc-id="fcs_stg_ext.2" name="Encrypted Cryptographic Key Storage" status="sel-based">
-          <depends on-sel="fcs_stg_enc"/>
+          <depends id="fel-crypto-key-store"/>
           <consistency-rationale/>
           <comp-lev>defines requirements for preventing access to private keys and persistent
             secrets.</comp-lev>
@@ -3259,7 +3259,7 @@
 		</f-component> 
 		
 		    <f-component cc-id="fia_tok_ext.1" name="Client Tokens" status="sel-based">
-		      <depends cc-id="fia_cli_ext.1"/>		        
+		      <depends id="fia-cli-ext-1"/>		        
 		      <consistency-rationale/>
 		      <comp-lev>defines requirements for generating unique tokens.</comp-lev>
 		      <management>There are no management activities foreseen.</management>
@@ -5619,7 +5619,8 @@
 	
     	
     <section title="Security Assurance Requirements" id="SARs">
-    The Security Objectives for the TOE in <xref to="req"/> were constructed to address threats identified in <xref to="threats"/>. The Security 
+    The Security Objectives for the TOE in <xref to="req"/> were constructed to address threats
+      identified in <xref to="Threats"/>. The Security 
 	Functional Requirements (SFRs) in <xref to="req"/> are a formal instantiation of the Security Objectives. The PP identifies the Security Assurance
 	Requirements (SARs) to frame the extent to which the evaluator assesses the documentation applicable for the evaluation and performs independent testing. <h:br/>
     This section lists the set of SARs from CC part 3 that are required in evaluations against this PP. Individual Evaluation
@@ -6013,7 +6014,7 @@
     </h:table>
   </appendix>
 
-  <appendix id="entropy" title="Entropy Documentation and Assessment"> 
+  <appendix id="entropyappendix" title="Entropy Documentation and Assessment"> 
     This appendix describes the required supplementary information for each entropy source used by the TOE.<h:br/><h:br/> The 
 	documentation of the entropy sources should be detailed enough that, after reading, the evaluator will thoroughly 
 	understand the entropy source and why it can be relied upon to provide sufficient entropy. This documentation should 
