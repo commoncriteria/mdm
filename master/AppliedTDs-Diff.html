@@ -1827,10 +1827,7 @@
                         <span class="note-header">Application Note: </span><span class="note">The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must select all key establishment schemes used for the selected cryptographic protocols.
                             <br>
                             <br>
-                             The elliptic curves used for the key establishment scheme must correlate with the curves specified in <a href="#FCS_CKM.1.1">FCS_CKM.1.1</a>.
-                            <br>
-                            <br>
-                             <a href="#FCS_CKM.1.1">FCS_CKM.1.1</a>. </span>
+                             The elliptic curves used for the key establishment scheme must correlate with the curves specified in <a href="#FCS_CKM.1.1">FCS_CKM.1.1</a>. </span>
                     </div>
                 </div>
             </div>
@@ -2111,7 +2108,7 @@
                     <a href="#FCS_COP.1.1/CONF_ALG" class="abbr">FCS_COP.1.1/CONF_ALG</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_91">invoke platform-provided functionality</span>, <span class="selectable-content" id="_s_92">implement functionality</span>] <b>to</b> perform <i>encryption and decryption</i> in accordance with a specified cryptographic algorithm: [<b>selection</b>: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_91">invoke platform-provided functionality</span>, <span class="selectable-content" id="_s_92">implement functionality</span>] <b>to</b> perform [<i>encryption and decryption</i>] in accordance with a specified cryptographic algorithm: [<b>selection</b>: 
                     <ul>
                         <li style="">
                             <span class="selectable-content" id="_s_93">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</span>
@@ -2352,7 +2349,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_98">invoke platform-provided functionality</span>, <span class="selectable-content" id="_s_99">implement functionality</span>] <b>to</b> perform <b>cryptographic hashing</b> in accordance with specified cryptographic algorithm [<i>SHA-384</i>]<b> and message digest size </b>[<i>384-bits</i>] that meet the following: [<i>FIPS Pub 180-4.</i>]
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">The intent of this requirement is to specify the hashing function for trusted channel protocols. The hash selection must support the message digest size selection. The hash selection should be consistent with the overall strength of the algorithm used (for example, SHA-256 for 128-bit keys).</span>
+                        <span class="note-header">Application Note: </span><span class="note">The intent of this requirement is to specify the hashing function for trusted channel protocols. The hash selection must support the message digest size selection. The hash selection should be consistent with the overall strength of the algorithm used.</span>
                     </div>
                 </div>
             </div>
@@ -2449,7 +2446,7 @@
                     <a href="#FCS_COP.1.1/KEY_HASH" class="abbr">FCS_COP.1.1/KEY_HASH</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_100">invoke platform-provided functionality</span>, <span class="selectable-content" id="_s_101">implement functionality</span>] <b>to</b> perform <i>keyed-hash message authentication</i> in accordance with a specified cryptographic algorithm of [<i>HMAC-SHA-384 key size</i>] and <b>a message digest size of</b> [<i>384-bits</i>] that meets the following: [<i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code, and FIPS Pub 180-4, "9Secure Hash Standard."</i>]
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_100">invoke platform-provided functionality</span>, <span class="selectable-content" id="_s_101">implement functionality</span>] <b>to</b> perform [<i>keyed-hash message authentication</i>] in accordance with a specified cryptographic algorithm of [<i>HMAC-SHA-384 key size</i>] and <b>a message digest size of</b> [<i>384-bits</i>] that meets the following: [<i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code, and FIPS Pub 180-4, "9Secure Hash Standard."</i>]
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">The intent of this requirement is to specify the keyed-hash message authentication function used when used for key establishment purposes for the various cryptographic protocols used by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (e.g., trusted channel). The hash selection must support the message digest size selection. The hash selection should be consistent with the overall strength of the algorithm used for <a href="#FCS_COP.1/SIGN_ALG">FCS_COP.1/SIGN_ALG</a>.</span>
                     </div>
@@ -5814,7 +5811,7 @@
                     <a href="#FTA_TAB.1.1" class="abbr">FTA_TAB.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    Before establishing a user session, the [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></i> shall [<b>selection</b>: <span class="selectable-content" id="_s_383"><b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="_s_384"><b>implement functionality</b></span>] <b>to</b> display an <i>administrator-specified advisory notice and consent warning</i> message <b>regarding use of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</b>
+                    Before establishing a user session, the [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></i>] shall [<b>selection</b>: <span class="selectable-content" id="_s_383"><b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="_s_384"><b>implement functionality</b></span>] <b>to</b> display an [<i>administrator-specified advisory notice and consent warning</i>] message <b>regarding use of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</b>
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> This requirement is to ensure that an advisory notice or consent banner is presented to the user on start-up or unlock of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. </span>
                     </div>
@@ -5966,7 +5963,7 @@
                         </li>
                     </ul>
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">The intent of this requirement is that the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server be able to provide compliance information about enrolled mobile devices for use by other enterprise security infrastructure systems. There are active standards efforts underway by the Internet Engineering Task Force (IETF) Security Automation and Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report upon endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile as standards efforts mature. </span>
+                        <span class="note-header">Application Note: </span><span class="note">The intent of this requirement is that the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server be able to provide compliance information about enrolled mobile devices for use by other enterprise security infrastructure systems. There are active standards efforts underway by the Internet Engineering Task Force (IETF) Security Automation and Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report on endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile as standards efforts mature. </span>
                     </div>
                 </div>
             </div>
@@ -6833,7 +6830,7 @@
                     <a href="#FAU_STG.2.2" class="abbr">FAU_STG.2.2</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to[<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="_s_36">prevent</span>, <span class="selectable-content" id="_s_37">detect</span>] unauthorized modifications to the stored audit data in the audit trail.
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="_s_36">prevent</span>, <span class="selectable-content" id="_s_37">detect</span>] unauthorized modifications to the stored audit data in the audit trail.
                 </div>
             </div>
             <div class="activity_pane hide">
@@ -7404,7 +7401,7 @@
                         <span class="note-header">Application Note: </span><span class="note"> <a href="#FIA_X509_EXT.1.1/CERTVAL_SEL">FIA_X509_EXT.1.1/CERTVAL_SEL</a> should be chosen if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is distributed and the protocols selected in <a href="#FPT_ITT.1/INTER_XFER">FPT_ITT.1/INTER_XFER</a> use X.509 certificates for peer authentication. In this case, the use of revocation list checking is optional as there are additional requirements surrounding the enabling and disabling of the ITT channel as defined in <a href="#FCO_CPC_EXT.1">FCO_CPC_EXT.1</a>. If revocation checking is not supported, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select "no revocation method." However, if certificate revocation checking is supported, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects whether this is performed using OCSP or CRLs.
                             <br>
                             <br>
-                             This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> lists the rules for validating certificates. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author shall select whether revocation status is verified using OCSP or CRLs. <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage. 
+                             This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> lists the rules for validating certificates. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects whether revocation status is verified using OCSP or CRLs. <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a> requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding extendedKeyUsage. 
                             <br>
                             <br>
                              OCSP stapling and OCSP multi-stapling only support TLS server certificate validation. If other certificate types are validated, either OCSP or CRL should be claimed. If OCSP is not supported the EKU provision for checking the OCSP Signing purpose is met by default.
@@ -7843,7 +7840,7 @@
             </div>
         </div>
         <div class="comp" id="FPT_ITT.1/INTER_XFER_AGENT">
-            <h4>FPT_ITT.1/INTER_XFER_AGENT Internal TOE TSF Data Transfer (MDM agent)</h4>
+            <h4>FPT_ITT.1/INTER_XFER_AGENT Internal TOE TSF Data Transfer (MDM Agent)</h4>
             <div class="statustag">
                 <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>. </i></b>
             </div>
@@ -9361,7 +9358,7 @@
                 <td><a href="#FCS_CKM.2.1">FCS_CKM.2.1</a></td><td>Select "RSA schemes" or select "ECC schemes."</td>
             </tr>
             <tr>
-                <td>FCS_COP.1.1/COMF_ALG</td><td>Select 256 bits</td>
+                <td><a href="#FCS_COP.1.1/CONF_ALG">FCS_COP.1.1/CONF_ALG</a></td><td>Select 256 bits</td>
             </tr>
             <tr>
                 <td><a href="#FCS_COP.1.1/HASH_ALG">FCS_COP.1.1/HASH_ALG</a></td><td>Select SHA-384</td>
