@@ -1250,7 +1250,7 @@ DONE:
             <note role="application">The intent of this requirement is that the MDM server be able to provide 
               compliance information about enrolled mobile devices for use by other enterprise security infrastructure systems. 
               There are active standards efforts underway by the Internet Engineering Task Force (IETF) Security Automation and 
-              Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report upon 
+              Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report on 
               endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile 
               as standards efforts mature. 
             </note>
@@ -1695,7 +1695,7 @@ DONE:
               </aactivity>
           </f-element>
           <f-element>
-            <title>The TSF shall be able to<selectables onlyone="yes">
+            <title>The TSF shall be able to <selectables onlyone="yes">
               <selectable>prevent</selectable>
               <selectable>detect</selectable>
             </selectables>
@@ -2032,9 +2032,7 @@ DONE:
             </title>
             <note role="application">The ST author must select all key
               establishment schemes used for the selected cryptographic protocols.<h:br/><h:br/> 
-              The elliptic curves used for the key establishment scheme must correlate with the curves specified in <xref to="fel-ckm-tsf-func"/>.<h:br/><h:br/>
-               
-			  <xref to="fel-ckm-tsf-func"/>.
+              The elliptic curves used for the key establishment scheme must correlate with the curves specified in <xref to="fel-ckm-tsf-func"/>.
             </note>
             <aactivity>
               <TSS>If "invoke platform-provided functionality" is selected:<h:br/><h:br/>
@@ -2261,7 +2259,7 @@ DONE:
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable></selectables> 
-              <h:b>to</h:b> perform <h:i>encryption and decryption</h:i> in accordance with a specified cryptographic algorithm:
+              <h:b>to</h:b> perform [<h:i>encryption and decryption</h:i>] in accordance with a specified cryptographic algorithm:
               <selectables linebreak="yes">
                 <selectable>AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable>
                 <selectable>AES-GCM (as defined in NIST SP 800-38D)</selectable>
@@ -2489,7 +2487,7 @@ DONE:
             <note role="application">The intent of this requirement is to specify the hashing
               function for trusted channel protocols. The hash selection must support the message
               digest size selection. The hash selection should be consistent with the overall
-              strength of the algorithm used (for example, SHA-256 for 128-bit keys).</note>
+              strength of the algorithm used.</note>
             <aactivity>
               <TSS>If "invoke platform-provided functionality" is selected:<h:br/><h:br/>                
                 The evaluator shall examine the TSS to verify that it describes (for each 
@@ -2568,7 +2566,7 @@ DONE:
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> <h:b>to</h:b> perform <h:i>keyed-hash message authentication</h:i> in
+            </selectables> <h:b>to</h:b> perform [<h:i>keyed-hash message authentication</h:i>] in
               accordance with a specified cryptographic algorithm of [<h:i>HMAC-SHA-384 key size</h:i>] 
                and <h:b>a message digest size of</h:b> [<h:i>384-bits</h:i>] that meets the following:
               [<h:i>FIPS Pub 198-1, "The Keyed-Hash Message
@@ -3685,7 +3683,7 @@ DONE:
 		    enabling and disabling of the ITT channel as defined in FCO_CPC_EXT.1. If revocation checking is not supported, the ST author should select 
 		    "no revocation method." However, if certificate revocation checking is supported, the ST author selects whether this is performed using OCSP 
 		    or CRLs.<h:br>  </h:br><h:br>  </h:br>
-		This SFR lists the rules for validating certificates. The ST author shall select whether revocation status is verified using OCSP or CRLs. 
+		This SFR lists the rules for validating certificates. The ST author selects whether revocation status is verified using OCSP or CRLs. 
 		    FIA_X509_EXT.2 requires that certificates are used for trusted channels; this use requires that the extendedKeyUsage rules are verified.
 		    Certificates may optionally be used for code signing and policy signing and, if implemented, must be validated to contain the corresponding
 		    extendedKeyUsage. <h:br>  </h:br><h:br>  </h:br> 
@@ -4860,7 +4858,8 @@ DONE:
 			</audit-event>
 		</f-component>
 		
-        <f-component cc-id="fpt_itt.1" iteration="INTER_XFER_AGENT" name="Internal TOE TSF Data Transfer (MDM agent)" status="sel-based">
+        <f-component cc-id="fpt_itt.1" iteration="INTER_XFER_AGENT" name="Internal TOE TSF Data
+          Transfer (MDM Agent)" status="sel-based">
           <depends on-sel="ITC_AgentInTOE"/>
           <f-element id="fel-interxfer-agent">
             <title>The TSF shall <selectables>
@@ -5159,11 +5158,11 @@ DONE:
 	  
         <f-component cc-id="fta_tab.1" name="Default TOE Access Banners" status="optional">
           <f-element id="fta-tab-1e1">
-            <title>Before establishing a user session, the [<h:i>TSF</h:i> shall <selectables>
+            <title>Before establishing a user session, the [<h:i>TSF</h:i>] shall <selectables>
               <selectable><h:b>invoke platform-provided functionality</h:b></selectable>
               <selectable><h:b>implement functionality</h:b></selectable>
-            </selectables> <h:b>to</h:b> display an <h:i>administrator-specified advisory notice and
-              consent warning</h:i> message <h:b>regarding use of the TOE.</h:b></title>
+            </selectables> <h:b>to</h:b> display an [<h:i>administrator-specified advisory notice and
+              consent warning</h:i>] message <h:b>regarding use of the TOE.</h:b></title>
             <note role="application">
               This requirement is to ensure that an advisory notice or consent banner is presented to the user on start-up or unlock of the TSF.
             </note>
@@ -6674,7 +6673,7 @@ w      <!-- <Guidance> -->
           <h:TD>Select "RSA schemes" or select "ECC schemes."</h:TD>
         </h:TR>
         <h:TR>
-          <h:TD>FCS_COP.1.1/COMF_ALG</h:TD>
+          <h:TD>FCS_COP.1.1/CONF_ALG</h:TD>
           <h:TD>Select 256 bits</h:TD>
         </h:TR>
         <h:TR>
