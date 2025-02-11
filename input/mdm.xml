@@ -763,7 +763,7 @@ DONE:
 		
 		<section id="dis" title="Security Audit for Distributed TOEs">
 			<h:br/>
-            For distributed TOEs the handling of audit information might be more complicated than for TOEs consisting only of one component.
+            For distributed TOEs, the handling of audit information might be more complicated than for TOEs consisting only of one component.
 			There are a few basic requirements to be fulfilled:<h:br/><h:br/>
               <h:ul>
                 <h:li>Every component must be able to generate audit information.</h:li>
@@ -859,7 +859,7 @@ DONE:
 			<assumptions>
 				<assumption name="A.COMPONENTS_RUNNING">
 					<description>This assumption applies to distributed TOEs only.
-						For distributed TOEs it is assumed that the availability of all TOE components is checked as
+						For distributed TOEs, it is assumed that the availability of all TOE components is checked as
 						appropriate to reduce the risk of an undetected attack on (or failure of) one or more TOE components. It is also assumed that in addition to the
 						availability of all components it is also checked as appropriate that the audit functionality is running properly on all TOE components.</description>
 					<objective-refer ref="OE.COMPONENTS_RUNNING">
@@ -1072,7 +1072,7 @@ DONE:
 	  <sec:Security_Objectives_for_the_Operational_Environment>
       <SOEs>
         <SOE name="OE.COMPONENTS_RUNNING">
-          <description>For distributed TOEs the administrator ensures that the availability of every TOE component is checked as appropriate to reduce the 
+          <description>For distributed TOEs, the administrator ensures that the availability of every TOE component is checked as appropriate to reduce the 
 		  risk of an undetected attack on (or failure of) one or more TOE components. The administrator also ensures that it is checked as appropriate 
 		  for every TOE component that the audit functionality is running properly. </description>
         </SOE>
@@ -1626,7 +1626,7 @@ DONE:
               
               If <xref to="locally"/> is chosen, FAU_STG.2 must be included in the ST.              
               
-              For distributed TOEs each component must be able to export audit data across a
+              For distributed TOEs, each component must be able to export audit data across a
               protected channel external (FTP_ITC.1) or inter-component
 		    (FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or FTP_ITC.1) as appropriate. At least one component of the TOE must be able to export 
 		    audit data via FTP_ITC.1/INTER_XFER_IT such that all TOE audit data can be exported to an external IT entity. 
@@ -3411,7 +3411,7 @@ DONE:
 			the list of actions that can take place before this authentication. The TSF or TOE platform may
 			use enterprise authentication to meet this 
 			requirement.<h:br/><h:br/>
-              For distributed TOEs at least one TOE component has to support the authentication of administrators but not necessarily all TOE components. In case not 
+              For distributed TOEs, at least one TOE component has to support the authentication of administrators but not necessarily all TOE components. In case not 
 			  all TOE components support authentication for administrators the TSS must describe how administrators are authenticated and identified.
             </note>
             <aactivity>              
@@ -4065,7 +4065,7 @@ DONE:
                     EST server and shall confirm that the EST-specific Trust Anchor Database is updated with the new trust anchor.</test>
                   <test>The evaluator shall configure the EST server to provide a
                     "Root CA Key Update" as described in RFC 7030 Section 4.1.3, but shall modify
-                    part of the newWithOld certificate's generated signature. The evaluator shall
+                    part of the NewWithOld certificate's generated signature. The evaluator shall
                     cause the TOE to request CA certificates from the 
                     EST server and shall confirm that the EST-specific Trust Anchor Database is not updated with the new trust anchor since
                     the signature did not verify.</test>
@@ -4241,7 +4241,8 @@ DONE:
                 policy verification material (a certificate or provisioned public key) to the agent, and the method for 
                 distinguishing whether a policy is appropriate for an agent. If tokens are claimed in FMT_POL_EXT.1.3, 
                 the evaluator shall verify the ST describes how tokens are established and distributed to the agent.</TSS>
-              <Guidance>If applicable, the evaluator shall verify that the operational guidance instructs administrators on configuring the Enterprise certificate to be used for signing policies or signing the policies before applying them.</Guidance>
+              <Guidance>If applicable, the evaluator shall verify that the operational guidance
+                instructs administrators on configuring the enterprise certificate to be used for signing policies or signing the policies before applying them.</Guidance>
               <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the MDM server, in transmission, or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent.
 	      </Tests>
             </aactivity>
@@ -4316,8 +4317,8 @@ DONE:
               </h:ul> 
               <h:b>and the following commands to the MDM agent:</h:b><h:br/>
                 <selectables>
-                <selectable><ctr id="smf13" ctr-type="mgmt" pre=""></ctr>. Remove Enterprise applications (MDF Function 17)</selectable>
-                <selectable><ctr id="smf14" ctr-type="mgmt" pre=""></ctr>. Wipe Enterprise data (MDF Function 28)</selectable>
+                <selectable><ctr id="smf13" ctr-type="mgmt" pre=""></ctr>. Remove enterprise applications (MDF Function 17)</selectable>
+                <selectable><ctr id="smf14" ctr-type="mgmt" pre=""></ctr>. Wipe enterprise data (MDF Function 28)</selectable>
                 <selectable><ctr id="smf15" ctr-type="mgmt" pre=""></ctr>. Remove imported X.509v3 certificates and 
                   <selectables linebreak="yes">
                     <selectable>no other X.509v3 certificates</selectable>
@@ -5854,7 +5855,8 @@ DONE:
             <a-element type="E">
               <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
               <aactivity> 
-                Some of the contents of the operational guidance will be verified by the evaluation activities in Sections 4.2, 4.3, and 4.4and evaluation of the 
+                Some of the contents of the operational guidance will be verified by the evaluation
+                activities in Sections 4.2, 4.3, and 4.4, and evaluation of the 
 				TOE according to the CEM. The following additional information is also required.<h:br/><h:br/> 
 				If cryptographic functions are provided by the TOE, the operational guidance shall contain instructions for configuring the cryptographic engine
 				associated with the evaluated configuration of the TOE. It shall provide a warning to the administrator that use of other cryptographic engines was 
@@ -5883,7 +5885,8 @@ DONE:
             <a-element type="C">
               <title>The preparative procedures shall describe all the steps necessary for secure installation of the TOE and for the secure preparation of the operational environment in accordance with the security objectives for the operational environment as described in the ST.</title>
               <note role="application">It is recognised that the application of these requirements will vary depending on aspects such as whether the TOE is delivered in an operational state, or whether it has to be installed at the TOE owner's site, etc.<h:br/><h:br/>
-                It might also be the case that no installation is necessary, for example as a Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyse installation procedures and thus this requirement is implicitly satisfied.
+                It might also be the case that no installation is necessary, for example as a
+                Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyse installation procedures and thus this requirement is implicitly satisfied.
               </note>
             </a-element>          
             <a-element type="E">
