@@ -684,7 +684,7 @@
          Only those <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> are required to be audited. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> for a distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must include a mapping of <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> to each of the components of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. (Note that this deliverable is examined as part of the <a href="#ASE_TSS.1">ASE_TSS.1</a> and <a href="#AVA_VAN.1">AVA_VAN.1</a> Evaluation Activities.) The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> for a distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may also introduce a "minimum configuration" and identify components that may have instances added to an operational configuration without affecting the validity of the <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> certification. Appendix E describes Evaluation Activities relating to these equivalency aspects of a distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (and hence what is expected in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>). 
         <h2 class="indexable" data-level="2" id="dis">3.3 Security Audit for Distributed TOEs</h2>
         <br>
-         For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> the handling of audit information might be more complicated than for <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> consisting only of one component. There are a few basic requirements to be fulfilled:
+         For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr>, the handling of audit information might be more complicated than for <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> consisting only of one component. There are a few basic requirements to be fulfilled:
         <br>
         <br>
         <ul>
@@ -737,7 +737,7 @@
         <dl>
             <dt class="assumption defined" id="A.COMPONENTS_RUNNING">A.COMPONENTS_RUNNING</dt>
             <dd>
-                <span class="description">This assumption applies to distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> only. For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> it is assumed that the availability of all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components. It is also assumed that in addition to the availability of all components it is also checked as appropriate that the audit functionality is running properly on all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components.</span>
+                <span class="description">This assumption applies to distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> only. For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr>, it is assumed that the availability of all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components. It is also assumed that in addition to the availability of all components it is also checked as appropriate that the audit functionality is running properly on all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components.</span>
             </dd>
             <dt class="assumption defined" id="A.CONNECTIVITY">A.CONNECTIVITY</dt>
             <dd>
@@ -816,7 +816,7 @@
         <dl>
             <dt class="SOE defined" id="OE.COMPONENTS_RUNNING">OE.COMPONENTS_RUNNING</dt>
             <dd>
-                <span class="description">For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> the administrator ensures that the availability of every <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components. The administrator also ensures that it is checked as appropriate for every <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component that the audit functionality is running properly. </span>
+                <span class="description">For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr>, the administrator ensures that the availability of every <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component is checked as appropriate to reduce the risk of an undetected attack on (or failure of) one or more <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components. The administrator also ensures that it is checked as appropriate for every <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component that the audit functionality is running properly. </span>
             </dd>
             <dt class="SOE defined" id="OE.IT_ENTERPRISE">OE.IT_ENTERPRISE</dt>
             <dd>
@@ -1589,7 +1589,7 @@
                              Although the audit server is outside of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server should still be able to support mutual authentication. There are no requirements levied on the audit server, but the client (<abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server) should be able to support TLS client certificate authentication. This way if the non-TOE audit server does support verifying client certs, the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server is in a position to make use of that.
                             <br>
                             <br>
-                             If <a href="#locally">TOE itself</a> is chosen, <a href="#FAU_STG.2">FAU_STG.2</a> must be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> each component must be able to export audit data across a protected channel external (FTP_ITC.1) or inter-component (<a href="#FPT_ITT.1/INTER_XFER">FPT_ITT.1/INTER_XFER</a> / <a href="#FPT_ITT.1/INTER_XFER_AGENT">FPT_ITT.1/INTER_XFER_AGENT</a> or FTP_ITC.1) as appropriate. At least one component of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be able to export audit data via <a href="#FTP_ITC.1/INTER_XFER_IT">FTP_ITC.1/INTER_XFER_IT</a> such that all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> audit data can be exported to an external IT entity. </span>
+                             If <a href="#locally">TOE itself</a> is chosen, <a href="#FAU_STG.2">FAU_STG.2</a> must be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr>, each component must be able to export audit data across a protected channel external (FTP_ITC.1) or inter-component (<a href="#FPT_ITT.1/INTER_XFER">FPT_ITT.1/INTER_XFER</a> / <a href="#FPT_ITT.1/INTER_XFER_AGENT">FPT_ITT.1/INTER_XFER_AGENT</a> or FTP_ITC.1) as appropriate. At least one component of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be able to export audit data via <a href="#FTP_ITC.1/INTER_XFER_IT">FTP_ITC.1/INTER_XFER_IT</a> such that all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> audit data can be exported to an external IT entity. </span>
                     </div>
                 </div>
             </div>
@@ -2985,7 +2985,7 @@
                         <span class="note-header">Application Note: </span><span class="note">This requirement ensures that any user attempting to access the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must be authenticated. These users may be administrators attempting to administer the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or ordinary users attempting to enroll for management by the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> system. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author is responsible for assigning the list of actions that can take place before this authentication. The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform may use enterprise authentication to meet this requirement.
                             <br>
                             <br>
-                             For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> at least one <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component has to support the authentication of administrators but not necessarily all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components. In case not all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components support authentication for administrators the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must describe how administrators are authenticated and identified. </span>
+                             For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr>, at least one <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component has to support the authentication of administrators but not necessarily all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components. In case not all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components support authentication for administrators the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must describe how administrators are authenticated and identified. </span>
                     </div>
                 </div>
             </div>
@@ -3517,7 +3517,7 @@
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
-                        <div class="ea">If applicable, the evaluator shall verify that the operational guidance instructs administrators on configuring the Enterprise certificate to be used for signing policies or signing the policies before applying them.</div>
+                        <div class="ea">If applicable, the evaluator shall verify that the operational guidance instructs administrators on configuring the enterprise certificate to be used for signing policies or signing the policies before applying them.</div>
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -3579,10 +3579,10 @@
                      [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_225"><span class="ctr" data-myid="smf13" data-counter-type="ct-mgmt" id="smf13"> <span class="counter">13</span></span>. Remove Enterprise applications (MDF Function 17)</span>
+                            <span class="selectable-content" id="_s_225"><span class="ctr" data-myid="smf13" data-counter-type="ct-mgmt" id="smf13"> <span class="counter">13</span></span>. Remove enterprise applications (MDF Function 17)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_226"><span class="ctr" data-myid="smf14" data-counter-type="ct-mgmt" id="smf14"> <span class="counter">14</span></span>. Wipe Enterprise data (MDF Function 28)</span>
+                            <span class="selectable-content" id="_s_226"><span class="ctr" data-myid="smf14" data-counter-type="ct-mgmt" id="smf14"> <span class="counter">14</span></span>. Wipe enterprise data (MDF Function 28)</span>
                         </li>
                         <li style="">
                             <span class="selectable-content" id="_s_227"><span class="ctr" data-myid="smf15" data-counter-type="ct-mgmt" id="smf15"> <span class="counter">15</span></span>. Remove imported X.509v3 certificates and [<b>selection</b>: 
@@ -5335,7 +5335,7 @@
                     <div class="component-activity-header">
                         <a href="#AGD_OPE.1">AGD_OPE.1</a>
                     </div>
-                     Some of the contents of the operational guidance will be verified by the evaluation activities in Sections 4.2, 4.3, and 4.4and evaluation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> according to the <abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr>. The following additional information is also required.
+                     Some of the contents of the operational guidance will be verified by the evaluation activities in Sections 4.2, 4.3, and 4.4, and evaluation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> according to the <abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr>. The following additional information is also required.
                     <br>
                     <br>
                      If cryptographic functions are provided by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the operational guidance shall contain instructions for configuring the cryptographic engine associated with the evaluated configuration of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. It shall provide a warning to the administrator that use of other cryptographic engines was not evaluated nor tested during the <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> evaluation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
@@ -6366,7 +6366,7 @@
                                         <a id="_t_83" class="defined" href="#_t_83">Test FIA_X509_EXT.4:9</a>: The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_EST">EST</a></abbr> server to provide a "Root CA Key Update" as described in RFC 7030 Section 4.1.3. The evaluator shall cause the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to request CA certificates from the <abbr class="dyn-abbr"><a href="#abbr_EST">EST</a></abbr> server and shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_EST">EST</a></abbr>-specific Trust Anchor Database is updated with the new trust anchor.
                                     </li>
                                     <li class="test-">
-                                        <a id="_t_84" class="defined" href="#_t_84">Test FIA_X509_EXT.4:10</a>: The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_EST">EST</a></abbr> server to provide a "Root CA Key Update" as described in RFC 7030 Section 4.1.3, but shall modify part of the newWithOld certificate's generated signature. The evaluator shall cause the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to request CA certificates from the <abbr class="dyn-abbr"><a href="#abbr_EST">EST</a></abbr> server and shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_EST">EST</a></abbr>-specific Trust Anchor Database is not updated with the new trust anchor since the signature did not verify.
+                                        <a id="_t_84" class="defined" href="#_t_84">Test FIA_X509_EXT.4:10</a>: The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_EST">EST</a></abbr> server to provide a "Root CA Key Update" as described in RFC 7030 Section 4.1.3, but shall modify part of the NewWithOld certificate's generated signature. The evaluator shall cause the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to request CA certificates from the <abbr class="dyn-abbr"><a href="#abbr_EST">EST</a></abbr> server and shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_EST">EST</a></abbr>-specific Trust Anchor Database is not updated with the new trust anchor since the signature did not verify.
                                     </li>
                                     <li class="test-">
                                         <a id="_t_85" class="defined" href="#_t_85">Test FIA_X509_EXT.4:11</a>: The evaluator shall use the operational guidance to cause the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to generate a certificate request message. The evaluator shall capture the generated message and ensure that it conforms with the format specified by RFC 2986. The evaluator shall confirm that the certificate request provides the public key and other required information, including any necessary user-input information.
