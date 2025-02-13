@@ -1279,7 +1279,7 @@
 		      relevant with respect to this PP. The evaluator may perform this activity as part of the activities associated with ensuring the AGD_OPE
 		      guidance  satisfies the requirements.
 	      </Guidance>
-              <Tests>The evaluator shall test the TOEs ability to correctly generate audit data by having the TOE generate audit data for the events
+              <Tests>The evaluator shall test the TOE's ability to correctly generate audit data by having the TOE generate audit data for the events
 		      listed in the provided table and administrative actions. This should include all instances of an event. The evaluator shall test that 
 		      audit data are generated for the establishment and termination of a channel for each of the cryptographic protocols contained in the
 		      ST. For administrative actions, the evaluator shall test that each action determined by the evaluator above to be security relevant in
@@ -2766,9 +2766,7 @@
             <note role="application">
               NIST SP 800-90A contains three different methods of generating random numbers;
               each of these, in turn, depends on underlying cryptographic primitives (hash functions/ciphers).
-              The ST author will select the function used and include the specific underlying cryptographic primitives used in the requirement or in the TSS.
-              While any of the identified hash functions (SHA-224, SHA-256, SHA-384, SHA-512) are allowed for Hash_DRBG or HMAC_DRBG,
-              only AES-based implementations for CTR_DRBG are allowed.
+              The ST author will select the function used and include the specific underlying cryptographic primitives used in the requirement or in the TSS.            
             </note>
             <aactivity level="element">
               <TSS>The evaluator shall verify that the TSS identifies the DRBGs used by the TOE.<h:br/><h:br/>
@@ -4475,39 +4473,40 @@
                     <selectable>no other features</selectable>
                   </selectables> allowed for enrollment</h:li> 
                   <h:li><selectables>
-                    <selectable><h:br/>0. Choose X.509v3 certificates for MDM server use</selectable>                    
-                    <selectable><h:br/>1. Allow the administrator to choose whether to accept the certificate when connection cannot be made to establish validity</selectable>                 
-					          <selectable><h:br/>2. Configure the TOE unlock banner</selectable>
-                    <selectable><h:br/>3. Configure periodicity of the following commands to the agent: <assignable>list of commands</assignable></selectable>
-                    <selectable><h:br/>4. Configure the privacy-sensitive information that will and will not be collected from particular mobile devices</selectable>
-                    <selectable><h:br/>5. Configure the length of time the enrollment authenticator is valid</selectable>
-                    <selectable><h:br/>6. Configure the interaction between TOE components</selectable>
-                    <selectable><h:br/>7. Configure the cryptographic functionality</selectable>
-                    <selectable><h:br/>8. <assignable>other management functions</assignable></selectable>
-                    <selectable><h:br/>9. No other management functions</selectable>                    
+                    <selectable><h:br/>1. Choose X.509v3 certificates for MDM server use</selectable>                    
+                    <selectable><h:br/>2. Allow the administrator to choose whether to accept the certificate when connection cannot be made to establish validity</selectable>                 
+					          <selectable><h:br/>3. Configure the TOE unlock banner</selectable>
+                    <selectable><h:br/>4. Configure periodicity of the following commands to the agent: <assignable>list of commands</assignable></selectable>
+                    <selectable><h:br/>5. Configure the privacy-sensitive information that will and will not be collected from particular mobile devices</selectable>
+                    <selectable><h:br/>6. Configure the length of time the enrollment authenticator is valid</selectable>
+                    <selectable><h:br/>7. Configure the interaction between TOE components</selectable>
+                    <selectable><h:br/>8. Configure the cryptographic functionality</selectable>
+                    <selectable><h:br/>9. <assignable>other management functions</assignable></selectable>
+                    <selectable><h:br/>10. No other management functions</selectable>                    
                   </selectables></h:li>               
             </h:ol>
             </title>
             <note role="application"> This requirement captures all the configuration functionality in the MDM server to configure 
 			the underlying MDM server. The ST author can add more commands and configuration policies by completing the assignment
 			statement.<h:br/><h:br/>
-              Function c0 is selection-based under the very limited circumstances when certificate management is both 
+              Function b1 is selection-based under the very limited circumstances when certificate management is both 
               performed solely by platform-provided functionality and the platform uses cloud services; for all other
               instances it is mandatory. This requirement will be made fully mandatory again in a future version of 
-              the PP. Function c0 can be met by relying on the platform to configure the certificates used by the MDM
+              the PP. Function b1 can be met by relying on the platform to configure the certificates used by the MDM
               server, however, the MDM server must allow the administrator to choose which certificate is used for a 
-              specific functionality. The selection in b corresponds to the selection in <xref to="fel-enr-limit"/>.
-              The selection in c.1 includes a function that corresponds to the selection in <xref to="fel-x509-fail"/>.
-              Function c.3 allows the administrator to configure
+              specific functionality. The selection in a corresponds to the selection in <xref to="fel-enr-limit"/>.
+              The selection in c.2 includes a function that corresponds to the selection in <xref to="fel-x509-fail"/>.
+              Function c.4 allows the administrator to configure
 			        periodicity of assigned commands, for example "read audit logs kept by the Mobile Device." In this way the 
 			        administrator can configure the MDM system to retrieve audit logs from the Mobile Device on a periodic, such as
-			        daily, basis in order to ensure freshness of log data and to minimize loss of audit logs. Function c.4 allows the
+			        daily, basis in order to ensure freshness of log data and to minimize loss of audit logs.
+			        Function c.5 allows the
 			        administrator to configure the privacy-sensitive information that will and will not be collected from particular
 			        mobile devices to handle BYOD environments where some information may not be appropriate to collect. Privacy
 			        sensitive information may include items such as device physical location and lists of installed personal
 			        applications, and would vary depending on the particular capabilities of the TOE and MDM agent. The TOE should
 			        provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and 
-			        define the information that will be collected from devices in each category. Function c.5 corresponds to 
+			        define the information that will be collected from devices in each category. Function c.6 corresponds to 
 			        configuring the length of time the user authenticator for enrollment is valid in FMT_SAE_EXT.1. This function
 			        must be included in the ST if and only if FMT_SAE_EXT.1 is included in the ST.<h:br/><h:br/>            
               For distributed TOEs, the interaction between TOE components will be configurable (see FCO_CPC_EXT.1). Therefore,
@@ -4523,10 +4522,11 @@
 			  modified by the operational environment in order to improve the channel security.              
             </note>
             <aactivity>
-              <TSS> The evaluator shall examine the TSS to ensure that it describes each management function listed. For function c.4, the evaluator shall examine the TSS to ensure that it describes the privacy-sensitive information that the TOE has the capability to collect from enrolled mobile devices.</TSS>
+              <TSS> The evaluator shall examine the TSS to ensure that it describes each management
+                function listed. For function c.5, the evaluator shall examine the TSS to ensure that it describes the privacy-sensitive information that the TOE has the capability to collect from enrolled mobile devices.</TSS>
               <Guidance> The evaluator shall verify the operational guidance includes detailed instructions of what options are available and how to configure each management functional capability listed.</Guidance>
-              <Tests> The tests of functions b, c.1, c.2, and c.5 are performed in conjunction with
-                the use of the function. Test 3 also covers function c.4. The evaluator shall perform the following tests: <testlist>
+              <Tests> The tests of functions a, c.2, c.3, and c.6 are performed in conjunction with
+                the use of the function. Test 3 also covers function c.5. The evaluator shall perform the following tests: <testlist>
                 <test>The evaluator shall configure the TSF authentication certificates and verify that the correct certificate is used in established trusted connections (FPT_ITT.1/INTER_XFER, FPT_ITT.1/INTER_XFER_AGENT, FTP_ITC.1/INTER_XFER_IT, and FTP_TRP.1/TRUSTPATH_ENROLL).</test>
                   <test>(conditional) The evaluator shall configure the periodicity for the assigned list of commands to the agent for several configured time periods and shall verify that the MDM server performs the commands schedule.</test>
                   <test>(conditional) The evaluator shall design and perform tests to demonstrate that the assigned function may be configured and that the intended behavior of the function is enacted by the MDM server.</test>
