@@ -9,6 +9,7 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[2]""/note[1]""/h:p[1]"For the s"/h:p[3]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[6]""/f-element[1]""/aactivity[1]""/TSS[1]""/h:p[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[6]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[1]"For each "/h:p[1]""
+ Failed to find a reference to Threats.
  Failed to find a reference to sar.
 * Warning: Since FAU_ALT_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
