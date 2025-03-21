@@ -1,16 +1,14 @@
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[1]""/aactivity[1]""/Tests[1]"If "imple"/h:p[1]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[1]""/aactivity[1]""/Tests[1]"If "imple"/h:p[1]"The evalu"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[1]""/aactivity[1]""/Tests[1]"If "imple"/h:p[1]"The evalu"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[1]""/aactivity[1]""/Tests[1]"If "imple"/h:p[1]"The evalu"/h:p[4]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[2]""/note[1]""/h:p[1]"For the s"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[2]""/note[1]""/h:p[1]"For the s"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[2]""/note[1]""/h:p[1]"For the s"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[6]""/f-element[1]""/aactivity[1]""/TSS[1]""/h:p[1]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[6]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[1]"For each "/h:p[1]""
- Failed to find a reference to Threats.
- Failed to find a reference to sar.
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[1]""/aactivity[1]""/Tests[1]"If "imple"/h:p[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[1]""/aactivity[1]""/Tests[1]"If "imple"/h:p[1]"The evalu"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[1]""/aactivity[1]""/Tests[1]"If "imple"/h:p[1]"The evalu"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[1]""/aactivity[1]""/Tests[1]"If "imple"/h:p[1]"The evalu"/h:p[4]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[2]""/note[1]""/h:p[1]"For the s"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[2]""/note[1]""/h:p[1]"For the s"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[10]""/f-element[2]""/note[1]""/h:p[1]"For the s"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[6]""/f-element[1]""/aactivity[1]""/TSS[1]""/h:p[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Problem_Definition[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[6]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[1]"For each "/h:p[1]""
 * Warning: Since FAU_ALT_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FAU_CRP_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
