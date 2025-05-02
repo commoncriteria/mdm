@@ -293,11 +293,6 @@
                 </tr>
                 <tr>
                     <td>
-                        <div id="Primary_MDM_Server">Primary MDM Server</div>
-                    </td><td>Used in conjunction with a subordinate MDM server. This is the admin-facing server that issues commands and MDM policy files to the subordinate MDM server to be passed to the MDM agent on the managed device. </td>
-                </tr>
-                <tr>
-                    <td>
                         <div id="Protected_Data">Protected Data</div>
                     </td><td>All non-TSF data on the mobile device, including user or enterprise data. Protected data is encrypted while the mobile device is in the powered-off state. This includes keys in software-based storage. May overlap with sensitive data. </td>
                 </tr>
@@ -310,11 +305,6 @@
                     <td>
                         <div id="Sensitive_Data">Sensitive Data</div>
                     </td><td>Data that is encrypted by the mobile device. May include all user or enterprise data or may be data for specific applications such as emails, messaging, documents, calendar items, or contacts. May be protected while the mobile device is in the locked state. Must include at minimum some keys in software-based key storage. </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="Subordinate_MDM_Server">Subordinate MDM Server</div>
-                    </td><td> The subordinate MDM server is used to facilitate communications between a primary MDM server and an MDM agent on a managed device. The subordinate MDM server may modify/interpret the MDM policy sent from the primary MDM server to the MDM agent, using well-defined rules, and re-sign the resulting MDM policy for delivery to the MDM agent. </td>
                 </tr>
                 <tr>
                     <td>
@@ -334,7 +324,11 @@
             </table>
         </div>
         <h2 class="indexable" data-level="2" id="cte">1.3 Compliant Targets of Evaluation</h2>
-         The Mobile Device Management (<abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>) system consists of two primary components: the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server software and the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent. Optionally, the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> system may consist of a separate Mobile Application Store (MAS) server and/or a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server. 
+         The Mobile Device Management (<abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>) system consists of two primary components: the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server software and the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent. Optionally, the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> system may consist of a separate Mobile Application Store (MAS) server 
+        <mark>
+            and/or a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.
+        </mark>
+         
         <h3 class="indexable" data-level="3" id="tb">1.3.1 TOE Boundary</h3>
          The <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> system operational environment consists of the mobile device on which the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent resides, the platform on which the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server runs, and an untrusted wireless network over which they communicate, as pictured below. 
         <br>
@@ -1291,7 +1285,11 @@
                              The <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent is required to report to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server on successful application of policies on a managed mobile device, and failures can be inferred from the absence of such alerts. This requirement is intended to ensure that the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server notifies administrators when policies are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the mobile device.
                             <br>
                             <br>
-                             If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>, then sending an alert to the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> over the trusted channel is sufficient to fulfil this requirement. </span>
+                             
+                            <mark>
+                                If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>, then sending an alert to the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> over the trusted channel is sufficient to fulfil this requirement. 
+                            </mark>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -1354,7 +1352,11 @@
                     <ol type="a">
                         <li>All administrative actions</li>
                         <li>
-                             [<b>selection</b>: <span class="selectable-content" id="_s_11">Commands issued to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent</span>, <span class="selectable-content" id="_s_12">Commands issued to the Subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server</span>, <span class="selectable-content" id="_s_13">none</span>] 
+                             [<b>selection</b>: <span class="selectable-content" id="_s_11">Commands issued to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent</span>, <span class="selectable-content" id="_s_12">
+                                <mark>
+                                    Commands issued to the Subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server
+                                </mark>
+                            </span>, <span class="selectable-content" id="_s_13">none</span>] 
                         </li>
                         <li>
                             Specifically defined auditable events listed in <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">3</span></a>
@@ -1366,7 +1368,11 @@
                                     <span class="selectable-content" id="_s_14">Start up and shut down of the audit functions</span>
                                 </li>
                                 <li style="">
-                                    <span class="selectable-content" id="_s_15">Status updates provided to the Primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server</span>
+                                    <span class="selectable-content" id="_s_15">
+                                        <mark>
+                                            Status updates provided to the Primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server
+                                        </mark>
+                                    </span>
                                 </li>
                                 <li style="">
                                     <span class="selectable-content" id="sel-at2"><span class="refinement">Auditable events defined in <a href="#t-audit-optional" class="t-audit-optional-ref">Table <span class="counter">7</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></span>
@@ -1400,14 +1406,17 @@
                              Item <b>a</b> above requires all administrative actions to be auditable. Administrative actions refer to any management functions specified by <a href="#FMT_MOF.1/FUNCBE">FMT_MOF.1/FUNCBE</a>. Thus no additional specification for the auditability of these actions is specified in <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">3</span></a> aside from those that require additional record content. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is distributed and the given component does not deal with setting the policy applied to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent, it is acceptable to not have any administrative actions to audit.
                             <br>
                             <br>
-                             Item <b>b</b> includes those commands, which may be performed automatically based on triggers or on a schedule. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component, if distributed, interacts directly with the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent or subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then "Commands issued to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent" or "Commands issued to the Subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server" must be selected. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component, if distributed, does not interact directly with either the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent or subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then it is acceptable to select "none."
+                             Item <b>b</b> includes those commands, which may be performed automatically based on triggers or on a schedule. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component, if distributed, interacts directly with the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent
+                            <mark>
+                                 or subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then "Commands issued to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent" or "Commands issued to the Subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server" must be selected. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component, if distributed, does not interact directly with either the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent or subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then it is acceptable to select "none."
+                            </mark>
                             <br>
                             <br>
                              <b>In item d above, "start up and shut down of the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> system" must be selected if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> has a start up and shut down phase. Additionally, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is distributed, this applies to all components. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is not distributed then <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> system is equivalent to <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required. 
                                 <mark>
                                     Additionally if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and interfaces with a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then "Status updates provided to the Primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Server" must be selected. 
                                 </mark>
-                                 </b>
+                            </b>
                             <br>
                             <br>
                              Depending on the specific requirements selected by the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author from <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, optional requirements, selection-based requirements, and objective requirements, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should include the appropriate auditable events from <a href="#t-audit-optional" class="t-audit-optional-ref">Table <span class="counter">7</span></a>, <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">9</span></a>, and <a href="#t-audit-objective" class="t-audit-objective-ref">Table <span class="counter">8</span></a> in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> for the requirements selected.
