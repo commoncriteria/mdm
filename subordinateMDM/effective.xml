@@ -4121,7 +4121,7 @@
         <f-element id="fmt-pol-ext-1e2">
           <title>The TSF shall sign policies and policy updates using a private key associated with <selectables>
             <selectable>an X509 certificate</selectable>
-            <selectable>a public key provisioned to the agent</selectable>
+            <selectable>a public key provisioned to the agent <h:mark>or subordinate MDM server</h:mark></selectable>
           </selectables>
           trusted by the agent <h:mark>or subordinate MDM server</h:mark> for policy verification.</title>
           <note role="application">
@@ -4129,7 +4129,7 @@
           </note></f-element>
         <f-element id="fmt-pol-ext-1e3">
           <title>For each unique policy managed by the TSF, the TSF shall validate that the policy is appropriate for an 
-          agent using <selectables>
+          agent <h:mark>or subordinate MDM server</h:mark> using <selectables>
             <selectable>client authentication via an X509 certificate representing the agent <h:mark>or subordinate MDM server</h:mark></selectable>
             <selectable>a token issued to the agent <h:mark>or subordinate MDM server</h:mark> and associated with a policy signing key uniquely associated
             to the policy</selectable>
@@ -4149,8 +4149,8 @@
                 the evaluator shall verify the ST describes how tokens are established and distributed to the agent <h:mark>or subordinate MDM server</h:mark>.</TSS>
               <Guidance>If applicable, the evaluator shall verify that the operational guidance
                 instructs administrators on configuring the enterprise certificate to be used for signing policies or signing the policies before applying them.</Guidance>
-              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the MDM server, in transmission, 
-              or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent.
+              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the <h:mark>TOE</h:mark>, in transmission, 
+              or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent <h:mark>or subordinate MDM server</h:mark>.
 	      </Tests>
             </aactivity>
           </f-element>
