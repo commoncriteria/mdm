@@ -124,7 +124,7 @@
 				OS, without context, may be assumed to refer to the platform of the
 				application processor. </term>
 			<term full="Powered-Off State">Mobile device shutdown state.</term>
-      <term full="Primary MDM Server"><h:mark>Used in conjunction with a subordinate MDM server. This is the admin-facing server that issues commands and MDM policy files to the subordinate MDM server to be passed to the MDM agent on the managed device. </h:mark></term>
+      <h:mark><term full="Primary MDM Server">Used in conjunction with a subordinate MDM server. This is the admin-facing server that issues commands and MDM policy files to the subordinate MDM server to be passed to the MDM agent on the managed device. </term></h:mark>
 			<term full="Protected Data">All non-TSF data on the mobile device,
 				including user or enterprise data. Protected data is encrypted while the mobile device
 				is in the powered-off state. This includes keys in software-based storage. May overlap
@@ -136,8 +136,8 @@
 				emails, messaging, documents, calendar items, or contacts. May be protected while the
 				mobile device is in the locked state. Must include at minimum some keys in
 				software-based key storage. </term>
-      <term full="Subordinate MDM Server"><h:mark>The subordinate MDM server is used to facilitate communications between a primary MDM server and an MDM agent on a 
-        managed device. The subordinate MDM server may modify/interpret the MDM policy sent from the primary MDM server to the MDM agent, using well-defined rules, and re-sign the resulting MDM policy for delivery to the MDM agent. </h:mark></term>
+      <h:mark><term full="Subordinate MDM Server">The subordinate MDM server is used to facilitate communications between a primary MDM server and an MDM agent on a 
+        managed device. The subordinate MDM server may modify/interpret the MDM policy sent from the primary MDM server to the MDM agent, using well-defined rules, and re-sign the resulting MDM policy for delivery to the MDM agent. </term></h:mark>
 			<term full="Trust Anchor Database">A list of trusted root Certificate Authority certificates. </term>
 			<term full="Unenrolled State">Mobile device state when it is not managed by an MDM.</term>
 			<term full="Unlocked State">Mobile device state where it is powered on
@@ -4110,7 +4110,11 @@
             </h:ul></audit>
           <dependencies>No dependencies.</dependencies>
           <f-element id="fmt-pol-ext-1e1">
-            <title>The TSF shall provide digitally signed policies and policy updates to the MDM agent.</title>
+            <title>The TSF shall provide digitally signed policies and policy updates to the 
+            <selectables>
+              <selectable>MDM agent</selectable>
+              <selectable><h:mark>subordinate MDM server</h:mark></selectable>
+            </selectables>.</title>
             <note role="application">The intent of this requirement is to cryptographically tie the policies to the enterprise that mandated the policy, not to
               protect the policies in transit (as they are already protected by FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or FTP_ITC.1/INTER_TSF_XFER_AGENT). This is especially critical for users who connect to multiple enterprises.</note>
           </f-element>
@@ -4119,33 +4123,34 @@
             <selectable>an X509 certificate</selectable>
             <selectable>a public key provisioned to the agent</selectable>
           </selectables>
-          trusted by the agent for policy verification.</title>
+          trusted by the agent <h:mark>or subordinate MDM server</h:mark> for policy verification.</title>
           <note role="application">
             If "an X509 certificate" is selected, the "policy signing" option in FIA_X509_EXT.2 is also claimed.
           </note></f-element>
         <f-element id="fmt-pol-ext-1e3">
           <title>For each unique policy managed by the TSF, the TSF shall validate that the policy is appropriate for an 
           agent using <selectables>
-            <selectable>client authentication via an X509 certificate representing the agent</selectable>
-            <selectable>a token issued to the agent and associated with a policy signing key uniquely associated
+            <selectable>client authentication via an X509 certificate representing the agent <h:mark>or subordinate MDM server</h:mark></selectable>
+            <selectable>a token issued to the agent <h:mark>or subordinate MDM server</h:mark> and associated with a policy signing key uniquely associated
             to the policy</selectable>
           </selectables>.</title>
           <note role="application">
-            If "client authentication via an X509 certificate representing the agent" is claimed, the appropriate protocol in 
-            FIA_X509_EXT.2 is also claimed. If "a token issued to the agent and associated with a unique policy signing key 
+            If "client authentication via an X509 certificate representing the agent <h:mark>or subordinate MDM server</h:mark>" is claimed, the appropriate protocol in 
+            FIA_X509_EXT.2 is also claimed. If "a token issued to the agent <h:mark>or subordinate MDM server</h:mark> and associated with a unique policy signing key 
             uniquely associated to the policy" is claimed, FIA_TOK_EXT.1.1 is also claimed and the TSF maintains the 
-            association of the key pairs and the agent tokens. When multiple policies are supported, a unique policy signing
+            association of the key pairs and the agent <h:mark>or subordinate MDM server</h:mark> tokens. When multiple policies are supported, a unique policy signing
             key for each policy is used.
           </note>
             <aactivity>
               <TSS>The evaluator shall verify that the ST describes how policies are signed, to include whether the private 
                 key used for signing is associated with an X509 certificate or public key, the method for distributing the 
-                policy verification material (a certificate or provisioned public key) to the agent, and the method for 
-                distinguishing whether a policy is appropriate for an agent. If tokens are claimed in FMT_POL_EXT.1.3, 
-                the evaluator shall verify the ST describes how tokens are established and distributed to the agent.</TSS>
+                policy verification material (a certificate or provisioned public key) to the agent <h:mark>or subordinate MDM server</h:mark>, and the method for 
+                distinguishing whether a policy is appropriate for an agent <h:mark>or subordinate MDM server</h:mark>. If tokens are claimed in FMT_POL_EXT.1.3, 
+                the evaluator shall verify the ST describes how tokens are established and distributed to the agent <h:mark>or subordinate MDM server</h:mark>.</TSS>
               <Guidance>If applicable, the evaluator shall verify that the operational guidance
                 instructs administrators on configuring the enterprise certificate to be used for signing policies or signing the policies before applying them.</Guidance>
-              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the MDM server, in transmission, or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent.
+              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the MDM server, in transmission, 
+              or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent.
 	      </Tests>
             </aactivity>
           </f-element>
