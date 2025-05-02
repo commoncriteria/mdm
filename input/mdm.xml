@@ -221,7 +221,7 @@ DONE:
 				OS, without context, may be assumed to refer to the platform of the
 				application processor. </term>
 			<term full="Powered-Off State" >Mobile device shutdown state.</term>
-      <term full="Primary MDM Server" >Used in conjunction with a subordinate MDM server. This is the admin-facing server that issues commands and MDM policy files to the subordinate MDM server to be passed to the MDM agent on the managed device. </term>
+      <term full="Primary MDM Server" ><h:mark>Used in conjunction with a subordinate MDM server. This is the admin-facing server that issues commands and MDM policy files to the subordinate MDM server to be passed to the MDM agent on the managed device. </h:mark></term>
 			<term full="Protected Data" >All non-TSF data on the mobile device,
 				including user or enterprise data. Protected data is encrypted while the mobile device
 				is in the powered-off state. This includes keys in software-based storage. May overlap
@@ -233,8 +233,8 @@ DONE:
 				emails, messaging, documents, calendar items, or contacts. May be protected while the
 				mobile device is in the locked state. Must include at minimum some keys in
 				software-based key storage. </term>
-      <term full="Subordinate MDM Server" > The subordinate MDM server is used to facilitate communications between a primary MDM server and an MDM agent on a 
-        managed device. The subordinate MDM server may modify/interpret the MDM policy sent from the primary MDM server to the MDM agent, using well-defined rules, and re-sign the resulting MDM policy for delivery to the MDM agent. </term>
+      <term full="Subordinate MDM Server" ><h:mark>The subordinate MDM server is used to facilitate communications between a primary MDM server and an MDM agent on a 
+        managed device. The subordinate MDM server may modify/interpret the MDM policy sent from the primary MDM server to the MDM agent, using well-defined rules, and re-sign the resulting MDM policy for delivery to the MDM agent. </h:mark></term>
 			<term full="Trust Anchor Database" >A list of trusted root Certificate Authority certificates. </term>
 			<term full="Unenrolled State" >Mobile device state when it is not managed by an MDM.</term>
 			<term full="Unlocked State" >Mobile device state where it is powered on
@@ -244,7 +244,7 @@ DONE:
 		<!-- 1.3 Cmpliant Targets of Evaluation -->
 		<section id="cte" title="Compliant Targets of Evaluation">
 			The Mobile Device Management (MDM) system consists of two primary components: the MDM server software and the MDM agent. Optionally, the MDM system may
-			consist of a separate Mobile Application Store (MAS) server and/or a subordinate MDM server. 
+			consist of a separate Mobile Application Store (MAS) server <h:mark>and/or a subordinate MDM server.</h:mark> 
 			
 			<!-- 1.3.1 TOE Boundary -->
 			<section id="tb" title="TOE Boundary"> The MDM system operational environment consists of the mobile device on which the MDM agent resides, 
@@ -1180,7 +1180,7 @@ DONE:
 		    inferred from the absence of such alerts. This requirement is intended to ensure that the MDM server notifies administrators when policies 
 		    are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the mobile device.<h:br/><h:br/>
         
-        If the TOE is a subordinate MDM, then sending an alert to the primary MDM over the trusted channel is sufficient to fulfil this requirement. </note>
+        <h:mark>If the TOE is a subordinate MDM, then sending an alert to the primary MDM over the trusted channel is sufficient to fulfil this requirement. </h:mark></note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS and verify that it describes how the alert system is implemented. The evaluator shall also verify that
 		      a description of each assigned event is provided in the TSS.</TSS>
@@ -1289,14 +1289,14 @@ DONE:
 						<h:li>
 							<selectables>
 								<selectable>Commands issued to the MDM agent</selectable>
-                <selectable>Commands issued to the Subordinate MDM server</selectable>
+                <selectable><h:mark>Commands issued to the Subordinate MDM server</h:mark></selectable>
 								<selectable>none</selectable>
 								</selectables>
 						</h:li>
 						<h:li>Specifically defined auditable events listed in <xref g="t-audit-mandatory"/></h:li>                    
 					  <h:li><selectables linebreak="yes">
 					    <selectable>Start up and shut down of the audit functions</selectable>
-              <selectable>Status updates provided to the Primary MDM server</selectable>
+              <selectable><h:mark>Status updates provided to the Primary MDM server</h:mark></selectable>
               <selectable id="sel-at2"><refinement>Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</refinement></selectable>
 					    <selectable id="sel-at3"><refinement>Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</refinement></selectable>
 					    <selectable id="sel-at4"><refinement>Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</refinement></selectable>
@@ -1326,19 +1326,17 @@ DONE:
 				applied to the MDM agent, it is acceptable to not have any administrative actions to audit.<h:br/><h:br/>
               
 				Item <h:b>b</h:b> includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE component, if distributed, 
-				interacts directly with the MDM agent or subordinate MDM server, then "Commands issued to the MDM agent" or "Commands issued to the Subordinate MDM server" must be selected. If the TOE component, if distributed, does
-				not interact directly with either the MDM agent or subordinate MDM server, then it is acceptable to select "none."<h:br/><h:br/>
+				interacts directly with the MDM agent<h:mark> or subordinate MDM server, then "Commands issued to the MDM agent" or "Commands issued to the Subordinate MDM server" must be selected. If the TOE component, if distributed, does
+				not interact directly with either the MDM agent or subordinate MDM server, then it is acceptable to select "none."</h:mark><h:br/><h:br/>
 
         <h:b>In item d above, "start up and shut down of the MDM system" must be selected if the TSF has a start up and shut down phase. 
         Additionally, if the TOE is distributed, this applies to all components. If the TOE is not distributed then MDM system is equivalent 
         to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required. <h:mark>Additionally if the TOE acts as a subordinate MDM server and interfaces with a primary MDM server, 
-        then "Status updates provided to the Primary MDM Server" must be selected. </h:mark>
-         </h:b><h:br/><h:br/>
+        then "Status updates provided to the Primary MDM Server" must be selected. </h:mark></h:b><h:br/><h:br/>
               
 				Depending on the specific requirements selected by the ST author from SFR, optional requirements, selection-based
 				requirements, and objective requirements, the ST author should include the appropriate auditable
-				events from <xref g="t-audit-optional"/>, <xref g="t-audit-sel-based"/>, and <xref g="t-audit-objective"/> in the ST for the requirements selected.<h:br/><h:br/>
-              
+				events from <xref g="t-audit-optional"/>, <xref g="t-audit-sel-based"/>, and <xref g="t-audit-objective"/> in the ST for the requirements selected.<h:br/><h:br/>             
               
 
 		    	The following table contains the events enumerated in the auditable events tables for the TLS Functional Package. Inclusion of these events
