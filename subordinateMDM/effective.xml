@@ -1082,7 +1082,7 @@
 		    inferred from the absence of such alerts. This requirement is intended to ensure that the MDM server notifies administrators when policies 
 		    are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the mobile device.<h:br/><h:br/>
         
-        <h:mark>If the TOE is a subordinate MDM, then sending an alert to the primary MDM over the trusted channel is sufficient to fulfil this requirement. </h:mark></note>
+        <h:mark style="background-color:yellowgreen;">If the TOE is a subordinate MDM, then sending an alert to the primary MDM over the trusted channel is sufficient to fulfil this requirement. </h:mark></note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS and verify that it describes how the alert system is implemented. The evaluator shall also verify that
 		      a description of each assigned event is provided in the TSS.</TSS>
@@ -1191,14 +1191,14 @@
 						<h:li>
 							<selectables>
 								<selectable>Commands issued to the MDM agent</selectable>
-                <selectable><h:mark>Commands issued to the subordinate MDM server</h:mark></selectable>
+                <selectable><h:mark style="background-color:yellowgreen;">Commands issued to the subordinate MDM server</h:mark></selectable>
 								<selectable>none</selectable>
 								</selectables>
 						</h:li>
 						<h:li>Specifically defined auditable events listed in <xref g="t-audit-mandatory"/></h:li>                    
 					  <h:li><selectables linebreak="yes">
 					    <selectable>Start up and shut down of the audit functions</selectable>
-              <selectable><h:mark>Status updates provided to the primary MDM server</h:mark></selectable>
+              <selectable><h:mark style="background-color:yellowgreen;">Status updates provided to the primary MDM server</h:mark></selectable>
               <selectable id="sel-at2"><refinement>Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</refinement></selectable>
 					    <selectable id="sel-at3"><refinement>Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</refinement></selectable>
 					    <selectable id="sel-at4"><refinement>Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</refinement></selectable>
@@ -1228,13 +1228,12 @@
 				applied to the MDM agent, it is acceptable to not have any administrative actions to audit.<h:br/><h:br/>
               
 				Item <h:b>b</h:b> includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE component, if distributed, 
-				interacts directly with the MDM agent<h:mark> or subordinate MDM server, then "Commands issued to the MDM agent" or "Commands issued to the subordinate MDM server" must be selected. If the TOE component, if distributed, does
+				interacts directly with the MDM agent<h:mark style="background-color:yellowgreen;"> or subordinate MDM server, then "Commands issued to the MDM agent" or "Commands issued to the subordinate MDM server" must be selected. If the TOE component, if distributed, does
 				not interact directly with either the MDM agent or subordinate MDM server, then it is acceptable to select "none."</h:mark><h:br/><h:br/>
 
         <h:b>In item d above, "start up and shut down of the MDM system" must be selected if the TSF has a start up and shut down phase. 
         Additionally, if the TOE is distributed, this applies to all components. If the TOE is not distributed then MDM system is equivalent 
-        to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required. <h:mark>Additionally if the TOE acts as a subordinate MDM server and interfaces with a primary MDM server, 
-        then "Status updates provided to the primary MDM Server" must be selected. </h:mark></h:b><h:br/><h:br/>
+        to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required. <h:mark style="background-color:yellowgreen;">Additionally if the TOE acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM Server" must be selected. </h:mark></h:b><h:br/><h:br/>
               
 				Depending on the specific requirements selected by the ST author from SFR, optional requirements, selection-based
 				requirements, and objective requirements, the ST author should include the appropriate auditable
@@ -4113,7 +4112,7 @@
             <title>The TSF shall provide digitally signed policies and policy updates to the 
             <selectables>
               <selectable>MDM agent</selectable>
-              <selectable><h:mark>subordinate MDM server</h:mark></selectable>
+              <selectable><h:mark style="background-color:yellowgreen;">subordinate MDM server</h:mark></selectable>
             </selectables>.</title>
             <note role="application">The intent of this requirement is to cryptographically tie the policies to the enterprise that mandated the policy, not to
               protect the policies in transit (as they are already protected by FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT or FTP_ITC.1/INTER_TSF_XFER_AGENT). This is especially critical for users who connect to multiple enterprises.</note>
@@ -4121,36 +4120,36 @@
         <f-element id="fmt-pol-ext-1e2">
           <title>The TSF shall sign policies and policy updates using a private key associated with <selectables>
             <selectable>an X509 certificate</selectable>
-            <selectable>a public key provisioned to the agent <h:mark>or subordinate MDM server</h:mark></selectable>
+            <selectable>a public key provisioned to the agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark></selectable>
           </selectables>
-          trusted by the agent <h:mark>or subordinate MDM server</h:mark> for policy verification.</title>
+          trusted by the agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark> for policy verification.</title>
           <note role="application">
             If "an X509 certificate" is selected, the "policy signing" option in FIA_X509_EXT.2 is also claimed.
           </note></f-element>
         <f-element id="fmt-pol-ext-1e3">
           <title>For each unique policy managed by the TSF, the TSF shall validate that the policy is appropriate for an 
-          agent <h:mark>or subordinate MDM server</h:mark> using <selectables>
-            <selectable>client authentication via an X509 certificate representing the agent <h:mark>or subordinate MDM server</h:mark></selectable>
-            <selectable>a token issued to the agent <h:mark>or subordinate MDM server</h:mark> and associated with a policy signing key uniquely associated
+          agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark> using <selectables>
+            <selectable>client authentication via an X509 certificate representing the agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark></selectable>
+            <selectable>a token issued to the agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark> and associated with a policy signing key uniquely associated
             to the policy</selectable>
           </selectables>.</title>
           <note role="application">
-            If "client authentication via an X509 certificate representing the agent <h:mark>or subordinate MDM server</h:mark>" is claimed, the appropriate protocol in 
-            FIA_X509_EXT.2 is also claimed. If "a token issued to the agent <h:mark>or subordinate MDM server</h:mark> and associated with a unique policy signing key 
+            If "client authentication via an X509 certificate representing the agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark>" is claimed, the appropriate protocol in 
+            FIA_X509_EXT.2 is also claimed. If "a token issued to the agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark> and associated with a unique policy signing key 
             uniquely associated to the policy" is claimed, FIA_TOK_EXT.1.1 is also claimed and the TSF maintains the 
-            association of the key pairs and the agent <h:mark>or subordinate MDM server</h:mark> tokens. When multiple policies are supported, a unique policy signing
+            association of the key pairs and the agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark> tokens. When multiple policies are supported, a unique policy signing
             key for each policy is used.
           </note>
             <aactivity>
               <TSS>The evaluator shall verify that the ST describes how policies are signed, to include whether the private 
                 key used for signing is associated with an X509 certificate or public key, the method for distributing the 
-                policy verification material (a certificate or provisioned public key) to the agent <h:mark>or subordinate MDM server</h:mark>, and the method for 
-                distinguishing whether a policy is appropriate for an agent <h:mark>or subordinate MDM server</h:mark>. If tokens are claimed in FMT_POL_EXT.1.3, 
-                the evaluator shall verify the ST describes how tokens are established and distributed to the agent <h:mark>or subordinate MDM server</h:mark>.</TSS>
+                policy verification material (a certificate or provisioned public key) to the agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark>, and the method for 
+                distinguishing whether a policy is appropriate for an agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark>. If tokens are claimed in FMT_POL_EXT.1.3, 
+                the evaluator shall verify the ST describes how tokens are established and distributed to the agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark>.</TSS>
               <Guidance>If applicable, the evaluator shall verify that the operational guidance
                 instructs administrators on configuring the enterprise certificate to be used for signing policies or signing the policies before applying them.</Guidance>
-              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the <h:mark>TOE</h:mark>, in transmission, 
-              or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent <h:mark>or subordinate MDM server</h:mark>.
+              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the <h:mark style="background-color:yellowgreen;">TOE</h:mark>, in transmission, 
+              or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent <h:mark style="background-color:yellowgreen;">or subordinate MDM server</h:mark>.
 	      </Tests>
             </aactivity>
           </f-element>
@@ -4473,8 +4472,7 @@
 		
         <f-component cc-id="fmt_smf.1" iteration="SERVER_CONF_SERVER" name="Specification of Management Functions (Server Configuration of Server)">
           <f-element id="fmt-smf-1e1">
-            <title>The TSF shall be capable of performing the following management functions.
-            <comment> App note and tests needs to be updated to remove C selections</comment>
+            <title>The TSF shall be capable of performing the following management functions.            
             <h:ol type="a">
                  <h:li>Configure the <selectables>
                     <selectable>devices specified by <selectables>
@@ -4497,8 +4495,8 @@
                     <selectable><h:br/>6. Configure the length of time the enrollment authenticator is valid</selectable>
                     <selectable><h:br/>7. Configure the interaction between TOE components</selectable>
                     <selectable><h:br/>8. Configure the cryptographic functionality</selectable>
-                    <selectable><h:br/><h:mark>9. Configure the interaction with the primary MDM server</h:mark></selectable>
-                    <selectable><h:br/><h:mark>10. Configure the interaction with the subordinate MDM server</h:mark></selectable>
+                    <selectable><h:br/><h:mark style="background-color:yellowgreen;">9. Configure the interaction with the primary MDM server</h:mark></selectable>
+                    <selectable><h:br/><h:mark style="background-color:yellowgreen;">10. Configure the interaction with the subordinate MDM server</h:mark></selectable>
                     <selectable><h:br/>11. <assignable>other management functions</assignable></selectable>
                     <selectable><h:br/>12. No other management functions</selectable>                    
                   </selectables></h:li>               
@@ -4540,7 +4538,7 @@
 			  in the TSS, to describe the configuration of any cryptographic aspects of the registration channel that can be
 			  modified by the operational environment in order to improve the channel security.<h:br/><h:br/>
 
-        <h:mark>Functions b.9 and b.10 allow the administrator to configure the use of a subordinate MDM server to pass MDM policy files to an MDM agent on a managed device. This includes configuring the authentication and commmunication mechanisms 
+        <h:mark style="background-color:yellowgreen;">Functions b.9 and b.10 allow the administrator to configure the use of a subordinate MDM server to pass MDM policy files to an MDM agent on a managed device. This includes configuring the authentication and commmunication mechanisms 
         necessary to establish secure channels between the primary MDM server and subordinate MDM server. If the TOE acts as the primary MDM server, then <h:i>"Configure the interaction with the subordinate MDM server"</h:i> should be selected. If the TOE acts as
         a subordinate MDM server then <h:i>"Configure the interaction with the primary MDM server" should be selected.</h:i></h:mark>              
             </note>
@@ -5121,22 +5119,25 @@
                 <selectable id="ITC1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> provide a <h:b>trusted</h:b>
               communication channel between itself and <h:b>authorized</h:b> IT <h:b>entities supporting the following capabilities: audit server,
-              <selectables>
+              <selectables linebreak="yes">
                 <selectable>authentication server</selectable>
+                <selectable><h:mark style="background-color:yellowgreen;">primary MDM server</h:mark></selectable>
+                <selectable><h:mark style="background-color:yellowgreen;">subordinate MDM server</h:mark></selectable>
                 <selectable><assignable>other capabilities</assignable></selectable>
               </selectables></h:b> that is logically distinct from other communication channels and provides assured identification of its endpoints
               and protection of the channel data from modification or disclosure.</title>
             <note role="application">The intent of the mandatory portion of the above requirement is to use the cryptographic 
               protocols identified in the requirement to establish and maintain a trusted channel with authorized IT entities 
               that the TOE interacts with to perform its functions.<h:br/><h:br/> 
+
               Protection (by one of the listed protocols) is required at least for communications with the server that collects 
               the audit information. If it communicates with an authentication server (e.g., RADIUS), then the ST 
               author chooses "authentication server" in FTP_ITC.1.1/INTER_XFER_IT and this connection must be protected 
-              by one of the listed protocols. If other authorized IT entities (e.g., NTP server) are protected, the 
-              ST author makes the appropriate assignments (for those entities) and selections (for the protocols 
-              that are used to protect those connections).<h:br/><h:br/> 
+              by one of the listed protocols. <h:mark style="background-color:yellowgreen;">Likewise if the TOE acts as either a primary or subordinate MDM server, then "primary MDM server" or "subordinate MDM server" is selected for the device it communicates with and those communications are protected by one of the listed protocols.</h:mark> If other authorized IT entities (e.g., NTP server) are protected, the 
+              ST author makes the appropriate assignments (for those entities) and selections (for the protocols that are used to protect those connections).<h:br/><h:br/>
+
               To summarize, the connection to an external audit collection server is required to be protected by one of the listed 
-              protocols. If an external authentication server is supported, then it is required to protect that connection with one 
+              protocols. If an external authentication server is supported,<h:mark style="background-color:yellowgreen;">or the TOE interacts with a primary or subordinate MDM server,</h:mark> then it is required to protect that connection with one 
               of the listed protocols. For any other external server, external communications are not required to be protected, but 
               if protection is claimed, then it must be protected with one of the identified protocols.<h:br/><h:br/> 
               
