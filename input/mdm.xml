@@ -244,7 +244,7 @@ DONE:
 		<!-- 1.3 Cmpliant Targets of Evaluation -->
 		<section id="cte" title="Compliant Targets of Evaluation">
 			The Mobile Device Management (MDM) system consists of two primary components: the MDM server software and the MDM agent. Optionally, the MDM system may
-			consist of a separate Mobile Application Store (MAS) server <h:mark>and/or a subordinate MDM server.</h:mark> 
+			consist of a separate Mobile Application Store (MAS) server <h:mark style="background-color:yellowgreen;">and/or a subordinate MDM server.</h:mark> 
 			
 			<!-- 1.3.1 TOE Boundary -->
 			<section id="tb" title="TOE Boundary"> The MDM system operational environment consists of the mobile device on which the MDM agent resides, 
@@ -1289,14 +1289,14 @@ DONE:
 						<h:li>
 							<selectables>
 								<selectable>Commands issued to the MDM agent</selectable>
-                <selectable><h:mark>Commands issued to the Subordinate MDM server</h:mark></selectable>
+                <selectable><h:mark>Commands issued to the subordinate MDM server</h:mark></selectable>
 								<selectable>none</selectable>
 								</selectables>
 						</h:li>
 						<h:li>Specifically defined auditable events listed in <xref g="t-audit-mandatory"/></h:li>                    
 					  <h:li><selectables linebreak="yes">
 					    <selectable>Start up and shut down of the audit functions</selectable>
-              <selectable><h:mark>Status updates provided to the Primary MDM server</h:mark></selectable>
+              <selectable><h:mark>Status updates provided to the primary MDM server</h:mark></selectable>
               <selectable id="sel-at2"><refinement>Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</refinement></selectable>
 					    <selectable id="sel-at3"><refinement>Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</refinement></selectable>
 					    <selectable id="sel-at4"><refinement>Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</refinement></selectable>
@@ -1326,13 +1326,13 @@ DONE:
 				applied to the MDM agent, it is acceptable to not have any administrative actions to audit.<h:br/><h:br/>
               
 				Item <h:b>b</h:b> includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE component, if distributed, 
-				interacts directly with the MDM agent<h:mark> or subordinate MDM server, then "Commands issued to the MDM agent" or "Commands issued to the Subordinate MDM server" must be selected. If the TOE component, if distributed, does
+				interacts directly with the MDM agent<h:mark> or subordinate MDM server, then "Commands issued to the MDM agent" or "Commands issued to the subordinate MDM server" must be selected. If the TOE component, if distributed, does
 				not interact directly with either the MDM agent or subordinate MDM server, then it is acceptable to select "none."</h:mark><h:br/><h:br/>
 
         <h:b>In item d above, "start up and shut down of the MDM system" must be selected if the TSF has a start up and shut down phase. 
         Additionally, if the TOE is distributed, this applies to all components. If the TOE is not distributed then MDM system is equivalent 
         to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required. <h:mark>Additionally if the TOE acts as a subordinate MDM server and interfaces with a primary MDM server, 
-        then "Status updates provided to the Primary MDM Server" must be selected. </h:mark></h:b><h:br/><h:br/>
+        then "Status updates provided to the primary MDM Server" must be selected. </h:mark></h:b><h:br/><h:br/>
               
 				Depending on the specific requirements selected by the ST author from SFR, optional requirements, selection-based
 				requirements, and objective requirements, the ST author should include the appropriate auditable
@@ -4599,11 +4599,14 @@ DONE:
                     <selectable><h:br/>6. Configure the length of time the enrollment authenticator is valid</selectable>
                     <selectable><h:br/>7. Configure the interaction between TOE components</selectable>
                     <selectable><h:br/>8. Configure the cryptographic functionality</selectable>
-                    <selectable><h:br/>9. <assignable>other management functions</assignable></selectable>
-                    <selectable><h:br/>10. No other management functions</selectable>                    
+                    <selectable><h:br/><h:mark>9. Configure the interaction with the primary MDM server</h:mark></selectable>
+                    <selectable><h:br/><h:mark>10. Configure the interaction with the subordinate MDM server</h:mark></selectable>
+                    <selectable><h:br/>11. <assignable>other management functions</assignable></selectable>
+                    <selectable><h:br/>12. No other management functions</selectable>                    
                   </selectables></h:li>               
             </h:ol>
             </title>
+            <comment> App note and tests needs to be updated to remove C selections</comment>
             <note role="application"> This requirement captures all the configuration functionality in the MDM server to configure 
 			the underlying MDM server. The ST author can add more commands and configuration policies by completing the assignment
 			statement.<h:br/><h:br/>
@@ -4633,11 +4636,16 @@ DONE:
 			  example would be changing the management of a TOE component from direct remote administration to remote
 			  administration through another TOE component. A more complex use case would be if the realization of an SFR is 
 			  achieved through two or more TOE components and the responsibilities between the two or more components could 
-			  be modified.<h:br/><h:br/>             
+			  be modified.<h:br/><h:br/>
+
               For distributed TOEs, that implement a registration channel (as described in <xref to="fel-cpc-func"/>), the ST
 			  author uses the selection "configure the cryptographic functionality" in this SFR, and its corresponding mapping 
 			  in the TSS, to describe the configuration of any cryptographic aspects of the registration channel that can be
-			  modified by the operational environment in order to improve the channel security.              
+			  modified by the operational environment in order to improve the channel security.<h:br/><h:br/>
+
+        <h:mark>Functions b.9 and b.10 allow the administrator to configure the use of a subordinate MDM server to pass MDM policy files to an MDM agent on a managed device. This includes configuring the authentication and commmunication mechanisms 
+        necessary to establish secure channels between the primary MDM server and subordinate MDM server. If the TOE acts as the primary MDM server, then <h:i>"Configure the interaction with the subordinate MDM server"</h:i> should be selected. If the TOE acts as
+        a subordinate MDM server then <h:i>"Configure the interaction with the primary MDM server" should be selected.</h:i></h:mark>              
             </note>
             <aactivity>
               <TSS> The evaluator shall examine the TSS to ensure that it describes each management
