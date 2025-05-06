@@ -4312,7 +4312,7 @@ DONE:
               protect the policies in transit (as they are already protected by FTP_ITC.1/INTER_XFER_IT). This is especially critical for users who connect to multiple enterprises.</h:mark></note>
           </f-element>
         <f-element id="fmt-pol-ext-3e2">
-          <title><h:mark style="background-color:yellowgreen;">The TSF shall not process policies for the MDM agent if the signature check fails</h:mark></title>
+          <title><h:mark style="background-color:yellowgreen;">The TSF shall not process policies for the MDM agent if the signature check fails.</h:mark></title>
           <note role="application">
           </note>
         </f-element>
@@ -5040,7 +5040,68 @@ DONE:
             </aactivity>
           </f-element>
           <audit-event/>
-        </f-component>   
+        </f-component>
+
+        <f-component cc-id="fpt_tdc.1" name="TSF Data Consistency" status="sel-based" iteration="Policy">
+        <depends on-sel="ITC_SUBORDINATE_MDM"/>          
+          <f-element id="fpt-tdc-interpret">
+            <title>
+              <h:mark style="background-color:yellowgreen;">The TSF shall provide the capability to consisteny interpret <assignable>MDM policy</assignable> when shared between the primary MDM server and the MDM agent.</h:mark>              
+            </title>
+          </f-element>          
+          <f-element id="fpt-tdc-rules">
+            <title>
+              <h:mark style="background-color:yellowgreen;">The TSF shall use <assignable>list of interpretation rules to be applied by the TSF</assignable> when interpreting MDM policy from the primary MDM server.</h:mark>
+            </title>
+            <note role="application">
+              <h:mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there are well-defined rules that the subordinate MDM server follows if it modifies/interprets the MDM policy sent from the primary MDM server and is then delivered to the MDM agent on the managed device. For example: a mapping between the command received from the primary MDM server and the matching command delivered to the MDM agent.</h:mark> 
+            </note>
+            <aactivity>
+              <TSS>
+              </TSS>
+              <Guidance>
+                
+              </Guidance>
+              <Tests>
+              
+              </Tests>
+            </aactivity>
+          </f-element>
+          <audit-event>
+            <audit-event-descr>
+              
+            </audit-event-descr>
+            <audit-event-info>None.</audit-event-info>
+          </audit-event>
+        </f-component>  
+
+        <f-component cc-id="fpt_tdc.1" name="TSF Data Consistency" status="sel-based" iteration="Devices">
+        <depends on-sel="ITC_SUBORDINATE_MDM"/>                   
+          <f-element id="fpt-tdc-devices">
+            <title>
+              <h:mark style="background-color:yellowgreen;">The TSF shall provide the capability to ensure that the list of managed devices is consistent between the primary MDM server adn the subordinate MDM server.</h:mark>
+            </title>
+            <note role="application">
+              <h:mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there is a mechanism for the primary MDM server to query the list of devices managed by the subordinate MDM server. The primary MDM server should be notified of any updates or changes to devices managed by the subordinate MDM.</h:mark> 
+            </note>
+            <aactivity>
+              <TSS>
+              </TSS>
+              <Guidance>
+                
+              </Guidance>
+              <Tests>
+              
+              </Tests>
+            </aactivity>
+          </f-element>
+          <audit-event>
+            <audit-event-descr>
+              
+            </audit-event-descr>
+            <audit-event-info>None.</audit-event-info>
+          </audit-event>
+        </f-component>    
         
         
         <f-component cc-id="fpt_tst.1" name="TSF Self-Testing">          
