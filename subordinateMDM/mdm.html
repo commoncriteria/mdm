@@ -4137,7 +4137,7 @@ The following sections list Common Criteria and technology terms used in this do
       Note:
     </span><span class="note"><mark style="background-color:yellowgreen;">The intent of this requirement is to cryptographically tie the policies to the enterprise that mandated the policy, not to
               protect the policies in transit (as they are already protected by <a href="#FTP_ITC.1/INTER_XFER_IT">FTP_ITC.1/INTER_XFER_IT</a>). This is especially critical for users who connect to multiple enterprises.</mark></span></div></div></div>
-        <div class="element"><div class="reqid" id="FMT_POL_EXT.3.2"><a href="#FMT_POL_EXT.3.2" class="abbr">FMT_POL_EXT.3.2</a></div><div class="reqdesc"><mark style="background-color:yellowgreen;">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not process policies for the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent if the signature check fails</mark><div class="appnote"><span class="note-header">Application
+        <div class="element"><div class="reqid" id="FMT_POL_EXT.3.2"><a href="#FMT_POL_EXT.3.2" class="abbr">FMT_POL_EXT.3.2</a></div><div class="reqdesc"><mark style="background-color:yellowgreen;">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not process policies for the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent if the signature check fails.</mark><div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
           </span></div></div></div>
@@ -4651,7 +4651,58 @@ The following sections list Common Criteria and technology terms used in this do
                 <b>Library Document</b><br/><br/>
                 (conditional: The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is a cloud <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> service) The evaluator shall verify that the
                 non-public library document lists the libraries used by the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> service.
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">TBD</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">TBD</div></div></div></div></div>   
+              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">TBD</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">TBD</div></div></div></div></div>
+
+        <div class="comp" id="FPT_TDC.1/Policy"><h4>FPT_TDC.1/Policy TSF Data Consistency</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
+	  <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
+      </i></b></div>
+                  
+          <div class="element"><div class="reqid" id="FPT_TDC.1.1/Policy"><a href="#FPT_TDC.1.1/Policy" class="abbr">FPT_TDC.1.1/Policy</a></div><div class="reqdesc">
+              <mark style="background-color:yellowgreen;">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide the capability to consisteny interpret [<b>assignment</b>: 
+     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy</span>] when shared between the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent.</mark>              
+            </div></div>          
+          <div class="element"><div class="reqid" id="FPT_TDC.1.2/Policy"><a href="#FPT_TDC.1.2/Policy" class="abbr">FPT_TDC.1.2/Policy</a></div><div class="reqdesc">
+              <mark style="background-color:yellowgreen;">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use [<b>assignment</b>: 
+     <span class="assignable-content">list of interpretation rules to be applied by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>] when interpreting <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy from the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.</mark>
+            <div class="appnote"><span class="note-header">Application
+      Note:
+    </span><span class="note">
+              <mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there are well-defined rules that the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server follows if it modifies/interprets the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy sent from the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and is then delivered to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent on the managed device. For example: a mapping between the command received from the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and the matching command delivered to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent.</mark> 
+            </span></div></div></div>
+          
+        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FPT_TDC.1/Policy">FPT_TDC.1/Policy</a></div>
+              
+              
+              
+            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
+              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+                
+              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+              
+              </div></div></div></div></div>  
+
+        <div class="comp" id="FPT_TDC.1/Devices"><h4>FPT_TDC.1/Devices TSF Data Consistency</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
+	  <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
+      </i></b></div>
+                           
+          <div class="element"><div class="reqid" id="FPT_TDC.1.1/Devices"><a href="#FPT_TDC.1.1/Devices" class="abbr">FPT_TDC.1.1/Devices</a></div><div class="reqdesc">
+              <mark style="background-color:yellowgreen;">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide the capability to ensure that the list of managed devices is consistent between the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server adn the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.</mark>
+            <div class="appnote"><span class="note-header">Application
+      Note:
+    </span><span class="note">
+              <mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there is a mechanism for the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server to query the list of devices managed by the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server. The primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server should be notified of any updates or changes to devices managed by the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>.</mark> 
+            </span></div></div></div>
+          
+        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FPT_TDC.1/Devices">FPT_TDC.1/Devices</a></div>
+              
+              
+              
+            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
+              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+                
+              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+              
+              </div></div></div></div></div>    
         
         
         <div class="comp" id="FPT_TST.1"><h4>FPT_TST.1 TSF Self-Testing</h4>          
@@ -5655,7 +5706,7 @@ The following sections list Common Criteria and technology terms used in this do
             <ul>
               <li>Attempt to reuse enrollment data.</li>
               <li>Enrollment data.</li>
-            </ul></p><h4>FMT_POL_EXT.3 Subordinate MDM Trusted Policy Update</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies.</td></tr></table><h4 id="ext-comp-FMT_POL_EXT.3.1">FMT_POL_EXT.3.1</h4><mark style="background-color:yellowgreen;">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall only accept policies and policy updates that are digitally signed by a private key that has been authorized for policy updates by the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.</mark><h4 id="ext-comp-FMT_POL_EXT.3.2">FMT_POL_EXT.3.2</h4><mark style="background-color:yellowgreen;">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not process policies for the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent if the signature check fails</mark></div></div><h3 id="ext-comp-FMT_SAE_EXT" class="indexable" data-level="4">B.2.6.2 FMT_SAE_EXT Security Attribute Expiration</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines the requirements for using expiration time for
+            </ul></p><h4>FMT_POL_EXT.3 Subordinate MDM Trusted Policy Update</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies.</td></tr></table><h4 id="ext-comp-FMT_POL_EXT.3.1">FMT_POL_EXT.3.1</h4><mark style="background-color:yellowgreen;">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall only accept policies and policy updates that are digitally signed by a private key that has been authorized for policy updates by the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.</mark><h4 id="ext-comp-FMT_POL_EXT.3.2">FMT_POL_EXT.3.2</h4><mark style="background-color:yellowgreen;">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not process policies for the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent if the signature check fails.</mark></div></div><h3 id="ext-comp-FMT_SAE_EXT" class="indexable" data-level="4">B.2.6.2 FMT_SAE_EXT Security Attribute Expiration</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines the requirements for using expiration time for
             enrollment and denying enrollment if that time has passed.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FMT_SAE_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FMT_SAE_EXT.1">FMT_SAE_EXT.1</a>,
              Security Attribute Expiration,
              defines requirements for the expiration time for enrollment authentication.</p><h4>Management: FMT_SAE_EXT.1</h4><p>The following action could be considered for the management functions in FMT.
