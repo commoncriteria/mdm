@@ -1205,6 +1205,53 @@ DONE:
 				<audit-event-info>Identity of Mobile Device that sent alert.</audit-event-info>
 			</audit-event>
 		</f-component>
+
+    <f-component cc-id="fau_alt_ext.3" name="Subordinate MDM Alerts" status="sel-based">
+    <depends on-sel="ITC_SUBORDINATE_MDM"/>
+          <consistency-rationale/>
+          <comp-lev>defines requirements for alerting the administrator to events.</comp-lev>
+          <management>The following actions could be considered for the management functions in FMT.
+          <h:ul>
+            <h:li>Install policies.</h:li>
+          </h:ul>
+          </management>
+          <audit>The following actions should be auditable if FAU_GEN security audit data generation
+          is include in the PP or ST.
+          <h:ul>
+            <h:li>Type of alert.</h:li>
+            <h:li>Identity of subordinate MDM and Mobile Device that sent alert.</h:li>
+          </h:ul>
+          </audit>
+          <dependencies>No dependencies.</dependencies>          
+          <f-element id="fau-alt-ext-3e1">
+            <title><h:mark style="background-color:yellowgreen;">The TSF shall forward all MDM agent alerts to the primary MDM server via the trusted channel.</h:mark></title>
+            <note role="application">
+            </note>
+            <aactivity>
+              <TSS>The evaluator shall examine the TSS and verify that it describes how the alert system is implemented. The evaluator shall also verify that
+		      a description of each assigned event is provided in the TSS.</TSS>
+              <Guidance>The evaluator shall examine the guidance document and verify that it describes how the alerts can be configured, if configurable.</Guidance>
+              <Tests> For each MDM agent or platform listed as supported in the ST: 
+              <testlist>
+                <test>The evaluator shall enroll a device and ensure that the MDM server alerts the administrator of the change in enrollment status. The 
+			evaluator shall unenroll (retire) a device and ensure that the MDM server alerts the administrator of the change in enrollment status.</test>
+                <test>The evaluator shall configure policies, which the MDM agent should not be able to apply. These policies shall include:<h:ul>
+                      <h:li>a setting which is configurable on the MDM server interface but not supported by the platform on which the MDM agent runs, if any
+			      such settings exist</h:li>
+                      <h:li>a valid configuration setting with an invalid parameter, which may require manual modification of the policy prior to transmission
+			      to the device</h:li>
+                    </h:ul> 
+                    The evaluator shall deploy such policies and verify that the MDM server alerts the administrator about the failed application of the policy.</test>
+                <test>(Conditional) The evaluator shall trigger each of the events listed and ensure that the MDM server alerts the administrator.</test>
+              </testlist>
+	      </Tests>
+            </aactivity>
+          </f-element>
+			<audit-event>
+				<audit-event-descr>Type of alert</audit-event-descr>
+				<audit-event-info>Identity of subordinate MDM and Mobile Device that sent alert.</audit-event-info>
+			</audit-event>
+		</f-component>
 		
         <f-component cc-id="fau_crp_ext.1" name="Support for Compliance Reporting of Mobile Device Configuration" status="objective">
           <consistency-rationale/>
@@ -5508,7 +5555,7 @@ DONE:
               between the agent and TSF is external to the TOE and thus "an MDM agent that is external to the TOE" must be selected in the first selection.
               Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the ST.<h:br/><h:br/> 
 
-              <h:mark style="background-color:yellowgreen;">If the TOE acts as a primary MDM server and interoperates with a subordinate MDM server to forward policies to a managed device, then <h:i>"a subordinate MDM server"</h:i> must be selected in the first selection. Additionaly <h:i>"FTP_ITC.1/INTER_XFER_IT"</h:i> must be selected in the second selection.</h:mark><h:br/><h:br/>
+              <h:mark style="background-color:yellowgreen;">If the TOE acts as a primary MDM server and interoperates with a subordinate MDM server to forward policies to a MDM agent on a managed device, then <h:i>"a subordinate MDM server"</h:i> must be selected in the first selection. Additionaly <h:i>"FTP_ITC.1/INTER_XFER_IT"</h:i> must be selected in the second selection.</h:mark><h:br/><h:br/>
 
               <h:mark style="background-color:yellowgreen;">If the TOE acts as a subordinate MDM server that can accept and forward signed policy files from a primary MDM server, and forward those policies to an MDM agent on a managed device, then <h:i>"a primary MDM server"</h:i> must be selected in the first selection. Additionaly <h:i>"FTP_ITC.1/INTER_XFER_IT"</h:i> must be selected in the second selection.</h:mark><h:br/><h:br/>
               
