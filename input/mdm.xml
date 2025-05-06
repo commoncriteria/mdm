@@ -5475,15 +5475,19 @@ DONE:
             <title>The TSF shall provide a communication channel between itself and <selectables linebreak="yes">              
               <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE</selectable>
               <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE</selectable>
+              <selectable><h:mark style="background-color:yellowgreen;">a subordinate MDM server</h:mark></selectable>
+              <selectable><h:mark style="background-color:yellowgreen;">a primary MDM server</h:mark></selectable>
               <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
             </selectables>
               that is logically distinct from other communication channels, as specified in <selectables>
                 <selectable id="ITC_DISTRIBUTED_TOE_ITT1">FPT_ITT.1/INTER_XFER</selectable>
                 <selectable id="ITC_AgentInTOE_ITT2">FPT_ITT.1/INTER_XFER_AGENT</selectable>
                 <selectable id="ITC_AgentOutTOE_ITC">FTP_ITC.1/INTER_TSF_XFER_AGENT</selectable>
+                <selectable id="ITC_SUBORDINATE_MDM"><h:mark style="background-color:yellowgreen;">FTP_ITC.1/INTER_XFER_IT</h:mark></selectable>
               </selectables>.
             </title>
             <ext-comp-def-title>
+              <comment>have to update this for subordinate MDM</comment>
               <title>The TSF shall provide a communication channel between itself and <selectables linebreak="yes">              
                 <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE</selectable>
                 <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE</selectable>
@@ -5498,10 +5502,16 @@ DONE:
               components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/>            
               If the TOE includes an MDM agent, then the communication channel between the agent and TSF is internal to the TOE and thus "an MDM agent that is
               internal to the TOE" must be selected in the first selection. Additionally FPT_ITT.1/INTER_XFER_AGENT must be selected in the second selection and
-              FPT_ITT.1/INTER_XFER_AGENT must be included in the ST. <h:br/><h:br/>         
+              FPT_ITT.1/INTER_XFER_AGENT must be included in the ST. <h:br/><h:br/>
+
               If the TOE interoperates with an evaluated MDM agent built into a mobile device (i.e., the TOE does not include an MDM agent), the communication channel 
               between the agent and TSF is external to the TOE and thus "an MDM agent that is external to the TOE" must be selected in the first selection.
-              Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the ST. <h:br/><h:br/> 
+              Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the ST.<h:br/><h:br/> 
+
+              <h:mark style="background-color:yellowgreen;">If the TOE acts as a primary MDM server and interoperates with a subordinate MDM server to forward policies to a managed device, then <h:i>"a subordinate MDM server"</h:i> must be selected in the first selection. Additionaly <h:i>"FTP_ITC.1/INTER_XFER_IT"</h:i> must be selected in the second selection.</h:mark><h:br/><h:br/>
+
+              <h:mark style="background-color:yellowgreen;">If the TOE acts as a subordinate MDM server that can accept and forward signed policy files from a primary MDM server, and forward those policies to an MDM agent on a managed device, then <h:i>"a primary MDM server"</h:i> must be selected in the first selection. Additionaly <h:i>"FTP_ITC.1/INTER_XFER_IT"</h:i> must be selected in the second selection.</h:mark><h:br/><h:br/>
+              
               If "other components comprising the distributed TOE" is selected in the first selection then FPT_ITT.1/INTER_XFER must be selected in the second
               selection. FPT_ITT.1/INTER_XFER must be included in the ST for all internal channels used to transfer TSF data between TOE components other than an 
               MDM agent.
@@ -5510,7 +5520,7 @@ DONE:
               <TSS>The evaluator shall ensure that the TSS contains whether the MDM server communication channel is internal or external to the TOE.</TSS>
               <Guidance>TBD</Guidance>               
               <Tests>
-                This testing can be completed in conjunction with the testing for FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT, FTP_ITC.1/INTER_TSF_XFER_AGENT or FTP_ITC.1(3).               
+                This testing can be completed in conjunction with the testing for FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT, FTP_ITC.1/INTER_TSF_XFER_AGENT or <h:mark style="background-color:red;">FTP_ITC.1(3)</h:mark><h:mark style="background-color:yellowgreen;">FTP_ITC.1/INTER_XFER_IT</h:mark>.               
               </Tests>
             </aactivity>
           </f-element>
