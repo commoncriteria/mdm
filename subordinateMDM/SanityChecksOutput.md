@@ -1,7 +1,3 @@
-* Error: f-element FMT_POL_EXT.3.1  appears not to have an associated evaluation activity.:
-        /PP[1]""/section[5]""/section[1]""/section[6]""/f-component[5]""/f-element[1]""
-* Error: f-element FMT_POL_EXT.3.2  appears not to have an associated evaluation activity.:
-        /PP[1]""/section[5]""/section[1]""/section[6]""/f-component[5]""/f-element[2]""
 * Warning: This document still has at least one comment.
 * Error: Detected multiple elements with an id of 'ITC_AgentInTOE'.
 * Error: Detected multiple elements with an id of 'ITC_AgentOutTOE'.
