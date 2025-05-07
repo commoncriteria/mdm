@@ -4313,8 +4313,15 @@ DONE:
           </f-element>
         <f-element id="fmt-pol-ext-3e2">
           <title><h:mark style="background-color:yellowgreen;">The TSF shall not process policies for the MDM agent if the signature check fails.</h:mark></title>
-          <note role="application">
-          </note>
+          <aactivity>
+            <TSS><h:mark style="background-color:yellowgreen;">The evaluator ensures that the TSS describes how the candidate policies are obtained by the subordinate MDM server, the processing associated with verifying the digital signature of the policy updates, and the actions that take place for successful (signature was verified) and unsuccessful (signature could not be verified) cases. The software components that are performing the processing must also be identified in the TSS and verified by the evaluators.</h:mark></TSS>
+            <Tests><h:mark style="background-color:yellowgreen;">This evaluation activity is performed in conjunction with the evaluation activity for FIA_X509_EXT.1 and FIA_X509_EXT.2</h:mark>
+              <testlist>
+                <test><h:mark style="background-color:yellowgreen;">The evaluator shall perform a policy update from an available configuration interface (such as through a test primary MDM Server). The evaluator shall verify the update is signed and is provided to the subordinate MDM server. The evaluator shall verify the subordinate MDM server accepts the digitally signed policy.</h:mark></test>
+                <test><h:mark style="background-color:yellowgreen;">The evaluator shall perform a policy update from an available configuration interface (such as through a test primary MDM Server). The evaluator shall provide an unsigned and an incorrectly signed policy to the subordinate MDM server. The evaluator shall verify the subordinate MDM server does not accept the digitally signed policy.</h:mark></test>
+              </testlist>
+            </Tests>
+          </aactivity>
         </f-element>
         	<audit-event/>
 		</f-component> 
@@ -4636,7 +4643,7 @@ DONE:
 		
         <f-component cc-id="fmt_smf.1" iteration="SERVER_CONF_SERVER" name="Specification of Management Functions (Server Configuration of Server)">
           <f-element id="fmt-smf-1e1">
-            <title>The TSF shall be capable of performing the following management functions.            
+            <title><comment>Need to update app note to remove C selections</comment>The TSF shall be capable of performing the following management functions.            
             <h:ol type="a">
                  <h:li>Configure the <selectables>
                     <selectable>devices specified by <selectables>
@@ -5042,7 +5049,7 @@ DONE:
           <audit-event/>
         </f-component>
 
-        <f-component cc-id="fpt_tdc.1" name="TSF Data Consistency" status="sel-based" iteration="Policy">
+        <f-component cc-id="fpt_tdc.1" name="Data Consistency" status="sel-based" iteration="Policy">
         <depends on-sel="ITC_SUBORDINATE_MDM"/>          
           <f-element id="fpt-tdc-interpret">
             <title>
@@ -5054,7 +5061,7 @@ DONE:
               <h:mark style="background-color:yellowgreen;">The TSF shall use <assignable>list of interpretation rules to be applied by the TSF</assignable> when interpreting MDM policy from the primary MDM server.</h:mark>
             </title>
             <note role="application">
-              <h:mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there are well-defined rules that the subordinate MDM server follows if it modifies/interprets the MDM policy sent from the primary MDM server and is then delivered to the MDM agent on the managed device. For example: a mapping between the command received from the primary MDM server and the matching command delivered to the MDM agent.</h:mark> 
+              <h:mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there are well-defined rules that the subordinate MDM server follows if it modifies/interprets the MDM policy sent from the primary MDM server that is then delivered to the MDM agent on the managed device. For example: a mapping between the command received from the primary MDM server and the matching command delivered to the MDM agent.</h:mark> 
             </note>
             <aactivity>
               <TSS>
@@ -5075,7 +5082,7 @@ DONE:
           </audit-event>
         </f-component>  
 
-        <f-component cc-id="fpt_tdc.1" name="TSF Data Consistency" status="sel-based" iteration="Devices">
+        <f-component cc-id="fpt_tdc.1" name="Data Consistency" status="sel-based" iteration="Devices">
         <depends on-sel="ITC_SUBORDINATE_MDM"/>                   
           <f-element id="fpt-tdc-devices">
             <title>
