@@ -24,7 +24,7 @@
       <version>2.0</version>
       <date>2014-12-31</date>
       <subject>Separation of MDM agent SFRs<h:br/>Updated cryptography, protocol, X.509
-        requirements.<h:br/> Updated management functions to match MDFPPv2.0.<h:br/> Included SSH as
+        requirements.<h:br/> Updated management functions to match MDF PPv2.0.<h:br/> Included SSH as
         a remote administration protocol.<h:br/> Removed IPsec as protocol to communicate to MDM
         agent.<h:br/> Added X509 enrollment objective requirement.<h:br/> Added Optional Mobile
         Application Store requirements. </subject>
@@ -144,7 +144,7 @@
 				and its functionality is available for use. </term>       
 		</tech-terms>
 	  
-		<!-- 1.3 Cmpliant Targets of Evaluation -->
+		<!-- 1.3 Compliant Targets of Evaluation -->
 		<section id="cte" title="Compliant Targets of Evaluation">
 			The Mobile Device Management (MDM) system consists of two primary components: the MDM server software and the MDM agent. Optionally, the MDM system may
 			consist of a separate Mobile Application Store (MAS) server <h:mark style="background-color:yellowgreen;">and/or a subordinate MDM server.</h:mark> 
@@ -536,12 +536,12 @@
    
 				<h:tr>
 					<h:td>FMT_MOF.1/FUNCBE</h:td>
-					<h:td>Management of functions behaviour</h:td>
+					<h:td>Management of functions behavior</h:td>
 					<h:td>Feature Dependent</h:td> 
 				</h:tr>
 				<h:tr>
 					<h:td>FMT_MOF.1/MANAGEMENT_ENROLL</h:td>
-					<h:td>Management of functions behaviour (Enrollment)</h:td>
+					<h:td>Management of functions behavior (Enrollment)</h:td>
 					<h:td>Feature Dependent</h:td> 
 				</h:tr>
 				<h:tr>
@@ -1127,7 +1127,7 @@
           <dependencies>No dependencies.</dependencies>          
           <f-element id="fau-alt-ext-3e1">
             <title><h:mark style="background-color:yellowgreen;">The TSF shall forward all MDM agent alerts to the primary MDM server via the trusted channel.</h:mark></title>
-            <note role="application"><h:mark style="background-color:yellowgreen;">This requirement is intended to ensure that the subordinate MDM server notifies the primary MDM server of any MDM agent alerts that it recieves. This also includes notifying the primary MDM server if a policy fails to be applied applied by an MDM agent.</h:mark> 
+            <note role="application"><h:mark style="background-color:yellowgreen;">This requirement is intended to ensure that the subordinate MDM server notifies the primary MDM server of any MDM agent alerts that it receives. This also includes notifying the primary MDM server if a policy fails to be applied applied by an MDM agent.</h:mark> 
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS and verify that it describes how the alert system is implemented. The evaluator shall also verify that
@@ -1354,7 +1354,7 @@
 		            information mentioned in <xref to="fel-gen-tsf-info"/>, but may contain more information which can be assigned. The ST author
 		            must identify in the TSS which information of the audit data  is performed by the TSF and that which is performed by the 
 		            TOE platform. <h:br/><h:br/>
-              <!-- TODO: If the MDM invokes the platform to audit an event for FAU_GEN.1.1(1), then are they guarenteed that the platform will provide them 
+              <!-- TODO: If the MDM invokes the platform to audit an event for FAU_GEN.1.1(1), then are they guaranteed that the platform will provide them 
 		with the necessary information in the audit event? Need to make sure that this is in OS PP-->  
             </note>
             <aactivity level="element">
@@ -3368,7 +3368,7 @@
         	<audit-event/>
 		</f-component>        
         
-        <f-component cc-id="fia_uau.4" name="Sinlgle-Use Authenfztication Mechanisms" status="objective">
+        <f-component cc-id="fia_uau.4" name="Single-Use Authentication Mechanisms" status="objective">
           <f-element id="fia-uau-4e1">
             <title>The TSF shall prevent reuse of authentication data related to <assignable>identified authentication mechanisms</assignable>.</title>                     
             
@@ -4947,7 +4947,7 @@
         <depends on-sel="ITC_SUBORDINATE_MDM"/>          
           <f-element id="fpt-tdc-interpret">
             <title>
-              <h:mark style="background-color:yellowgreen;">The TSF shall provide the capability to consisteny interpret <assignable>MDM policy</assignable> when shared between the primary MDM server and the MDM agent.</h:mark>              
+              <h:mark style="background-color:yellowgreen;">The TSF shall provide the capability to consistency interpret <assignable>MDM policy</assignable> when shared between the primary MDM server and the MDM agent.</h:mark>              
             </title>
           </f-element>          
           <f-element id="fpt-tdc-rules">
@@ -4955,14 +4955,14 @@
               <h:mark style="background-color:yellowgreen;">The TSF shall use <assignable>list of interpretation rules to be applied by the TSF</assignable> when interpreting MDM policy from the primary MDM server.</h:mark>
             </title>
             <note role="application">
-              <h:mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there are well-defined rules that the subordinate MDM server follows if it modifies/interprets the MDM policy sent from the primary MDM server that is then delivered to the MDM agent on the managed device. For example: a mapping between the command received from the primary MDM server and the matching command delivered to the MDM agent. If the subordinate MDM does not modify the policy for delivery to the MDM agent, then this requirement is implicitly satisfied.</h:mark> 
+              <h:mark style="background-color:yellowgreen;">The intent of this requirement is to verify that there are well-defined rules that the subordinate MDM server follows if it modifies/interprets the MDM policy sent from the primary MDM server that is then delivered to the MDM agent on the managed device. For example: a mapping between the command received from the primary MDM server and the matching command delivered to the MDM agent. If the subordinate MDM does not modify the policy for delivery to the MDM agent, then this requirement is implicitly satisfied.</h:mark> 
             </note>
             <aactivity>
               <TSS>
                 <h:mark style="background-color:yellowgreen;">The evaluator ensures that the TSS describes how the policies are translated between the policy that is accepted by the subordinate MDM server and the policy that is generated for delivery to the MDM agent on the managed device. This should include a description or mapping for each MDM agent configuration and policy function claimed in FMT_SMF.1/SERVER_CONF_AGENT.</h:mark> 
               </TSS>
               <Tests>
-                <h:mark style="background-color:yellowgreen;">The evaluator shall perform a policy update from an available configuration interface (such as through a test primary MDM Server) and retain a copy of the resulting policy. The evaluator then obtains a version of the policy modified by the subordinate MDM for delivery to the MDM agent. The evaluator shall compare the original policy to the modified policy and ensure that the mapping rules are valid for each configuration and policy function claimed.</h:mark>           
+                <h:mark style="background-color:yellowgreen;">The evaluator shall perform a policy update from an available configuration interface (such as through a test primary MDM Server) and retain a copy of the resulting policy. The evaluator then obtains a version of the policy modified by the subordinate MDM for delivery to the MDM agent. The evaluator shall compare the original policy to the modified policy and ensure that the translation rules are valid for each configuration and policy function claimed.</h:mark>           
               </Tests>
             </aactivity>
           </f-element>
@@ -4978,13 +4978,14 @@
         <depends on-sel="ITC_SUBORDINATE_MDM"/>                   
           <f-element id="fpt-tdc-devices">
             <title>
-              <h:mark style="background-color:yellowgreen;">The TSF shall provide the capability to ensure that the list of managed devices is consistent between the primary MDM server adn the subordinate MDM server.</h:mark>
+              <h:mark style="background-color:yellowgreen;">The TSF shall provide the capability to ensure that the list of managed devices is consistent between the primary MDM server and the subordinate MDM server.</h:mark>
             </title>
             <note role="application">
-              <h:mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there is a mechanism for the primary MDM server to query the list of devices managed by the subordinate MDM server. The primary MDM server should be notified of any updates or changes to devices managed by the subordinate MDM.</h:mark> 
+              <h:mark style="background-color:yellowgreen;">The intent of this requirement is to verify that there is a mechanism for the primary MDM server to query the list of devices managed by the subordinate MDM server. The primary MDM server should be notified of any updates or changes to devices managed by the subordinate MDM.</h:mark> 
             </note>
             <aactivity>
               <TSS>
+                <h:mark style="background-color:yellowgreen;">The evaluator ensures that the TSS describes how the </h:mark>
               </TSS>
               <Guidance>
                 
@@ -5528,9 +5529,9 @@
               between the agent and TSF is external to the TOE and thus "an MDM agent that is external to the TOE" must be selected in the first selection.
               Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the ST.<h:br/><h:br/> 
 
-              <h:mark style="background-color:yellowgreen;">If the TOE acts as a primary MDM server and interoperates with a subordinate MDM server to forward policies to a MDM agent on a managed device, then <h:i>"a subordinate MDM server"</h:i> must be selected in the first selection. Additionaly <h:i>"FTP_ITC.1/INTER_XFER_IT"</h:i> must be selected in the second selection.</h:mark><h:br/><h:br/>
+              <h:mark style="background-color:yellowgreen;">If the TOE acts as a primary MDM server and interoperates with a subordinate MDM server to forward policies to a MDM agent on a managed device, then <h:i>"a subordinate MDM server"</h:i> must be selected in the first selection. Additionally <h:i>"FTP_ITC.1/INTER_XFER_IT"</h:i> must be selected in the second selection.</h:mark><h:br/><h:br/>
 
-              <h:mark style="background-color:yellowgreen;">If the TOE acts as a subordinate MDM server that can accept and forward signed policy files from a primary MDM server, and forward those policies to an MDM agent on a managed device, then <h:i>"a primary MDM server"</h:i> must be selected in the first selection. Additionaly <h:i>"FTP_ITC.1/INTER_XFER_IT"</h:i> must be selected in the second selection.</h:mark><h:br/><h:br/>
+              <h:mark style="background-color:yellowgreen;">If the TOE acts as a subordinate MDM server that can accept and forward signed policy files from a primary MDM server, and forward those policies to an MDM agent on a managed device, then <h:i>"a primary MDM server"</h:i> must be selected in the first selection. Additionally <h:i>"FTP_ITC.1/INTER_XFER_IT"</h:i> must be selected in the second selection.</h:mark><h:br/><h:br/>
               
               If "other components comprising the distributed TOE" is selected in the first selection then FPT_ITT.1/INTER_XFER must be selected in the second
               selection. FPT_ITT.1/INTER_XFER must be included in the ST for all internal channels used to transfer TSF data between TOE components other than an 
@@ -5657,7 +5658,7 @@
               to the TSF under environmental constraints identified in <assignable>reference to operational guidance</assignable>]</h:i>.</title>
             <note role="application">This SFR implements one of the types of channel identified in the main selection for <xref to="fel-cpc-func"/>. The "joining component" in FTP_TRP.1/TRUSTPATH_JOIN is the IT entity that is attempting to join the distributed TOE by using the registration process.<h:br/><h:br/>            
               The effect of this SFR is to require the ability for components to communicate in a secure manner while the distributed TSF is being created (or when adding components to an existing distributed TSF). When creating the TSF from the initial pair of components, either of these components may be identified as the TSF for the purposes of satisfying the meaning of "TSF" in this SFR.<h:br/><h:br/>
-              The selection at the end of FTP_TRP.1/TRUSTPATH_JOIN recognises that in some cases confidentiality (i.e., protection of the data from disclosure) may not be provided by the channel. The ST author distinguishes in the TSS whether in this case the TOE relies on the environment to provide confidentiality (as part of the constraints referenced in <xref to="fel-trp-func-tsf"/>) or whether the registration data exchanged does not require confidentiality (in which case this assertion must be justified). If "none" is selected, then this word may be omitted in the ST to improve readability.<h:br/><h:br/>             
+              The selection at the end of FTP_TRP.1/TRUSTPATH_JOIN recognizes that in some cases confidentiality (i.e., protection of the data from disclosure) may not be provided by the channel. The ST author distinguishes in the TSS whether in this case the TOE relies on the environment to provide confidentiality (as part of the constraints referenced in <xref to="fel-trp-func-tsf"/>) or whether the registration data exchanged does not require confidentiality (in which case this assertion must be justified). If "none" is selected, then this word may be omitted in the ST to improve readability.<h:br/><h:br/>             
               The assignment in <xref to="fel-trp-func-tsf"/> ensures that the ST highlights any specific details needed to protect the registration environment. Note that when the ST uses FTP_TRP.1/TRUSTPATH_JOIN for the registration channel then this channel cannot be reused as the normal inter-component communication channel (the latter channel must meet FTP_ITC.1 or FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT). Specific requirements for Preparative Procedures relating to FTP_TRP.1/TRUSTPATH_JOIN are defined in the Evaluation Activities.<h:br/><h:br/>
             </note>
             <aactivity>
@@ -5937,9 +5938,9 @@
             </a-element>
             <a-element type="C">
               <title>The preparative procedures shall describe all the steps necessary for secure installation of the TOE and for the secure preparation of the operational environment in accordance with the security objectives for the operational environment as described in the ST.</title>
-              <note role="application">It is recognised that the application of these requirements will vary depending on aspects such as whether the TOE is delivered in an operational state, or whether it has to be installed at the TOE owner's site, etc.<h:br/><h:br/>
+              <note role="application">It is recognized that the application of these requirements will vary depending on aspects such as whether the TOE is delivered in an operational state, or whether it has to be installed at the TOE owner's site, etc.<h:br/><h:br/>
                 It might also be the case that no installation is necessary, for example as a
-                Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyse installation procedures and thus this requirement is implicitly satisfied.
+                Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyze installation procedures and thus this requirement is implicitly satisfied.
               </note>
             </a-element>          
             <a-element type="E">
