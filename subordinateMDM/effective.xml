@@ -1263,8 +1263,7 @@
 				applied to the MDM agent, it is acceptable to not have any administrative actions to audit.<h:br/><h:br/>
               
 				Item <h:b>b</h:b> includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE component, if distributed, 
-				interacts directly with the MDM agent<h:mark style="background-color:yellowgreen;"> or subordinate MDM server, then "Commands issued to the MDM agent" or "Commands issued to the subordinate MDM server" must be selected. If the TOE component, if distributed, does
-				not interact directly with either the MDM agent or subordinate MDM server, then it is acceptable to select "none."</h:mark><h:br/><h:br/>
+				interacts directly with the MDM agent, then "Commands issued to the MDM agent" must be selected. <h:mark style="background-color:yellowgreen;">If the TOE component, if distributed, interacts directly with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected.</h:mark> If the TOE component, if distributed, does not interact directly with either the MDM agent<h:mark style="background-color:yellowgreen;"> or subordinate MDM server</h:mark>, then it is acceptable to select "none."<h:br/><h:br/>
 
         <h:b>In item d above, "start up and shut down of the MDM system" must be selected if the TSF has a start up and shut down phase. 
         Additionally, if the TOE is distributed, this applies to all components. If the TOE is not distributed then MDM system is equivalent 
@@ -4212,7 +4211,7 @@
           <title><h:mark style="background-color:yellowgreen;">The TSF shall not process policies for the MDM agent if the signature check fails.</h:mark></title>
           <aactivity>
             <TSS><h:mark style="background-color:yellowgreen;">The evaluator ensures that the TSS describes how the candidate policies are obtained by the subordinate MDM server, the processing associated with verifying the digital signature of the policy updates, and the actions that take place for successful (signature was verified) and unsuccessful (signature could not be verified) cases. The software components that are performing the processing must also be identified in the TSS and verified by the evaluators.</h:mark></TSS>
-            <Tests><h:mark style="background-color:yellowgreen;">This evaluation activity is performed in conjunction with the evaluation activity for FIA_X509_EXT.1 and FIA_X509_EXT.2</h:mark>
+            <Tests><h:mark style="background-color:yellowgreen;">This evaluation activity is performed in conjunction with the evaluation activity for FIA_X509_EXT.1/CERTVAL_MAN and FIA_X509_EXT.2</h:mark>
               <testlist>
                 <test><h:mark style="background-color:yellowgreen;">The evaluator shall perform a policy update from an available configuration interface (such as through a test primary MDM Server). The evaluator shall verify the update is signed and is provided to the subordinate MDM server. The evaluator shall verify the subordinate MDM server accepts the digitally signed policy.</h:mark></test>
                 <test><h:mark style="background-color:yellowgreen;">The evaluator shall perform a policy update from an available configuration interface (such as through a test primary MDM Server). The evaluator shall provide an unsigned and an incorrectly signed policy to the subordinate MDM server. The evaluator shall verify the subordinate MDM server does not accept the digitally signed policy.</h:mark></test>
@@ -4956,16 +4955,14 @@
               <h:mark style="background-color:yellowgreen;">The TSF shall use <assignable>list of interpretation rules to be applied by the TSF</assignable> when interpreting MDM policy from the primary MDM server.</h:mark>
             </title>
             <note role="application">
-              <h:mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there are well-defined rules that the subordinate MDM server follows if it modifies/interprets the MDM policy sent from the primary MDM server that is then delivered to the MDM agent on the managed device. For example: a mapping between the command received from the primary MDM server and the matching command delivered to the MDM agent.</h:mark> 
+              <h:mark style="background-color:yellowgreen;">The intent of this requriement is to verify that there are well-defined rules that the subordinate MDM server follows if it modifies/interprets the MDM policy sent from the primary MDM server that is then delivered to the MDM agent on the managed device. For example: a mapping between the command received from the primary MDM server and the matching command delivered to the MDM agent. If the subordinate MDM does not modify the policy for delivery to the MDM agent, then this requirement is implicitly satisfied.</h:mark> 
             </note>
             <aactivity>
               <TSS>
+                <h:mark style="background-color:yellowgreen;">The evaluator ensures that the TSS describes how the policies are translated between the policy that is accepted by the subordinate MDM server and the policy that is generated for delivery to the MDM agent on the managed device. This should include a description or mapping for each MDM agent configuration and policy function claimed in FMT_SMF.1/SERVER_CONF_AGENT.</h:mark> 
               </TSS>
-              <Guidance>
-                
-              </Guidance>
               <Tests>
-              
+                <h:mark style="background-color:yellowgreen;">The evaluator shall perform a policy update from an available configuration interface (such as through a test primary MDM Server) and retain a copy of the resulting policy. The evaluator then obtains a version of the policy modified by the subordinate MDM for delivery to the MDM agent. The evaluator shall compare the original policy to the modified policy and ensure that the mapping rules are valid for each configuration and policy function claimed.</h:mark>           
               </Tests>
             </aactivity>
           </f-element>
