@@ -1121,11 +1121,14 @@ DONE:
 		<h:b>Test Environment for Evaluation Activities</h:b><h:p/>
 			As described in the evaluation activities below, the ST for an MDM system is required to list all the supported MDM agents and MD platforms with which
 			an MDM server operates. The identified evaluation activities for testing that includes the use of an agent should be completed for each MDM agent
-			and platform listed in the ST.<h:br/><h:br/>      
+			and platform listed in the ST.<h:br/><h:br/>
+
 			The evaluator's activities for testing that include use of an agent will ensure that the Server interacts appropriately with the agent (i.e., sends a
 			policy update to the agent), but will not ensure that the agent handles the received data correctly (i.e., appropriately applies the policy to the 
 			device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals PP or the PP-Module for Mobile Device Management
-			Agents.<h:p/> 
+			Agents.<h:br/><h:br/> 
+
+      <h:mark style="background-color:yellowgreen;">In addition to the above guidance, if the TOE server acts as a primary MDM server and interfaces with one or more subordinate MDM servers, then the ST is required to list all of the supported subordinate MDM servers. Like with MDM agent testing, all evaluation activity testing that includes the use of a subordinate MDM server should be completed for each of the subordinate MDM servers listed in the ST. If the TOE server acts as a subordinate MDM server and interfaces with one or more primary MDM servers, then the ST is required to list all of the supported primary MDM servers, along with all of the supported MDM agents and MD platforms with which it operates. A test primary MDM server may be used for evaluation activity testing that requires the use of a primary MDM server.</h:mark><h:p/> 
 		
 		<section id="tsfr" title="Security Functional Requirements">
 		
@@ -1188,6 +1191,7 @@ DONE:
               <Tests> For each MDM agent or platform listed as supported in the ST: <testlist>
                 <test>The evaluator shall enroll a device and ensure that the MDM server alerts the administrator of the change in enrollment status. The 
 			evaluator shall unenroll (retire) a device and ensure that the MDM server alerts the administrator of the change in enrollment status.</test>
+      <!-- Alternate test could be to send correct policy but block Agent response, and the MDM should alert that response was not received, indicating failure -->
                 <test>The evaluator shall configure policies, which the MDM agent should not be able to apply. These policies shall include:<h:ul>
                       <h:li>a setting which is configurable on the MDM server interface but not supported by the platform on which the MDM agent runs, if any
 			      such settings exist</h:li>
@@ -1205,7 +1209,7 @@ DONE:
 				<audit-event-info>Identity of Mobile Device that sent alert.</audit-event-info>
 			</audit-event>
 		</f-component>
-
+<!-- 
     <f-component cc-id="fau_alt_ext.3" name="Subordinate MDM Alerts" status="sel-based">
     <depends on-sel="ITC_SUBORDINATE_MDM"/>
           <consistency-rationale/>
@@ -1239,7 +1243,7 @@ DONE:
 				<audit-event-info>Identity of subordinate MDM and Mobile Device that sent alert.</audit-event-info>
 			</audit-event>
 		</f-component>
-		
+		-->
         <f-component cc-id="fau_crp_ext.1" name="Support for Compliance Reporting of Mobile Device Configuration" status="objective">
           <consistency-rationale/>
           <comp-lev>defines requirements for providing information to enrolled mobile devices
@@ -1545,7 +1549,10 @@ DONE:
             <note role="application"> The MDM server establishes the network connectivity status of enrolled agents using periodic reachability event alerts
 		    from the agents according to FAU_ALT_EXT.2.1 in the PP-Module for MDM Agent. This status may be determined by sending an update request from
 		    the MDM server which the agent is required to respond to or by using scheduled periodic notifications of connectivity initiated by the 
-		    MDM agent. </note>
+		    MDM agent.<h:br/><h:br/>
+
+        <h:mark style="background-color:yellowgreen;">If the TOE server acts as a subordinate MDM server then there should be some mechanism for the primary MDM server to initialize and read results of the network reachability tests performed by the subordinate MDM server on those devices that it manages.</h:mark>        
+         </note>
             <aactivity>
               <TSS> The evaluator ensures that the TSS describes how reachability events are implemented, for each supported mobile platform. The evaluator
 		      verifies that this description clearly indicates who (MDM agent or MDM server) initiates reachability events.</TSS>
