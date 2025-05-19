@@ -28,8 +28,6 @@
             <br>
             <a href="#Comment-5-">Comment: Comment-5-</a>
             <br>
-            <a href="#Comment-6-">Comment: Comment-6-</a>
-            <br>
         </div>
         <h1 class="title" style="page-break-before:auto;">Protection Profile for Mobile Device Management</h1>
         <h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1>
@@ -948,6 +946,12 @@
         <br>
         <br>
          The evaluator's activities for testing that include use of an agent will ensure that the Server interacts appropriately with the agent (i.e., sends a policy update to the agent), but will not ensure that the agent handles the received data correctly (i.e., appropriately applies the policy to the device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Mobile Device Management Agents.
+        <br>
+        <br>
+         
+        <mark style="background-color:yellowgreen;">
+            In addition to the above guidance, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> server acts as a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and interfaces with one or more subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> servers, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> is required to list all of the supported subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> servers. Like with <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent testing, all evaluation activity testing that includes the use of a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server should be completed for each of the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> servers listed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> server acts as a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and interfaces with one or more primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> servers, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> is required to list all of the supported primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> servers, along with all of the supported <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agents and <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> platforms with which it operates. A test primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server may be used for evaluation activity testing that requires the use of a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.
+        </mark>
         <p></p>
         <h2 id="tsfr" class="indexable" data-level="2">6.1 Security Functional Requirements</h2>
         <h3 class="indexable" data-level="3" id="ss-audit-table">6.1.1 Auditable Events for Mandatory SFRs</h3>
@@ -1590,7 +1594,14 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide authorized administrators with the capability to read the network connectivity status of an enrolled agent.
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Agent. This status may be determined by sending an update request from the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server which the agent is required to respond to or by using scheduled periodic notifications of connectivity initiated by the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent. </span>
+                        <span class="note-header">Application Note: </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server establishes the network connectivity status of enrolled agents using periodic reachability event alerts from the agents according to FAU_ALT_EXT.2.1 in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Agent. This status may be determined by sending an update request from the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server which the agent is required to respond to or by using scheduled periodic notifications of connectivity initiated by the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent.
+                            <br>
+                            <br>
+                             
+                            <mark style="background-color:yellowgreen;">
+                                If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> server acts as a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server then there should be some mechanism for the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server to initialize and read results of the network reachability tests performed by the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server on those devices that it manages.
+                            </mark>
+                             </span>
                     </div>
                 </div>
             </div>
@@ -3092,7 +3103,7 @@
                     <a href="#FIA_X509_EXT.1.1/CERTVAL_MAN" class="abbr">FIA_X509_EXT.1.1/CERTVAL_MAN</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <span style="" class="comment " id="Comment-2-">TD0641 was deliberately not applied because we anticipate the X509 Package will be referenced instead.</span> [<b>selection</b>: <span class="selectable-content" id="_s_160">invoke platform-provided functionality</span>, <span class="selectable-content" id="_s_161">implement functionality</span>] to validate certificates in accordance with the following rules: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <span style="" class="comment " id="Comment-1-">TD0641 was deliberately not applied because we anticipate the X509 Package will be referenced instead.</span> [<b>selection</b>: <span class="selectable-content" id="_s_160">invoke platform-provided functionality</span>, <span class="selectable-content" id="_s_161">implement functionality</span>] to validate certificates in accordance with the following rules: 
                     <ul>
                         <li> RFC 5280 certificate validation and certificate path validation. </li>
                         <li> The certificate path must terminate with a trusted CA certificate. </li>
@@ -3348,7 +3359,7 @@
                     <a href="#FIA_X509_EXT.2.2" class="abbr">FIA_X509_EXT.2.2</a>
                 </div>
                 <div class="reqdesc">
-                     When the <span style="" class="comment " id="Comment-4-">TD0641 was deliberately not applied because we anticipate the X509 Package will be referenced instead.</span> [<b>selection</b>: <span class="selectable-content" id="_s_203"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_204"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>] cannot establish a connection to determine the validity of a certificate, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_205">invoke platform-provided functionality</span>, <span class="selectable-content" id="_s_206">implement functionality</span>] to [<b>selection</b>: <span class="selectable-content" id="_s_207">allow the administrator to choose whether to accept the certificate in these cases</span>, <span class="selectable-content" id="_s_208">accept the certificate</span>, <span class="selectable-content" id="_s_209">not accept the certificate</span>].
+                     When the <span style="" class="comment " id="Comment-3-">TD0641 was deliberately not applied because we anticipate the X509 Package will be referenced instead.</span> [<b>selection</b>: <span class="selectable-content" id="_s_203"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_204"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>] cannot establish a connection to determine the validity of a certificate, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_205">invoke platform-provided functionality</span>, <span class="selectable-content" id="_s_206">implement functionality</span>] to [<b>selection</b>: <span class="selectable-content" id="_s_207">allow the administrator to choose whether to accept the certificate in these cases</span>, <span class="selectable-content" id="_s_208">accept the certificate</span>, <span class="selectable-content" id="_s_209">not accept the certificate</span>].
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">If a valid OCSP response is not provided by the server during a TLS handshake, to include when the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not support OCSP stapling, a connection may need to be established to perform a verification of the revocation status of a certificate - either to download a current, valid CRL or to perform OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has determined the certificate is valid according to all other rules in <a href="#FIA_X509_EXT.1/CERTVAL_MAN">FIA_X509_EXT.1/CERTVAL_MAN</a>, the behavior indicated in the second selection must determine the validity. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must not accept the certificate if it fails any of the other validation rules in <a href="#FIA_X509_EXT.1/CERTVAL_MAN">FIA_X509_EXT.1/CERTVAL_MAN</a> or if valid revocation information (a cached CRL, or recent or stapled OCSP response) indicates the certificate has been revoked. If the administrator-configured option is selected by the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author must also select function d in <a href="#FMT_SMF.1/SERVER_CONF_SERVER">FMT_SMF.1/SERVER_CONF_SERVER</a>.
                             <br>
@@ -4144,7 +4155,7 @@
                     <a href="#FMT_SMF.1.1/SERVER_CONF_SERVER" class="abbr">FMT_SMF.1.1/SERVER_CONF_SERVER</a>
                 </div>
                 <div class="reqdesc">
-                    <span style="" class="comment " id="Comment-5-">Need to update app note to remove C selections</span>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions. 
+                    <span style="" class="comment " id="Comment-4-">Need to update app note to remove C selections</span>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions. 
                     <ol type="a">
                         <li>
                             Configure the [<b>selection</b>: 
@@ -6743,15 +6754,6 @@
             <tr data-sortkey="#1">
                 <th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th>
             </tr>
-            <tr data-sortkey="FAU_ALT_EXT.3">
-                <td rowspan="2"><a href="#FAU_ALT_EXT.3">FAU_ALT_EXT.3</a></td><td style="display:none"></td>
-            </tr>
-            <tr style="display:none;" data-sortkey="FAU_ALT_EXT.3#">
-                <td></td>
-            </tr>
-            <tr data-sortkey="FAU_ALT_EXT.3.7">
-                <td>Type of alert</td><td>Identity of subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> and Mobile Device that sent alert.</td>
-            </tr>
             <tr data-sortkey="FAU_GEN.1/MAS_SERVER">
                 <td rowspan="2"><a href="#FAU_GEN.1/MAS_SERVER">FAU_GEN.1/MAS_SERVER</a></td><td style="display:none"></td>
             </tr>
@@ -6956,61 +6958,6 @@
             </tr>
         </table>
         <h2 id="fau-sel-based" class="indexable" data-level="2">B.2 Security Audit (FAU)</h2>
-        <div class="comp" id="FAU_ALT_EXT.3">
-            <h4>FAU_ALT_EXT.3 Subordinate MDM Alerts</h4>
-            <div class="statustag">
-                <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>. </i></b>
-            </div>
-            <div class="element">
-                <div class="reqid" id="FAU_ALT_EXT.3.1">
-                    <a href="#FAU_ALT_EXT.3.1" class="abbr">FAU_ALT_EXT.3.1</a>
-                </div>
-                <div class="reqdesc">
-                    <span style="" class="comment " id="Comment-1-">might be redundant with <a href="#FAU_ALT_EXT.1">FAU_ALT_EXT.1</a></span>
-                    <mark style="background-color:yellowgreen;">
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall forward all <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent alerts to the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server via the trusted channel.
-                    </mark>
-                    <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">
-                            <mark style="background-color:yellowgreen;">
-                                This requirement is intended to ensure that the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server notifies the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server of any <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent alerts that it receives. This also includes notifying the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server if a policy fails to be applied applied by an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent.
-                            </mark>
-                             </span>
-                    </div>
-                </div>
-            </div>
-            <div class="activity_pane hide">
-                <div class="activity_pane_header">
-                    <a href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a>
-                </div>
-                <div class="activity_pane_body">
-                    <div class="component-activity-header">
-                        <a href="#FAU_ALT_EXT.3">FAU_ALT_EXT.3</a>
-                    </div>
-                    <div class="eacategory">
-                        <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
-                    </div>
-                    <div class="ea">
-                        <div class="ea">
-                            <mark style="background-color:yellowgreen;">
-                                The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and verify that it describes how the alert system is implemented. The evaluator shall also verify that a description of each assigned event is provided in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>.
-                            </mark>
-                        </div>
-                    </div>
-                    <div class="eacategory">Guidance</div>
-                    <div class="ea">
-                        <div class="ea">
-                            <mark style="background-color:yellowgreen;">The evaluator shall examine the guidance document and verify that it describes how the alerts can be configured, if configurable.</mark>
-                             
-                        </div>
-                    </div>
-                    <div class="eacategory">Tests</div>
-                    <div class="ea">
-                        <div class="ea"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="comp" id="FAU_GEN.1/MAS_SERVER">
             <h4>FAU_GEN.1/MAS_SERVER Audit Data Generation (MAS Server)</h4>
             <div class="statustag">
@@ -7657,7 +7604,7 @@
                     <a href="#FIA_X509_EXT.1.1/CERTVAL_SEL" class="abbr">FIA_X509_EXT.1.1/CERTVAL_SEL</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <span style="" class="comment " id="Comment-3-">TD0641 was deliberately not applied because we anticipate the X509 Package will be referenced instead.</span> [<b>selection</b>: <span class="selectable-content" id="_s_169"> invoke platform-provided functionality </span>, <span class="selectable-content" id="_s_170"> implement functionality </span>] to validate certificates in accordance with the following rules: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <span style="" class="comment " id="Comment-2-">TD0641 was deliberately not applied because we anticipate the X509 Package will be referenced instead.</span> [<b>selection</b>: <span class="selectable-content" id="_s_169"> invoke platform-provided functionality </span>, <span class="selectable-content" id="_s_170"> implement functionality </span>] to validate certificates in accordance with the following rules: 
                     <ul>
                         <li> RFC 5280 certificate validation and certificate path validation. </li>
                         <li> The certificate path must terminate with a trusted CA certificate. </li>
@@ -9183,21 +9130,15 @@
                         This family defines requirements for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to alert administrators when a set of specified events occurs.
                     </div>
                     <h4>Component Leveling</h4>
-                    <svg style="max-height: 50px;">
-                        <text x="4" fill="black" font-size="15" y="44">FAU_ALT_EXT</text>
-                        <rect x="2" y="31" width="150" height="16" fill="none" stroke="black"></rect>
+                    <svg style="max-height: 30px;">
+                        <text x="4" fill="black" font-size="15" y="24">FAU_ALT_EXT</text>
+                        <rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect>
                         <text x="234" fill="black" font-size="15" y="24">1</text>
                         <rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect>
-                        <line x1="152" y1="37" x2="231" y2="17" stroke="black"></line>
-                        <text x="234" fill="black" font-size="15" y="44">3</text>
-                        <rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect>
-                        <line x1="152" y1="37" x2="231" y2="37" stroke="black"></line>
+                        <line x1="152" y1="17" x2="231" y2="17" stroke="black"></line>
                     </svg>
                     <p>
                         <a href="#FAU_ALT_EXT.1">FAU_ALT_EXT.1</a>, Server Alerts, defines requirements for alerting the administrator to events.
-                    </p>
-                    <p>
-                        <a href="#FAU_ALT_EXT.3">FAU_ALT_EXT.3</a>, Subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Alerts, defines requirements for alerting the administrator to events.
                     </p>
                     <h4>Management: FAU_ALT_EXT.1</h4>
                     <p>
@@ -9233,39 +9174,6 @@
                                 [<b>selection</b>: <span class="selectable-content" id="_s_1">[<b>assignment</b>: <span class="assignable-content">other events</span>]</span>, <span class="selectable-content" id="_s_2">no other events</span>]
                             </li>
                         </ul>
-                    </div>
-                    <h4>Management: FAU_ALT_EXT.3</h4>
-                    <p>
-                        The following actions could be considered for the management functions in FMT. 
-                        <ul>
-                            <li>Install policies.</li>
-                        </ul>
-                    </p>
-                    <h4>Audit: FAU_ALT_EXT.3</h4>
-                    <p>
-                        The following actions should be auditable if FAU_GEN security audit data generation is include in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. 
-                        <ul>
-                            <li>Type of alert.</li>
-                            <li>
-                                Identity of subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> and Mobile Device that sent alert.
-                            </li>
-                        </ul>
-                    </p>
-                    <h4>FAU_ALT_EXT.3 Subordinate MDM Alerts</h4>
-                    <div style="margin-left: 1em;">
-                        <table class="ecd_heir_dep" style="width: 100%">
-                            <tr>
-                                <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
-                            </tr>
-                            <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
-                            </tr>
-                        </table>
-                        <h4 id="ext-comp-FAU_ALT_EXT.3.1">FAU_ALT_EXT.3.1</h4>
-                        <span style="" class="comment " id="Comment-1-">might be redundant with <a href="#FAU_ALT_EXT.1">FAU_ALT_EXT.1</a></span>
-                        <mark style="background-color:yellowgreen;">
-                            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall forward all <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent alerts to the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server via the trusted channel.
-                        </mark>
                     </div>
                 </div>
                 <h3 id="ext-comp-FAU_CRP_EXT" class="indexable" data-level="4">C.2.5.2 FAU_CRP_EXT Support for Compliance Reporting of Mobile Device Configuration</h3>
@@ -9551,7 +9459,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide a communication channel between itself and <span style="" class="comment " id="Comment-6-">have to update this for subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr></span> [<b>selection</b>: 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide a communication channel between itself and <span style="" class="comment " id="Comment-5-">have to update this for subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr></span> [<b>selection</b>: 
                         <ul>
                             <li style="">
                                 <span class="selectable-content" id="ITC_AgentInTOE">an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent that is internal to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span>
