@@ -1258,7 +1258,7 @@ DONE:
           <dependencies><no-link>FTP_ITC.1</no-link> Inter-TSF Trusted Channel</dependencies>
           
           <f-element id="fau-crp-ext-1e1">
-            <title><comment>Moved from Objective to mandatory</comment> The TSF shall provide <selectables><selectable>an interface that provides responses 
+            <title><comment>Moved from Objective to Mandatory</comment> The TSF shall provide <selectables><selectable>an interface that provides responses 
               to queries about the configuration of enrolled devices</selectable><selectable>an interface that permits the export 
                 of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over a 
               channel that meets the secure channel requirements in FTP_ITC.1/INTER_XFER_IT. The provided information for each enrolled mobile device includes:
@@ -1294,7 +1294,7 @@ DONE:
               There are active standards efforts underway by the Internet Engineering Task Force (IETF) Security Automation and 
               Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report on 
               endpoint device posture. It is expected that this requirement will evolve in future versions of this Protection Profile 
-              as standards efforts mature. 
+              as standards efforts mature.<h:br/><h:br/> 
 
               <h:mark style="background-color:yellowgreen;">If the TOE acts as a subordinate MDM server then this SFR also ensures that there is a mechanism for the primary MDM server to query information on the devices managed by the subordinate MDM server.</h:mark> 
             </note>
@@ -1328,13 +1328,13 @@ DONE:
 							<selectables>
 								<selectable>Commands issued to the MDM agent</selectable>
                 <selectable><h:mark style="background-color:yellowgreen;">Commands issued to the subordinate MDM server</h:mark></selectable>
+                <selectable><h:mark style="background-color:yellowgreen;">Status updates provided to the primary MDM server</h:mark></selectable>
 								<selectable>none</selectable>
 								</selectables>
 						</h:li>
 						<h:li>Specifically defined auditable events listed in <xref g="t-audit-mandatory"/></h:li>                    
 					  <h:li><selectables linebreak="yes">
-					    <selectable>Start up and shut down of the audit functions</selectable>
-              <selectable><h:mark style="background-color:yellowgreen;">Status updates provided to the primary MDM server</h:mark></selectable>
+					    <selectable>Start up and shut down of the audit functions</selectable>              
               <selectable id="sel-at2"><refinement>Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</refinement></selectable>
 					    <selectable id="sel-at3"><refinement>Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</refinement></selectable>
 					    <selectable id="sel-at4"><refinement>Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</refinement></selectable>
@@ -1363,12 +1363,11 @@ DONE:
 				from those that require additional record content. If the TOE is distributed and the given component does not deal with setting the policy 
 				applied to the MDM agent, it is acceptable to not have any administrative actions to audit.<h:br/><h:br/>
               
-				Item <h:b>b</h:b> includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE component, if distributed, 
-				interacts directly with the MDM agent, then "Commands issued to the MDM agent" must be selected. <h:mark style="background-color:yellowgreen;">If the TOE component, if distributed, interacts directly with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected.</h:mark> If the TOE component, if distributed, does not interact directly with either the MDM agent<h:mark style="background-color:yellowgreen;"> or subordinate MDM server</h:mark>, then it is acceptable to select "none."<h:br/><h:br/>
+				Item <h:b>b</h:b> includes those commands, which may be performed automatically based on triggers or on a schedule. <h:mark style="background-color:yellowgreen;">If the TOE server acts as a primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM Server" must be selected. For distributed TOEs, if the TOE component directly interacts with a primary MDM server, subordinate MDM server, or MDM agent then the corresponding selection should be made for that component. If the TOE component does not directly interact with any of these entities, then it is acceptable to select "none."</h:mark><h:br/><h:br/>
 
         <h:b>In item d above, "start up and shut down of the MDM system" must be selected if the TSF has a start up and shut down phase. 
         Additionally, if the TOE is distributed, this applies to all components. If the TOE is not distributed then MDM system is equivalent 
-        to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required. <h:mark style="background-color:yellowgreen;">Additionally if the TOE acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM Server" must be selected. </h:mark></h:b><h:br/><h:br/>
+        to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required.</h:b><h:br/>
               
 				Depending on the specific requirements selected by the ST author from SFR, optional requirements, selection-based
 				requirements, and objective requirements, the ST author should include the appropriate auditable
