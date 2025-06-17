@@ -70,11 +70,11 @@
 	
 		<!-- 1.1. Overview -->
 		<section id="ov" title="Overview"> 
-			Mobile device management (MDM) products allow enterprises to apply security policies to mobile devices, such as smartphones and tablets. The purpose of 
-			these policies is to establish a security posture adequate to permit mobile devices to process enterprise data and connect to enterprise network
+			Mobile Device Management (MDM) products allow enterprises to apply security policies to managed devices (MDs), such as smartphones, tablets, and workstations. The purpose of 
+			these policies is to establish a security posture adequate to permit MDs to process enterprise data and connect to enterprise network
 			resources.<h:br/><h:br/> 
 			This document provides a baseline set of Security Functional Requirements (SFRs) for an MDM system, which is the Target of Evaluation (TOE). The MDM 
-			system is only one component of an enterprise deployment of mobile devices. Other components, such as the mobile device platforms, which enforce 
+			system is only one component of an enterprise deployment of MDs. Other components, such as the MD platforms, which enforce 
 			the security policies and network access control servers are out of scope. 
 		</section>
 		
@@ -83,7 +83,7 @@
 		<!-- 1.2.2 Technical Terms -->
 		<tech-terms>
 			<term full="Administrator">The person who is responsible for management activities, including setting the 
-				policy that is applied by the enterprise on the mobile device.</term>
+				policy that is applied by the enterprise on the MD.</term>
 			<term full="API Application Programming Interface " abbr="API">A specification of routines, data structures,
 				object classes, and variables that allows an application to make use of services provided by another
 				software component, such as a library. APIs are often provided for a set of libraries included with 
@@ -94,25 +94,24 @@
 			<term full="Data Encryption Key" abbr="DEK">A key used to encrypt data-at-rest.</term>
 			<term full="Developer Modes">States in which additional services are available to a user in order to
 				provide enhanced system access for debugging of	software.</term>
-			<term full="Enrolled State">The state in which a mobile device is managed by a policy from an MDM.</term>
+			<term full="Enrolled State">The state in which a MD is administered and configured by a policy from an MDM.</term>
 			<term full="Enterprise Applications">Applications that are provided and managed by the enterprise as
 				opposed to a public application store.</term>
-			<term full="Enterprise Data">Any data residing in enterprise servers or temporarily stored on mobile 
-				devices to which the mobile device user is allowed access according to the security policy defined by 
+			<term full="Enterprise Data">Any data residing in enterprise servers or temporarily stored on MDs to which the MD user is allowed access according to the security policy defined by 
 				the enterprise and implemented by the administrator. </term>
 			<term full="Enrollment over Secure Transport" abbr="EST">Cryptographic protocol that describes an X.509 
 				certificate management protocol targeting public key infrastructure (PKI) clients that need to acquire
 				client certificates and associated certificate authority (CA) certificates.</term>
 			<term full="Key Encryption Key" abbr="KEK">A key that is used to encrypt other keys,
 				such as DEKs or storage repositories that contain keys. </term>
-			<term full="Locked State">Mobile device state where the device is powered
+			<term full="Locked State">Device state where the device is powered
 				on but most functionality is unavailable for use without authentication.</term>
-			<term full="Mobile Device" abbr="MD">A device which is composed of a hardware platform and its system software. The device typically provides wireless
+			<term full="Managed Device" abbr="MD">A device which is composed of a hardware platform and its system software. The device typically provides wireless
 				connectivity and may include software for functions like secure messaging, email, web, VPN connection, and VoIP (Voice over IP), for access
 				to the protected enterprise network, enterprise data and applications, and for communicating to other MDs.</term>
 			<term full="Mobile Device Management" abbr="MDM">Products that allow enterprises to apply security policies to MDs. This system consists of two primary
 				components: the MDM server and the MDM agent.</term>
-			<term full="Mobile Device User">The person who uses and is held responsible for an MD. </term>
+			<term full="Managed Device User">The person who uses and is held responsible for an MD. </term>
 			<term full="Operating System" abbr="OS">Software which runs at the highest
 				privilege level and can directly control hardware resources. Modern mobile devices
 				typically have at least two primary operating systems: one which runs on the cellular
@@ -122,22 +121,21 @@
 				communications with the cellular network and may control other peripherals. The term
 				OS, without context, may be assumed to refer to the platform of the
 				application processor. </term>
-			<term full="Powered-Off State">Mobile device shutdown state.</term>
-			<term full="Protected Data">All non-TSF data on the mobile device,
-				including user or enterprise data. Protected data is encrypted while the mobile device
+			<term full="Powered-Off State">MD shutdown state.</term>
+			<term full="Protected Data">All non-TSF data on the MD,
+				including user or enterprise data. Protected data is encrypted while the MD
 				is in the powered-off state. This includes keys in software-based storage. May overlap
 				with sensitive data. </term>
 			<term full="Root Encryption Key" abbr="REK">A key tied to a particular device that
 				is used to encrypt all other keys for that device. </term>
-			<term full="Sensitive Data">Data that is encrypted by the mobile device.
+			<term full="Sensitive Data">Data that is encrypted by the MD.
 				May include all user or enterprise data or may be data for specific applications such as
 				emails, messaging, documents, calendar items, or contacts. May be protected while the
-				mobile device is in the locked state. Must include at minimum some keys in
+				MD is in the locked state. Must include at minimum some keys in
 				software-based key storage. </term>
 			<term full="Trust Anchor Database">A list of trusted root Certificate Authority certificates. </term>
-			<term full="Unenrolled State">Mobile device state when it is not managed by an MDM.</term>
-			<term full="Unlocked State">Mobile device state where it is powered on
-				and its functionality is available for use. </term>       
+			<term full="Unenrolled State">Device state when it is not managed by an MDM.</term>
+			<term full="Unlocked State">Device state where it is powered on and the user has been authenticated. The device functionality is available for use by the user.</term>       
 		</tech-terms>
 	  
 		<!-- 1.3 Cmpliant Targets of Evaluation -->
@@ -146,13 +144,13 @@
 			consist of a separate Mobile Application Store (MAS) server. 
 			
 			<!-- 1.3.1 TOE Boundary -->
-			<section id="tb" title="TOE Boundary"> The MDM system operational environment consists of the mobile device on which the MDM agent resides, 
+			<section id="tb" title="TOE Boundary"> The MDM system operational environment consists of the MD on which the MDM agent resides, 
 				the platform on which the MDM server runs, and an untrusted wireless network over which they communicate, as pictured below.
 				<h:br/><h:br/>
 				<figure entity="images/MDMserveroperatingenvironment.jpg" title="MDM System Operating Environment" id="agentoperatingenvironment"/>
 				<h:br/><h:br/>
 				The <h:b>MDM server</h:b> is software (an application, service, etc.) on a general-purpose platform, a network device, or cloud architecture executing
-				in a trusted network environment. The MDM server provides administration of the mobile device policies and reporting on mobile device behavior.
+				in a trusted network environment. The MDM server provides administration of MD policies and reporting on the device behavior.
 				The MDM server is responsible for managing device enrollment, configuring and sending policies to the MDM agents, collecting reports on device
 				status, and sending commands to the agents. The MDM server may be standalone or distributed, where a distributed TOE is one that requires
 				multiple distinct components to operate as a logical whole in order to fulfill the requirements of this PP (a more extensive description of 
@@ -160,18 +158,18 @@
 				<h:br/><h:br/>
 				The <h:b>MDM agent</h:b> establishes a secure connection back to the
 				MDM server controlled by an enterprise administrator and configures the
-				mobile device per the administrator's policies. The MDM agent is addressed in the PP-Module for MDM
-				Agents. If the MDM agent is installed on a mobile device as an application
+				MD per the administrator's policies. The MDM agent is addressed in the PP-Module for MDM
+				Agents. If the MDM agent is installed on a MD as an application
 				developed by the MDM developer, the PP-Module extends this PP and is included in the TOE. In this case, the TOE security 
 				functionality specified in this PP must be
 				addressed by the MDM agent in addition to the MDM
-				Server. Otherwise, the MDM agent is provided by the mobile device vendor
+				Server. Otherwise, the MDM agent is provided by the MD vendor
 				and is out of scope of this PP; however, MDMs are
-				required to indicate the mobile platforms supported by the MDM server and
+				required to indicate the device platforms supported by the MDM server and
 				must be tested against the native MDM agent of those platforms.
 				<h:br/><h:br/>
 				The <h:b>Mobile Application Store (MAS)</h:b> hosts applications for the enterprise, authenticates agents, and securely transmits 
-				applications to enrolled mobile devices. The MAS functionality can be included as part of the MDM server Software or can be logically
+				applications to enrolled MDs. The MAS functionality can be included as part of the MDM server Software or can be logically
 				distinct. If the MAS functionality is on a physically separate server, then the TOE is
 				distributed with the MDM server and MAS server being 
 				separate components.
@@ -185,19 +183,18 @@
 					<description>An enterprise-owned device for general-purpose business use is commonly
 						called Corporate-Owned, Personally-Enabled (COPE). This use case entails a significant
 						degree of enterprise control over configuration and software inventory. Enterprise
-						administrators use an MDM product to establish policies on the mobile
-						devices prior to user issuance. Users may use internet connectivity to browse the web, access corporate mail, or run enterprise 
+						administrators use an MDM product to establish policies on the MDs prior to user issuance. Users may use internet connectivity to browse the web, access corporate mail, or run enterprise 
 						applications, but this connectivity may be under
 						significant control of the enterprise. The user may also be expected to store data and
 						use applications for personal, non-enterprise use. The enterprise administrator uses the
-						MDM product to deploy security policies and query mobile device
+						MDM product to deploy security policies and query MD
 						status. The MDM may issue commands for remediation
 						actions.</description>
 				</usecase>
 				<usecase title="Enterprise-owned device for specialized, high-security use" id="uc2">
 					<description>An enterprise-owned device with intentionally limited network connectivity, tightly controlled configuration,
 						and limited software inventory is appropriate for specialized, high-security use cases. As in the previous use case, the MDM
-						product is used to establish such policies on mobile devices prior to issuance to users. The device may not be permitted
+						product is used to establish such policies on MDs prior to issuance to users. The device may not be permitted
 						connectivity to any external
 						peripherals. It may only be able to communicate via its Wi-Fi or cellular radios with
 						the enterprise-run network, which may not even permit connectivity to the internet. Use
@@ -219,13 +216,13 @@
 						However, because the enterprise allows the user full (or nearly full)
 						access to the enterprise network, the enterprise will require certain security policies,
 						for example a password or screen lock policy and health reporting, such as the
-						integrity of the mobile device system software, before allowing access. The
+						integrity of the MD system software, before allowing access. The
 						administrator of the MDM can establish remediation actions, such as
 						wipe of the enterprise data, for non-compliant devices. These controls could potentially
 						be enforced by a separation mechanism built-in to the device itself to distinguish
 						between enterprise and personal activities, or by a third-party application that
 						provides access to enterprise resources and leverages security capabilities provided by
-						the mobile device. Based on the operational environment and the acceptable risk level
+						the MD. Based on the operational environment and the acceptable risk level
 						of the enterprise, those security functional requirements outlined in Section 5 of this
 						PP along with the selections in the Use Case 3 template defined in
 						Appendix G are sufficient for the secure implementation of this BYOD use case.
@@ -235,7 +232,7 @@
 					<description>A personally-owned device may also be given access to limited enterprise services such as enterprise email. The enterprise may not
 						need to enforce any security policies on this device because the user does not have full access to the enterprise or enterprise data.
 						However, the enterprise may want secure email and web browsing with assurance that the services being provided to those clients by the
-						mobile device are not compromised. Based on the operational environment and the acceptable risk level of the enterprise, those security
+						device are not compromised. Based on the operational environment and the acceptable risk level of the enterprise, those security
 						functional requirements outlined in Section 5 of this PP are sufficient for the secure implementation of this BYOD use case.</description>
 				</usecase>
 			</usecases>
@@ -709,31 +706,31 @@
 			<threats>
 				<threat name="T.MALICIOUS_APPS">
 					<description>Malicious or flawed application threats exist because apps loaded onto a
-						mobile device may include malicious or exploitable code. An administrator of the MDM or mobile device user
+						MD may include malicious or exploitable code. An administrator of the MDM or MD user
 						may inadvertently import malicious code, or an attacker may insert malicious code into the TOE, resulting in the
 						compromise of TOE or TOE data.</description>
 				  
 				  
 				  <addressed-by>FAU_ALT_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by generating an alert if application of a policy fails, as this may indicate that a mechanism used to prevent the execution of malicious apps was not able to be enforced.</rationale>
-				  <addressed-by>FAU_NET_EXT.1</addressed-by><rationale>A conformant TOE mitigates this threat by providing network status information so that an inaccessible mobile device can be flagged as potentially non-conformant to an MDM policy (and therefore potentially subject to the threat of executing malicious apps)</rationale>
+				  <addressed-by>FAU_NET_EXT.1</addressed-by><rationale>A conformant TOE mitigates this threat by providing network status information so that an inaccessible MD can be flagged as potentially non-conformant to an MDM policy (and therefore potentially subject to the threat of executing malicious apps)</rationale>
 <addressed-by>FCS_COP.1/HASH_ALG</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by implementing cryptographic algorithms which may be used to verify the integrity of apps (if the TOE includes its own MAS).</rationale>				  
 				  <addressed-by>FCS_COP.1/SIGN_ALG</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by implementing cryptographic algorithms which may be used to verify the authenticity of apps (if the TOE includes its own MAS).</rationale>
-				  <addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by providing a means to enroll mobile devices into management, where policies prohibiting the installation of potential malicious apps can be enforced.</rationale>
+				  <addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by providing a means to enroll MDs into management, where policies prohibiting the installation of potential malicious apps can be enforced.</rationale>
 				  <addressed-by>FMT_POL_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by providing signed policy updates that can prohibit the execution of potentially malicious apps.</rationale>
-				  <addressed-by>FMT_MOF.1/FUNCBE</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by implementing mechanisms to control the apps that can be installed on an enrolled mobile device.</rationale>
-				  <addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by implementing mechanisms to control the apps that can be installed on an enrolled mobile device.</rationale>
-				  <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by communicating its policy data to enrolled mobile devices securely over a trusted channel.</rationale>
-				  <addressed-by>FAU_CRP_EXT.1 (objective)</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by allowing mobile devices to report on their configuration status so it can be determined whether they have any unauthorized (and potentially malicious) apps installed.</rationale>
-				  <addressed-by>FIA_UAU.4 (objective)</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by limiting reuse of authentication credentials used to enroll mobile devices to provide assurance that mobile devices are properly enrolled into management.</rationale>
-				  <addressed-by>FMT_SAE_EXT.1 (objective)</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by limiting the validity period of an enrollment request to provide assurance that mobile devices are properly enrolled into management.</rationale>
-				  <addressed-by>FIA_TOK_EXT.1 (selection-based)</addressed-by><rationale>A conformant TOE mitigates the threats of malicious apps by providing a mechanism to securely enroll a unique mobile device into management.</rationale>
-				  <addressed-by>FMT_MOF.1/MANAGEMENT_MAS (selection-based)</addressed-by><rationale>A conformant TOE may mitigate the threat of malicious apps by implementing a MAS server that limits the apps that can be installed on enrolled mobile devices to those hosted by the TOE.</rationale>
-				  <addressed-by>FMT_SMF.1/MAS (selection-based)</addressed-by><rationale>A conformant TOE may mitigate the threat of malicious apps by implementing a MAS server that limits the apps that can be installed on enrolled mobile devices to those hosted by the TOE.</rationale>
+				  <addressed-by>FMT_MOF.1/FUNCBE</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by implementing mechanisms to control the apps that can be installed on an enrolled MD.</rationale>
+				  <addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by implementing mechanisms to control the apps that can be installed on an enrolled MD.</rationale>
+				  <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by communicating its policy data to enrolled MDs securely over a trusted channel.</rationale>
+				  <addressed-by>FAU_CRP_EXT.1 (objective)</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by allowing MDs to report on their configuration status so it can be determined whether they have any unauthorized (and potentially malicious) apps installed.</rationale>
+				  <addressed-by>FIA_UAU.4 (objective)</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by limiting reuse of authentication credentials used to enroll MDs to provide assurance that MDs are properly enrolled into management.</rationale>
+				  <addressed-by>FMT_SAE_EXT.1 (objective)</addressed-by><rationale>A conformant TOE mitigates the threat of malicious apps by limiting the validity period of an enrollment request to provide assurance that MDs are properly enrolled into management.</rationale>
+				  <addressed-by>FIA_TOK_EXT.1 (selection-based)</addressed-by><rationale>A conformant TOE mitigates the threats of malicious apps by providing a mechanism to securely enroll a unique MD into management.</rationale>
+				  <addressed-by>FMT_MOF.1/MANAGEMENT_MAS (selection-based)</addressed-by><rationale>A conformant TOE may mitigate the threat of malicious apps by implementing a MAS server that limits the apps that can be installed on enrolled MDs to those hosted by the TOE.</rationale>
+				  <addressed-by>FMT_SMF.1/MAS (selection-based)</addressed-by><rationale>A conformant TOE may mitigate the threat of malicious apps by implementing a MAS server that limits the apps that can be installed on enrolled MDs to those hosted by the TOE.</rationale>
 				  
 				</threat>
 				<threat name="T.NETWORK_ATTACK">
 					<description>An attacker may masquerade as an MDM server and attempt to
-						compromise the integrity of the mobile device by sending malicious management commands.</description>
+						compromise the integrity of the MD by sending malicious management commands.</description>
 				  
 				  <addressed-by>FAU_GEN.1/AUDITGEN</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by generating audit records of activity which may indicate attempts of such attacks.</rationale>
 				  <addressed-by>FAU_STG.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by retaining audit records of activity which may indicate attempts of such attacks.</rationale>
@@ -746,14 +743,14 @@
 				  <addressed-by>FCS_COP.1/SIGN_ALG</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing hash algorithms to maintain authenticity of data in transit.</rationale>
 				  <addressed-by>FCS_RBG.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a cryptographically strong DRBG to ensure generation of strong cryptographic keys.</rationale>
 				  <addressed-by>FCS_STG_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing protected storage for secret and private keys that must be stored persistently for use in trusted communications and in proving the authenticity of policy information.</rationale>
-				  <addressed-by>FIA_CLI_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the mobile device being enrolled is genuine.</rationale>
-				  <addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the mobile device is enrolled via a trusted channel.</rationale>
+				  <addressed-by>FIA_CLI_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the MD being enrolled is genuine.</rationale>
+				  <addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the MD is enrolled via a trusted channel.</rationale>
 				  <addressed-by>FMT_POL_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure the authenticity of policies issued by the TOE.</rationale>
 				  <addressed-by>FPT_FLS.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to fail into a secure state if it cannot generate strong random numbers.</rationale>
 				  <addressed-by>FPT_TST.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to self-test its ability to generate strong random numbers.</rationale>
 				  <addressed-by>FTP_ITC.1/INTER_XFER_IT</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to protect data in transit between the TOE and external IT entities that support its operation.</rationale>
 				  <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by specifying the channels over which data in transit is protected.</rationale>
-				  <addressed-by>FTP_TRP.1/TRUSTPATH_ENROLL</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a trusted path for enrollment of mobile devices.</rationale>
+				  <addressed-by>FTP_TRP.1/TRUSTPATH_ENROLL</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a trusted path for enrollment of MDs.</rationale>
 				  <addressed-by>FTP_TRP.1/TRUSTPATH_REM_ADMIN</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a trusted path for remote administration.</rationale>
 				  <addressed-by>FAU_SAR.1 (optional)</addressed-by><rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism within the TOE boundary to review audit data that may indicate attempted network attacks.</rationale>
 				  <addressed-by>FAU_SEL.1 (optional)</addressed-by><rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism to specify the events that are audited by the TOE, which could include activities suggestive of a potential network attack.</rationale>
@@ -788,12 +785,12 @@
 				  <addressed-by>FCS_COP.1/CONF_ALG</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing encryption algorithms to maintain confidentiality of data in transit.</rationale>
 				  <addressed-by>FCS_RBG.1</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a cryptographically strong DRBG to ensure generation of strong cryptographic keys.</rationale>
 				  <addressed-by>FCS_STG_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing protected storage for secret and private keys that must be stored persistently for use in trusted communications and in proving the authenticity of policy information.</rationale>
-				  <addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the mobile device is enrolled via a trusted channel.</rationale>
+				  <addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the MD is enrolled via a trusted channel.</rationale>
 				  <addressed-by>FPT_FLS.1</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a mechanism to fail into a secure state if it cannot generate strong random numbers.</rationale>
 				  <addressed-by>FPT_TST.1</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a mechanism to self-test its ability to generate strong random numbers.</rationale>
 				  <addressed-by>FTP_ITC.1/INTER_XFER_IT</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a mechanism to protect data in transit between the TOE and external IT entities that support its operation.</rationale>
 				  <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by specifying the channels over which data in transit is protected.</rationale>
-				  <addressed-by>FTP_TRP.1/TRUSTPATH_ENROLL</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a trusted path for enrollment of mobile devices.</rationale>
+				  <addressed-by>FTP_TRP.1/TRUSTPATH_ENROLL</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a trusted path for enrollment of MDs.</rationale>
 				  <addressed-by>FTP_TRP.1/TRUSTPATH_REM_ADMIN</addressed-by><rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a trusted path for remote administration.</rationale>
 				  <addressed-by>FTP_TRP.1/TRUSTPATH_JOIN (objective)</addressed-by><rationale>A conformant TOE may mitigate the threat of network eavesdrop by implementing a mechanism to securely join distributed TOE components to one another using a trusted path.</rationale>
 				  
@@ -812,32 +809,32 @@
 			  
 			  
 				<threat name="T.PHYSICAL_ACCESS">
-					<description>The mobile device may be lost or stolen, and an unauthorized individual may
+					<description>The MD may be lost or stolen, and an unauthorized individual may
 						attempt to access user data. Although these attacks are primarily directed against the
-						mobile device platform, the TOE configures features on mobile devices that mitigate the this threat against them. Therefore, misuse or failure of the TOE may also compromise the mobile device, exposing it to this threat.
+						MD platform, the TOE configures features on MDs that mitigate the this threat against them. Therefore, misuse or failure of the TOE may also compromise the MD, exposing it to this threat.
 						</description>
 				  
-				  <addressed-by>FAU_ALT_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by generating an alert when a mobile device is unable to receive policy information or has its enrollment status altered (e.g. unenrollment may be evidence of physical compromise).</rationale>
-				  <addressed-by>FAU_GEN.1/AUDITGEN</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by generating audit records of the management activities performed on the TOE that are applied to that device.</rationale>
-				  <addressed-by>FAU_STG.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by retaining audit logs that may indicate potential misuse of the TOE to misconfigure a mobile device.</rationale>
-				  <addressed-by>FIA_UAU.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by enforcing user authentication on the TOE so that mobile devices cannot be configured without authorization.</rationale>
-				  <addressed-by>FMT_MOF.1/FUNCBE</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
-				  <addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
-				  <addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
-				  <addressed-by>FMT_SMF.1/SERVER_CONF_SERVER</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by implementing management functions that allow the TSF to ensure its own secure operation with respect to applying policies.</rationale>
-				  <addressed-by>FMT_SMR.1/SECMAN_ROLES</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by implementing roles for its own management that allow the TSF to ensure its own secure operation with respect to applying policies.</rationale>
-				  <addressed-by>FPT_API_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by ensuring that the TSF is not subject to compromise through improper API usage.</rationale>
-				  <addressed-by>FPT_LIB_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by ensuring that the TSF is not subject to compromise through insecure library usage.</rationale>
-				  <addressed-by>FPT_TST_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by ensuring that the TSF performs self-tests to verify its own integrity so that it can be trusted as a management platform.</rationale>
-				  <addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the mobile device by ensuring that the TSF uses a trusted update mechanism to verify its own integrity so that it can be trusted as a management platform.</rationale>
-				  <addressed-by>FAU_SAR.1 (optional)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the mobile device by providing a review mechanism for audit records of the management activities performed on the TOE that are applied to that device (to detect potential misconfiguration of the device).</rationale>
-				  <addressed-by>FAU_SEL.1 (optional)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the mobile device by providing a mechanism to specify audit records of the specific management activities performed on the TOE that are applied to that device (to detect potential misconfiguration of the device).</rationale>
-				  <addressed-by>FTA_TAB.1 (optional)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the mobile device by providing a mechanism on the TOE that advises of actionable consequences for its misuse in configuration of mobile devices.</rationale>
-				  <addressed-by>FAU_GEN.1/MAS_SERVER (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the mobile device by providing a mechanism on the TOE that logs a failure of the TSF to affect an enrolled mobile device's installed apps.</rationale>
-				  <addressed-by>FAU_STG.2 (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the mobile device by providing a mechanism on the TOE that protects audit records of configuration of that device from unauthorized modification or destruction.</rationale>
-				  <addressed-by>FMT_MOF.1/MANAGEMENT_MAS (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the mobile device by implementing management functions that allow for the TOE to download and install mobile apps.</rationale>
-				  <addressed-by>FMT_SMF.1/MAS (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the mobile device by implementing management functions for its MAS Server functionality that allow the TSF to securely configure enrolled devices.</rationale>
-				  <addressed-by>FMT_SMR.1/SECMAN_ROLES_MAS (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the mobile device by implementing roles for its own management that allow the TSF to ensure its own secure operation with respect to applying MAS Server policies.</rationale>
+				  <addressed-by>FAU_ALT_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by generating an alert when a MD is unable to receive policy information or has its enrollment status altered (e.g. unenrollment may be evidence of physical compromise).</rationale>
+				  <addressed-by>FAU_GEN.1/AUDITGEN</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by generating audit records of the management activities performed on the TOE that are applied to that device.</rationale>
+				  <addressed-by>FAU_STG.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by retaining audit logs that may indicate potential misuse of the TOE to misconfigure a MD.</rationale>
+				  <addressed-by>FIA_UAU.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by enforcing user authentication on the TOE so that MDs cannot be configured without authorization.</rationale>
+				  <addressed-by>FMT_MOF.1/FUNCBE</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
+				  <addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
+				  <addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
+				  <addressed-by>FMT_SMF.1/SERVER_CONF_SERVER</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow the TSF to ensure its own secure operation with respect to applying policies.</rationale>
+				  <addressed-by>FMT_SMR.1/SECMAN_ROLES</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing roles for its own management that allow the TSF to ensure its own secure operation with respect to applying policies.</rationale>
+				  <addressed-by>FPT_API_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF is not subject to compromise through improper API usage.</rationale>
+				  <addressed-by>FPT_LIB_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF is not subject to compromise through insecure library usage.</rationale>
+				  <addressed-by>FPT_TST_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF performs self-tests to verify its own integrity so that it can be trusted as a management platform.</rationale>
+				  <addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF uses a trusted update mechanism to verify its own integrity so that it can be trusted as a management platform.</rationale>
+				  <addressed-by>FAU_SAR.1 (optional)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a review mechanism for audit records of the management activities performed on the TOE that are applied to that device (to detect potential misconfiguration of the device).</rationale>
+				  <addressed-by>FAU_SEL.1 (optional)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism to specify audit records of the specific management activities performed on the TOE that are applied to that device (to detect potential misconfiguration of the device).</rationale>
+				  <addressed-by>FTA_TAB.1 (optional)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism on the TOE that advises of actionable consequences for its misuse in configuration of MDs.</rationale>
+				  <addressed-by>FAU_GEN.1/MAS_SERVER (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism on the TOE that logs a failure of the TSF to affect an enrolled MD's installed apps.</rationale>
+				  <addressed-by>FAU_STG.2 (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism on the TOE that protects audit records of configuration of that device from unauthorized modification or destruction.</rationale>
+				  <addressed-by>FMT_MOF.1/MANAGEMENT_MAS (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to download and install applications.</rationale>
+				  <addressed-by>FMT_SMF.1/MAS (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by implementing management functions for its MAS Server functionality that allow the TSF to securely configure enrolled devices.</rationale>
+				  <addressed-by>FMT_SMR.1/SECMAN_ROLES_MAS (selection-based)</addressed-by><rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by implementing roles for its own management that allow the TSF to ensure its own secure operation with respect to applying MAS Server policies.</rationale>
 				</threat>
 			</threats>
 		</sec:Threats>
@@ -891,7 +888,7 @@
 					</objective-refer>
 				</assumption>
 				<assumption name="A.PROPER_USER">
-					<description>Mobile device users are not willfully negligent or hostile, and use the
+					<description>MD users are not willfully negligent or hostile, and use the
 						device within compliance of a reasonable enterprise security policy. </description>
 					<objective-refer ref="OE.PROPER_USER">
 						<rationale>The operational environment objective OE.PROPER_USER is realized through
@@ -911,7 +908,7 @@
 					</objective-refer>         
 				</OSP>
 				<OSP name="P.ADMIN">
-					<description>The configuration of the mobile device security functions must adhere to the
+					<description>The configuration of the MD security functions must adhere to the
 						enterprise security policy.</description>
 					<objective-refer ref="OE.PROPER_ADMIN">
 						<rationale>The organizational security policy P.ADMIN is realized through
@@ -919,7 +916,7 @@
 					</objective-refer>
 				</OSP>
 				<OSP name="P.DEVICE_ENROLL">
-					<description>A mobile device must be enrolled for a specific user by the administrator of
+					<description>A MD must be enrolled for a specific user by the administrator of
 						the MDM prior to being used in the enterprise network by the user.</description>
 					<objective-refer ref="OE.IT_ENTERPRISE">
 						<rationale>The organizational security policy P.DEVICE_ENROLL is realized through
@@ -927,7 +924,7 @@
 					</objective-refer>
 				</OSP>
 				<OSP name="P.NOTIFY">
-					<description>The mobile user must immediately notify the administrator if a mobile device
+					<description>The MD user must immediately notify the administrator if a MD
 						is lost or stolen so that the administrator may apply remediation actions via the 
 						MDM system.</description>
 					<objective-refer ref="OE.PROPER_USER">
@@ -963,12 +960,12 @@
 <!-- ? -->	<addressed-by>FAU_CRP_EXT.1 (objective)</addressed-by><rationale>The PP includes FAU_CRP_EXT.1 to optionally require the TSF to collect information about the configuration of enrolled devices.</rationale>
         </SO>
         <SO name="O.APPLY_POLICY">
-          <description>The TOE must facilitate configuration and enforcement of enterprise security policies on mobile devices via interaction
-		  with the mobile OS and the MDM server. This includes the initial enrollment of the device into management through its entire
+          <description>The TOE must facilitate configuration and enforcement of enterprise security policies on MDs via interaction
+		  with the OS and the MDM server. This includes the initial enrollment of the device into management through its entire
 		  lifecycle, including policy updates and its possible unenrollment from management services.</description>
 	  <addressed-by>FIA_ENR_EXT.1</addressed-by><rationale>The PP includes FIA_ENR_EXT.1 for the TSF to perform the initial enrollment of devices into management, including applying restrictions on what devices can be enrolled.</rationale>
 		<addressed-by>FMT_MOF.1/FUNCBE</addressed-by><rationale>The PP includes FMT_MOF.1/FUNCBE to define the supported TSF management functions, including those used to enable, disable, and apply policies to enrolled devices.</rationale>
-		<addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_ENROLL for the TSF to restrict the enrollment process to authorized administrators and mobile device users.</rationale>
+		<addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_ENROLL for the TSF to restrict the enrollment process to authorized administrators and MD users.</rationale>
 		<addressed-by>FMT_MOF.1/MANAGEMENT_MAS</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_MAS to enforce restrictions on access to the MAS Server from enrolled devices based on applied policies.</rationale>
 		<addressed-by>FMT_SAE_EXT.1 (objective)</addressed-by><rationale>The PP includes FMT_SAE_EXT.1 for the TSF to enforce restriction on agent enrollment by limiting the length of time that enrollment authentication data is valid.</rationale>
 	 	<addressed-by>FMT_SMF.1/SERVER_CONF_AGENT (sel-based)</addressed-by><rationale>The PP includes FMT_SMF.1/SERVER_CONF_AGENT to specify that the TSF is capable of sending configuration information and enterprise security policies to an MDM agent.</rationale>
@@ -1036,7 +1033,7 @@
 		<addressed-by>FIA_UAU.1</addressed-by><rationale>The PP includes FIA_UAU.1 to require the TSF to enforce access control on its management interface by requiring user authentication.</rationale>
 <!-- ? -->	<addressed-by>FIA_UAU.4 (objective)</addressed-by><rationale>The PP includes FIA_UAU.4 to optionally require the TSF to limit enrollment through the prevention of reuse of enrollment authentication data.</rationale>
 		<addressed-by>FMT_MOF.1/FUNCBE</addressed-by><rationale>The PP includes FMT_MOF.1/FUNCBE for the TSF to restrict the functions to enable, disable, modify, and monitor functions and policies to authorized administrators.</rationale>
-		<addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_ENROLL to restrict the enrollment process to authorized administrators and mobile device users.</rationale>
+		<addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_ENROLL to restrict the enrollment process to authorized administrators and MD users.</rationale>
 <!-- ? -->	<addressed-by>FMT_MOF.1/MANAGEMENT_MAS</addressed-by><rationale>The PP includes FMT_MOF.1/MANAGEMENT_MAS to enforce restrictions on access to the MAS Server from enrolled devices based on applied policies.</rationale>
 <!-- ?? -->	<addressed-by>FMT_POL_EXT.1</addressed-by><rationale>The PP includes FMT_POL_EXT.1 to ensure the integrity of the policies and policy updates to the MDM agent are digitally signed to protect their integrity.</rationale>
 		<addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by><rationale>The PP includes FMT_SMF.1/SERVER_CONF_AGENT to define the security-relevant management functions that the MDM server is capable of communicating to the MDM agent.</rationale>
@@ -1065,7 +1062,7 @@
 		  for every TOE component that the audit functionality is running properly. </description>
         </SOE>
         <SOE name="OE.IT_ENTERPRISE">
-          <description>The enterprise IT infrastructure provides security for a network that is available to the TOE and mobile devices that prevents 
+          <description>The enterprise IT infrastructure provides security for a network that is available to the TOE and MDs that prevents 
 		  unauthorized access.</description>
         </SOE>
         <!--
@@ -1077,12 +1074,12 @@
           <description>TOE Administrators are trusted to follow and apply all administrator guidance in a trusted manner.</description>
         </SOE>
         <SOE name="OE.PROPER_USER">
-          <description>Users of the mobile device are trained to securely use the mobile device and apply all guidance in a trusted manner.</description>
+          <description>Users of the MD are trained to securely use the MD and apply all guidance in a trusted manner.</description>
         </SOE><SOE name="OE.TIMESTAMP">
           <description>Reliable timestamps is provided by the operational environment for the TOE.</description>
         </SOE>        
         <SOE name="OE.WIRELESS_NETWORK">
-          <description>A wireless network will be available to the mobile devices.</description>
+          <description>A wireless network will be available to the MDs.</description>
         </SOE>
 	</SOEs>
     </sec:Security_Objectives_for_the_Operational_Environment>
@@ -1124,7 +1121,7 @@
 		  </ext-comp-def>
 	    <ext-comp-def title="Support for Compliance Reporting of Mobile Device Configuration" fam-id="FAU_CRP_EXT">
 	      <fam-behavior>This family defines requirements for the TSF to provide an interface for the
-	        MDM server to convey information about mobile devices for other systems.</fam-behavior>
+	        MDM server to convey information about MDs for other systems.</fam-behavior>
 	    </ext-comp-def>
 	     <ext-comp-def title="Network Reachability Review" fam-id="FAU_NET_EXT">
 	       <fam-behavior>This family defines requirements for administrators to see network
@@ -1143,7 +1140,7 @@
           is include in the PP or ST.
           <h:ul>
             <h:li>Type of alert.</h:li>
-            <h:li>Identity of Mobile Device that sent alert.</h:li>
+            <h:li>Identity of MD that sent alert.</h:li>
           </h:ul>
           </audit>
           <dependencies>No dependencies.</dependencies>
@@ -1152,16 +1149,16 @@
             <title>The TSF shall alert the administrators in the event of any of the following:
               <h:ul>
                 <h:li>Change in enrollment status</h:li>
-                <h:li>Failure to apply policies to a mobile device</h:li>
+                <h:li>Failure to apply policies to a MD</h:li>
                 <h:li><selectables><selectable><assignable>other events</assignable></selectable><selectable>no other events</selectable></selectables></h:li>
               </h:ul>
             </title>
             <note role="application"> An alert can be defined as anything providing straightaway notice to the administrator. An alert is different from 
 		    an audit record, however the fact that an alert was sent should be audited per FAU_GEN.1. Email, pop-up notifications, or other methods 
 		    are acceptable forms of alerts.<h:br/><h:br/>            
-              The MDM agent is required to report to the MDM server on successful application of policies on a managed mobile device, and failures can be
+              The MDM agent is required to report to the MDM server on successful application of policies on a MD, and failures can be
 		    inferred from the absence of such alerts. This requirement is intended to ensure that the MDM server notifies administrators when policies 
-		    are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the mobile device.</note>
+		    are not properly installed. Failure to properly install policy updates does not affect the enrollment status of the MD.</note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS and verify that it describes how the alert system is implemented. The evaluator shall also verify that
 		      a description of each assigned event is provided in the TSS.</TSS>
@@ -1183,19 +1180,19 @@
           </f-element>
 			<audit-event>
 				<audit-event-descr>Type of alert</audit-event-descr>
-				<audit-event-info>Identity of Mobile Device that sent alert.</audit-event-info>
+				<audit-event-info>Identity of MD that sent alert.</audit-event-info>
 			</audit-event>
 		</f-component>
 		
         <f-component cc-id="fau_crp_ext.1" name="Support for Compliance Reporting of Mobile Device Configuration" status="objective">
           <consistency-rationale/>
-          <comp-lev>defines requirements for providing information to enrolled mobile devices
+          <comp-lev>defines requirements for providing information to enrolled MDs
             through a secure channel.</comp-lev>
           <management>The following actions could be considered for the management functions in FMT.
             <h:ul>
               <h:li>Query the current version of the MD firmware or software.</h:li>
               <h:li>Query the current version of the hardware model of the device.</h:li>
-              <h:li>Query the current version of installed mobile applications.</h:li>
+              <h:li>Query the current version of installed applications.</h:li>
             </h:ul></management>
           <audit>There are no auditable events foreseen.</audit>
           <dependencies><no-link>FTP_ITC.1</no-link> Inter-TSF Trusted Channel</dependencies>
@@ -1204,11 +1201,11 @@
             <title> The TSF shall provide <selectables><selectable>an interface that provides responses 
               to queries about the configuration of enrolled devices</selectable><selectable>an interface that permits the export 
                 of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over a 
-              channel that meets the secure channel requirements in FTP_ITC.1/INTER_XFER_IT. The provided information for each enrolled mobile device includes:
+              channel that meets the secure channel requirements in FTP_ITC.1/INTER_XFER_IT. The provided information for each enrolled MD includes:
               <h:ul>
               <h:li>The current version of the MD firmware or software</h:li>
               <h:li>The current version of the hardware model of the device</h:li>
-              <h:li>The current version of installed mobile applications</h:li>
+              <h:li>The current version of installed applications</h:li>
               <h:li>List of MD configuration policies that are in place on the device (as defined in 
                 <xref to="fel-smf-man-agnt"/>)</h:li>
               <h:li><selectables>
@@ -1220,11 +1217,11 @@
             <ext-comp-def-title>
               <title>
                 The TSF shall provide <assignable>type of interface</assignable> to authorized entities over a 
-                channel that meets the secure channel requirements in FTP_ITC.1/INTER_XFER_IT. The provided information for each enrolled mobile device includes:
+                channel that meets the secure channel requirements in FTP_ITC.1/INTER_XFER_IT. The provided information for each enrolled MD includes:
                 <h:ul>
                   <h:li>The current version of the MD firmware or software</h:li>
                   <h:li>The current version of the hardware model of the device</h:li>
-                  <h:li>The current version of installed mobile applications</h:li>
+                  <h:li>The current version of installed applications</h:li>
                   <h:li>List of MD configuration policies that are in place on the device (as defined in 
                     <xref to="fel-smf-man-agnt"/>)</h:li>
                   <h:li><selectables>
@@ -1235,7 +1232,7 @@
               </title>
             </ext-comp-def-title>
             <note role="application">The intent of this requirement is that the MDM server be able to provide 
-              compliance information about enrolled mobile devices for use by other enterprise security infrastructure systems. 
+              compliance information about enrolled MDs for use by other enterprise security infrastructure systems. 
               There are active standards efforts underway by the Internet Engineering Task Force (IETF) Security Automation and 
               Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report on 
               endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile 
@@ -1425,11 +1422,10 @@
           <f-element id="fau-gen-1e1-mas">
             <title>The <h:b>MAS Server</h:b> shall be able to generate audit data of the following
               auditable events: [<h:i><h:ol type="a">
-              <h:li>Failure to push a new application on a managed mobile device</h:li>
-              <h:li>Failure to update an existing application on a managed mobile device</h:li>
+              <h:li>Failure to push a new application on a MD</h:li>
+              <h:li>Failure to update an existing application on a MD</h:li>
             </h:ol></h:i>].</title>
-            <note role="application">The MDM agent is required to report to the MAS Server on successful receipt of an application or update on a managed 
-		    mobile device, and failures can be inferred from the absence of such alerts.</note>            
+            <note role="application">The MDM agent is required to report to the MAS Server on successful receipt of an application or update on a MD, and failures can be inferred from the absence of such alerts.</note>            
           </f-element>
           
           <f-element id="fel-gen-mas-server">
@@ -1438,7 +1434,7 @@
 		    shall record within the audit data at least the following information: <h:ul>
               <h:li>date and time of the auditable event</h:li>
               <h:li>type of event</h:li>
-              <h:li>mobile device identity</h:li>
+              <h:li>MD identity</h:li>
               <h:li><assignable>other audit relevant information.</assignable></h:li>
 		    </h:ul>
             </title>
@@ -1493,7 +1489,7 @@
 		    the MDM server which the agent is required to respond to or by using scheduled periodic notifications of connectivity initiated by the 
 		    MDM agent. </note>
             <aactivity>
-              <TSS> The evaluator ensures that the TSS describes how reachability events are implemented, for each supported mobile platform. The evaluator
+              <TSS> The evaluator ensures that the TSS describes how reachability events are implemented, for each supported MD platform. The evaluator
 		      verifies that this description clearly indicates who (MDM agent or MDM server) initiates reachability events.</TSS>
               <Guidance> The evaluator shall verify that the guidance instructs administrators on the method of determining the network connectivity status
 		      of an enrolled agent.</Guidance>
@@ -1600,7 +1596,7 @@
               generated by the MDM server.<h:br/><h:br/>
               
               The TOE may rely on a non-TOE audit server for storage and review of audit data. 
-              Although the TOE generates audit data and receives audit data from managed mobile devices, the 
+              Although the TOE generates audit data and receives audit data from MDs, the 
               storage of this audit data and the ability to allow the administrator to review this
               audit data is provided by 
               the operational environment. The TSF may rely on the underlying operating system for this 
@@ -3267,9 +3263,9 @@
           </dependencies>
           
           <f-element id="fel-enr-tsf">
-            <title>The TSF shall authenticate the remote users over a trusted channel during the enrollment of a mobile device.</title>
+            <title>The TSF shall authenticate the remote users over a trusted channel during the enrollment of a MD.</title>
             <note role="application">The MDM server may use its own directory or a directory server to perform the authentication decision for users performing
-			the remote enrollment of a mobile device.</note>
+			the remote enrollment of a MD.</note>
             <aactivity level="element"> 
               <TSS>The evaluator shall examine the TSS and verify that it describes the process of enrollment for each MDM agent or platform listed as supported 
 			  in the ST. This description shall include the trusted path used for enrollment (FTP_TRP.1/TRUSTPATH_ENROLL), the method of user authentication
@@ -4138,8 +4134,8 @@
             <note role="application">
 	      This requirement outlines the enrollment functions that both administrators and MD users may perform.
 	      The enrollment actions are identified in the TSS as a part of FIA_ENR_EXT.1.
-	    <h:br/><h:br/> The authorized administrator does not remotely initiate enrollment of the mobile devices that are in the possession of users but may enroll
-		mobile devices when they are in the possession of the administrator, for example, before distributing the mobile devices to the users. </note>
+	    <h:br/><h:br/> The authorized administrator does not remotely initiate enrollment of the MDs that are in the possession of users but may enroll
+		MDs when they are in the possession of the administrator, for example, before distributing the MDs to the users. </note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS and verify that it describes how unauthorized users are prevented from enrolling in the MDM services.</TSS>
               <Guidance>TBD</Guidance>
@@ -4157,7 +4153,7 @@
           <f-element id="fmt-mof-1e1-mas">
             <title>The <h:b>MAS Server</h:b> shall restrict the ability to [<h:i>enable, modify the
               behavior of</h:i>] the functions [<h:i>downloading applications</h:i>] to
-              [<h:i>enrolled mobile devices that are compliant with MDM policies and assigned to a
+              [<h:i>enrolled MDs that are compliant with MDM policies and assigned to a
                 user in the application access group</h:i>].            
             </title>
             <note role="application">
@@ -4167,9 +4163,9 @@
             <aactivity>
               <TSS>The evaluator shall examine the TSS to determine that all methods of initiating an application download or update push are specified.</TSS>
               <Guidance>The evaluator shall confirm that the operational guidance contains how to initiate an application download or update push.</Guidance>
-              <Tests>The evaluator shall ensure that the MAS Server verifies that the mobile device is enrolled in the MDM server and is in a compliant state. The evaluator
+              <Tests>The evaluator shall ensure that the MAS Server verifies that the MD is enrolled in the MDM server and is in a compliant state. The evaluator
                 shall verify that an application cannot be downloaded from the MAS Server prior to enrolling the device with the MDM. The evaluator shall partially enroll 
-                the mobile device, so the device is connected to the MDM server, but is not compliant and verify that applications cannot be downloaded.
+                the MD, so the device is connected to the MDM server, but is not compliant and verify that applications cannot be downloaded.
 	      </Tests>
             </aactivity>
           </f-element>
@@ -4288,7 +4284,7 @@
                 <h:li><ctr id="smf5" ctr-type="mgmt" pre=""/>. Query connectivity status</h:li>
                 <h:li><ctr id="smf6" ctr-type="mgmt" pre=""/>. Query the current version of the MD firmware or software</h:li>
                 <h:li><ctr id="smf7" ctr-type="mgmt" pre=""/>. Query the current version of the hardware model of the device</h:li>
-                <h:li><ctr id="smf8" ctr-type="mgmt" pre=""/>. Query the current version of installed mobile applications</h:li>
+                <h:li><ctr id="smf8" ctr-type="mgmt" pre=""/>. Query the current version of installed applications</h:li>
                 <h:li><ctr id="smf9" ctr-type="mgmt" pre=""/>. Import X.509v3 certificates into the Trust Anchor Database (MDF Function 11)</h:li>
                 <h:li><ctr id="smf10" ctr-type="mgmt" pre=""/>. Install applications (MDF Function 16)</h:li>
                 <h:li><ctr id="smf11" ctr-type="mgmt" pre=""/>. Update system software (MDF Function 15)</h:li>
@@ -4521,7 +4517,7 @@
               Function-specific Application Notes:<h:br/><h:br/> 
               Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v3.3.<h:br/><h:br/> 
               Function <xref to="smf12"/> may be satisfied for the BYOD use case by application denylisting or disabling. In the case of BYOD, an enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not lose any information they might have in the application.<h:br/><h:br/>
-              Function <xref to="smf16"/> provides the MDM server to display an alert to the user of the mobile device.<h:br/><h:br/> 
+              Function <xref to="smf16"/> provides the MDM server to display an alert to the user of the MD.<h:br/><h:br/> 
               The audit data read according to Function <xref to="smf19"/> are to be transmitted to an external audit server according to FAU_STG.1. The MDM server is not expected to retain those logs.<h:br/><h:br/> 
               Function <xref to="smf34"/> provides the ability to enable and disable policy for the list of protocols where the device acts as a server, such as a mobile hotspot.<h:br/><h:br/>  
               Function <xref to="smf56"/> corresponds to FPT_NET_EXT.1.1 in agent. If the MDM agent has not had a successful reachability event with the MDM server in the amount of time specified in 'a', then the agent must perform the action selected in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each action could be associated with a different timeout in 'a'. If function <xref to="smf56"/> is included in the ST, than FPT_NET_EXT.1.1 must be included in the agent ST. </note>
@@ -4530,9 +4526,9 @@
 		      ensure that it identifies the management functions implemented for each supported MDM agent or platform, which are likely to be subsets of 
 		      all of the management functions available to the administrator on the MDM server. The evaluator shall examine the TSS to verify that any
 		      differences between management functions and policies for each supported MDM agent or platform are clearly indicated.<h:br/><h:br/>
-		      The evaluator shall determine if the mobile device has been evaluated. If so, the evaluator shall examine the TSS to verify that it 
+		      The evaluator shall determine if the MD has been evaluated. If so, the evaluator shall examine the TSS to verify that it 
 		      clearly identifies which management functions match the selections and assignments of the
-		      evaluated mobile device and which management 
+		      evaluated MD and which management 
 		      functions were not evaluated.</TSS>
               <Guidance>TBD</Guidance>
               <Tests>For each MDM agent or platform listed as supported in the ST:<testlist>
@@ -4564,7 +4560,7 @@
                     <selectable><h:br/>2. Allow the administrator to choose whether to accept the certificate when connection cannot be made to establish validity</selectable>                 
 					          <selectable><h:br/>3. Configure the TOE unlock banner</selectable>
                     <selectable><h:br/>4. Configure periodicity of the following commands to the agent: <assignable>list of commands</assignable></selectable>
-                    <selectable><h:br/>5. Configure the privacy-sensitive information that will and will not be collected from particular mobile devices</selectable>
+                    <selectable><h:br/>5. Configure the privacy-sensitive information that will and will not be collected from particular MDs</selectable>
                     <selectable><h:br/>6. Configure the length of time the enrollment authenticator is valid</selectable>
                     <selectable><h:br/>7. Configure the interaction between TOE components</selectable>
                     <selectable><h:br/>8. Configure the cryptographic functionality</selectable>
@@ -4584,12 +4580,12 @@
               specific functionality. The selection in a corresponds to the selection in <xref to="fel-enr-limit"/>.
               The selection in c.2 includes a function that corresponds to the selection in <xref to="fel-x509-fail"/>.
               Function c.4 allows the administrator to configure
-			        periodicity of assigned commands, for example "read audit logs kept by the Mobile Device." In this way the 
-			        administrator can configure the MDM system to retrieve audit logs from the Mobile Device on a periodic, such as
+			        periodicity of assigned commands, for example "read audit logs kept by the MD." In this way the 
+			        administrator can configure the MDM system to retrieve audit logs from the MD on a periodic, such as
 			        daily, basis in order to ensure freshness of log data and to minimize loss of audit logs.
 			        Function c.5 allows the
 			        administrator to configure the privacy-sensitive information that will and will not be collected from particular
-			        mobile devices to handle BYOD environments where some information may not be appropriate to collect. Privacy
+			        MDs to handle BYOD environments where some information may not be appropriate to collect. Privacy
 			        sensitive information may include items such as device physical location and lists of installed personal
 			        applications, and would vary depending on the particular capabilities of the TOE and MDM agent. The TOE should
 			        provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and 
@@ -4610,7 +4606,7 @@
             </note>
             <aactivity>
               <TSS> The evaluator shall examine the TSS to ensure that it describes each management
-                function listed. For function c.5, the evaluator shall examine the TSS to ensure that it describes the privacy-sensitive information that the TOE has the capability to collect from enrolled mobile devices.</TSS>
+                function listed. For function c.5, the evaluator shall examine the TSS to ensure that it describes the privacy-sensitive information that the TOE has the capability to collect from enrolled MDs.</TSS>
               <Guidance> The evaluator shall verify the operational guidance includes detailed instructions of what options are available and how to configure each management functional capability listed.</Guidance>
               <Tests> The tests of functions a, c.2, c.3, and c.6 are performed in conjunction with
                 the use of the function. Test 3 also covers function c.5. The evaluator shall perform the following tests: <testlist>
@@ -4663,7 +4659,7 @@
           </f-element>
           <f-element id="fel-smr-users-roles">
             <title>The TSF shall be able to associate users with roles.</title>
-            <note role="application">It is envisioned that the MDM server will be configured and maintained by different user roles. The assignment is used by the ST author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of mobile devices to the MDM according to FIA_ENR_EXT.1.<h:br/><h:br/>              
+            <note role="application">It is envisioned that the MDM server will be configured and maintained by different user roles. The assignment is used by the ST author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of MDs to the MDM according to FIA_ENR_EXT.1.<h:br/><h:br/>              
               For distributed TOEs, not every TOE component is required to implement its own user management to fulfill this SFR. At least one component has to support authentication and identification of users according to FIA_UAU.1. For the other TOE components authentication can be realized through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT) from a component that supports the authentication of users according to FIA_UAU.1. The identification of users according to <xref to="fel-uau-func"/> and the association of users with roles according to <xref to="fel-smr-users-roles"/> is done through the components that support the authentication of users according to FIA_UAU.1.
             </note>
             <aactivity>
@@ -4688,7 +4684,7 @@
           </f-element>
           <f-element id="fmt-smr-1e2-srm">
             <title>The <h:b>MAS Server</h:b> shall be able to associate users with roles.</title>
-            <note role="application">It is envisioned that the MAS Server will be configured and maintained by different user roles. The assignment is used by the ST author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is stated. The MD user role is used for enrollment of mobile devices to the MAS according to FIA_ENR_EXT.1.<h:br/><h:br/>
+            <note role="application">It is envisioned that the MAS Server will be configured and maintained by different user roles. The assignment is used by the ST author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is stated. The MD user role is used for enrollment of MDs to the MAS according to FIA_ENR_EXT.1.<h:br/><h:br/>
               This requirement is claimed if "enable, disable, and modify policies listed in FMT_SMF.1/MAS" is selected in FMT_MOF.1.1/FUNCBE.
             </note>
             <aactivity>
@@ -5321,7 +5317,7 @@
                 detects modification of the channel data.</h:b></title>
             <note role="application"> The intent of the mandatory portion of the above requirement is to use the cryptographic protocols identified in the requirement to establish and maintain a trusted channel between the TOE and the MDM agent. If the TOE includes a separate MAS Server, this requirement also addresses the communication between the MAS Server and the MDM agent. <!-- Craig: You had the previous sentence commented out, but the MAS Server will use (2) for comms with Agent--> Only TLS, DTLS, or HTTPS are used in this trusted channel.<h:br/><h:br/> 
               This requirement is to ensure that the transmission of any audit
-              logs, mobile device information data (software version, hardware model, and
+              logs, MD information data (software version, hardware model, and
               application versions), and configuration data collected by the MDM
               agent and sent from the MDM agent to the MDM
               Server, when commanded, or at configurable intervals, is properly protected. This
@@ -5457,7 +5453,7 @@
               If the TOE includes an MDM agent, then the communication channel between the agent and TSF is internal to the TOE and thus "an MDM agent that is
               internal to the TOE" must be selected in the first selection. Additionally FPT_ITT.1/INTER_XFER_AGENT must be selected in the second selection and
               FPT_ITT.1/INTER_XFER_AGENT must be included in the ST. <h:br/><h:br/>         
-              If the TOE interoperates with an evaluated MDM agent built into a mobile device (i.e., the TOE does not include an MDM agent), the communication channel 
+              If the TOE interoperates with an evaluated MDM agent built into a MD (i.e., the TOE does not include an MDM agent), the communication channel 
               between the agent and TSF is external to the TOE and thus "an MDM agent that is external to the TOE" must be selected in the first selection.
               Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the ST. <h:br/><h:br/> 
               If "other components comprising the distributed TOE" is selected in the first selection then FPT_ITT.1/INTER_XFER must be selected in the second
@@ -5925,7 +5921,7 @@
         </a-component>
       </section>
       <section id="ate-tests" title="Class ATE: Tests"> 
-        Testing is specified for functional aspects of the system as well as aspects that take advantage of design or implementation weaknesses. The former is done through the ATE_IND family, while the latter is through the AVA_VAN family. At the assurance level specified in this PP, testing is based on advertised functionality and interfaces with dependency on the availability of design information. One of the primary outputs of the evaluation process is the test report as specified in the following requirements.<h:br/><h:br/> Since many of the APIs are not exposed at the user interface (e.g., touch screen), the ability to stimulate the necessary interfaces requires a developer's test environment. This test environment will allow the evaluator, for example, to access APIs and view file system information that is not available on consumer mobile devices. 
+        Testing is specified for functional aspects of the system as well as aspects that take advantage of design or implementation weaknesses. The former is done through the ATE_IND family, while the latter is through the AVA_VAN family. At the assurance level specified in this PP, testing is based on advertised functionality and interfaces with dependency on the availability of design information. One of the primary outputs of the evaluation process is the test report as specified in the following requirements.<h:br/><h:br/> Since many of the APIs are not exposed at the user interface (e.g., touch screen), the ability to stimulate the necessary interfaces requires a developer's test environment. This test environment will allow the evaluator, for example, to access APIs and view file system information that is not available on consumer devices. 
         <a-component cc-id="ate_ind.1" name="Independent Testing - Conformance (ATE_IND.1)"> 
           Testing is performed to confirm the functionality described in the TSS as well as the administrative (including configuration and operational) documentation provided. The focus of the testing is to confirm that the requirements specified in Sections 5.3 and 5.4 are being met, although some additional testing is specified for SARs in Section 6. The Evaluation Activities identify the additional testing activities associated with these components. The evaluator produces a test report documenting the plan for and results of testing, as well as coverage arguments focused on the TOE or platform combinations that are claiming conformance to this PP.
             <a-element type="D">
@@ -6054,7 +6050,7 @@
           This SFR has not been defined in this PP-Module because authentication of a user implicitly requires them to be identified as well.<h:br/><h:br/>
           
           There are two cases in which a user must be authenticated by the TSF per the application note in FIA_UAU.1: enrollment of a user’s 
-          mobile device into management, and authentication of a user to the TOE’s management interface. FIA_ENR_EXT.1 requires authentication
+          MD into management, and authentication of a user to the TOE’s management interface. FIA_ENR_EXT.1 requires authentication
           of the user using a method such as a directory server, which implicitly expects that the user must identify themselves as well as 
           provide a credential associated with the claimed identity. For management, FMT_SMR.1(1) requires the TSF to maintain an administrator
           role but it does not specify whether authentication to this role is role-based or identity-based. Therefore, the PP is not concerned 
