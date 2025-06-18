@@ -4425,7 +4425,7 @@ DONE:
                   <ctr id="smf22" ctr-type="mgmt" pre=""></ctr>. Place applications into application process groups based on
                     <assignable>application characteristics</assignable> (MDF Function 43)</selectable>
                 <selectable>
-                  <ctr id="smf23" ctr-type="mgmt" pre=""></ctr>. Revoke Biometric template</selectable>
+                  <ctr id="smf23" ctr-type="mgmt" pre=""></ctr>. Revoke Biometric template (MDF Function 23)</selectable>
                 <selectable>
                   <ctr id="smf24" ctr-type="mgmt" pre=""></ctr>. <assignable>list of other management functions to be provided by the MD</assignable>
                 </selectable>
@@ -4447,7 +4447,7 @@ DONE:
                     <h:li>number of authentication failures (MDF Function 2)</h:li>
                   </h:ol>
                 </h:li> <h:li>
-                  <ctr id="smf27" ctr-type="mgmt" pre=""></ctr>. Wireless networks (SSIDs) to which the MD may connect (MDF Function 2)</h:li> <h:li>
+                  <ctr id="smf27" ctr-type="mgmt" pre=""></ctr>. Wireless networks (SSIDs) to which the MD may connect (WLAN Client PP-Module Function 2)</h:li> <h:li>
                     <ctr id="smf28" ctr-type="mgmt" pre=""></ctr>. Security policy for each wireless network: 
                     <h:ol type="a">
                       <h:li><selectables linebreak="yes">
@@ -4501,17 +4501,18 @@ DONE:
                 <selectable>
                   <ctr id="smf39" ctr-type="mgmt" pre=""></ctr>. The Bluetooth trusted channel policy:<h:br/>
                   <h:ol type="a">
-                    <h:li>enable and disable the Discoverable mode (for BR or EDR)</h:li>
-                    <h:li>change the Bluetooth device name, 
+                    <h:li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth PP-Module Function 1)</h:li>
+                    <h:li>change the Bluetooth device name (Bluetooth PP-Module Function 2), 
                       <selectables linebreak="yes">
-                        <selectable>allow and disallow additional wireless technologies to be used with Bluetooth </selectable>
-                        <selectable>disable and enable Advertising (for LE)</selectable>
-                        <selectable>disable and enable the Connection mode</selectable>
-                        <selectable>disable and enable the Bluetooth services or profiles available on the device </selectable>
-                        <selectable>specify minimum level of security for each pairing</selectable>
-                        <selectable>configure allowable methods of Out of Band pairing</selectable>
+                        <selectable>Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth PP-Module Function 3)</selectable>
+                        <selectable>allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth PP-Module Function 4)</selectable>
+                        <selectable>configure allowable methods of Out of Band pairing (Bluetooth PP-Module Function 5)</selectable>
+                        <selectable>disable and enable Advertising (for LE) (Bluetooth PP-Module Function 6)</selectable>
+                        <selectable>disable and enable the Connection mode (Bluetooth PP-Module Function 7)</selectable>
+                        <selectable>disable and enable the Bluetooth services or profiles available on the device (Bluetooth PP-Module Function 8)</selectable>
+                        <selectable>specify minimum level of security for each pairing (Bluetooth PP-Module Function 9)</selectable>                        
                         <selectable>no other Bluetooth configuration</selectable>
-                      </selectables> (MDF Function 18)
+                      </selectables>
                     </h:li>
                   </h:ol>
                 </selectable>
@@ -4525,7 +4526,7 @@ DONE:
                       <selectable>text message notification</selectable>
                       <selectable>other application-based notifications</selectable>
                       <selectable>none</selectable>
-                    </selectables> (MDF Function 19)
+                    </selectables> (MDF Function 18)
                   </h:ol>
                 </selectable>
                 <selectable>
@@ -4584,13 +4585,13 @@ DONE:
                     <selectable>on a per-app basis</selectable>
                     <selectable>on a per-group of application processes basis</selectable>
                     <selectable>no other method</selectable>
-                  </selectables> (MDF Function 22) </selectable>
+                  </selectables> (MDF Function 21) </selectable>
                 <selectable>
                   <ctr id="smf53" ctr-type="mgmt" pre=""></ctr>. Enable and disable policy for user unenrollment</selectable>
                 <selectable>
                   <ctr id="smf54" ctr-type="mgmt" pre=""></ctr>. Enable and disable policy for the Always-On VPN protection across device (MDF Function 45)</selectable>
                 <selectable>
-                  <ctr id="smf55" ctr-type="mgmt" pre=""></ctr>. Enable and disable policy for use of Biometric Authentication Factor (MDF Function 23)</selectable>
+                  <ctr id="smf55" ctr-type="mgmt" pre=""></ctr>. Enable and disable policy for use of Biometric Authentication Factor (MDF Function 22)</selectable>
                 <selectable>
                   <ctr id="smf56" ctr-type="mgmt" pre=""></ctr>. Connectivity timeout policy: <selectables linebreak="yes">
                     <selectable>allowed <selectables>
@@ -4782,7 +4783,7 @@ DONE:
         <f-component cc-id="fmt_smr.1" iteration="SECMAN_ROLES_MAS" name="Security Roles (MAS Server)" status="sel-based">
           <depends on-sel="mas"/>
           <f-element id="fmt-smr-1e1-srm">
-            <title>The TSF shall <h:b>additionally</h:b> maintain the roles of [<h:i>enrolled mobile
+            <title>The TSF shall <h:b>additionally</h:b> maintain the roles of [<h:i>enrolled managed
               devices, application access groups, and <assignable>additional authorized identified
                 roles</assignable></h:i>].</title>
           </f-element>
