@@ -3765,7 +3765,7 @@ The following sections list Common Criteria and technology terms used in this do
               provided by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and others by the platform, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must clearly 
               identify which services are provided by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and which by the platform.<br/><br/> If code 
               signing for integrity verification is selected, the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> vendor is not expected to digitally sign 
-              Dells from other vendors that have been incorporated into their product.<br/><br/>
+              DLLs from other vendors that have been incorporated into their product.<br/><br/>
               
             </span></div></div></div>
           <div class="element"><div class="reqid" id="FIA_X509_EXT.2.2"><a href="#FIA_X509_EXT.2.2" class="abbr">FIA_X509_EXT.2.2</a></div><div class="reqdesc"> When the <span style="" class="comment " id="Comment-3-">TD0641 was deliberately not applied because we anticipate the X509 Package will be referenced instead.</span>
@@ -4039,9 +4039,13 @@ The following sections list Common Criteria and technology terms used in this do
               
               
               
-            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine that all methods of initiating an application download or update push are specified.</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall confirm that the operational guidance contains how to initiate an application download or update push.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall ensure that the MAS Server verifies that the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> is enrolled in the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and is in a compliant state. The evaluator
-                shall verify that an application cannot be downloaded from the MAS Server prior to enrolling the device with the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>. The evaluator shall partially enroll 
-                the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>, so the device is connected to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, but is not compliant and verify that applications cannot be downloaded.
+            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine that all methods of initiating an application download or update push are specified.</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall confirm that the operational guidance contains how to initiate an application download or update push.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+              <li class="test-"><a id="_t_88" class="defined" href="#_t_88">Test FMT_MOF.1/MANAGEMENT_MAS:1</a>:
+      The evaluator shall ensure that the MAS Server verifies that the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> is enrolled in the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Server and is in a compliant state. The evaluator shall verify that either none, or only those applications needed for enrollment, can be downloaded from the MAS Server prior to enrolling the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> with the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>.</li>
+              <li class="test-"><a id="_t_89" class="defined" href="#_t_89">Test FMT_MOF.1/MANAGEMENT_MAS:2</a>:
+      The evaluator shall ensure that the MAS Server verifies that the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> is enrolled in the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Server and is in a compliant state. The evaluator shall make policy changes to make the enrolled <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> non-compliant. The evaluator shall verify that either none, or only those applications needed to bring the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> back into compliance, are able to be downloaded.</li>
+              <li class="test-"><a id="_t_90" class="defined" href="#_t_90">Test FMT_MOF.1/MANAGEMENT_MAS:3</a>:
+      The evaluator shall ensure that the MAS Server verifies that the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> is enrolled in the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Server and is in a compliant state. The evaluator shall un-enroll the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> and verify that an application can not be downloaded from the MAS Server after un-enrollment.</li>
 	      </div></div></div></div></div> 
 		
         <div class="comp" id="FMT_POL_EXT.1"><h4>FMT_POL_EXT.1 Trusted Policy Update</h4>
@@ -4109,7 +4113,7 @@ The following sections list Common Criteria and technology terms used in this do
                 enrollment for each <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent or platform listed as supported in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. This
                 description shall be the method of user authentication (username or password, token, etc.).</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall check to ensure that the operational guidance contains instructions to configure the expiration time for each method of user authentication listed in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_88" class="defined" href="#_t_88">Test FMT_SAE_EXT.1:1</a>:
+                  <li class="test-"><a id="_t_91" class="defined" href="#_t_91">Test FMT_SAE_EXT.1:1</a>:
       The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server according to the administrative guidance to set an expiration time for the enrollment authentication data. For each method of user authentication listed in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>, the evaluator shall attempt to enroll using authentication data that has expired. The evaluator shall verify that enrollment was unsuccessful.</li>
                 </ul></span>
 	      </div></div></div></div></div>  
@@ -4261,7 +4265,7 @@ The following sections list Common Criteria and technology terms used in this do
 		      clearly identifies which management functions match the selections and assignments of the
 		      evaluated <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> and which management 
 		      functions were not evaluated.</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">TBD</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">For each <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent or platform listed as supported in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:<span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_89" class="defined" href="#_t_89">Test FMT_SMF.1/SERVER_CONF_AGENT:1</a>:
+                  <li class="test-"><a id="_t_92" class="defined" href="#_t_92">Test FMT_SMF.1/SERVER_CONF_AGENT:1</a>:
       The evaluator shall verify the ability to command each <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent functional capability and configure each <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent policy listed above.</li>
                 </ul></span>
 		</div></div></div></div></div>
@@ -4320,11 +4324,11 @@ The following sections list Common Criteria and technology terms used in this do
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea"> The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it describes each management
                 function listed. For function c.5, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it describes the privacy-sensitive information that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has the capability to collect from enrolled MDs.</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"> The evaluator shall verify the operational guidance includes detailed instructions of what options are available and how to configure each management functional capability listed.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> The tests of functions a, c.2, c.3, and c.6 are performed in conjunction with
                 the use of the function. Test 3 also covers function c.5. The evaluator shall perform the following tests: <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_90" class="defined" href="#_t_90">Test FMT_SMF.1/SERVER_CONF_SERVER:1</a>:
+                <li class="test-"><a id="_t_93" class="defined" href="#_t_93">Test FMT_SMF.1/SERVER_CONF_SERVER:1</a>:
       The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> authentication certificates and verify that the correct certificate is used in established trusted connections (<a href="#FPT_ITT.1/INTER_XFER">FPT_ITT.1/INTER_XFER</a>, <a href="#FPT_ITT.1/INTER_XFER_AGENT">FPT_ITT.1/INTER_XFER_AGENT</a>, <a href="#FTP_ITC.1/INTER_XFER_IT">FTP_ITC.1/INTER_XFER_IT</a>, and <a href="#FTP_TRP.1/TRUSTPATH_ENROLL">FTP_TRP.1/TRUSTPATH_ENROLL</a>).</li>
-                  <li class="test-"><a id="_t_91" class="defined" href="#_t_91">Test FMT_SMF.1/SERVER_CONF_SERVER:2</a>:
+                  <li class="test-"><a id="_t_94" class="defined" href="#_t_94">Test FMT_SMF.1/SERVER_CONF_SERVER:2</a>:
       (conditional) The evaluator shall configure the periodicity for the assigned list of commands to the agent for several configured time periods and shall verify that the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server performs the commands schedule.</li>
-                  <li class="test-"><a id="_t_92" class="defined" href="#_t_92">Test FMT_SMF.1/SERVER_CONF_SERVER:3</a>:
+                  <li class="test-"><a id="_t_95" class="defined" href="#_t_95">Test FMT_SMF.1/SERVER_CONF_SERVER:3</a>:
       (conditional) The evaluator shall design and perform tests to demonstrate that the assigned function may be configured and that the intended behavior of the function is enacted by the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.</li>
                 </ul></span>
 		</div></div></div></div></div> 
@@ -4487,12 +4491,12 @@ The following sections list Common Criteria and technology terms used in this do
                 instructions for establishing the communication paths for each supported
                 method.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_93" class="defined" href="#_t_93">Test FPT_ITT.1/INTER_XFER:1</a>:
+                  <li class="test-"><a id="_t_96" class="defined" href="#_t_96">Test FPT_ITT.1/INTER_XFER:1</a>:
       The evaluator shall ensure that communications using each specified (in the
                     operational guidance) communication method is tested during the course of the
                     evaluation, setting up the connections as described in the operational guidance
                     and ensuring that communication is successful.</li>
-                  <li class="test-"><a id="_t_94" class="defined" href="#_t_94">Test FPT_ITT.1/INTER_XFER:2</a>:
+                  <li class="test-"><a id="_t_97" class="defined" href="#_t_97">Test FPT_ITT.1/INTER_XFER:2</a>:
       The evaluator shall ensure, for each method of communication, the channel
                     data is not sent in plaintext.</li>
                 </ul></span> Further evaluation activities are associated with the specific protocols.
@@ -4543,12 +4547,12 @@ The following sections list Common Criteria and technology terms used in this do
               instructions for establishing the communication paths for each supported
               method.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
               <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_95" class="defined" href="#_t_95">Test FPT_ITT.1/INTER_XFER_AGENT:1</a>:
+                <li class="test-"><a id="_t_98" class="defined" href="#_t_98">Test FPT_ITT.1/INTER_XFER_AGENT:1</a>:
       The evaluator shall ensure that communications using each specified (in the
                   operational guidance) communication method is tested during the course of the
                   evaluation, setting up the connections as described in the operational guidance
                   and ensuring that communication is successful.</li>
-                <li class="test-"><a id="_t_96" class="defined" href="#_t_96">Test FPT_ITT.1/INTER_XFER_AGENT:2</a>:
+                <li class="test-"><a id="_t_99" class="defined" href="#_t_99">Test FPT_ITT.1/INTER_XFER_AGENT:2</a>:
       The evaluator shall ensure, for each method of communication, the channel
                   data is not sent in plaintext.</li>
               </ul></span> Further evaluation activities are associated with the specific protocols.
@@ -4668,9 +4672,9 @@ The following sections list Common Criteria and technology terms used in this do
 		      actions that take place for successful (e.g., hash verified) and unsuccessful e.g., hash not verified) cases.
 		</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">TBD</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall perform the following tests:
               <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_97" class="defined" href="#_t_97">Test FPT_TST_EXT.1:1</a>:
+                <li class="test-"><a id="_t_100" class="defined" href="#_t_100">Test FPT_TST_EXT.1:1</a>:
       The evaluator performs the integrity check on a known good <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> executable and verifies that the check is successful.</li>
-                <li class="test-"><a id="_t_98" class="defined" href="#_t_98">Test FPT_TST_EXT.1:2</a>:
+                <li class="test-"><a id="_t_101" class="defined" href="#_t_101">Test FPT_TST_EXT.1:2</a>:
       The evaluator modifies the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> executable, performs the integrity check on the modified <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> executable and verifies that the check fails.</li>
               </ul></span></div></div></div></div></div> 
 		
@@ -4709,9 +4713,9 @@ The following sections list Common Criteria and technology terms used in this do
               If "implement functionality" is selected, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and verify that it describes the standards by which the updates are digitally signed and how the signature verification process is implemented.</div>
               <div class="eacategory">Guidance</div><div class="ea">The evaluator shall examine the operational guidance to verify that it describes how to query the current version of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software, how to initiate updates and how to check the integrity of updates prior to installation.</div>
               <div class="eacategory">Tests</div><div class="ea">The evaluator shall perform the following tests: <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_99" class="defined" href="#_t_99">Test FPT_TUD_EXT.1.3:1</a>:
+                <li class="test-"><a id="_t_102" class="defined" href="#_t_102">Test FPT_TUD_EXT.1.3:1</a>:
       The evaluator shall attempt to initiate an update digitally signed by the vendor and verify that the update is successfully installed.</li>
-                <li class="test-"><a id="_t_100" class="defined" href="#_t_100">Test FPT_TUD_EXT.1.3:2</a>:
+                <li class="test-"><a id="_t_103" class="defined" href="#_t_103">Test FPT_TUD_EXT.1.3:2</a>:
       The evaluator shall attempt to install an update not digitally signed by the vendor and verify that either the signature can be checked (allowing the update to be aborted) or the update is not installed.</li>
               </ul></span>
 	      </div>
@@ -4833,16 +4837,16 @@ The following sections list Common Criteria and technology terms used in this do
 		            method.
 		</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_101" class="defined" href="#_t_101">Test FTP_ITC.1/INTER_XFER_IT:1</a>:
+                  <li class="test-"><a id="_t_104" class="defined" href="#_t_104">Test FTP_ITC.1/INTER_XFER_IT:1</a>:
       The evaluator shall ensure that communications using each specified (in the
                     operational guidance) communication method is tested during the course of the
                     evaluation, setting up the connections as described in the operational guidance
                     and ensuring that communication is successful.</li>
-                  <li class="test-"><a id="_t_102" class="defined" href="#_t_102">Test FTP_ITC.1/INTER_XFER_IT:2</a>:
+                  <li class="test-"><a id="_t_105" class="defined" href="#_t_105">Test FTP_ITC.1/INTER_XFER_IT:2</a>:
       The evaluator shall ensure, for each method of communication, the channel
                     data is not sent in plaintext.</li>
                   
-                  <li class="test-"><a id="_t_103" class="defined" href="#_t_103">Test FTP_ITC.1/INTER_XFER_IT:3</a>:
+                  <li class="test-"><a id="_t_106" class="defined" href="#_t_106">Test FTP_ITC.1/INTER_XFER_IT:3</a>:
       The evaluator shall ensure, for each communication channel with the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, that a protocol analyzer identifies the traffic as the
                     protocol under testing.</li>
                 </ul></span> Further evaluation activities are associated with the specific protocols.
@@ -4928,15 +4932,15 @@ The following sections list Common Criteria and technology terms used in this do
                 <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent and the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server for each supported method.
 		          </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_104" class="defined" href="#_t_104">Test FTP_ITC.1/INTER_TSF_XFER_AGENT:1</a>:
+                  <li class="test-"><a id="_t_107" class="defined" href="#_t_107">Test FTP_ITC.1/INTER_TSF_XFER_AGENT:1</a>:
       The evaluator shall ensure that communications using each specified (in the
                     operational guidance) agent-server communication method is tested during the
                     course of the evaluation, setting up the connections as described in the
                     operational guidance and ensuring that communication is successful.</li>
-                  <li class="test-"><a id="_t_105" class="defined" href="#_t_105">Test FTP_ITC.1/INTER_TSF_XFER_AGENT:2</a>:
+                  <li class="test-"><a id="_t_108" class="defined" href="#_t_108">Test FTP_ITC.1/INTER_TSF_XFER_AGENT:2</a>:
       The evaluator shall ensure, for each method of agent-server communication,
                     the channel data is not sent in plaintext.</li>
-                  <li class="test-"><a id="_t_106" class="defined" href="#_t_106">Test FTP_ITC.1/INTER_TSF_XFER_AGENT:3</a>:
+                  <li class="test-"><a id="_t_109" class="defined" href="#_t_109">Test FTP_ITC.1/INTER_TSF_XFER_AGENT:3</a>:
       The evaluator shall ensure, for each communication channel with the 
                     <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, that a protocol analyzer identifies the traffic as the
                     protocol under testing.</li>
@@ -5020,11 +5024,11 @@ The following sections list Common Criteria and technology terms used in this do
               
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine that the methods of remote enrollment are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> in support of enrollment are consistent with those specified in the requirement, and are included in the requirements in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.<br/><br/>
                 If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server; nonetheless, that mechanism will be identified in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> as part of this evaluation activity).</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall confirm that the operational guidance contains instructions for establishing the enrollment sessions for each supported method.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">For each <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent or platform listed as supported in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_107" class="defined" href="#_t_107">Test FTP_TRP.1/TRUSTPATH_ENROLL:1</a>:
+                <li class="test-"><a id="_t_110" class="defined" href="#_t_110">Test FTP_TRP.1/TRUSTPATH_ENROLL:1</a>:
       The evaluator shall ensure that communications using each specified (in the operational guidance) enrollment method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</li>
-                <li class="test-"><a id="_t_108" class="defined" href="#_t_108">Test FTP_TRP.1/TRUSTPATH_ENROLL:2</a>:
+                <li class="test-"><a id="_t_111" class="defined" href="#_t_111">Test FTP_TRP.1/TRUSTPATH_ENROLL:2</a>:
       For each method of enrollment supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote user to establish enrollment sessions without invoking the trusted path.</li>
-                <li class="test-"><a id="_t_109" class="defined" href="#_t_109">Test FTP_TRP.1/TRUSTPATH_ENROLL:3</a>:
+                <li class="test-"><a id="_t_112" class="defined" href="#_t_112">Test FTP_TRP.1/TRUSTPATH_ENROLL:3</a>:
       The evaluator shall ensure, for each method enrollment, the channel data is not sent in plaintext. </li>
               </ul></span> Further evaluation activities are associated with the specific protocols.
               </div></div></div></div></div>
@@ -5053,13 +5057,13 @@ The following sections list Common Criteria and technology terms used in this do
               
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine that the methods of joining <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> in support of joining are consistent with those specified in the requirement, and are included in the requirements in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.<br/><br/>              
                 If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server; nonetheless, that mechanism will be identified in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> as part of this evaluation activity).</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall confirm that the operational guidance contains instructions for joining <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components for each supported method.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall also perform the following tests: <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_110" class="defined" href="#_t_110">Test FTP_TRP.1/TRUSTPATH_JOIN:1</a>:
+                <li class="test-"><a id="_t_113" class="defined" href="#_t_113">Test FTP_TRP.1/TRUSTPATH_JOIN:1</a>:
       The evaluator shall ensure that the communications path for joining components to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is tested for each distinct (nonequivalent) component type, setting up the connections as described in the guidance documentation and ensuring that communication is successful. In particular the evaluator shall confirm that requirements on environment protection for the registration process are consistent with observations made on the test configuration (for example, a requirement to isolate the components from the Internet during registration might be inconsistent with the need for a component to contact a license server). If no requirements on the registration environment are identified as necessary to protect confidentiality, then the evaluator shall confirm that the key used for registration can be configured (following the instructions in the guidance documentation) to be at least the same length as the key used for the internal <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> channel that is being enabled. The evaluator shall confirm that the key used for the channel is unique to the pair of components (this is done by identifying the relevant key during the registration test: it is not necessary to examine the key value).</li>
-                <li class="test-"><a id="_t_111" class="defined" href="#_t_111">Test FTP_TRP.1/TRUSTPATH_JOIN:2</a>:
+                <li class="test-"><a id="_t_114" class="defined" href="#_t_114">Test FTP_TRP.1/TRUSTPATH_JOIN:2</a>:
       The evaluator shall follow the guidance documentation to ensure that in fact the communication channel can be enabled by an administrator for all the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components identified in the guidance documentation as capable of initiation.</li>
-                <li class="test-"><a id="_t_112" class="defined" href="#_t_112">Test FTP_TRP.1/TRUSTPATH_JOIN:3</a>:
+                <li class="test-"><a id="_t_115" class="defined" href="#_t_115">Test FTP_TRP.1/TRUSTPATH_JOIN:3</a>:
       The evaluator shall ensure that if the guidance documentation states that the channel data is encrypted then the data observed on the channel is not plaintext.</li>
-                <li class="test-"><a id="_t_113" class="defined" href="#_t_113">Test FTP_TRP.1/TRUSTPATH_JOIN:4</a>:
+                <li class="test-"><a id="_t_116" class="defined" href="#_t_116">Test FTP_TRP.1/TRUSTPATH_JOIN:4</a>:
        The evaluator shall ensure that, for each different pair of nonequivalent component types that can use the registration channel, the connection is physically interrupted during a joining attempt. The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.</li>
               </ul></span> Further evaluation activities are associated with the specific protocols.
               </div></div></div></div></div>
@@ -5107,11 +5111,11 @@ The following sections list Common Criteria and technology terms used in this do
               
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to determine that the methods of remote <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> administration are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> in support of <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> administration are consistent with those specified in the requirement, and are included in the requirements in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.<br/><br/>
               If "invoke platform-provided functionality" is selected, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server; nonetheless, that mechanism will be identified in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> as part of this evaluation activity).</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall confirm that the operational guidance contains instructions for establishing the remote administrative sessions for each supported method.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall also perform the following tests: <span class="testlist-"><ul>
-                  <li class="test-"><a id="_t_114" class="defined" href="#_t_114">Test FTP_TRP.1/TRUSTPATH_REM_ADMIN:1</a>:
+                  <li class="test-"><a id="_t_117" class="defined" href="#_t_117">Test FTP_TRP.1/TRUSTPATH_REM_ADMIN:1</a>:
       The evaluator shall ensure that communications using each specified (in the operational guidance) remote administration method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</li>
-                  <li class="test-"><a id="_t_115" class="defined" href="#_t_115">Test FTP_TRP.1/TRUSTPATH_REM_ADMIN:2</a>:
+                  <li class="test-"><a id="_t_118" class="defined" href="#_t_118">Test FTP_TRP.1/TRUSTPATH_REM_ADMIN:2</a>:
       For each method of remote administration supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote user to establish remote administrative sessions without invoking the trusted path.</li>
-                  <li class="test-"><a id="_t_116" class="defined" href="#_t_116">Test FTP_TRP.1/TRUSTPATH_REM_ADMIN:3</a>:
+                  <li class="test-"><a id="_t_119" class="defined" href="#_t_119">Test FTP_TRP.1/TRUSTPATH_REM_ADMIN:3</a>:
       The evaluator shall ensure, for each method of remote administration, the channel data is not sent in plaintext.</li>
                   </ul></span> Further evaluation activities are associated with the specific protocols.
               </div></div></div></div></div>
