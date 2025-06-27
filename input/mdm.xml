@@ -3914,7 +3914,7 @@ DONE:
               provided by the TOE and others by the platform, the ST author must clearly 
               identify which services are provided by the TOE and which by the platform.<h:br/><h:br/> If code 
               signing for integrity verification is selected, the MDM vendor is not expected to digitally sign 
-              Dells from other vendors that have been incorporated into their product.<h:br/><h:br/>
+              DLLs from other vendors that have been incorporated into their product.<h:br/><h:br/>
               <!--
               If "IPsec" is selected the Module for IPsec VPN Clients must be included in the ST.<h:br/><h:br/>
               If "SSH" is selected the Extended Package for Secure Shell must be included in the ST. It should be noted 
@@ -4266,9 +4266,10 @@ DONE:
             <aactivity>
               <TSS>The evaluator shall examine the TSS to determine that all methods of initiating an application download or update push are specified.</TSS>
               <Guidance>The evaluator shall confirm that the operational guidance contains how to initiate an application download or update push.</Guidance>
-              <Tests>The evaluator shall ensure that the MAS Server verifies that the MD is enrolled in the MDM server and is in a compliant state. The evaluator
-                shall verify that an application cannot be downloaded from the MAS Server prior to enrolling the device with the MDM. The evaluator shall partially enroll 
-                the MD, so the device is connected to the MDM server, but is not compliant and verify that applications cannot be downloaded.
+              <Tests>
+              <test><mark style="background-color:yellowgreen;">The evaluator shall ensure that the MAS Server verifies that the MD is enrolled in the MDM Server and is in a compliant state. The evaluator shall verify that either none, or only those applications needed for enrollment, can be downloaded from the MAS Server prior to enrolling the MD with the MDM.</mark></test>
+              <test><mark style="background-color:yellowgreen;">The evaluator shall ensure that the MAS Server verifies that the MD is enrolled in the MDM Server and is in a compliant state. The evaluator shall make policy changes to make the enrolled MD non-compliant. The evaluator shall verify that either none, or only those applications needed to bring the MD back into compliance, are able to be downloaded.</mark></test>
+              <test><mark style="background-color:yellowgreen;">The evaluator shall ensure that the MAS Server verifies that the MD is enrolled in the MDM Server and is in a compliant state. The evaluator shall un-enroll the MD and verify that an application can not be downloaded from the MAS Server after un-enrollment.</mark></test>
 	      </Tests>
             </aactivity>
           </f-element>
