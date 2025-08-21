@@ -100,7 +100,7 @@ DONE:
   <PPReference>
     <ReferenceTable>
       <PPTitle>Protection Profile for Mobile Device Management</PPTitle>
-      <PPVersion>4.1-Draft</PPVersion>
+      <PPVersion>5.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2024-11-15</PPPubDate>
       <Keywords>Mobile Device Management; MDM</Keywords>
@@ -121,7 +121,7 @@ DONE:
       <version>2.0</version>
       <date>2014-12-31</date>
       <subject>Separation of MDM agent SFRs<h:br/>Updated cryptography, protocol, X.509
-        requirements.<h:br/> Updated management functions to match MDFPPv2.0.<h:br/> Included SSH as
+        requirements.<h:br/> Updated management functions to match MDF PP v2.0.<h:br/> Included SSH as
         a remote administration protocol.<h:br/> Removed IPsec as protocol to communicate to MDM
         agent.<h:br/> Added X509 enrollment objective requirement.<h:br/> Added Optional Mobile
         Application Store requirements. </subject>
@@ -146,7 +146,7 @@ DONE:
       </subject>
     </entry>
     <entry>
-      <version>4.1</version>
+      <version>5.0</version>
       <date>2024-11-15</date>
       <subject>
         Updates to align with Technical Decisions<h:br/>
@@ -347,14 +347,14 @@ DONE:
 	    <cc-pt3-conf>conformant</cc-pt3-conf>
 	    <cc-pp-conf/>
 	    <cc-pp-config-with>
-	      <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 3.3</PP-cc-ref>
-	      <PP-cc-ref>Protection Profile for Application Software, Version 1.4</PP-cc-ref>
-	      <Mod-cc-ref>PP-Module for MDM Agents, Version 1.0</Mod-cc-ref>
-	      <Mod-cc-ref>PP-Module for VPN Client, Version 2.5</Mod-cc-ref>
+	      <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 4.0</PP-cc-ref>
+	      <PP-cc-ref>Protection Profile for Application Software, Version 2.0</PP-cc-ref>
+	      <Mod-cc-ref>PP-Module for MDM Agents, Version 2.0</Mod-cc-ref>
+	      <Mod-cc-ref>PP-Module for VPN Client, Version 3.0</Mod-cc-ref>
 	    </cc-pp-config-with>
 	    <cc-pkg-claim>
-	      <FP-cc-ref conf="conformant">Functional Package for TLS, Version 1.1</FP-cc-ref>
-	      <FP-cc-ref conf="conformant">Functional Package for SSH, Version 1.0</FP-cc-ref>
+	      <FP-cc-ref conf="conformant">Functional Package for SSH, Version 2.0</FP-cc-ref>
+	      <FP-cc-ref conf="conformant">Functional Package for TLS, Version 2.1</FP-cc-ref>	      
 	      <FP-cc-ref conf="conformant">Functional Package for X.509, Version 1.0</FP-cc-ref>
 	      <AP-cc-ref conf="conformant">Assurance Package for Flaw Remediation, Version 1.0</AP-cc-ref>
 	    </cc-pkg-claim>
@@ -2355,7 +2355,7 @@ DONE:
               </selectables> and a cryptographic key size of 256-bits.
               
             </title>
-            <note role="application">For the second selection of <xref to="fel-conf-alg"/> , the ST author should choose the mode or modes in which AES operates
+            <note role="application">For the second selection of <xref to="fel-conf-alg"/>, the ST author should choose the mode or modes in which AES operates
 			in the trusted channel protocols. For the third selection, the ST author should choose the key sizes that are supported by this functionality.</note>
             <aactivity>
               <TSS>
@@ -3279,7 +3279,7 @@ DONE:
                 <selectable>GCM</selectable>
                 <selectable>CCM</selectable>
                 <selectable>CBC mode</selectable>
-              </selectables> .</title>
+              </selectables>.</title>
             <note role="application">This requirement states that keys used by the TSF shall not be kept in plaintext. The intent of this requirement is to ensure 
 			that the private keys, credentials, and persistent secrets cannot be accessed in the TOE in an unencrypted state, allowing an attacker to access keys 
 			without having to exhaust the AES key space. <h:br/><h:br/> 
@@ -4275,7 +4275,7 @@ DONE:
                 <testlist>
                   <test>The evaluator shall ensure that the MAS Server verifies that the MD is enrolled in the MDM Server and is in a compliant state. The evaluator shall verify that either none, or only those applications needed for enrollment, can be downloaded from the MAS Server prior to enrolling the MD with the MDM.</test>
                   <test>The evaluator shall ensure that the MAS Server verifies that the MD is enrolled in the MDM Server and is in a compliant state. The evaluator shall make policy changes to make the enrolled MD non-compliant. The evaluator shall verify that either none, or only those applications needed to bring the MD back into compliance, are able to be downloaded.</test>
-                  <test>The evaluator shall ensure that the MAS Server verifies that the MD is enrolled in the MDM Server and is in a compliant state. The evaluator shall un-enroll the MD and verify that an application can not be downloaded from the MAS Server after un-enrollment.</test>
+                  <test>The evaluator shall ensure that the MAS Server verifies that the MD is enrolled in the MDM Server and is in a compliant state. The evaluator shall unenroll the MD and verify that an application can not be downloaded from the MAS Server after unenrollment.</test>
                 </testlist>
 	            </Tests>
             </aactivity>
@@ -4628,7 +4628,7 @@ DONE:
 		    agent. This requirement is broken into two configurable areas: MDM agent commands and MDM agent policies. The ST author can add more
 		    commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> 
               Function-specific Application Notes:<h:br/><h:br/> 
-              Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v3.3.<h:br/><h:br/> 
+              Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v4.0.<h:br/><h:br/> 
               Function <xref to="smf12"/> may be satisfied for the BYOD use case by application denylisting or disabling. In the case of BYOD, an enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not lose any information they might have in the application.<h:br/><h:br/>
               Function <xref to="smf16"/> provides the MDM server to display an alert to the user of the MD.<h:br/><h:br/> 
               The audit data read according to Function <xref to="smf19"/> are to be transmitted to an external audit server according to FAU_STG.1. The MDM server is not expected to retain those logs.<h:br/><h:br/> 
@@ -6853,25 +6853,34 @@ w      <!-- <Guidance> -->
       <entry id="bibMDF">
         <tag>MDF PP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/468/MDF%203.3%20PP/index.html">Protection Profile for Mobile Device Fundamentals, Version 3.3, 2022-09-12</h:a>
+          <h:a
+            href="https://www.niap-ccevs.org/static_html/protection-profile/468/MDF%203.3%20PP/index.html">Protection
+            Profile for Mobile Device Fundamentals, Version 4.0, 2022-09-12</h:a> <comment>Adjust
+              date when finalized.</comment>
         </description>
       </entry>
       <entry id="bibAPP">
         <tag>APP PP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/441/-441-/index.html">Protection Profile for Application Software, Version 1.4, 2021-10-07</h:a>
+          <h:a
+            href="https://www.niap-ccevs.org/static_html/protection-profile/441/-441-/index.html">Protection
+            Profile for Application Software, Version 2.0, 2025-06-16</h:a>
         </description>
       </entry>
       <entry id="bibVPNC">
         <tag>MOD VPNC</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/protectionprofiles/487">PP-Module for VPN Client, Version 2.5, 2024-06-24</h:a>
+          <h:a href="https://www.niap-ccevs.org/protectionprofiles/487">PP-Module for VPN Client,
+            Version 3.0, 2024-06-24</h:a> <comment>Adjust
+              date when finalized.</comment>
         </description>
       </entry>
      <entry id="bibMDMA">
         <tag>MOD MDMA</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/441/-441-/index.html">PP-Module for MDM agents, Version 1.0, 2019-04-25</h:a>
+          <h:a
+            href="https://www.niap-ccevs.org/static_html/protection-profile/441/-441-/index.html">PP-Module for MDM agents, Version 2.0, 2019-04-25</h:a><comment>Adjust
+              date when finalized.</comment>
         </description>
       </entry>
     </bibliography>
