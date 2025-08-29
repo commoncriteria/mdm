@@ -7,6 +7,7 @@
 * Error: Detected multiple elements with an id of 'ITC_DISTRIBUTED_TOE'.
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/h:p[2]""
+ Failed to find a reference to fau-stg-2.
 * Warning: Since FCS_STG_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FIA_CLI_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
