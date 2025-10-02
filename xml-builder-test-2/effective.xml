@@ -114,7 +114,7 @@
       <term full="Unenrolled State">Device state when it is not managed by an MDM.</term>
       <term full="Unlocked State">Device state where it is powered on and the user has been authenticated. The device functionality is available for use by the user.</term>
     </tech-terms>
-    <section title="Compliant Targets of Evaluation" id="TOEdescription">
+    <section title="Compliant Targets of Evaluation" id="cte">
       The Mobile Device Management (MDM) system consists of two primary components: the MDM server software and the MDM agent. Optionally, the MDM system may
 			consist of a separate Mobile Application Store (MAS) server.
       <sec:TOE_Boundary>
@@ -2031,7 +2031,12 @@
           <audit-event>
             <audit-event-descr>Failure of the certificate validity check</audit-event-descr>
             <audit-event-info>Issuer Name and Subject Name of certificate</audit-event-info>
-            <audit-event-info>User's authorization decision</audit-event-info>
+            <audit-event-info>
+              <selectables onlyone="yes">
+                <selectable>User's authorization decision</selectable>
+                <selectable>No additional information</selectable>
+              </selectables>
+            </audit-event-info>
           </audit-event>
         </f-component>
         <!-- FCS_IV_EXT.1 Initialization Vector Generation -->
@@ -5529,6 +5534,11 @@
       <h:br/>
     </section>
   </appendix>
+  <appendix id="optional" title="Optional Requirements">
+    <!-- Note: This text is auto populated -->
+  </appendix>  
+  <appendix id="sel-based" title="Selection-Based Requirements"> 
+ </appendix>
   <appendix title="Objective Requirements" id="objective">
     As indicated in the introduction to this PP, the baseline requirements (those that must be performed by the TOE or its 
 	underlying platform) are contained in the body of this PP. There are additional requirements that specify security 
