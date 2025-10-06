@@ -155,12 +155,22 @@ DONE:
       </subject>
     </entry>
   </RevisionHistory>
+
+  <include-pkg id="X509">
+    <git>
+      <url>https://github.com/commoncriteria/X509</url>
+      <branch>release-1.0</branch>
+    </git>
+    <url>https://www.niap-ccevs.org/protectionprofiles/511</url>
+  </include-pkg>
   
       <pp-preferences>
 <!--        <pp-pref name="display-audit-with-sfrs">0</pp-pref> -->
 
         <audit-events-in-sfrs/>
     </pp-preferences>
+
+    
 
 	<!-- 1.0 Introduction -->
 	<section id="int" title="Introduction">
@@ -337,6 +347,97 @@ DONE:
 				</usecase>
 			</usecases>
 		</section>
+    <section title="Package Usage">
+      This section contains selections and assignments that are required when the listed Functional Packages are claimed by this PP. 
+      <package-usage-list>
+        <package-usage ref="X509">
+          <usage id="usage-x509-nosmime-cert-profile" title="Restrictions on Certificate Functions in FDP_CER_EXT.1.1/OLTLeaf">
+            <description>
+              The PP does not define S/MIME functionality, therefore the ST author shall not select the option to implement a certificate profile supporting this protocol.
+            </description>
+            <config>
+              <ref-id>dummy-ref-id</ref-id>
+            </config>
+          </usage>
+          <usage id="usage-x509-nosmime-cert-eku" title="Restrictions on Certificate Functions in FDP_CER_EXT.1.2/OLTLeaf">
+            <description>
+              The PP does not define S/MIME functionality, therefore the ST author shall not select the option to set extendedKeyUsage bits for email protection.
+            </description>
+            <config>
+              <ref-id>dummy-ref-id</ref-id>
+            </config>
+          </usage>
+          <!-- <usage id="usage-x509-cmp-required" title="CMP and Self-Generated Public Key Required">
+            <description>
+              The 
+            </description>
+
+          </usage> -->
+          <usage id="usage-x509-ocsp-sigalgs" title="Restrictions on Signature Algorithms in FDP_OCSP_EXT.1.1">
+            <description>
+              The TOE must use CNSA-compliant signature algorithms. Thus, the ST author shall not select the use of SHA-512 or secp521 for OCSP response signatures.
+            </description>
+            <config>
+              <ref-id>dummy-ref-id</ref-id>
+            </config>
+          </usage>
+          <usage id="usage-x509-revocation-sigalgs" title="Limitations on Signature Algorithms in FIA_X509_EXT.1.1">
+            <description>
+              The TOE must use CNSA-compliant signature algorithms. Thus, the ST author shall select no other algorithms outside of those specified in RFC 8603 for certificate or CRL signatures. 
+              Additionally, the TOE shall not use ECDSA with SHA-512 signatures for OCSP responses, and shall utilize no other algorithms for OCSP responses.
+            </description>
+            <config>
+            <ref-id>dummy-ref-id</ref-id>
+          </config>
+          </usage>
+          <usage id="usage-x509-extensions" title="Required Extension Processing for FIA_X509_EXT.1.2">
+            <description>
+              The ST author shall select the options to process the basicConstraints and extendedKeyUsage extensions. Other extensions may be selected as appropriate without restriction.
+            </description>
+            <config>
+              <ref-id>dummy-ref-id</ref-id>
+            </config>
+          </usage>
+          <usage id="usage-x509-revocation-methods" title="CRL or OCSP-based Revocation Required for FIA_X509_EXT.1.3 ">
+            <description>
+              The TOE must use revocation involving CRL or OCSP. Accordingly, the ST author shall select only from options involving CRL or OCSP in FIA_X509_EXT.1.3.
+            </description> 
+            <config>
+              <ref-id>dummy-ref-id</ref-id>
+            </config>
+          </usage>
+          <usage id="usage-x509-revocation-connections" title="Connections to CRL or OCSP Servers Required for FIA_X509_EXT.1.4">
+            <description>
+              The TOE is required to utilize CRL or OCSP, thus the ST author shall not select to not obtain revocation status information. 
+              Additionally, the TOE shall not utilize local revocation information or utilize a network connection to the CA to obtain its revocation information. 
+              In other words, the TOE shall utilize a network connection to a CRL distribution point, OCSP responder, OCSP stapling, or OCSP multi-stapling. 
+            </description>
+            <config>
+              <ref-id>dummy-ref-id</ref-id>
+            </config>
+          </usage>
+          <usage id="usage-x509-eku-values" title="Restrictions on Acceptable Key Usage Values for FIA_X509_EXT.1.5">
+            <description>
+              The TOE will always utilize X.509 extended key usage values to verify the proper usage of certificates for TOE functions. Accordingly, the ST author 
+              shall not select the option to pass certificate information to supported functions and shall select the option to verify certificates by evaluating the extendedKeyUsage field in the leaf certificate. <h:br/>
+              Additionally, the PP does not define S/MIME functionality for X.509, therefore the TOE shall not validate certificates against any rules for S/MIME certificates.
+            </description>
+            <config>
+              <ref-id>dummy-ref-id</ref-id>
+            </config>
+          </usage>
+          <usage id="usage-x509-functions" title="Restrictions on Acceptable Functions for FIA_X509_EXT.2.1">
+            <description>
+              The PP does not define S/MIME functionality, therefore the ST author shall not select options that utilize this protocol.
+            </description>
+            <config>
+              <ref-id>dummy-ref-id</ref-id>
+            </config>
+          </usage>
+        </package-usage>
+
+      </package-usage-list>
+    </section>
 	</section>
   
 	<!-- 2. Conformance Claims -->
@@ -6864,4 +6965,3 @@ w      <!-- <Guidance> -->
       </entry>
     </bibliography>
 </PP>
-
