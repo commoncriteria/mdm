@@ -353,7 +353,7 @@ DONE:
         <package-usage ref="X509">
           <usage id="usage-x509-nosmime-cert-profile" title="Restrictions on Certificate Functions in FDP_CER_EXT.1.1/OLTLeaf">
             <description>
-              The PP does not define S/MIME functionality, therefore the ST author shall not select the option to implement a certificate profile supporting this protocol.
+              This usage requirement applies only if the TOE implements a certificate authority. The PP does not define S/MIME functionality, therefore the ST author shall not select the option to implement a certificate profile supporting this protocol.
             </description>
             <config>
               <ref-id>dummy-ref-id</ref-id>
@@ -361,21 +361,23 @@ DONE:
           </usage>
           <usage id="usage-x509-nosmime-cert-eku" title="Restrictions on Certificate Functions in FDP_CER_EXT.1.2/OLTLeaf">
             <description>
-              The PP does not define S/MIME functionality, therefore the ST author shall not select the option to set extendedKeyUsage bits for email protection.
+              This usage requirement applies only if the TOE implements a certificate authority. The PP does not define S/MIME functionality, therefore the ST author shall not select the option to set extendedKeyUsage bits for email protection.
             </description>
             <config>
               <ref-id>dummy-ref-id</ref-id>
             </config>
           </usage>
-          <!-- <usage id="usage-x509-cmp-required" title="CMP and Self-Generated Public Key Required">
+          <usage id="usage-x509-status-gen-required" title="Generation of Certificate Status Required in FDP_CSIR_EXT.1.1">
             <description>
-              The 
+              This usage requirement applies only if the TOE implements a certificate authority. The PP requires that the TOE generate certificate status updates. Thus, the ST author shall only select the option to generate certificate status information in FDP_CSIR_EXT.1.1.
             </description>
-
-          </usage> -->
+            <config>
+              <ref-id>dummy-ref-id</ref-id>
+            </config> 
+          </usage>
           <usage id="usage-x509-ocsp-sigalgs" title="Restrictions on Signature Algorithms in FDP_OCSP_EXT.1.1">
             <description>
-              The TOE must use CNSA-compliant signature algorithms. Thus, the ST author shall not select the use of SHA-512 or secp521 for OCSP response signatures.
+              This usage requirement applies only if the TOE implements a certificate authority. The TOE must use CNSA-compliant signature algorithms. Thus, the ST author shall not select the use of SHA-512 or secp521 for OCSP response signatures.
             </description>
             <config>
               <ref-id>dummy-ref-id</ref-id>
