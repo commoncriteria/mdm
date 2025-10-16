@@ -348,7 +348,7 @@ DONE:
 				</usecase>
 			</usecases>
 		</section>
-    <section title="Package Usage">
+    <section title="Package Usage" id="package-usage">
       This section contains selections and assignments that are required when the listed Functional Packages are claimed by this PP.
       <package-usage-list>
         <package-usage ref="X509">
@@ -752,31 +752,7 @@ DONE:
 				  <h:td>Single-Use Authentication Mechanisms</h:td>
 					<h:td>One</h:td>
 				</h:tr>
-				<h:tr>
-					<h:td>FIA_X509_EXT.1/CERTVAL_MAN</h:td>
-					<h:td>X.509 Certification Validation</h:td>
-					<h:td>Feature Dependent</h:td> 
-				</h:tr> 
-				<h:tr>
-					<h:td>FIA_X509_EXT.1/CERTVAL_SEL</h:td>
-					<h:td>X.509 Certification Validation</h:td>
-					<h:td>Feature Dependent</h:td> <!-- Needed for Agent -->
-				</h:tr> 
-				<h:tr>
-					<h:td>FIA_X509_EXT.2</h:td>
-					<h:td>X.509 Certificate Authentication</h:td>
-					<h:td>Feature Dependent</h:td> <!-- Needed for Agent -->
-				</h:tr> 
-				<h:tr>
-					<h:td>FIA_X509_EXT.3</h:td>
-					<h:td>X.509 Enrollment</h:td>
-					<h:td>Feature Dependent</h:td> <!-- Needed for Agent -->
-				</h:tr>
-				<h:tr>
-					<h:td>FIA_X509_EXT.4</h:td>
-					<h:td>Alternate X.509 Enrollment</h:td>
-					<h:td>Feature Dependent</h:td> <!-- Needed for Agent -->
-				</h:tr>
+		
    
 				<h:tr>
 					<h:td>FMT_MOF.1/FUNCBE</h:td>
@@ -6523,7 +6499,7 @@ DONE:
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> protect <h:b>all</h:b> data from [<h:i>disclosure and modification</h:i>] when it is <h:b>transferred</h:b> between
               separate parts of the TOE.</title>
             <note role="application">This requirement ensures all communications between components of a distributed TOE are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined in the protocol chosen in the second selection.<h:br/><h:br/> 
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. The ST author chooses the mechanism or mechanisms supported by the TOE. To support mutual authentication FIA_X509_EXT.1/CERTVAL_SEL should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <xref to="fel-cpc-func"/>.<h:br/><h:br/>              
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. The ST author chooses the mechanism or mechanisms supported by the TOE. To support mutual authentication, FIA_X509_EXT.1 from <xref to="X509"/> should be included in the ST and iterated as "FIA_X509_EXT.1/Internal" per the guidance in <xref to="package-usage"/> (to distinguish it from TSF validation of certificates presented by entities that are external to the TOE boundary). This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <xref to="fel-cpc-func"/>.<h:br/><h:br/>              
               If "IPsec as defined in the PP-Module for VPN Client" is selected, the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
               If the ST author selects "SSH as defined in the Functional Package for Secure Shell," the TSF must be validated against the FP for Secure Shell with the MDM PP. It should be noted that due to constraints imposed by this PP that SHA-1 cannot be used.<h:br/><h:br/>
               If the ST author selects "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security," the TSF must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
@@ -6593,7 +6569,7 @@ DONE:
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> protect all data from [<h:i>disclosure and modification</h:i>] when it is <h:b>transferred</h:b>
               between <h:b>the TSF and MDM agent.</h:b></title>
             <note role="application">This requirement ensures all communications between the TSF and MDM agent are protected through the use of an encrypted communications channel. The data passed in this trusted communication channel are encrypted as defined in the protocol chosen in the second selection.<h:br/><h:br/> 
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. The ST author chooses the mechanism or mechanisms supported by the TOE. To support mutual authentication FIA_X509_EXT.1/CERTVAL_MAN should be included in the ST. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <xref to="fel-cpc-func"/>.<h:br/><h:br/>                           
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. The ST author chooses the mechanism or mechanisms supported by the TOE. To support mutual authentication, FIA_X509_EXT.1 from <xref to="X509"/> should be included in the ST and iterated as "FIA_X509_EXT.1/External" per the guidance in <xref to="package-usage"/> (to distinguish it from TSF validation of certificates presented by entities that are other parts of a distributed TOE). This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <xref to="fel-cpc-func"/>.<h:br/><h:br/>                           
               If the ST author selects "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security," the TSF must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
