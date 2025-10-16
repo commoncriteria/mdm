@@ -599,12 +599,12 @@ DONE:
 				<h:tr>
 					<h:td>FCS_CKM.1/AKG</h:td>
 				  <h:td>Cryptographic Key Generation - Asymmetric Key</h:td>
-					<h:td>Feature Dependent</h:td> <!-- Changed to account for Agent -->
+					<h:td>All</h:td> <!-- Changed to account for Agent -->
 				</h:tr>
 			  <h:tr>
 			    <h:td>FCS_CKM.1/SKG</h:td>
 			    <h:td>Cryptographic Key Generation - Symmetric Key</h:td>
-			    <h:td>Feature Dependent</h:td> <!-- Changed to account for Agent -->
+			    <h:td>All</h:td> <!-- Changed to account for Agent -->
 			  </h:tr>
 				<h:tr>
 					<h:td>FCS_CKM.2</h:td>
@@ -615,31 +615,51 @@ DONE:
 					<h:td>FCS_CKM.6</h:td>
 					<h:td>Cryptographic Key Destruction</h:td>
 					<h:td>All</h:td> <!-- Good, Needed for Agent -->
-				</h:tr>				
+				</h:tr>	
+			  <h:tr>
+			    <h:td>FCS_CKM_EXT.7</h:td>
+			    <h:td>Cryptographic Key Agreement</h:td>
+			    <h:td>Feature Dependent</h:td> <!-- Good, Needed for Agent -->
+			  </h:tr>
 				<h:tr>
-					<h:td>FCS_COP.1.1/Hash</h:td>
+					<h:td>FCS_COP.1/Hash</h:td>
 					<h:td>Cryptographic Operation - Hashing</h:td>
 					<h:td>All</h:td> <!-- Good, Needed for Agent -->
 				</h:tr> 
 				<h:tr>
-				  <h:td>FCS_COP.1.1/KeyedHash</h:td>
+				  <h:td>FCS_COP.1/KeyedHash</h:td>
 					<h:td>Cryptographic Operation - Keyed Hash</h:td>
 					<h:td>All</h:td> <!-- Good, Needed for Agent -->
-				</h:tr> 
+				</h:tr>
 			  <h:tr>
-					<h:td>FCS_COP.1.1/SigGen</h:td>
+			    <h:td>FCS_COP.1/KeyedEncap</h:td>
+			    <h:td>Cryptographic Operation - Key Encapsulation</h:td>
+			    <h:td>Feature Dependent</h:td> <!-- Good, Needed for Agent -->
+			  </h:tr>
+			  <h:tr>
+			    <h:td>FCS_COP.1/KeyedWrap</h:td>
+			    <h:td>Cryptographic Operation - Key Wrapping</h:td>
+			    <h:td>Feature Dependent</h:td> <!-- Good, Needed for Agent -->
+			  </h:tr>
+			  <h:tr>
+					<h:td>FCS_COP.1/SigGen</h:td>
 					<h:td>Cryptographic Operation - Signature Generation</h:td>
 					<h:td>All</h:td> <!-- Good, Needed for Agent -->
 				</h:tr>
 			  <h:tr>
-			    <h:td>FCS_COP.1.1/SigVer</h:td>
+			    <h:td>FCS_COP.1/SigVer</h:td>
 			    <h:td>Cryptographic Operation - Signature Verification</h:td>
 			    <h:td>All</h:td> <!-- Good, Needed for Agent -->
 			  </h:tr>
 			  <h:tr>
-			    <h:td>FCS_COP.1.1/SKC</h:td>
+			    <h:td>FCS_COP.1/SKC</h:td>
 			    <h:td>Cryptographic Operation - Encryption/Decryption</h:td>
 			    <h:td>All</h:td> <!-- Good, Needed for Agent -->
+			  </h:tr>
+			  <h:tr>
+			    <h:td>FCS_COP.1/XOF</h:td>
+			    <h:td>Cryptographic Operation - Extendable-Output Function</h:td>
+			    <h:td>Feature Dependent</h:td> <!-- Good, Needed for Agent -->
 			  </h:tr>
 				<h:tr>
 					<h:td>FCS_HTTPS_EXT.1</h:td>
@@ -3233,8 +3253,7 @@ DONE:
           <audit-event/>
         </f-component>
 		
-        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Hashing Algorithms)"
-          iteration="Hash">
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation - Hashing" iteration="Hash">
           <f-element id="fel-hash">
             <title>The TSF shall <selectables>
                 <selectable>invoke platform-provided functionality</selectable>
@@ -3402,7 +3421,7 @@ DONE:
         	<audit-event/>
 		</f-component> 
 		
-        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation (Keyed-Hash Message Authentication)" iteration="KeyedHash">
+        <f-component cc-id="fcs_cop.1" name="Cryptographic Operation - Keyed-Hash" iteration="KeyedHash">
           <f-element id="fcs-cop-1-keyedhash">
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
@@ -8355,43 +8374,6 @@ w      <!-- <Guidance> -->
         <h:TR>
           <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function c.2</h:TD>
           <h:TD>Include in ST.</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FCS_CKM.1.1/AKG</h:TD>
-          <h:TD>Select RSA with key size of 3072 or select ECC schemes.</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FCS_CKM.1.1/SKG</h:TD>
-          <h:TD>Select RSA with key size of 3072 or select ECC schemes.</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FCS_CKM.2.1</h:TD>
-          <h:TD>Select "RSA schemes" or select "ECC schemes."</h:TD>
-        </h:TR>        
-        <h:TR>
-          <h:TD>FCS_COP.1.1/Hash</h:TD>
-          <h:TD>Select SHA-384</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FCS_COP.1.1/SigGen</h:TD>
-          <h:TD>Select RSA with key size of 3072 or select ECC schemes.</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FCS_COP.1.1/SigVer</h:TD>
-          <h:TD>Select RSA with key size of 3072 or select ECC schemes.</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FCS_COP.1.1/SKC</h:TD>
-          <h:TD>Select 256 bits</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FIA_X509_EXT.2.2</h:TD>
-          <h:TD>Select either "allow the administrator to choose…" or "not accept the
-            certificate."</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FCS_TLSC_EXT.1.1 (from TLS Package)</h:TD>
-          <h:TD>If included in ST, select "TLS 1.2."</h:TD>
         </h:TR>
         <h:TR>
           <h:TD>FCS_TLSC_EXT.2.1 (from TLS Package)</h:TD>
