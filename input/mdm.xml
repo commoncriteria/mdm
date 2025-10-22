@@ -5029,32 +5029,24 @@ DONE:
           </dependencies>
           
           <f-element id="fcs-https-ext-1e1">
-            <title>The TSF shall implement the HTTPS protocol that complies with RFC 2818.</title>
+            <title>The TSF shall <selectables>
+              <selectable>invoke platform-provided functionality to implement</selectable>
+              <selectable>implement</selectable>
+            </selectables> the HTTPS protocol that complies with RFC 2818.</title>
           </f-element>
           <f-element id="fcs-https-ext-1e2">
-            <title>The TSF shall implement HTTPS using TLS in accordance with the Package for Transport Layer Security. 
+            <title>The TSF shall 
+              <selectables>
+                <selectable>invoke platform-provided functionality to implement</selectable>
+                <selectable>implement</selectable>
+              </selectables> HTTPS using TLS in accordance with the Functional Package for Transport Layer Security. 
             </title>
-            <note role="application">The TLS Functional Package must be included in the ST, with the following selections made:
-              <h:ul>
-                <h:li>FCS_TLS_EXT.1: 
-                  <h:ul>
-                    <h:li>TLS must be selected</h:li>
-                    <h:li>Either client or server is selected as appropriate</h:li>
-                  </h:ul>
-                </h:li>
-                <h:li>FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
-                  <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
-                  </h:ul>
-                </h:li>
-              </h:ul>         
-              Validity is determined by the certificate path, the expiration date, and the
-              revocation status in accordance with RFC 5280.<h:br/><h:br/>
-              The requirement is claimed if the TSF selects HTTPS  in any iteration of FPT_ITT.1, FTP_ITC.1, or FTP_TRP.1.            
+           <note role="application">
+              The requirement is claimed if the TSF selects HTTPS  in any iteration of FPT_ITT.1, FTP_ITC.1, or FTP_TRP.1. It is expected that if the TOE invokes platform-provided functionality to perform HTTPS, that the platform implementation of HTTPS is conformant to the functional package. 
             </note>
             <aactivity>
-              <TSS>TBD</TSS>
-              <Guidance>TBD</Guidance>
+              <TSS>The evaluator shall verify that the TSS describes whether the TOE's HTTPS functionality is implemented by the TOE or invoked from the TOE platform. If the TOE implements HTTPS, the evaluator shall verify that the corresponding claims from the TLS Funtcional Package (client, server, or both) are present.</TSS>
+              <Guidance/>
               <Tests>
                 <testlist>
                   <test>The evaluator shall attempt to establish an HTTPS connection with a web server, observe the traffic with a packet analyzer, and verify 
