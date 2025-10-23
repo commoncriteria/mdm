@@ -1354,13 +1354,13 @@ DONE:
             <ext-comp-def-title>
               <title>
                 The TSF shall provide <assignable>type of interface</assignable> to authorized entities over a 
-                channel that meets the secure channel requirements in FTP_ITC.1/INTER_XFER_IT. The provided information for each enrolled MD includes:
+                channel that meets the secure channel requirements in FTP_ITC.1 The provided information for each enrolled MD includes:
                 <h:ul>
                   <h:li>The current version of the MD firmware or software</h:li>
                   <h:li>The current version of the hardware model of the device</h:li>
                   <h:li>The current version of installed applications</h:li>
                   <h:li>List of MD configuration policies that are in place on the device (as defined in 
-                    <xref to="fel-smf-man-agnt"/>)</h:li>
+                    FMT_SMF.1)</h:li>
                   <h:li><selectables>
                     <selectable><assignable>list of other available information about enrolled devices</assignable></selectable>
                     <selectable>no other information</selectable></selectables>.
@@ -1376,7 +1376,7 @@ DONE:
               as standards efforts mature. 
             </note>
             <aactivity>
-              <TSS>TBD</TSS>
+              <TSS>The evaluator shall examine the TSS to verify that it describes the TOE's compliance reporting capability with respect to whether it provides reponses to queries about the configuration of enrolled devices or whether it permits the export of data about the configuration of these devices. The evaluator shall also verify that the TSS identifies the trusted channel used to protect data that is transmitted over this interface. Lastly, the evaluator shall verify that the TSS identifies the information that is provided for each enrolled device.</TSS>
               <Guidance>The evaluator shall check to ensure that the operational guidance contains instructions on how to access the MDM server's compliance
 		      reporting interface.</Guidance>
               <Tests>
@@ -1787,7 +1787,7 @@ DONE:
               describes how the audit data are protected from unauthorized 
 		      modification or deletion. The evaluator shall ensure that the TOE uses audit trail specific protection mechanisms.
 	      </TSS>
-              <Guidance>TBD</Guidance>
+              <Guidance/>
               <Tests>The evaluator shall perform the following tests: <testlist>
                   <test>The evaluator shall access the audit trail as an unauthorized user and
                     attempt to modify and delete the audit data. The evaluator
@@ -2772,7 +2772,7 @@ DONE:
                 internal persistent storage device are cleared by overwriting one time with a random pattern that is    changed before each write"). For block erases,
                 the evaluator shall also ensure that the block erase command used is listed and shall verify that the command used also addresses any copies of the
                 plaintext key material that may be created in order to optimize the use of flash memory.</TSS>
-              <Guidance>TBD</Guidance>
+              <Guidance/>
               <Tests>For each software and firmware key clearing situation the evaluator shall repeat the following tests. Note that at this time hardware-bound keys 
                 are explicitly excluded from testing.<testlist>
                   <test>The evaluator shall use appropriate combinations of specialized operational environment and development tools (debuggers, simulators,
@@ -5160,7 +5160,7 @@ DONE:
                 If "implement functionality" is selected:<h:br/><h:br/>
               The evaluator shall examine the TSS to ensure that it details the encryption of user credentials, persistent secrets, and private keys and the 
 			  generation of the IVs used for that encryption.</TSS>
-              <Guidance>TBD</Guidance>
+              <Guidance/>
               <Tests>The evaluator shall ensure that the generation of IVs for each key encrypted by the same KEK meets <xref to="iv"/>.
 	      </Tests>
             </aactivity>
@@ -5484,8 +5484,8 @@ DONE:
               The evaluator reviews the TSS to determine that it makes a case that, for each item listed as being manipulated by the TOE, it is not written
 			  unencrypted to persistent memory, and that the item is stored by the platform.
 	      </TSS>
-              <Guidance>TBD</Guidance>
-              <Tests>TBD</Tests>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
         	<audit-event/>
@@ -5525,8 +5525,8 @@ DONE:
 			  how the key encryption functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the MDM server; 
 			  nonetheless, that mechanism will be identified in the TSS as part of this evaluation activity).
 	      </TSS>
-              <Guidance>TBD</Guidance>
-              <Tests>TBD</Tests>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
         	<audit-event/>
@@ -5608,7 +5608,7 @@ DONE:
 			  in the ST. This description shall include the trusted path used for enrollment (FTP_TRP.1/TRUSTPATH_ENROLL), the method of user authentication
 			  (username or password, token, etc.), the method of authentication decision (local or remote authentication services), and the actions performed on
 			  the MDM server upon successful authentication. </TSS>
-              <Guidance>TBD</Guidance>
+              <Guidance>The evaluator shall examine the operational guidance to verify that it describes the process by which the TOE enrolls mobile devices into management.</Guidance>
               <Tests>
                 <testlist>
                 <test>The evaluator shall attempt to enroll a device without providing correct credentials. The evaluator shall verify that the device is not 
@@ -5731,7 +5731,7 @@ DONE:
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the TSS to verify that it describes (for each supported platform)
                 how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the MDM server; nonetheless, that
                 mechanism will be identified in the TSS as part of this evaluation activity).</TSS>
-              <Guidance>TBD</Guidance>
+              <Guidance>The evaluator shall examine the operational guidance to verify that it describes the process by which users authenticate to the TOE.</Guidance>
               <Tests>
                 The evaluator shall perform the following tests:<h:br/><h:br/>
                 <testlist>
@@ -5812,10 +5812,10 @@ DONE:
                 to="fmt-smr-1e1-sr"/> must be included in the ST.
             </note>
             <aactivity>
-              <TSS>The evaluator shall examine the TSS and user documents to ensure that they describe what security management functions are restricted to the
+              <TSS>The evaluator shall examine the TSS to ensure that it describes what security management functions are restricted to the
 			  administrator and what actions can be taken for each management function. The evaluator shall verify that the security management functions are 
-			  restricted to authorized administrators and the administrator is only able to take the actions as described in the user documents.</TSS>
-              <Guidance>TBD</Guidance>
+			  restricted to authorized administrators.</TSS>
+              <Guidance>The evaluator shall examine the operational guidance to verify that it describes the management functions that are available to authorized administrators and how administrators are authorized to perform those particular functions (e.g. default for the account, role membership, group membership).</Guidance>
               <Tests>
               <testlist>
                 <test>The evaluator shall attempt to access the functions and policies in FMT_SMF.1/SERVER_CONF_AGENT as an unauthorized user and verify that the 
@@ -5848,7 +5848,7 @@ DONE:
 		MDs when they are in the possession of the administrator, for example, before distributing the MDs to the users. </note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS and verify that it describes how unauthorized users are prevented from enrolling in the MDM services.</TSS>
-              <Guidance>TBD</Guidance>
+              <Guidance>The evaluator shall examine the operational guidance to verify that it describes the enrollment process and any restrictions that may prevent unauthorized enrollment.</Guidance>
               <Tests>The test of this function is performed in conjunction with FIA_ENR_EXT.1.</Tests>
             </aactivity>
           </f-element>
@@ -6110,16 +6110,16 @@ DONE:
                 <selectable>
                   <ctr id="smf39" ctr-type="mgmt" pre=""></ctr>. The Bluetooth trusted channel policy:<h:br/>
                   <h:ol type="a">
-                    <h:li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth PP-Module Function 1)</h:li>
-                    <h:li>change the Bluetooth device name (Bluetooth PP-Module Function 2), 
+                    <h:li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth PP-Module Function BT-1)</h:li>
+                    <h:li>change the Bluetooth device name (Bluetooth PP-Module Function BT-2), 
                       <selectables linebreak="yes">
-                        <selectable>Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth PP-Module Function 3)</selectable>
-                        <selectable>allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth PP-Module Function 4)</selectable>
-                        <selectable>configure allowable methods of Out of Band pairing (Bluetooth PP-Module Function 5)</selectable>
-                        <selectable>disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth PP-Module Function 6)</selectable>
-                        <selectable>disable and enable the Connection mode (Bluetooth PP-Module Function 7)</selectable>
-                        <selectable>disable and enable the Bluetooth services or profiles available on the device (Bluetooth PP-Module Function 8)</selectable>
-                        <selectable>specify minimum level of security for each pairing (Bluetooth PP-Module Function 9)</selectable>                        
+                        <selectable>Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth PP-Module Function BT-3)</selectable>
+                        <selectable>allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth PP-Module Function BT-4)</selectable>
+                        <selectable>configure allowable methods of Out of Band pairing (Bluetooth PP-Module Function BT-5)</selectable>
+                        <selectable>disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth PP-Module Function BT-6)</selectable>
+                        <selectable>disable and enable the Connection mode (Bluetooth PP-Module Function BT-7)</selectable>
+                        <selectable>disable and enable the Bluetooth services or profiles available on the device (Bluetooth PP-Module Function BT-8)</selectable>
+                        <selectable>specify minimum level of security for each pairing (Bluetooth PP-Module Function BT-9)</selectable>                        
                         <selectable>no other Bluetooth configuration</selectable>
                       </selectables>
                     </h:li>
@@ -6244,7 +6244,7 @@ DONE:
 		      clearly identifies which management functions match the selections and assignments of the
 		      evaluated MD and which management 
 		      functions were not evaluated.</TSS>
-              <Guidance>TBD</Guidance>
+              <Guidance>For each command that the TSF can issue to an MDM agent and for each mobile device configuration policies that can be applied, the evaluator shall examine the operational guidance to verify that it includes instructions on how to perform these actions, and what particular paramters or options can be specified for them.</Guidance>
               <Tests>For each MDM agent or platform listed as supported in the ST:<testlist>
                   <test>The evaluator shall verify the ability to command each MDM agent functional capability and configure each MDM agent policy listed above.</test>
                 </testlist>
@@ -6447,8 +6447,8 @@ DONE:
             <aactivity>
               <TSS>The evaluator shall verify that the TSS lists the platform APIs used by the MDM software. The evaluator shall then compare the list with the 
 			  supported APIs (available through e.g., developer accounts, platform developer groups) and ensure that all APIs listed in the TSS are supported.</TSS>
-              <Guidance>TBD</Guidance>
-              <Tests>TBD</Tests>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
         	<audit-event/>
@@ -6648,8 +6648,8 @@ DONE:
                 (conditional: The TOE is a cloud MDM service) The evaluator shall verify that the
                 non-public library document lists the libraries used by the MDM service.
               </TSS>
-              <Guidance>TBD</Guidance>
-              <Tests>TBD</Tests>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
           <audit-event/>
@@ -6760,7 +6760,7 @@ DONE:
 		      stored TSF executable code has not been compromised. The evaluator also ensures that the TSS (or the operational guidance) describes the
 		      actions that take place for successful (e.g., hash verified) and unsuccessful e.g., hash not verified) cases.
 		</TSS>
-              <Guidance>TBD</Guidance>
+              <Guidance>The evaluator shall verify that the operational guidance includes a description of how the administrator can verify that a self-test has failed and any potential corrective actions that can be used to resolve the failure state.</Guidance>
               <Tests>The evaluator shall perform the following tests:
               <testlist>
                 <test>The evaluator performs the integrity check on a known good TSF executable and verifies that the check is successful.</test>
@@ -6806,7 +6806,7 @@ DONE:
 		    In the requirement, "software" refers to the component of the distributed TOE to which the requirement is being applied. 
             </note>
             <aactivity level="element">
-              <TSS>TBD</TSS>
+              <TSS>The evaluator shall verify that the TSS identifies the mechanism by which the current version of the TOE can be identified.</TSS>
               <Guidance>The evaluator shall ensure that the administrator guidance includes instructions for determining the current version of the TOE.</Guidance>
               <Tests>The evaluator shall query the TSF for the current version of the software
                 according to the operational guidance and shall verify that the current version matches that of the documented and installed version.</Tests>
@@ -6816,11 +6816,11 @@ DONE:
             <title>The TSF shall <selectables>
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
-            </selectables> to provide authorized administrators the ability to initiate updates to TSF software.</title>
+            </selectables> to provide authorized administrators the ability to initiate updates to the TOE.</title>
             <aactivity level="element">
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the TSS to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the MDM server; nonetheless, that mechanism will be identified in the TSS as part of this evaluation activity).</TSS>
-              <Guidance>TBD</Guidance>
-              <Tests>TBD</Tests>
+              <Guidance>The evaluator shall verify that the operational guidance provides instructions for how to initiate an update to the TOE and any restrictions on this function such that only an authorized administrator can perform it.</Guidance>
+              <Tests/>
             </aactivity>
           </f-element>
           <f-element id="fel-tud-func">
@@ -6828,14 +6828,14 @@ DONE:
               <selectable>invoke platform-provided functionality</selectable>
               <selectable>implement functionality</selectable>
             </selectables> to provide a means to verify software updates to the TSF using a digital signature mechanism prior to installing those updates.</title>
-            <note role="application">The software on the TSF will occasionally need to be updated. This requirement is intended to ensure that the TSF only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the TSF software or hardware.<h:br/><h:br/>           
+            <note role="application">The software on the TSF will occasionally need to be updated. This requirement is intended to ensure that the TSF only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the TSF.<h:br/><h:br/>           
               For distributed TOEs, all TOE components must support Trusted Update. The verification of the signature or hash on the update must either be done by each TOE component itself (signature verification) or for each TOE component (hash verification).<h:br/><h:br/>             
               Updating a distributed TOE might lead to the situation where different TOE components are running different software versions. Depending on the differences between the different software versions the impact of a mixture of different software versions might be no problem at all or critical to the proper functioning of the TOE. The TSS must detail the mechanisms that support the continuous proper functioning of the TOE during trusted update of distributed TOEs.
             </note>
             <aactivity level="element">
               <TSS>If "invoke platform-provided functionality" is selected, the evaluator shall examine the TSS to verify that it describes (for each supported platform) how this functionality is invoked (it should be noted that this may be through a mechanism that is not implemented by the MDM server; nonetheless, that mechanism will be identified in the TSS as part of this evaluation activity).<h:br/><h:br/>
               If "implement functionality" is selected, the evaluator shall examine the TSS and verify that it describes the standards by which the updates are digitally signed and how the signature verification process is implemented.</TSS>
-              <Guidance>The evaluator shall examine the operational guidance to verify that it describes how to query the current version of the TSF software, how to initiate updates and how to check the integrity of updates prior to installation.</Guidance>
+              <Guidance>The evaluator shall examine the operational guidance to verify that it identifies how the TOE will verify the integrity of an update and how the administrator is made aware of a failure to verify the integrity of the update.</Guidance>
               <Tests>The evaluator shall perform the following tests: <testlist>
                 <test>The evaluator shall attempt to initiate an update digitally signed by the vendor and verify that the update is successfully installed.</test>
                 <test>The evaluator shall attempt to install an update not digitally signed by the vendor and verify that either the signature can be checked (allowing the update to be aborted) or the update is not installed.</test>
