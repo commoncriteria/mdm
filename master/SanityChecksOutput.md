@@ -378,10 +378,6 @@
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[14]""/f-element[1]""/aactivity[1]""/Tests[1]"The follo"/h:p[12]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[14]""/f-element[1]""/aactivity[1]""/Tests[1]"The follo"/h:p[13]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[14]""/f-element[1]""/aactivity[1]""/Tests[1]"The follo"/h:p[14]""
- Failed to find a reference to ssh.
- Failed to find a reference to tls.
- Failed to find a reference to ssh.
- Failed to find a reference to tls.
  Failed to find a reference to fel-x509-fail.
  Failed to find a reference to bibCEM.
  Failed to find a reference to bibCEM.
