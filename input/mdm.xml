@@ -1407,14 +1407,16 @@ DONE:
 								</selectables>
 						</h:li>
 						<h:li>Specifically defined auditable events listed in <xref g="t-audit-mandatory"/></h:li>                    
-					  <h:li><selectables linebreak="yes">
+					  <h:li><refinement><selectables linebreak="yes">
 					    <selectable>Start up and shut down of the audit functions</selectable>
-              <selectable id="sel-at2"><refinement>Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</refinement></selectable>
-					    <selectable id="sel-at3"><refinement>Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</refinement></selectable>
-					    <selectable id="sel-at4"><refinement>Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</refinement></selectable>
-					    <selectable id="sel-attls"><refinement>Auditable events defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</refinement></selectable>
+              <selectable id="sel-at2">Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
+					    <selectable id="sel-at3">Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
+					    <selectable id="sel-at4">Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
+					    <selectable id="sel-atssh">Auditable events for the <xref to="ssh"/></selectable>
+					    <selectable id="sel-attls">Auditable events for the <xref to="tls"/></selectable>
+					    <selectable id="sel-atssh">Auditable events for the <xref to="X509"/></selectable>
               <selectable>no other events</selectable>
-						</selectables>.</h:li>						
+					  </selectables></refinement>.</h:li>						
 					</h:ol>
 				</title>
             <note role="application">
@@ -1424,7 +1426,7 @@ DONE:
 				which auditable events are completed by the MDM system and which are completed by the MDM platform. <h:br/><h:br/>
               
 				The ST author can include other auditable events in the assignment; they are not limited to the list presented. All audits must contain at least 
-				the information mentioned in <xref to="fel-gen-tsf-info"/>, but may contain more information which can be assigned.<h:br/><h:br/> 
+				the information mentioned in <xref to="fel-gen-tsf-info"/>.<h:br/><h:br/> 
               
 				For distributed TOEs, each component must generate audit data for each of the SFRs that it implements. If more than one TOE component is
 				involved when an audit event is triggered, the event has to be audited on each component (e.g., rejection of a connection by one component
@@ -1444,40 +1446,13 @@ DONE:
 				Depending on the specific requirements selected by the ST author from SFR, optional requirements, selection-based
 				requirements, and objective requirements, the ST author should include the appropriate auditable
 				events from <xref g="t-audit-optional"/>, <xref g="t-audit-sel-based"/>, and <xref g="t-audit-objective"/> in the
-              ST for the requirements selected.<h:br/><h:br/>
+              ST for the requirements selected. Each functional package includes auditable events for the SFRs defined in the package. The ST author is expected to include the auditable events (if any) for each SFR that the ST claims from a functional package.<h:br/><h:br/>
               
-              <h:b>In item d above, "start up and shut down of the audit functions" must be selected if the TSF has a start up and shut down phase. 
+              <h:b>The auditable event for "start up and shut down of the audit functions" must be selected if the TSF has a start up and shut down phase. 
                 Additionally, if the TOE is distributed, this applies to all components. If the TOE
                 is not distributed then MDM system is equivalent 
                 to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required.</h:b><h:br/><h:br/>     
-		    	The following table contains the events enumerated in the auditable events tables for the TLS Functional Package. Inclusion of these events
-		    	in the ST is subject to selection above, inclusion of the corresponding SFRs in the ST, and support in the FP as represented by a selection
-		    	in the FP audit table. This list is included here for reference.<h:br/><h:br/>
-							<h:b><ctr ctr-type='Table' id="atref-pkgs" pre="Table ">: Auditable Events for Functional Packages</ctr></h:b>							
-							<h:table>
-								<h:tr class="header"><h:td>Requirement</h:td><h:td>Auditable Events</h:td><h:td>Additional
-								  Audit Data Contents</h:td></h:tr>
-
-								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
-								<h:td>Failure to establish a TLS session.</h:td>
-								<h:td>Reason for failure.</h:td></h:tr>
-								
-								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
-								<h:td>Failure to verify presented identifier.</h:td>
-								<h:td>Presented identifier and reference identifier.</h:td></h:tr>
-
-								<h:tr><h:td>FCS_TLSS_EXT.1</h:td>
-								<h:td>Failure to establish a TLS session.</h:td>
-								<h:td>Reason for failure.</h:td></h:tr>
-
-								<h:tr><h:td>FCS_DTLSC_EXT.1</h:td>
-								<h:td>Failure of the certificate validity check.</h:td>
-								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
-							
-								<h:tr><h:td>FCS_DTLSS_EXT.1</h:td>
-								<h:td>Failure of the certificate validity check.</h:td>
-								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
-							</h:table>
+		
 				
             </note>
             <aactivity level="element">
@@ -1516,19 +1491,20 @@ DONE:
               <h:li>subject identity (if applicable)</h:li>
               <h:li>and the outcome (success or failure) of the event</h:li>
               <h:li>additional information in <xref g="t-audit-mandatory"/></h:li>
-              <h:li><selectables linebreak="yes">
-                    <selectable id="sel-at2-i">additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
-					          <selectable id="sel-at3-i">additional information defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
-                    <selectable id="sel-at4-i">additional information defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
-					          <selectable id="sel-attls-i">additional information defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
+              <h:li><refinement><selectables linebreak="yes">
+                    <selectable id="sel-at2-i">Additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
+					          <selectable id="sel-at3-i">Additional information defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
+                    <selectable id="sel-at4-i">Additional information defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
+                <selectable id="sel-atssh">Additional information defined in <xref to="ssh"/></selectable>
+                <selectable id="sel-attls">Additional information defined in <xref to="tls"/></selectable>
+                <selectable id="sel-atssh">Additional information defined in <xref to="X509"/></selectable>
                     <selectable>no other additional information</selectable>
-				</selectables></h:li>
-              <h:li><assignable>other audit relevant information</assignable>.</h:li>
+              </selectables></refinement></h:li>
             </h:ul>
             </title>
             <note role="application"> This requirement outlines the information to be included in audit data. All audits must contain at least the
-		            information mentioned in <xref to="fel-gen-tsf-info"/>, but may contain more information which can be assigned. The ST author
-		            must identify in the TSS which information of the audit data  is performed by the TSF and that which is performed by the 
+		            information mentioned in <xref to="fel-gen-tsf-info"/>. The ST author
+		            must identify in the TSS which information of the audit data is performed by the TSF and that which is performed by the 
 		            TOE platform. <h:br/><h:br/>
               <!-- TODO: If the MDM invokes the platform to audit an event for FAU_GEN.1.1(1), then are they guarenteed that the platform will provide them 
 		with the necessary information in the audit event? Need to make sure that this is in OS PP-->  
