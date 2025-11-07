@@ -46,7 +46,6 @@
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
 	  /PP[1]""/section[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[12]""/config[1]""/ref-id[1]"dummy-ref"
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/section[5]""/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[1]""/f-element[1]""/title[1]"The TSF s"/selectables[2]""/tabularize[1]""/reqtext[3]"The follo"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[1]""/f-element[1]""/title[1]"The TSF s"/selectables[2]""/tabularize[1]""/reqtext[3]"The follo"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[1]""/f-element[1]""/title[1]"The TSF s"/selectables[2]""/selectable[2]""/col[4]"FIPS PUB "/h:p[1]""
