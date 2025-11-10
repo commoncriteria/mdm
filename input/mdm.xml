@@ -1406,7 +1406,7 @@ DONE:
               There are active standards efforts underway by the Internet Engineering Task Force (IETF) Security Automation and 
               Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report on 
               endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile 
-              as standards efforts mature.<h:b/><h:b/>
+              as standards efforts mature.<h:br/><h:br/>
               If the TOE acts as a subordinate MDM server, then this SFR also ensures that there is a
               mechanism for the primary MDM server to query information about the devices managed by
               the subordinate MDM server.
@@ -5835,7 +5835,7 @@ DONE:
         <f-element id="fmt-pol-ext-1e3">
           <title>For each unique policy managed by the TSF, the TSF shall validate that the policy is appropriate for an 
           agent or subordinate MDM server using <selectables>
-            <selectable>client authentication via an X509 certificate representing the agent subordinate MDM server</selectable>
+            <selectable>client authentication via an X509 certificate representing the agent or subordinate MDM server</selectable>
             <selectable>a token issued to the agent or subordinate MDM server and associated with a policy signing key uniquely associated
             to the policy</selectable>
           </selectables>.</title>
@@ -5855,7 +5855,8 @@ DONE:
                 distributed to the agent or subordinate MDM server.</TSS>
               <Guidance>If applicable, the evaluator shall verify that the operational guidance
                 instructs administrators on configuring the enterprise certificate to be used for signing policies or signing the policies before applying them.</Guidance>
-              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the MDM server, in transmission, or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent.
+              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the
+                TOE, in transmission, or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent or subordinate MDM server.
 	      </Tests>
             </aactivity>
           </f-element>
@@ -6906,7 +6907,7 @@ DONE:
               author chooses "authentication server" in FTP_ITC.1.1/INTER_XFER_IT and this connection must be protected 
               by one of the listed protocols. Likewise if the TOE acts as either a primary or subordinate MDM server, then 
               "primary MDM server" or "subordinate MDM server" is selected for the device it communicates with and those 
-              communications are protected by one of the listed protocols.If other authorized IT entities (e.g., NTP server) 
+              communications are protected by one of the listed protocols. If other authorized IT entities (e.g., NTP server) 
               are protected, the ST author makes the appropriate assignments (for those entities) and selections (for the protocols 
               that are used to protect those connections).<h:br/><h:br/> 
               To summarize, the connection to an external audit collection server is required to be protected by one of the listed 
