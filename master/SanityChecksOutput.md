@@ -1,3 +1,4 @@
+* Warning: This document still has at least one comment.
 * Error: Detected dangling id-reference to key-encap-support from attribute
         on/PP[1]""/section[5]""/section[1]""/section[4]""/f-component[3]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to wlan-support from attribute
