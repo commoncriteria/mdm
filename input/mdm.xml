@@ -45,7 +45,7 @@ FMT_SMR.1(2) => FMT_SMR.1/SECMAN_ROLES_MAS
 	  - Audit events now appear in tables at the top of the section or appendix in which the SFR appears.
 	  - Created a new table for audit events from external packages.
 	  - The re-working of the audit requirements makes things look different, but all the requirements should be the same.
-	  - Added the Implicity Saisfied Requirements Appendix based on TD552
+	  - Added the Implicitly Satisfied Requirements Appendix based on TD552
 	  - Incorporated all TDs as of the draft date:
 		- 0552 – SFR Rationale and Implicitly Satisfied SFRs
 		- 0524 – Updates to Certificate Revocation (FIA_X509_EXT.1)
@@ -101,9 +101,9 @@ DONE:
   <PPReference>
     <ReferenceTable>
       <PPTitle>Protection Profile for Mobile Device Management</PPTitle>
-      <PPVersion>5.0</PPVersion>
+      <PPVersion>5.0-Draft</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2024-11-15</PPPubDate>
+      <PPPubDate>2025-11-19</PPPubDate>
       <Keywords>Mobile Device Management; MDM</Keywords>
     </ReferenceTable>
   </PPReference>  
@@ -152,6 +152,7 @@ DONE:
       <subject>
         Updates to align with Technical Decisions<h:br/>
         Updates to align with CC:2022<h:br/>
+        Updates to support subordinate MDM<h:br/>
         <h:br/>        
       </subject>
     </entry>
@@ -203,7 +204,7 @@ DONE:
 		</section>
 		
 		<!-- 1.2 Terms -->
-		<!-- 1.2.1 Common Criteriq Terms (auto-generated) -->
+		<!-- 1.2.1 Common Criteria Terms (auto-generated) -->
 		<!-- 1.2.2 Technical Terms -->
 		<tech-terms>
 			<term full="Administrator" >The person who is responsible for management activities, including setting the 
@@ -260,12 +261,13 @@ DONE:
 				emails, messaging, documents, calendar items, or contacts. May be protected while the
 				MD is in the locked state. Must include at minimum some keys in
 				software-based key storage. </term>
+      <term full="Subordinate MDM Server" >The subordinate MDM server is used to facilitate communications between a primary MDM server and an MDM agent on a managed device. The subordinate MDM server may modify/interpret the MDM policy sent from the primary MDM server to the MDM agent, using well-defined rules, and re-sign the resulting MDM policy for delivery to the MDM agent.</term>
 			<term full="Trust Anchor Database" >A list of trusted root Certificate Authority certificates. </term>
 			<term full="Unenrolled State" >Device state when it is not managed by an MDM.</term>
 			<term full="Unlocked State" >Device state where it is powered on and the user has been authenticated. The device functionality is available for use by the user.</term>       
 		</tech-terms>
 	  
-		<!-- 1.3 Cmpliant Targets of Evaluation -->
+		<!-- 1.3 Compliant Targets of Evaluation -->
 		<section id="cte" title="Compliant Targets of Evaluation">
 			The Mobile Device Management (MDM) system consists of two primary components: the MDM server software and the MDM agent. Optionally, the MDM system may
 			consist of a separate Mobile Application Store (MAS) server or a subordinate MDM server. 
@@ -274,14 +276,14 @@ DONE:
 			<section id="tb" title="TOE Boundary"> The MDM system operational environment consists of the MD on which the MDM agent resides, 
 				the platform on which the MDM server runs, and an untrusted wireless network over which they communicate, as pictured below.
 				<h:br/><h:br/>
-				<figure entity="images/MDMserveroperatingenvironment.jpg" title="MDM System Operating Environment" id="agentoperatingenvironment"/>
+				<figure entity="images/MDMSystem.png" title="MDM System Operating Environment" id="agentoperatingenvironment"/>
 				<h:br/><h:br/>
 				The <h:b>MDM server</h:b> is software (an application, service, etc.) on a general-purpose platform, a network device, or cloud architecture executing
 				in a trusted network environment. The MDM server provides administration of MD policies and reporting on the device behavior.
 				The MDM server is responsible for managing device enrollment, configuring and sending policies to the MDM agents, collecting reports on device
 				status, and sending commands to the agents. The MDM server may be standalone or distributed, where a distributed TOE is one that requires
 				multiple distinct components to operate as a logical whole in order to fulfill the requirements of this PP (a more extensive description of 
-				distributed MDMs is given in section 3).
+				distributed MDMs is given in section 3). 
 				<h:br/><h:br/>
 				The <h:b>MDM agent</h:b> establishes a secure connection back to the
 				MDM server controlled by an enterprise administrator and configures the
@@ -300,13 +302,10 @@ DONE:
 				distinct. If the MAS functionality is on a physically separate server, then the TOE is
 				distributed with the MDM server and MAS server being 
 				separate components.<h:br/><h:br/>
-				The <h:b>Subordinate MDM Server</h:b> is an optional, physically separate, server that sits between a primary MDM server and an MDM 
-			  agent on a managed device. The purpose of the subordinate MDM server is to forward signed policy files from a primary MDM server to
-			  an MDM agent on a managed device for which the subordinate MDM is responsible. The subordinate MDM server can either directly pass 
-			  these signed policies to the managed device, or can interpret the policy into a different format if necessary. This interpretation
-			  process will follow well defined rules to ensure that the resulting interpreted policy matches the actions defined in the original
-			  policy. This interpreted policy is signed by the subordinate MDM server for delivery to the MDM agent. Any alerts or notifications
-			  generated by an MDM agent will be passed by the subordinate MDM server back to the primary MDM server to alert the enterprise administrators.
+        The <h:b>Subordinate MDM Server</h:b> is an optional, physically separate, server that sits between a primary MDM server and an MDM agent on a managed device. The purpose of the subordinate MDM server is to forward signed policy files from a primary MDM server to an MDM agent on a managed device for which the subordinate MDM is responsible. The subordinate MDM server can either directly pass these signed policies to the managed device, or can interpret the policy into a different format if necessary. This interpretation process will follow well defined rules to ensure that the resulting interpreted policy matches the actions defined in the original policy. This interpreted policy is signed by the subordinate MDM server for delivery to the MDM agent. Any alerts or notifications generated by an MDM agent will be passed by the subordinate MDM server back to the primary MDM server to alert the enterprise administrators.
+        <h:br/><h:br/>
+        <figure entity="images/SubordinateMDMSystem.png" title="MDM System with Subordinate MDM" id="subordinateMDMDiagram"/>
+				<h:br/><h:br/>
 			</section>
 		</section>
 	
@@ -778,12 +777,12 @@ DONE:
    
 				<h:tr>
 					<h:td>FMT_MOF.1/FUNCBE</h:td>
-					<h:td>Management of functions behaviour</h:td>
+					<h:td>Management of functions behavior</h:td>
 					<h:td>Feature Dependent</h:td> 
 				</h:tr>
 				<h:tr>
 					<h:td>FMT_MOF.1/MANAGEMENT_ENROLL</h:td>
-					<h:td>Management of functions behaviour (Enrollment)</h:td>
+					<h:td>Management of functions behavior (Enrollment)</h:td>
 					<h:td>Feature Dependent</h:td> 
 				</h:tr>
 				<h:tr>
@@ -1258,7 +1257,8 @@ DONE:
 		<h:b>Test Environment for Evaluation Activities</h:b><h:p/>
 			As described in the evaluation activities below, the ST for an MDM system is required to list all the supported MDM agents and MD platforms with which
 			an MDM server operates. The identified evaluation activities for testing that includes the use of an agent should be completed for each MDM agent
-			and platform listed in the ST.<h:br/><h:br/>      
+			and platform listed in the ST.<h:br/><h:br/>
+
 			The evaluator's activities for testing that include use of an agent will ensure that the Server interacts appropriately with the agent (i.e., sends a
 			policy update to the agent), but will not ensure that the agent handles the received data correctly (i.e., appropriately applies the policy to the 
 			device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals PP or the PP-Module for Mobile Device Management
@@ -1334,6 +1334,7 @@ DONE:
               <Tests> For each MDM agent or platform listed as supported in the ST: <testlist>
                 <test>The evaluator shall enroll a device and ensure that the MDM server alerts the administrator of the change in enrollment status. The 
 			evaluator shall unenroll (retire) a device and ensure that the MDM server alerts the administrator of the change in enrollment status.</test>
+      <!-- Alternate test could be to send correct policy but block Agent response, and the MDM should alert that response was not received, indicating failure -->
                 <test>The evaluator shall configure policies, which the MDM agent should not be able to apply. These policies shall include:<h:ul>
                       <h:li>a setting which is configurable on the MDM server interface but not supported by the platform on which the MDM agent runs, if any
 			      such settings exist</h:li>
@@ -1368,17 +1369,17 @@ DONE:
           <dependencies><no-link>FTP_ITC.1</no-link> Inter-TSF Trusted Channel</dependencies>
           
           <f-element id="fau-crp-ext-1e1">
-            <title> The TSF shall provide <selectables><selectable>an interface that provides responses 
-              to queries about the configuration of enrolled devices</selectable><selectable>an interface that permits the export 
-                of data about the configuration of enrolled devices</selectable> </selectables> to authorized entities over a 
-              channel that meets the secure channel requirements in FTP_ITC.1/INTER_XFER_IT. The provided information for each enrolled MD includes:
+            <title>The TSF shall provide <selectables>
+            <selectable>an interface that provides responses to queries about the configuration of enrolled devices</selectable>
+            <selectable>an interface that permits the export of data about the configuration of enrolled devices</selectable>
+            </selectables>to authorized entities over a channel that meets the secure channel requirements in FTP_ITC.1/INTER_XFER_IT. The provided information for each enrolled MD includes:
               <h:ul>
               <h:li>The current version of the MD firmware or software</h:li>
               <h:li>The current version of the hardware model of the device</h:li>
-              <h:li>The current version of installed applications</h:li>
-              <h:li>List of MD configuration policies that are in place on the device (as defined in 
-                <xref to="fel-smf-man-agnt"/>)</h:li>
-              <h:li><selectables>
+              <h:li>
+              <selectables linebreak="yes">
+                <selectable>The current version of installed mobile applications</selectable>
+                <selectable>List of MD configuration policies that are in place on the device (as defined in <xref to="fel-smf-man-agnt"/>)</selectable>
                 <selectable><assignable>list of other available information about enrolled devices</assignable></selectable>
                 <selectable>no other information</selectable></selectables>.
               </h:li>
@@ -1391,10 +1392,10 @@ DONE:
                 <h:ul>
                   <h:li>The current version of the MD firmware or software</h:li>
                   <h:li>The current version of the hardware model of the device</h:li>
-                  <h:li>The current version of installed applications</h:li>
-                  <h:li>List of MD configuration policies that are in place on the device (as defined in 
-                    FMT_SMF.1)</h:li>
-                  <h:li><selectables>
+                  <h:li>
+                  <selectables linebreak="yes">
+                    <selectable>The current version of installed applications</selectable>
+                    <selectable>List of MD configuration policies that are in place on the device (as defined in <xref to="fel-smf-man-agnt"/>)</selectable>
                     <selectable><assignable>list of other available information about enrolled devices</assignable></selectable>
                     <selectable>no other information</selectable></selectables>.
                   </h:li>
@@ -1405,7 +1406,7 @@ DONE:
               compliance information about enrolled MDs for use by other enterprise security infrastructure systems. 
               There are active standards efforts underway by the Internet Engineering Task Force (IETF) Security Automation and 
               Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report on 
-              endpoint device posture. We expect that this requirement will evolve in future versions of this Protection Profile 
+              endpoint device posture. It is expected that this requirement will evolve in future versions of this Protection Profile 
               as standards efforts mature.<h:br/><h:br/>
               If the TOE acts as a subordinate MDM server, then this SFR also ensures that there is a
               mechanism for the primary MDM server to query information about the devices managed by
@@ -1478,12 +1479,11 @@ DONE:
 				from those that require additional record content. If the TOE is distributed and the given component does not deal with setting the policy 
 				applied to the MDM agent, it is acceptable to not have any administrative actions to audit.<h:br/><h:br/>
               
-				Item <h:b>b</h:b> includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE server acts as a 
-              primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If
-              the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM 
-              Server" must be selected. If the TOE component, if distributed, interacts directly with the MDM agent, then "Commands issued to the MDM 
-              agent" must be selected. If the TOE component, if distributed, does not interact directly with the MDM agent, then it is acceptable to 
-              select "none."<h:br/><h:br/>
+				Item <h:b>b</h:b> includes those commands, which may be performed automatically based on triggers or on a schedule. <h:mark style="background-color:yellowgreen;">If the TOE server acts as a primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM Server" must be selected. For distributed TOEs, if the TOE component directly interacts with a primary MDM server, subordinate MDM server, or MDM agent then the corresponding selection should be made for that component. If the TOE component does not directly interact with any of these entities, then it is acceptable to select "none."</h:mark><h:br/><h:br/>
+
+        <h:b>In item d above, "start up and shut down of the MDM system" must be selected if the TSF has a start up and shut down phase. 
+        Additionally, if the TOE is distributed, this applies to all components. If the TOE is not distributed then MDM system is equivalent 
+        to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required.</h:b><h:br/>
               
 				Depending on the specific requirements selected by the ST author from SFR, optional requirements, selection-based
 				requirements, and objective requirements, the ST author should include the appropriate auditable
@@ -1546,7 +1546,7 @@ DONE:
 		            information mentioned in <xref to="fel-gen-tsf-info"/>. The ST author
 		            must identify in the TSS which information of the audit data is performed by the TSF and that which is performed by the 
 		            TOE platform. <h:br/><h:br/>
-              <!-- TODO: If the MDM invokes the platform to audit an event for FAU_GEN.1.1(1), then are they guarenteed that the platform will provide them 
+              <!-- TODO: If the MDM invokes the platform to audit an event for FAU_GEN.1.1(1), then are they guaranteed that the platform will provide them 
 		with the necessary information in the audit event? Need to make sure that this is in OS PP-->  
             </note>
             <aactivity level="element">
@@ -6220,7 +6220,8 @@ DONE:
 		
         <f-component cc-id="fmt_smf.1" iteration="SERVER_CONF_SERVER" name="Specification of Management Functions (Server Configuration of Server)">
           <f-element id="fmt-smf-1e1">
-            <title>The TSF shall be capable of performing the following management functions.<h:ol type="a">
+            <title>The TSF shall be capable of performing the following management functions.            
+            <h:ol type="a">
                  <h:li>Configure the <selectables>
                     <selectable>devices specified by <selectables>
                         <selectable>IMEI</selectable>
@@ -6278,7 +6279,8 @@ DONE:
 			  example would be changing the management of a TOE component from direct remote administration to remote
 			  administration through another TOE component. A more complex use case would be if the realization of an SFR is 
 			  achieved through two or more TOE components and the responsibilities between the two or more components could 
-			  be modified.<h:br/><h:br/>             
+			  be modified.<h:br/><h:br/>
+
               For distributed TOEs, that implement a registration channel (as described in <xref to="fel-cpc-func"/>), the ST
 			  author uses the selection "configure the cryptographic functionality" in this SFR, and its corresponding mapping 
 			  in the TSS, to describe the configuration of any cryptographic aspects of the registration channel that can be
@@ -6901,7 +6903,7 @@ DONE:
                 <selectable id="ITC1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> provide a <h:b>trusted</h:b>
               communication channel between itself and <h:b>authorized</h:b> IT <h:b>entities supporting the following capabilities: audit server,
-              <selectables>
+              <selectables linebreak="yes">
                 <selectable>authentication server</selectable>
                 <selectable>primary MDM server</selectable>
                 <selectable>subordinate MDM server</selectable>
@@ -6911,6 +6913,7 @@ DONE:
             <note role="application">The intent of the mandatory portion of the above requirement is to use the cryptographic 
               protocols identified in the requirement to establish and maintain a trusted channel with authorized IT entities 
               that the TOE interacts with to perform its functions.<h:br/><h:br/> 
+
               Protection (by one of the listed protocols) is required at least for communications with the server that collects 
               the audit information. If it communicates with an authentication server (e.g., RADIUS), then the ST 
               author chooses "authentication server" in FTP_ITC.1.1/INTER_XFER_IT and this connection must be protected 
@@ -7154,8 +7157,8 @@ DONE:
             <title>The TSF shall provide a communication channel between itself and <selectables linebreak="yes">              
               <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE</selectable>
               <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE</selectable>
-              <selectable id="ITC_SUBORDINATE_MDM">a subordinate MDM server</selectable>
-              <selectable id="ITC_PRIMARY_MDM">a primary MDM server</selectable>
+              <selectable>a subordinate MDM server</selectable>
+              <selectable id="ITC_SUBORDINATE_MDM">a primary MDM server</selectable>
               <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
             </selectables>
               that is logically distinct from other communication channels, as specified in <selectables>
@@ -7166,7 +7169,8 @@ DONE:
               </selectables>.
             </title>
             <ext-comp-def-title>
-              <title>The TSF shall provide a communication channel between itself and <selectables linebreak="yes">              
+              
+              <title>The TSF shall provide a communication channel between itself and <comment>have to update this for subordinate MDM</comment> <selectables linebreak="yes">                              
                 <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE</selectable>
                 <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE</selectable>
                 <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
@@ -7180,8 +7184,9 @@ DONE:
               components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/>            
               If the TOE includes an MDM agent, then the communication channel between the agent and TSF is internal to the TOE and thus "an MDM agent that is
               internal to the TOE" must be selected in the first selection. Additionally FPT_ITT.1/INTER_XFER_AGENT must be selected in the second selection and
-              FPT_ITT.1/INTER_XFER_AGENT must be included in the ST. <h:br/><h:br/>         
-              If the TOE interoperates with an evaluated MDM agent built into a MD (i.e., the TOE does not include an MDM agent), the communication channel 
+              FPT_ITT.1/INTER_XFER_AGENT must be included in the ST. <h:br/><h:br/>
+
+              If the TOE interoperates with an evaluated MDM agent built into a mobile device (i.e., the TOE does not include an MDM agent), the communication channel 
               between the agent and TSF is external to the TOE and thus "an MDM agent that is external to the TOE" must be selected in the first selection.
               Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the ST. <h:br/><h:br/> 
               If the TOE acts as a primary MDM server and interoperates with a subordinate MDM server to forward policies to a MDM agent on a managed device, then
@@ -7314,7 +7319,7 @@ DONE:
               to the TSF under environmental constraints identified in <assignable>reference to operational guidance</assignable>]</h:i>.</title>
             <note role="application">This SFR implements one of the types of channel identified in the main selection for <xref to="fel-cpc-func"/>. The "joining component" in FTP_TRP.1/TRUSTPATH_JOIN is the IT entity that is attempting to join the distributed TOE by using the registration process.<h:br/><h:br/>            
               The effect of this SFR is to require the ability for components to communicate in a secure manner while the distributed TSF is being created (or when adding components to an existing distributed TSF). When creating the TSF from the initial pair of components, either of these components may be identified as the TSF for the purposes of satisfying the meaning of "TSF" in this SFR.<h:br/><h:br/>
-              The selection at the end of FTP_TRP.1/TRUSTPATH_JOIN recognises that in some cases confidentiality (i.e., protection of the data from disclosure) may not be provided by the channel. The ST author distinguishes in the TSS whether in this case the TOE relies on the environment to provide confidentiality (as part of the constraints referenced in <xref to="fel-trp-func-tsf"/>) or whether the registration data exchanged does not require confidentiality (in which case this assertion must be justified). If "none" is selected, then this word may be omitted in the ST to improve readability.<h:br/><h:br/>             
+              The selection at the end of FTP_TRP.1/TRUSTPATH_JOIN recognizes that in some cases confidentiality (i.e., protection of the data from disclosure) may not be provided by the channel. The ST author distinguishes in the TSS whether in this case the TOE relies on the environment to provide confidentiality (as part of the constraints referenced in <xref to="fel-trp-func-tsf"/>) or whether the registration data exchanged does not require confidentiality (in which case this assertion must be justified). If "none" is selected, then this word may be omitted in the ST to improve readability.<h:br/><h:br/>             
               The assignment in <xref to="fel-trp-func-tsf"/> ensures that the ST highlights any specific details needed to protect the registration environment. Note that when the ST uses FTP_TRP.1/TRUSTPATH_JOIN for the registration channel then this channel cannot be reused as the normal inter-component communication channel (the latter channel must meet FTP_ITC.1 or FPT_ITT.1/INTER_XFER / FPT_ITT.1/INTER_XFER_AGENT). Specific requirements for Preparative Procedures relating to FTP_TRP.1/TRUSTPATH_JOIN are defined in the Evaluation Activities.<h:br/><h:br/>
             </note>
             <aactivity>
@@ -7587,9 +7592,9 @@ DONE:
             </a-element>
             <a-element type="C">
               <title>The preparative procedures shall describe all the steps necessary for secure installation of the TOE and for the secure preparation of the operational environment in accordance with the security objectives for the operational environment as described in the ST.</title>
-              <note role="application">It is recognised that the application of these requirements will vary depending on aspects such as whether the TOE is delivered in an operational state, or whether it has to be installed at the TOE owner's site, etc.<h:br/><h:br/>
+              <note role="application">It is recognized that the application of these requirements will vary depending on aspects such as whether the TOE is delivered in an operational state, or whether it has to be installed at the TOE owner's site, etc.<h:br/><h:br/>
                 It might also be the case that no installation is necessary, for example as a
-                Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyse installation procedures and thus this requirement is implicitly satisfied.
+                Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyze installation procedures and thus this requirement is implicitly satisfied.
               </note>
             </a-element>          
             <a-element type="E">
