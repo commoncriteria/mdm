@@ -1,48 +1,16 @@
 * Warning: This document still has at least one comment.
-* Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_7 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[1]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_8 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[2]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_14 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[3]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_15 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[4]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_18 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[5]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_19 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[6]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_20 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[7]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_21 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[8]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_22 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[9]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_dtlsc_ext.1.2_7 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[10]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_dtlsc_ext.1.2_8 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[11]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_dtlsc_ext.1.2_14 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[12]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_dtlsc_ext.1.2_15 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[13]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_dtlsc_ext.1.2_18 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[14]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_dtlsc_ext.1.2_19 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[15]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_dtlsc_ext.1.2_20 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[16]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_dtlsc_ext.1.2_21 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[17]""/on-sel[1]""
-* Error: Detected dangling id-reference to fcs_dtlsc_ext.1.2_22 from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[18]""/on-sel[1]""
-* Error: Detected dangling id-reference to sel-fcs-ckm-ak-lms from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[14]""/depends[1]""/on-sel[1]""
-* Error: Detected dangling id-reference to sel-fcs-ckm-ak-xmss from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[14]""/depends[2]""/on-sel[1]""
-* Error: Detected dangling id-reference to sel-fcs-cop-sigver-lms from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[14]""/depends[3]""/on-sel[1]""
-* Error: Detected dangling id-reference to sel-fcs-cop-sigver-xmss from attribute
-        on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[14]""/depends[4]""/on-sel[1]""
+* Error: Detected dangling id-reference to key-encap-support from attribute
+        on/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[3]""/depends[1]""/on[1]""
+* Error: Detected dangling id-reference to wlan-support from attribute
+        on/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[3]""/depends[2]""/on[1]""
+* Error: Detected dangling id-reference to key-agreement-support from attribute
+        on/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[5]""/depends[1]""/on[1]""
+* Error: Detected multiple elements with an id of 'sel-atssh'.
+* Error: Detected multiple elements with an id of 'sel-attls'.
+* Error: Detected multiple elements with an id of 'sel-atssh'.
+* Error: Detected multiple elements with an id of 'sel-atssh'.
+* Error: Detected multiple elements with an id of 'sel-attls'.
+* Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'ITC_AgentInTOE'.
 * Error: Detected multiple elements with an id of 'ITC_AgentOutTOE'.
 * Error: Detected multiple elements with an id of 'ITC_DISTRIBUTED_TOE'.
@@ -74,7 +42,6 @@
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
 	  /PP[1]""/sec:Introduction[1]""/section[3]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[12]""/config[1]""/ref-id[1]"dummy-ref"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[3]""/f-element[1]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[5]""/f-element[1]""/note[1]"This SFR "/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[5]""/f-element[1]""/note[1]"This SFR "/h:p[2]""
@@ -211,8 +178,6 @@
                        
 * Warning: Since FCO_CPC_EXT.1.3 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
-* Warning: Since FCS_CKM_EXT.7.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
 * Warning: Since FCS_HTTPS_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_HTTPS_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
@@ -228,6 +193,8 @@
 * Warning: Since FIA_ENR_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FIA_TOK_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+                       
+* Warning: Since FMT_POL_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FMT_POL_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
