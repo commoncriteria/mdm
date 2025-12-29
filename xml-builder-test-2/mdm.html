@@ -636,7 +636,7 @@ function showTarget(id){
 <tr><td>3.0</td><td>2016-11-21</td><td>Updates to align with Technical Decisions<br/> Added requirements to support BYOD use case <br/> Removed IPsec and SSH requirements, which are now contained in EPs</td></tr>
 <tr><td>4.0</td><td>2018-09-24</td><td> Updates to align with Technical Decisions<br/> Removed platform dependency<br/> Removed TLS <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and use the TLS Functional Package<br/> Allowed for a distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> </td></tr>
 <tr><td>5.0</td><td>2024-11-15</td><td> Updates to align with Technical Decisions<br/> Updates to align with <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022<br/> Updates to support subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr><br/><br/></td></tr>
-</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ov" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#cte" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOE_Boundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#Use_Cases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#package-usage" style="text-indent:10px">1.5<span>Package Usage</span></a><a href="#Conformance_Claims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#idt" style="text-indent:0px">3<span>Introduction to Distributed TOEs</span></a><a href="#rcd" style="text-indent:10px">3.1<span>Registration of Distributed TOE Components</span></a><a href="#ard" style="text-indent:10px">3.2<span>Allocation of Requirements in Distributed TOEs</span></a><a href="#dis" style="text-indent:10px">3.3<span>Security Audit for Distributed TOEs</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">4<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">4.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">4.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">4.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">5<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">5.1<span>Security Objectives for the Operational Environment</span></a><a href="#" style="text-indent:10px">5.2<span>Security Objectives Rationale</span></a><a href="#req" style="text-indent:0px">6<span>Security Requirements</span></a><a href="#SFRs" style="text-indent:10px">6.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">6.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#fau" style="text-indent:20px">6.1.2<span>Security Audit (FAU)</span></a><a href="#fco" style="text-indent:20px">6.1.3<span>Communication (FCO)</span></a><a href="#fcs" style="text-indent:20px">6.1.4<span>Cryptographic Support (FCS)</span></a><a href="#fia" style="text-indent:20px">6.1.5<span>Identification and Authentication (FIA)</span></a><a href="#fmt" style="text-indent:20px">6.1.6<span>Security Management (FMT)</span></a><a href="#fpt" style="text-indent:20px">6.1.7<span>Protection of the TSF (FPT)</span></a><a href="#fta" style="text-indent:20px">6.1.8<span>TOE Access (FTA)</span></a><a href="#ftp" style="text-indent:20px">6.1.9<span>Trusted Path/Channels (FTP)</span></a><a href="#" style="text-indent:20px">6.1.10<span></span></a><a href="#" style="text-indent:20px">6.1.11<span></span></a><a href="#" style="text-indent:20px">6.1.12<span></span></a><a href="#obj-req-map" style="text-indent:20px">6.1.13<span>TOE Security Functional Requirements Rationale</span></a><a href="#SARs" style="text-indent:10px">6.2<span>Security Assurance Requirements</span></a><a href="#ase" style="text-indent:20px">6.2.1<span>Class ASE: Security Target</span></a><a href="#adv" style="text-indent:20px">6.2.2<span>Class ADV: Development</span></a><a href="#agd" style="text-indent:20px">6.2.3<span>Class AGD: Guidance Documentation</span></a><a href="#agd_pre" style="text-indent:20px">6.2.4<span>Preparative Procedures (AGD_PRE.1)</span></a><a href="#alc" style="text-indent:20px">6.2.5<span>Class ALC: Life-cycle Support</span></a><a href="#alc_cms" style="text-indent:20px">6.2.6<span>TOE CM Coverage (ALC_CMS.1)</span></a><a href="#ate-tests" style="text-indent:20px">6.2.7<span>Class ATE: Tests</span></a><a href="#ava" style="text-indent:20px">6.2.8<span>Class AVA: Vulnerability Analysis</span></a><a href="#impl-reqs" style="text-indent:0px">Appendix A - <span>Implementation-dependent Requirements</span></a><a href="#" style="text-indent:20px">A.0.1<span></span></a><a href="#" style="text-indent:20px">A.0.2<span></span></a><a href="#" style="text-indent:20px">A.0.3<span></span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix B - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">B.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">B.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCO" style="text-indent:20px">B.2.1<span>Communication (FCO)</span></a><a href="#ext-comp-FCO_CPC_EXT" style="text-indent:30px">B.2.1.1<span>FCO_CPC_EXT Component Registration Channel Definition</span></a><a href="#ext-comp-FCS" style="text-indent:20px">B.2.2<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_CKM_EXT" style="text-indent:30px">B.2.2.1<span>FCS_CKM_EXT Cryptographic Key Management</span></a><a href="#ext-comp-FCS_HTTPS_EXT" style="text-indent:30px">B.2.2.2<span>FCS_HTTPS_EXT HTTPS Protocol</span></a><a href="#ext-comp-FCS_IV_EXT" style="text-indent:30px">B.2.2.3<span>FCS_IV_EXT Initialization Vector Generation</span></a><a href="#ext-comp-FCS_STG_EXT" style="text-indent:30px">B.2.2.4<span>FCS_STG_EXT Encrypted Cryptographic Key Storage</span></a><a href="#ext-comp-FIA" style="text-indent:20px">B.2.3<span>Identification and Authentication (FIA)</span></a><a href="#ext-comp-FIA_CLI_EXT" style="text-indent:30px">B.2.3.1<span>FIA_CLI_EXT Client Authorization</span></a><a href="#ext-comp-FIA_ENR_EXT" style="text-indent:30px">B.2.3.2<span>FIA_ENR_EXT Enrollment</span></a><a href="#ext-comp-FIA_TOK_EXT" style="text-indent:30px">B.2.3.3<span>FIA_TOK_EXT Client Tokens</span></a><a href="#ext-comp-FPT" style="text-indent:20px">B.2.4<span>Protection of the TSF (FPT)</span></a><a href="#ext-comp-FPT_API_EXT" style="text-indent:30px">B.2.4.1<span>FPT_API_EXT Use of Supported Services and APIs</span></a><a href="#ext-comp-FPT_LIB_EXT" style="text-indent:30px">B.2.4.2<span>FPT_LIB_EXT Use of Third-Party Libraries</span></a><a href="#ext-comp-FPT_TST_EXT" style="text-indent:30px">B.2.4.3<span>FPT_TST_EXT Functionality Testing</span></a><a href="#ext-comp-FPT_TUD_EXT" style="text-indent:30px">B.2.4.4<span>FPT_TUD_EXT Trusted Update</span></a><a href="#ext-comp-FAU" style="text-indent:20px">B.2.5<span>Security Audit (FAU)</span></a><a href="#ext-comp-FAU_ALT_EXT" style="text-indent:30px">B.2.5.1<span>FAU_ALT_EXT Server Alerts</span></a><a href="#ext-comp-FAU_CRP_EXT" style="text-indent:30px">B.2.5.2<span>FAU_CRP_EXT Support for Compliance Reporting of Mobile Device Configuration</span></a><a href="#ext-comp-FAU_NET_EXT" style="text-indent:30px">B.2.5.3<span>FAU_NET_EXT Network Reachability Review</span></a><a href="#ext-comp-FMT" style="text-indent:20px">B.2.6<span>Security Management (FMT)</span></a><a href="#ext-comp-FMT_POL_EXT" style="text-indent:30px">B.2.6.1<span>FMT_POL_EXT Trusted Policy Update</span></a><a href="#ext-comp-FMT_SAE_EXT" style="text-indent:30px">B.2.6.2<span>FMT_SAE_EXT Security Attribute Expiration</span></a><a href="#ext-comp-FTP" style="text-indent:20px">B.2.7<span>Trusted Path/Channels (FTP)</span></a><a href="#ext-comp-FTP_ITC_EXT" style="text-indent:30px">B.2.7.1<span>FTP_ITC_EXT Trusted Channel</span></a><a href="#satisfiedreqs" style="text-indent:0px">Appendix C - <span>Implicitly Satisfied Requirements</span></a><a href="#entropyappendix" style="text-indent:0px">Appendix D - <span>Entropy Documentation and Assessment</span></a><a href="#design-description" style="text-indent:10px">D.1<span>Design Description</span></a><a href="#entropy-justification" style="text-indent:10px">D.2<span>Entropy Justification</span></a><a href="#operating-conditions" style="text-indent:10px">D.3<span>Operating Conditions</span></a><a href="#sec4" style="text-indent:10px">D.4<span>Health Testing</span></a><a href="#EACDT" style="text-indent:0px">Appendix E - <span>Evaluating Additional Components for a Distributed TOE</span></a><a href="#sec1" style="text-indent:10px">E.1<span>Evaluator Actions for Assessing the ST</span></a><a href="#sec2" style="text-indent:10px">E.2<span>Evaluator Actions for Assessing the Guidance Documentation</span></a><a href="#sec3" style="text-indent:10px">E.3<span>Evaluator Actions for Testing the TOE</span></a><a href="#equiv" style="text-indent:0px">Appendix F - <span>MDM Software Equivalency Guidelines</span></a><a href="#mdm-intro" style="text-indent:10px">F.1<span>Introduction</span></a><a href="#approach" style="text-indent:10px">F.2<span>Approach to Equivalency Analysis</span></a><a href="#modelequiv" style="text-indent:10px">F.3<span>Specific Guidance for Determining Product Model Equivalence</span></a><a href="#versionequiv" style="text-indent:10px">F.4<span>Specific Guidance for Determining Product Version Equivalence</span></a><a href="#platformequiv" style="text-indent:10px">F.5<span>Specific Guidance for Determining Platform Equivalence</span></a><a href="#hardware-equiv" style="text-indent:20px">F.5.1<span>Platform Equivalence, Hardware and Virtual Hardware Platforms</span></a><a href="#os-equiv" style="text-indent:20px">F.5.2<span>Platform Equivalence, OS Platforms</span></a><a href="#software-equiv" style="text-indent:20px">F.5.3<span>Software-based Execution Environment Platform Equivalence</span></a><a href="#specificity" style="text-indent:10px">F.6<span>Level of Specificity for Tested Configurations and Claimed Equivalent Configurations</span></a><a href="#use-case" style="text-indent:0px">Appendix G - <span>Use Case Templates</span></a><a href="#usecase1" style="text-indent:10px">G.1<span>Enterprise-owned device for general-purpose enterprise use</span></a><a href="#usecase2" style="text-indent:10px">G.2<span>Enterprise-owned device for specialized, high-security use</span></a><a href="#usecase3" style="text-indent:10px">G.3<span>Personally-owned device for personal and enterprise use</span></a><a href="#usecase4" style="text-indent:10px">G.4<span>Personally-owned device for personal and limited enterprise use</span></a><a href="#acronyms" style="text-indent:0px">Appendix H - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix I - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
+</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ov" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#cte" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOE_Boundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#Use_Cases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#package-usage" style="text-indent:10px">1.5<span>Package Usage</span></a><a href="#Conformance_Claims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#idt" style="text-indent:0px">3<span>Introduction to Distributed TOEs</span></a><a href="#rcd" style="text-indent:10px">3.1<span>Registration of Distributed TOE Components</span></a><a href="#ard" style="text-indent:10px">3.2<span>Allocation of Requirements in Distributed TOEs</span></a><a href="#dis" style="text-indent:10px">3.3<span>Security Audit for Distributed TOEs</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">4<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">4.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">4.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">4.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">5<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">5.1<span>Security Objectives for the Operational Environment</span></a><a href="#" style="text-indent:10px">5.2<span>Security Objectives Rationale</span></a><a href="#req" style="text-indent:0px">6<span>Security Requirements</span></a><a href="#SFRs" style="text-indent:10px">6.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">6.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#fau" style="text-indent:20px">6.1.2<span>Security Audit (FAU)</span></a><a href="#fco" style="text-indent:20px">6.1.3<span>Communication (FCO)</span></a><a href="#fcs" style="text-indent:20px">6.1.4<span>Cryptographic Support (FCS)</span></a><a href="#fia" style="text-indent:20px">6.1.5<span>Identification and Authentication (FIA)</span></a><a href="#fmt" style="text-indent:20px">6.1.6<span>Security Management (FMT)</span></a><a href="#fpt" style="text-indent:20px">6.1.7<span>Protection of the TSF (FPT)</span></a><a href="#fta" style="text-indent:20px">6.1.8<span>TOE Access (FTA)</span></a><a href="#ftp" style="text-indent:20px">6.1.9<span>Trusted Path/Channels (FTP)</span></a><a href="#obj-req-map" style="text-indent:20px">6.1.10<span>TOE Security Functional Requirements Rationale</span></a><a href="#SARs" style="text-indent:10px">6.2<span>Security Assurance Requirements</span></a><a href="#ase" style="text-indent:20px">6.2.1<span>Class ASE: Security Target</span></a><a href="#adv" style="text-indent:20px">6.2.2<span>Class ADV: Development</span></a><a href="#agd" style="text-indent:20px">6.2.3<span>Class AGD: Guidance Documentation</span></a><a href="#agd_pre" style="text-indent:20px">6.2.4<span>Preparative Procedures (AGD_PRE.1)</span></a><a href="#alc" style="text-indent:20px">6.2.5<span>Class ALC: Life-cycle Support</span></a><a href="#alc_cms" style="text-indent:20px">6.2.6<span>TOE CM Coverage (ALC_CMS.1)</span></a><a href="#ate-tests" style="text-indent:20px">6.2.7<span>Class ATE: Tests</span></a><a href="#ava" style="text-indent:20px">6.2.8<span>Class AVA: Vulnerability Analysis</span></a><a href="#impl-reqs" style="text-indent:0px">Appendix A - <span>Implementation-dependent Requirements</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix B - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">B.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">B.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCO" style="text-indent:20px">B.2.1<span>Communication (FCO)</span></a><a href="#ext-comp-FCO_CPC_EXT" style="text-indent:30px">B.2.1.1<span>FCO_CPC_EXT Component Registration Channel Definition</span></a><a href="#ext-comp-FCS" style="text-indent:20px">B.2.2<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_CKM_EXT" style="text-indent:30px">B.2.2.1<span>FCS_CKM_EXT Cryptographic Key Management</span></a><a href="#ext-comp-FCS_HTTPS_EXT" style="text-indent:30px">B.2.2.2<span>FCS_HTTPS_EXT HTTPS Protocol</span></a><a href="#ext-comp-FCS_IV_EXT" style="text-indent:30px">B.2.2.3<span>FCS_IV_EXT Initialization Vector Generation</span></a><a href="#ext-comp-FCS_STG_EXT" style="text-indent:30px">B.2.2.4<span>FCS_STG_EXT Encrypted Cryptographic Key Storage</span></a><a href="#ext-comp-FIA" style="text-indent:20px">B.2.3<span>Identification and Authentication (FIA)</span></a><a href="#ext-comp-FIA_CLI_EXT" style="text-indent:30px">B.2.3.1<span>FIA_CLI_EXT Client Authorization</span></a><a href="#ext-comp-FIA_ENR_EXT" style="text-indent:30px">B.2.3.2<span>FIA_ENR_EXT Enrollment</span></a><a href="#ext-comp-FIA_TOK_EXT" style="text-indent:30px">B.2.3.3<span>FIA_TOK_EXT Client Tokens</span></a><a href="#ext-comp-FPT" style="text-indent:20px">B.2.4<span>Protection of the TSF (FPT)</span></a><a href="#ext-comp-FPT_API_EXT" style="text-indent:30px">B.2.4.1<span>FPT_API_EXT Use of Supported Services and APIs</span></a><a href="#ext-comp-FPT_LIB_EXT" style="text-indent:30px">B.2.4.2<span>FPT_LIB_EXT Use of Third-Party Libraries</span></a><a href="#ext-comp-FPT_TST_EXT" style="text-indent:30px">B.2.4.3<span>FPT_TST_EXT Functionality Testing</span></a><a href="#ext-comp-FPT_TUD_EXT" style="text-indent:30px">B.2.4.4<span>FPT_TUD_EXT Trusted Update</span></a><a href="#ext-comp-FAU" style="text-indent:20px">B.2.5<span>Security Audit (FAU)</span></a><a href="#ext-comp-FAU_ALT_EXT" style="text-indent:30px">B.2.5.1<span>FAU_ALT_EXT Server Alerts</span></a><a href="#ext-comp-FAU_CRP_EXT" style="text-indent:30px">B.2.5.2<span>FAU_CRP_EXT Support for Compliance Reporting of Mobile Device Configuration</span></a><a href="#ext-comp-FAU_NET_EXT" style="text-indent:30px">B.2.5.3<span>FAU_NET_EXT Network Reachability Review</span></a><a href="#ext-comp-FMT" style="text-indent:20px">B.2.6<span>Security Management (FMT)</span></a><a href="#ext-comp-FMT_POL_EXT" style="text-indent:30px">B.2.6.1<span>FMT_POL_EXT Trusted Policy Update</span></a><a href="#ext-comp-FMT_SAE_EXT" style="text-indent:30px">B.2.6.2<span>FMT_SAE_EXT Security Attribute Expiration</span></a><a href="#ext-comp-FTP" style="text-indent:20px">B.2.7<span>Trusted Path/Channels (FTP)</span></a><a href="#ext-comp-FTP_ITC_EXT" style="text-indent:30px">B.2.7.1<span>FTP_ITC_EXT Trusted Channel</span></a><a href="#satisfiedreqs" style="text-indent:0px">Appendix C - <span>Implicitly Satisfied Requirements</span></a><a href="#entropyappendix" style="text-indent:0px">Appendix D - <span>Entropy Documentation and Assessment</span></a><a href="#design-description" style="text-indent:10px">D.1<span>Design Description</span></a><a href="#entropy-justification" style="text-indent:10px">D.2<span>Entropy Justification</span></a><a href="#operating-conditions" style="text-indent:10px">D.3<span>Operating Conditions</span></a><a href="#sec4" style="text-indent:10px">D.4<span>Health Testing</span></a><a href="#EACDT" style="text-indent:0px">Appendix E - <span>Evaluating Additional Components for a Distributed TOE</span></a><a href="#sec1" style="text-indent:10px">E.1<span>Evaluator Actions for Assessing the ST</span></a><a href="#sec2" style="text-indent:10px">E.2<span>Evaluator Actions for Assessing the Guidance Documentation</span></a><a href="#sec3" style="text-indent:10px">E.3<span>Evaluator Actions for Testing the TOE</span></a><a href="#equiv" style="text-indent:0px">Appendix F - <span>MDM Software Equivalency Guidelines</span></a><a href="#mdm-intro" style="text-indent:10px">F.1<span>Introduction</span></a><a href="#approach" style="text-indent:10px">F.2<span>Approach to Equivalency Analysis</span></a><a href="#modelequiv" style="text-indent:10px">F.3<span>Specific Guidance for Determining Product Model Equivalence</span></a><a href="#versionequiv" style="text-indent:10px">F.4<span>Specific Guidance for Determining Product Version Equivalence</span></a><a href="#platformequiv" style="text-indent:10px">F.5<span>Specific Guidance for Determining Platform Equivalence</span></a><a href="#hardware-equiv" style="text-indent:20px">F.5.1<span>Platform Equivalence, Hardware and Virtual Hardware Platforms</span></a><a href="#os-equiv" style="text-indent:20px">F.5.2<span>Platform Equivalence, OS Platforms</span></a><a href="#software-equiv" style="text-indent:20px">F.5.3<span>Software-based Execution Environment Platform Equivalence</span></a><a href="#specificity" style="text-indent:10px">F.6<span>Level of Specificity for Tested Configurations and Claimed Equivalent Configurations</span></a><a href="#use-case" style="text-indent:0px">Appendix G - <span>Use Case Templates</span></a><a href="#usecase1" style="text-indent:10px">G.1<span>Enterprise-owned device for general-purpose enterprise use</span></a><a href="#usecase2" style="text-indent:10px">G.2<span>Enterprise-owned device for specialized, high-security use</span></a><a href="#usecase3" style="text-indent:10px">G.3<span>Personally-owned device for personal and enterprise use</span></a><a href="#usecase4" style="text-indent:10px">G.4<span>Personally-owned device for personal and limited enterprise use</span></a><a href="#acronyms" style="text-indent:0px">Appendix H - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix I - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
     <h2 class="indexable" data-level="2" id="ov">1.1 Overview</h2>
       Mobile Device Management (<abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>) products allow enterprises to apply security policies to managed devices (MDs), such as smartphones, tablets, and workstations. The purpose of 
 			these policies is to establish a security posture adequate to permit MDs to process enterprise data and connect to enterprise network
@@ -1479,7 +1479,7 @@ The following sections list Common Criteria and technology terms used in this do
     <h2 id="SFRs" class="indexable" data-level="2">6.1 Security Functional Requirements</h2>
       <h3 class="indexable" data-level="3" id="ss-audit-table">6.1.1 Auditable Events for Mandatory SFRs</h3>
         <br/>
-        <table class="sort_kids_" border="1"><caption data-sortkey="#0"><span class="ctr" data-myid="t-audit-mandatory" data-counter-type="ct-Table" id="t-audit-mandatory">Table <span class="counter">3</span></span>: Auditable Events for Mandatory Requirements</caption><tr data-sortkey="#1"><th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th></tr><tr data-sortkey="FAU_ALT_EXT.1"><td rowspan="2"><a href="#FAU_ALT_EXT.1">FAU_ALT_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_ALT_EXT.1#"><td></td></tr><tr data-sortkey="FAU_ALT_EXT.1.5"><td>Type of alert</td><td>Identity of <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> that sent alert.</td></tr><tr data-sortkey="FAU_CRP_EXT.1"><td rowspan="2"><a href="#FAU_CRP_EXT.1">FAU_CRP_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_CRP_EXT.1#"><td></td></tr><tr data-sortkey="FAU_CRP_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FAU_GEN.1/AUDITGEN"><td rowspan="2"><a href="#FAU_GEN.1/AUDITGEN">FAU_GEN.1/AUDITGEN</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_GEN.1/AUDITGEN#"><td></td></tr><tr data-sortkey="FAU_GEN.1/AUDITGEN.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FAU_NET_EXT.1"><td rowspan="2"><a href="#FAU_NET_EXT.1">FAU_NET_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_NET_EXT.1#"><td></td></tr><tr data-sortkey="FAU_NET_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FAU_STG.1"><td rowspan="2"><a href="#FAU_STG.1">FAU_STG.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_STG.1#"><td></td></tr><tr data-sortkey="FAU_STG.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_CKM.1/AKG"><td rowspan="2"><a href="#FCS_CKM.1/AKG">FCS_CKM.1/AKG</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_CKM.1/AKG#"><td></td></tr><tr data-sortkey="FCS_CKM.1/AKG.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_CKM.1/SKG"><td rowspan="2"><a href="#FCS_CKM.1/SKG">FCS_CKM.1/SKG</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_CKM.1/SKG#"><td></td></tr><tr data-sortkey="FCS_CKM.1/SKG.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_CKM.6"><td rowspan="2"><a href="#FCS_CKM.6">FCS_CKM.6</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_CKM.6#"><td></td></tr><tr data-sortkey="FCS_CKM.6.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/AEAD"><td rowspan="2"><a href="#FCS_COP.1/AEAD">FCS_COP.1/AEAD</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/AEAD#"><td></td></tr><tr data-sortkey="FCS_COP.1/AEAD.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/Hash"><td rowspan="2"><a href="#FCS_COP.1/Hash">FCS_COP.1/Hash</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/Hash#"><td></td></tr><tr data-sortkey="FCS_COP.1/Hash.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/KeyedHash"><td rowspan="2"><a href="#FCS_COP.1/KeyedHash">FCS_COP.1/KeyedHash</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/KeyedHash#"><td></td></tr><tr data-sortkey="FCS_COP.1/KeyedHash.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/SigGen"><td rowspan="2"><a href="#FCS_COP.1/SigGen">FCS_COP.1/SigGen</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/SigGen#"><td></td></tr><tr data-sortkey="FCS_COP.1/SigGen.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/SigVer"><td rowspan="2"><a href="#FCS_COP.1/SigVer">FCS_COP.1/SigVer</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/SigVer#"><td></td></tr><tr data-sortkey="FCS_COP.1/SigVer.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_RBG.1"><td rowspan="2"><a href="#FCS_RBG.1">FCS_RBG.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_RBG.1#"><td></td></tr><tr data-sortkey="FCS_RBG.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_STG_EXT.1"><td rowspan="2"><a href="#FCS_STG_EXT.1">FCS_STG_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_STG_EXT.1#"><td></td></tr><tr data-sortkey="FCS_STG_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FIA_CLI_EXT.1"><td rowspan="2"><a href="#FIA_CLI_EXT.1">FIA_CLI_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FIA_CLI_EXT.1#"><td></td></tr><tr data-sortkey="FIA_CLI_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FIA_ENR_EXT.1"><td rowspan="2"><a href="#FIA_ENR_EXT.1">FIA_ENR_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FIA_ENR_EXT.1#"><td></td></tr><tr data-sortkey="FIA_ENR_EXT.1.6"><td>Failure of <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> user authentication</td><td>Presented username</td></tr><tr data-sortkey="FIA_UAU.1"><td rowspan="2"><a href="#FIA_UAU.1">FIA_UAU.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FIA_UAU.1#"><td></td></tr><tr data-sortkey="FIA_UAU.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FMT_MOF.1/FUNCBE"><td rowspan="3"><a href="#FMT_MOF.1/FUNCBE">FMT_MOF.1/FUNCBE</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_MOF.1/FUNCBE#"><td></td></tr><tr data-sortkey="FMT_MOF.1/FUNCBE.1"><td>Issuance of command to perform function</td><td>Command sent and identity of <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent recipients</td></tr><tr data-sortkey="FMT_MOF.1/FUNCBE.2"><td>Change of policy settings</td><td>Policy changed and value or full policy</td></tr><tr data-sortkey="FMT_MOF.1/MANAGEMENT_ENROLL"><td rowspan="2"><a href="#FMT_MOF.1/MANAGEMENT_ENROLL">FMT_MOF.1/MANAGEMENT_ENROLL</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_MOF.1/MANAGEMENT_ENROLL#"><td></td></tr><tr data-sortkey="FMT_MOF.1/MANAGEMENT_ENROLL.1"><td>Enrollment by a user</td><td>Identity of user</td></tr><tr data-sortkey="FMT_POL_EXT.1"><td rowspan="2"><a href="#FMT_POL_EXT.1">FMT_POL_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_POL_EXT.1#"><td></td></tr><tr data-sortkey="FMT_POL_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FMT_SMF.1/SERVER_CONF_AGENT"><td rowspan="2"><a href="#FMT_SMF.1/SERVER_CONF_AGENT">FMT_SMF.1/SERVER_CONF_AGENT</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_SMF.1/SERVER_CONF_AGENT#"><td></td></tr><tr data-sortkey="FMT_SMF.1/SERVER_CONF_AGENT.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FMT_SMF.1/SERVER_CONF_SERVER"><td rowspan="2"><a href="#FMT_SMF.1/SERVER_CONF_SERVER">FMT_SMF.1/SERVER_CONF_SERVER</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_SMF.1/SERVER_CONF_SERVER#"><td></td></tr><tr data-sortkey="FMT_SMF.1/SERVER_CONF_SERVER.1"><td>Success or failure of function</td><td>
+        <table class="sort_kids_" border="1"><caption data-sortkey="#0"><span class="ctr" data-myid="t-audit-mandatory" data-counter-type="ct-Table" id="t-audit-mandatory">Table <span class="counter">3</span></span>: Auditable Events for Mandatory Requirements</caption><tr data-sortkey="#1"><th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th></tr><tr data-sortkey="FAU_ALT_EXT.1"><td rowspan="2"><a href="#FAU_ALT_EXT.1">FAU_ALT_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_ALT_EXT.1#"><td></td></tr><tr data-sortkey="FAU_ALT_EXT.1.5"><td>Type of alert</td><td>Identity of <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> that sent alert.</td></tr><tr data-sortkey="FAU_CRP_EXT.1"><td rowspan="2"><a href="#FAU_CRP_EXT.1">FAU_CRP_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_CRP_EXT.1#"><td></td></tr><tr data-sortkey="FAU_CRP_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FAU_GEN.1/AUDITGEN"><td rowspan="2"><a href="#FAU_GEN.1/AUDITGEN">FAU_GEN.1/AUDITGEN</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_GEN.1/AUDITGEN#"><td></td></tr><tr data-sortkey="FAU_GEN.1/AUDITGEN.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FAU_NET_EXT.1"><td rowspan="2"><a href="#FAU_NET_EXT.1">FAU_NET_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_NET_EXT.1#"><td></td></tr><tr data-sortkey="FAU_NET_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FAU_STG.1"><td rowspan="2"><a href="#FAU_STG.1">FAU_STG.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FAU_STG.1#"><td></td></tr><tr data-sortkey="FAU_STG.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_CKM.1/AKG"><td rowspan="2"><a href="#FCS_CKM.1/AKG">FCS_CKM.1/AKG</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_CKM.1/AKG#"><td></td></tr><tr data-sortkey="FCS_CKM.1/AKG.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_CKM.1/SKG"><td rowspan="2"><a href="#FCS_CKM.1/SKG">FCS_CKM.1/SKG</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_CKM.1/SKG#"><td></td></tr><tr data-sortkey="FCS_CKM.1/SKG.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_CKM.2"><td rowspan="2"><a href="#FCS_CKM.2">FCS_CKM.2</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_CKM.2#"><td></td></tr><tr data-sortkey="FCS_CKM.2.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_CKM.6"><td rowspan="2"><a href="#FCS_CKM.6">FCS_CKM.6</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_CKM.6#"><td></td></tr><tr data-sortkey="FCS_CKM.6.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_CKM_EXT.7"><td rowspan="2"><a href="#FCS_CKM_EXT.7">FCS_CKM_EXT.7</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_CKM_EXT.7#"><td></td></tr><tr data-sortkey="FCS_CKM_EXT.7.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/AEAD"><td rowspan="2"><a href="#FCS_COP.1/AEAD">FCS_COP.1/AEAD</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/AEAD#"><td></td></tr><tr data-sortkey="FCS_COP.1/AEAD.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/Hash"><td rowspan="2"><a href="#FCS_COP.1/Hash">FCS_COP.1/Hash</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/Hash#"><td></td></tr><tr data-sortkey="FCS_COP.1/Hash.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/KeyedHash"><td rowspan="2"><a href="#FCS_COP.1/KeyedHash">FCS_COP.1/KeyedHash</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/KeyedHash#"><td></td></tr><tr data-sortkey="FCS_COP.1/KeyedHash.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/SigGen"><td rowspan="2"><a href="#FCS_COP.1/SigGen">FCS_COP.1/SigGen</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/SigGen#"><td></td></tr><tr data-sortkey="FCS_COP.1/SigGen.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_COP.1/SigVer"><td rowspan="2"><a href="#FCS_COP.1/SigVer">FCS_COP.1/SigVer</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_COP.1/SigVer#"><td></td></tr><tr data-sortkey="FCS_COP.1/SigVer.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_RBG.1"><td rowspan="2"><a href="#FCS_RBG.1">FCS_RBG.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_RBG.1#"><td></td></tr><tr data-sortkey="FCS_RBG.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_STG_EXT.1"><td rowspan="2"><a href="#FCS_STG_EXT.1">FCS_STG_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_STG_EXT.1#"><td></td></tr><tr data-sortkey="FCS_STG_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FIA_CLI_EXT.1"><td rowspan="2"><a href="#FIA_CLI_EXT.1">FIA_CLI_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FIA_CLI_EXT.1#"><td></td></tr><tr data-sortkey="FIA_CLI_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FIA_ENR_EXT.1"><td rowspan="2"><a href="#FIA_ENR_EXT.1">FIA_ENR_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FIA_ENR_EXT.1#"><td></td></tr><tr data-sortkey="FIA_ENR_EXT.1.6"><td>Failure of <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> user authentication</td><td>Presented username</td></tr><tr data-sortkey="FIA_UAU.1"><td rowspan="2"><a href="#FIA_UAU.1">FIA_UAU.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FIA_UAU.1#"><td></td></tr><tr data-sortkey="FIA_UAU.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FMT_MOF.1/FUNCBE"><td rowspan="3"><a href="#FMT_MOF.1/FUNCBE">FMT_MOF.1/FUNCBE</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_MOF.1/FUNCBE#"><td></td></tr><tr data-sortkey="FMT_MOF.1/FUNCBE.1"><td>Issuance of command to perform function</td><td>Command sent and identity of <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent recipients</td></tr><tr data-sortkey="FMT_MOF.1/FUNCBE.2"><td>Change of policy settings</td><td>Policy changed and value or full policy</td></tr><tr data-sortkey="FMT_MOF.1/MANAGEMENT_ENROLL"><td rowspan="2"><a href="#FMT_MOF.1/MANAGEMENT_ENROLL">FMT_MOF.1/MANAGEMENT_ENROLL</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_MOF.1/MANAGEMENT_ENROLL#"><td></td></tr><tr data-sortkey="FMT_MOF.1/MANAGEMENT_ENROLL.1"><td>Enrollment by a user</td><td>Identity of user</td></tr><tr data-sortkey="FMT_POL_EXT.1"><td rowspan="2"><a href="#FMT_POL_EXT.1">FMT_POL_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_POL_EXT.1#"><td></td></tr><tr data-sortkey="FMT_POL_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FMT_SMF.1/SERVER_CONF_AGENT"><td rowspan="2"><a href="#FMT_SMF.1/SERVER_CONF_AGENT">FMT_SMF.1/SERVER_CONF_AGENT</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_SMF.1/SERVER_CONF_AGENT#"><td></td></tr><tr data-sortkey="FMT_SMF.1/SERVER_CONF_AGENT.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FMT_SMF.1/SERVER_CONF_SERVER"><td rowspan="2"><a href="#FMT_SMF.1/SERVER_CONF_SERVER">FMT_SMF.1/SERVER_CONF_SERVER</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_SMF.1/SERVER_CONF_SERVER#"><td></td></tr><tr data-sortkey="FMT_SMF.1/SERVER_CONF_SERVER.1"><td>Success or failure of function</td><td>
     No additional information
   </td></tr><tr data-sortkey="FMT_SMR.1/SECMAN_ROLES"><td rowspan="2"><a href="#FMT_SMR.1/SECMAN_ROLES">FMT_SMR.1/SECMAN_ROLES</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FMT_SMR.1/SECMAN_ROLES#"><td></td></tr><tr data-sortkey="FMT_SMR.1/SECMAN_ROLES.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FPT_API_EXT.1"><td rowspan="2"><a href="#FPT_API_EXT.1">FPT_API_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FPT_API_EXT.1#"><td></td></tr><tr data-sortkey="FPT_API_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FPT_LIB_EXT.1"><td rowspan="2"><a href="#FPT_LIB_EXT.1">FPT_LIB_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FPT_LIB_EXT.1#"><td></td></tr><tr data-sortkey="FPT_LIB_EXT.1.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FPT_TST_EXT.1"><td rowspan="4"><a href="#FPT_TST_EXT.1">FPT_TST_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FPT_TST_EXT.1#"><td></td></tr><tr data-sortkey="FPT_TST_EXT.1.6"><td>Initiation of self-test</td><td>
     No additional information
@@ -1597,7 +1597,7 @@ The following sections list Common Criteria and technology terms used in this do
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="fau_gen.1.1_AUDITGEN_1">invoke platform-provided functionality</span>, <span class="selectable-content" id="fau_gen.1.1_AUDITGEN_2">implement functionality</span>]
               to generate audit data of the following auditable events:
-              <ol>
+              <ol type="a">
                 <li>All administrative actions</li>
                 <li>
                   [<b>selection</b>: <span class="selectable-content" id="fau_gen.1.1_AUDITGEN_3">Commands issued to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent</span>, <span class="selectable-content" id="fau_gen.1.1_AUDITGEN_4">Commands issued to the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server</span>, <span class="selectable-content" id="fau_gen.1.1_AUDITGEN_5">Status updates provided to the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server</span>, <span class="selectable-content" id="fau_gen.1.1_AUDITGEN_6">none</span>]
@@ -1727,8 +1727,9 @@ The following sections list Common Criteria and technology terms used in this do
             </div></div></div>
         
         <div class="comp" id="FAU_GEN.1/MAS_SERVER"><h4>FAU_GEN.1/MAS_SERVER Audit Data Generation (MAS Server)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FMT_MOF.1.1/FUNCBE">FMT_MOF.1.1/FUNCBE</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FAU_GEN.1.1/MAS_SERVER"><a href="#FAU_GEN.1.1/MAS_SERVER" class="abbr">FAU_GEN.1.1/MAS_SERVER</a></div><div class="reqdesc">
               The
               <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server</b>
@@ -1862,7 +1863,7 @@ The following sections list Common Criteria and technology terms used in this do
                   <b>implement functionality</b>
                 </span>]
               to select the set of events to be audited from the set of all auditable events based on the following attributes:
-              <ol>
+              <ol type="a">
                 <li>[<i>event type</i>]</li>
                 <li>[<i>success of auditable security events</i></li>
                 <li>
@@ -1948,8 +1949,9 @@ The following sections list Common Criteria and technology terms used in this do
               </div></div></div></div></div>
         
         <div class="comp" id="FAU_STG.2"><h4>FAU_STG.2 Audit Event Storage</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FAU_STG.1.1">FAU_STG.1.1</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FAU_STG.2.1"><a href="#FAU_STG.2.1" class="abbr">FAU_STG.2.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="fau_stg.2.1_1">
@@ -2115,13 +2117,7 @@ The following sections list Common Criteria and technology terms used in this do
           
         </div>
         
-        <div class="comp" id="FCS_CKM.2"><h4>FCS_CKM.2 Cryptographic Key Distribution</h4><div class="statustag"><i><b>This is an implementation-based component.
-                Its inclusion in depends on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements one or more of the following features:
-                <ul><li><a href="#key-encap-support"></a></li><li><a href="#wlan-support"></a></li></ul>
-                as described in Appendix A.3: Implementation-based Requirements.
-               </b></i></div>
-          
-          
+        <div class="comp" id="FCS_CKM.2"><h4>FCS_CKM.2 Cryptographic Key Distribution</h4>
           <div class="element"><div class="reqid" id="FCS_CKM.2.1"><a href="#FCS_CKM.2.1" class="abbr">FCS_CKM.2.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall distribute cryptographic keys in accordance with a specified cryptographic 
               key distribution method
@@ -2231,12 +2227,7 @@ The following sections list Common Criteria and technology terms used in this do
                 </p>
               </div></div></div></div></div>
         
-        <div class="comp" id="FCS_CKM_EXT.7"><h4>FCS_CKM_EXT.7 Cryptographic Key Agreement</h4><div class="statustag"><i><b>This is an implementation-based component.
-                Its inclusion in depends on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements one or more of the following features:
-                <ul><li><a href="#key-agreement-support"></a></li></ul>
-                as described in Appendix A.3: Implementation-based Requirements.
-               </b></i></div>
-          
+        <div class="comp" id="FCS_CKM_EXT.7"><h4>FCS_CKM_EXT.7 Cryptographic Key Agreement</h4>
           
           
           
@@ -2256,12 +2247,8 @@ The following sections list Common Criteria and technology terms used in this do
                   
     [<b>selection</b>: 
     <span class="selectable-content">List of standards</span>]
-                  
-                    <p></p>
-                    <p></p>
-                    The following table provides the allowable choices for
+                  The following table provides the allowable choices for
                     completion of the selection operations of <a href="#FCS_CKM_EXT.7">FCS_CKM_EXT.7</a>.
-                  
                 
             <table><caption><span class="ctr" data-myid="fcs-ckm-ext-7-sels" data-counter-type="ct-Table" id="fcs-ckm-ext-7-sels">Table <span class="counter">4</span></span>: Allowable choices for <a href="#FCS_CKM_EXT.7">FCS_CKM_EXT.7</a></caption>
                 <tr>
@@ -2285,14 +2272,14 @@ The following sections list Common Criteria and technology terms used in this do
                   <td>DH</td>
                   <td>Finite Field Cryptography Diffie-Hellman</td>
                   <td>Static domain parameters approved for [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fcs_ckm_ext.7.1_5">IKE Groups [<b>selection</b>: <span class="selectable-content" id="sel-kat-ffc-modp3072">MODP-3072</span>, <span class="selectable-content" id="sel-kat-ffc-modp4096">MODP-4096</span>, <span class="selectable-content" id="sel-kat-ffc-modp6144">MODP-6144</span>, <span class="selectable-content" id="sel-kat-ffc-modp8192">MODP-8192</span>] </span></li><li style=""><span class="selectable-content" id="fcs_ckm_ext.7.1_6">TLS Groups [<b>selection</b>: <span class="selectable-content" id="sel-kat-ffc-ffdhe3072">ffdhe3072</span>, <span class="selectable-content" id="sel-kat-ffc-ffdhe4096">ffdhe4096</span>, <span class="selectable-content" id="sel-kat-ffc-ffdhe6144">ffdhe6144</span>, <span class="selectable-content" id="sel-kat-ffc-ffdhe8192">ffdhe8192</span>] </span></li></ul>]</td>
-                  <td>NIST SP 800-56A Revision 3 (Section 5.7.1.1) [DH]<p></p>[<b>selection</b>: <span class="selectable-content" id="fcs_ckm_ext.7.1_7">RFC 3526 [IKE groups]</span>, <span class="selectable-content" id="fcs_ckm_ext.7.1_8">RFC 7919 [TLS groups]</span>]</td>
+                  <td>NIST SP 800-56A Revision 3 (Section 5.7.1.1) [DH] [<b>selection</b>: <span class="selectable-content" id="fcs_ckm_ext.7.1_7">RFC 3526 [IKE groups]</span>, <span class="selectable-content" id="fcs_ckm_ext.7.1_8">RFC 7919 [TLS groups]</span>]</td>
                 </tr>
 
                 <tr>
                   <td>ECDH</td>
                   <td>Elliptic Curve Diffie-Hellman</td>
                   <td>Elliptic Curve [<b>selection</b>: <span class="selectable-content" id="sel-exp-kat-ecdh-P384">P-384</span>, <span class="selectable-content" id="sel-exp-kat-ecdh-P521">P-521</span>]</td>
-                  <td>NIST SP 800-56A Revision 3 (Section 5.7.1.2) [ECDH]<p></p>NIST SP 800-186 (Section 3.2.1) [NIST Curves]</td>
+                  <td>NIST SP 800-56A Revision 3 (Section 5.7.1.2) [ECDH]NIST SP 800-186 (Section 3.2.1) [NIST Curves]</td>
                 </tr>
 
               </table><div class="appnote"><span class="note-header">Application
@@ -2341,12 +2328,8 @@ The following sections list Common Criteria and technology terms used in this do
                   
     [<b>selection</b>: 
     <span class="selectable-content">List of Standards</span>]
-                  
-                    <p></p>
-                    <p></p>
-                    The following table provides the allowable choices for
+                  The following table provides the allowable choices for
                     completion of the selection operations of <a href="#FCS_COP.1/AEAD">FCS_COP.1/AEAD</a>.
-                  
                 
             <table><caption><span class="ctr" data-myid="fcs-cop-aead-sels" data-counter-type="ct-Table" id="fcs-cop-aead-sels">Table <span class="counter">5</span></span>: Allowable choices for <a href="#FCS_COP.1/AEAD">FCS_COP.1/AEAD</a></caption>
                 <tr>
@@ -2364,7 +2347,7 @@ The following sections list Common Criteria and technology terms used in this do
                   <td>AES-GCM</td>
                   <td>AES in GCM mode with non-repeating IVs using [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_1">deterministic</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_2">RBG-based</span>], IV construction; the tag must be of length [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_3">96</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_4">104</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_5">112</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_6">120</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_7">128</span>] bits.</td>
                   <td>256 bits</td>
-                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_8">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_9">FIPS PUB 197</span>] [AES]<p></p>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_10">ISO/IEC 19772:2020 (Clause 10)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_11">NIST SP 800-38D</span>] [GCM]</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_8">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_9">FIPS PUB 197</span>] [AES] [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_10">ISO/IEC 19772:2020 (Clause 10)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_11">NIST SP 800-38D</span>] [GCM]</td>
                 </tr>
 
               </table><div class="appnote"><span class="note-header">Application
@@ -2516,8 +2499,9 @@ The following sections list Common Criteria and technology terms used in this do
         </div>
         
         <div class="comp" id="FCS_COP.1/KeyEncap"><h4>FCS_COP.1/KeyEncap Cryptographic Operation - Key Encapsulation</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_CKM.2.1">FCS_CKM.2.1</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FCS_COP.1.1/KeyEncap"><a href="#FCS_COP.1.1/KeyEncap" class="abbr">FCS_COP.1.1/KeyEncap</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [key encapsulation] in accordance with a specified cryptographic algorithm
               
@@ -2534,12 +2518,8 @@ The following sections list Common Criteria and technology terms used in this do
                   
     [<b>selection</b>: 
     <span class="selectable-content">List of standards</span>]
-                  
-                    <p></p>
-                    <p></p>
-                    The following table provides the allowable choices for
+                  The following table provides the allowable choices for
                     completion of the selection operations of <a href="#FCS_COP.1/KeyEncap">FCS_COP.1/KeyEncap</a>.
-                  
                 
             <table><caption><span class="ctr" data-myid="tab-fcs-cop-keyencap-sels" data-counter-type="ct-Table" id="tab-fcs-cop-keyencap-sels">Table <span class="counter">6</span></span>: Allowable choices for <a href="#FCS_COP.1/KeyEncap">FCS_COP.1/KeyEncap</a></caption>
                 <tr>
@@ -2580,8 +2560,9 @@ The following sections list Common Criteria and technology terms used in this do
                     values ek||H(ek) will no longer match by modifying H(ek) to be a different value.</li></ul> <p></p>The evaluator shall invoke the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s Decapsulation Key Check functionality to determine the validity of the 10 keys. The unmodified keys should be determined valid, and the modified keys should be determined invalid. <p></p> <br/> <b>Decapsulation Test</b> <p></p>For each supported parameter set the evaluator shall use a single previously generated decapsulation key <i>dk</i>and generate 10 test cases consisting of valid and invalid ciphertexts c. For each test case the evaluator shall require the implementation under test to generate the corresponding shared secret <i>k</i>whether or not the ciphertext is valid. To determine correctness, the evaluator shall compare the resulting values with those generated using a known-good implementation using the same inputs. <p></p></div></div></div></div></div>
         
         <div class="comp" id="FCS_COP.1/KeyWrap"><h4>FCS_COP.1/KeyWrap Cryptographic Operation - Key Wrapping</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_CKM.2.1">FCS_CKM.2.1</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FCS_COP.1.1/KeyWrap"><a href="#FCS_COP.1.1/KeyWrap" class="abbr">FCS_COP.1.1/KeyWrap</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [key wrapping] in accordance with a specified cryptographic algorithm
               
@@ -2598,12 +2579,8 @@ The following sections list Common Criteria and technology terms used in this do
                   
     [<b>selection</b>: 
     <span class="selectable-content">List of standards</span>]
-                  
-                    <p></p>
-                    <p></p>
-                    The following table provides the allowable choices for
+                  The following table provides the allowable choices for
                     completion of the selection operations of <a href="#FCS_COP.1/KeyWrap">FCS_COP.1/KeyWrap</a>.
-                  
                 
             <table><caption><span class="ctr" data-myid="fcs-cop-kw-sels" data-counter-type="ct-Table" id="fcs-cop-kw-sels">Table <span class="counter">7</span></span>: Allowable choices for <a href="#FCS_COP.1/KeyWrap">FCS_COP.1/KeyWrap</a></caption>
                 <tr>
@@ -2621,28 +2598,28 @@ The following sections list Common Criteria and technology terms used in this do
                   <td>AES-KW</td>
                   <td>AES in KW mode</td>
                   <td>256 bits</td>
-                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_1">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_2">FIPS PUB 197</span>] [AES]<p></p>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_3">ISO/IEC 19772:2020 (clause 6)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_4">NIST SP 800-38F (Section 6.2)</span>] [KW mode]</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_1">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_2">FIPS PUB 197</span>] [AES] [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_3">ISO/IEC 19772:2020 (clause 6)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_4">NIST SP 800-38F (Section 6.2)</span>] [KW mode]</td>
                 </tr>
 
                 <tr>
                   <td>AES-KWP</td>
                   <td>AES in KWP mode</td>
                   <td>256 bits</td>
-                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_5">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_6">FIPS PUB 197</span>] [AES]<p></p>NIST SP 800-38F (Section 6.3) [KWP mode]</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_5">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_6">FIPS PUB 197</span>] [AES]NIST SP 800-38F (Section 6.3) [KWP mode]</td>
                 </tr>
 
                 <tr>
                   <td>AES-CCM</td>
                   <td>AES in CCM mode with unpredictable, non-repeating nonce, minimum size of 64 bits</td>
                   <td>256 bits</td>
-                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_7">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_8">FIPS PUB 197</span>] [AES]<p></p>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_9">ISO/IEC 19772:2020 (Clause 7)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_10">NIST SP 800-38C</span>] [CCM]</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_7">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_8">FIPS PUB 197</span>] [AES] [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_9">ISO/IEC 19772:2020 (Clause 7)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_10">NIST SP 800-38C</span>] [CCM]</td>
                 </tr>
 
                 <tr>
                   <td>AES-GCM</td>
                   <td>AES in GCM mode with non-repeating IVs using [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_11">deterministic</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_12">RBG-based</span>], IV construction; the tag must be of length [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_13">96</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_14">104</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_15">112</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_16">120</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_17">128</span>] bits.</td>
                   <td>256 bits</td>
-                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_18">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_19">FIPS PUB 197</span>] [AES]<p></p>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_20">ISO/IEC 19772:2020 (Clause 10)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_21">NIST SP 800-38D</span>] [GCM]</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_18">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_19">FIPS PUB 197</span>] [AES] [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_20">ISO/IEC 19772:2020 (Clause 10)</span>, <span class="selectable-content" id="fcs_cop.1.1_KeyWrap_21">NIST SP 800-38D</span>] [GCM]</td>
                 </tr>
 
               </table><div class="appnote"><span class="note-header">Application
@@ -2680,11 +2657,33 @@ The following sections list Common Criteria and technology terms used in this do
 	  .
       </i></b></div>
           
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
         </div>
         
         <div class="comp" id="FCS_COP.1/XOF"><h4>FCS_COP.1/XOF Cryptographic Operation - Extendable-Output Function</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
 	  .
       </i></b></div>
+          
+          
+          
+          
           <div class="element"><div class="reqid" id="FCS_COP.1.1/XOF"><a href="#FCS_COP.1.1/XOF" class="abbr">FCS_COP.1.1/XOF</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>extendable-output function</i>] in accordance with a specified cryptographic algorithm
               
@@ -2699,12 +2698,8 @@ The following sections list Common Criteria and technology terms used in this do
                   
     [<b>selection</b>: 
     <span class="selectable-content">List of Standards</span>]
-                  
-                    <p></p>
-                    <p></p>
-                    The following table provides the allowable choices for
+                  The following table provides the allowable choices for
                     completion of the selection operations of <a href="#FCS_COP.1/XOF">FCS_COP.1/XOF</a>.
-                  
                 
             <table><caption><span class="ctr" data-myid="fcs-cop-xof-sels" data-counter-type="ct-Table" id="fcs-cop-xof-sels">Table <span class="counter">8</span></span>: Allowable choices for <a href="#FCS_COP.1/XOF">FCS_COP.1/XOF</a></caption>
                 <tr>
@@ -2756,8 +2751,14 @@ The following sections list Common Criteria and technology terms used in this do
                 </pre> <p></p> <br/> <b><i>Variable Output Test</i></b> <p></p>This test measures the ability of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to generate output digests of varying sizes. <p></p>The evaluator shall generate 512 test cases such that the input for each test case consists of 128- bits of random data, and the output length includes the minimum supported value, the maximum supported value, and 510 random values between the minimum and maximum digest sizes supported by the implementation. <p></p></div></div></div></div></div>
         
         <div class="comp" id="FCS_HTTPS_EXT.1"><h4>FCS_HTTPS_EXT.1 HTTPS Protocol</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FPT_ITT.1.1/INTER_XFER">FPT_ITT.1.1/INTER_XFER</a>, <a href="#FPT_ITT.1.1/INTER_XFER_AGENT">FPT_ITT.1.1/INTER_XFER_AGENT</a>, <a href="#FTP_ITC.1.1/INTER_TSF_XFER_AGENT">FTP_ITC.1.1/INTER_TSF_XFER_AGENT</a>, <a href="#FTP_ITC.1.1/INTER_XFER_IT">FTP_ITC.1.1/INTER_XFER_IT</a>, <a href="#FTP_TRP.1.1/TRUSTPATH_ENROLL">FTP_TRP.1.1/TRUSTPATH_ENROLL</a>, <a href="#FTP_TRP.1.1/TRUSTPATH_REM_ADMIN">FTP_TRP.1.1/TRUSTPATH_REM_ADMIN</a>.
       </i></b></div>
+          
+          
+          
+          
+          
+          
           
           
           
@@ -2787,8 +2788,9 @@ The following sections list Common Criteria and technology terms used in this do
               </div></div></div></div></div>
         
         <div class="comp" id="FCS_IV_EXT.1"><h4>FCS_IV_EXT.1 Initialization Vector Generation</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_STG_EXT.1.1">FCS_STG_EXT.1.1</a>.
       </i></b></div>
+          
           
           
           
@@ -3033,8 +3035,9 @@ The following sections list Common Criteria and technology terms used in this do
             </div></div></div>
         
         <div class="comp" id="FCS_RBG.2"><h4>FCS_RBG.2 Random Bit Generation (External Seeding)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FCS_RBG.2.1"><a href="#FCS_RBG.2.1" class="abbr">FCS_RBG.2.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to accept a minimum input of
               [<b>assignment</b>: 
@@ -3065,8 +3068,9 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no test activities for this component.<br/></div></div></div></div>
         
         <div class="comp" id="FCS_RBG.3"><h4>FCS_RBG.3 Random Bit Generation (Internal Seeding - Single Source)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FCS_RBG.3.1"><a href="#FCS_RBG.3.1" class="abbr">FCS_RBG.3.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using a
               [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="fcs_rbg.3.1_1"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise source</span>, <span class="selectable-content" id="fcs_rbg.3.1_2"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based noise source [<b>assignment</b>: 
@@ -3096,8 +3100,9 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no test activities for this component.<br/></div></div></div></div>
         
         <div class="comp" id="FCS_RBG.4"><h4>FCS_RBG.4 Random Bit Generation (Internal Seeding - Multiple Sources)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FCS_RBG.4.1"><a href="#FCS_RBG.4.1" class="abbr">FCS_RBG.4.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using
               [<b>selection</b>: <span class="selectable-content" id="fcs_rbg.4.1_1">[<b>assignment</b>: 
@@ -3125,8 +3130,9 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no test activities for this component.<br/></div></div></div></div>
         
         <div class="comp" id="FCS_RBG.5"><h4>FCS_RBG.5 Random Bit Generation (Combining Noise Sources)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FCS_RBG.5.1"><a href="#FCS_RBG.5.1" class="abbr">FCS_RBG.5.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>assignment</b>: 
@@ -3203,8 +3209,9 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no test activities for this component.<br/></div></div></div></div>
         
         <div class="comp" id="FCS_STG_EXT.2"><h4>FCS_STG_EXT.2 Encrypted Cryptographic Key Storage</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_STG_EXT.1.1">FCS_STG_EXT.1.1</a>.
       </i></b></div>
+          
           
           
           
@@ -3310,8 +3317,9 @@ The following sections list Common Criteria and technology terms used in this do
             </div></div></div>
         
         <div class="comp" id="FIA_TOK_EXT.1"><h4>FIA_TOK_EXT.1 Client Tokens</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FIA_CLI_EXT.1.1">FIA_CLI_EXT.1.1</a>.
       </i></b></div>
+          
           
           
           
@@ -3505,8 +3513,9 @@ The following sections list Common Criteria and technology terms used in this do
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and verify that it describes how unauthorized users are prevented from enrolling in the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> services.</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall examine the operational guidance to verify that it describes the enrollment process and any restrictions that may prevent unauthorized enrollment.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The test of this function is performed in conjunction with <a href="#FIA_ENR_EXT.1">FIA_ENR_EXT.1</a>.</div></div></div></div></div>
         
         <div class="comp" id="FMT_MOF.1/MANAGEMENT_MAS"><h4>FMT_MOF.1/MANAGEMENT_MAS Management of Functions in (MAS Server Downloads)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FMT_MOF.1.1/FUNCBE">FMT_MOF.1.1/FUNCBE</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FMT_MOF.1.1/MANAGEMENT_MAS"><a href="#FMT_MOF.1.1/MANAGEMENT_MAS" class="abbr">FMT_MOF.1.1/MANAGEMENT_MAS</a></div><div class="reqdesc">
               The
               <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server</b>
@@ -3575,8 +3584,9 @@ The following sections list Common Criteria and technology terms used in this do
                 instructs administrators on configuring the enterprise certificate to be used for signing policies or signing the policies before applying them.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall perform a policy update in accordance with <a href="#FMT_SMF.1/SERVER_CONF_AGENT">FMT_SMF.1/SERVER_CONF_AGENT</a>. The evaluator shall examine the policy either at the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, in transmission, or at the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent, and verify the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> signs the update and provides it to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent or subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.</div></div></div></div></div>
         
         <div class="comp" id="FMT_POL_EXT.3"><h4>FMT_POL_EXT.3 Subordinate MDM Trusted Policy Update</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
       </i></b></div>
+          
           
           
           
@@ -3635,8 +3645,9 @@ The following sections list Common Criteria and technology terms used in this do
               </div></div></div></div></div>
         
         <div class="comp" id="FMT_SMF.1/MAS"><h4>FMT_SMF.1/MAS Specification of Management Functions (MAS Server)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FMT_MOF.1.1/FUNCBE">FMT_MOF.1.1/FUNCBE</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FMT_SMF.1.1/MAS"><a href="#FMT_SMF.1.1/MAS" class="abbr">FMT_SMF.1.1/MAS</a></div><div class="reqdesc">
               The
               <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server</b>
@@ -3680,7 +3691,7 @@ The following sections list Common Criteria and technology terms used in this do
               <b><abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server</b>
               shall be capable of
               <b>communicating the following commands to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent: </b>
-              <ul>
+              <ul style="list-style-type:none">
                 <li><span class="ctr" data-myid="smf1" data-counter-type="ct-mgmt" id="smf1"> <span class="counter">1</span></span>. Transition to the locked state (MDF Function 6)</li>
                 <li><span class="ctr" data-myid="smf2" data-counter-type="ct-mgmt" id="smf2"> <span class="counter">2</span></span>. Full wipe of protected data (MDF Function 7)</li>
                 <li><span class="ctr" data-myid="smf3" data-counter-type="ct-mgmt" id="smf3"> <span class="counter">3</span></span>. Unenroll from management</li>
@@ -3701,7 +3712,7 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">list of other management functions to be provided by the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr></span>]</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_23">no other management functions</span></li></ul>]
               <b>and the following <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> configuration policies</b>
               :
-              <ul>
+              <ul style="list-style-type:none">
                 <li><span class="ctr" data-myid="smf25" data-counter-type="ct-mgmt" id="smf25"> <span class="counter">25</span></span>. Password policy: <ol type="a"><li>minimum password length</li> <li>minimum password complexity</li> <li>maximum password lifetime (MDF Function 1)</li></ol></li>
                 <li><span class="ctr" data-myid="smf26" data-counter-type="ct-mgmt" id="smf26"> <span class="counter">26</span></span>. Session locking policy: <ol type="a"><li>screen-lock enabled and disabled</li> <li>screen lock timeout</li> <li>number of authentication failures (MDF Function 2)</li></ol></li>
                 <li><span class="ctr" data-myid="smf27" data-counter-type="ct-mgmt" id="smf27"> <span class="counter">27</span></span>. Wireless networks (SSIDs) to which the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> may connect (WLAN Client <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function WL-2)</li>
@@ -3722,7 +3733,7 @@ The following sections list Common Criteria and technology terms used in this do
                 <li><span class="ctr" data-myid="smf30" data-counter-type="ct-mgmt" id="smf30"> <span class="counter">30</span></span>. Enable and disable policy for [<b>assignment</b>: 
      <span class="assignable-content">list of audio or visual collection devices</span>]  across device,  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_31">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_32">on a per-group of applications processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_33">no other method</span></li></ul>], (MDF Function 5)</li>
               </ul>
-              <ul>[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_34"><span class="ctr" data-myid="smf31" data-counter-type="ct-mgmt" id="smf31"> <span class="counter">31</span></span>. Enable and disable policy for the VPN protection across <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>, [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_36">on a per-group of application processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_37">no other method</span></li></ul>] (MDF Function 3)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_38"><span class="ctr" data-myid="smf32" data-counter-type="ct-mgmt" id="smf32"> <span class="counter">32</span></span>. Enable and disable policy for [<b>assignment</b>: 
+              <ul style="list-style-type:none">[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_34"><span class="ctr" data-myid="smf31" data-counter-type="ct-mgmt" id="smf31"> <span class="counter">31</span></span>. Enable and disable policy for the VPN protection across <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>, [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_36">on a per-group of application processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_37">no other method</span></li></ul>] (MDF Function 3)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_38"><span class="ctr" data-myid="smf32" data-counter-type="ct-mgmt" id="smf32"> <span class="counter">32</span></span>. Enable and disable policy for [<b>assignment</b>: 
      <span class="assignable-content">list of radios</span>], (MDF Function 4)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_40"><span class="ctr" data-myid="smf33" data-counter-type="ct-mgmt" id="smf33"> <span class="counter">33</span></span>. Enable and disable policy for data signaling over [<b>assignment</b>: 
      <span class="assignable-content">list of externally accessible hardware ports</span>], (MDF Function 24)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_42"><span class="ctr" data-myid="smf34" data-counter-type="ct-mgmt" id="smf34"> <span class="counter">34</span></span>. Enable and disable policy for [<b>assignment</b>: 
      <span class="assignable-content">list of protocols where the device acts as a server</span>], (MDF Function 25)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_44"><span class="ctr" data-myid="smf35" data-counter-type="ct-mgmt" id="smf35"> <span class="counter">35</span></span>. Enable and disable policy for developer modes, (MDF Function 26)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_45"><span class="ctr" data-myid="smf36" data-counter-type="ct-mgmt" id="smf36"> <span class="counter">36</span></span>. Enable policy for data-at-rest protection, (MDF Function 19)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_46"><span class="ctr" data-myid="smf37" data-counter-type="ct-mgmt" id="smf37"> <span class="counter">37</span></span>. Enable policy for removable media's data-at-rest protection, (MDF Function 20)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_47"><span class="ctr" data-myid="smf38" data-counter-type="ct-mgmt" id="smf38"> <span class="counter">38</span></span>. Enable and disable policy for local authentication bypass, (MDF Function 27)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_48"><span class="ctr" data-myid="smf39" data-counter-type="ct-mgmt" id="smf39"> <span class="counter">39</span></span>. The Bluetooth trusted channel policy:<ol type="a"><li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-1)</li><li>change the Bluetooth device name (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-2), [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_49">Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-3)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_50">allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-4)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_51">configure allowable methods of Out of Band pairing (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-5)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_52">disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-6)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_53">disable and enable the Connection mode (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-7)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_54">disable and enable the Bluetooth services or profiles available on the device (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-8)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_55">specify minimum level of security for each pairing (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-9)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_56">no other Bluetooth configuration</span></li></ul>] </li></ol></span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_57"><span class="ctr" data-myid="smf40" data-counter-type="ct-mgmt" id="smf40"> <span class="counter">40</span></span>. Enable and disable policy for display notification in the locked state of <ol type="a">[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_58">email notifications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_59">calendar appointments</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_60">contact associated with phone call notification</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_61">text message notification</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_62">other application-based notifications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_63">none</span></li></ul>] (MDF Function 18) </ol></span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_64"><span class="ctr" data-myid="smf41" data-counter-type="ct-mgmt" id="smf41"> <span class="counter">41</span></span>. Policy for establishing a trusted channel or disallowing establishment if the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> cannot establish a connection to determine the validity of a certificate, (MDF Function 30)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_65"><span class="ctr" data-myid="smf42" data-counter-type="ct-mgmt" id="smf42"> <span class="counter">42</span></span>. Enable and disable policy for the cellular protocols used to connect to cellular network base stations, (MDF Function 31)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_66"><span class="ctr" data-myid="smf43" data-counter-type="ct-mgmt" id="smf43"> <span class="counter">43</span></span>. Policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database, (MDF Function 29)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_67"><span class="ctr" data-myid="smf44" data-counter-type="ct-mgmt" id="smf44"> <span class="counter">44</span></span>. [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_68">certificate</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_69">public-key</span></li></ul>] used to validate digital signature on applications, (MDF Function 33)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_70"><span class="ctr" data-myid="smf45" data-counter-type="ct-mgmt" id="smf45"> <span class="counter">45</span></span>. Policy for exceptions for shared use of keys or secrets by multiple applications, (MDF Function 34)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_71"><span class="ctr" data-myid="smf46" data-counter-type="ct-mgmt" id="smf46"> <span class="counter">46</span></span>. Policy for exceptions for destruction of keys or secrets by applications that did not import the key or secret, (MDF Function 35)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_72"><span class="ctr" data-myid="smf47" data-counter-type="ct-mgmt" id="smf47"> <span class="counter">47</span></span>. The unlock banner policy, (MDF Function 36)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_73"><span class="ctr" data-myid="smf48" data-counter-type="ct-mgmt" id="smf48"> <span class="counter">48</span></span>. Configure the auditable items (MDF Function 37)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_74"><span class="ctr" data-myid="smf49" data-counter-type="ct-mgmt" id="smf49"> <span class="counter">49</span></span>. Enable and disable [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_75">USB mass storage mode</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_76">USB data transfer without user authentication</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_77">USB data transfer without authentication of the connection system</span></li></ul>] (MDF Function 39)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_78"><span class="ctr" data-myid="smf50" data-counter-type="ct-mgmt" id="smf50"> <span class="counter">50</span></span>. Enable and disable backup of [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_79">all applications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_80">selected applications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_81">selected groups of applications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_82">configuration data</span></li></ul>] to [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_83">locally connected system</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_84">remote system</span>] (MDF Function 40)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_85"><span class="ctr" data-myid="smf51" data-counter-type="ct-mgmt" id="smf51"> <span class="counter">51</span></span>. Enable and disable [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_86">Hotspot functionality authenticated by [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_87">pre-shared key</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_88">passcode</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_89">no authentication</span>] </span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_90">USB tethering authenticated by [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_91">pre-shared key</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_92">passcode</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_93">no authentication</span>] </span></li></ul>] (MDF Function 41)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_94"><span class="ctr" data-myid="smf52" data-counter-type="ct-mgmt" id="smf52"> <span class="counter">52</span></span>. Enable and disable location services: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_95">across device</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_96">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_97">on a per-group of application processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_98">no other method</span></li></ul>] (MDF Function 21)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_99"><span class="ctr" data-myid="smf53" data-counter-type="ct-mgmt" id="smf53"> <span class="counter">53</span></span>. Enable and disable policy for user unenrollment</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_100"><span class="ctr" data-myid="smf54" data-counter-type="ct-mgmt" id="smf54"> <span class="counter">54</span></span>. Enable and disable policy for the Always-On VPN protection across device (MDF Function 45)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_101"><span class="ctr" data-myid="smf55" data-counter-type="ct-mgmt" id="smf55"> <span class="counter">55</span></span>. Enable and disable policy for use of Biometric Authentication Factor (MDF Function 22)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_102"><span class="ctr" data-myid="smf56" data-counter-type="ct-mgmt" id="smf56"> <span class="counter">56</span></span>. Connectivity timeout policy: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_103">allowed [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_104">number of missed reachability events</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_105">length of time without server connectivity</span>] </span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_106">when server connectivity timeout is exceeded agent shall [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_107">disable user password</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_108">wipe device</span>] and [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_110">[<b>assignment</b>: 
@@ -3795,7 +3806,7 @@ The following sections list Common Criteria and technology terms used in this do
         <div class="comp" id="FMT_SMF.1/SERVER_CONF_SERVER"><h4>FMT_SMF.1/SERVER_CONF_SERVER Specification of Management Functions (Server Configuration of Server)</h4>
           <div class="element"><div class="reqid" id="FMT_SMF.1.1/SERVER_CONF_SERVER"><a href="#FMT_SMF.1.1/SERVER_CONF_SERVER" class="abbr">FMT_SMF.1.1/SERVER_CONF_SERVER</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions.
-              <ol>
+              <ol type="a">
                 <li>Configure the  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_SERVER_1">devices specified by [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_SERVER_2">IMEI</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_SERVER_4">[<b>assignment</b>: 
      <span class="assignable-content">a unique device ID</span>]</span>] </span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_SERVER_5">specific device models</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_SERVER_6">a number of devices</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_SERVER_7">specific time period</span></li></ul>]  and  [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_SERVER_9">[<b>assignment</b>: 
      <span class="assignable-content">other features</span>]</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_SERVER_10">no other features</span>]  allowed for enrollment</li>
@@ -3904,8 +3915,9 @@ The following sections list Common Criteria and technology terms used in this do
 				interfaces are supported.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">In the course of performing the testing activities for the evaluation, the evaluator shall use all supported interfaces, although it is not necessary to repeat each test involving an administrative action with each interface. The evaluator shall ensure, however, that each supported method of administering the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that conforms to the requirements of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> be tested; for instance, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> can be administered through a local hardware interface or HTTPS then both methods of administration must be exercised during the evaluation team's test activities.</div></div></div></div></div>
         
         <div class="comp" id="FMT_SMR.1/SECMAN_ROLES_MAS"><h4>FMT_SMR.1/SECMAN_ROLES_MAS Security Roles (MAS Server)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FMT_MOF.1.1/FUNCBE">FMT_MOF.1.1/FUNCBE</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FMT_SMR.1.1/SECMAN_ROLES_MAS"><a href="#FMT_SMR.1.1/SECMAN_ROLES_MAS" class="abbr">FMT_SMR.1.1/SECMAN_ROLES_MAS</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall <b>additionally</b> maintain the roles of [<i>enrolled managed devices, application access groups, and [<b>assignment</b>: 
      <span class="assignable-content">additional authorized identified roles</span>]</i>].</div></div>
           <div class="element"><div class="reqid" id="FMT_SMR.1.2/SECMAN_ROLES_MAS"><a href="#FMT_SMR.1.2/SECMAN_ROLES_MAS" class="abbr">FMT_SMR.1.2/SECMAN_ROLES_MAS</a></div><div class="reqdesc">The <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server</b> shall be able to associate users with roles.<div class="appnote"><span class="note-header">Application
@@ -3951,8 +3963,9 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no test activities for this component.<br/></div></div></div></div>
         
         <div class="comp" id="FPT_FLS.1"><h4>FPT_FLS.1 Failure with Preservation of Secure State</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_RBG.1.1">FCS_RBG.1.1</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FPT_FLS.1.1"><a href="#FPT_FLS.1.1" class="abbr">FPT_FLS.1.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall preserve a secure state when the following types of failures occur: [<i>DRBG self-test failure</i>].
             <div class="appnote"><span class="note-header">Application
@@ -3967,8 +3980,9 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no test activities for this component.<br/></div></div></div></div>
         
         <div class="comp" id="FPT_ITT.1/INTER_XFER"><h4>FPT_ITT.1/INTER_XFER Internal TOE TSF Data Transfer</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FPT_ITT.1.1/INTER_XFER"><a href="#FPT_ITT.1.1/INTER_XFER" class="abbr">FPT_ITT.1.1/INTER_XFER</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fpt_itt.1.1_INTER_XFER_1">
@@ -4059,8 +4073,9 @@ The following sections list Common Criteria and technology terms used in this do
               </div></div></div></div></div>
         
         <div class="comp" id="FPT_ITT.1/INTER_XFER_AGENT"><h4>FPT_ITT.1/INTER_XFER_AGENT Internal TOE TSF Data           Transfer (MDM Agent)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FPT_ITT.1.1/INTER_XFER_AGENT"><a href="#FPT_ITT.1.1/INTER_XFER_AGENT" class="abbr">FPT_ITT.1.1/INTER_XFER_AGENT</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fpt_itt.1.1_INTER_XFER_AGENT_1">
@@ -4181,8 +4196,9 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no test activities for this component.<br/></div></div></div></div>
         
         <div class="comp" id="FPT_TDC.1/Policy"><h4>FPT_TDC.1/Policy Inter-TSF Basic TSF Data Consistency (Policy Data)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FPT_TDC.1.1/Policy"><a href="#FPT_TDC.1.1/Policy" class="abbr">FPT_TDC.1.1/Policy</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide the capability to consistently interpret
               [<b>assignment</b>: 
@@ -4206,8 +4222,9 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall perform a policy update from an available configuration interface (such as through a test primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Server) and retain a copy of the resulting policy. The evaluator then obtains a version of the policy modified by the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> for delivery to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent. The evaluator shall compare the original policy to the modified policy and ensure that the translation rules are valid for each configuration and policy function claimed.</div></div></div></div></div>
         
         <div class="comp" id="FPT_TST.1"><h4>FPT_TST.1 TSF Self-Testing</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FCS_RBG.1.1">FCS_RBG.1.1</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FPT_TST.1.1"><a href="#FPT_TST.1.1" class="abbr">FPT_TST.1.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall run a suite of the following self-tests
               [<b>selection</b>: <span class="selectable-content" id="fpt_tst.1.1_1">during initial start-up</span>, <span class="selectable-content" id="fpt_tst.1.1_2">periodically during normal operation</span>, <span class="selectable-content" id="fpt_tst.1.1_3">at the request of the authorized user</span>, <span class="selectable-content" id="fpt_tst.1.1_4">at the conditions [<b>assignment</b>: 
@@ -4374,8 +4391,9 @@ The following sections list Common Criteria and technology terms used in this do
         
         
         <div class="comp" id="FTP_ITC.1/INTER_TSF_XFER_AGENT"><h4>FTP_ITC.1/INTER_TSF_XFER_AGENT Inter-TSF Trusted Channel (MDM agent)</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
-	  .
+	  <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
       </i></b></div>
+          
           <div class="element"><div class="reqid" id="FTP_ITC.1.1/INTER_TSF_XFER_AGENT"><a href="#FTP_ITC.1.1/INTER_TSF_XFER_AGENT" class="abbr">FTP_ITC.1.1/INTER_TSF_XFER_AGENT</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ftp_itc.1.1_INTER_TSF_XFER_AGENT_1">
@@ -4946,15 +4964,8 @@ The following sections list Common Criteria and technology terms used in this do
                 </ul></span>
                 Further evaluation activities are associated with the specific protocols.
               </div></div></div></div></div>
-        <h3 class="indexable" data-level="3" id="">6.1.10</h3><br/><p>
-	  If this feature is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the following requirements must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
-            <ul></ul></p><h3 class="indexable" data-level="3" id="">6.1.11</h3><br/><p>
-	  If this feature is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the following requirements must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
-            <ul></ul></p><h3 class="indexable" data-level="3" id="">6.1.12</h3><br/><p>
-	  If this feature is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the following requirements must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
-            <ul></ul></p>
       
-    <h3 id="obj-req-map" class="indexable" data-level="3">6.1.13 TOE Security Functional Requirements Rationale</h3><p>The following rationale provides justification for each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, 
+    <h3 id="obj-req-map" class="indexable" data-level="3">6.1.10 TOE Security Functional Requirements Rationale</h3><p>The following rationale provides justification for each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, 
     showing that the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> are suitable to address the specified threats:<br/><table><caption><span class="ctr" data-myid="t-obj_map" data-counter-type="ct-Table" id="t-obj_map">Table <span class="counter">10</span></span>: <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> Rationale</caption><tr><th>Threat</th><th>Addressed by</th><th>Rationale</th></tr><tr class="major-row"><td rowspan="16"><a href="#T.MALICIOUS_APPS">T.MALICIOUS_​APPS</a></td><td><a href="#FAU_ALT_EXT.1">FAU_ALT_EXT.1</a></td><td>A conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> mitigates the threat of malicious apps by generating an alert if application of a policy fails, as this may indicate that a mechanism used to prevent the execution of malicious apps was not able to be enforced.</td></tr>
 <tr><td><a href="#FAU_CRP_EXT.1">FAU_CRP_EXT.1</a></td><td>A conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> mitigates the threat of malicious apps by allowing MDs to report on their configuration status so it can be determined whether they have any unauthorized (and potentially malicious) apps installed.</td></tr>
 <tr><td><a href="#FAU_NET_EXT.1">FAU_NET_EXT.1</a></td><td>A conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> mitigates this threat by providing network status information so that an inaccessible <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> can be flagged as potentially non-conformant to an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy (and therefore potentially subject to the threat of executing malicious apps)</td></tr>
@@ -5386,13 +5397,7 @@ The following sections list Common Criteria and technology terms used in this do
 		Appendix <a href="#feat-based-reqs" class="dynref"></a> defines requirements that must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>  
 		if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements particular product features. 
 		For this technology type, the following product features require the claiming of additional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>:
-  <h3 class="indexable" data-level="3" id="">A.0.1</h3><br/><p>
-	  If this feature is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the following requirements must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
-            <ul></ul></p><h3 class="indexable" data-level="3" id="">A.0.2</h3><br/><p>
-	  If this feature is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the following requirements must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
-            <ul></ul></p><h3 class="indexable" data-level="3" id="">A.0.3</h3><br/><p>
-	  If this feature is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the following requirements must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
-            <ul></ul></p><h1 id="ext-comp-defs" class="indexable" data-level="A">Appendix B -  Extended Component Definitions</h1>
+  <h1 id="ext-comp-defs" class="indexable" data-level="A">Appendix B -  Extended Component Definitions</h1>
 	This appendix contains the definitions for all extended requirements specified in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
 
     <h2 id="ext-comp-defs-bg" class="indexable" data-level="2">B.1 Extended Components Table</h2>
