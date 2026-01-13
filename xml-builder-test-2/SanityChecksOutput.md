@@ -1,4 +1,10 @@
 * Warning: This document still has at least one comment.
+* Error: Detected dangling id-reference to key-encap-support from attribute
+        on/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[3]""/depends[1]""/on[1]""
+* Error: Detected dangling id-reference to wlan-support from attribute
+        on/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[3]""/depends[2]""/on[1]""
+* Error: Detected dangling id-reference to key-agreement-support from attribute
+        on/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[5]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_7 from attribute
         on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[13]""/depends[1]""/on-sel[1]""
 * Error: Detected dangling id-reference to fcs_tlsc_ext.1.2_8 from attribute
