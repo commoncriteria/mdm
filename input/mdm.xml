@@ -2049,7 +2049,7 @@
                 <selectable id="sel-fcs-ckm-ak-lms">
                   <col>LMS</col>
                   <col>LMS</col>
-                  <col>Private key size =undefined<h:p/>Winternitz parameter =undefined<h:p/>Tree height = <selectables><selectable id="fcs_ckm.1.1_AKG_21">5</selectable><selectable id="fcs_ckm.1.1_AKG_22">10</selectable><selectable id="fcs_ckm.1.1_AKG_23">15</selectable><selectable id="fcs_ckm.1.1_AKG_24">20</selectable><selectable id="fcs_ckm.1.1_AKG_25">25</selectable></selectables></col>
+                  <col>Private key size = <selectables><selectable id="fcs_ckm.1.1_AKG_11"><h:i>192 bits with</h:i><selectables><selectable id="fcs_ckm.1.1_AKG_12">SHA-256/192</selectable><selectable id="fcs_ckm.1.1_AKG_13">SHAKE256/192</selectable></selectables> </selectable><selectable id="fcs_ckm.1.1_AKG_14">256 bits with <selectables><selectable id="fcs_ckm.1.1_AKG_15">SHA-256</selectable><selectable id="fcs_ckm.1.1_AKG_16">SHAKE256</selectable></selectables> </selectable></selectables> <h:p/>Winternitz parameter = <selectables><selectable id="fcs_ckm.1.1_AKG_17">1</selectable><selectable id="fcs_ckm.1.1_AKG_18">2</selectable><selectable id="fcs_ckm.1.1_AKG_19">4</selectable><selectable id="fcs_ckm.1.1_AKG_20">8</selectable></selectables> <h:p/>Tree height = <selectables><selectable id="fcs_ckm.1.1_AKG_21">5</selectable><selectable id="fcs_ckm.1.1_AKG_22">10</selectable><selectable id="fcs_ckm.1.1_AKG_23">15</selectable><selectable id="fcs_ckm.1.1_AKG_24">20</selectable><selectable id="fcs_ckm.1.1_AKG_25">25</selectable></selectables></col>
                   <col>RFC 8554 [LMS]<h:p/>NIST SP 800-208 [parameters]</col>
                 </selectable>
                 <selectable id="sel-fcs-ckm-ak-mlkem">
@@ -2067,7 +2067,7 @@
                 <selectable id="sel-fcs-ckm-ak-xmss">
                   <col>XMSS</col>
                   <col>XMSS</col>
-                  <col>Private key size =undefined<h:p/>Tree height = <selectables><selectable id="fcs_ckm.1.1_AKG_32">10</selectable><selectable id="fcs_ckm.1.1_AKG_33">16</selectable><selectable id="fcs_ckm.1.1_AKG_34">20</selectable></selectables></col>
+                  <col>Private key size = <selectables><selectable id="fcs_ckm.1.1_AKG_26">192 bits with <selectables><selectable id="fcs_ckm.1.1_AKG_27">SHA-256/192</selectable><selectable id="fcs_ckm.1.1_AKG_28">SHAKE256/192</selectable></selectables> </selectable><selectable id="fcs_ckm.1.1_AKG_29">256 bits with <selectables><selectable id="fcs_ckm.1.1_AKG_30">SHA-256</selectable><selectable id="fcs_ckm.1.1_AKG_31">SHAKE256</selectable></selectables> </selectable></selectables> <h:p/>Tree height = <selectables><selectable id="fcs_ckm.1.1_AKG_32">10</selectable><selectable id="fcs_ckm.1.1_AKG_33">16</selectable><selectable id="fcs_ckm.1.1_AKG_34">20</selectable></selectables></col>
                   <col>RFC 8391 [XMSS]<h:p/>NIST SP 800-208 [parameters]</col>
                 </selectable>
               </selectables>
@@ -2182,7 +2182,9 @@
           <audit-event/>
         </f-component>
         <!-- FCS_CKM.2 Cryptographic Key Distribution -->
-        <f-component cc-id="fcs_ckm.2" id="fcs-ckm-2" name="Cryptographic Key Distribution">
+        <f-component cc-id="fcs_ckm.2" id="fcs-ckm-2" name="Cryptographic Key Distribution" status="feat-based">
+          <depends on="key-encap-support"/>
+          <depends on="wlan-support"/>
           <f-element id="fel-crypt-key-estab">
             <title>
               The TSF shall distribute cryptographic keys in accordance with a specified cryptographic 
@@ -2299,7 +2301,8 @@
           <audit-event/>
         </f-component>
         <!-- FCS_CKM_EXT.7 Cryptographic Key Agreement -->
-        <f-component cc-id="fcs_ckm_ext.7" id="sfr-fcs-ckm-ext-7" name="Cryptographic Key Agreement">
+        <f-component cc-id="fcs_ckm_ext.7" id="sfr-fcs-ckm-ext-7" name="Cryptographic Key Agreement" status="feat-based">
+          <depends on="key-agreement-support"/>
           <comp-lev>requires that cryptographic key agreement be performed in accordance with specified standards.</comp-lev>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is
@@ -3092,13 +3095,13 @@
                 <selectable id="sel-fcs-cop-sigver-lms">
                   <col>LMS</col>
                   <col>LMS</col>
-                  <col>Private key size =undefined<h:p/>Winternitz parameter =undefined<h:p/>Tree height = <selectables><selectable id="fcs_cop.1.1_SigVer_31"><h:i>5</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_32"><h:i>10</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_33"><h:i>15</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_34"><h:i>20</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_35"><h:i>25</h:i></selectable></selectables></col>
+                  <col>Private key size = <selectables><selectable id="fcs_cop.1.1_SigVer_21"><h:i>192 bits with </h:i><selectables><selectable id="fcs_cop.1.1_SigVer_22"><h:i>SHA-256/192</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_23"><h:i>SHAKE256/192</h:i></selectable></selectables> </selectable><selectable id="fcs_cop.1.1_SigVer_24"><h:i>256 bits with </h:i><selectables><selectable id="fcs_cop.1.1_SigVer_25"><h:i>SHA-256</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_26"><h:i>SHAKE256</h:i></selectable></selectables> </selectable></selectables> <h:p/>Winternitz parameter = <selectables><selectable id="fcs_cop.1.1_SigVer_27"><h:i>1</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_28"><h:i>2</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_29"><h:i>4</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_30"><h:i>8</h:i></selectable></selectables> <h:p/>Tree height = <selectables><selectable id="fcs_cop.1.1_SigVer_31"><h:i>5</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_32"><h:i>10</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_33"><h:i>15</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_34"><h:i>20</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_35"><h:i>25</h:i></selectable></selectables></col>
                   <col>RFC 8554 [LMS]<h:p/>NIST SP 800-208 [parameters]</col>
                 </selectable>
                 <selectable id="sel-fcs-cop-sigver-xmss">
                   <col>XMSS</col>
                   <col>XMSS</col>
-                  <col>Private key size =undefined<h:p/>Tree height = <selectables><selectable id="fcs_cop.1.1_SigVer_42"><h:i>10</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_43"><h:i>16</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_44"><h:i>20</h:i></selectable></selectables></col>
+                  <col>Private key size = <selectables><selectable id="fcs_cop.1.1_SigVer_36"><h:i>192 bits with </h:i><selectables><selectable id="fcs_cop.1.1_SigVer_37"><h:i>SHA-256/192</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_38"><h:i>SHAKE256/192</h:i></selectable></selectables> </selectable><selectable id="fcs_cop.1.1_SigVer_39"><h:i>256 bits with </h:i><selectables><selectable id="fcs_cop.1.1_SigVer_40"><h:i>SHA-256</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_41"><h:i>SHAKE256</h:i></selectable></selectables> </selectable></selectables> <h:p/>Tree height = <selectables><selectable id="fcs_cop.1.1_SigVer_42"><h:i>10</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_43"><h:i>16</h:i></selectable><selectable id="fcs_cop.1.1_SigVer_44"><h:i>20</h:i></selectable></selectables></col>
                   <col>RFC 8391 [XMSS]<h:p/>NIST SP 800-208 [parameters]</col>
                 </selectable>
                 <selectable id="sel-fcs-cop-sigver-mldsa">
@@ -5840,6 +5843,11 @@
             <audit-event-info>Identity of administrator</audit-event-info>
           </audit-event>
         </f-component>
+        <implements>
+          <feature/>
+          <feature/>
+          <feature/>
+        </implements>
       </section>
     </sec:SFRs>
     <!-- 5.2 Security Assurance Requirements -->
