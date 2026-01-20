@@ -1354,7 +1354,8 @@
             <ext-comp-def-title>
               <title>
                 The TSF shall provide
-                <assignable>type of interface</assignable>to authorized entities over a 
+                <assignable>type of interface</assignable>
+                to authorized entities over a 
                 channel that meets the secure channel requirements in FTP_ITC.1 The provided information for each enrolled MD includes:
                 <h:ul>
                   <h:li>The current version of the MD firmware or software</h:li>
@@ -2930,10 +2931,13 @@
               <title>
                 The TSF shall derive shared cryptographic keys with input from multiple parties in accordance 
                 with specified cryptographic key agreement algorithms
-                <assignable>cryptographic algorithm</assignable>and specified cryptographic parameters
-                <assignable>cryptographic parameters</assignable>that meet the
+                <assignable>cryptographic algorithm</assignable>
+                and specified cryptographic parameters
+                <assignable>cryptographic parameters</assignable>
+                that meet the
                 following:
-                <assignable>list of standards</assignable></title>
+                <assignable>list of standards</assignable>
+              </title>
             </ext-comp-def-title>
             <note role="application">
               This SFR is claimed if the TSF supports key agreement schemes as a method of key establishment for trusted channels. This will generally apply to all conformant TOEs, except in the rare (but possible) case where only key encapsulation is used.
@@ -5781,7 +5785,8 @@
           <f-element id="fe1-rbg-seed">
             <title>
               The TSF shall be able to accept a minimum input of
-              <assignable>minimum input length greater than zero</assignable>from a TSF interface for the purpose of seeding.
+              <assignable>minimum input length greater than zero</assignable>
+              from a TSF interface for the purpose of seeding.
             </title>
             <note role="application">
               This requirement is claimed when a DRBG is seeded with entropy from one or more noise sources that is outside the TOE
@@ -5814,7 +5819,8 @@
                 <selectable id="fcs_rbg.3.1_2">TSF hardware-based noise source</selectable>
               </selectables>
               with a minimum of
-              <assignable>number of bits</assignable>bits of min-entropy.
+              <assignable>number of bits</assignable>
+              bits of min-entropy.
             </title>
             <note role="application">
               This requirement is claimed when a DRBG is seeded with entropy from a single noise source that is within the TOE boundary. Min-entropy should be expressed as a ratio of entropy bits to sampled bits so that the total amount of data needed to ensure full entropy is known, as well as the conditioning function by which that data is reduced in size to the seed.
@@ -5866,14 +5872,16 @@
           <f-element id="fel-rbg-comb">
             <title>
               The TSF shall
-              <assignable>combining operation</assignable><selectables>
+              <assignable>combining operation</assignable>
+              <selectables>
                 <selectable id="fcs_rbg.5.1_2">output from TSF noise sources</selectable>
                 <selectable id="fcs_rbg.5.1_3">input from TSF interfaces for seeding</selectable>
               </selectables>
               to create the entropy input into the derivation function as defined in
               <assignable>list of standards</assignable>, resulting
               in a minimum of
-              <assignable>number of bits</assignable>bits of min-entropy.
+              <assignable>number of bits</assignable>
+              bits of min-entropy.
             </title>
             <note role="application">This requirement is claimed if "multiple TSF noise sources..." is selected in <xref to="fel-rbg-init-seed-how"/>.</note>
             <aactivity>
@@ -6140,7 +6148,8 @@
               </selectables>
               <h:b>to</h:b>
               allow
-              <assignable>list of TSF mediated actions</assignable>on behalf of the user to be performed before the user is authenticated
+              <assignable>list of TSF mediated actions</assignable>
+              on behalf of the user to be performed before the user is authenticated
               <h:b>with the server</h:b>.
             </title>
           </f-element>
@@ -7063,13 +7072,15 @@
           <f-element id="fpt-tdc-interpret">
             <title>
               The TSF shall provide the capability to consistently interpret
-              <assignable>MDM policy</assignable>when shared between the primary MDM server and the MDM agent.
+              <assignable>MDM policy</assignable>
+              when shared between the primary MDM server and the MDM agent.
             </title>
           </f-element>
           <f-element id="fpt-tdc-rules">
             <title>
               The TSF shall use
-              <assignable>list of interpretation rules to be applied by the TSF</assignable>when interpreting MDM policy from the primary MDM server.
+              <assignable>list of interpretation rules to be applied by the TSF</assignable>
+              when interpreting MDM policy from the primary MDM server.
             </title>
             <note role="application">The intent of this requirement is to verify that there are well-defined rules that the subordinate MDM server follows if it modifies/interprets the MDM policy sent from the primary MDM server that is then delivered to the MDM agent on the managed device. For example: a mapping between the command received from the primary MDM server and the matching command delivered to the MDM agent. If the subordinate MDM does not modify the policy for delivery to the MDM agent, then this requirement is implicitly satisfied.</note>
             <aactivity>
@@ -7644,7 +7655,8 @@
                   <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
                 </selectables>
                 that is logically distinct from other communication channels, as specified in
-                <assignable>inter-TSF trusted channel or internal TOE TSF data transfer type</assignable></title>
+                <assignable>inter-TSF trusted channel or internal TOE TSF data transfer type</assignable>
+              </title>
             </ext-comp-def-title>
             <note role="application">
               This SFR describes the communication channels between the MDM server and an agent that may or may not be in the TOE, and optionally separate
@@ -8059,7 +8071,6 @@
         <a-component cc-id="ase_tss.1" name="TOE summary specification">
           <a-element type="C">
             <title>The TOE summary specification shall describe how the TOE meets each SFR.</title>
-            <aactivity/>
           </a-element>
         </a-component>
       </section>
@@ -8078,32 +8089,25 @@
           The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list.
           <a-element type="D">
             <title>The developer shall provide a functional specification.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall provide a tracing from the functional specification to the SFRs.</title>
             <note role="application">As indicated in the introduction to this section, the functional specification is comprised of the information contained in the AGD_OPE and AGD_PRE documentation. The developer may reference a website accessible to application developers and the evaluator. The evaluation activities in the functional requirements point to evidence that should exist in the documentation and TSS section; since these are directly associated with the SFRs, the tracing in element ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary. </note>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The functional specification shall describe the purpose and method of use for each SFR-enforcing and SFR-supporting TSFI.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The functional specification shall identify all parameters associated with each SFR-enforcing and SFR-supporting TSFI.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The functional specification shall provide rationale for the implicit categorization of interfaces as SFR-non-interfering.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The tracing shall demonstrate that the SFRs trace to TSFIs in the functional specification.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of the SFRs.</title>
@@ -8133,36 +8137,28 @@
               <h:br/>
               Rather than repeat information here, the developer should review the evaluation activities for this component to ascertain the specifics of the guidance that the evaluator will be checking for. This will provide the necessary information for the preparation of acceptable guidance.
             </note>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall describe, for each user role, the user-accessible functions and privileges that should be controlled in a secure processing environment, including appropriate warnings.</title>
             <note role="application">User and administrator are to be considered in the definition of user role.</note>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall describe, for each user role, how to use the available interfaces provided by the TOE in a secure manner.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall describe, for each user role, the available functions and interfaces, in particular all security parameters under the control of the user, indicating secure values as appropriate.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall, for each user role, clearly present each type of security-relevant event relative to the user-accessible functions that need to be performed, including changing the security characteristics of entities under the control of the TSF.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall identify all possible modes of operation of the TOE (including operation following failure or operational error), their consequences, and implications for maintaining secure operation.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall, for each user role, describe the security measures to be followed in order to fulfill the security objectives for the operational environment as described in the ST.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall be clear and reasonable.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
@@ -8201,11 +8197,9 @@
           <a-element type="D">
             <title>The developer shall provide the TOE, including its preparative procedures.</title>
             <note role="application">As with the operational guidance, the developer should look to the evaluation activities to determine the required content with respect to preparative procedures.</note>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The preparative procedures shall describe all the steps necessary for secure acceptance of the delivered TOE in accordance with the developer's delivery procedures.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The preparative procedures shall describe all the steps necessary for secure installation of the TOE and for the secure preparation of the operational environment in accordance with the security objectives for the operational environment as described in the ST.</title>
@@ -8216,11 +8210,9 @@
               It might also be the case that no installation is necessary, for example as a
                 Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyze installation procedures and thus this requirement is implicitly satisfied.
             </note>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall apply the preparative procedures to confirm that the TOE can be prepared securely for operation.</title>
@@ -8234,11 +8226,9 @@
           This component is targeted at identifying the TOE such that it can be distinguished from other products or versions from the same vendor and can be easily specified when being procured by an end user.
           <a-element type="D">
             <title>The developer shall provide the TOE and a reference for the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The TOE shall be labeled with its unique reference.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
@@ -8252,15 +8242,12 @@
           Given the scope of the TOE and its associated evaluation evidence requirements, this component's evaluation activities are covered by the evaluation activities listed for ALC_CMC.1.
           <a-element type="D">
             <title>The developer shall provide a configuration list for the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The configuration list shall include the following: the TOE itself; and the evaluation evidence required by the SARs.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The configuration list shall uniquely identify the configuration items.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
@@ -8283,27 +8270,22 @@
           <a-element type="D">
             <title>The developer shall document and provide flaw remediation procedures addressed to TOE
               developers.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the procedures used to
               track all reported security flaws in each release of the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that a description of the nature and effect
               of each security flaw be provided, as well as the status of finding a correction to that flaw.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that corrective actions be identified for
               each of the security flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the methods used to
               provide flaw information, corrections and guidance on corrective actions to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for
@@ -8315,56 +8297,45 @@
           <a-element type="D">
             <title>The developer shall document and provide flaw remediation procedures addressed to TOE
               developers.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall establish a procedure for accepting and acting upon all reports of
               security flaws and requests for corrections to those flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall provide flaw remediation guidance addressed to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the procedures used to track all
               reported security flaws in each release of the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that a description of the nature and effect of each
               security flaw be provided, as well as the status of finding a correction to that flaw.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that corrective actions be identified for each of the
               security flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the methods used to provide flaw
               information, corrections and guidance on corrective actions to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall describe a means by which the developer receives
               from TOE users reports and enquiries of suspected security flaws in the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The procedures for processing reported security flaws shall ensure that any reported
               flaws are remediated and the remediation procedures issued to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The procedures for processing reported security flaws shall provide safeguards that any
               corrections to these security flaws do not introduce any new flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation guidance shall describe a means by which TOE users report to the
               developer any suspected security flaws in the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and
@@ -8376,72 +8347,58 @@
           <a-element type="D">
             <title>The developer shall document and provide flaw remediation procedures addressed to TOE
               developers.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall establish a procedure for accepting and acting upon all reports of security
               flaws and requests for corrections to those flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall provide flaw remediation guidance addressed to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the procedures used to track all
               reported security flaws in each release of the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that a description of the nature and effect of each
               security flaw be provided, as well as the status of finding a correction to that flaw.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that corrective actions be identified for each of the
               security flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the methods used to provide flaw
               information, corrections and guidance on corrective actions to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall describe a means by which the developer receives from
               TOE users reports and enquiries of suspected security flaws in the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall include a procedure requiring timely response and
               the automatic distribution of security flaw reports and the associated corrections to
               registered users who might be affected by the security flaw.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The procedures for processing reported security flaws shall ensure that any reported flaws are
               remediated and the remediation procedures issued to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The procedures for processing reported security flaws shall provide safeguards that any
               corrections to these security flaws do not introduce any new flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation guidance shall describe a means by which TOE users report to the
               developer any suspected security flaws in the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation guidance shall describe a means by which TOE users may register
               with the developer, to be eligible to receive security flaw reports and corrections.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation guidance shall identify the specific points of contact for all reports
               and enquiries about security issues involving the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and
@@ -8459,11 +8416,9 @@
           Testing is performed to confirm the functionality described in the TSS as well as the administrative (including configuration and operational) documentation provided. The focus of the testing is to confirm that the requirements specified in Sections 5.3 and 5.4 are being met, although some additional testing is specified for SARs in Section 6. The Evaluation Activities identify the additional testing activities associated with these components. The evaluator produces a test report documenting the plan for and results of testing, as well as coverage arguments focused on the TOE or platform combinations that are claiming conformance to this PP.
           <a-element type="D">
             <title>The developer shall provide the TOE for testing.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The TOE shall be suitable for testing.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>
@@ -8472,7 +8427,6 @@
               that the information provided meets all requirements for content 
 			  and presentation of evidence.
             </title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall test a subset of the TSF to confirm that the TSF operates as specified.</title>
@@ -8525,21 +8479,17 @@
         <a-component cc-id="ava_van.1" name="Vulnerability Survey (AVA_VAN.1)">
           <a-element type="D">
             <title>The developer shall provide the TOE for testing.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The TOE shall be suitable for testing.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and 
 			  presentation of evidence.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall perform a search of public domain sources to identify potential vulnerabilities in 
 			  the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall conduct penetration testing, based on the identified potential vulnerabilities, to 
