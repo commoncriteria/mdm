@@ -634,7 +634,7 @@ function showTarget(id){
 <tr><td>3.0</td><td>2016-11-21</td><td>Updates to align with Technical Decisions<br> Added requirements to support BYOD use case <br> Removed IPsec and SSH requirements, which are now contained in EPs</td></tr>
 <tr><td>4.0</td><td>2018-09-24</td><td> Updates to align with Technical Decisions<br> Removed platform dependency<br> Removed TLS <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and use the TLS Functional Package<br> Allowed for a distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> </td></tr>
 <tr><td>5.0</td><td>2024-11-15</td><td> Updates to align with Technical Decisions<br> Updates to align with <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022<br> Updates to support subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr><br><br></td></tr>
-</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ov" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#cte" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOE_Boundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#Use_Cases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#package-usage" style="text-indent:10px">1.5<span>Package Usage</span></a><a href="#Conformance_Claims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#idt" style="text-indent:0px">3<span>Introduction to Distributed TOEs</span></a><a href="#rcd" style="text-indent:10px">3.1<span>Registration of Distributed TOE Components</span></a><a href="#ard" style="text-indent:10px">3.2<span>Allocation of Requirements in Distributed TOEs</span></a><a href="#dis" style="text-indent:10px">3.3<span>Security Audit for Distributed TOEs</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">4<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">4.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">4.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">4.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">5<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">5.1<span>Security Objectives for the Operational Environment</span></a><a href="#" style="text-indent:10px">5.2<span>Security Objectives Rationale</span></a><a href="#req" style="text-indent:0px">6<span>Security Requirements</span></a><a href="#SFRs" style="text-indent:10px">6.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">6.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#fau" style="text-indent:20px">6.1.2<span>Security Audit (FAU)</span></a><a href="#fcs" style="text-indent:20px">6.1.3<span>Cryptographic Support (FCS)</span></a><a href="#fia" style="text-indent:20px">6.1.4<span>Identification and Authentication (FIA)</span></a><a href="#fmt" style="text-indent:20px">6.1.5<span>Security Management (FMT)</span></a><a href="#fpt" style="text-indent:20px">6.1.6<span>Protection of the TSF (FPT)</span></a><a href="#ftp" style="text-indent:20px">6.1.7<span>Trusted Path/Channels (FTP)</span></a><a href="#" style="text-indent:20px">6.1.8<span></span></a><a href="#" style="text-indent:20px">6.1.9<span></span></a><a href="#" style="text-indent:20px">6.1.10<span></span></a><a href="#obj-req-map" style="text-indent:20px">6.1.11<span>TOE Security Functional Requirements Rationale</span></a><a href="#SARs" style="text-indent:10px">6.2<span>Security Assurance Requirements</span></a><a href="#ase" style="text-indent:20px">6.2.1<span>Class ASE: Security Target</span></a><a href="#adv" style="text-indent:20px">6.2.2<span>Class ADV: Development</span></a><a href="#agd" style="text-indent:20px">6.2.3<span>Class AGD: Guidance Documentation</span></a><a href="#agd_pre" style="text-indent:20px">6.2.4<span>Preparative Procedures (AGD_PRE.1)</span></a><a href="#alc" style="text-indent:20px">6.2.5<span>Class ALC: Life-cycle Support</span></a><a href="#alc_cms" style="text-indent:20px">6.2.6<span>TOE CM Coverage (ALC_CMS.1)</span></a><a href="#ate-tests" style="text-indent:20px">6.2.7<span>Class ATE: Tests</span></a><a href="#ava" style="text-indent:20px">6.2.8<span>Class AVA: Vulnerability Analysis</span></a><a href="#opt-app" style="text-indent:0px">Appendix A - <span>Optional Requirements</span></a><a href="#optional-reqs" style="text-indent:10px">A.1<span>Strictly Optional  Requirements
+</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ov" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#cte" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOE_Boundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#Use_Cases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#package-usage" style="text-indent:10px">1.5<span>Package Usage</span></a><a href="#Conformance_Claims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#idt" style="text-indent:0px">3<span>Introduction to Distributed TOEs</span></a><a href="#rcd" style="text-indent:10px">3.1<span>Registration of Distributed TOE Components</span></a><a href="#ard" style="text-indent:10px">3.2<span>Allocation of Requirements in Distributed TOEs</span></a><a href="#dis" style="text-indent:10px">3.3<span>Security Audit for Distributed TOEs</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">4<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">4.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">4.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">4.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">5<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">5.1<span>Security Objectives for the Operational Environment</span></a><a href="#" style="text-indent:10px">5.2<span>Security Objectives Rationale</span></a><a href="#req" style="text-indent:0px">6<span>Security Requirements</span></a><a href="#SFRs" style="text-indent:10px">6.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">6.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#fau" style="text-indent:20px">6.1.2<span>Security Audit (FAU)</span></a><a href="#fcs" style="text-indent:20px">6.1.3<span>Cryptographic Support (FCS)</span></a><a href="#fia" style="text-indent:20px">6.1.4<span>Identification and Authentication (FIA)</span></a><a href="#fmt" style="text-indent:20px">6.1.5<span>Security Management (FMT)</span></a><a href="#fpt" style="text-indent:20px">6.1.6<span>Protection of the TSF (FPT)</span></a><a href="#ftp" style="text-indent:20px">6.1.7<span>Trusted Path/Channels (FTP)</span></a><a href="#obj-req-map" style="text-indent:20px">6.1.8<span>TOE Security Functional Requirements Rationale</span></a><a href="#SARs" style="text-indent:10px">6.2<span>Security Assurance Requirements</span></a><a href="#ase" style="text-indent:20px">6.2.1<span>Class ASE: Security Target</span></a><a href="#adv" style="text-indent:20px">6.2.2<span>Class ADV: Development</span></a><a href="#agd" style="text-indent:20px">6.2.3<span>Class AGD: Guidance Documentation</span></a><a href="#agd_pre" style="text-indent:20px">6.2.4<span>Preparative Procedures (AGD_PRE.1)</span></a><a href="#alc" style="text-indent:20px">6.2.5<span>Class ALC: Life-cycle Support</span></a><a href="#alc_cms" style="text-indent:20px">6.2.6<span>TOE CM Coverage (ALC_CMS.1)</span></a><a href="#ate-tests" style="text-indent:20px">6.2.7<span>Class ATE: Tests</span></a><a href="#ava" style="text-indent:20px">6.2.8<span>Class AVA: Vulnerability Analysis</span></a><a href="#opt-app" style="text-indent:0px">Appendix A - <span>Optional Requirements</span></a><a href="#optional-reqs" style="text-indent:10px">A.1<span>Strictly Optional  Requirements
     </span></a><a href="#optional-reqs-audit" style="text-indent:20px">A.1.1<span>
               Auditable Events for Strictly Optional  Requirements
            </span></a><a href="#alc_cms-optional" style="text-indent:20px">A.1.2<span>TOE CM Coverage (ALC_CMS.1)</span></a><a href="#fau-optional" style="text-indent:20px">A.1.3<span>Security Audit (FAU)</span></a><a href="#fta-optional" style="text-indent:20px">A.1.4<span>TOE Access (FTA)</span></a><a href="#objective-reqs" style="text-indent:10px">A.2<span>Objective  Requirements
@@ -3014,10 +3014,8 @@ The following sections list Common Criteria and technology terms used in this do
                   <td>256 bits</td>
                   <td>
                     [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_3">
-                        <i>ISO/IEC 9797-2:2021 (Section 7 &#8220;MAC Algorithm 2&#8221;)</i>
-                      </span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_4">
-                        <i>FIPS PUB 198-1</i>
-                      </span>]
+                        <i>ISO/IEC 9797-2:2021 (Section 7 &#8220;MAC Algorithm 2&#8221;)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_4">
+                        <i>FIPS PUB 198-1</i></span>]
                   </td>
                 </tr>
 
@@ -3026,10 +3024,8 @@ The following sections list Common Criteria and technology terms used in this do
                   <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_5"><i>384 (ISO, FIPS)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_6"><i>256 (FIPS)</i></span>] bits</td>
                   <td>
                     [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_7">
-                        <i>ISO/IEC 9797-2:2021 (Section 7 &#8220;MAC Algorithm 2&#8221;)</i>
-                      </span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_8">
-                        <i>FIPS PUB 198-1</i>
-                      </span>]
+                        <i>ISO/IEC 9797-2:2021 (Section 7 &#8220;MAC Algorithm 2&#8221;)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_8">
+                        <i>FIPS PUB 198-1</i></span>]
                   </td>
                 </tr>
 
@@ -3038,10 +3034,8 @@ The following sections list Common Criteria and technology terms used in this do
                   <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_9"><i>512 (ISO, FIPS)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_10"><i>384 (FIPS)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_11"><i>256 (FIPS)</i></span>] bits</td>
                   <td>
                     [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_12">
-                        <i>ISO/IEC 9797-2:2021 (Section 7 &#8220;MAC Algorithm 2&#8221;)</i>
-                      </span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_13">
-                        <i>FIPS PUB 198-1</i>
-                      </span>]
+                        <i>ISO/IEC 9797-2:2021 (Section 7 &#8220;MAC Algorithm 2&#8221;)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_13">
+                        <i>FIPS PUB 198-1</i></span>]
                   </td>
                 </tr>
 
@@ -4024,8 +4018,7 @@ The following sections list Common Criteria and technology terms used in this do
               [<b>selection</b>: <span class="selectable-content" id="internal-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source [<b>assignment</b>: 
      <span class="assignable-content">name of noise source</span>]</span>, <span class="selectable-content" id="internal-seeds">
                   <b>multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources [<b>assignment</b>: 
-     <span class="assignable-content">names of noise sources</span>]</b>
-                </span>, <span class="selectable-content" id="external-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding</span>]
+     <span class="assignable-content">names of noise sources</span>]</b></span>, <span class="selectable-content" id="external-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding</span>]
               for initialized seeding<a id="period_656" href="#period_656">. </a>            <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -4294,10 +4287,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FIA_UAU.1.1"><a href="#FIA_UAU.1.1" class="abbr">FIA_UAU.1.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="fia_uau.1.1_1">
-                  <b>invoke platform-provided functionality</b>
-                </span>, <span class="selectable-content" id="fia_uau.1.1_2">
-                  <b>implement functionality</b>
-                </span>]
+                  <b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="fia_uau.1.1_2">
+                  <b>implement functionality</b></span>]
               <b>to</b>
               allow
               [<b>assignment</b>: 
@@ -4737,7 +4728,8 @@ The following sections list Common Criteria and technology terms used in this do
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="fpt_tst_ext.1.2_1">invoke platform-provided functionality</span>, <span class="selectable-content" id="fpt_tst_ext.1.2_2">implement functionality</span>]
               to provide the capability to verify the integrity of stored <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> executable code when it is loaded for execution through the use of the
-              [<b>selection</b>: <span class="selectable-content" id="fpt_tst_ext.1.2_3"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="fpt_tst_ext.1.2_4"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>]-provided cryptographic services<a id="period_972" href="#period_972">. </a>            <div class="appnote"><span class="note-header">Application
+              [<b>selection</b>: <span class="selectable-content" id="fpt_tst_ext.1.2_3"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="fpt_tst_ext.1.2_4"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>]
+              -provided cryptographic services<a id="period_972" href="#period_972">. </a>            <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
               While the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is typically a software package running in the IT Environment, it is still capable of performing the
@@ -4836,10 +4828,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FTP_ITC.1.1/INTER_XFER_IT"><a href="#FTP_ITC.1.1/INTER_XFER_IT" class="abbr">FTP_ITC.1.1/INTER_XFER_IT</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ftp_itc.1.1_INTER_XFER_IT_1">
-                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC1_IPSEC_INVOKE">IPsec</span></li><li style=""><span class="selectable-content" id="ITC1_SSH_INVOKE">SSH</span></li><li style=""><span class="selectable-content" id="ITC1_TLS_INVOKE">mutually authenticated TLS</span></li><li style=""><span class="selectable-content" id="ITC1_DTLS_INVOKE">mutually authenticated DTLS</span></li><li style=""><span class="selectable-content" id="ITC1_HTTPS_INVOKE">HTTPS</span></li></ul>]</b>
-                </span></li><li style=""><span class="selectable-content" id="ftp_itc.1.1_INTER_XFER_IT_2">
-                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC1_IPSEC_IMPLEMENT">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span></li><li style=""><span class="selectable-content" id="ITC1_SSH_IMPLEMENT">SSH as defined in the Functional Package for Secure Shell</span></li><li style=""><span class="selectable-content" id="ITC1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITC1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITC1_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li></ul>]</b>
-                </span></li></ul>]
+                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC1_IPSEC_INVOKE">IPsec</span></li><li style=""><span class="selectable-content" id="ITC1_SSH_INVOKE">SSH</span></li><li style=""><span class="selectable-content" id="ITC1_TLS_INVOKE">mutually authenticated TLS</span></li><li style=""><span class="selectable-content" id="ITC1_DTLS_INVOKE">mutually authenticated DTLS</span></li><li style=""><span class="selectable-content" id="ITC1_HTTPS_INVOKE">HTTPS</span></li></ul>]</b></span></li><li style=""><span class="selectable-content" id="ftp_itc.1.1_INTER_XFER_IT_2">
+                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC1_IPSEC_IMPLEMENT">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span></li><li style=""><span class="selectable-content" id="ITC1_SSH_IMPLEMENT">SSH as defined in the Functional Package for Secure Shell</span></li><li style=""><span class="selectable-content" id="ITC1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITC1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITC1_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li></ul>]</b></span></li></ul>]
               <b>to</b>
               provide a
               <b>trusted</b>
@@ -4931,10 +4921,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FTP_ITC.1.3/INTER_XFER_IT"><a href="#FTP_ITC.1.3/INTER_XFER_IT" class="abbr">FTP_ITC.1.3/INTER_XFER_IT</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="ftp_itc.1.3_INTER_XFER_IT_1">
-                  <b>invoke platform-provided functionality</b>
-                </span>, <span class="selectable-content" id="ftp_itc.1.3_INTER_XFER_IT_2">
-                  <b>implement functionality</b>
-                </span>]
+                  <b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="ftp_itc.1.3_INTER_XFER_IT_2">
+                  <b>implement functionality</b></span>]
               <b>to</b>
               initiate communication via the trusted channel for
               [<b>assignment</b>: 
@@ -5026,10 +5014,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FTP_TRP.1.1/TRUSTPATH_ENROLL"><a href="#FTP_TRP.1.1/TRUSTPATH_ENROLL" class="abbr">FTP_TRP.1.1/TRUSTPATH_ENROLL</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_ENROLL_1">
-                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="TRP2_TLS_INVOKE">TLS</span></li><li style=""><span class="selectable-content" id="TRP2_HTTPS_INVOKE">HTTPS</span></li></ul>]</b>
-                </span></li><li style=""><span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_ENROLL_2">
-                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="TRP2_TLS_IMPLEMENT">TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="TRP2_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li></ul>]</b>
-                </span></li></ul>]
+                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="TRP2_TLS_INVOKE">TLS</span></li><li style=""><span class="selectable-content" id="TRP2_HTTPS_INVOKE">HTTPS</span></li></ul>]</b></span></li><li style=""><span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_ENROLL_2">
+                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="TRP2_TLS_IMPLEMENT">TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="TRP2_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li></ul>]</b></span></li></ul>]
               <b>to</b>
               provide a
               <b>trusted</b>
@@ -5047,10 +5033,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FTP_TRP.1.3/TRUSTPATH_ENROLL"><a href="#FTP_TRP.1.3/TRUSTPATH_ENROLL" class="abbr">FTP_TRP.1.3/TRUSTPATH_ENROLL</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="ftp_trp.1.3_TRUSTPATH_ENROLL_1">
-                  <b>invoke platform-provided functionality</b>
-                </span>, <span class="selectable-content" id="ftp_trp.1.3_TRUSTPATH_ENROLL_2">
-                  <b>implement functionality</b>
-                </span>]
+                  <b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="ftp_trp.1.3_TRUSTPATH_ENROLL_2">
+                  <b>implement functionality</b></span>]
               <b> to initiate communication via the trusted channel</b>
               for
               <b>
@@ -5111,10 +5095,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FTP_TRP.1.1/TRUSTPATH_REM_ADMIN"><a href="#FTP_TRP.1.1/TRUSTPATH_REM_ADMIN" class="abbr">FTP_TRP.1.1/TRUSTPATH_REM_ADMIN</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_REM_ADMIN_1">
-                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="TRP1_IPSEC_INVOKE">IPsec</span></li><li style=""><span class="selectable-content" id="TRP1_TLS_INVOKE">TLS</span></li><li style=""><span class="selectable-content" id="TRP1_HTTPS_INVOKE">HTTPS</span></li><li style=""><span class="selectable-content" id="TRP1_SSH_INVOKE">SSH</span></li></ul>]</b>
-                </span></li><li style=""><span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_REM_ADMIN_2">
-                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="TRP1_IPSEC_IMPLEMENT">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span></li><li style=""><span class="selectable-content" id="TRP1_TLS_IMPLEMENT">TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="TRP1_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li><li style=""><span class="selectable-content" id="TRP1_SSH_IMPLEMENT">SSH as defined in the Functional Package for Secure Shell</span></li></ul>]</b>
-                </span></li></ul>]
+                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="TRP1_IPSEC_INVOKE">IPsec</span></li><li style=""><span class="selectable-content" id="TRP1_TLS_INVOKE">TLS</span></li><li style=""><span class="selectable-content" id="TRP1_HTTPS_INVOKE">HTTPS</span></li><li style=""><span class="selectable-content" id="TRP1_SSH_INVOKE">SSH</span></li></ul>]</b></span></li><li style=""><span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_REM_ADMIN_2">
+                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="TRP1_IPSEC_IMPLEMENT">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span></li><li style=""><span class="selectable-content" id="TRP1_TLS_IMPLEMENT">TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="TRP1_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li><li style=""><span class="selectable-content" id="TRP1_SSH_IMPLEMENT">SSH as defined in the Functional Package for Secure Shell</span></li></ul>]</b></span></li></ul>]
               <b>to</b>
               provide a 
               communication path between itself
@@ -5176,15 +5158,8 @@ The following sections list Common Criteria and technology terms used in this do
       The evaluator shall ensure, for each method of remote administration, the channel data is not sent in plaintext<a id="period_1094" href="#period_1094">. </a></li>
                 </ul></span>
                 Further evaluation activities are associated with the specific protocols<a id="period_1095" href="#period_1095">. </a>              </div></div></div></div></div>
-        <h3 class="indexable" data-level="3" id="">6.1.8</h3><br><p>
-	  If this feature is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the following requirements must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
-            <ul></ul></p><h3 class="indexable" data-level="3" id="">6.1.9</h3><br><p>
-	  If this feature is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the following requirements must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
-            <ul></ul></p><h3 class="indexable" data-level="3" id="">6.1.10</h3><br><p>
-	  If this feature is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the following requirements must be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
-            <ul></ul></p>
       
-    <h3 id="obj-req-map" class="indexable" data-level="3">6.1.11 TOE Security Functional Requirements Rationale</h3><p>The following rationale provides justification for each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, 
+    <h3 id="obj-req-map" class="indexable" data-level="3">6.1.8 TOE Security Functional Requirements Rationale</h3><p>The following rationale provides justification for each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, 
     showing that the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> are suitable to address the specified threats:<br><table><caption><span class="ctr" data-myid="t-obj_map" data-counter-type="ct-Table" id="t-obj_map">Table <span class="counter">12</span></span>: <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> Rationale</caption><tr><th>Threat</th><th>Addressed by</th><th>Rationale</th></tr><tr class="major-row"><td rowspan="16"><a href="#T.MALICIOUS_APPS">T.MALICIOUS_&#8203;APPS</a></td><td><a href="#FAU_ALT_EXT.1">FAU_ALT_EXT.1</a></td><td>A conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> mitigates the threat of malicious apps by generating an alert if application of a policy fails, as this may indicate that a mechanism used to prevent the execution of malicious apps was not able to be enforced<a id="period_1096" href="#period_1096">. </a></td></tr>
 <tr><td><a href="#FAU_CRP_EXT.1">FAU_CRP_EXT.1</a></td><td>A conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> mitigates the threat of malicious apps by allowing MDs to report on their configuration status so it can be determined whether they have any unauthorized (and potentially malicious) apps installed<a id="period_1097" href="#period_1097">. </a></td></tr>
 <tr><td><a href="#FAU_NET_EXT.1">FAU_NET_EXT.1</a></td><td>A conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> mitigates this threat by providing network status information so that an inaccessible <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> can be flagged as potentially non-conformant to an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy (and therefore potentially subject to the threat of executing malicious apps)</td></tr>
@@ -5388,7 +5363,7 @@ The following sections list Common Criteria and technology terms used in this do
         <a href="#req" class="dynref">Section 6 Security Requirements</a>
         and relevant appendices that call for necessary descriptions to be included in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> that are specific to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> technology type<a id="period_1215" href="#period_1215">. </a>        <div class="comp" id="ASE_TSS.1"><h4>ASE_TSS.1 TOE summary specification</h4>
           
-        <h4>Developer action elements: </h4><h4>Content and presentation elements: </h4><div class="element"><div class="reqid" id="ASE_TSS.1.1C"><a href="#ASE_TSS.1.1C" class="abbr">ASE_TSS.1.1C</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> summary specification shall describe how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> meets each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr><a id="period_1216" href="#period_1216">. </a></div></div><h4>Evaluator action elements: </h4><div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#ASE_TSS.1">ASE_TSS.1</a></div></div></div></div>
+        <h4>Developer action elements: </h4><h4>Content and presentation elements: </h4><div class="element"><div class="reqid" id="ASE_TSS.1.1C"><a href="#ASE_TSS.1.1C" class="abbr">ASE_TSS.1.1C</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> summary specification shall describe how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> meets each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr><a id="period_1216" href="#period_1216">. </a></div></div><h4>Evaluator action elements: </h4></div>
       
       <h3 class="indexable" data-level="3" id="adv">6.2.2 Class ADV: Development</h3>
         The design information about the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is contained in the guidance documentation available to the end user as well as the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> portion of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>, and any additional information required by this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> that is not to be made public (e.g., Entropy Essay)<a id="period_1217" href="#period_1217">. </a>        <div class="comp" id="ADV_FSP.1"><h4>ADV_FSP.1 Basic Functional Specification (ADV_FSP.1)</h4>
@@ -5674,20 +5649,16 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FAU_SAR.1.1"><a href="#FAU_SAR.1.1" class="abbr">FAU_SAR.1.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="fau_sar.1.1_1">
-                  <b>invoke platform-provided functionality</b>
-                </span>, <span class="selectable-content" id="fau_sar.1.1_2">
-                  <b>implement functionality</b>
-                </span>]
+                  <b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="fau_sar.1.1_2">
+                  <b>implement functionality</b></span>]
               <b>to</b>
               provide [<i>authorized administrators</i>] with the
               capability to read [<i>all audit information</i>] from the audit data<a id="period_1396" href="#period_1396">. </a>            </div></div>
           <div class="element"><div class="reqid" id="FAU_SAR.1.2"><a href="#FAU_SAR.1.2" class="abbr">FAU_SAR.1.2</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="fau_sar.1.2_1">
-                  <b>invoke platform-provided functionality</b>
-                </span>, <span class="selectable-content" id="fau_sar.1.2_2">
-                  <b>implement functionality</b>
-                </span>]
+                  <b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="fau_sar.1.2_2">
+                  <b>implement functionality</b></span>]
               <b>to</b>
               provide the audit data in a manner suitable for the
               <b>authorized administrators</b>
@@ -5709,10 +5680,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FAU_SEL.1.1"><a href="#FAU_SEL.1.1" class="abbr">FAU_SEL.1.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="fau_sel.1.1_1">
-                  <b>invoke platform-provided functionality</b>
-                </span>, <span class="selectable-content" id="fau_sel.1.1_2">
-                  <b>implement functionality</b>
-                </span>]
+                  <b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="fau_sel.1.1_2">
+                  <b>implement functionality</b></span>]
               to select the set of events to be audited from the set of all auditable events based on the following attributes:
               <ol type="a">
                 <li>[<i>event type</i>]</li>
@@ -5903,26 +5872,21 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FTP_TRP.1.1/TRUSTPATH_JOIN"><a href="#FTP_TRP.1.1/TRUSTPATH_JOIN" class="abbr">FTP_TRP.1.1/TRUSTPATH_JOIN</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_JOIN_1">
-                  <b>invoke platform-provided functionality</b>
-                </span>, <span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_JOIN_2">
-                  <b>implement functionality</b>
-                </span>]
+                  <b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_JOIN_2">
+                  <b>implement functionality</b></span>]
               <b>to</b>
               provide a communication path between itself and
               <b>a joining
               component</b>
               that is logically distinct from other communication paths and provides assured identification of
               [<b>selection</b>: <span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_JOIN_3">
-                  <b>the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> endpoint</b>
-                </span>, <span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_JOIN_4">
-                  <b>both joining component and <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> endpoint</b>
-                </span>]
+                  <b>the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> endpoint</b></span>, <span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_JOIN_4">
+                  <b>both joining component and <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> endpoint</b></span>]
               and protection of the communicated data from
               [<i>modification</i>]
               <b>and</b>
               [<b>selection</b>: <span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_JOIN_5">disclosure</span>, <span class="selectable-content" id="ftp_trp.1.1_TRUSTPATH_JOIN_6">
-                  <b>none</b>
-                </span>]<a id="period_1470" href="#period_1470">. </a>            </div></div>
+                  <b>none</b></span>]<a id="period_1470" href="#period_1470">. </a>            </div></div>
           <div class="element"><div class="reqid" id="FTP_TRP.1.2/TRUSTPATH_JOIN"><a href="#FTP_TRP.1.2/TRUSTPATH_JOIN" class="abbr">FTP_TRP.1.2/TRUSTPATH_JOIN</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall  [<b>selection</b>: <span class="selectable-content" id="ftp_trp.1.2_TRUSTPATH_JOIN_1"><b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="ftp_trp.1.2_TRUSTPATH_JOIN_2"><b>implement functionality</b></span>] <b>to</b> permit  [<b>selection</b>: <span class="selectable-content" id="ftp_trp.1.2_TRUSTPATH_JOIN_3">the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="ftp_trp.1.2_TRUSTPATH_JOIN_4"><b>the joining component</b></span>]  to initiate communication via the trusted path<a id="period_1471" href="#period_1471">. </a></div></div>
           <div class="element"><div class="reqid" id="FTP_TRP.1.3/TRUSTPATH_JOIN"><a href="#FTP_TRP.1.3/TRUSTPATH_JOIN" class="abbr">FTP_TRP.1.3/TRUSTPATH_JOIN</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall  [<b>selection</b>: <span class="selectable-content" id="ftp_trp.1.3_TRUSTPATH_JOIN_1"><b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="ftp_trp.1.3_TRUSTPATH_JOIN_2"><b>implement functionality</b></span>] <b>to</b> require the use of the trusted path for [<i>joining components to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> under environmental constraints identified in [<b>assignment</b>: 
      <span class="assignable-content">reference to operational guidance</span>]]</i><a id="period_1472" href="#period_1472">. </a><div class="appnote"><span class="note-header">Application
@@ -6278,10 +6242,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FAU_GEN.1.2/MAS_SERVER"><a href="#FAU_GEN.1.2/MAS_SERVER" class="abbr">FAU_GEN.1.2/MAS_SERVER</a></div><div class="reqdesc">
               The
               [<b>selection</b>: <span class="selectable-content" id="fau_gen.1.2_MAS_SERVER_1">
-                  <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server</b>
-                </span>, <span class="selectable-content" id="fau_gen.1.2_MAS_SERVER_2">
-                  <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server platform</b>
-                </span>]
+                  <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server</b></span>, <span class="selectable-content" id="fau_gen.1.2_MAS_SERVER_2">
+                  <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server platform</b></span>]
               shall record within the audit data at least the following information:
               <ul>
                 <li>date and time of the auditable event</li>
@@ -6334,10 +6296,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FAU_STG.2.1"><a href="#FAU_STG.2.1" class="abbr">FAU_STG.2.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="fau_stg.2.1_1">
-                  <b>invoke platform-provided functionality</b>
-                </span>, <span class="selectable-content" id="fau_stg.2.1_2">
-                  <b>implement functionality</b>
-                </span>]
+                  <b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="fau_stg.2.1_2">
+                  <b>implement functionality</b></span>]
               to protect the stored audit data in the audit trail from unauthorized
               <b>modification</b><a id="period_1562" href="#period_1562">. </a>            <div class="appnote"><span class="note-header">Application
       Note:
@@ -7606,10 +7566,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FPT_ITT.1.1/INTER_XFER"><a href="#FPT_ITT.1.1/INTER_XFER" class="abbr">FPT_ITT.1.1/INTER_XFER</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fpt_itt.1.1_INTER_XFER_1">
-                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITT1_IPSEC_INVOKE">IPsec</span></li><li style=""><span class="selectable-content" id="ITT1_TLS_INVOKE">mutually authenticated TLS</span></li><li style=""><span class="selectable-content" id="ITT1_DTLS_INVOKE">mutually authenticated DTLS</span></li><li style=""><span class="selectable-content" id="ITT1_HTTPS_INVOKE">HTTPS</span></li><li style=""><span class="selectable-content" id="ITT1_SSH_INVOKE">SSH</span></li></ul>]</b>
-                </span></li><li style=""><span class="selectable-content" id="fpt_itt.1.1_INTER_XFER_2">
-                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITT1_IPSEC_IMPLEMENT">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span></li><li style=""><span class="selectable-content" id="ITT1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITT1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITT1_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li><li style=""><span class="selectable-content" id="ITT1_SSH_IMPLEMENT">SSH as defined in the Functional Package for Secure Shell</span></li></ul>]</b>
-                </span></li></ul>]
+                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITT1_IPSEC_INVOKE">IPsec</span></li><li style=""><span class="selectable-content" id="ITT1_TLS_INVOKE">mutually authenticated TLS</span></li><li style=""><span class="selectable-content" id="ITT1_DTLS_INVOKE">mutually authenticated DTLS</span></li><li style=""><span class="selectable-content" id="ITT1_HTTPS_INVOKE">HTTPS</span></li><li style=""><span class="selectable-content" id="ITT1_SSH_INVOKE">SSH</span></li></ul>]</b></span></li><li style=""><span class="selectable-content" id="fpt_itt.1.1_INTER_XFER_2">
+                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITT1_IPSEC_IMPLEMENT">IPsec as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client</span></li><li style=""><span class="selectable-content" id="ITT1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITT1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITT1_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li><li style=""><span class="selectable-content" id="ITT1_SSH_IMPLEMENT">SSH as defined in the Functional Package for Secure Shell</span></li></ul>]</b></span></li></ul>]
               <b>to</b>
               protect
               <b>all</b>
@@ -7685,10 +7643,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FPT_ITT.1.1/INTER_XFER_AGENT"><a href="#FPT_ITT.1.1/INTER_XFER_AGENT" class="abbr">FPT_ITT.1.1/INTER_XFER_AGENT</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fpt_itt.1.1_INTER_XFER_AGENT_1">
-                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITT2_TLS_INVOKE">mutually authenticated TLS</span></li><li style=""><span class="selectable-content" id="ITT2_DTLS_INVOKE">mutually authenticated DTLS</span></li><li style=""><span class="selectable-content" id="ITT2_HTTPS_INVOKE">HTTPS</span></li></ul>]</b>
-                </span></li><li style=""><span class="selectable-content" id="fpt_itt.1.1_INTER_XFER_AGENT_2">
-                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITT2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITT2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITT2_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li></ul>]</b>
-                </span></li></ul>]
+                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITT2_TLS_INVOKE">mutually authenticated TLS</span></li><li style=""><span class="selectable-content" id="ITT2_DTLS_INVOKE">mutually authenticated DTLS</span></li><li style=""><span class="selectable-content" id="ITT2_HTTPS_INVOKE">HTTPS</span></li></ul>]</b></span></li><li style=""><span class="selectable-content" id="fpt_itt.1.1_INTER_XFER_AGENT_2">
+                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITT2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITT2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITT2_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li></ul>]</b></span></li></ul>]
               <b>to</b>
               protect all data from [<i>disclosure and modification</i>] when it is
               <b>transferred</b>
@@ -7807,10 +7763,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FTP_ITC.1.1/INTER_TSF_XFER_AGENT"><a href="#FTP_ITC.1.1/INTER_TSF_XFER_AGENT" class="abbr">FTP_ITC.1.1/INTER_TSF_XFER_AGENT</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ftp_itc.1.1_INTER_TSF_XFER_AGENT_1">
-                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC2_TLS_INVOKE">mutually authenticated TLS</span></li><li style=""><span class="selectable-content" id="ITC2_DTLS_INVOKE">mutually authenticated DTLS</span></li><li style=""><span class="selectable-content" id="ITC2_HTTPS_INVOKE">HTTPS</span></li></ul>]</b>
-                </span></li><li style=""><span class="selectable-content" id="ftp_itc.1.1_INTER_TSF_XFER_AGENT_2">
-                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITC2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITC2_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li></ul>]</b>
-                </span></li></ul>]
+                  <b>invoke platform-provided functionality to use [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC2_TLS_INVOKE">mutually authenticated TLS</span></li><li style=""><span class="selectable-content" id="ITC2_DTLS_INVOKE">mutually authenticated DTLS</span></li><li style=""><span class="selectable-content" id="ITC2_HTTPS_INVOKE">HTTPS</span></li></ul>]</b></span></li><li style=""><span class="selectable-content" id="ftp_itc.1.1_INTER_TSF_XFER_AGENT_2">
+                  <b>implement functionality using [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITC2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the Package for Transport Layer Security</span></li><li style=""><span class="selectable-content" id="ITC2_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li></ul>]</b></span></li></ul>]
               <b>to</b>
               provide a
               <b>trusted</b>
@@ -8057,7 +8011,8 @@ The following sections list Common Criteria and technology terms used in this do
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>selection</b>: <span class="selectable-content" id="fpt_tst_ext.1.2_1">invoke platform-provided functionality</span>, <span class="selectable-content" id="fpt_tst_ext.1.2_2">implement functionality</span>]
               to provide the capability to verify the integrity of stored <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> executable code when it is loaded for execution through the use of the
-              [<b>selection</b>: <span class="selectable-content" id="fpt_tst_ext.1.2_3"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="fpt_tst_ext.1.2_4"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>]-provided cryptographic services<a id="period_2022" href="#period_2022">. </a>            </div></div><h3 id="ext-comp-FPT_TUD_EXT" class="indexable" data-level="4">C.2.4.4 FPT_TUD_EXT Trusted Update</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for allowing authorized administrators to query software versions, initiate updates, and verify software updates prior to installation<a id="period_2023" href="#period_2023">. </a></div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FPT_TUD_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a>,
+              [<b>selection</b>: <span class="selectable-content" id="fpt_tst_ext.1.2_3"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="fpt_tst_ext.1.2_4"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>]
+              -provided cryptographic services<a id="period_2022" href="#period_2022">. </a>            </div></div><h3 id="ext-comp-FPT_TUD_EXT" class="indexable" data-level="4">C.2.4.4 FPT_TUD_EXT Trusted Update</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for allowing authorized administrators to query software versions, initiate updates, and verify software updates prior to installation<a id="period_2023" href="#period_2023">. </a></div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FPT_TUD_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a>,
              Trusted Update,
              defines requirements for authorized administrators to manage software versions
             and updates<a id="period_2024" href="#period_2024">. </a></p><h4>Management: FPT_TUD_EXT.1</h4><p>
