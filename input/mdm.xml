@@ -232,7 +232,7 @@ DONE:
 				such as DEKs or storage repositories that contain keys. </term>
 			<term full="Locked State" >Device state where the device is powered
 				on but most functionality is unavailable for use without authentication.</term>
-      <term full="Managed Device" abbr="MD">A device enrolled and managed, or to be enrolled and managed, by an MDM system. This device is a mobile device typically evaluated under the MDF PP or a device utilizing a GPOS typically evaluated under the GPOS PP.</term>
+      <term full="Managed Device" abbr="MD">A device enrolled and managed, or to be enrolled and managed, by an MDM system. This device is a mobile device typically evaluated under the MDF PP or a device utilizing a manageable GPOS typically evaluated under the GPOS PP.</term>
       <term full="Mobile Application Store" abbr="MAS">An MDM feature that allows for an organization to substitute a device manufacturer's
             application store for one that restricts what applications are made available to users.</term>
 			<term full="Mobile Device">A device which is composed of a hardware platform and its system software. The device typically provides wireless
@@ -492,6 +492,7 @@ DONE:
 	    <cc-pp-conf/>
 	    <cc-pp-config-with>
 	      <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 4.0</PP-cc-ref>
+        <PP-cc-ref>Protection Profile for General Purpose Operating Systems, Version 5.0</PP-cc-ref>
 	      <PP-cc-ref>Protection Profile for Application Software, Version 2.0</PP-cc-ref>
 	      <Mod-cc-ref>PP-Module for MDM Agents, Version 2.0</Mod-cc-ref>
 	      <Mod-cc-ref>PP-Module for VPN Client, Version 3.0</Mod-cc-ref>
@@ -575,7 +576,7 @@ DONE:
 				</h:tr>
 				<h:tr>
 					<h:td>FAU_CRP_EXT.1</h:td>
-					<h:td>Support for Compliance Reporting of Mobile Device Configuration</h:td>
+					<h:td>Support for Compliance Reporting of MD Configuration</h:td>
 					<h:td>One</h:td>
 				</h:tr>
 				<h:tr>
@@ -1262,8 +1263,7 @@ DONE:
 
 			The evaluator's activities for testing that include use of an agent will ensure that the Server interacts appropriately with the agent (i.e., sends a
 			policy update to the agent), but will not ensure that the agent handles the received data correctly (i.e., appropriately applies the policy to the 
-			device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals PP or the PP-Module for Mobile Device Management
-			Agents.<h:br/><h:br/> 
+			device), as that is accounted for in the Evaluation Activities in the MDF PP, GPOS PP, or the PP-Module for MDM	Agents.<h:br/><h:br/> 
 	  
   	  In addition to the above guidance, if the TOE server acts as a primary MDM server and interfaces with one or more subordinate MDM servers, then the ST 
   	  is required to list all of the supported subordinate MDM servers. All evaluation activity testing that includes the use of a subordinate MDM server should
@@ -1286,7 +1286,7 @@ DONE:
 		    <fam-behavior>This family defines requirements for the TSF to alert administrators when a set of
 		      specified events occurs.</fam-behavior>		  
 		  </ext-comp-def>
-	    <ext-comp-def title="Support for Compliance Reporting of Mobile Device Configuration"
+	    <ext-comp-def title="Support for Compliance Reporting of Managed Device Configuration"
 	      fam-id="FAU_CRP_EXT">
 	      <fam-behavior>This family defines requirements for the TSF to provide an interface for the
 	        MDM server to convey information about MDs for other systems.</fam-behavior>
@@ -1356,7 +1356,7 @@ DONE:
 			</audit-event>
 		</f-component>
 		
-        <f-component cc-id="fau_crp_ext.1" name="Support for Compliance Reporting of Mobile Device Configuration">
+        <f-component cc-id="fau_crp_ext.1" name="Support for Compliance Reporting of Managed Device Configuration">
           <consistency-rationale/>
           <comp-lev>defines requirements for providing information to enrolled MDs
             through a secure channel.</comp-lev>
@@ -6361,7 +6361,7 @@ DONE:
 		    agent. This requirement is broken into two configurable areas: MDM agent commands and MDM agent policies. The ST author can add more
 		    commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> 
               Function-specific Application Notes:<h:br/><h:br/> 
-              Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v4.0.<h:br/><h:br/> 
+              Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v4.0 and General Purpose Operating Systems (GPOS) PP v5.0.<h:br/><h:br/> 
               Function <xref to="smf12"/> may be satisfied for the BYOD use case by application denylisting or disabling. In the case of BYOD, an enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not lose any information they might have in the application.<h:br/><h:br/>
               Function <xref to="smf16"/> provides the MDM server to display an alert to the user of the MD.<h:br/><h:br/> 
               The audit data read according to Function <xref to="smf19"/> are to be transmitted to an external audit server according to FAU_STG.1. The MDM server is not expected to retain those logs.<h:br/><h:br/> 
@@ -6376,7 +6376,7 @@ DONE:
 		      clearly identifies which management functions match the selections and assignments of the
 		      evaluated MD and which management 
 		      functions were not evaluated.</TSS>
-              <Guidance>For each command that the TSF can issue to an MDM agent and for each mobile device configuration policies that can be applied, the evaluator shall examine the operational guidance to verify that it includes instructions on how to perform these actions, and what particular parameters or options can be specified for them.</Guidance>
+              <Guidance>For each command that the TSF can issue to an MDM agent and for each MD configuration policies that can be applied, the evaluator shall examine the operational guidance to verify that it includes instructions on how to perform these actions, and what particular parameters or options can be specified for them.</Guidance>
               <Tests>For each MDM agent or platform listed as supported in the ST:<testlist>
                   <test>The evaluator shall verify the ability to command each MDM agent functional capability and configure each MDM agent policy listed above.</test>
                 </testlist>
@@ -7354,7 +7354,7 @@ DONE:
               internal to the TOE" must be selected in the first selection. Additionally FPT_ITT.1/INTER_XFER_AGENT must be selected in the second selection and
               FPT_ITT.1/INTER_XFER_AGENT must be included in the ST. <h:br/><h:br/>
 
-              If the TOE interoperates with an evaluated MDM agent built into a mobile device (i.e., the TOE does not include an MDM agent), the communication channel 
+              If the TOE interoperates with an evaluated MDM agent built into a MD (i.e., the TOE does not include an MDM agent), the communication channel 
               between the agent and TSF is external to the TOE and thus "an MDM agent that is external to the TOE" must be selected in the first selection.
               Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the ST. <h:br/><h:br/> 
               If the TOE acts as a primary MDM server and interoperates with a subordinate MDM server to forward policies to a MDM agent on a managed device, then
