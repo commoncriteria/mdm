@@ -1,6 +1,97 @@
-<?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="..\transformspp2html.xsl"?>
-<?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
+<!-- <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> -->
+<?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!--
+Partial mapping from old iteration to new
+FCS_COP.1(1) => FCS_COP.1/SKC
+FCS_COP.1(2) => FCS_COP.1/Hash
+FCS_COP.1(3) => FCS_COP.1/SigGen
+FCS_COP.1(3) => FCS_COP.1/SigVer
+FCS_COP.1(4) => FCS_COP.1/KeyedHash
+FAU_GEN.1(1) => FAU_GEN.1/AUDITGEN
+FAU_GEN.1(2) => FAU_GEN.1/MAS_SERVER
+FPT_ITT.1(1) => FPT_ITT.1/INTER_XFER
+FPT_ITT.1(2) => FPT_ITT.1/INTER_XFER_AGENT
+fia_x509_ext.1(1) => fia_x509_ext.1/CERTVAL_MAN
+fia_x509_ext.1(2) => fia_x509_ext.1/CERTVAL_SEL
+fmt_mof.1(1) => fmt_mof.1/FUNCBE
+fmt_mof.1(2) => fmt_mof.1/MANAGEMENT_ENROLL
+fmt_mof.1(3) => fmt_mof.1/MANAGEMENT_MAS
+FMT_SMF.1(1) => FMT_SMF.1/SERVER_CONF_AGENT
+FMT_SMF.1(2) => FMT_SMF.1/SERVER_CONF_SERVER
+FMT_SMF.1(3) => FMT_SMF.1/MAS
+FMT_SMR.1(1) => FMT_SMR.1/SECMAN_ROLES
+FMT_SMR.1(2) => FMT_SMR.1/SECMAN_ROLES_MAS
+-->
+<!-- 26 Feb 2021 - rmc
+    To bring this up to the latest transforms:
+	  - added ids to all f-elements
+	  - changed all chapters and subsections to sections
+	  - changed all explicit cross-references to xref to=
+	  - changed all implicit references to xref g=
+	  - removed all the abbr tags
+	  - removed unnecessary references 
+	  - Fixed table prefixes so there would be a space
+	  - fixed the ECD material (to the best of my ability). ECD section now auto-generated as per TD552.
+		Someone needs to validate that the addressed-by and rationale elements are correct.
+	  - Updated iteration names where they were still using old ones
+	  - Changed a bunch of explicit references to xrefs.
+	  - Moved the essay on Security Audit for Distributed TOEs from the Requirements section to the front matter
+		in the Introduction to Distributed TOEs. I think it belongs here.
+	  - Moved the audit events into the SFRs and removed the audit table from the EA section of FAU_GEN
+		(which is an abomination).
+	  - Audit events now appear in tables at the top of the section or appendix in which the SFR appears.
+	  - Created a new table for audit events from external packages.
+	  - The re-working of the audit requirements makes things look different, but all the requirements should be the same.
+	  - Added the Implicitly Satisfied Requirements Appendix based on TD552
+	  - Incorporated all TDs as of the draft date:
+		- 0552 – SFR Rationale and Implicitly Satisfied SFRs
+		- 0524 – Updates to Certificate Revocation (FIA_X509_EXT.1)
+		- 0479 – FMT_SMF.1(1) Reliance on MDF Evals
+		- 0461 – Security Audit for Distributed TOEs
+		- 0438 – TST and TUD on the MDM agent
+-->
+<!--
+Check this:
+- the objective-refer info in the threats &amp; assumptions sections is not in the 
+  version 3 word document. I had to copy them from the 2.0 github doc  
+
+- for the security objectives (<SOs> tags), I copied the <component-refer> 
+   tags from version 2.0, these need to be checked
+
+To do:
+- ask Kevin about <OSPs> tag, why do I have to wrap each <OSP> with an <OSPs> 
+(You shouldn't the OSPs tag should wrap all OSP tags).
+- Make.1 of trusted channel/path freed
+- TLS: package and figure out how to use platform TLS with the TLS package: NOTE: most or all of these say something to the effect that protocol,etc. may be met 
+	with platform-provided services - check FTP_TRP.1(1) - is this good enough?
+- update TOE boundary section
+
+
+
+NOTES:
+- Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg.1.1(2), fmt_mof.1(3)
+
+DONE:
+- map new SFR's to o.things
+- Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(3), fmt_smf.1(3)
+- Mas server - Need to check references to MAS
+- edit fau_gen to make it applicable to any component of a distributed toe
+- have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
+- NIAP comment matrix
+- finish table 1, have to add where we think things belong
+- split table 2 (audit) into mandatory/selection based table and opt/obj table >> does not need to be completed before draft 2 goes out
+- fix dead links to TLS, etc: NOTE: The TLS/DTLS links should be fixed
+- add disclaimer to audit table that only those SFRs included in the ST are required to be audited. (I.e., if an objective SFR is not included then they do not have
+	to audit it)
+- unify the random use of  TOE/TSF/MDM server and MD user/agent
+- make links out of all the references to ITT/ITC sfr's
+- fix table 2 after mas server sfr's get figured out
+- incorporate evaluation activity for distributed TOE (SD B.4) (pulled it in the appendix but its ugly and might need to be fixed)
+- cross references - search for Section &amp; Appendix cross refs &amp; adjust
+
+-->
 <PP boilerplate="yes" target-product="MDM" target-products="MDMs" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section">
   <PPReference>
     <ReferenceTable>
@@ -40,7 +131,7 @@
     <entry>
       <version>5.0</version>
       <date>2024-11-15</date>
-      <subject> Updates to align with Technical Decisions<h:br/> Updates to align with CC:2022<h:br/> Updates to support subordinate MDM<h:br/><h:br/></subject>
+      <subject> Updates to align with Technical Decisions<h:br/> Updates to align with CC:2022<h:br/> Updates to support subordinate MDM<h:br/> Updates to support GPOS PP as a base for MDM Agent<h:br/><h:br/></subject>
     </entry>
   </RevisionHistory>
   <include-pkg id="ssh">
@@ -103,7 +194,7 @@
 				such as DEKs or storage repositories that contain keys.</term>
       <term full="Locked State">Device state where the device is powered
 				on but most functionality is unavailable for use without authentication.</term>
-      <term full="Managed Device" abbr="MD">A device enrolled and managed, or to be enrolled and managed, by an MDM system. This device is a mobile device typically evaluated under the MDF PP or a device utilizing a GPOS typically evaluated under the GPOS PP.</term>
+      <term full="Managed Device" abbr="MD">A device enrolled and managed, or to be enrolled and managed, by an MDM system. This device is a mobile device typically evaluated under the MDF PP or a device utilizing a manageable GPOS typically evaluated under the GPOS PP.</term>
       <term full="Mobile Application Store" abbr="MAS">An MDM feature that allows for an organization to substitute a device manufacturer's
             application store for one that restricts what applications are made available to users.</term>
       <term full="Mobile Device">A device which is composed of a hardware platform and its system software. The device typically provides wireless
@@ -353,12 +444,6 @@
         </package-usage>
       </package-usage-list>
     </section>
-    <section title="new into section">
-      <h:p>heyyyyyyyyyyy</h:p>
-    </section>
-    <section title="another into section">
-      <h:p>yooooooooo</h:p>
-    </section>
   </sec:Introduction>
   <sec:Conformance_Claims title="Conformance Claims" id="ccl" boilerplate="no">
     <CClaimsInfo cc-version="cc-2022r1" cc-approach="direct-rationale">
@@ -368,6 +453,7 @@
       <cc-pp-conf/>
       <cc-pp-config-with>
         <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 4.0</PP-cc-ref>
+        <PP-cc-ref>Protection Profile for General Purpose Operating Systems, Version 5.0</PP-cc-ref>
         <PP-cc-ref>Protection Profile for Application Software, Version 2.0</PP-cc-ref>
         <Mod-cc-ref>PP-Module for MDM Agents, Version 2.0</Mod-cc-ref>
         <Mod-cc-ref>PP-Module for VPN Client, Version 3.0</Mod-cc-ref>
@@ -480,7 +566,7 @@
         </h:tr>
         <h:tr>
           <h:td>FAU_CRP_EXT.1</h:td>
-          <h:td>Support for Compliance Reporting of Mobile Device Configuration</h:td>
+          <h:td>Support for Compliance Reporting of MD Configuration</h:td>
           <h:td>One</h:td>
         </h:tr>
         <h:tr>
@@ -844,7 +930,10 @@
     <sec:Threats>
       <threats>
         <threat name="T.MALICIOUS_APPS">
-          <description>Malicious or flawed application threats exist because apps loaded onto anMD may include malicious or exploitable code. An administrator of the MDM or MD usermay inadvertently import malicious code, or an attacker may insert malicious code into the TOE, resulting in thecompromise of TOE or TOE data.</description>
+          <description>Malicious or flawed application threats exist because apps loaded onto an
+						MD may include malicious or exploitable code. An administrator of the MDM or MD user
+						may inadvertently import malicious code, or an attacker may insert malicious code into the TOE, resulting in the
+						compromise of TOE or TOE data.</description>
           <!-- New mapping to build updated threat mapping table. -->
           <addressed-by>FAU_ALT_EXT.1</addressed-by>
           <rationale>A conformant TOE mitigates the threat of malicious apps by generating an alert if application of a policy fails, as this may indicate that a mechanism used to prevent the execution of malicious apps was not able to be enforced.</rationale>
@@ -880,7 +969,8 @@
           <rationale>A conformant TOE mitigates the threat of malicious apps by communicating its policy data to enrolled MDs securely over a trusted channel.</rationale>
         </threat>
         <threat name="T.NETWORK_ATTACK">
-          <description>An attacker may masquerade as an MDM server and attempt tocompromise the integrity of the MD by sending malicious management commands.</description>
+          <description>An attacker may masquerade as an MDM server and attempt to
+						compromise the integrity of the MD by sending malicious management commands.</description>
           <!-- New mapping to build updated threat mapping table. -->
           <addressed-by>FAU_GEN.1/AUDITGEN</addressed-by>
           <rationale>A conformant TOE mitigates the threat of network attack by generating audit records of activity which may indicate attempts of such attacks.</rationale>
@@ -968,7 +1058,9 @@
           <rationale>A conformant TOE mitigates the threat of network attack by implementing a trusted path for remote administration.</rationale>
         </threat>
         <threat name="T.NETWORK_EAVESDROP">
-          <description>An attacker is positioned on a communications channel or elsewhere on thenetwork infrastructure. Attackers may monitor and gain access to data exchangedbetween the MDM server and other endpoints.</description>
+          <description>An attacker is positioned on a communications channel or elsewhere on the
+						network infrastructure. Attackers may monitor and gain access to data exchanged
+						between the MDM server and other endpoints.</description>
           <!-- New mapping to build updated threat mapping table. -->
           <addressed-by>FCS_CKM_EXT.7 (Implementation-based)</addressed-by>
           <rationale>A conformant TOE mitigates the threat of network eavesdrop by ensuring that a third-party cannot obtain the key used by the TOE to communicate securely with a remote entity.</rationale>
@@ -1032,7 +1124,9 @@
           <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a trusted path for remote administration.</rationale>
         </threat>
         <threat name="T.PHYSICAL_ACCESS">
-          <description>The MD may be lost or stolen, and an unauthorized individual mayattempt to access user data. Although these attacks are primarily directed against theMD platform, the TOE configures features on MDs that mitigate the this threat against them. Therefore, misuse or failure of the TOE may also compromise the MD, exposing it to this threat.</description>
+          <description>The MD may be lost or stolen, and an unauthorized individual may
+						attempt to access user data. Although these attacks are primarily directed against the
+						MD platform, the TOE configures features on MDs that mitigate the this threat against them. Therefore, misuse or failure of the TOE may also compromise the MD, exposing it to this threat.</description>
           <!-- New mapping to build updated threat mapping table. -->
           <addressed-by>FAU_ALT_EXT.1</addressed-by>
           <rationale>A conformant TOE mitigates the threat of physical access to the MD by generating an alert when a MD is unable to receive policy information or has its enrollment status altered (e.g. unenrollment may be evidence of physical compromise).</rationale>
@@ -1227,8 +1321,7 @@
     <h:br/>
     The evaluator's activities for testing that include use of an agent will ensure that the Server interacts appropriately with the agent (i.e., sends a
 			policy update to the agent), but will not ensure that the agent handles the received data correctly (i.e., appropriately applies the policy to the 
-			device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals PP or the PP-Module for Mobile Device Management
-			Agents.
+			device), as that is accounted for in the Evaluation Activities in the MDF PP, GPOS PP, or the PP-Module for MDM	Agents.
     <h:br/>
     <h:br/>
     In addition to the above guidance, if the TOE server acts as a primary MDM server and interfaces with one or more subordinate MDM servers, then the ST 
@@ -1251,7 +1344,7 @@
         <ext-comp-def title="Server Alerts" fam-id="FAU_ALT_EXT">
           <fam-behavior>This family defines requirements for the TSF to alert administrators when a set of specified events occurs.</fam-behavior>
         </ext-comp-def>
-        <ext-comp-def title="Support for Compliance Reporting of Mobile Device Configuration" fam-id="FAU_CRP_EXT">
+        <ext-comp-def title="Support for Compliance Reporting of Managed Device Configuration" fam-id="FAU_CRP_EXT">
           <fam-behavior>This family defines requirements for the TSF to provide an interface for the MDM server to convey information about MDs for other systems.</fam-behavior>
         </ext-comp-def>
         <ext-comp-def title="Network Reachability Review" fam-id="FAU_NET_EXT">
@@ -1321,8 +1414,8 @@
             <audit-event-info>Identity of MD that sent alert.</audit-event-info>
           </audit-event>
         </f-component>
-        <!-- FAU_CRP_EXT.1 Support for Compliance Reporting of Mobile Device Configuration -->
-        <f-component cc-id="fau_crp_ext.1" id="fau-crp-ext-1" name="Support for Compliance Reporting of Mobile Device Configuration">
+        <!-- FAU_CRP_EXT.1 Support for Compliance Reporting of Managed Device Configuration -->
+        <f-component cc-id="fau_crp_ext.1" id="fau-crp-ext-1" name="Support for Compliance Reporting of Managed Device Configuration">
           <comp-lev>defines requirements for providing information to enrolled MDs
             through a secure channel.</comp-lev>
           <management>
@@ -1459,8 +1552,7 @@
               <h:br/>
               Item
               <h:b>b</h:b>
-              includes those commands, which may be performed automatically based on triggers or on a schedule.
-              <h:mark style="background-color:yellowgreen;">If the TOE server acts as a primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM Server" must be selected. For distributed TOEs, if the TOE component directly interacts with a primary MDM server, subordinate MDM server, or MDM agent then the corresponding selection should be made for that component. If the TOE component does not directly interact with any of these entities, then it is acceptable to select "none."</h:mark>
+              includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE server acts as a primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM Server" must be selected. For distributed TOEs, if the TOE component directly interacts with a primary MDM server, subordinate MDM server, or MDM agent then the corresponding selection should be made for that component. If the TOE component does not directly interact with any of these entities, then it is acceptable to select "none".
               <h:br/>
               <h:br/>
               <h:b>In item d above, "start up and shut down of the MDM system" must be selected if the TSF has a start up and shut down phase. 
@@ -1566,8 +1658,7 @@
               The
               <h:b>MAS Server</h:b>
               shall be able to generate audit data of the following
-              auditable events: [<h:i>
-                <h:ol type="a">
+              auditable events: [<h:i><h:ol type="a">
                   <h:li>Failure to push a new application on a MD</h:li>
                   <h:li>Failure to update an existing application on a MD</h:li>
                 </h:ol>
@@ -3794,7 +3885,7 @@
           <depends on-sel="sel-ckm-2-encap"/>
           <f-element id="fcs-cop-1e1-keyencap">
             <title>
-              The TSF shall perform [key encapsulation] in accordance with a specified cryptographic algorithm
+              The TSF shall perform [<h:i>key encapsulation</h:i>] in accordance with a specified cryptographic algorithm
               <selectables>
                 <tabularize id="tab-fcs-cop-keyencap-sels" title="Allowable choices for FCS_COP.1/KeyEncap">
                   <textcol>Identifier</textcol>
@@ -3928,7 +4019,7 @@
           <depends on-sel="sel-ckm-2-wrap"/>
           <f-element id="fcs-cop-1e1-kw">
             <title>
-              The TSF shall perform [key wrapping] in accordance with a specified cryptographic algorithm
+              The TSF shall perform [<h:i>key wrapping</h:i>] in accordance with a specified cryptographic algorithm
               <selectables>
                 <tabularize id="fcs-cop-kw-sels" title="Allowable choices for FCS_COP.1/KeyWrap">
                   <textcol>Identifier</textcol>
@@ -4947,7 +5038,7 @@
           <depends on-sel="fcs_dtlsc_ext.1.2_22"/>
           <f-element id="fel-encrypt-how">
             <title>
-              The TSF shall perform [symmetric-key encryption/decryption] in accordance with a 
+              The TSF shall perform [<h:i>symmetric-key encryption/decryption</h:i>] in accordance with a 
                 specified cryptographic algorithm
               <selectables>
                 <tabularize id="fcs-cop-skc-sels" title="Allowable choices for FCS_COP.1/SKC">
@@ -5286,18 +5377,13 @@
                 </tabularize>
                 <selectable id="sel-fcs-cop-xof-shake">
                   <col>SHAKE</col>
-                  <col>Functions = [SHAKE128, SHAKE256]</col>
+                  <col>Functions = [SHAKE256]</col>
                   <col>NIST FIPS PUB 202 Section 6.2 [SHAKE]</col>
                 </selectable>
               </selectables>
             </title>
-            <note role="application">
-              In accordance with CNSA 2.0, SHAKE is permitted to be used only as a component of LMS or XMSS. 
-              Therefore this component is claimed only if LMS or XMSS is claimed in FCS_CKM.1/AKG or FCS_COP.1/SigVer.
-              <h:p/>
-              Since LMS and XMSS use both SHAKE128 and SHAKE256 internally, claiming and testing of both
-              functions is mandatory.
-            </note>
+            <note role="application">In accordance with CNSA 2.0, SHAKE is permitted to be used only as a component of LMS or XMSS. 
+              Therefore this component is claimed only if LMS or XMSS is claimed in FCS_COP.1/SigVer.</note>
             <aactivity>
               <TSS/>
               <Guidance/>
@@ -5320,7 +5406,7 @@
                   </h:tr>
                   <h:tr>
                     <h:td valign="top">SHAKE</h:td>
-                    <h:td valign="top">Function = [SHAKE128, SHAKE256]</h:td>
+                    <h:td valign="top">Function = [SHAKE256]</h:td>
                     <h:td valign="top">NIST FIPS PUB 202 Section 6.2 [SHAKE]</h:td>
                   </h:tr>
                 </h:table>
@@ -5329,7 +5415,7 @@
                 perform the Algorithm Functional Test, Monte Carlo Test, and Variable Output Test using the
                 following input parameters:
                 <h:ul>
-                  <h:li>Function [SHAKE128, SHAKE256]</h:li>
+                  <h:li>Function [SHAKE256]</h:li>
                   <h:li>Output length [16-65536] bits</h:li>
                 </h:ul>
                 <h:p/>
@@ -5345,21 +5431,17 @@
                 <h:i>rate</h:i>
                 equals
                 <h:p/>
-                <h:ul>
-                  <h:li>1344 for SHAKE128, and</h:li>
-                  <h:li>1088 for SHAKE256.</h:li>
-                </h:ul>
+                1088.
                 <h:p/>
                 Additionally, generate tests cases of random data for messages of every multiple of (rate+1) bits
-                starting at length rate, and continuing until 65535 is exceeded. For SHAKE128, this should
-                result in a total of 1391 test cases.
+                starting at length rate, and continuing until 65535 is exceeded.
                 <h:p/>
                 <h:br/>
                 <h:b>
                   <h:i>Monte Carlo Test</h:i>
                 </h:b>
                 <h:p/>
-                The Monte Carlos test takes in a single 128-bit message (SEED) and desired output length in
+                The Monte Carlo test takes in a single 128-bit message (SEED) and desired output length in
                 bits, and runs 100 iterations of the chained computation. MaxOutBytes and MinOutBytes are the
                 largest and smallest supported input and output sizes in bytes, respectively.
                 <h:p/>
@@ -5905,7 +5987,7 @@
           <management>
             The following actions could be considered for the management functions in FMT.
             <h:ul>
-              <h:li>Import keys or secrets into the secure key storage (MDF Function 9)</h:li>
+              <h:li>Import keys or secrets into the secure key storage (MDF/GPOS Function 9)</h:li>
             </h:ul>
           </management>
           <audit>There are no auditable events foreseen.</audit>
@@ -6282,8 +6364,7 @@
               The
               <h:b>MDM server</h:b>
               shall restrict the ability to
-              [<h:b>
-                <h:i>initiate the enrollment process</h:i>
+              [<h:b><h:i>initiate the enrollment process</h:i>
               </h:b>] to [<h:i>authorized 
 			administrators and MD users</h:i>].
             </title>
@@ -6490,8 +6571,7 @@
               The
               <h:b>MAS Server</h:b>
               shall be capable of performing the following management functions:
-              [<h:i>
-                <h:ul>
+              [<h:i><h:ul>
                   <h:li>Configure application access groups</h:li>
                   <h:li>Download applications</h:li>
                   <h:li>
@@ -6534,31 +6614,31 @@
               shall be capable of
               <h:b>communicating the following commands to the MDM agent: </h:b>
               <h:ul style="list-style-type:none">
-                <h:li><ctr id="smf1" ctr-type="mgmt" pre=""/>. Transition to the locked state (MDF Function 6)</h:li>
-                <h:li><ctr id="smf2" ctr-type="mgmt" pre=""/>. Full wipe of protected data (MDF Function 7)</h:li>
-                <h:li><ctr id="smf3" ctr-type="mgmt" pre=""/>. Unenroll from management</h:li>
+                <h:li><ctr id="smf1" ctr-type="mgmt" pre=""/>. Transition to the locked state (MDF/GPOS Function 6)</h:li>
+                <h:li><ctr id="smf2" ctr-type="mgmt" pre=""/>. Full wipe of protected data (MDF/GPOS Function 7)</h:li>
+                <h:li><ctr id="smf3" ctr-type="mgmt" pre=""/>. Unenroll from management (MDF/GPOS Function 44)</h:li>
                 <h:li><ctr id="smf4" ctr-type="mgmt" pre=""/>. Install policies</h:li>
                 <h:li><ctr id="smf5" ctr-type="mgmt" pre=""/>. Query connectivity status</h:li>
                 <h:li><ctr id="smf6" ctr-type="mgmt" pre=""/>. Query the current version of the MD firmware or software</h:li>
                 <h:li><ctr id="smf7" ctr-type="mgmt" pre=""/>. Query the current version of the hardware model of the device</h:li>
                 <h:li><ctr id="smf8" ctr-type="mgmt" pre=""/>. Query the current version of installed applications</h:li>
-                <h:li><ctr id="smf9" ctr-type="mgmt" pre=""/>. Import X.509v3 certificates into the Trust Anchor Database (MDF Function 11)</h:li>
-                <h:li><ctr id="smf10" ctr-type="mgmt" pre=""/>. Install applications (MDF Function 16)</h:li>
-                <h:li><ctr id="smf11" ctr-type="mgmt" pre=""/>. Update system software (MDF Function 15)</h:li>
-                <h:li><ctr id="smf12" ctr-type="mgmt" pre=""/>. Remove applications (MDF Function 14)</h:li>
+                <h:li><ctr id="smf9" ctr-type="mgmt" pre=""/>. Import X.509v3 certificates into the Trust Anchor Database (MDF/GPOS Function 11)</h:li>
+                <h:li><ctr id="smf10" ctr-type="mgmt" pre=""/>. Install applications (MDF/GPOS Function 16)</h:li>
+                <h:li><ctr id="smf11" ctr-type="mgmt" pre=""/>. Update system software (MDF/GPOS Function 15)</h:li>
+                <h:li><ctr id="smf12" ctr-type="mgmt" pre=""/>. Remove applications (MDF/GPOS Function 14)</h:li>
               </h:ul>
               <selectables>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_1"><ctr id="smf13" ctr-type="mgmt" pre=""/>. Remove enterprise applications (MDF Function 17)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_2"><ctr id="smf14" ctr-type="mgmt" pre=""/>. Wipe enterprise data (MDF Function 28)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_3"><ctr id="smf15" ctr-type="mgmt" pre=""/>. Remove imported X.509v3 certificates and <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_4">no other X.509v3 certificates</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_6"><assignable>list of other categories of X.509v3 certificates</assignable></selectable></selectables> in the Trust Anchor Database (MDF Function 12)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_1"><ctr id="smf13" ctr-type="mgmt" pre=""/>. Remove enterprise applications (MDF/GPOS Function 17)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_2"><ctr id="smf14" ctr-type="mgmt" pre=""/>. Wipe enterprise data (MDF/GPOS Function 28)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_3"><ctr id="smf15" ctr-type="mgmt" pre=""/>. Remove imported X.509v3 certificates and <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_4">no other X.509v3 certificates</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_6"><assignable>list of other categories of X.509v3 certificates</assignable></selectable></selectables> in the Trust Anchor Database (MDF/GPOS Function 12)</selectable>
                 <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_7"><ctr id="smf16" ctr-type="mgmt" pre=""/>. Alert the user</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_8"><ctr id="smf17" ctr-type="mgmt" pre=""/>. Import keys or secrets into the secure key storage (MDF Function 9)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_9"><ctr id="smf18" ctr-type="mgmt" pre=""/>. Destroy imported keys or secrets and <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_10">no other keys or secrets</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_12"><assignable>list of other categories of keys or secrets</assignable></selectable></selectables> in the secure key storage (MDF Function 10)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_13"><ctr id="smf19" ctr-type="mgmt" pre=""/>. Read audit logs kept by the MD (MDF Function 32)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_14"><ctr id="smf20" ctr-type="mgmt" pre=""/>. Retrieve MD-software integrity verification values (MDF Function 38)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_15"><ctr id="smf21" ctr-type="mgmt" pre=""/>. Approve exceptions for sharing data between <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_16">application processes</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_17">group of application processes</selectable></selectables> (MDF Function 42)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_18"><ctr id="smf22" ctr-type="mgmt" pre=""/>. Place applications into application process groups based on <assignable>application characteristics</assignable> (MDF Function 43)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_20"><ctr id="smf23" ctr-type="mgmt" pre=""/>. Revoke Biometric template (MDF Function 46)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_8"><ctr id="smf17" ctr-type="mgmt" pre=""/>. Import keys or secrets into the secure key storage (MDF/GPOS Function 9)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_9"><ctr id="smf18" ctr-type="mgmt" pre=""/>. Destroy imported keys or secrets and <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_10">no other keys or secrets</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_12"><assignable>list of other categories of keys or secrets</assignable></selectable></selectables> in the secure key storage (MDF/GPOS Function 10)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_13"><ctr id="smf19" ctr-type="mgmt" pre=""/>. Read audit logs kept by the MD (MDF/GPOS Function 32)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_14"><ctr id="smf20" ctr-type="mgmt" pre=""/>. Retrieve MD-software integrity verification values (MDF/GPOS Function 38)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_15"><ctr id="smf21" ctr-type="mgmt" pre=""/>. Approve exceptions for sharing data between <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_16">application processes</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_17">group of application processes</selectable></selectables> (MDF/GPOS Function 42)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_18"><ctr id="smf22" ctr-type="mgmt" pre=""/>. Place applications into application process groups based on <assignable>application characteristics</assignable> (MDF/GPOS Function 43)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_20"><ctr id="smf23" ctr-type="mgmt" pre=""/>. Revoke Biometric template (MDF/GPOS Function 46)</selectable>
                 <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_21"><ctr id="smf24" ctr-type="mgmt" pre=""/>. <assignable>list of other management functions to be provided by the MD</assignable></selectable>
                 <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_23">no other management functions</selectable>
               </selectables>
@@ -6566,8 +6646,8 @@
               <h:br/>
               <h:br/>
               <h:ul style="list-style-type:none">
-                <h:li><ctr id="smf25" ctr-type="mgmt" pre=""/>. Password policy: <h:ol type="a"><h:li>minimum password length</h:li> <h:li>minimum password complexity</h:li> <h:li>maximum password lifetime (MDF Function 1)</h:li></h:ol></h:li>
-                <h:li><ctr id="smf26" ctr-type="mgmt" pre=""/>. Session locking policy: <h:ol type="a"><h:li>screen-lock enabled and disabled</h:li> <h:li>screen lock timeout</h:li> <h:li>number of authentication failures (MDF Function 2)</h:li></h:ol></h:li>
+                <h:li><ctr id="smf25" ctr-type="mgmt" pre=""/>. Password policy: <h:ol type="a"><h:li>minimum password length</h:li> <h:li>minimum password complexity</h:li> <h:li>maximum password lifetime (MDF/GPOS Function 1)</h:li></h:ol></h:li>
+                <h:li><ctr id="smf26" ctr-type="mgmt" pre=""/>. Session locking policy: <h:ol type="a"><h:li>screen-lock enabled and disabled</h:li> <h:li>screen lock timeout</h:li> <h:li>number of authentication failures (MDF/GPOS Function 2)</h:li></h:ol></h:li>
                 <h:li><ctr id="smf27" ctr-type="mgmt" pre=""/>. Wireless networks (SSIDs) to which the MD may connect (WLAN Client PP-Module Function WL-2)</h:li>
                 <h:li>
                   <ctr id="smf28" ctr-type="mgmt" pre=""/>. Security policy for each wireless network:
@@ -6583,10 +6663,10 @@
                     <h:li><assignable>any additional WLAN management functions</assignable>  (WLAN Client PP-Module Function WL-1)</h:li>
                   </h:ol>
                 </h:li>
-                <h:li><ctr id="smf29" ctr-type="mgmt" pre=""/>. Application installation policy by  <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_27">specifying authorized application repositories</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_28">specifying a set of allowed applications and versions (an application allowlist)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_29">denying application installation</selectable></selectables>, (MDF Function 8)</h:li>
-                <h:li><ctr id="smf30" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of audio or visual collection devices</assignable>  across device,  <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_31">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_32">on a per-group of applications processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_33">no other method</selectable></selectables>, (MDF Function 5)</h:li>
+                <h:li><ctr id="smf29" ctr-type="mgmt" pre=""/>. Application installation policy by  <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_27">specifying authorized application repositories</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_28">specifying a set of allowed applications and versions (an application allowlist)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_29">denying application installation</selectable></selectables>, (MDF/GPOS Function 8)</h:li>
+                <h:li><ctr id="smf30" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of audio or visual collection devices</assignable>  across device,  <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_31">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_32">on a per-group of applications processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_33">no other method</selectable></selectables>, (MDF/GPOS Function 5)</h:li>
               </h:ul>
-              <h:ul style="list-style-type:none"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_34"><ctr id="smf31" ctr-type="mgmt" pre=""/>. Enable and disable policy for the VPN protection across MD, <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_36">on a per-group of application processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_37">no other method</selectable></selectables> (MDF Function 3)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_38"><ctr id="smf32" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of radios</assignable>, (MDF Function 4)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_40"><ctr id="smf33" ctr-type="mgmt" pre=""/>. Enable and disable policy for data signaling over <assignable>list of externally accessible hardware ports</assignable>, (MDF Function 24)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_42"><ctr id="smf34" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of protocols where the device acts as a server</assignable>, (MDF Function 25)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_44"><ctr id="smf35" ctr-type="mgmt" pre=""/>. Enable and disable policy for developer modes, (MDF Function 26)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_45"><ctr id="smf36" ctr-type="mgmt" pre=""/>. Enable policy for data-at-rest protection, (MDF Function 19)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_46"><ctr id="smf37" ctr-type="mgmt" pre=""/>. Enable policy for removable media's data-at-rest protection, (MDF Function 20)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_47"><ctr id="smf38" ctr-type="mgmt" pre=""/>. Enable and disable policy for local authentication bypass, (MDF Function 27)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_48"><ctr id="smf39" ctr-type="mgmt" pre=""/>. The Bluetooth trusted channel policy:<h:br/><h:ol type="a"><h:li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth PP-Module Function BT-1)</h:li><h:li>change the Bluetooth device name (Bluetooth PP-Module Function BT-2), <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_49">Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth PP-Module Function BT-3)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_50">allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth PP-Module Function BT-4)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_51">configure allowable methods of Out of Band pairing (Bluetooth PP-Module Function BT-5)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_52">disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth PP-Module Function BT-6)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_53">disable and enable the Connection mode (Bluetooth PP-Module Function BT-7)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_54">disable and enable the Bluetooth services or profiles available on the device (Bluetooth PP-Module Function BT-8)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_55">specify minimum level of security for each pairing (Bluetooth PP-Module Function BT-9)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_56">no other Bluetooth configuration</selectable></selectables></h:li></h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_57"><ctr id="smf40" ctr-type="mgmt" pre=""/>. Enable and disable policy for display notification in the locked state of <h:br/><h:ol type="a"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_58">email notifications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_59">calendar appointments</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_60">contact associated with phone call notification</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_61">text message notification</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_62">other application-based notifications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_63">none</selectable></selectables> (MDF Function 18) </h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_64"><ctr id="smf41" ctr-type="mgmt" pre=""/>. Policy for establishing a trusted channel or disallowing establishment if the MD cannot establish a connection to determine the validity of a certificate, (MDF Function 30)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_65"><ctr id="smf42" ctr-type="mgmt" pre=""/>. Enable and disable policy for the cellular protocols used to connect to cellular network base stations, (MDF Function 31)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_66"><ctr id="smf43" ctr-type="mgmt" pre=""/>. Policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database, (MDF Function 29)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_67"><ctr id="smf44" ctr-type="mgmt" pre=""/>. <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_68">certificate</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_69">public-key</selectable></selectables> used to validate digital signature on applications, (MDF Function 33)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_70"><ctr id="smf45" ctr-type="mgmt" pre=""/>. Policy for exceptions for shared use of keys or secrets by multiple applications, (MDF Function 34)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_71"><ctr id="smf46" ctr-type="mgmt" pre=""/>. Policy for exceptions for destruction of keys or secrets by applications that did not import the key or secret, (MDF Function 35)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_72"><ctr id="smf47" ctr-type="mgmt" pre=""/>. The unlock banner policy, (MDF Function 36)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_73"><ctr id="smf48" ctr-type="mgmt" pre=""/>. Configure the auditable items (MDF Function 37)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_74"><ctr id="smf49" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_75">USB mass storage mode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_76">USB data transfer without user authentication</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_77">USB data transfer without authentication of the connection system</selectable></selectables> (MDF Function 39)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_78"><ctr id="smf50" ctr-type="mgmt" pre=""/>. Enable and disable backup of <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_79">all applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_80">selected applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_81">selected groups of applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_82">configuration data</selectable></selectables> to <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_83">locally connected system</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_84">remote system</selectable></selectables> (MDF Function 40)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_85"><ctr id="smf51" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_86">Hotspot functionality authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_87">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_88">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_89">no authentication</selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_90">USB tethering authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_91">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_92">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_93">no authentication</selectable></selectables> </selectable></selectables> (MDF Function 41)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_94"><ctr id="smf52" ctr-type="mgmt" pre=""/>. Enable and disable location services:<h:br/> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_95">across device</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_96">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_97">on a per-group of application processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_98">no other method</selectable></selectables> (MDF Function 21)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_99"><ctr id="smf53" ctr-type="mgmt" pre=""/>. Enable and disable policy for user unenrollment</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_100"><ctr id="smf54" ctr-type="mgmt" pre=""/>. Enable and disable policy for the Always-On VPN protection across device (MDF Function 45)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_101"><ctr id="smf55" ctr-type="mgmt" pre=""/>. Enable and disable policy for use of Biometric Authentication Factor (MDF Function 22)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_102"><ctr id="smf56" ctr-type="mgmt" pre=""/>. Connectivity timeout policy: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_103">allowed <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_104">number of missed reachability events</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_105">length of time without server connectivity</selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_106">when server connectivity timeout is exceeded agent shall <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_107">disable user password</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_108">wipe device</selectable></selectables> and <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_110"><assignable>other action</assignable></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_111">none</selectable></selectables> </selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_112"><ctr id="smf57" ctr-type="mgmt" pre=""/>. Enable and disable multi-user modes</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_113"><ctr id="smf58" ctr-type="mgmt" pre=""/>. Enable and disable automatic updates of system software</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_114"><ctr id="smf59" ctr-type="mgmt" pre=""/>. Enable and disable removable media</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_115"><ctr id="smf60" ctr-type="mgmt" pre=""/>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies</selectable></selectables>.</h:ul>
+              <h:ul style="list-style-type:none"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_34"><ctr id="smf31" ctr-type="mgmt" pre=""/>. Enable and disable policy for the VPN protection across MD, <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_36">on a per-group of application processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_37">no other method</selectable></selectables> (MDF/GPOS Function 3)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_38"><ctr id="smf32" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of radios</assignable>, (MDF/GPOS Function 4)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_40"><ctr id="smf33" ctr-type="mgmt" pre=""/>. Enable and disable policy for data signaling over <assignable>list of externally accessible hardware ports</assignable>, (MDF/GPOS Function 24)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_42"><ctr id="smf34" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of protocols where the device acts as a server</assignable>, (MDF/GPOS Function 25)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_44"><ctr id="smf35" ctr-type="mgmt" pre=""/>. Enable and disable policy for developer modes, (MDF/GPOS Function 26)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_45"><ctr id="smf36" ctr-type="mgmt" pre=""/>. Enable policy for data-at-rest protection, (MDF/GPOS Function 19)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_46"><ctr id="smf37" ctr-type="mgmt" pre=""/>. Enable policy for removable media's data-at-rest protection, (MDF/GPOS Function 20)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_47"><ctr id="smf38" ctr-type="mgmt" pre=""/>. Enable and disable policy for local authentication bypass, (MDF/GPOS Function 27)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_48"><ctr id="smf39" ctr-type="mgmt" pre=""/>. The Bluetooth trusted channel policy:<h:br/><h:ol type="a"><h:li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth PP-Module Function BT-1)</h:li><h:li>change the Bluetooth device name (Bluetooth PP-Module Function BT-2), <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_49">Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth PP-Module Function BT-3)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_50">allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth PP-Module Function BT-4)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_51">configure allowable methods of Out of Band pairing (Bluetooth PP-Module Function BT-5)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_52">disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth PP-Module Function BT-6)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_53">disable and enable the Connection mode (Bluetooth PP-Module Function BT-7)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_54">disable and enable the Bluetooth services or profiles available on the device (Bluetooth PP-Module Function BT-8)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_55">specify minimum level of security for each pairing (Bluetooth PP-Module Function BT-9)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_56">no other Bluetooth configuration</selectable></selectables></h:li></h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_57"><ctr id="smf40" ctr-type="mgmt" pre=""/>. Enable and disable policy for display notification in the locked state of <h:br/><h:ol type="a"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_58">email notifications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_59">calendar appointments</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_60">contact associated with phone call notification</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_61">text message notification</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_62">other application-based notifications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_63">none</selectable></selectables> (MDF/GPOS Function 18) </h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_64"><ctr id="smf41" ctr-type="mgmt" pre=""/>. Policy for establishing a trusted channel or disallowing establishment if the MD cannot establish a connection to determine the validity of a certificate, (MDF/GPOS Function 30)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_65"><ctr id="smf42" ctr-type="mgmt" pre=""/>. Enable and disable policy for the cellular protocols used to connect to cellular network base stations, (MDF/GPOS Function 31)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_66"><ctr id="smf43" ctr-type="mgmt" pre=""/>. Policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database, (MDF/GPOS Function 29)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_67"><ctr id="smf44" ctr-type="mgmt" pre=""/>. <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_68">certificate</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_69">public-key</selectable></selectables> used to validate digital signature on applications, (MDF/GPOS Function 33)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_70"><ctr id="smf45" ctr-type="mgmt" pre=""/>. Policy for exceptions for shared use of keys or secrets by multiple applications, (MDF/GPOS Function 34)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_71"><ctr id="smf46" ctr-type="mgmt" pre=""/>. Policy for exceptions for destruction of keys or secrets by applications that did not import the key or secret, (MDF/GPOS Function 35)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_72"><ctr id="smf47" ctr-type="mgmt" pre=""/>. The unlock banner policy, (MDF/GPOS Function 36)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_73"><ctr id="smf48" ctr-type="mgmt" pre=""/>. Configure the auditable items (MDF/GPOS Function 37)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_74"><ctr id="smf49" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_75">USB mass storage mode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_76">USB data transfer without user authentication</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_77">USB data transfer without authentication of the connection system</selectable></selectables> (MDF/GPOS Function 39)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_78"><ctr id="smf50" ctr-type="mgmt" pre=""/>. Enable and disable backup of <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_79">all applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_80">selected applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_81">selected groups of applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_82">configuration data</selectable></selectables> to <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_83">locally connected system</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_84">remote system</selectable></selectables> (MDF/GPOS Function 40)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_85"><ctr id="smf51" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_86">Hotspot functionality authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_87">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_88">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_89">no authentication</selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_90">USB tethering authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_91">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_92">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_93">no authentication</selectable></selectables> </selectable></selectables> (MDF/GPOS Function 41)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_94"><ctr id="smf52" ctr-type="mgmt" pre=""/>. Enable and disable location services:<h:br/> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_95">across device</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_96">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_97">on a per-group of application processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_98">no other method</selectable></selectables> (MDF/GPOS Function 21)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_99"><ctr id="smf53" ctr-type="mgmt" pre=""/>. Enable and disable policy for user unenrollment</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_100"><ctr id="smf54" ctr-type="mgmt" pre=""/>. Enable and disable policy for the Always-On VPN protection across device (MDF/GPOS Function 45)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_101"><ctr id="smf55" ctr-type="mgmt" pre=""/>. Enable and disable policy for use of Biometric Authentication Factor (MDF/GPOS Function 22)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_102"><ctr id="smf56" ctr-type="mgmt" pre=""/>. Connectivity timeout policy: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_103">allowed <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_104">number of missed reachability events</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_105">length of time without server connectivity</selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_106">when server connectivity timeout is exceeded agent shall <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_107">disable user password</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_108">wipe device</selectable></selectables> and <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_110"><assignable>other action</assignable></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_111">none</selectable></selectables> </selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_112"><ctr id="smf57" ctr-type="mgmt" pre=""/>. Enable and disable multi-user modes</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_113"><ctr id="smf58" ctr-type="mgmt" pre=""/>. Enable and disable automatic updates of system software</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_114"><ctr id="smf59" ctr-type="mgmt" pre=""/>. Enable and disable removable media</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_115"><ctr id="smf60" ctr-type="mgmt" pre=""/>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies</selectable></selectables>.</h:ul>
             </title>
             <note role="application">
               This requirement captures all the configuration functionality the TSF provides the administrator to configure the MDM
@@ -6597,7 +6677,7 @@
               Function-specific Application Notes:
               <h:br/>
               <h:br/>
-              Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v4.0.
+              Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v4.0 and General Purpose Operating Systems (GPOS) PP v5.0.
               <h:br/>
               <h:br/>
               Function
@@ -6639,7 +6719,7 @@
 		      evaluated MD and which management 
 		      functions were not evaluated.
               </TSS>
-              <Guidance>For each command that the TSF can issue to an MDM agent and for each mobile device configuration policies that can be applied, the evaluator shall examine the operational guidance to verify that it includes instructions on how to perform these actions, and what particular parameters or options can be specified for them.</Guidance>
+              <Guidance>For each command that the TSF can issue to an MDM agent and for each MD configuration policies that can be applied, the evaluator shall examine the operational guidance to verify that it includes instructions on how to perform these actions, and what particular parameters or options can be specified for them.</Guidance>
               <Tests>
                 For each MDM agent or platform listed as supported in the ST:
                 <testlist>
@@ -7236,7 +7316,7 @@
             The following actions could be considered for the management functions in FMT.
             <h:ul>
               <h:li>Query the current version of the MD firmware or software.</h:li>
-              <h:li>Update system software (MDF Function 15).</h:li>
+              <h:li>Update system software (MDF/GPOS Function  15).</h:li>
             </h:ul>
           </management>
           <audit>
@@ -7674,7 +7754,7 @@
               FPT_ITT.1/INTER_XFER_AGENT must be included in the ST.
               <h:br/>
               <h:br/>
-              If the TOE interoperates with an evaluated MDM agent built into a mobile device (i.e., the TOE does not include an MDM agent), the communication channel 
+              If the TOE interoperates with an evaluated MDM agent built into a MD (i.e., the TOE does not include an MDM agent), the communication channel 
               between the agent and TSF is external to the TOE and thus "an MDM agent that is external to the TOE" must be selected in the first selection.
               Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the ST.
               <h:br/>
