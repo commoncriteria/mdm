@@ -1,6 +1,97 @@
-<?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="..\transformspp2html.xsl"?>
-<?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
+<!-- <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> -->
+<?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!--
+Partial mapping from old iteration to new
+FCS_COP.1(1) => FCS_COP.1/SKC
+FCS_COP.1(2) => FCS_COP.1/Hash
+FCS_COP.1(3) => FCS_COP.1/SigGen
+FCS_COP.1(3) => FCS_COP.1/SigVer
+FCS_COP.1(4) => FCS_COP.1/KeyedHash
+FAU_GEN.1(1) => FAU_GEN.1/AUDITGEN
+FAU_GEN.1(2) => FAU_GEN.1/MAS_SERVER
+FPT_ITT.1(1) => FPT_ITT.1/INTER_XFER
+FPT_ITT.1(2) => FPT_ITT.1/INTER_XFER_AGENT
+fia_x509_ext.1(1) => fia_x509_ext.1/CERTVAL_MAN
+fia_x509_ext.1(2) => fia_x509_ext.1/CERTVAL_SEL
+fmt_mof.1(1) => fmt_mof.1/FUNCBE
+fmt_mof.1(2) => fmt_mof.1/MANAGEMENT_ENROLL
+fmt_mof.1(3) => fmt_mof.1/MANAGEMENT_MAS
+FMT_SMF.1(1) => FMT_SMF.1/SERVER_CONF_AGENT
+FMT_SMF.1(2) => FMT_SMF.1/SERVER_CONF_SERVER
+FMT_SMF.1(3) => FMT_SMF.1/MAS
+FMT_SMR.1(1) => FMT_SMR.1/SECMAN_ROLES
+FMT_SMR.1(2) => FMT_SMR.1/SECMAN_ROLES_MAS
+-->
+<!-- 26 Feb 2021 - rmc
+    To bring this up to the latest transforms:
+	  - added ids to all f-elements
+	  - changed all chapters and subsections to sections
+	  - changed all explicit cross-references to xref to=
+	  - changed all implicit references to xref g=
+	  - removed all the abbr tags
+	  - removed unnecessary references 
+	  - Fixed table prefixes so there would be a space
+	  - fixed the ECD material (to the best of my ability). ECD section now auto-generated as per TD552.
+		Someone needs to validate that the addressed-by and rationale elements are correct.
+	  - Updated iteration names where they were still using old ones
+	  - Changed a bunch of explicit references to xrefs.
+	  - Moved the essay on Security Audit for Distributed TOEs from the Requirements section to the front matter
+		in the Introduction to Distributed TOEs. I think it belongs here.
+	  - Moved the audit events into the SFRs and removed the audit table from the EA section of FAU_GEN
+		(which is an abomination).
+	  - Audit events now appear in tables at the top of the section or appendix in which the SFR appears.
+	  - Created a new table for audit events from external packages.
+	  - The re-working of the audit requirements makes things look different, but all the requirements should be the same.
+	  - Added the Implicitly Satisfied Requirements Appendix based on TD552
+	  - Incorporated all TDs as of the draft date:
+		- 0552 – SFR Rationale and Implicitly Satisfied SFRs
+		- 0524 – Updates to Certificate Revocation (FIA_X509_EXT.1)
+		- 0479 – FMT_SMF.1(1) Reliance on MDF Evals
+		- 0461 – Security Audit for Distributed TOEs
+		- 0438 – TST and TUD on the MDM agent
+-->
+<!--
+Check this:
+- the objective-refer info in the threats &amp; assumptions sections is not in the 
+  version 3 word document. I had to copy them from the 2.0 github doc  
+
+- for the security objectives (<SOs> tags), I copied the <component-refer> 
+   tags from version 2.0, these need to be checked
+
+To do:
+- ask Kevin about <OSPs> tag, why do I have to wrap each <OSP> with an <OSPs> 
+(You shouldn't the OSPs tag should wrap all OSP tags).
+- Make.1 of trusted channel/path freed
+- TLS: package and figure out how to use platform TLS with the TLS package: NOTE: most or all of these say something to the effect that protocol,etc. may be met 
+	with platform-provided services - check FTP_TRP.1(1) - is this good enough?
+- update TOE boundary section
+
+
+
+NOTES:
+- Mas server SFR's that were removed: ftp_itc.1(3), ftp_itc.1.3(2), fau_stg.1.1(2), fmt_mof.1(3)
+
+DONE:
+- map new SFR's to o.things
+- Mas server SFR's that have functionality that needs to be brought in somehow: fau_gen.1(2), fmt_smr.1(2), fmt_mof.1(3), fmt_smf.1(3)
+- Mas server - Need to check references to MAS
+- edit fau_gen to make it applicable to any component of a distributed toe
+- have to change ftp_itc_ext.1.1 to bring in fpt_itt even if agent is not in the TOE because its needed for distributed
+- NIAP comment matrix
+- finish table 1, have to add where we think things belong
+- split table 2 (audit) into mandatory/selection based table and opt/obj table >> does not need to be completed before draft 2 goes out
+- fix dead links to TLS, etc: NOTE: The TLS/DTLS links should be fixed
+- add disclaimer to audit table that only those SFRs included in the ST are required to be audited. (I.e., if an objective SFR is not included then they do not have
+	to audit it)
+- unify the random use of  TOE/TSF/MDM server and MD user/agent
+- make links out of all the references to ITT/ITC sfr's
+- fix table 2 after mas server sfr's get figured out
+- incorporate evaluation activity for distributed TOE (SD B.4) (pulled it in the appendix but its ugly and might need to be fixed)
+- cross references - search for Section &amp; Appendix cross refs &amp; adjust
+
+-->
 <PP boilerplate="yes" target-product="MDM" target-products="MDMs" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section">
   <PPReference>
     <ReferenceTable>
@@ -40,7 +131,7 @@
     <entry>
       <version>5.0</version>
       <date>2024-11-15</date>
-      <subject> Updates to align with Technical Decisions<h:br/> Updates to align with CC:2022<h:br/> Updates to support subordinate MDM<h:br/><h:br/></subject>
+      <subject> Updates to align with Technical Decisions<h:br/> Updates to align with CC:2022<h:br/> Updates to support subordinate MDM<h:br/> Updates to support GPOS PP as a base for MDM Agent<h:br/><h:br/></subject>
     </entry>
   </RevisionHistory>
   <include-pkg id="ssh">
@@ -103,7 +194,7 @@
 				such as DEKs or storage repositories that contain keys.</term>
       <term full="Locked State">Device state where the device is powered
 				on but most functionality is unavailable for use without authentication.</term>
-      <term full="Managed Device" abbr="MD">A device enrolled and managed, or to be enrolled and managed, by an MDM system. This device is a mobile device typically evaluated under the MDF PP or a device utilizing a GPOS typically evaluated under the GPOS PP.</term>
+      <term full="Managed Device" abbr="MD">A device enrolled and managed, or to be enrolled and managed, by an MDM system. This device is a mobile device typically evaluated under the MDF PP or a device utilizing a manageable GPOS typically evaluated under the GPOS PP.</term>
       <term full="Mobile Application Store" abbr="MAS">An MDM feature that allows for an organization to substitute a device manufacturer's
             application store for one that restricts what applications are made available to users.</term>
       <term full="Mobile Device">A device which is composed of a hardware platform and its system software. The device typically provides wireless
@@ -362,6 +453,7 @@
       <cc-pp-conf/>
       <cc-pp-config-with>
         <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 4.0</PP-cc-ref>
+        <PP-cc-ref>Protection Profile for General Purpose Operating Systems, Version 5.0</PP-cc-ref>
         <PP-cc-ref>Protection Profile for Application Software, Version 2.0</PP-cc-ref>
         <Mod-cc-ref>PP-Module for MDM Agents, Version 2.0</Mod-cc-ref>
         <Mod-cc-ref>PP-Module for VPN Client, Version 3.0</Mod-cc-ref>
@@ -474,7 +566,7 @@
         </h:tr>
         <h:tr>
           <h:td>FAU_CRP_EXT.1</h:td>
-          <h:td>Support for Compliance Reporting of Mobile Device Configuration</h:td>
+          <h:td>Support for Compliance Reporting of MD Configuration</h:td>
           <h:td>One</h:td>
         </h:tr>
         <h:tr>
@@ -1136,6 +1228,9 @@
       <OSPs>
         <OSP name="P.ACCOUNTABILITY">
           <description>Personnel operating the TOE shall be accountable for their actions within the TOE.</description>
+          <objective-refer ref="OE.PROPER_ADMIN">
+            <rationale>Part of ensuring that administrators are trusted is having the ability to enforce accountability measures on malicious or negligent administrators.</rationale>
+          </objective-refer>
         </OSP>
         <OSP name="P.ADMIN">
           <description>The configuration of the MD security functions must adhere to the
@@ -1218,8 +1313,7 @@
     <h:br/>
     The evaluator's activities for testing that include use of an agent will ensure that the Server interacts appropriately with the agent (i.e., sends a
 			policy update to the agent), but will not ensure that the agent handles the received data correctly (i.e., appropriately applies the policy to the 
-			device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals PP or the PP-Module for Mobile Device Management
-			Agents.
+			device), as that is accounted for in the Evaluation Activities in the MDF PP, GPOS PP, or the PP-Module for MDM	Agents.
     <h:br/>
     <h:br/>
     In addition to the above guidance, if the TOE server acts as a primary MDM server and interfaces with one or more subordinate MDM servers, then the ST 
@@ -1242,7 +1336,7 @@
         <ext-comp-def title="Server Alerts" fam-id="FAU_ALT_EXT">
           <fam-behavior>This family defines requirements for the TSF to alert administrators when a set of specified events occurs.</fam-behavior>
         </ext-comp-def>
-        <ext-comp-def title="Support for Compliance Reporting of Mobile Device Configuration" fam-id="FAU_CRP_EXT">
+        <ext-comp-def title="Support for Compliance Reporting of Managed Device Configuration" fam-id="FAU_CRP_EXT">
           <fam-behavior>This family defines requirements for the TSF to provide an interface for the MDM server to convey information about MDs for other systems.</fam-behavior>
         </ext-comp-def>
         <ext-comp-def title="Network Reachability Review" fam-id="FAU_NET_EXT">
@@ -1312,8 +1406,8 @@
             <audit-event-info>Identity of MD that sent alert.</audit-event-info>
           </audit-event>
         </f-component>
-        <!-- FAU_CRP_EXT.1 Support for Compliance Reporting of Mobile Device Configuration -->
-        <f-component cc-id="fau_crp_ext.1" id="fau-crp-ext-1" name="Support for Compliance Reporting of Mobile Device Configuration">
+        <!-- FAU_CRP_EXT.1 Support for Compliance Reporting of Managed Device Configuration -->
+        <f-component cc-id="fau_crp_ext.1" id="fau-crp-ext-1" name="Support for Compliance Reporting of Managed Device Configuration">
           <comp-lev>defines requirements for providing information to enrolled MDs
             through a secure channel.</comp-lev>
           <management>
@@ -1351,7 +1445,8 @@
             <ext-comp-def-title>
               <title>
                 The TSF shall provide
-                <assignable>type of interface</assignable>to authorized entities over a 
+                <assignable>type of interface</assignable>
+                to authorized entities over a 
                 channel that meets the secure channel requirements in FTP_ITC.1 The provided information for each enrolled MD includes:
                 <h:ul>
                   <h:li>The current version of the MD firmware or software</h:li>
@@ -1449,8 +1544,7 @@
               <h:br/>
               Item
               <h:b>b</h:b>
-              includes those commands, which may be performed automatically based on triggers or on a schedule.
-              <h:mark style="background-color:yellowgreen;">If the TOE server acts as a primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM Server" must be selected. For distributed TOEs, if the TOE component directly interacts with a primary MDM server, subordinate MDM server, or MDM agent then the corresponding selection should be made for that component. If the TOE component does not directly interact with any of these entities, then it is acceptable to select "none."</h:mark>
+              includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE server acts as a primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM Server" must be selected. For distributed TOEs, if the TOE component directly interacts with a primary MDM server, subordinate MDM server, or MDM agent then the corresponding selection should be made for that component. If the TOE component does not directly interact with any of these entities, then it is acceptable to select "none".
               <h:br/>
               <h:br/>
               <h:b>In item d above, "start up and shut down of the MDM system" must be selected if the TSF has a start up and shut down phase. 
@@ -1556,8 +1650,7 @@
               The
               <h:b>MAS Server</h:b>
               shall be able to generate audit data of the following
-              auditable events: [<h:i>
-                <h:ol type="a">
+              auditable events: [<h:i><h:ol type="a">
                   <h:li>Failure to push a new application on a MD</h:li>
                   <h:li>Failure to update an existing application on a MD</h:li>
                 </h:ol>
@@ -2071,7 +2164,7 @@
                 </selectable>
                 <selectable id="sel-fcs-ckm-ak-ffc-rs">
                   <col>FFC-RS</col>
-                  <col>FFC-RS - Extra Random Bits</col>
+                  <col>FFC-RS - Rejection Sampling</col>
                   <col>Static domain parameters approved for <selectables><selectable id="fcs_ckm.1.1_AKG_7">IKE Groups <selectables><selectable id="sel-dp-ak-ffc-rs-modp3072">MODP-3072</selectable><selectable id="sel-dp-ak-ffc-rs-modp4096">MODP-4096</selectable><selectable id="sel-dp-ak-ffc-rs-modp6144">MODP-6144</selectable><selectable id="sel-dp-ak-ffc-rs-modp8192">MODP-8192</selectable></selectables> </selectable><selectable id="fcs_ckm.1.1_AKG_8">TLS Groups <selectables><selectable id="sel-dp-ak-ffc-rs-ffdhe3072">ffdhe3072</selectable><selectable id="sel-dp-ak-ffc-rs-ffdhe4096">ffdhe4096</selectable><selectable id="sel-dp-ak-ffc-rs-ffdhe6144">ffdhe6144</selectable><selectable id="sel-dp-ak-ffc-rs-ffdhe8192">ffdhe8192</selectable></selectables> </selectable></selectables></col>
                   <col>NIST SP 800-56A Revision 3 (Section 5.6.1.1.3) [key pair generation]<h:p/> <selectables><selectable id="fcs_ckm.1.1_AKG_9">RFC 3526 [IKE groups]</selectable><selectable id="fcs_ckm.1.1_AKG_10">RFC 7919 [TLS groups]</selectable></selectables></col>
                 </selectable>
@@ -2927,10 +3020,13 @@
               <title>
                 The TSF shall derive shared cryptographic keys with input from multiple parties in accordance 
                 with specified cryptographic key agreement algorithms
-                <assignable>cryptographic algorithm</assignable>and specified cryptographic parameters
-                <assignable>cryptographic parameters</assignable>that meet the
+                <assignable>cryptographic algorithm</assignable>
+                and specified cryptographic parameters
+                <assignable>cryptographic parameters</assignable>
+                that meet the
                 following:
-                <assignable>list of standards</assignable></title>
+                <assignable>list of standards</assignable>
+              </title>
             </ext-comp-def-title>
             <note role="application">
               This SFR is claimed if the TSF supports key agreement schemes as a method of key establishment for trusted channels. This will generally apply to all conformant TOEs, except in the rare (but possible) case where only key encapsulation is used.
@@ -3170,19 +3266,21 @@
                     completion of the selection operations of FCS_COP.1/AEAD.
                   </reqtext>
                 </tabularize>
+                <selectable id="sel-fcs-cop-aead-aes-ccm">
+                  <col>AES-CCM</col>
+                  <col>AES in CCM mode with unpredictable, non-repeating nonce, minimum size of 64 bits</col>
+                  <col>256 bits</col>
+                  <col><selectables><selectable id="fcs_cop.1.1_AEAD_1">ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable><selectable id="fcs_cop.1.1_AEAD_2">FIPS PUB 197</selectable></selectables> [AES]<h:p/> <selectables><selectable id="fcs_cop.1.1_AEAD_3">ISO/IEC 19772:2020 (Clause 7)</selectable><selectable id="fcs_cop.1.1_AEAD_4">NIST SP 800-38C</selectable></selectables> [CCM]</col>
+                </selectable>
                 <selectable id="sel-fcs-cop-aead-aes-gcm">
                   <col>AES-GCM</col>
-                  <col>AES in GCM mode with non-repeating IVs using <selectables><selectable id="fcs_cop.1.1_AEAD_1">deterministic</selectable><selectable id="fcs_cop.1.1_AEAD_2">RBG-based</selectable></selectables>, IV construction; the tag must be of length <selectables><selectable id="fcs_cop.1.1_AEAD_3">96</selectable><selectable id="fcs_cop.1.1_AEAD_4">104</selectable><selectable id="fcs_cop.1.1_AEAD_5">112</selectable><selectable id="fcs_cop.1.1_AEAD_6">120</selectable><selectable id="fcs_cop.1.1_AEAD_7">128</selectable></selectables> bits.</col>
+                  <col>AES in GCM mode with non-repeating IVs using <selectables><selectable id="fcs_cop.1.1_AEAD_5">deterministic</selectable><selectable id="fcs_cop.1.1_AEAD_6">RBG-based</selectable></selectables>, IV construction; the tag must be of length <selectables><selectable id="fcs_cop.1.1_AEAD_7">96</selectable><selectable id="fcs_cop.1.1_AEAD_8">104</selectable><selectable id="fcs_cop.1.1_AEAD_9">112</selectable><selectable id="fcs_cop.1.1_AEAD_10">120</selectable><selectable id="fcs_cop.1.1_AEAD_11">128</selectable></selectables> bits.</col>
                   <col>256 bits</col>
-                  <col><selectables><selectable id="fcs_cop.1.1_AEAD_8">ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable><selectable id="fcs_cop.1.1_AEAD_9">FIPS PUB 197</selectable></selectables> [AES]<h:p/> <selectables><selectable id="fcs_cop.1.1_AEAD_10">ISO/IEC 19772:2020 (Clause 10)</selectable><selectable id="fcs_cop.1.1_AEAD_11">NIST SP 800-38D</selectable></selectables> [GCM]</col>
+                  <col><selectables><selectable id="fcs_cop.1.1_AEAD_12">ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable><selectable id="fcs_cop.1.1_AEAD_13">FIPS PUB 197</selectable></selectables> [AES]<h:p/> <selectables><selectable id="fcs_cop.1.1_AEAD_14">ISO/IEC 19772:2020 (Clause 10)</selectable><selectable id="fcs_cop.1.1_AEAD_15">NIST SP 800-38D</selectable></selectables> [GCM]</col>
                 </selectable>
               </selectables>
             </title>
-            <note role="application">
-              This SFR is claimed when the TOE has wireless LAN client functionality so that the TSF can provide AEAD algorithms in support of wireless communications.
-              <h:p/>
-              The use of 256-bit keys for AES encryption is required by CNSA 1.0 and 2.0.
-            </note>
+            <note role="application">The use of 256-bit keys for AES encryption is required by CNSA 1.0 and 2.0.</note>
             <aactivity>
               <TSS>
                 The evaluator shall examine the TSS to ensure that it describes the construction of any IVs,
@@ -3210,6 +3308,97 @@
                 for example, use of a debug mode). Where the test is not carried out on the TOE
                 itself, the test platform shall be identified and the differences between test
                 environment and TOE execution environment shall be described.
+                <h:p/>
+                <h:br/>
+                <h:b>AES-CCM</h:b>
+                <h:p/>
+                <h:table border="1">
+                  <h:tr class="header" bgcolor="#cccccc">
+                    <h:td valign="top">Identifier</h:td>
+                    <h:td valign="top">Cryptographic Algorithm</h:td>
+                    <h:td valign="top">Cryptographic Key Sizes</h:td>
+                    <h:td valign="top">List of Standards</h:td>
+                  </h:tr>
+                  <h:tr>
+                    <h:td valign="top">AES-CCM </h:td>
+                    <h:td valign="top">AES in CCM mode with nonrepeating nonce, minimum size
+                      of 64 bits</h:td>
+                    <h:td valign="top">256 bits</h:td>
+                    <h:td valign="top">
+                      [<h:b>selection:</h:b>
+                      ISO/IEC 18033-3:2010 (Subclause 5.2),
+                      FIPS PUB 197] [AES]
+                      <h:p/>
+                      [<h:b>selection:</h:b>
+                      ISO/IEC 19772:2020 (Clause 7), NIST SP 800-38C] [CCM]
+                    </h:td>
+                  </h:tr>
+                </h:table>
+                <h:p/>
+                To test the TOE’s implementation of AES-CCM authenticated encryption functionality the
+                evaluator shall perform the Algorithm Functional Tests described below using the following
+                input parameters:
+                <h:ul>
+                  <h:li>Key Size [256] bits</h:li>
+                  <h:li>Associated data size [0-65536] bits in increments of 8</h:li>
+                  <h:li>Payload size [0-256] bits in increments of 8</h:li>
+                  <h:li>IV/Nonce size [64-104] bits in increments of 8</h:li>
+                  <h:li>Tag size [32-128] bits in increments of 16</h:li>
+                </h:ul>
+                <h:p/>
+                <h:br/>
+                <h:b>Algorithm Functional Tests</h:b>
+                <h:p/>
+                Unless otherwise specified, the following tests should use random data, a tag size of 128 bits,
+                IV/Nonce size of 104 bits, payload size of 256 bits, and associated data size of 256 bits. If any of
+                these values are not supported, any supported value may be used. The evaluator shall compare
+                the output from each test case against results generated by a known-good implementation with
+                the same input parameters.
+                <h:p/>
+                <h:br/>
+                <h:b>
+                  <h:i>Variable Associated Data Test</h:i>
+                </h:b>
+                <h:p/>
+                For each claimed key size, and for each supported associated data size from 0 through 256 bits in
+                increments of 8 bits, the TOE must be tested by encrypting 10 test cases using all random data.
+                In addition, for each key size, the TOE must be tested by encrypting 10 cases with associated
+                data lengths of 65536 bits, if supported.
+                <h:p/>
+                <h:br/>
+                <h:b>
+                  <h:i>Variable Payload Test</h:i>
+                </h:b>
+                <h:p/>
+                For each claimed key size, and for each supported payload size from 0 through 256 bits in
+                increments of 8 bits, the TOE must be tested by encrypting 10 test cases using all random data.
+                <h:p/>
+                <h:br/>
+                <h:b>
+                  <h:i>Variable Nonce Test</h:i>
+                </h:b>
+                <h:p/>
+                For each claimed key size, and for each supported IV/Nonce size from 64 through 104 bits in
+                increments of 8 bits, the TOE must be tested by encrypting 10 test cases using all random data.
+                <h:p/>
+                <h:br/>
+                <h:b>
+                  <h:i>Variable Tag Test</h:i>
+                </h:b>
+                <h:p/>
+                For each claimed key size, and for each supported tag size from 32 through 128 bits in
+                increments of 16 bits, the TOE must be tested by encrypting 10 test cases using all random data.
+                <h:p/>
+                <h:br/>
+                <h:b>
+                  <h:i>Decryption Verification Test</h:i>
+                </h:b>
+                <h:p/>
+                For each claimed key size, for each supported associated data size from 0 through 256 bits in
+                increments of 8 bits, for each supported payload size from 0 through 256 bits in increments of 8
+                bits, for each supported IV/Nonce size from 64 through 104 bits in increments of 8 bits, and for
+                each supported tag size from 32 through 128 bits in increments of 16 bits, the TOE must be
+                tested by decrypting 10 test cases using all random data.
                 <h:p/>
                 <h:br/>
                 <h:b>AES-GCM</h:b>
@@ -3451,7 +3640,6 @@
                 <h:p/>
                 <h:br/>
                 <h:b>SHA3-384, SHA3-512</h:b>
-                <h:p/>
                 To test the TOE’s ability to generate hash digests using SHA3 the evaluator shall perform the
                 Algorithm Functional Test, Monte Carlo Test, and Large Data Tests for each claimed SHA3
                 algorithm.
@@ -3689,7 +3877,7 @@
           <depends on-sel="sel-ckm-2-encap"/>
           <f-element id="fcs-cop-1e1-keyencap">
             <title>
-              The TSF shall perform [key encapsulation] in accordance with a specified cryptographic algorithm
+              The TSF shall perform [<h:i>key encapsulation</h:i>] in accordance with a specified cryptographic algorithm
               <selectables>
                 <tabularize id="tab-fcs-cop-keyencap-sels" title="Allowable choices for FCS_COP.1/KeyEncap">
                   <textcol>Identifier</textcol>
@@ -3714,7 +3902,7 @@
                 </selectable>
               </selectables>
             </title>
-            <note role="application">For this PP, the only anticipated use of key encapsulation is the use of ML-KEM as part of key establishment for trusted communications.</note>
+            <note role="application">This SFR is claimed when "key encapsulation" is selected in FCS_CKM.2.1. For this PP, the only anticipated use of key encapsulation is the use of ML-KEM as part of key establishment for trusted communications.</note>
             <aactivity>
               <TSS>
                 The evaluator shall ensure that the TSS documents that the selection of the key size is
@@ -3823,7 +4011,7 @@
           <depends on-sel="sel-ckm-2-wrap"/>
           <f-element id="fcs-cop-1e1-kw">
             <title>
-              The TSF shall perform [key wrapping] in accordance with a specified cryptographic algorithm
+              The TSF shall perform [<h:i>key wrapping</h:i>] in accordance with a specified cryptographic algorithm
               <selectables>
                 <tabularize id="fcs-cop-kw-sels" title="Allowable choices for FCS_COP.1/KeyWrap">
                   <textcol>Identifier</textcol>
@@ -3866,7 +4054,7 @@
                 </selectable>
               </selectables>
             </title>
-            <note role="application">NIST 800-57p1rev5 sec. 5.6.2 specifies that the size of key used to protect the key being 
+            <note role="application">This SFR is claimed when "key wrapping" is selected in FCS_CKM.2.1. NIST 800-57p1rev5 sec. 5.6.2 specifies that the size of key used to protect the key being 
               transported should be at least the security strength of the key it is protecting.</note>
             <aactivity>
               <TSS>
@@ -4842,14 +5030,8 @@
           <depends on-sel="fcs_dtlsc_ext.1.2_22"/>
           <f-element id="fel-encrypt-how">
             <title>
-              The TSF shall
-              <selectables>
-                <selectable id="fcs_cop.1.1_SKC_1">invoke platform-provided functionality</selectable>
-                <selectable id="fcs_cop.1.1_SKC_2">implement functionality</selectable>
-              </selectables>
-              <h:b>to</h:b>
-              perform [<h:i>symmetric-key encryption and decryption</h:i>] in accordance with a 
-              specified cryptographic algorithm
+              The TSF shall perform [<h:i>symmetric-key encryption/decryption</h:i>] in accordance with a 
+                specified cryptographic algorithm
               <selectables>
                 <tabularize id="fcs-cop-skc-sels" title="Allowable choices for FCS_COP.1/SKC">
                   <textcol>Identifier</textcol>
@@ -4863,37 +5045,50 @@
                     <h:p/>
                     <h:p/>
                     The following table provides the allowable choices for
-                    completion of the selection operations in FCS_COP.1/SKC.
+                      completion of the selection operations of FCS_COP.1/SKC.
                   </reqtext>
                 </tabularize>
                 <selectable id="sel-fcs-cop-skc-aes-cbc">
                   <col>AES-CBC</col>
                   <col>AES in CBC mode with non-repeating and unpredictable IVs</col>
                   <col>256 bits</col>
-                  <col><selectables><selectable id="fcs_cop.1.1_SKC_3"><h:i>ISO/IEC 18033-3:2010 (Subclause 5.2)</h:i></selectable><selectable id="fcs_cop.1.1_SKC_4"><h:i>FIPS PUB 197</h:i></selectable></selectables> [AES]<h:p/> <selectables><selectable id="fcs_cop.1.1_SKC_5"><h:i>ISO/IEC 10116:2017 (Clause 7)</h:i></selectable><selectable id="fcs_cop.1.1_SKC_6"><h:i>NIST SP 800-38A</h:i></selectable></selectables> [CBC]</col>
+                  <col><selectables><selectable id="fcs_cop.1.1_SKC_1">ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable><selectable id="fcs_cop.1.1_SKC_2">FIPS PUB 197</selectable></selectables> [AES]<h:p/> <selectables><selectable id="fcs_cop.1.1_SKC_3">ISO/IEC 10116:2017 (Clause 7)</selectable><selectable id="fcs_cop.1.1_SKC_4">NIST SP 800-38A</selectable></selectables> [CBC]</col>
+                </selectable>
+                <selectable id="sel-fcs-cop-skc-aes-xts">
+                  <col>XTS-AES</col>
+                  <col>AES in XTS mode with unique tweak values that are consecutive non-negative integers starting at an arbitrary non-negative integer</col>
+                  <col>512 bits</col>
+                  <col><selectables><selectable id="fcs_cop.1.1_SKC_5">ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable><selectable id="fcs_cop.1.1_SKC_6">FIPS PUB 197</selectable></selectables> [AES]<h:p/> <selectables><selectable id="fcs_cop.1.1_SKC_7">IEEE Std. 1619-2018</selectable><selectable id="fcs_cop.1.1_SKC_8">NIST SP 800-38E</selectable></selectables> [XTS]</col>
+                </selectable>
+                <selectable id="sel-fcs-cop-skc-aes-ctr">
+                  <col>AES-CTR</col>
+                  <col>AES in Counter Mode with a non-repeating initial counter and with no repeated use of counter values across multiple messages with the same secret key</col>
+                  <col>256 bits</col>
+                  <col><selectables><selectable id="fcs_cop.1.1_SKC_9">ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable><selectable id="fcs_cop.1.1_SKC_10">FIPS PUB 197</selectable></selectables> [AES]<h:p/> <selectables><selectable id="fcs_cop.1.1_SKC_11">: ISO/IEC 10116:2017 (Clause 10)</selectable><selectable id="fcs_cop.1.1_SKC_12">NIST SP 800-38A</selectable></selectables> [CBC]</col>
                 </selectable>
               </selectables>
             </title>
             <aactivity>
               <TSS>
                 The evaluator shall examine the TSS to ensure that it describes the construction of any IVs,
-                tweak values, and counters in conformance with the relevant specifications.
+                  tweak values, and counters in conformance with the relevant specifications.
                 <h:p/>
                 If XTS-AES is claimed then the evaluator shall examine the TSS to verify that the TOE creates
-                full-length keys by methods that ensure that the two key halves are different and independent.
+                  full-length keys by methods that ensure that the two key halves are different and independent.
               </TSS>
               <Guidance/>
               <Tests>
                 The following tests require the developer to provide access to a test platform that
-                provides the evaluator with tools that are typically not found on factory products.
+                  provides the evaluator with tools that are typically not found on factory products.
                 <h:p/>
-                The following tests are conditional based on the selections made in the SFR. The
-                evaluator shall perform the following tests or witness respective tests executed by
-                the developer. The tests must be executed on a platform that is as close as practically
-                possible to the operational platform (but which may be instrumented in terms of,
-                for example, use of a debug mode). Where the test is not carried out on the TOE
-                itself, the test platform shall be identified and the differences between test
-                environment and TOE execution environment shall be described.
+                The following tests are conditional based upon the selections made in the SFR. The
+                  evaluator shall perform the following test or witness respective tests executed by
+                  the developer. The tests must be executed on a platform that is as close as practically
+                  possible to the operational platform (but which may be instrumented in terms of,
+                  for example, use of a debug mode). Where the test is not carried out on the TOE
+                  itself, the test platform shall be identified and the differences between test
+                  environment and TOE execution environment shall be described.
+                <h:p/>
                 <h:br/>
                 <h:b>AES-CBC</h:b>
                 <h:p/>
@@ -4910,19 +5105,19 @@
                     <h:td valign="top">256 bits</h:td>
                     <h:td valign="top">
                       [<h:b>selection:</h:b>
-                      <h:i>ISO/IEC 18033-3:2010 (Subclause 5.2),
-                        FIPS PUB 197</h:i>] [AES]
+                      ISO/IEC 18033-3:2010 (Subclause 5.2),
+                        FIPS PUB 197] [AES]
                       <h:p/>
                       [<h:b>selection:</h:b>
-                      <h:i>ISO/IEC 10116:2017 (Clause 7), 
-                        NIST SP 800-38A</h:i>] [CBC]
+                      ISO/IEC 10116:2017 (Clause 7), 
+                        NIST SP 800-38A] [CBC]
                     </h:td>
                   </h:tr>
                 </h:table>
                 <h:p/>
-                To test the TOE’s ability to encrypt and decrypt data using AES in CBC mode, the evaluator 
-                shall perform Algorithm Functional Tests and Monte Carlo Tests using the following
-                input parameters:
+                To test the TOE’s ability to encrypt/decrypt data using AES in CBC mode, the evaluator 
+                  shall perform Algorithm Functional Tests and Monte Carlo Tests using the following
+                  input parameters:
                 <h:ul>
                   <h:li>Key size [256] bits</h:li>
                   <h:li>Direction [encryption, decryption]</h:li>
@@ -4932,8 +5127,8 @@
                 <h:b>Algorithm Functional Tests</h:b>
                 <h:p/>
                 Algorithm Functional Tests are designed to verify the correct operation of the logical
-                components of the algorithm implementation under normal operation using different block sizes.
-                For AES-CBC, there are two types of AFTs:
+                  components of the algorithm implementation under normal operation using different block sizes.
+                  For AES-CBC, there are two types of AFTs:
                 <h:p/>
                 <h:br/>
                 <h:b>
@@ -4941,9 +5136,9 @@
                 </h:b>
                 <h:p/>
                 For each combination of direction and claimed key size, the TOE must be tested using the
-                GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of
+                  GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of
                 <h:i>The
-                  Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</h:i>, NIST, 15 November 2002.
+                    Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</h:i>, NIST, 15 November 2002.
                 <h:p/>
                 <h:br/>
                 <h:b>
@@ -4951,9 +5146,9 @@
                 </h:b>
                 <h:p/>
                 For each combination of direction and claimed key size, the TOE must be tested against 10 test
-                cases consisting of a random IV, random key, and random plaintext or ciphertext. The
-                plaintext or ciphertext starts with a length of 16 bytes and increases by 16 bytes for each test case
-                until reaching 160 bytes.
+                  cases consisting of a random IV, random key, and random plaintext/ciphertext. The
+                  plaintext/ciphertext starts with a length of 16 bytes and increases by 16 bytes for each test case
+                  until reaching 160 bytes.
                 <h:p/>
                 <h:br/>
                 <h:b>
@@ -4961,46 +5156,188 @@
                 </h:b>
                 <h:p/>
                 Monte Carlo tests are intended to test the implementation under strenuous conditions. The TOE
-                must process the test cases according to the following algorithm once for each combination of
-                direction and key size:
+                  must process the test cases according to the following algorithm once for each combination of
+                  direction and key size:
                 <h:p/>
                 <h:pre>Key[0] = Key
-                  IV[0] = IV
-                  PT[0] = PT
-                  for i = 0 to 99 {
-                  Output Key[i], IV[i], PT[0]
-                  for j = 0 to 999 {
-                  if (j == 0) {
-                  CT[j] = AES-CBC-Encrypt(Key[i], IV[i], PT[j])
-                  PT[j+1] = IV[i]
-                  } else {
-                  CT[j] = AES-CBC-Encrypt(Key[i], PT[j])
-                  PT[j+1] = CT[j-1]
-                  }
-                  }
-                  Output CT[j]
-                  AES_KEY_SHUFFLE(Key, CT)
-                  IV[i+1] = CT[j]
-                  PT[0] = CT[j-1]
-                  }</h:pre>
+                    IV[0] = IV
+                    PT[0] = PT
+                    for i = 0 to 99 {
+                    Output Key[i], IV[i], PT[0]
+                    for j = 0 to 999 {
+                    if (j == 0) {
+                    CT[j] = AES-CBC-Encrypt(Key[i], IV[i], PT[j])
+                    PT[j+1] = IV[i]
+                    } else {
+                    CT[j] = AES-CBC-Encrypt(Key[i], PT[j])
+                    PT[j+1] = CT[j-1]
+                    }
+                    }
+                    Output CT[j]
+                    AES_KEY_SHUFFLE(Key, CT)
+                    IV[i+1] = CT[j]
+                    PT[0] = CT[j-1]
+                    }</h:pre>
                 <h:p/>
                 where
                 <h:pre>AES_KEY_SHUFFLE</h:pre>
                 is defined as:
                 <h:p/>
                 <h:pre>If ( keylen = 128 )
-                  Key[i+1] = Key[i] xor MSB(CT[j], 128)
-                  If ( keylen = 192 )
-                  Key[i+1] = Key[i] xor (LSB(CT[j-1], 64) || MSB(CT[j], 128))
-                  If ( keylen = 256 )
-                  Key[i+1] = Key[i] xor (MSB(CT[j-1], 128) || MSB(CT[j], 128))</h:pre>
+                    Key[i+1] = Key[i] xor MSB(CT[j], 128)
+                    If ( keylen = 192 )
+                    Key[i+1] = Key[i] xor (LSB(CT[j-1], 64) || MSB(CT[j], 128))
+                    If ( keylen = 256 )
+                    Key[i+1] = Key[i] xor (MSB(CT[j-1], 128) || MSB(CT[j], 128))</h:pre>
                 <h:p/>
                 The above pseudocode is for encryption. For decryption, swap all instances of CT and PT.
                 <h:p/>
-                The initial IV, key, and plaintext or ciphertext should be random.
+                The initial IV, key, and plaintext/ciphertext should be random.
                 <h:p/>
                 The evaluator shall test the decrypt functionality using the same test as above,
-                exchanging CT and PT, and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.
+                  exchanging CT and PT, and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.
+                <h:p/>
+                <h:br/>
+                <h:b>XTS-AES</h:b>
+                <h:p/>
+                <h:table border="1">
+                  <h:tr class="header" bgcolor="#cccccc">
+                    <h:td valign="top">Identifier</h:td>
+                    <h:td valign="top">Cryptographic Algorithm</h:td>
+                    <h:td valign="top">Cryptographic Key Sizes</h:td>
+                    <h:td valign="top">List of Standards</h:td>
+                  </h:tr>
+                  <h:tr>
+                    <h:td valign="top">XTS-AES</h:td>
+                    <h:td valign="top">AES in XTS mode with unique tweak values that are consecutive
+                        non-negative integers starting at an arbitrary non-negative integer</h:td>
+                    <h:td valign="top">512 bits</h:td>
+                    <h:td valign="top">
+                      [<h:b>selection:</h:b>
+                      ISO/IEC 18033-3:2010 (Subclause 5.2),
+                        FIPS PUB 197] [AES]
+                      <h:p/>
+                      [<h:b>selection:</h:b>
+                      IEEE Std. 1619-2018, 
+                        NIST SP 800-38E] [XTS]
+                    </h:td>
+                  </h:tr>
+                </h:table>
+                <h:p/>
+                To test the TOE’s ability to encrypt/decrypt data using AES in XTS mode, the evaluator shall
+                  perform the Single Data Unit Test and the Multiple Data Unit Test using the following input
+                  parameters:
+                <h:ul>
+                  <h:li>Direction [encryption, decryption]</h:li>
+                  <h:li>Key size [512] bits</h:li>
+                  <h:li>Tweak value format [128-bit hex string, data unit sequence number]</h:li>
+                </h:ul>
+                <h:p/>
+                <h:br/>
+                <h:b>Single Data Unit Test</h:b>
+                <h:p/>
+                For each combination of claimed key size, direction, and supported tweak value format, the
+                  evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
+                  determined randomly for each test case from supported values within the range [128-65536] bits.
+                  The payload size and data unit size must be equal.
+                <h:p/>
+                <h:br/>
+                <h:b>Multiple Data Unit Test</h:b>
+                <h:p/>
+                For each combination of claimed key size, direction, and supported tweak value format, the
+                  evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
+                  determined randomly for each test case from supported values within the range [128-65536] bits.
+                  Likewise, the data unit size is determined randomly for each test case from supported values
+                  within the range [128-65535] bits. The payload size and data unit size must not be equal.
+                <h:p/>
+                The evaluator shall verify the correctness of the TSF’s implementation by comparing values
+                  generated by the TSF with those generated by a known good implementation using the same
+                  input parameters.
+                <h:p/>
+                <h:br/>
+                <h:b>AES-CTR</h:b>
+                <h:p/>
+                <h:table border="1">
+                  <h:tr class="header" bgcolor="#cccccc">
+                    <h:td valign="top">Identifier</h:td>
+                    <h:td valign="top">Cryptographic Algorithm</h:td>
+                    <h:td valign="top">Cryptographic Key Sizes</h:td>
+                    <h:td valign="top">List of Standards</h:td>
+                  </h:tr>
+                  <h:tr>
+                    <h:td valign="top">AES-CTR</h:td>
+                    <h:td valign="top">AES in Counter Mode with a non-repeating initial counter and
+                        with no repeated use of counter values across multiple messages with the 
+                        same secret key.</h:td>
+                    <h:td valign="top">256 bits</h:td>
+                    <h:td valign="top">
+                      [<h:b>selection:</h:b>
+                      ISO/IEC 18033-3:2010 (Subclause 5.2),
+                        FIPS PUB 197] [AES]
+                      <h:p/>
+                      [<h:b>selection:</h:b>
+                      ISO/IEC 10116:2017 (Clause 10), 
+                        NIST SP 800-38A] [CTR]
+                    </h:td>
+                  </h:tr>
+                </h:table>
+                <h:p/>
+                To test the TOE’s ability to encrypt/decrypt data using AES in CTR mode, the evaluator shall
+                  perform the Algorithm Functional Test and the Counter Test using the following input
+                  parameters:
+                <h:ul>
+                  <h:li>Direction [encryption, decryption]</h:li>
+                  <h:li>Key size [256] bits</h:li>
+                </h:ul>
+                <h:p/>
+                <h:br/>
+                <h:b>Algorithm Functional Tests</h:b>
+                <h:p/>
+                Algorithm Functional Tests are designed to verify the correct operation of the logical
+                  components of the algorithm implementation under normal operation using different block sizes.
+                  For AES-CTR, there are three types of AFTs:
+                <h:p/>
+                <h:br/>
+                <h:b>
+                  <h:i>Known-Answer Tests</h:i>
+                </h:b>
+                <h:p/>
+                For each combination of direction and claimed key size, the TOE must be tested using the
+                  GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of
+                <h:i>The
+                    Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</h:i>, NIST, 15 November 2002.
+                <h:p/>
+                <h:br/>
+                <h:b>
+                  <h:i>Single Block Message Tests</h:i>
+                </h:b>
+                <h:p/>
+                For each combination of direction and claimed key, the evaluator shall generate 10 test cases
+                  with a data size of 128 bits.
+                <h:p/>
+                <h:br/>
+                <h:b>
+                  <h:i>Partial Block Message Tests</h:i>
+                </h:b>
+                <h:p/>
+                Monte Carlo tests are intended to test the implementation under strenuous conditions. The TOE
+                  must process the test cases according to the following algorithm once for each combination of
+                  direction and key size:
+                <h:p/>
+                For each combination of direction and claimed key, the evaluator shall generate five test cases
+                  such that the data size is not a multiple of 128 bits.
+                <h:p/>
+                The evaluator shall verify the correctness of the TSF’s implementation by comparing values
+                  generated by the TSF with those generated by a known good implementation using the same
+                  input parameters.
+                <h:br/>
+                <h:b>
+                  <h:i>Counter Test</h:i>
+                </h:b>
+                <h:p/>
+                The evaluator shall generate a single message of 1000 blocks (128000 bits) and either encrypt or
+                  decrypt it. Back-compute the IVs used. Verify that they are unique and increasing (encryption) or
+                  decreasing (decryption).
                 <h:p/>
               </Tests>
             </aactivity>
@@ -5032,18 +5369,13 @@
                 </tabularize>
                 <selectable id="sel-fcs-cop-xof-shake">
                   <col>SHAKE</col>
-                  <col>Functions = [SHAKE128, SHAKE256]</col>
+                  <col>Functions = [SHAKE256]</col>
                   <col>NIST FIPS PUB 202 Section 6.2 [SHAKE]</col>
                 </selectable>
               </selectables>
             </title>
-            <note role="application">
-              In accordance with CNSA 2.0, SHAKE is permitted to be used only as a component of LMS or XMSS. 
-              Therefore this component is claimed only if LMS or XMSS is claimed in FCS_COP.1/SigVer.
-              <h:p/>
-              Since LMS and XMSS use both SHAKE128 and SHAKE256 internally, claiming and testing of both
-              functions is mandatory.
-            </note>
+            <note role="application">In accordance with CNSA 2.0, SHAKE is permitted to be used only as a component of LMS or XMSS. 
+              Therefore this component is claimed only if LMS or XMSS is claimed in FCS_COP.1/SigVer.</note>
             <aactivity>
               <TSS/>
               <Guidance/>
@@ -5066,7 +5398,7 @@
                   </h:tr>
                   <h:tr>
                     <h:td valign="top">SHAKE</h:td>
-                    <h:td valign="top">Function = [SHAKE128, SHAKE256]</h:td>
+                    <h:td valign="top">Function = [SHAKE256]</h:td>
                     <h:td valign="top">NIST FIPS PUB 202 Section 6.2 [SHAKE]</h:td>
                   </h:tr>
                 </h:table>
@@ -5075,7 +5407,7 @@
                 perform the Algorithm Functional Test, Monte Carlo Test, and Variable Output Test using the
                 following input parameters:
                 <h:ul>
-                  <h:li>Function [SHAKE128, SHAKE256]</h:li>
+                  <h:li>Function [SHAKE256]</h:li>
                   <h:li>Output length [16-65536] bits</h:li>
                 </h:ul>
                 <h:p/>
@@ -5091,21 +5423,17 @@
                 <h:i>rate</h:i>
                 equals
                 <h:p/>
-                <h:ul>
-                  <h:li>1344 for SHAKE128, and</h:li>
-                  <h:li>1088 for SHAKE256.</h:li>
-                </h:ul>
+                1088.
                 <h:p/>
                 Additionally, generate tests cases of random data for messages of every multiple of (rate+1) bits
-                starting at length rate, and continuing until 65535 is exceeded. For SHAKE128, this should
-                result in a total of 1391 test cases.
+                starting at length rate, and continuing until 65535 is exceeded.
                 <h:p/>
                 <h:br/>
                 <h:b>
                   <h:i>Monte Carlo Test</h:i>
                 </h:b>
                 <h:p/>
-                The Monte Carlos test takes in a single 128-bit message (SEED) and desired output length in
+                The Monte Carlo test takes in a single 128-bit message (SEED) and desired output length in
                 bits, and runs 100 iterations of the chained computation. MaxOutBytes and MinOutBytes are the
                 largest and smallest supported input and output sizes in bytes, respectively.
                 <h:p/>
@@ -5537,7 +5865,8 @@
           <f-element id="fe1-rbg-seed">
             <title>
               The TSF shall be able to accept a minimum input of
-              <assignable>minimum input length greater than zero</assignable>from a TSF interface for the purpose of seeding.
+              <assignable>minimum input length greater than zero</assignable>
+              from a TSF interface for the purpose of seeding.
             </title>
             <note role="application">
               This requirement is claimed when a DRBG is seeded with entropy from one or more noise sources that is outside the TOE
@@ -5567,10 +5896,11 @@
               The TSF shall be able to seed the RBG using a
               <selectables onlyone="yes">
                 <selectable id="fcs_rbg.3.1_1">TSF software-based noise source</selectable>
-                <selectable id="fcs_rbg.3.1_2">TSF hardware-based noise source <assignable>name of noise source</assignable></selectable>
+                <selectable id="fcs_rbg.3.1_2">TSF hardware-based noise source</selectable>
               </selectables>
               with a minimum of
-              <assignable>number of bits</assignable>bits of min-entropy.
+              <assignable>number of bits</assignable>
+              bits of min-entropy.
             </title>
             <note role="application">
               This requirement is claimed when a DRBG is seeded with entropy from a single noise source that is within the TOE boundary. Min-entropy should be expressed as a ratio of entropy bits to sampled bits so that the total amount of data needed to ensure full entropy is known, as well as the conditioning function by which that data is reduced in size to the seed.
@@ -5622,14 +5952,16 @@
           <f-element id="fel-rbg-comb">
             <title>
               The TSF shall
-              <assignable>combining operation</assignable><selectables>
+              <assignable>combining operation</assignable>
+              <selectables>
                 <selectable id="fcs_rbg.5.1_2">output from TSF noise sources</selectable>
                 <selectable id="fcs_rbg.5.1_3">input from TSF interfaces for seeding</selectable>
               </selectables>
               to create the entropy input into the derivation function as defined in
               <assignable>list of standards</assignable>, resulting
               in a minimum of
-              <assignable>number of bits</assignable>bits of min-entropy.
+              <assignable>number of bits</assignable>
+              bits of min-entropy.
             </title>
             <note role="application">This requirement is claimed if "multiple TSF noise sources..." is selected in <xref to="fel-rbg-init-seed-how"/>.</note>
             <aactivity>
@@ -5647,7 +5979,7 @@
           <management>
             The following actions could be considered for the management functions in FMT.
             <h:ul>
-              <h:li>Import keys or secrets into the secure key storage (MDF Function 9)</h:li>
+              <h:li>Import keys or secrets into the secure key storage (MDF/GPOS Function 9)</h:li>
             </h:ul>
           </management>
           <audit>There are no auditable events foreseen.</audit>
@@ -5896,7 +6228,8 @@
               </selectables>
               <h:b>to</h:b>
               allow
-              <assignable>list of TSF mediated actions</assignable>on behalf of the user to be performed before the user is authenticated
+              <assignable>list of TSF mediated actions</assignable>
+              on behalf of the user to be performed before the user is authenticated
               <h:b>with the server</h:b>.
             </title>
           </f-element>
@@ -6023,8 +6356,7 @@
               The
               <h:b>MDM server</h:b>
               shall restrict the ability to
-              [<h:b>
-                <h:i>initiate the enrollment process</h:i>
+              [<h:b><h:i>initiate the enrollment process</h:i>
               </h:b>] to [<h:i>authorized 
 			administrators and MD users</h:i>].
             </title>
@@ -6231,8 +6563,7 @@
               The
               <h:b>MAS Server</h:b>
               shall be capable of performing the following management functions:
-              [<h:i>
-                <h:ul>
+              [<h:i><h:ul>
                   <h:li>Configure application access groups</h:li>
                   <h:li>Download applications</h:li>
                   <h:li>
@@ -6275,31 +6606,31 @@
               shall be capable of
               <h:b>communicating the following commands to the MDM agent: </h:b>
               <h:ul style="list-style-type:none">
-                <h:li><ctr id="smf1" ctr-type="mgmt" pre=""/>. Transition to the locked state (MDF Function 6)</h:li>
-                <h:li><ctr id="smf2" ctr-type="mgmt" pre=""/>. Full wipe of protected data (MDF Function 7)</h:li>
-                <h:li><ctr id="smf3" ctr-type="mgmt" pre=""/>. Unenroll from management</h:li>
+                <h:li><ctr id="smf1" ctr-type="mgmt" pre=""/>. Transition to the locked state (MDF/GPOS Function 6)</h:li>
+                <h:li><ctr id="smf2" ctr-type="mgmt" pre=""/>. Full wipe of protected data (MDF/GPOS Function 7)</h:li>
+                <h:li><ctr id="smf3" ctr-type="mgmt" pre=""/>. Unenroll from management (MDF/GPOS Function 44)</h:li>
                 <h:li><ctr id="smf4" ctr-type="mgmt" pre=""/>. Install policies</h:li>
                 <h:li><ctr id="smf5" ctr-type="mgmt" pre=""/>. Query connectivity status</h:li>
                 <h:li><ctr id="smf6" ctr-type="mgmt" pre=""/>. Query the current version of the MD firmware or software</h:li>
                 <h:li><ctr id="smf7" ctr-type="mgmt" pre=""/>. Query the current version of the hardware model of the device</h:li>
                 <h:li><ctr id="smf8" ctr-type="mgmt" pre=""/>. Query the current version of installed applications</h:li>
-                <h:li><ctr id="smf9" ctr-type="mgmt" pre=""/>. Import X.509v3 certificates into the Trust Anchor Database (MDF Function 11)</h:li>
-                <h:li><ctr id="smf10" ctr-type="mgmt" pre=""/>. Install applications (MDF Function 16)</h:li>
-                <h:li><ctr id="smf11" ctr-type="mgmt" pre=""/>. Update system software (MDF Function 15)</h:li>
-                <h:li><ctr id="smf12" ctr-type="mgmt" pre=""/>. Remove applications (MDF Function 14)</h:li>
+                <h:li><ctr id="smf9" ctr-type="mgmt" pre=""/>. Import X.509v3 certificates into the Trust Anchor Database (MDF/GPOS Function 11)</h:li>
+                <h:li><ctr id="smf10" ctr-type="mgmt" pre=""/>. Install applications (MDF/GPOS Function 16)</h:li>
+                <h:li><ctr id="smf11" ctr-type="mgmt" pre=""/>. Update system software (MDF/GPOS Function 15)</h:li>
+                <h:li><ctr id="smf12" ctr-type="mgmt" pre=""/>. Remove applications (MDF/GPOS Function 14)</h:li>
               </h:ul>
               <selectables>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_1"><ctr id="smf13" ctr-type="mgmt" pre=""/>. Remove enterprise applications (MDF Function 17)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_2"><ctr id="smf14" ctr-type="mgmt" pre=""/>. Wipe enterprise data (MDF Function 28)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_3"><ctr id="smf15" ctr-type="mgmt" pre=""/>. Remove imported X.509v3 certificates and <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_4">no other X.509v3 certificates</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_6"><assignable>list of other categories of X.509v3 certificates</assignable></selectable></selectables> in the Trust Anchor Database (MDF Function 12)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_1"><ctr id="smf13" ctr-type="mgmt" pre=""/>. Remove enterprise applications (MDF/GPOS Function 17)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_2"><ctr id="smf14" ctr-type="mgmt" pre=""/>. Wipe enterprise data (MDF/GPOS Function 28)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_3"><ctr id="smf15" ctr-type="mgmt" pre=""/>. Remove imported X.509v3 certificates and <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_4">no other X.509v3 certificates</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_6"><assignable>list of other categories of X.509v3 certificates</assignable></selectable></selectables> in the Trust Anchor Database (MDF/GPOS Function 12)</selectable>
                 <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_7"><ctr id="smf16" ctr-type="mgmt" pre=""/>. Alert the user</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_8"><ctr id="smf17" ctr-type="mgmt" pre=""/>. Import keys or secrets into the secure key storage (MDF Function 9)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_9"><ctr id="smf18" ctr-type="mgmt" pre=""/>. Destroy imported keys or secrets and <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_10">no other keys or secrets</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_12"><assignable>list of other categories of keys or secrets</assignable></selectable></selectables> in the secure key storage (MDF Function 10)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_13"><ctr id="smf19" ctr-type="mgmt" pre=""/>. Read audit logs kept by the MD (MDF Function 32)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_14"><ctr id="smf20" ctr-type="mgmt" pre=""/>. Retrieve MD-software integrity verification values (MDF Function 38)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_15"><ctr id="smf21" ctr-type="mgmt" pre=""/>. Approve exceptions for sharing data between <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_16">application processes</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_17">group of application processes</selectable></selectables> (MDF Function 42)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_18"><ctr id="smf22" ctr-type="mgmt" pre=""/>. Place applications into application process groups based on <assignable>application characteristics</assignable> (MDF Function 43)</selectable>
-                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_20"><ctr id="smf23" ctr-type="mgmt" pre=""/>. Revoke Biometric template (MDF Function 46)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_8"><ctr id="smf17" ctr-type="mgmt" pre=""/>. Import keys or secrets into the secure key storage (MDF/GPOS Function 9)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_9"><ctr id="smf18" ctr-type="mgmt" pre=""/>. Destroy imported keys or secrets and <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_10">no other keys or secrets</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_12"><assignable>list of other categories of keys or secrets</assignable></selectable></selectables> in the secure key storage (MDF/GPOS Function 10)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_13"><ctr id="smf19" ctr-type="mgmt" pre=""/>. Read audit logs kept by the MD (MDF/GPOS Function 32)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_14"><ctr id="smf20" ctr-type="mgmt" pre=""/>. Retrieve MD-software integrity verification values (MDF/GPOS Function 38)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_15"><ctr id="smf21" ctr-type="mgmt" pre=""/>. Approve exceptions for sharing data between <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_16">application processes</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_17">group of application processes</selectable></selectables> (MDF/GPOS Function 42)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_18"><ctr id="smf22" ctr-type="mgmt" pre=""/>. Place applications into application process groups based on <assignable>application characteristics</assignable> (MDF/GPOS Function 43)</selectable>
+                <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_20"><ctr id="smf23" ctr-type="mgmt" pre=""/>. Revoke Biometric template (MDF/GPOS Function 46)</selectable>
                 <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_21"><ctr id="smf24" ctr-type="mgmt" pre=""/>. <assignable>list of other management functions to be provided by the MD</assignable></selectable>
                 <selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_23">no other management functions</selectable>
               </selectables>
@@ -6307,8 +6638,8 @@
               <h:br/>
               <h:br/>
               <h:ul style="list-style-type:none">
-                <h:li><ctr id="smf25" ctr-type="mgmt" pre=""/>. Password policy: <h:ol type="a"><h:li>minimum password length</h:li> <h:li>minimum password complexity</h:li> <h:li>maximum password lifetime (MDF Function 1)</h:li></h:ol></h:li>
-                <h:li><ctr id="smf26" ctr-type="mgmt" pre=""/>. Session locking policy: <h:ol type="a"><h:li>screen-lock enabled and disabled</h:li> <h:li>screen lock timeout</h:li> <h:li>number of authentication failures (MDF Function 2)</h:li></h:ol></h:li>
+                <h:li><ctr id="smf25" ctr-type="mgmt" pre=""/>. Password policy: <h:ol type="a"><h:li>minimum password length</h:li> <h:li>minimum password complexity</h:li> <h:li>maximum password lifetime (MDF/GPOS Function 1)</h:li></h:ol></h:li>
+                <h:li><ctr id="smf26" ctr-type="mgmt" pre=""/>. Session locking policy: <h:ol type="a"><h:li>screen-lock enabled and disabled</h:li> <h:li>screen lock timeout</h:li> <h:li>number of authentication failures (MDF/GPOS Function 2)</h:li></h:ol></h:li>
                 <h:li><ctr id="smf27" ctr-type="mgmt" pre=""/>. Wireless networks (SSIDs) to which the MD may connect (WLAN Client PP-Module Function WL-2)</h:li>
                 <h:li>
                   <ctr id="smf28" ctr-type="mgmt" pre=""/>. Security policy for each wireless network:
@@ -6324,10 +6655,10 @@
                     <h:li><assignable>any additional WLAN management functions</assignable>  (WLAN Client PP-Module Function WL-1)</h:li>
                   </h:ol>
                 </h:li>
-                <h:li><ctr id="smf29" ctr-type="mgmt" pre=""/>. Application installation policy by  <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_27">specifying authorized application repositories</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_28">specifying a set of allowed applications and versions (an application allowlist)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_29">denying application installation</selectable></selectables>, (MDF Function 8)</h:li>
-                <h:li><ctr id="smf30" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of audio or visual collection devices</assignable>  across device,  <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_31">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_32">on a per-group of applications processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_33">no other method</selectable></selectables>, (MDF Function 5)</h:li>
+                <h:li><ctr id="smf29" ctr-type="mgmt" pre=""/>. Application installation policy by  <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_27">specifying authorized application repositories</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_28">specifying a set of allowed applications and versions (an application allowlist)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_29">denying application installation</selectable></selectables>, (MDF/GPOS Function 8)</h:li>
+                <h:li><ctr id="smf30" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of audio or visual collection devices</assignable>  across device,  <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_31">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_32">on a per-group of applications processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_33">no other method</selectable></selectables>, (MDF/GPOS Function 5)</h:li>
               </h:ul>
-              <h:ul style="list-style-type:none"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_34"><ctr id="smf31" ctr-type="mgmt" pre=""/>. Enable and disable policy for the VPN protection across MD, <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_36">on a per-group of application processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_37">no other method</selectable></selectables> (MDF Function 3)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_38"><ctr id="smf32" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of radios</assignable>, (MDF Function 4)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_40"><ctr id="smf33" ctr-type="mgmt" pre=""/>. Enable and disable policy for data signaling over <assignable>list of externally accessible hardware ports</assignable>, (MDF Function 24)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_42"><ctr id="smf34" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of protocols where the device acts as a server</assignable>, (MDF Function 25)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_44"><ctr id="smf35" ctr-type="mgmt" pre=""/>. Enable and disable policy for developer modes, (MDF Function 26)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_45"><ctr id="smf36" ctr-type="mgmt" pre=""/>. Enable policy for data-at-rest protection, (MDF Function 19)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_46"><ctr id="smf37" ctr-type="mgmt" pre=""/>. Enable policy for removable media's data-at-rest protection, (MDF Function 20)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_47"><ctr id="smf38" ctr-type="mgmt" pre=""/>. Enable and disable policy for local authentication bypass, (MDF Function 27)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_48"><ctr id="smf39" ctr-type="mgmt" pre=""/>. The Bluetooth trusted channel policy:<h:br/><h:ol type="a"><h:li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth PP-Module Function BT-1)</h:li><h:li>change the Bluetooth device name (Bluetooth PP-Module Function BT-2), <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_49">Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth PP-Module Function BT-3)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_50">allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth PP-Module Function BT-4)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_51">configure allowable methods of Out of Band pairing (Bluetooth PP-Module Function BT-5)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_52">disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth PP-Module Function BT-6)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_53">disable and enable the Connection mode (Bluetooth PP-Module Function BT-7)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_54">disable and enable the Bluetooth services or profiles available on the device (Bluetooth PP-Module Function BT-8)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_55">specify minimum level of security for each pairing (Bluetooth PP-Module Function BT-9)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_56">no other Bluetooth configuration</selectable></selectables></h:li></h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_57"><ctr id="smf40" ctr-type="mgmt" pre=""/>. Enable and disable policy for display notification in the locked state of <h:br/><h:ol type="a"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_58">email notifications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_59">calendar appointments</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_60">contact associated with phone call notification</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_61">text message notification</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_62">other application-based notifications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_63">none</selectable></selectables> (MDF Function 18) </h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_64"><ctr id="smf41" ctr-type="mgmt" pre=""/>. Policy for establishing a trusted channel or disallowing establishment if the MD cannot establish a connection to determine the validity of a certificate, (MDF Function 30)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_65"><ctr id="smf42" ctr-type="mgmt" pre=""/>. Enable and disable policy for the cellular protocols used to connect to cellular network base stations, (MDF Function 31)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_66"><ctr id="smf43" ctr-type="mgmt" pre=""/>. Policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database, (MDF Function 29)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_67"><ctr id="smf44" ctr-type="mgmt" pre=""/>. <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_68">certificate</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_69">public-key</selectable></selectables> used to validate digital signature on applications, (MDF Function 33)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_70"><ctr id="smf45" ctr-type="mgmt" pre=""/>. Policy for exceptions for shared use of keys or secrets by multiple applications, (MDF Function 34)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_71"><ctr id="smf46" ctr-type="mgmt" pre=""/>. Policy for exceptions for destruction of keys or secrets by applications that did not import the key or secret, (MDF Function 35)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_72"><ctr id="smf47" ctr-type="mgmt" pre=""/>. The unlock banner policy, (MDF Function 36)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_73"><ctr id="smf48" ctr-type="mgmt" pre=""/>. Configure the auditable items (MDF Function 37)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_74"><ctr id="smf49" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_75">USB mass storage mode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_76">USB data transfer without user authentication</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_77">USB data transfer without authentication of the connection system</selectable></selectables> (MDF Function 39)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_78"><ctr id="smf50" ctr-type="mgmt" pre=""/>. Enable and disable backup of <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_79">all applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_80">selected applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_81">selected groups of applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_82">configuration data</selectable></selectables> to <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_83">locally connected system</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_84">remote system</selectable></selectables> (MDF Function 40)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_85"><ctr id="smf51" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_86">Hotspot functionality authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_87">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_88">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_89">no authentication</selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_90">USB tethering authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_91">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_92">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_93">no authentication</selectable></selectables> </selectable></selectables> (MDF Function 41)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_94"><ctr id="smf52" ctr-type="mgmt" pre=""/>. Enable and disable location services:<h:br/> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_95">across device</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_96">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_97">on a per-group of application processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_98">no other method</selectable></selectables> (MDF Function 21)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_99"><ctr id="smf53" ctr-type="mgmt" pre=""/>. Enable and disable policy for user unenrollment</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_100"><ctr id="smf54" ctr-type="mgmt" pre=""/>. Enable and disable policy for the Always-On VPN protection across device (MDF Function 45)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_101"><ctr id="smf55" ctr-type="mgmt" pre=""/>. Enable and disable policy for use of Biometric Authentication Factor (MDF Function 22)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_102"><ctr id="smf56" ctr-type="mgmt" pre=""/>. Connectivity timeout policy: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_103">allowed <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_104">number of missed reachability events</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_105">length of time without server connectivity</selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_106">when server connectivity timeout is exceeded agent shall <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_107">disable user password</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_108">wipe device</selectable></selectables> and <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_110"><assignable>other action</assignable></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_111">none</selectable></selectables> </selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_112"><ctr id="smf57" ctr-type="mgmt" pre=""/>. Enable and disable multi-user modes</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_113"><ctr id="smf58" ctr-type="mgmt" pre=""/>. Enable and disable automatic updates of system software</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_114"><ctr id="smf59" ctr-type="mgmt" pre=""/>. Enable and disable removable media</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_115"><ctr id="smf60" ctr-type="mgmt" pre=""/>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies</selectable></selectables>.</h:ul>
+              <h:ul style="list-style-type:none"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_34"><ctr id="smf31" ctr-type="mgmt" pre=""/>. Enable and disable policy for the VPN protection across MD, <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_36">on a per-group of application processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_37">no other method</selectable></selectables> (MDF/GPOS Function 3)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_38"><ctr id="smf32" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of radios</assignable>, (MDF/GPOS Function 4)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_40"><ctr id="smf33" ctr-type="mgmt" pre=""/>. Enable and disable policy for data signaling over <assignable>list of externally accessible hardware ports</assignable>, (MDF/GPOS Function 24)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_42"><ctr id="smf34" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of protocols where the device acts as a server</assignable>, (MDF/GPOS Function 25)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_44"><ctr id="smf35" ctr-type="mgmt" pre=""/>. Enable and disable policy for developer modes, (MDF/GPOS Function 26)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_45"><ctr id="smf36" ctr-type="mgmt" pre=""/>. Enable policy for data-at-rest protection, (MDF/GPOS Function 19)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_46"><ctr id="smf37" ctr-type="mgmt" pre=""/>. Enable policy for removable media's data-at-rest protection, (MDF/GPOS Function 20)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_47"><ctr id="smf38" ctr-type="mgmt" pre=""/>. Enable and disable policy for local authentication bypass, (MDF/GPOS Function 27)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_48"><ctr id="smf39" ctr-type="mgmt" pre=""/>. The Bluetooth trusted channel policy:<h:br/><h:ol type="a"><h:li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth PP-Module Function BT-1)</h:li><h:li>change the Bluetooth device name (Bluetooth PP-Module Function BT-2), <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_49">Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth PP-Module Function BT-3)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_50">allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth PP-Module Function BT-4)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_51">configure allowable methods of Out of Band pairing (Bluetooth PP-Module Function BT-5)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_52">disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth PP-Module Function BT-6)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_53">disable and enable the Connection mode (Bluetooth PP-Module Function BT-7)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_54">disable and enable the Bluetooth services or profiles available on the device (Bluetooth PP-Module Function BT-8)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_55">specify minimum level of security for each pairing (Bluetooth PP-Module Function BT-9)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_56">no other Bluetooth configuration</selectable></selectables></h:li></h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_57"><ctr id="smf40" ctr-type="mgmt" pre=""/>. Enable and disable policy for display notification in the locked state of <h:br/><h:ol type="a"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_58">email notifications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_59">calendar appointments</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_60">contact associated with phone call notification</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_61">text message notification</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_62">other application-based notifications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_63">none</selectable></selectables> (MDF/GPOS Function 18) </h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_64"><ctr id="smf41" ctr-type="mgmt" pre=""/>. Policy for establishing a trusted channel or disallowing establishment if the MD cannot establish a connection to determine the validity of a certificate, (MDF/GPOS Function 30)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_65"><ctr id="smf42" ctr-type="mgmt" pre=""/>. Enable and disable policy for the cellular protocols used to connect to cellular network base stations, (MDF/GPOS Function 31)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_66"><ctr id="smf43" ctr-type="mgmt" pre=""/>. Policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database, (MDF/GPOS Function 29)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_67"><ctr id="smf44" ctr-type="mgmt" pre=""/>. <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_68">certificate</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_69">public-key</selectable></selectables> used to validate digital signature on applications, (MDF/GPOS Function 33)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_70"><ctr id="smf45" ctr-type="mgmt" pre=""/>. Policy for exceptions for shared use of keys or secrets by multiple applications, (MDF/GPOS Function 34)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_71"><ctr id="smf46" ctr-type="mgmt" pre=""/>. Policy for exceptions for destruction of keys or secrets by applications that did not import the key or secret, (MDF/GPOS Function 35)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_72"><ctr id="smf47" ctr-type="mgmt" pre=""/>. The unlock banner policy, (MDF/GPOS Function 36)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_73"><ctr id="smf48" ctr-type="mgmt" pre=""/>. Configure the auditable items (MDF/GPOS Function 37)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_74"><ctr id="smf49" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_75">USB mass storage mode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_76">USB data transfer without user authentication</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_77">USB data transfer without authentication of the connection system</selectable></selectables> (MDF/GPOS Function 39)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_78"><ctr id="smf50" ctr-type="mgmt" pre=""/>. Enable and disable backup of <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_79">all applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_80">selected applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_81">selected groups of applications</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_82">configuration data</selectable></selectables> to <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_83">locally connected system</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_84">remote system</selectable></selectables> (MDF/GPOS Function 40)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_85"><ctr id="smf51" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_86">Hotspot functionality authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_87">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_88">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_89">no authentication</selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_90">USB tethering authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_91">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_92">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_93">no authentication</selectable></selectables> </selectable></selectables> (MDF/GPOS Function 41)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_94"><ctr id="smf52" ctr-type="mgmt" pre=""/>. Enable and disable location services:<h:br/> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_95">across device</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_96">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_97">on a per-group of application processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_98">no other method</selectable></selectables> (MDF/GPOS Function 21)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_99"><ctr id="smf53" ctr-type="mgmt" pre=""/>. Enable and disable policy for user unenrollment</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_100"><ctr id="smf54" ctr-type="mgmt" pre=""/>. Enable and disable policy for the Always-On VPN protection across device (MDF/GPOS Function 45)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_101"><ctr id="smf55" ctr-type="mgmt" pre=""/>. Enable and disable policy for use of Biometric Authentication Factor (MDF/GPOS Function 22)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_102"><ctr id="smf56" ctr-type="mgmt" pre=""/>. Connectivity timeout policy: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_103">allowed <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_104">number of missed reachability events</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_105">length of time without server connectivity</selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_106">when server connectivity timeout is exceeded agent shall <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_107">disable user password</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_108">wipe device</selectable></selectables> and <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_110"><assignable>other action</assignable></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_111">none</selectable></selectables> </selectable></selectables> </selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_112"><ctr id="smf57" ctr-type="mgmt" pre=""/>. Enable and disable multi-user modes</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_113"><ctr id="smf58" ctr-type="mgmt" pre=""/>. Enable and disable automatic updates of system software</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_114"><ctr id="smf59" ctr-type="mgmt" pre=""/>. Enable and disable removable media</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_115"><ctr id="smf60" ctr-type="mgmt" pre=""/>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies</selectable></selectables>.</h:ul>
             </title>
             <note role="application">
               This requirement captures all the configuration functionality the TSF provides the administrator to configure the MDM
@@ -6338,7 +6669,7 @@
               Function-specific Application Notes:
               <h:br/>
               <h:br/>
-              Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v4.0.
+              Function-specific application notes reference Mobile Device Fundamentals (MDF) PP v4.0 and General Purpose Operating Systems (GPOS) PP v5.0.
               <h:br/>
               <h:br/>
               Function
@@ -6380,7 +6711,7 @@
 		      evaluated MD and which management 
 		      functions were not evaluated.
               </TSS>
-              <Guidance>For each command that the TSF can issue to an MDM agent and for each mobile device configuration policies that can be applied, the evaluator shall examine the operational guidance to verify that it includes instructions on how to perform these actions, and what particular parameters or options can be specified for them.</Guidance>
+              <Guidance>For each command that the TSF can issue to an MDM agent and for each MD configuration policies that can be applied, the evaluator shall examine the operational guidance to verify that it includes instructions on how to perform these actions, and what particular parameters or options can be specified for them.</Guidance>
               <Tests>
                 For each MDM agent or platform listed as supported in the ST:
                 <testlist>
@@ -6819,13 +7150,15 @@
           <f-element id="fpt-tdc-interpret">
             <title>
               The TSF shall provide the capability to consistently interpret
-              <assignable>MDM policy</assignable>when shared between the primary MDM server and the MDM agent.
+              <assignable>MDM policy</assignable>
+              when shared between the primary MDM server and the MDM agent.
             </title>
           </f-element>
           <f-element id="fpt-tdc-rules">
             <title>
               The TSF shall use
-              <assignable>list of interpretation rules to be applied by the TSF</assignable>when interpreting MDM policy from the primary MDM server.
+              <assignable>list of interpretation rules to be applied by the TSF</assignable>
+              when interpreting MDM policy from the primary MDM server.
             </title>
             <note role="application">The intent of this requirement is to verify that there are well-defined rules that the subordinate MDM server follows if it modifies/interprets the MDM policy sent from the primary MDM server that is then delivered to the MDM agent on the managed device. For example: a mapping between the command received from the primary MDM server and the matching command delivered to the MDM agent. If the subordinate MDM does not modify the policy for delivery to the MDM agent, then this requirement is implicitly satisfied.</note>
             <aactivity>
@@ -6975,7 +7308,7 @@
             The following actions could be considered for the management functions in FMT.
             <h:ul>
               <h:li>Query the current version of the MD firmware or software.</h:li>
-              <h:li>Update system software (MDF Function 15).</h:li>
+              <h:li>Update system software (MDF/GPOS Function  15).</h:li>
             </h:ul>
           </management>
           <audit>
@@ -7400,7 +7733,8 @@
                   <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
                 </selectables>
                 that is logically distinct from other communication channels, as specified in
-                <assignable>inter-TSF trusted channel or internal TOE TSF data transfer type</assignable></title>
+                <assignable>inter-TSF trusted channel or internal TOE TSF data transfer type</assignable>
+              </title>
             </ext-comp-def-title>
             <note role="application">
               This SFR describes the communication channels between the MDM server and an agent that may or may not be in the TOE, and optionally separate
@@ -7412,7 +7746,7 @@
               FPT_ITT.1/INTER_XFER_AGENT must be included in the ST.
               <h:br/>
               <h:br/>
-              If the TOE interoperates with an evaluated MDM agent built into a mobile device (i.e., the TOE does not include an MDM agent), the communication channel 
+              If the TOE interoperates with an evaluated MDM agent built into a MD (i.e., the TOE does not include an MDM agent), the communication channel 
               between the agent and TSF is external to the TOE and thus "an MDM agent that is external to the TOE" must be selected in the first selection.
               Additionally FTP_ITC.1/INTER_TSF_XFER_AGENT must be selected in the second selection and FTP_ITC.1/INTER_TSF_XFER_AGENT must be included in the ST.
               <h:br/>
@@ -7815,7 +8149,6 @@
         <a-component cc-id="ase_tss.1" name="TOE summary specification">
           <a-element type="C">
             <title>The TOE summary specification shall describe how the TOE meets each SFR.</title>
-            <aactivity/>
           </a-element>
         </a-component>
       </section>
@@ -7834,32 +8167,25 @@
           The interfaces that need to be evaluated are characterized through the information needed to perform the evaluation activities listed, rather than as an independent, abstract list.
           <a-element type="D">
             <title>The developer shall provide a functional specification.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall provide a tracing from the functional specification to the SFRs.</title>
             <note role="application">As indicated in the introduction to this section, the functional specification is comprised of the information contained in the AGD_OPE and AGD_PRE documentation. The developer may reference a website accessible to application developers and the evaluator. The evaluation activities in the functional requirements point to evidence that should exist in the documentation and TSS section; since these are directly associated with the SFRs, the tracing in element ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary. </note>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The functional specification shall describe the purpose and method of use for each SFR-enforcing and SFR-supporting TSFI.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The functional specification shall identify all parameters associated with each SFR-enforcing and SFR-supporting TSFI.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The functional specification shall provide rationale for the implicit categorization of interfaces as SFR-non-interfering.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The tracing shall demonstrate that the SFRs trace to TSFIs in the functional specification.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of the SFRs.</title>
@@ -7889,36 +8215,28 @@
               <h:br/>
               Rather than repeat information here, the developer should review the evaluation activities for this component to ascertain the specifics of the guidance that the evaluator will be checking for. This will provide the necessary information for the preparation of acceptable guidance.
             </note>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall describe, for each user role, the user-accessible functions and privileges that should be controlled in a secure processing environment, including appropriate warnings.</title>
             <note role="application">User and administrator are to be considered in the definition of user role.</note>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall describe, for each user role, how to use the available interfaces provided by the TOE in a secure manner.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall describe, for each user role, the available functions and interfaces, in particular all security parameters under the control of the user, indicating secure values as appropriate.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall, for each user role, clearly present each type of security-relevant event relative to the user-accessible functions that need to be performed, including changing the security characteristics of entities under the control of the TSF.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall identify all possible modes of operation of the TOE (including operation following failure or operational error), their consequences, and implications for maintaining secure operation.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall, for each user role, describe the security measures to be followed in order to fulfill the security objectives for the operational environment as described in the ST.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The operational user guidance shall be clear and reasonable.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
@@ -7957,11 +8275,9 @@
           <a-element type="D">
             <title>The developer shall provide the TOE, including its preparative procedures.</title>
             <note role="application">As with the operational guidance, the developer should look to the evaluation activities to determine the required content with respect to preparative procedures.</note>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The preparative procedures shall describe all the steps necessary for secure acceptance of the delivered TOE in accordance with the developer's delivery procedures.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The preparative procedures shall describe all the steps necessary for secure installation of the TOE and for the secure preparation of the operational environment in accordance with the security objectives for the operational environment as described in the ST.</title>
@@ -7972,11 +8288,9 @@
               It might also be the case that no installation is necessary, for example as a
                 Software as a Service implementation in a Cloud environment. In this case it may be inappropriate to require and analyze installation procedures and thus this requirement is implicitly satisfied.
             </note>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall apply the preparative procedures to confirm that the TOE can be prepared securely for operation.</title>
@@ -7990,11 +8304,9 @@
           This component is targeted at identifying the TOE such that it can be distinguished from other products or versions from the same vendor and can be easily specified when being procured by an end user.
           <a-element type="D">
             <title>The developer shall provide the TOE and a reference for the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The TOE shall be labeled with its unique reference.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
@@ -8008,15 +8320,12 @@
           Given the scope of the TOE and its associated evaluation evidence requirements, this component's evaluation activities are covered by the evaluation activities listed for ALC_CMC.1.
           <a-element type="D">
             <title>The developer shall provide a configuration list for the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The configuration list shall include the following: the TOE itself; and the evaluation evidence required by the SARs.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The configuration list shall uniquely identify the configuration items.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
@@ -8039,27 +8348,22 @@
           <a-element type="D">
             <title>The developer shall document and provide flaw remediation procedures addressed to TOE
               developers.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the procedures used to
               track all reported security flaws in each release of the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that a description of the nature and effect
               of each security flaw be provided, as well as the status of finding a correction to that flaw.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that corrective actions be identified for
               each of the security flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the methods used to
               provide flaw information, corrections and guidance on corrective actions to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for
@@ -8071,56 +8375,45 @@
           <a-element type="D">
             <title>The developer shall document and provide flaw remediation procedures addressed to TOE
               developers.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall establish a procedure for accepting and acting upon all reports of
               security flaws and requests for corrections to those flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall provide flaw remediation guidance addressed to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the procedures used to track all
               reported security flaws in each release of the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that a description of the nature and effect of each
               security flaw be provided, as well as the status of finding a correction to that flaw.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that corrective actions be identified for each of the
               security flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the methods used to provide flaw
               information, corrections and guidance on corrective actions to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall describe a means by which the developer receives
               from TOE users reports and enquiries of suspected security flaws in the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The procedures for processing reported security flaws shall ensure that any reported
               flaws are remediated and the remediation procedures issued to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The procedures for processing reported security flaws shall provide safeguards that any
               corrections to these security flaws do not introduce any new flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation guidance shall describe a means by which TOE users report to the
               developer any suspected security flaws in the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and
@@ -8132,72 +8425,58 @@
           <a-element type="D">
             <title>The developer shall document and provide flaw remediation procedures addressed to TOE
               developers.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall establish a procedure for accepting and acting upon all reports of security
               flaws and requests for corrections to those flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="D">
             <title>The developer shall provide flaw remediation guidance addressed to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the procedures used to track all
               reported security flaws in each release of the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that a description of the nature and effect of each
               security flaw be provided, as well as the status of finding a correction to that flaw.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall require that corrective actions be identified for each of the
               security flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the methods used to provide flaw
               information, corrections and guidance on corrective actions to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall describe a means by which the developer receives from
               TOE users reports and enquiries of suspected security flaws in the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall include a procedure requiring timely response and
               the automatic distribution of security flaw reports and the associated corrections to
               registered users who might be affected by the security flaw.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The procedures for processing reported security flaws shall ensure that any reported flaws are
               remediated and the remediation procedures issued to TOE users.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The procedures for processing reported security flaws shall provide safeguards that any
               corrections to these security flaws do not introduce any new flaws.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation guidance shall describe a means by which TOE users report to the
               developer any suspected security flaws in the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation guidance shall describe a means by which TOE users may register
               with the developer, to be eligible to receive security flaw reports and corrections.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The flaw remediation guidance shall identify the specific points of contact for all reports
               and enquiries about security issues involving the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and
@@ -8215,11 +8494,9 @@
           Testing is performed to confirm the functionality described in the TSS as well as the administrative (including configuration and operational) documentation provided. The focus of the testing is to confirm that the requirements specified in Sections 5.3 and 5.4 are being met, although some additional testing is specified for SARs in Section 6. The Evaluation Activities identify the additional testing activities associated with these components. The evaluator produces a test report documenting the plan for and results of testing, as well as coverage arguments focused on the TOE or platform combinations that are claiming conformance to this PP.
           <a-element type="D">
             <title>The developer shall provide the TOE for testing.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The TOE shall be suitable for testing.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>
@@ -8228,7 +8505,6 @@
               that the information provided meets all requirements for content 
 			  and presentation of evidence.
             </title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall test a subset of the TSF to confirm that the TSF operates as specified.</title>
@@ -8281,21 +8557,17 @@
         <a-component cc-id="ava_van.1" name="Vulnerability Survey (AVA_VAN.1)">
           <a-element type="D">
             <title>The developer shall provide the TOE for testing.</title>
-            <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The TOE shall be suitable for testing.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements for content and 
 			  presentation of evidence.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall perform a search of public domain sources to identify potential vulnerabilities in 
 			  the TOE.</title>
-            <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall conduct penetration testing, based on the identified potential vulnerabilities, to 
