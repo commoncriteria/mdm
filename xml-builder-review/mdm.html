@@ -635,8 +635,8 @@ function showTarget(id){
 <tr><td>2.0</td><td>2014-12-31</td><td>Separation of <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr><br/>Updated cryptography, protocol, X.509 requirements.<br/> Updated management functions to match MDF <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> v2.0.<br/> Included SSH as a remote administration protocol.<br/> Removed IPsec as protocol to communicate to <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent.<br/> Added X509 enrollment objective requirement.<br/> Added Optional Mobile Application Store requirements.</td></tr>
 <tr><td>3.0</td><td>2016-11-21</td><td>Updates to align with Technical Decisions<br/> Added requirements to support BYOD use case <br/> Removed IPsec and SSH requirements, which are now contained in EPs</td></tr>
 <tr><td>4.0</td><td>2018-09-24</td><td> Updates to align with Technical Decisions<br/> Removed platform dependency<br/> Removed TLS <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and use the TLS Functional Package<br/> Allowed for a distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> </td></tr>
-<tr><td>5.0</td><td>2024-11-15</td><td> Updates to align with Technical Decisions<br/> Updates to align with <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022<br/> Updates to support subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr><br/><br/></td></tr>
-</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ov" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#cte" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOE_Boundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#Use_Cases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#package-usage" style="text-indent:10px">1.5<span>Package Usage</span></a><a href="#Conformance_Claims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#idt" style="text-indent:0px">3<span>Introduction to Distributed TOEs</span></a><a href="#rcd" style="text-indent:10px">3.1<span>Registration of Distributed TOE Components</span></a><a href="#ard" style="text-indent:10px">3.2<span>Allocation of Requirements in Distributed TOEs</span></a><a href="#dis" style="text-indent:10px">3.3<span>Security Audit for Distributed TOEs</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">4<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">4.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">4.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">4.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">5<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">5.1<span>Security Objectives for the Operational Environment</span></a><a href="#" style="text-indent:10px">5.2<span>Security Objectives Rationale</span></a><a href="#req" style="text-indent:0px">6<span>Security Requirements</span></a><a href="#SFRs" style="text-indent:10px">6.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">6.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#fau" style="text-indent:20px">6.1.2<span>Security Audit (FAU)</span></a><a href="#fco" style="text-indent:20px">6.1.3<span>Communication (FCO)</span></a><a href="#fcs" style="text-indent:20px">6.1.4<span>Cryptographic Support (FCS)</span></a><a href="#fia" style="text-indent:20px">6.1.5<span>Identification and Authentication (FIA)</span></a><a href="#fmt" style="text-indent:20px">6.1.6<span>Security Management (FMT)</span></a><a href="#fpt" style="text-indent:20px">6.1.7<span>Protection of the TSF (FPT)</span></a><a href="#fta" style="text-indent:20px">6.1.8<span>TOE Access (FTA)</span></a><a href="#ftp" style="text-indent:20px">6.1.9<span>Trusted Path/Channels (FTP)</span></a><a href="#obj-req-map" style="text-indent:20px">6.1.10<span>TOE Security Functional Requirements Rationale</span></a><a href="#SARs" style="text-indent:10px">6.2<span>Security Assurance Requirements</span></a><a href="#ase" style="text-indent:20px">6.2.1<span>Class ASE: Security Target</span></a><a href="#adv" style="text-indent:20px">6.2.2<span>Class ADV: Development</span></a><a href="#agd" style="text-indent:20px">6.2.3<span>Class AGD: Guidance Documentation</span></a><a href="#agd_pre" style="text-indent:20px">6.2.4<span>Preparative Procedures (AGD_PRE.1)</span></a><a href="#alc" style="text-indent:20px">6.2.5<span>Class ALC: Life-cycle Support</span></a><a href="#alc_cms" style="text-indent:20px">6.2.6<span>TOE CM Coverage (ALC_CMS.1)</span></a><a href="#ate-tests" style="text-indent:20px">6.2.7<span>Class ATE: Tests</span></a><a href="#ava" style="text-indent:20px">6.2.8<span>Class AVA: Vulnerability Analysis</span></a><a href="#impl-reqs" style="text-indent:0px">Appendix A - <span>Implementation-dependent Requirements</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix B - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">B.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">B.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCO" style="text-indent:20px">B.2.1<span>Communication (FCO)</span></a><a href="#ext-comp-FCO_CPC_EXT" style="text-indent:30px">B.2.1.1<span>FCO_CPC_EXT Component Registration Channel Definition</span></a><a href="#ext-comp-FCS" style="text-indent:20px">B.2.2<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_CKM_EXT" style="text-indent:30px">B.2.2.1<span>FCS_CKM_EXT Cryptographic Key Management</span></a><a href="#ext-comp-FCS_HTTPS_EXT" style="text-indent:30px">B.2.2.2<span>FCS_HTTPS_EXT HTTPS Protocol</span></a><a href="#ext-comp-FCS_IV_EXT" style="text-indent:30px">B.2.2.3<span>FCS_IV_EXT Initialization Vector Generation</span></a><a href="#ext-comp-FCS_STG_EXT" style="text-indent:30px">B.2.2.4<span>FCS_STG_EXT Encrypted Cryptographic Key Storage</span></a><a href="#ext-comp-FIA" style="text-indent:20px">B.2.3<span>Identification and Authentication (FIA)</span></a><a href="#ext-comp-FIA_CLI_EXT" style="text-indent:30px">B.2.3.1<span>FIA_CLI_EXT Client Authorization</span></a><a href="#ext-comp-FIA_ENR_EXT" style="text-indent:30px">B.2.3.2<span>FIA_ENR_EXT Enrollment</span></a><a href="#ext-comp-FIA_TOK_EXT" style="text-indent:30px">B.2.3.3<span>FIA_TOK_EXT Client Tokens</span></a><a href="#ext-comp-FPT" style="text-indent:20px">B.2.4<span>Protection of the TSF (FPT)</span></a><a href="#ext-comp-FPT_API_EXT" style="text-indent:30px">B.2.4.1<span>FPT_API_EXT Use of Supported Services and APIs</span></a><a href="#ext-comp-FPT_LIB_EXT" style="text-indent:30px">B.2.4.2<span>FPT_LIB_EXT Use of Third-Party Libraries</span></a><a href="#ext-comp-FPT_TST_EXT" style="text-indent:30px">B.2.4.3<span>FPT_TST_EXT Functionality Testing</span></a><a href="#ext-comp-FPT_TUD_EXT" style="text-indent:30px">B.2.4.4<span>FPT_TUD_EXT Trusted Update</span></a><a href="#ext-comp-FAU" style="text-indent:20px">B.2.5<span>Security Audit (FAU)</span></a><a href="#ext-comp-FAU_ALT_EXT" style="text-indent:30px">B.2.5.1<span>FAU_ALT_EXT Server Alerts</span></a><a href="#ext-comp-FAU_CRP_EXT" style="text-indent:30px">B.2.5.2<span>FAU_CRP_EXT Support for Compliance Reporting of Mobile Device Configuration</span></a><a href="#ext-comp-FAU_NET_EXT" style="text-indent:30px">B.2.5.3<span>FAU_NET_EXT Network Reachability Review</span></a><a href="#ext-comp-FMT" style="text-indent:20px">B.2.6<span>Security Management (FMT)</span></a><a href="#ext-comp-FMT_POL_EXT" style="text-indent:30px">B.2.6.1<span>FMT_POL_EXT Trusted Policy Update</span></a><a href="#ext-comp-FMT_SAE_EXT" style="text-indent:30px">B.2.6.2<span>FMT_SAE_EXT Security Attribute Expiration</span></a><a href="#ext-comp-FTP" style="text-indent:20px">B.2.7<span>Trusted Path/Channels (FTP)</span></a><a href="#ext-comp-FTP_ITC_EXT" style="text-indent:30px">B.2.7.1<span>FTP_ITC_EXT Trusted Channel</span></a><a href="#satisfiedreqs" style="text-indent:0px">Appendix C - <span>Implicitly Satisfied Requirements</span></a><a href="#entropyappendix" style="text-indent:0px">Appendix D - <span>Entropy Documentation and Assessment</span></a><a href="#design-description" style="text-indent:10px">D.1<span>Design Description</span></a><a href="#entropy-justification" style="text-indent:10px">D.2<span>Entropy Justification</span></a><a href="#operating-conditions" style="text-indent:10px">D.3<span>Operating Conditions</span></a><a href="#sec4" style="text-indent:10px">D.4<span>Health Testing</span></a><a href="#EACDT" style="text-indent:0px">Appendix E - <span>Evaluating Additional Components for a Distributed TOE</span></a><a href="#sec1" style="text-indent:10px">E.1<span>Evaluator Actions for Assessing the ST</span></a><a href="#sec2" style="text-indent:10px">E.2<span>Evaluator Actions for Assessing the Guidance Documentation</span></a><a href="#sec3" style="text-indent:10px">E.3<span>Evaluator Actions for Testing the TOE</span></a><a href="#equiv" style="text-indent:0px">Appendix F - <span>MDM Software Equivalency Guidelines</span></a><a href="#mdm-intro" style="text-indent:10px">F.1<span>Introduction</span></a><a href="#approach" style="text-indent:10px">F.2<span>Approach to Equivalency Analysis</span></a><a href="#modelequiv" style="text-indent:10px">F.3<span>Specific Guidance for Determining Product Model Equivalence</span></a><a href="#versionequiv" style="text-indent:10px">F.4<span>Specific Guidance for Determining Product Version Equivalence</span></a><a href="#platformequiv" style="text-indent:10px">F.5<span>Specific Guidance for Determining Platform Equivalence</span></a><a href="#hardware-equiv" style="text-indent:20px">F.5.1<span>Platform Equivalence, Hardware and Virtual Hardware Platforms</span></a><a href="#os-equiv" style="text-indent:20px">F.5.2<span>Platform Equivalence, OS Platforms</span></a><a href="#software-equiv" style="text-indent:20px">F.5.3<span>Software-based Execution Environment Platform Equivalence</span></a><a href="#specificity" style="text-indent:10px">F.6<span>Level of Specificity for Tested Configurations and Claimed Equivalent Configurations</span></a><a href="#use-case" style="text-indent:0px">Appendix G - <span>Use Case Templates</span></a><a href="#usecase1" style="text-indent:10px">G.1<span>Enterprise-owned device for general-purpose enterprise use</span></a><a href="#usecase2" style="text-indent:10px">G.2<span>Enterprise-owned device for specialized, high-security use</span></a><a href="#usecase3" style="text-indent:10px">G.3<span>Personally-owned device for personal and enterprise use</span></a><a href="#usecase4" style="text-indent:10px">G.4<span>Personally-owned device for personal and limited enterprise use</span></a><a href="#acronyms" style="text-indent:0px">Appendix H - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix I - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
+<tr><td>5.0</td><td>2024-11-15</td><td> Updates to align with Technical Decisions<br/> Updates to align with <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022<br/> Updates to support subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr><br/> Updates to support GPOS <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> as a base for <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Agent<br/><br/></td></tr>
+</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ov" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#cte" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOE_Boundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#Use_Cases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#package-usage" style="text-indent:10px">1.5<span>Package Usage</span></a><a href="#Conformance_Claims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#idt" style="text-indent:0px">3<span>Introduction to Distributed TOEs</span></a><a href="#rcd" style="text-indent:10px">3.1<span>Registration of Distributed TOE Components</span></a><a href="#ard" style="text-indent:10px">3.2<span>Allocation of Requirements in Distributed TOEs</span></a><a href="#dis" style="text-indent:10px">3.3<span>Security Audit for Distributed TOEs</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">4<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">4.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">4.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">4.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">5<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">5.1<span>Security Objectives for the Operational Environment</span></a><a href="#" style="text-indent:10px">5.2<span>Security Objectives Rationale</span></a><a href="#req" style="text-indent:0px">6<span>Security Requirements</span></a><a href="#SFRs" style="text-indent:10px">6.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">6.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#fau" style="text-indent:20px">6.1.2<span>Security Audit (FAU)</span></a><a href="#fco" style="text-indent:20px">6.1.3<span>Communication (FCO)</span></a><a href="#fcs" style="text-indent:20px">6.1.4<span>Cryptographic Support (FCS)</span></a><a href="#fia" style="text-indent:20px">6.1.5<span>Identification and Authentication (FIA)</span></a><a href="#fmt" style="text-indent:20px">6.1.6<span>Security Management (FMT)</span></a><a href="#fpt" style="text-indent:20px">6.1.7<span>Protection of the TSF (FPT)</span></a><a href="#fta" style="text-indent:20px">6.1.8<span>TOE Access (FTA)</span></a><a href="#ftp" style="text-indent:20px">6.1.9<span>Trusted Path/Channels (FTP)</span></a><a href="#obj-req-map" style="text-indent:20px">6.1.10<span>TOE Security Functional Requirements Rationale</span></a><a href="#SARs" style="text-indent:10px">6.2<span>Security Assurance Requirements</span></a><a href="#ase" style="text-indent:20px">6.2.1<span>Class ASE: Security Target</span></a><a href="#adv" style="text-indent:20px">6.2.2<span>Class ADV: Development</span></a><a href="#agd" style="text-indent:20px">6.2.3<span>Class AGD: Guidance Documentation</span></a><a href="#agd_pre" style="text-indent:20px">6.2.4<span>Preparative Procedures (AGD_PRE.1)</span></a><a href="#alc" style="text-indent:20px">6.2.5<span>Class ALC: Life-cycle Support</span></a><a href="#alc_cms" style="text-indent:20px">6.2.6<span>TOE CM Coverage (ALC_CMS.1)</span></a><a href="#ate-tests" style="text-indent:20px">6.2.7<span>Class ATE: Tests</span></a><a href="#ava" style="text-indent:20px">6.2.8<span>Class AVA: Vulnerability Analysis</span></a><a href="#impl-reqs" style="text-indent:0px">Appendix A - <span>Implementation-dependent Requirements</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix B - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">B.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">B.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCO" style="text-indent:20px">B.2.1<span>Communication (FCO)</span></a><a href="#ext-comp-FCO_CPC_EXT" style="text-indent:30px">B.2.1.1<span>FCO_CPC_EXT Component Registration Channel Definition</span></a><a href="#ext-comp-FCS" style="text-indent:20px">B.2.2<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_CKM_EXT" style="text-indent:30px">B.2.2.1<span>FCS_CKM_EXT Cryptographic Key Management</span></a><a href="#ext-comp-FCS_HTTPS_EXT" style="text-indent:30px">B.2.2.2<span>FCS_HTTPS_EXT HTTPS Protocol</span></a><a href="#ext-comp-FCS_IV_EXT" style="text-indent:30px">B.2.2.3<span>FCS_IV_EXT Initialization Vector Generation</span></a><a href="#ext-comp-FCS_STG_EXT" style="text-indent:30px">B.2.2.4<span>FCS_STG_EXT Encrypted Cryptographic Key Storage</span></a><a href="#ext-comp-FIA" style="text-indent:20px">B.2.3<span>Identification and Authentication (FIA)</span></a><a href="#ext-comp-FIA_CLI_EXT" style="text-indent:30px">B.2.3.1<span>FIA_CLI_EXT Client Authorization</span></a><a href="#ext-comp-FIA_ENR_EXT" style="text-indent:30px">B.2.3.2<span>FIA_ENR_EXT Enrollment</span></a><a href="#ext-comp-FIA_TOK_EXT" style="text-indent:30px">B.2.3.3<span>FIA_TOK_EXT Client Tokens</span></a><a href="#ext-comp-FPT" style="text-indent:20px">B.2.4<span>Protection of the TSF (FPT)</span></a><a href="#ext-comp-FPT_API_EXT" style="text-indent:30px">B.2.4.1<span>FPT_API_EXT Use of Supported Services and APIs</span></a><a href="#ext-comp-FPT_LIB_EXT" style="text-indent:30px">B.2.4.2<span>FPT_LIB_EXT Use of Third-Party Libraries</span></a><a href="#ext-comp-FPT_TST_EXT" style="text-indent:30px">B.2.4.3<span>FPT_TST_EXT Functionality Testing</span></a><a href="#ext-comp-FPT_TUD_EXT" style="text-indent:30px">B.2.4.4<span>FPT_TUD_EXT Trusted Update</span></a><a href="#ext-comp-FAU" style="text-indent:20px">B.2.5<span>Security Audit (FAU)</span></a><a href="#ext-comp-FAU_ALT_EXT" style="text-indent:30px">B.2.5.1<span>FAU_ALT_EXT Server Alerts</span></a><a href="#ext-comp-FAU_CRP_EXT" style="text-indent:30px">B.2.5.2<span>FAU_CRP_EXT Support for Compliance Reporting of Managed Device Configuration</span></a><a href="#ext-comp-FAU_NET_EXT" style="text-indent:30px">B.2.5.3<span>FAU_NET_EXT Network Reachability Review</span></a><a href="#ext-comp-FMT" style="text-indent:20px">B.2.6<span>Security Management (FMT)</span></a><a href="#ext-comp-FMT_POL_EXT" style="text-indent:30px">B.2.6.1<span>FMT_POL_EXT Trusted Policy Update</span></a><a href="#ext-comp-FMT_SAE_EXT" style="text-indent:30px">B.2.6.2<span>FMT_SAE_EXT Security Attribute Expiration</span></a><a href="#ext-comp-FTP" style="text-indent:20px">B.2.7<span>Trusted Path/Channels (FTP)</span></a><a href="#ext-comp-FTP_ITC_EXT" style="text-indent:30px">B.2.7.1<span>FTP_ITC_EXT Trusted Channel</span></a><a href="#satisfiedreqs" style="text-indent:0px">Appendix C - <span>Implicitly Satisfied Requirements</span></a><a href="#entropyappendix" style="text-indent:0px">Appendix D - <span>Entropy Documentation and Assessment</span></a><a href="#design-description" style="text-indent:10px">D.1<span>Design Description</span></a><a href="#entropy-justification" style="text-indent:10px">D.2<span>Entropy Justification</span></a><a href="#operating-conditions" style="text-indent:10px">D.3<span>Operating Conditions</span></a><a href="#sec4" style="text-indent:10px">D.4<span>Health Testing</span></a><a href="#EACDT" style="text-indent:0px">Appendix E - <span>Evaluating Additional Components for a Distributed TOE</span></a><a href="#sec1" style="text-indent:10px">E.1<span>Evaluator Actions for Assessing the ST</span></a><a href="#sec2" style="text-indent:10px">E.2<span>Evaluator Actions for Assessing the Guidance Documentation</span></a><a href="#sec3" style="text-indent:10px">E.3<span>Evaluator Actions for Testing the TOE</span></a><a href="#equiv" style="text-indent:0px">Appendix F - <span>MDM Software Equivalency Guidelines</span></a><a href="#mdm-intro" style="text-indent:10px">F.1<span>Introduction</span></a><a href="#approach" style="text-indent:10px">F.2<span>Approach to Equivalency Analysis</span></a><a href="#modelequiv" style="text-indent:10px">F.3<span>Specific Guidance for Determining Product Model Equivalence</span></a><a href="#versionequiv" style="text-indent:10px">F.4<span>Specific Guidance for Determining Product Version Equivalence</span></a><a href="#platformequiv" style="text-indent:10px">F.5<span>Specific Guidance for Determining Platform Equivalence</span></a><a href="#hardware-equiv" style="text-indent:20px">F.5.1<span>Platform Equivalence, Hardware and Virtual Hardware Platforms</span></a><a href="#os-equiv" style="text-indent:20px">F.5.2<span>Platform Equivalence, OS Platforms</span></a><a href="#software-equiv" style="text-indent:20px">F.5.3<span>Software-based Execution Environment Platform Equivalence</span></a><a href="#specificity" style="text-indent:10px">F.6<span>Level of Specificity for Tested Configurations and Claimed Equivalent Configurations</span></a><a href="#use-case" style="text-indent:0px">Appendix G - <span>Use Case Templates</span></a><a href="#usecase1" style="text-indent:10px">G.1<span>Enterprise-owned device for general-purpose enterprise use</span></a><a href="#usecase2" style="text-indent:10px">G.2<span>Enterprise-owned device for specialized, high-security use</span></a><a href="#usecase3" style="text-indent:10px">G.3<span>Personally-owned device for personal and enterprise use</span></a><a href="#usecase4" style="text-indent:10px">G.4<span>Personally-owned device for personal and limited enterprise use</span></a><a href="#acronyms" style="text-indent:0px">Appendix H - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix I - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
     <h2 class="indexable" data-level="2" id="ov">1.1 Overview</h2>
       Mobile Device Management (<abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>) products allow enterprises to apply security policies to managed devices (MDs), such as smartphones, tablets, and workstations. The purpose of 
 			these policies is to establish a security posture adequate to permit MDs to process enterprise data and connect to enterprise network
@@ -704,7 +704,7 @@ The following sections list Common Criteria and technology terms used in this do
 				such as DEKs or storage repositories that contain keys.</td></tr>
 <tr><td><div id="Locked_State">Locked State</div></td><td>Device state where the device is powered
 				on but most functionality is unavailable for use without authentication.</td></tr>
-<tr><td><div id="Managed_Device">Managed Device (MD)</div></td><td>A device enrolled and managed, or to be enrolled and managed, by an MDM system. This device is a mobile device typically evaluated under the MDF PP or a device utilizing a GPOS typically evaluated under the GPOS PP.</td></tr>
+<tr><td><div id="Managed_Device">Managed Device (MD)</div></td><td>A device enrolled and managed, or to be enrolled and managed, by an MDM system. This device is a mobile device typically evaluated under the MDF PP or a device utilizing a manageable GPOS typically evaluated under the GPOS PP.</td></tr>
 <tr><td><div id="Managed_Device_User">Managed Device User</div></td><td>The person who uses and is held responsible for an MD. </td></tr>
 <tr><td><div id="Mobile_Application_Store">Mobile Application Store (MAS)</div></td><td>An MDM feature that allows for an organization to substitute a device manufacturer's
             application store for one that restricts what applications are made available to users.</td></tr>
@@ -888,7 +888,7 @@ The following sections list Common Criteria and technology terms used in this do
 					any Protection Profile.
 				</dd><p></p><dd>The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a 
 					<abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>:
-					<ul><li>Protection Profile for Mobile Device Fundamentals, Version 4.0</li><li>Protection Profile for Application Software, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Agents, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client, Version 3.0</li></ul></dd><dt>Package Claim</dt><p></p><dd><ul><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is 
+					<ul><li>Protection Profile for Mobile Device Fundamentals, Version 4.0</li><li>Protection Profile for General Purpose Operating Systems, Version 5.0</li><li>Protection Profile for Application Software, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Agents, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client, Version 3.0</li></ul></dd><dt>Package Claim</dt><p></p><dd><ul><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is 
 					    Functional Package for SSH, Version 2.0 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is 
 					    Functional Package for TLS, Version 2.1 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is 
 					    Functional Package for X.509, Version 1.0 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not conform to any 
@@ -1004,7 +1004,7 @@ The following sections list Common Criteria and technology terms used in this do
         </tr>
         <tr>
           <td><a href="#FAU_CRP_EXT.1">FAU_CRP_EXT.1</a></td>
-          <td>Support for Compliance Reporting of Mobile Device Configuration</td>
+          <td>Support for Compliance Reporting of <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> Configuration</td>
           <td>One</td>
         </tr>
         <tr>
@@ -1414,7 +1414,7 @@ The following sections list Common Criteria and technology terms used in this do
 	<table><caption><span class="ctr" data-myid="t-sec-obj-rat" data-counter-type="ct-Table" id="t-sec-obj-rat">Table <span class="counter">2</span></span>: Security Objectives Rationale</caption><tr class="header"><td>Assumption or OSP</td><td>Security Objectives</td><td>Rationale</td></tr><tr class="major-row"><td rowspan="1"><a href="#A.COMPONENTS_RUNNING">A.COMPONENTS_​RUNNING</a></td><td><a href="#OE.COMPONENTS_RUNNING">OE.COMPONENTS_​RUNNING</a></td><td>The operational environment objective <a href="#OE.COMPONENTS_RUNNING">OE.COMPONENTS_RUNNING</a> is realized through <a href="#A.COMPONENTS_RUNNING">A.COMPONENTS_RUNNING</a>.</td></tr><tr class="major-row"><td rowspan="1"><a href="#A.CONNECTIVITY">A.CONNECTIVITY</a></td><td><a href="#OE.WIRELESS_NETWORK">OE.WIRELESS_​NETWORK</a></td><td>The operational environment objective <a href="#OE.WIRELESS_NETWORK">OE.WIRELESS_NETWORK</a> is realized through
 							<a href="#A.CONNECTIVITY">A.CONNECTIVITY</a>.</td></tr><tr class="major-row"><td rowspan="1"><a href="#A.MDM_SERVER_PLATFORM">A.MDM_​SERVER_​PLATFORM</a></td><td><a href="#OE.TIMESTAMP">OE.TIMESTAMP</a></td><td>The operational environment objective <a href="#OE.TIMESTAMP">OE.TIMESTAMP</a> is realized through <a href="#A.MDM_SERVER_PLATFORM">A.MDM_SERVER_PLATFORM</a>.</td></tr><tr class="major-row"><td rowspan="1"><a href="#A.PROPER_ADMIN">A.PROPER_​ADMIN</a></td><td><a href="#OE.PROPER_ADMIN">OE.PROPER_​ADMIN</a></td><td>The operational environment objective <a href="#OE.PROPER_ADMIN">OE.PROPER_ADMIN</a> is realized through
 							<a href="#A.PROPER_ADMIN">A.PROPER_ADMIN</a>.</td></tr><tr class="major-row"><td rowspan="1"><a href="#A.PROPER_USER">A.PROPER_​USER</a></td><td><a href="#OE.PROPER_USER">OE.PROPER_​USER</a></td><td>The operational environment objective <a href="#OE.PROPER_USER">OE.PROPER_USER</a> is realized through
-							<a href="#A.PROPER_USER">A.PROPER_USER</a>.</td></tr><tr class="major-row"><td rowspan="1"><a href="#P.ADMIN">P.ADMIN</a></td><td><a href="#OE.PROPER_ADMIN">OE.PROPER_​ADMIN</a></td><td>The organizational security policy <a href="#P.ADMIN">P.ADMIN</a> is realized through
+							<a href="#A.PROPER_USER">A.PROPER_USER</a>.</td></tr><tr class="major-row"><td rowspan="1"><a href="#P.ACCOUNTABILITY">P.ACCOUNTABILITY</a></td><td><a href="#OE.PROPER_ADMIN">OE.PROPER_​ADMIN</a></td><td>Part of ensuring that administrators are trusted is having the ability to enforce accountability measures on malicious or negligent administrators.</td></tr><tr class="major-row"><td rowspan="1"><a href="#P.ADMIN">P.ADMIN</a></td><td><a href="#OE.PROPER_ADMIN">OE.PROPER_​ADMIN</a></td><td>The organizational security policy <a href="#P.ADMIN">P.ADMIN</a> is realized through
 							<a href="#OE.PROPER_ADMIN">OE.PROPER_ADMIN</a>.</td></tr><tr class="major-row"><td rowspan="1"><a href="#P.DEVICE_ENROLL">P.DEVICE_​ENROLL</a></td><td><a href="#OE.IT_ENTERPRISE">OE.IT_​ENTERPRISE</a></td><td>The organizational security policy <a href="#P.DEVICE_ENROLL">P.DEVICE_ENROLL</a> is realized through
 							<a href="#OE.IT_ENTERPRISE">OE.IT_ENTERPRISE</a>.</td></tr><tr class="major-row"><td rowspan="1"><a href="#P.NOTIFY">P.NOTIFY</a></td><td><a href="#OE.PROPER_USER">OE.PROPER_​USER</a></td><td>The organizational security policy <a href="#P.NOTIFY">P.NOTIFY</a> is realized through
 							<a href="#OE.PROPER_USER">OE.PROPER_USER</a>.</td></tr></table>
@@ -1462,8 +1462,7 @@ The following sections list Common Criteria and technology terms used in this do
     <br/>
     The evaluator's activities for testing that include use of an agent will ensure that the Server interacts appropriately with the agent (i.e., sends a
 			policy update to the agent), but will not ensure that the agent handles the received data correctly (i.e., appropriately applies the policy to the 
-			device), as that is accounted for in the Evaluation Activities in the Mobile Device Fundamentals <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Mobile Device Management
-			Agents.
+			device), as that is accounted for in the Evaluation Activities in the MDF <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, GPOS <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, or the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr>	Agents.
     <br/>
     <br/>
     In addition to the above guidance, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> server acts as a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and interfaces with one or more subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> servers, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> 
@@ -1541,7 +1540,7 @@ The following sections list Common Criteria and technology terms used in this do
                 </ul></span>
               </div></div></div></div></div>
         
-        <div class="comp" id="FAU_CRP_EXT.1"><h4>FAU_CRP_EXT.1 Support for Compliance Reporting of Mobile Device Configuration</h4>
+        <div class="comp" id="FAU_CRP_EXT.1"><h4>FAU_CRP_EXT.1 Support for Compliance Reporting of Managed Device Configuration</h4>
           
           
           
@@ -1640,8 +1639,7 @@ The following sections list Common Criteria and technology terms used in this do
               <br/>
               Item
               <b>b</b>
-              includes those commands, which may be performed automatically based on triggers or on a schedule.
-              <mark style="background-color:yellowgreen;">If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> server acts as a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and interfaces with a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then "Commands issued to the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server" must be selected. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> server acts as a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and interfaces with a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then "Status updates provided to the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Server" must be selected. For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr>, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component directly interacts with a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, or <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent then the corresponding selection should be made for that component. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component does not directly interact with any of these entities, then it is acceptable to select "none."</mark>
+              includes those commands, which may be performed automatically based on triggers or on a schedule. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> server acts as a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and interfaces with a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then "Commands issued to the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server" must be selected. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> server acts as a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and interfaces with a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then "Status updates provided to the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Server" must be selected. For distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr>, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component directly interacts with a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, or <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent then the corresponding selection should be made for that component. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> component does not directly interact with any of these entities, then it is acceptable to select "none".
               <br/>
               <br/>
               <b>In item d above, "start up and shut down of the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> system" must be selected if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> has a start up and shut down phase. 
@@ -1750,8 +1748,7 @@ The following sections list Common Criteria and technology terms used in this do
               The
               <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server</b>
               shall be able to generate audit data of the following
-              auditable events: [<i>
-                <ol type="a">
+              auditable events: [<i><ol type="a">
                   <li>Failure to push a new application on a <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr></li>
                   <li>Failure to update an existing application on a <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr></li>
                 </ol>
@@ -2208,7 +2205,7 @@ The following sections list Common Criteria and technology terms used in this do
 
                 <tr>
                   <td>FFC-RS</td>
-                  <td>FFC-RS - Extra Random Bits</td>
+                  <td>FFC-RS - Rejection Sampling</td>
                   <td>Static domain parameters approved for [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fcs_ckm.1.1_AKG_7">IKE Groups [<b>selection</b>: <span class="selectable-content" id="sel-dp-ak-ffc-rs-modp3072">MODP-3072</span>, <span class="selectable-content" id="sel-dp-ak-ffc-rs-modp4096">MODP-4096</span>, <span class="selectable-content" id="sel-dp-ak-ffc-rs-modp6144">MODP-6144</span>, <span class="selectable-content" id="sel-dp-ak-ffc-rs-modp8192">MODP-8192</span>] </span></li><li style=""><span class="selectable-content" id="fcs_ckm.1.1_AKG_8">TLS Groups [<b>selection</b>: <span class="selectable-content" id="sel-dp-ak-ffc-rs-ffdhe3072">ffdhe3072</span>, <span class="selectable-content" id="sel-dp-ak-ffc-rs-ffdhe4096">ffdhe4096</span>, <span class="selectable-content" id="sel-dp-ak-ffc-rs-ffdhe6144">ffdhe6144</span>, <span class="selectable-content" id="sel-dp-ak-ffc-rs-ffdhe8192">ffdhe8192</span>] </span></li></ul>]</td>
                   <td>NIST SP 800-56A Revision 3 (Section 5.6.1.1.3) [key pair generation]<p></p> [<b>selection</b>: <span class="selectable-content" id="fcs_ckm.1.1_AKG_9">RFC 3526 [IKE groups]</span>, <span class="selectable-content" id="fcs_ckm.1.1_AKG_10">RFC 7919 [TLS groups]</span>]</td>
                 </tr>
@@ -3317,19 +3314,22 @@ The following sections list Common Criteria and technology terms used in this do
                 </tr>
 
                 <tr>
-                  <td>AES-GCM</td>
-                  <td>AES in GCM mode with non-repeating IVs using [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_1">deterministic</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_2">RBG-based</span>], IV construction; the tag must be of length [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_3">96</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_4">104</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_5">112</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_6">120</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_7">128</span>] bits.</td>
+                  <td>AES-CCM</td>
+                  <td>AES in CCM mode with unpredictable, non-repeating nonce, minimum size of 64 bits</td>
                   <td>256 bits</td>
-                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_8">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_9">FIPS PUB 197</span>] [AES]<p></p> [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_10">ISO/IEC 19772:2020 (Clause 10)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_11">NIST SP 800-38D</span>] [GCM]</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_1">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_2">FIPS PUB 197</span>] [AES]<p></p> [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_3">ISO/IEC 19772:2020 (Clause 7)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_4">NIST SP 800-38C</span>] [CCM]</td>
+                </tr>
+
+                <tr>
+                  <td>AES-GCM</td>
+                  <td>AES in GCM mode with non-repeating IVs using [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_5">deterministic</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_6">RBG-based</span>], IV construction; the tag must be of length [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_7">96</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_8">104</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_9">112</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_10">120</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_11">128</span>] bits.</td>
+                  <td>256 bits</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_12">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_13">FIPS PUB 197</span>] [AES]<p></p> [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_AEAD_14">ISO/IEC 19772:2020 (Clause 10)</span>, <span class="selectable-content" id="fcs_cop.1.1_AEAD_15">NIST SP 800-38D</span>] [GCM]</td>
                 </tr>
 
               </table><div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">
-              This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed when the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has wireless LAN client functionality so that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can provide AEAD algorithms in support of wireless communications.
-              <p></p>
-              The use of 256-bit keys for AES encryption is required by CNSA 1.0 and 2.0.
-            </span></div></div></div>
+    </span><span class="note">The use of 256-bit keys for AES encryption is required by CNSA 1.0 and 2.0.</span></div></div></div>
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/AEAD">FCS_COP.1/AEAD</a></div>
               
@@ -3360,6 +3360,97 @@ The following sections list Common Criteria and technology terms used in this do
                 for example, use of a debug mode). Where the test is not carried out on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
                 itself, the test platform shall be identified and the differences between test
                 environment and <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> execution environment shall be described.
+                <p></p>
+                <br/>
+                <b>AES-CCM</b>
+                <p></p>
+                <table border="1">
+                  <tr class="header" bgcolor="#cccccc">
+                    <td valign="top">Identifier</td>
+                    <td valign="top">Cryptographic Algorithm</td>
+                    <td valign="top">Cryptographic Key Sizes</td>
+                    <td valign="top">List of Standards</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">AES-CCM </td>
+                    <td valign="top">AES in CCM mode with nonrepeating nonce, minimum size
+                      of 64 bits</td>
+                    <td valign="top">256 bits</td>
+                    <td valign="top">
+                      [<b>selection:</b>
+                      ISO/IEC 18033-3:2010 (Subclause 5.2),
+                      FIPS PUB 197] [AES]
+                      <p></p>
+                      [<b>selection:</b>
+                      ISO/IEC 19772:2020 (Clause 7), NIST SP 800-38C] [CCM]
+                    </td>
+                  </tr>
+                </table>
+                <p></p>
+                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s implementation of AES-CCM authenticated encryption functionality the
+                evaluator shall perform the Algorithm Functional Tests described below using the following
+                input parameters:
+                <ul>
+                  <li>Key Size [256] bits</li>
+                  <li>Associated data size [0-65536] bits in increments of 8</li>
+                  <li>Payload size [0-256] bits in increments of 8</li>
+                  <li>IV/Nonce size [64-104] bits in increments of 8</li>
+                  <li>Tag size [32-128] bits in increments of 16</li>
+                </ul>
+                <p></p>
+                <br/>
+                <b>Algorithm Functional Tests</b>
+                <p></p>
+                Unless otherwise specified, the following tests should use random data, a tag size of 128 bits,
+                IV/Nonce size of 104 bits, payload size of 256 bits, and associated data size of 256 bits. If any of
+                these values are not supported, any supported value may be used. The evaluator shall compare
+                the output from each test case against results generated by a known-good implementation with
+                the same input parameters.
+                <p></p>
+                <br/>
+                <b>
+                  <i>Variable Associated Data Test</i>
+                </b>
+                <p></p>
+                For each claimed key size, and for each supported associated data size from 0 through 256 bits in
+                increments of 8 bits, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be tested by encrypting 10 test cases using all random data.
+                In addition, for each key size, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be tested by encrypting 10 cases with associated
+                data lengths of 65536 bits, if supported.
+                <p></p>
+                <br/>
+                <b>
+                  <i>Variable Payload Test</i>
+                </b>
+                <p></p>
+                For each claimed key size, and for each supported payload size from 0 through 256 bits in
+                increments of 8 bits, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be tested by encrypting 10 test cases using all random data.
+                <p></p>
+                <br/>
+                <b>
+                  <i>Variable Nonce Test</i>
+                </b>
+                <p></p>
+                For each claimed key size, and for each supported IV/Nonce size from 64 through 104 bits in
+                increments of 8 bits, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be tested by encrypting 10 test cases using all random data.
+                <p></p>
+                <br/>
+                <b>
+                  <i>Variable Tag Test</i>
+                </b>
+                <p></p>
+                For each claimed key size, and for each supported tag size from 32 through 128 bits in
+                increments of 16 bits, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be tested by encrypting 10 test cases using all random data.
+                <p></p>
+                <br/>
+                <b>
+                  <i>Decryption Verification Test</i>
+                </b>
+                <p></p>
+                For each claimed key size, for each supported associated data size from 0 through 256 bits in
+                increments of 8 bits, for each supported payload size from 0 through 256 bits in increments of 8
+                bits, for each supported IV/Nonce size from 64 through 104 bits in increments of 8 bits, and for
+                each supported tag size from 32 through 128 bits in increments of 16 bits, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be
+                tested by decrypting 10 test cases using all random data.
                 <p></p>
                 <br/>
                 <b>AES-GCM</b>
@@ -3587,7 +3678,6 @@ The following sections list Common Criteria and technology terms used in this do
                 <p></p>
                 <br/>
                 <b>SHA3-384, SHA3-512</b>
-                <p></p>
                 To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to generate hash digests using SHA3 the evaluator shall perform the
                 Algorithm Functional Test, Monte Carlo Test, and Large Data Tests for each claimed SHA3
                 algorithm.
@@ -3826,7 +3916,7 @@ The following sections list Common Criteria and technology terms used in this do
       </i></b></div>
           
           <div class="element"><div class="reqid" id="FCS_COP.1.1/KeyEncap"><a href="#FCS_COP.1.1/KeyEncap" class="abbr">FCS_COP.1.1/KeyEncap</a></div><div class="reqdesc">
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [key encapsulation] in accordance with a specified cryptographic algorithm
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>key encapsulation</i>] in accordance with a specified cryptographic algorithm
               
                   
                   
@@ -3869,7 +3959,7 @@ The following sections list Common Criteria and technology terms used in this do
 
               </table><div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">For this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, the only anticipated use of key encapsulation is the use of ML-KEM as part of key establishment for trusted communications.</span></div></div></div>
+    </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed when "key encapsulation" is selected in <a href="#FCS_CKM.2.1">FCS_CKM.2.1</a>. For this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, the only anticipated use of key encapsulation is the use of ML-KEM as part of key establishment for trusted communications.</span></div></div></div>
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/KeyEncap">FCS_COP.1/KeyEncap</a></div>
               
@@ -3978,7 +4068,7 @@ The following sections list Common Criteria and technology terms used in this do
       </i></b></div>
           
           <div class="element"><div class="reqid" id="FCS_COP.1.1/KeyWrap"><a href="#FCS_COP.1.1/KeyWrap" class="abbr">FCS_COP.1.1/KeyWrap</a></div><div class="reqdesc">
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [key wrapping] in accordance with a specified cryptographic algorithm
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>key wrapping</i>] in accordance with a specified cryptographic algorithm
               
                   
                   
@@ -4042,7 +4132,7 @@ The following sections list Common Criteria and technology terms used in this do
 
               </table><div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">NIST 800-57p1rev5 sec. 5.6.2 specifies that the size of key used to protect the key being 
+    </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed when "key wrapping" is selected in <a href="#FCS_CKM.2.1">FCS_CKM.2.1</a>. NIST 800-57p1rev5 sec. 5.6.2 specifies that the size of key used to protect the key being 
               transported should be at least the security strength of the key it is protecting.</span></div></div></div>
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/KeyWrap">FCS_COP.1/KeyWrap</a></div>
@@ -5049,11 +5139,8 @@ The following sections list Common Criteria and technology terms used in this do
           
           
           <div class="element"><div class="reqid" id="FCS_COP.1.1/SKC"><a href="#FCS_COP.1.1/SKC" class="abbr">FCS_COP.1.1/SKC</a></div><div class="reqdesc">
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
-              [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_SKC_1">invoke platform-provided functionality</span>, <span class="selectable-content" id="fcs_cop.1.1_SKC_2">implement functionality</span>]
-              <b>to</b>
-              perform [<i>symmetric-key encryption and decryption</i>] in accordance with a 
-              specified cryptographic algorithm
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>symmetric-key encryption/decryption</i>] in accordance with a 
+                specified cryptographic algorithm
               
                   
                   
@@ -5072,7 +5159,7 @@ The following sections list Common Criteria and technology terms used in this do
                     <p></p>
                     <p></p>
                     The following table provides the allowable choices for
-                    completion of the selection operations in <a href="#FCS_COP.1/SKC">FCS_COP.1/SKC</a>.
+                      completion of the selection operations of <a href="#FCS_COP.1/SKC">FCS_COP.1/SKC</a>.
                   
                 
             <table><caption><span class="ctr" data-myid="fcs-cop-skc-sels" data-counter-type="ct-Table" id="fcs-cop-skc-sels">Table <span class="counter">15</span></span>: Allowable choices for <a href="#FCS_COP.1/SKC">FCS_COP.1/SKC</a></caption>
@@ -5091,7 +5178,21 @@ The following sections list Common Criteria and technology terms used in this do
                   <td>AES-CBC</td>
                   <td>AES in CBC mode with non-repeating and unpredictable IVs</td>
                   <td>256 bits</td>
-                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_SKC_3"><i>ISO/IEC 18033-3:2010 (Subclause 5.2)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_SKC_4"><i>FIPS PUB 197</i></span>] [AES]<p></p> [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_SKC_5"><i>ISO/IEC 10116:2017 (Clause 7)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_SKC_6"><i>NIST SP 800-38A</i></span>] [CBC]</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_SKC_1">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_SKC_2">FIPS PUB 197</span>] [AES]<p></p> [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_SKC_3">ISO/IEC 10116:2017 (Clause 7)</span>, <span class="selectable-content" id="fcs_cop.1.1_SKC_4">NIST SP 800-38A</span>] [CBC]</td>
+                </tr>
+
+                <tr>
+                  <td>XTS-AES</td>
+                  <td>AES in XTS mode with unique tweak values that are consecutive non-negative integers starting at an arbitrary non-negative integer</td>
+                  <td>512 bits</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_SKC_5">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_SKC_6">FIPS PUB 197</span>] [AES]<p></p> [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_SKC_7">IEEE Std. 1619-2018</span>, <span class="selectable-content" id="fcs_cop.1.1_SKC_8">NIST SP 800-38E</span>] [XTS]</td>
+                </tr>
+
+                <tr>
+                  <td>AES-CTR</td>
+                  <td>AES in Counter Mode with a non-repeating initial counter and with no repeated use of counter values across multiple messages with the same secret key</td>
+                  <td>256 bits</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_SKC_9">ISO/IEC 18033-3:2010 (Subclause 5.2)</span>, <span class="selectable-content" id="fcs_cop.1.1_SKC_10">FIPS PUB 197</span>] [AES]<p></p> [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_SKC_11">: ISO/IEC 10116:2017 (Clause 10)</span>, <span class="selectable-content" id="fcs_cop.1.1_SKC_12">NIST SP 800-38A</span>] [CBC]</td>
                 </tr>
 
               </table></div></div>
@@ -5102,22 +5203,23 @@ The following sections list Common Criteria and technology terms used in this do
               
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
                 The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it describes the construction of any IVs,
-                tweak values, and counters in conformance with the relevant specifications.
+                  tweak values, and counters in conformance with the relevant specifications.
                 <p></p>
                 If XTS-AES is claimed then the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> creates
-                full-length keys by methods that ensure that the two key halves are different and independent.
+                  full-length keys by methods that ensure that the two key halves are different and independent.
               </div></div><div class="eacategory">Guidance</div><div class="ea">
 			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 The following tests require the developer to provide access to a test platform that
-                provides the evaluator with tools that are typically not found on factory products.
+                  provides the evaluator with tools that are typically not found on factory products.
                 <p></p>
-                The following tests are conditional based on the selections made in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>. The
-                evaluator shall perform the following tests or witness respective tests executed by
-                the developer. The tests must be executed on a platform that is as close as practically
-                possible to the operational platform (but which may be instrumented in terms of,
-                for example, use of a debug mode). Where the test is not carried out on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
-                itself, the test platform shall be identified and the differences between test
-                environment and <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> execution environment shall be described.
+                The following tests are conditional based upon the selections made in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>. The
+                  evaluator shall perform the following test or witness respective tests executed by
+                  the developer. The tests must be executed on a platform that is as close as practically
+                  possible to the operational platform (but which may be instrumented in terms of,
+                  for example, use of a debug mode). Where the test is not carried out on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
+                  itself, the test platform shall be identified and the differences between test
+                  environment and <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> execution environment shall be described.
+                <p></p>
                 <br/>
                 <b>AES-CBC</b>
                 <p></p>
@@ -5134,19 +5236,19 @@ The following sections list Common Criteria and technology terms used in this do
                     <td valign="top">256 bits</td>
                     <td valign="top">
                       [<b>selection:</b>
-                      <i>ISO/IEC 18033-3:2010 (Subclause 5.2),
-                        FIPS PUB 197</i>] [AES]
+                      ISO/IEC 18033-3:2010 (Subclause 5.2),
+                        FIPS PUB 197] [AES]
                       <p></p>
                       [<b>selection:</b>
-                      <i>ISO/IEC 10116:2017 (Clause 7), 
-                        NIST SP 800-38A</i>] [CBC]
+                      ISO/IEC 10116:2017 (Clause 7), 
+                        NIST SP 800-38A] [CBC]
                     </td>
                   </tr>
                 </table>
                 <p></p>
-                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to encrypt and decrypt data using AES in CBC mode, the evaluator 
-                shall perform Algorithm Functional Tests and Monte Carlo Tests using the following
-                input parameters:
+                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to encrypt/decrypt data using AES in CBC mode, the evaluator 
+                  shall perform Algorithm Functional Tests and Monte Carlo Tests using the following
+                  input parameters:
                 <ul>
                   <li>Key size [256] bits</li>
                   <li>Direction [encryption, decryption]</li>
@@ -5156,8 +5258,8 @@ The following sections list Common Criteria and technology terms used in this do
                 <b>Algorithm Functional Tests</b>
                 <p></p>
                 Algorithm Functional Tests are designed to verify the correct operation of the logical
-                components of the algorithm implementation under normal operation using different block sizes.
-                For AES-CBC, there are two types of AFTs:
+                  components of the algorithm implementation under normal operation using different block sizes.
+                  For AES-CBC, there are two types of AFTs:
                 <p></p>
                 <br/>
                 <b>
@@ -5165,9 +5267,9 @@ The following sections list Common Criteria and technology terms used in this do
                 </b>
                 <p></p>
                 For each combination of direction and claimed key size, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be tested using the
-                GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of
+                  GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of
                 <i>The
-                  Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</i>, NIST, 15 November 2002.
+                    Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</i>, NIST, 15 November 2002.
                 <p></p>
                 <br/>
                 <b>
@@ -5175,9 +5277,9 @@ The following sections list Common Criteria and technology terms used in this do
                 </b>
                 <p></p>
                 For each combination of direction and claimed key size, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be tested against 10 test
-                cases consisting of a random IV, random key, and random plaintext or ciphertext. The
-                plaintext or ciphertext starts with a length of 16 bytes and increases by 16 bytes for each test case
-                until reaching 160 bytes.
+                  cases consisting of a random IV, random key, and random plaintext/ciphertext. The
+                  plaintext/ciphertext starts with a length of 16 bytes and increases by 16 bytes for each test case
+                  until reaching 160 bytes.
                 <p></p>
                 <br/>
                 <b>
@@ -5185,46 +5287,188 @@ The following sections list Common Criteria and technology terms used in this do
                 </b>
                 <p></p>
                 Monte Carlo tests are intended to test the implementation under strenuous conditions. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
-                must process the test cases according to the following algorithm once for each combination of
-                direction and key size:
+                  must process the test cases according to the following algorithm once for each combination of
+                  direction and key size:
                 <p></p>
                 <pre>Key[0] = Key
-                  IV[0] = IV
-                  PT[0] = PT
-                  for i = 0 to 99 {
-                  Output Key[i], IV[i], PT[0]
-                  for j = 0 to 999 {
-                  if (j == 0) {
-                  CT[j] = AES-CBC-Encrypt(Key[i], IV[i], PT[j])
-                  PT[j+1] = IV[i]
-                  } else {
-                  CT[j] = AES-CBC-Encrypt(Key[i], PT[j])
-                  PT[j+1] = CT[j-1]
-                  }
-                  }
-                  Output CT[j]
-                  AES_KEY_SHUFFLE(Key, CT)
-                  IV[i+1] = CT[j]
-                  PT[0] = CT[j-1]
-                  }</pre>
+                    IV[0] = IV
+                    PT[0] = PT
+                    for i = 0 to 99 {
+                    Output Key[i], IV[i], PT[0]
+                    for j = 0 to 999 {
+                    if (j == 0) {
+                    CT[j] = AES-CBC-Encrypt(Key[i], IV[i], PT[j])
+                    PT[j+1] = IV[i]
+                    } else {
+                    CT[j] = AES-CBC-Encrypt(Key[i], PT[j])
+                    PT[j+1] = CT[j-1]
+                    }
+                    }
+                    Output CT[j]
+                    AES_KEY_SHUFFLE(Key, CT)
+                    IV[i+1] = CT[j]
+                    PT[0] = CT[j-1]
+                    }</pre>
                 <p></p>
                 where
                 <pre>AES_KEY_SHUFFLE</pre>
                 is defined as:
                 <p></p>
                 <pre>If ( keylen = 128 )
-                  Key[i+1] = Key[i] xor MSB(CT[j], 128)
-                  If ( keylen = 192 )
-                  Key[i+1] = Key[i] xor (LSB(CT[j-1], 64) || MSB(CT[j], 128))
-                  If ( keylen = 256 )
-                  Key[i+1] = Key[i] xor (MSB(CT[j-1], 128) || MSB(CT[j], 128))</pre>
+                    Key[i+1] = Key[i] xor MSB(CT[j], 128)
+                    If ( keylen = 192 )
+                    Key[i+1] = Key[i] xor (LSB(CT[j-1], 64) || MSB(CT[j], 128))
+                    If ( keylen = 256 )
+                    Key[i+1] = Key[i] xor (MSB(CT[j-1], 128) || MSB(CT[j], 128))</pre>
                 <p></p>
                 The above pseudocode is for encryption. For decryption, swap all instances of CT and PT.
                 <p></p>
-                The initial IV, key, and plaintext or ciphertext should be random.
+                The initial IV, key, and plaintext/ciphertext should be random.
                 <p></p>
                 The evaluator shall test the decrypt functionality using the same test as above,
-                exchanging CT and PT, and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.
+                  exchanging CT and PT, and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.
+                <p></p>
+                <br/>
+                <b>XTS-AES</b>
+                <p></p>
+                <table border="1">
+                  <tr class="header" bgcolor="#cccccc">
+                    <td valign="top">Identifier</td>
+                    <td valign="top">Cryptographic Algorithm</td>
+                    <td valign="top">Cryptographic Key Sizes</td>
+                    <td valign="top">List of Standards</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">XTS-AES</td>
+                    <td valign="top">AES in XTS mode with unique tweak values that are consecutive
+                        non-negative integers starting at an arbitrary non-negative integer</td>
+                    <td valign="top">512 bits</td>
+                    <td valign="top">
+                      [<b>selection:</b>
+                      ISO/IEC 18033-3:2010 (Subclause 5.2),
+                        FIPS PUB 197] [AES]
+                      <p></p>
+                      [<b>selection:</b>
+                      IEEE Std. 1619-2018, 
+                        NIST SP 800-38E] [XTS]
+                    </td>
+                  </tr>
+                </table>
+                <p></p>
+                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to encrypt/decrypt data using AES in XTS mode, the evaluator shall
+                  perform the Single Data Unit Test and the Multiple Data Unit Test using the following input
+                  parameters:
+                <ul>
+                  <li>Direction [encryption, decryption]</li>
+                  <li>Key size [512] bits</li>
+                  <li>Tweak value format [128-bit hex string, data unit sequence number]</li>
+                </ul>
+                <p></p>
+                <br/>
+                <b>Single Data Unit Test</b>
+                <p></p>
+                For each combination of claimed key size, direction, and supported tweak value format, the
+                  evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
+                  determined randomly for each test case from supported values within the range [128-65536] bits.
+                  The payload size and data unit size must be equal.
+                <p></p>
+                <br/>
+                <b>Multiple Data Unit Test</b>
+                <p></p>
+                For each combination of claimed key size, direction, and supported tweak value format, the
+                  evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
+                  determined randomly for each test case from supported values within the range [128-65536] bits.
+                  Likewise, the data unit size is determined randomly for each test case from supported values
+                  within the range [128-65535] bits. The payload size and data unit size must not be equal.
+                <p></p>
+                The evaluator shall verify the correctness of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>’s implementation by comparing values
+                  generated by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> with those generated by a known good implementation using the same
+                  input parameters.
+                <p></p>
+                <br/>
+                <b>AES-CTR</b>
+                <p></p>
+                <table border="1">
+                  <tr class="header" bgcolor="#cccccc">
+                    <td valign="top">Identifier</td>
+                    <td valign="top">Cryptographic Algorithm</td>
+                    <td valign="top">Cryptographic Key Sizes</td>
+                    <td valign="top">List of Standards</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">AES-CTR</td>
+                    <td valign="top">AES in Counter Mode with a non-repeating initial counter and
+                        with no repeated use of counter values across multiple messages with the 
+                        same secret key.</td>
+                    <td valign="top">256 bits</td>
+                    <td valign="top">
+                      [<b>selection:</b>
+                      ISO/IEC 18033-3:2010 (Subclause 5.2),
+                        FIPS PUB 197] [AES]
+                      <p></p>
+                      [<b>selection:</b>
+                      ISO/IEC 10116:2017 (Clause 10), 
+                        NIST SP 800-38A] [CTR]
+                    </td>
+                  </tr>
+                </table>
+                <p></p>
+                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to encrypt/decrypt data using AES in CTR mode, the evaluator shall
+                  perform the Algorithm Functional Test and the Counter Test using the following input
+                  parameters:
+                <ul>
+                  <li>Direction [encryption, decryption]</li>
+                  <li>Key size [256] bits</li>
+                </ul>
+                <p></p>
+                <br/>
+                <b>Algorithm Functional Tests</b>
+                <p></p>
+                Algorithm Functional Tests are designed to verify the correct operation of the logical
+                  components of the algorithm implementation under normal operation using different block sizes.
+                  For AES-CTR, there are three types of AFTs:
+                <p></p>
+                <br/>
+                <b>
+                  <i>Known-Answer Tests</i>
+                </b>
+                <p></p>
+                For each combination of direction and claimed key size, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be tested using the
+                  GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of
+                <i>The
+                    Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</i>, NIST, 15 November 2002.
+                <p></p>
+                <br/>
+                <b>
+                  <i>Single Block Message Tests</i>
+                </b>
+                <p></p>
+                For each combination of direction and claimed key, the evaluator shall generate 10 test cases
+                  with a data size of 128 bits.
+                <p></p>
+                <br/>
+                <b>
+                  <i>Partial Block Message Tests</i>
+                </b>
+                <p></p>
+                Monte Carlo tests are intended to test the implementation under strenuous conditions. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
+                  must process the test cases according to the following algorithm once for each combination of
+                  direction and key size:
+                <p></p>
+                For each combination of direction and claimed key, the evaluator shall generate five test cases
+                  such that the data size is not a multiple of 128 bits.
+                <p></p>
+                The evaluator shall verify the correctness of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>’s implementation by comparing values
+                  generated by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> with those generated by a known good implementation using the same
+                  input parameters.
+                <br/>
+                <b>
+                  <i>Counter Test</i>
+                </b>
+                <p></p>
+                The evaluator shall generate a single message of 1000 blocks (128000 bits) and either encrypt or
+                  decrypt it. Back-compute the IVs used. Verify that they are unique and increasing (encryption) or
+                  decreasing (decryption).
                 <p></p>
               </div></div></div></div></div>
         
@@ -5268,19 +5512,14 @@ The following sections list Common Criteria and technology terms used in this do
 
                 <tr>
                   <td>SHAKE</td>
-                  <td>Functions = [SHAKE128, SHAKE256]</td>
+                  <td>Functions = [SHAKE256]</td>
                   <td>NIST FIPS PUB 202 Section 6.2 [SHAKE]</td>
                 </tr>
 
               </table><div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">
-              In accordance with CNSA 2.0, SHAKE is permitted to be used only as a component of LMS or XMSS. 
-              Therefore this component is claimed only if LMS or XMSS is claimed in <a href="#FCS_COP.1/SigVer">FCS_COP.1/SigVer</a>.
-              <p></p>
-              Since LMS and XMSS use both SHAKE128 and SHAKE256 internally, claiming and testing of both
-              functions is mandatory.
-            </span></div></div></div>
+    </span><span class="note">In accordance with CNSA 2.0, SHAKE is permitted to be used only as a component of LMS or XMSS. 
+              Therefore this component is claimed only if LMS or XMSS is claimed in <a href="#FCS_COP.1/SigVer">FCS_COP.1/SigVer</a>.</span></div></div></div>
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/XOF">FCS_COP.1/XOF</a></div>
               
@@ -5307,7 +5546,7 @@ The following sections list Common Criteria and technology terms used in this do
                   </tr>
                   <tr>
                     <td valign="top">SHAKE</td>
-                    <td valign="top">Function = [SHAKE128, SHAKE256]</td>
+                    <td valign="top">Function = [SHAKE256]</td>
                     <td valign="top">NIST FIPS PUB 202 Section 6.2 [SHAKE]</td>
                   </tr>
                 </table>
@@ -5316,7 +5555,7 @@ The following sections list Common Criteria and technology terms used in this do
                 perform the Algorithm Functional Test, Monte Carlo Test, and Variable Output Test using the
                 following input parameters:
                 <ul>
-                  <li>Function [SHAKE128, SHAKE256]</li>
+                  <li>Function [SHAKE256]</li>
                   <li>Output length [16-65536] bits</li>
                 </ul>
                 <p></p>
@@ -5332,21 +5571,17 @@ The following sections list Common Criteria and technology terms used in this do
                 <i>rate</i>
                 equals
                 <p></p>
-                <ul>
-                  <li>1344 for SHAKE128, and</li>
-                  <li>1088 for SHAKE256.</li>
-                </ul>
+                1088.
                 <p></p>
                 Additionally, generate tests cases of random data for messages of every multiple of (rate+1) bits
-                starting at length rate, and continuing until 65535 is exceeded. For SHAKE128, this should
-                result in a total of 1391 test cases.
+                starting at length rate, and continuing until 65535 is exceeded.
                 <p></p>
                 <br/>
                 <b>
                   <i>Monte Carlo Test</i>
                 </b>
                 <p></p>
-                The Monte Carlos test takes in a single 128-bit message (SEED) and desired output length in
+                The Monte Carlo test takes in a single 128-bit message (SEED) and desired output length in
                 bits, and runs 100 iterations of the chained computation. MaxOutBytes and MinOutBytes are the
                 largest and smallest supported input and output sizes in bytes, respectively.
                 <p></p>
@@ -5733,7 +5968,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FCS_RBG.2.1"><a href="#FCS_RBG.2.1" class="abbr">FCS_RBG.2.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to accept a minimum input of
               [<b>assignment</b>: 
-     <span class="assignable-content">minimum input length greater than zero</span>]from a <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for the purpose of seeding.
+     <span class="assignable-content">minimum input length greater than zero</span>]
+              from a <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for the purpose of seeding.
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -5764,11 +6000,11 @@ The following sections list Common Criteria and technology terms used in this do
           
           <div class="element"><div class="reqid" id="FCS_RBG.3.1"><a href="#FCS_RBG.3.1" class="abbr">FCS_RBG.3.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using a
-              [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="fcs_rbg.3.1_1"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise source</span>, <span class="selectable-content" id="fcs_rbg.3.1_2"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based noise source [<b>assignment</b>: 
-     <span class="assignable-content">name of noise source</span>]</span>]
+              [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="fcs_rbg.3.1_1"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise source</span>, <span class="selectable-content" id="fcs_rbg.3.1_2"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based noise source</span>]
               with a minimum of
               [<b>assignment</b>: 
-     <span class="assignable-content">number of bits</span>]bits of min-entropy.
+     <span class="assignable-content">number of bits</span>]
+              bits of min-entropy.
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -5826,13 +6062,15 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FCS_RBG.5.1"><a href="#FCS_RBG.5.1" class="abbr">FCS_RBG.5.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
               [<b>assignment</b>: 
-     <span class="assignable-content">combining operation</span>][<b>selection</b>: <span class="selectable-content" id="fcs_rbg.5.1_2">output from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources</span>, <span class="selectable-content" id="fcs_rbg.5.1_3">input from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interfaces for seeding</span>]
+     <span class="assignable-content">combining operation</span>]
+              [<b>selection</b>: <span class="selectable-content" id="fcs_rbg.5.1_2">output from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources</span>, <span class="selectable-content" id="fcs_rbg.5.1_3">input from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interfaces for seeding</span>]
               to create the entropy input into the derivation function as defined in
               [<b>assignment</b>: 
      <span class="assignable-content">list of standards</span>], resulting
               in a minimum of
               [<b>assignment</b>: 
-     <span class="assignable-content">number of bits</span>]bits of min-entropy.
+     <span class="assignable-content">number of bits</span>]
+              bits of min-entropy.
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">This requirement is claimed if "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources..." is selected in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>.</span></div></div></div>
@@ -6062,7 +6300,8 @@ The following sections list Common Criteria and technology terms used in this do
               <b>to</b>
               allow
               [<b>assignment</b>: 
-     <span class="assignable-content">list of <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> mediated actions</span>]on behalf of the user to be performed before the user is authenticated
+     <span class="assignable-content">list of <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> mediated actions</span>]
+              on behalf of the user to be performed before the user is authenticated
               <b>with the server</b>.
             </div></div>
           <div class="element"><div class="reqid" id="FIA_UAU.1.2"><a href="#FIA_UAU.1.2" class="abbr">FIA_UAU.1.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall  [<b>selection</b>: <span class="selectable-content" id="fia_uau.1.2_1"><b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="fia_uau.1.2_2"><b>implement functionality</b></span>] <b>that</b> requires each user to be successfully authenticated <b>with the
@@ -6175,8 +6414,7 @@ The following sections list Common Criteria and technology terms used in this do
               The
               <b><abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server</b>
               shall restrict the ability to
-              [<b>
-                <i>initiate the enrollment process</i>
+              [<b><i>initiate the enrollment process</i>
               </b>] to [<i>authorized 
 			administrators and <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> users</i>].
             <div class="appnote"><span class="note-header">Application
@@ -6337,8 +6575,7 @@ The following sections list Common Criteria and technology terms used in this do
               The
               <b><abbr class="dyn-abbr"><a href="#abbr_MAS">MAS</a></abbr> Server</b>
               shall be capable of performing the following management functions:
-              [<i>
-                <ul>
+              [<i><ul>
                   <li>Configure application access groups</li>
                   <li>Download applications</li>
                   <li>
@@ -6377,30 +6614,30 @@ The following sections list Common Criteria and technology terms used in this do
               shall be capable of
               <b>communicating the following commands to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent: </b>
               <ul style="list-style-type:none">
-                <li><span class="ctr" data-myid="smf1" data-counter-type="ct-mgmt" id="smf1"> <span class="counter">1</span></span>. Transition to the locked state (MDF Function 6)</li>
-                <li><span class="ctr" data-myid="smf2" data-counter-type="ct-mgmt" id="smf2"> <span class="counter">2</span></span>. Full wipe of protected data (MDF Function 7)</li>
-                <li><span class="ctr" data-myid="smf3" data-counter-type="ct-mgmt" id="smf3"> <span class="counter">3</span></span>. Unenroll from management</li>
+                <li><span class="ctr" data-myid="smf1" data-counter-type="ct-mgmt" id="smf1"> <span class="counter">1</span></span>. Transition to the locked state (MDF/GPOS Function 6)</li>
+                <li><span class="ctr" data-myid="smf2" data-counter-type="ct-mgmt" id="smf2"> <span class="counter">2</span></span>. Full wipe of protected data (MDF/GPOS Function 7)</li>
+                <li><span class="ctr" data-myid="smf3" data-counter-type="ct-mgmt" id="smf3"> <span class="counter">3</span></span>. Unenroll from management (MDF/GPOS Function 44)</li>
                 <li><span class="ctr" data-myid="smf4" data-counter-type="ct-mgmt" id="smf4"> <span class="counter">4</span></span>. Install policies</li>
                 <li><span class="ctr" data-myid="smf5" data-counter-type="ct-mgmt" id="smf5"> <span class="counter">5</span></span>. Query connectivity status</li>
                 <li><span class="ctr" data-myid="smf6" data-counter-type="ct-mgmt" id="smf6"> <span class="counter">6</span></span>. Query the current version of the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> firmware or software</li>
                 <li><span class="ctr" data-myid="smf7" data-counter-type="ct-mgmt" id="smf7"> <span class="counter">7</span></span>. Query the current version of the hardware model of the device</li>
                 <li><span class="ctr" data-myid="smf8" data-counter-type="ct-mgmt" id="smf8"> <span class="counter">8</span></span>. Query the current version of installed applications</li>
-                <li><span class="ctr" data-myid="smf9" data-counter-type="ct-mgmt" id="smf9"> <span class="counter">9</span></span>. Import X.509v3 certificates into the Trust Anchor Database (MDF Function 11)</li>
-                <li><span class="ctr" data-myid="smf10" data-counter-type="ct-mgmt" id="smf10"> <span class="counter">10</span></span>. Install applications (MDF Function 16)</li>
-                <li><span class="ctr" data-myid="smf11" data-counter-type="ct-mgmt" id="smf11"> <span class="counter">11</span></span>. Update system software (MDF Function 15)</li>
-                <li><span class="ctr" data-myid="smf12" data-counter-type="ct-mgmt" id="smf12"> <span class="counter">12</span></span>. Remove applications (MDF Function 14)</li>
+                <li><span class="ctr" data-myid="smf9" data-counter-type="ct-mgmt" id="smf9"> <span class="counter">9</span></span>. Import X.509v3 certificates into the Trust Anchor Database (MDF/GPOS Function 11)</li>
+                <li><span class="ctr" data-myid="smf10" data-counter-type="ct-mgmt" id="smf10"> <span class="counter">10</span></span>. Install applications (MDF/GPOS Function 16)</li>
+                <li><span class="ctr" data-myid="smf11" data-counter-type="ct-mgmt" id="smf11"> <span class="counter">11</span></span>. Update system software (MDF/GPOS Function 15)</li>
+                <li><span class="ctr" data-myid="smf12" data-counter-type="ct-mgmt" id="smf12"> <span class="counter">12</span></span>. Remove applications (MDF/GPOS Function 14)</li>
               </ul>
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_1"><span class="ctr" data-myid="smf13" data-counter-type="ct-mgmt" id="smf13"> <span class="counter">13</span></span>. Remove enterprise applications (MDF Function 17)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_2"><span class="ctr" data-myid="smf14" data-counter-type="ct-mgmt" id="smf14"> <span class="counter">14</span></span>. Wipe enterprise data (MDF Function 28)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_3"><span class="ctr" data-myid="smf15" data-counter-type="ct-mgmt" id="smf15"> <span class="counter">15</span></span>. Remove imported X.509v3 certificates and [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_4">no other X.509v3 certificates</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_6">[<b>assignment</b>: 
-     <span class="assignable-content">list of other categories of X.509v3 certificates</span>]</span></li></ul>] in the Trust Anchor Database (MDF Function 12)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_7"><span class="ctr" data-myid="smf16" data-counter-type="ct-mgmt" id="smf16"> <span class="counter">16</span></span>. Alert the user</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_8"><span class="ctr" data-myid="smf17" data-counter-type="ct-mgmt" id="smf17"> <span class="counter">17</span></span>. Import keys or secrets into the secure key storage (MDF Function 9)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_9"><span class="ctr" data-myid="smf18" data-counter-type="ct-mgmt" id="smf18"> <span class="counter">18</span></span>. Destroy imported keys or secrets and [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_10">no other keys or secrets</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_12">[<b>assignment</b>: 
-     <span class="assignable-content">list of other categories of keys or secrets</span>]</span></li></ul>] in the secure key storage (MDF Function 10)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_13"><span class="ctr" data-myid="smf19" data-counter-type="ct-mgmt" id="smf19"> <span class="counter">19</span></span>. Read audit logs kept by the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> (MDF Function 32)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_14"><span class="ctr" data-myid="smf20" data-counter-type="ct-mgmt" id="smf20"> <span class="counter">20</span></span>. Retrieve <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>-software integrity verification values (MDF Function 38)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_15"><span class="ctr" data-myid="smf21" data-counter-type="ct-mgmt" id="smf21"> <span class="counter">21</span></span>. Approve exceptions for sharing data between [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_16">application processes</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_17">group of application processes</span></li></ul>] (MDF Function 42)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_18"><span class="ctr" data-myid="smf22" data-counter-type="ct-mgmt" id="smf22"> <span class="counter">22</span></span>. Place applications into application process groups based on [<b>assignment</b>: 
-     <span class="assignable-content">application characteristics</span>] (MDF Function 43)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_20"><span class="ctr" data-myid="smf23" data-counter-type="ct-mgmt" id="smf23"> <span class="counter">23</span></span>. Revoke Biometric template (MDF Function 46)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_21"><span class="ctr" data-myid="smf24" data-counter-type="ct-mgmt" id="smf24"> <span class="counter">24</span></span>. [<b>assignment</b>: 
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_1"><span class="ctr" data-myid="smf13" data-counter-type="ct-mgmt" id="smf13"> <span class="counter">13</span></span>. Remove enterprise applications (MDF/GPOS Function 17)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_2"><span class="ctr" data-myid="smf14" data-counter-type="ct-mgmt" id="smf14"> <span class="counter">14</span></span>. Wipe enterprise data (MDF/GPOS Function 28)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_3"><span class="ctr" data-myid="smf15" data-counter-type="ct-mgmt" id="smf15"> <span class="counter">15</span></span>. Remove imported X.509v3 certificates and [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_4">no other X.509v3 certificates</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_6">[<b>assignment</b>: 
+     <span class="assignable-content">list of other categories of X.509v3 certificates</span>]</span></li></ul>] in the Trust Anchor Database (MDF/GPOS Function 12)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_7"><span class="ctr" data-myid="smf16" data-counter-type="ct-mgmt" id="smf16"> <span class="counter">16</span></span>. Alert the user</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_8"><span class="ctr" data-myid="smf17" data-counter-type="ct-mgmt" id="smf17"> <span class="counter">17</span></span>. Import keys or secrets into the secure key storage (MDF/GPOS Function 9)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_9"><span class="ctr" data-myid="smf18" data-counter-type="ct-mgmt" id="smf18"> <span class="counter">18</span></span>. Destroy imported keys or secrets and [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_10">no other keys or secrets</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_12">[<b>assignment</b>: 
+     <span class="assignable-content">list of other categories of keys or secrets</span>]</span></li></ul>] in the secure key storage (MDF/GPOS Function 10)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_13"><span class="ctr" data-myid="smf19" data-counter-type="ct-mgmt" id="smf19"> <span class="counter">19</span></span>. Read audit logs kept by the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> (MDF/GPOS Function 32)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_14"><span class="ctr" data-myid="smf20" data-counter-type="ct-mgmt" id="smf20"> <span class="counter">20</span></span>. Retrieve <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>-software integrity verification values (MDF/GPOS Function 38)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_15"><span class="ctr" data-myid="smf21" data-counter-type="ct-mgmt" id="smf21"> <span class="counter">21</span></span>. Approve exceptions for sharing data between [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_16">application processes</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_17">group of application processes</span></li></ul>] (MDF/GPOS Function 42)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_18"><span class="ctr" data-myid="smf22" data-counter-type="ct-mgmt" id="smf22"> <span class="counter">22</span></span>. Place applications into application process groups based on [<b>assignment</b>: 
+     <span class="assignable-content">application characteristics</span>] (MDF/GPOS Function 43)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_20"><span class="ctr" data-myid="smf23" data-counter-type="ct-mgmt" id="smf23"> <span class="counter">23</span></span>. Revoke Biometric template (MDF/GPOS Function 46)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_21"><span class="ctr" data-myid="smf24" data-counter-type="ct-mgmt" id="smf24"> <span class="counter">24</span></span>. [<b>assignment</b>: 
      <span class="assignable-content">list of other management functions to be provided by the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr></span>]</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_23">no other management functions</span></li></ul>]
               <b>and the following <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> configuration policies</b>:
               <br/>
               <br/>
               <ul style="list-style-type:none">
-                <li><span class="ctr" data-myid="smf25" data-counter-type="ct-mgmt" id="smf25"> <span class="counter">25</span></span>. Password policy: <ol type="a"><li>minimum password length</li> <li>minimum password complexity</li> <li>maximum password lifetime (MDF Function 1)</li></ol></li>
-                <li><span class="ctr" data-myid="smf26" data-counter-type="ct-mgmt" id="smf26"> <span class="counter">26</span></span>. Session locking policy: <ol type="a"><li>screen-lock enabled and disabled</li> <li>screen lock timeout</li> <li>number of authentication failures (MDF Function 2)</li></ol></li>
+                <li><span class="ctr" data-myid="smf25" data-counter-type="ct-mgmt" id="smf25"> <span class="counter">25</span></span>. Password policy: <ol type="a"><li>minimum password length</li> <li>minimum password complexity</li> <li>maximum password lifetime (MDF/GPOS Function 1)</li></ol></li>
+                <li><span class="ctr" data-myid="smf26" data-counter-type="ct-mgmt" id="smf26"> <span class="counter">26</span></span>. Session locking policy: <ol type="a"><li>screen-lock enabled and disabled</li> <li>screen lock timeout</li> <li>number of authentication failures (MDF/GPOS Function 2)</li></ol></li>
                 <li><span class="ctr" data-myid="smf27" data-counter-type="ct-mgmt" id="smf27"> <span class="counter">27</span></span>. Wireless networks (SSIDs) to which the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> may connect (WLAN Client <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function WL-2)</li>
                 <li>
                   <span class="ctr" data-myid="smf28" data-counter-type="ct-mgmt" id="smf28"> <span class="counter">28</span></span>. Security policy for each wireless network:
@@ -6414,14 +6651,14 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">any additional WLAN management functions</span>]  (WLAN Client <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function WL-1)</li>
                   </ol>
                 </li>
-                <li><span class="ctr" data-myid="smf29" data-counter-type="ct-mgmt" id="smf29"> <span class="counter">29</span></span>. Application installation policy by  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_27">specifying authorized application repositories</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_28">specifying a set of allowed applications and versions (an application allowlist)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_29">denying application installation</span></li></ul>], (MDF Function 8)</li>
+                <li><span class="ctr" data-myid="smf29" data-counter-type="ct-mgmt" id="smf29"> <span class="counter">29</span></span>. Application installation policy by  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_27">specifying authorized application repositories</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_28">specifying a set of allowed applications and versions (an application allowlist)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_29">denying application installation</span></li></ul>], (MDF/GPOS Function 8)</li>
                 <li><span class="ctr" data-myid="smf30" data-counter-type="ct-mgmt" id="smf30"> <span class="counter">30</span></span>. Enable and disable policy for [<b>assignment</b>: 
-     <span class="assignable-content">list of audio or visual collection devices</span>]  across device,  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_31">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_32">on a per-group of applications processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_33">no other method</span></li></ul>], (MDF Function 5)</li>
+     <span class="assignable-content">list of audio or visual collection devices</span>]  across device,  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_31">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_32">on a per-group of applications processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_33">no other method</span></li></ul>], (MDF/GPOS Function 5)</li>
               </ul>
-              <ul style="list-style-type:none"> [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_34"><span class="ctr" data-myid="smf31" data-counter-type="ct-mgmt" id="smf31"> <span class="counter">31</span></span>. Enable and disable policy for the VPN protection across <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>, [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_36">on a per-group of application processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_37">no other method</span></li></ul>] (MDF Function 3)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_38"><span class="ctr" data-myid="smf32" data-counter-type="ct-mgmt" id="smf32"> <span class="counter">32</span></span>. Enable and disable policy for [<b>assignment</b>: 
-     <span class="assignable-content">list of radios</span>], (MDF Function 4)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_40"><span class="ctr" data-myid="smf33" data-counter-type="ct-mgmt" id="smf33"> <span class="counter">33</span></span>. Enable and disable policy for data signaling over [<b>assignment</b>: 
-     <span class="assignable-content">list of externally accessible hardware ports</span>], (MDF Function 24)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_42"><span class="ctr" data-myid="smf34" data-counter-type="ct-mgmt" id="smf34"> <span class="counter">34</span></span>. Enable and disable policy for [<b>assignment</b>: 
-     <span class="assignable-content">list of protocols where the device acts as a server</span>], (MDF Function 25)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_44"><span class="ctr" data-myid="smf35" data-counter-type="ct-mgmt" id="smf35"> <span class="counter">35</span></span>. Enable and disable policy for developer modes, (MDF Function 26)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_45"><span class="ctr" data-myid="smf36" data-counter-type="ct-mgmt" id="smf36"> <span class="counter">36</span></span>. Enable policy for data-at-rest protection, (MDF Function 19)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_46"><span class="ctr" data-myid="smf37" data-counter-type="ct-mgmt" id="smf37"> <span class="counter">37</span></span>. Enable policy for removable media's data-at-rest protection, (MDF Function 20)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_47"><span class="ctr" data-myid="smf38" data-counter-type="ct-mgmt" id="smf38"> <span class="counter">38</span></span>. Enable and disable policy for local authentication bypass, (MDF Function 27)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_48"><span class="ctr" data-myid="smf39" data-counter-type="ct-mgmt" id="smf39"> <span class="counter">39</span></span>. The Bluetooth trusted channel policy:<br/><ol type="a"><li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-1)</li><li>change the Bluetooth device name (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-2), [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_49">Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-3)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_50">allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-4)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_51">configure allowable methods of Out of Band pairing (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-5)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_52">disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-6)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_53">disable and enable the Connection mode (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-7)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_54">disable and enable the Bluetooth services or profiles available on the device (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-8)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_55">specify minimum level of security for each pairing (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-9)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_56">no other Bluetooth configuration</span></li></ul>]</li></ol></span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_57"><span class="ctr" data-myid="smf40" data-counter-type="ct-mgmt" id="smf40"> <span class="counter">40</span></span>. Enable and disable policy for display notification in the locked state of <br/><ol type="a"> [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_58">email notifications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_59">calendar appointments</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_60">contact associated with phone call notification</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_61">text message notification</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_62">other application-based notifications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_63">none</span></li></ul>] (MDF Function 18) </ol></span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_64"><span class="ctr" data-myid="smf41" data-counter-type="ct-mgmt" id="smf41"> <span class="counter">41</span></span>. Policy for establishing a trusted channel or disallowing establishment if the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> cannot establish a connection to determine the validity of a certificate, (MDF Function 30)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_65"><span class="ctr" data-myid="smf42" data-counter-type="ct-mgmt" id="smf42"> <span class="counter">42</span></span>. Enable and disable policy for the cellular protocols used to connect to cellular network base stations, (MDF Function 31)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_66"><span class="ctr" data-myid="smf43" data-counter-type="ct-mgmt" id="smf43"> <span class="counter">43</span></span>. Policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database, (MDF Function 29)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_67"><span class="ctr" data-myid="smf44" data-counter-type="ct-mgmt" id="smf44"> <span class="counter">44</span></span>. [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_68">certificate</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_69">public-key</span></li></ul>] used to validate digital signature on applications, (MDF Function 33)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_70"><span class="ctr" data-myid="smf45" data-counter-type="ct-mgmt" id="smf45"> <span class="counter">45</span></span>. Policy for exceptions for shared use of keys or secrets by multiple applications, (MDF Function 34)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_71"><span class="ctr" data-myid="smf46" data-counter-type="ct-mgmt" id="smf46"> <span class="counter">46</span></span>. Policy for exceptions for destruction of keys or secrets by applications that did not import the key or secret, (MDF Function 35)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_72"><span class="ctr" data-myid="smf47" data-counter-type="ct-mgmt" id="smf47"> <span class="counter">47</span></span>. The unlock banner policy, (MDF Function 36)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_73"><span class="ctr" data-myid="smf48" data-counter-type="ct-mgmt" id="smf48"> <span class="counter">48</span></span>. Configure the auditable items (MDF Function 37)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_74"><span class="ctr" data-myid="smf49" data-counter-type="ct-mgmt" id="smf49"> <span class="counter">49</span></span>. Enable and disable [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_75">USB mass storage mode</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_76">USB data transfer without user authentication</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_77">USB data transfer without authentication of the connection system</span></li></ul>] (MDF Function 39)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_78"><span class="ctr" data-myid="smf50" data-counter-type="ct-mgmt" id="smf50"> <span class="counter">50</span></span>. Enable and disable backup of [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_79">all applications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_80">selected applications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_81">selected groups of applications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_82">configuration data</span></li></ul>] to [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_83">locally connected system</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_84">remote system</span>] (MDF Function 40)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_85"><span class="ctr" data-myid="smf51" data-counter-type="ct-mgmt" id="smf51"> <span class="counter">51</span></span>. Enable and disable [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_86">Hotspot functionality authenticated by [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_87">pre-shared key</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_88">passcode</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_89">no authentication</span>] </span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_90">USB tethering authenticated by [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_91">pre-shared key</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_92">passcode</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_93">no authentication</span>] </span></li></ul>] (MDF Function 41)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_94"><span class="ctr" data-myid="smf52" data-counter-type="ct-mgmt" id="smf52"> <span class="counter">52</span></span>. Enable and disable location services:<br/> [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_95">across device</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_96">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_97">on a per-group of application processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_98">no other method</span></li></ul>] (MDF Function 21)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_99"><span class="ctr" data-myid="smf53" data-counter-type="ct-mgmt" id="smf53"> <span class="counter">53</span></span>. Enable and disable policy for user unenrollment</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_100"><span class="ctr" data-myid="smf54" data-counter-type="ct-mgmt" id="smf54"> <span class="counter">54</span></span>. Enable and disable policy for the Always-On VPN protection across device (MDF Function 45)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_101"><span class="ctr" data-myid="smf55" data-counter-type="ct-mgmt" id="smf55"> <span class="counter">55</span></span>. Enable and disable policy for use of Biometric Authentication Factor (MDF Function 22)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_102"><span class="ctr" data-myid="smf56" data-counter-type="ct-mgmt" id="smf56"> <span class="counter">56</span></span>. Connectivity timeout policy: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_103">allowed [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_104">number of missed reachability events</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_105">length of time without server connectivity</span>] </span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_106">when server connectivity timeout is exceeded agent shall [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_107">disable user password</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_108">wipe device</span>] and [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_110">[<b>assignment</b>: 
+              <ul style="list-style-type:none"> [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_34"><span class="ctr" data-myid="smf31" data-counter-type="ct-mgmt" id="smf31"> <span class="counter">31</span></span>. Enable and disable policy for the VPN protection across <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>, [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_36">on a per-group of application processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_37">no other method</span></li></ul>] (MDF/GPOS Function 3)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_38"><span class="ctr" data-myid="smf32" data-counter-type="ct-mgmt" id="smf32"> <span class="counter">32</span></span>. Enable and disable policy for [<b>assignment</b>: 
+     <span class="assignable-content">list of radios</span>], (MDF/GPOS Function 4)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_40"><span class="ctr" data-myid="smf33" data-counter-type="ct-mgmt" id="smf33"> <span class="counter">33</span></span>. Enable and disable policy for data signaling over [<b>assignment</b>: 
+     <span class="assignable-content">list of externally accessible hardware ports</span>], (MDF/GPOS Function 24)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_42"><span class="ctr" data-myid="smf34" data-counter-type="ct-mgmt" id="smf34"> <span class="counter">34</span></span>. Enable and disable policy for [<b>assignment</b>: 
+     <span class="assignable-content">list of protocols where the device acts as a server</span>], (MDF/GPOS Function 25)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_44"><span class="ctr" data-myid="smf35" data-counter-type="ct-mgmt" id="smf35"> <span class="counter">35</span></span>. Enable and disable policy for developer modes, (MDF/GPOS Function 26)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_45"><span class="ctr" data-myid="smf36" data-counter-type="ct-mgmt" id="smf36"> <span class="counter">36</span></span>. Enable policy for data-at-rest protection, (MDF/GPOS Function 19)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_46"><span class="ctr" data-myid="smf37" data-counter-type="ct-mgmt" id="smf37"> <span class="counter">37</span></span>. Enable policy for removable media's data-at-rest protection, (MDF/GPOS Function 20)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_47"><span class="ctr" data-myid="smf38" data-counter-type="ct-mgmt" id="smf38"> <span class="counter">38</span></span>. Enable and disable policy for local authentication bypass, (MDF/GPOS Function 27)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_48"><span class="ctr" data-myid="smf39" data-counter-type="ct-mgmt" id="smf39"> <span class="counter">39</span></span>. The Bluetooth trusted channel policy:<br/><ol type="a"><li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-1)</li><li>change the Bluetooth device name (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-2), [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_49">Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-3)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_50">allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-4)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_51">configure allowable methods of Out of Band pairing (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-5)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_52">disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-6)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_53">disable and enable the Connection mode (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-7)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_54">disable and enable the Bluetooth services or profiles available on the device (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-8)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_55">specify minimum level of security for each pairing (Bluetooth <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Function BT-9)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_56">no other Bluetooth configuration</span></li></ul>]</li></ol></span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_57"><span class="ctr" data-myid="smf40" data-counter-type="ct-mgmt" id="smf40"> <span class="counter">40</span></span>. Enable and disable policy for display notification in the locked state of <br/><ol type="a"> [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_58">email notifications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_59">calendar appointments</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_60">contact associated with phone call notification</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_61">text message notification</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_62">other application-based notifications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_63">none</span></li></ul>] (MDF/GPOS Function 18) </ol></span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_64"><span class="ctr" data-myid="smf41" data-counter-type="ct-mgmt" id="smf41"> <span class="counter">41</span></span>. Policy for establishing a trusted channel or disallowing establishment if the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> cannot establish a connection to determine the validity of a certificate, (MDF/GPOS Function 30)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_65"><span class="ctr" data-myid="smf42" data-counter-type="ct-mgmt" id="smf42"> <span class="counter">42</span></span>. Enable and disable policy for the cellular protocols used to connect to cellular network base stations, (MDF/GPOS Function 31)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_66"><span class="ctr" data-myid="smf43" data-counter-type="ct-mgmt" id="smf43"> <span class="counter">43</span></span>. Policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database, (MDF/GPOS Function 29)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_67"><span class="ctr" data-myid="smf44" data-counter-type="ct-mgmt" id="smf44"> <span class="counter">44</span></span>. [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_68">certificate</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_69">public-key</span></li></ul>] used to validate digital signature on applications, (MDF/GPOS Function 33)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_70"><span class="ctr" data-myid="smf45" data-counter-type="ct-mgmt" id="smf45"> <span class="counter">45</span></span>. Policy for exceptions for shared use of keys or secrets by multiple applications, (MDF/GPOS Function 34)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_71"><span class="ctr" data-myid="smf46" data-counter-type="ct-mgmt" id="smf46"> <span class="counter">46</span></span>. Policy for exceptions for destruction of keys or secrets by applications that did not import the key or secret, (MDF/GPOS Function 35)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_72"><span class="ctr" data-myid="smf47" data-counter-type="ct-mgmt" id="smf47"> <span class="counter">47</span></span>. The unlock banner policy, (MDF/GPOS Function 36)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_73"><span class="ctr" data-myid="smf48" data-counter-type="ct-mgmt" id="smf48"> <span class="counter">48</span></span>. Configure the auditable items (MDF/GPOS Function 37)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_74"><span class="ctr" data-myid="smf49" data-counter-type="ct-mgmt" id="smf49"> <span class="counter">49</span></span>. Enable and disable [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_75">USB mass storage mode</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_76">USB data transfer without user authentication</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_77">USB data transfer without authentication of the connection system</span></li></ul>] (MDF/GPOS Function 39)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_78"><span class="ctr" data-myid="smf50" data-counter-type="ct-mgmt" id="smf50"> <span class="counter">50</span></span>. Enable and disable backup of [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_79">all applications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_80">selected applications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_81">selected groups of applications</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_82">configuration data</span></li></ul>] to [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_83">locally connected system</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_84">remote system</span>] (MDF/GPOS Function 40)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_85"><span class="ctr" data-myid="smf51" data-counter-type="ct-mgmt" id="smf51"> <span class="counter">51</span></span>. Enable and disable [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_86">Hotspot functionality authenticated by [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_87">pre-shared key</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_88">passcode</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_89">no authentication</span>] </span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_90">USB tethering authenticated by [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_91">pre-shared key</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_92">passcode</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_93">no authentication</span>] </span></li></ul>] (MDF/GPOS Function 41)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_94"><span class="ctr" data-myid="smf52" data-counter-type="ct-mgmt" id="smf52"> <span class="counter">52</span></span>. Enable and disable location services:<br/> [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_95">across device</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_96">on a per-app basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_97">on a per-group of application processes basis</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_98">no other method</span></li></ul>] (MDF/GPOS Function 21)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_99"><span class="ctr" data-myid="smf53" data-counter-type="ct-mgmt" id="smf53"> <span class="counter">53</span></span>. Enable and disable policy for user unenrollment</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_100"><span class="ctr" data-myid="smf54" data-counter-type="ct-mgmt" id="smf54"> <span class="counter">54</span></span>. Enable and disable policy for the Always-On VPN protection across device (MDF/GPOS Function 45)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_101"><span class="ctr" data-myid="smf55" data-counter-type="ct-mgmt" id="smf55"> <span class="counter">55</span></span>. Enable and disable policy for use of Biometric Authentication Factor (MDF/GPOS Function 22)</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_102"><span class="ctr" data-myid="smf56" data-counter-type="ct-mgmt" id="smf56"> <span class="counter">56</span></span>. Connectivity timeout policy: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_103">allowed [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_104">number of missed reachability events</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_105">length of time without server connectivity</span>] </span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_106">when server connectivity timeout is exceeded agent shall [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_107">disable user password</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_108">wipe device</span>] and [<b>selection</b>: <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_110">[<b>assignment</b>: 
      <span class="assignable-content">other action</span>]</span>, <span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_111">none</span>] </span></li></ul>] </span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_112"><span class="ctr" data-myid="smf57" data-counter-type="ct-mgmt" id="smf57"> <span class="counter">57</span></span>. Enable and disable multi-user modes</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_113"><span class="ctr" data-myid="smf58" data-counter-type="ct-mgmt" id="smf58"> <span class="counter">58</span></span>. Enable and disable automatic updates of system software</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_114"><span class="ctr" data-myid="smf59" data-counter-type="ct-mgmt" id="smf59"> <span class="counter">59</span></span>. Enable and disable removable media</span></li><li style=""><span class="selectable-content" id="fmt_smf.1.1_SERVER_CONF_AGENT_115"><span class="ctr" data-myid="smf60" data-counter-type="ct-mgmt" id="smf60"> <span class="counter">60</span></span>. [<b>assignment</b>: 
      <span class="assignable-content">list of other policies to be provided by the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr></span>], no other policies</span></li></ul>].</ul>
             <div class="appnote"><span class="note-header">Application
@@ -6435,7 +6672,7 @@ The following sections list Common Criteria and technology terms used in this do
               Function-specific Application Notes:
               <br/>
               <br/>
-              Function-specific application notes reference Mobile Device Fundamentals (MDF) <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> v4.0.
+              Function-specific application notes reference Mobile Device Fundamentals (MDF) <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> v4.0 and General Purpose Operating Systems (GPOS) <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> v5.0.
               <br/>
               <br/>
               Function
@@ -6480,7 +6717,7 @@ The following sections list Common Criteria and technology terms used in this do
 		      clearly identifies which management functions match the selections and assignments of the
 		      evaluated <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> and which management 
 		      functions were not evaluated.
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">For each command that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can issue to an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent and for each mobile device configuration policies that can be applied, the evaluator shall examine the operational guidance to verify that it includes instructions on how to perform these actions, and what particular parameters or options can be specified for them.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">For each command that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can issue to an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent and for each <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> configuration policies that can be applied, the evaluator shall examine the operational guidance to verify that it includes instructions on how to perform these actions, and what particular parameters or options can be specified for them.</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                 For each <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent or platform listed as supported in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_34" class="defined" href="#_t_34">Test FMT_SMF.1/SERVER_CONF_AGENT:1</a>:
@@ -6886,12 +7123,14 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FPT_TDC.1.1/Policy"><a href="#FPT_TDC.1.1/Policy" class="abbr">FPT_TDC.1.1/Policy</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide the capability to consistently interpret
               [<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy</span>]when shared between the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent.
+     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy</span>]
+              when shared between the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent.
             </div></div>
           <div class="element"><div class="reqid" id="FPT_TDC.1.2/Policy"><a href="#FPT_TDC.1.2/Policy" class="abbr">FPT_TDC.1.2/Policy</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use
               [<b>assignment</b>: 
-     <span class="assignable-content">list of interpretation rules to be applied by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>]when interpreting <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy from the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.
+     <span class="assignable-content">list of interpretation rules to be applied by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>]
+              when interpreting <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy from the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server.
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">The intent of this requirement is to verify that there are well-defined rules that the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server follows if it modifies/interprets the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> policy sent from the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server that is then delivered to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent on the managed device. For example: a mapping between the command received from the primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and the matching command delivered to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent. If the subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> does not modify the policy for delivery to the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent, then this requirement is implicitly satisfied.</span></div></div></div>
@@ -7364,7 +7603,7 @@ The following sections list Common Criteria and technology terms used in this do
               <a href="#FPT_ITT.1/INTER_XFER_AGENT">FPT_ITT.1/INTER_XFER_AGENT</a> must be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
               <br/>
               <br/>
-              If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> interoperates with an evaluated <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent built into a mobile device (i.e., the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not include an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent), the communication channel 
+              If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> interoperates with an evaluated <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent built into a <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> (i.e., the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not include an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent), the communication channel 
               between the agent and <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is external to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and thus "an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent that is external to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>" must be selected in the first selection.
               Additionally <a href="#FTP_ITC.1/INTER_TSF_XFER_AGENT">FTP_ITC.1/INTER_TSF_XFER_AGENT</a> must be selected in the second selection and <a href="#FTP_ITC.1/INTER_TSF_XFER_AGENT">FTP_ITC.1/INTER_TSF_XFER_AGENT</a> must be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
               <br/>
@@ -7841,7 +8080,7 @@ The following sections list Common Criteria and technology terms used in this do
         and relevant appendices that call for necessary descriptions to be included in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> that are specific to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> technology type.
         <div class="comp" id="ASE_TSS.1"><h4>ASE_TSS.1 TOE summary specification</h4>
           
-        <h4>Developer action elements: </h4><h4>Content and presentation elements: </h4><div class="element"><div class="reqid" id="ASE_TSS.1.1C"><a href="#ASE_TSS.1.1C" class="abbr">ASE_TSS.1.1C</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> summary specification shall describe how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> meets each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>.</div></div><h4>Evaluator action elements: </h4><div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#ASE_TSS.1">ASE_TSS.1</a></div></div></div></div>
+        <h4>Developer action elements: </h4><h4>Content and presentation elements: </h4><div class="element"><div class="reqid" id="ASE_TSS.1.1C"><a href="#ASE_TSS.1.1C" class="abbr">ASE_TSS.1.1C</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> summary specification shall describe how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> meets each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>.</div></div><h4>Evaluator action elements: </h4></div>
       
       <h3 class="indexable" data-level="3" id="adv">6.2.2 Class ADV: Development</h3>
         The design information about the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is contained in the guidance documentation available to the end user as well as the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> portion of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>, and any additional information required by this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> that is not to be made public (e.g., Entropy Essay).
@@ -8076,7 +8315,7 @@ The following sections list Common Criteria and technology terms used in this do
 
 	All extended components specified in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> are listed in this table:
 
-<table class="sort_kids_"><caption data-sortkey="#0"><b><span class="ctr" data-myid="" data-counter-type="ct-Table" id="">Table <span class="counter">20</span></span>: Extended Component Definitions</b></caption><tr data-sortkey="#1"><th>Functional Class</th><th>Functional Components</th></tr><tr data-sortkey="Communication (FCO)"><td>Communication (FCO)</td><td>FCO_CPC_EXT Component Registration Channel Definition<br/></td></tr><tr data-sortkey="Cryptographic Support (FCS)"><td>Cryptographic Support (FCS)</td><td>FCS_CKM_EXT Cryptographic Key Management<br/>FCS_HTTPS_EXT HTTPS Protocol<br/>FCS_IV_EXT Initialization Vector Generation<br/>FCS_STG_EXT Encrypted Cryptographic Key Storage<br/></td></tr><tr data-sortkey="Identification and Authentication (FIA)"><td>Identification and Authentication (FIA)</td><td>FIA_CLI_EXT Client Authorization<br/>FIA_ENR_EXT Enrollment<br/>FIA_TOK_EXT Client Tokens<br/></td></tr><tr data-sortkey="Protection of the TSF (FPT)"><td>Protection of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> (FPT)</td><td>FPT_API_EXT Use of Supported Services and APIs<br/>FPT_LIB_EXT Use of Third-Party Libraries<br/>FPT_TST_EXT Functionality Testing<br/>FPT_TUD_EXT Trusted Update<br/></td></tr><tr data-sortkey="Security Audit (FAU)"><td>Security Audit (FAU)</td><td>FAU_ALT_EXT Server Alerts<br/>FAU_CRP_EXT Support for Compliance Reporting of Mobile Device Configuration<br/>FAU_NET_EXT Network Reachability Review<br/></td></tr><tr data-sortkey="Security Management (FMT)"><td>Security Management (FMT)</td><td>FMT_POL_EXT Trusted Policy Update<br/>FMT_SAE_EXT Security Attribute Expiration<br/></td></tr><tr data-sortkey="Trusted Path/Channels (FTP)"><td>Trusted Path/Channels (FTP)</td><td>FTP_ITC_EXT Trusted Channel<br/></td></tr></table><h2 id="ext-comp-defs-bg" class="indexable" data-level="2">B.2 Extended Component Definitions</h2><span class="sort_kids_"><span data-sortkey="Communication (FCO)"><h3 id="ext-comp-FCO" class="indexable" data-level="3">B.2.1 Communication (FCO)</h3>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the following extended components as part of the
+<table class="sort_kids_"><caption data-sortkey="#0"><b><span class="ctr" data-myid="" data-counter-type="ct-Table" id="">Table <span class="counter">20</span></span>: Extended Component Definitions</b></caption><tr data-sortkey="#1"><th>Functional Class</th><th>Functional Components</th></tr><tr data-sortkey="Communication (FCO)"><td>Communication (FCO)</td><td>FCO_CPC_EXT Component Registration Channel Definition<br/></td></tr><tr data-sortkey="Cryptographic Support (FCS)"><td>Cryptographic Support (FCS)</td><td>FCS_CKM_EXT Cryptographic Key Management<br/>FCS_HTTPS_EXT HTTPS Protocol<br/>FCS_IV_EXT Initialization Vector Generation<br/>FCS_STG_EXT Encrypted Cryptographic Key Storage<br/></td></tr><tr data-sortkey="Identification and Authentication (FIA)"><td>Identification and Authentication (FIA)</td><td>FIA_CLI_EXT Client Authorization<br/>FIA_ENR_EXT Enrollment<br/>FIA_TOK_EXT Client Tokens<br/></td></tr><tr data-sortkey="Protection of the TSF (FPT)"><td>Protection of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> (FPT)</td><td>FPT_API_EXT Use of Supported Services and APIs<br/>FPT_LIB_EXT Use of Third-Party Libraries<br/>FPT_TST_EXT Functionality Testing<br/>FPT_TUD_EXT Trusted Update<br/></td></tr><tr data-sortkey="Security Audit (FAU)"><td>Security Audit (FAU)</td><td>FAU_ALT_EXT Server Alerts<br/>FAU_CRP_EXT Support for Compliance Reporting of Managed Device Configuration<br/>FAU_NET_EXT Network Reachability Review<br/></td></tr><tr data-sortkey="Security Management (FMT)"><td>Security Management (FMT)</td><td>FMT_POL_EXT Trusted Policy Update<br/>FMT_SAE_EXT Security Attribute Expiration<br/></td></tr><tr data-sortkey="Trusted Path/Channels (FTP)"><td>Trusted Path/Channels (FTP)</td><td>FTP_ITC_EXT Trusted Channel<br/></td></tr></table><h2 id="ext-comp-defs-bg" class="indexable" data-level="2">B.2 Extended Component Definitions</h2><span class="sort_kids_"><span data-sortkey="Communication (FCO)"><h3 id="ext-comp-FCO" class="indexable" data-level="3">B.2.1 Communication (FCO)</h3>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the following extended components as part of the
 	 FCO class originally defined by <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2:
 	<h3 id="ext-comp-FCO_CPC_EXT" class="indexable" data-level="4">B.2.1.1 FCO_CPC_EXT Component Registration Channel Definition</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family describes the registration process, including the capability for the administrator to enable or disable communications between a distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and other components of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FCO_CPC_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FCO_CPC_EXT.1">FCO_CPC_EXT.1</a>,
              Component Registration Channel Definition,
@@ -8139,12 +8378,15 @@ The following sections list Common Criteria and technology terms used in this do
                 The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall derive shared cryptographic keys with input from multiple parties in accordance 
                 with specified cryptographic key agreement algorithms
                 [<b>assignment</b>: 
-     <span class="assignable-content">cryptographic algorithm</span>]and specified cryptographic parameters
+     <span class="assignable-content">cryptographic algorithm</span>]
+                and specified cryptographic parameters
                 [<b>assignment</b>: 
-     <span class="assignable-content">cryptographic parameters</span>]that meet the
+     <span class="assignable-content">cryptographic parameters</span>]
+                that meet the
                 following:
                 [<b>assignment</b>: 
-     <span class="assignable-content">list of standards</span>]</div></div><h3 id="ext-comp-FCS_HTTPS_EXT" class="indexable" data-level="4">B.2.2.2 FCS_HTTPS_EXT HTTPS Protocol</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for protecting HTTP communications between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and an external IT entity.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FCS_HTTPS_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a>,
+     <span class="assignable-content">list of standards</span>]
+              </div></div><h3 id="ext-comp-FCS_HTTPS_EXT" class="indexable" data-level="4">B.2.2.2 FCS_HTTPS_EXT HTTPS Protocol</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for protecting HTTP communications between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and an external IT entity.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FCS_HTTPS_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a>,
              HTTPS Protocol,
              defines requirements for the implementation of the HTTPS protocol.</p><h4>Management: FCS_HTTPS_EXT.1</h4><p>There are no management activities foreseen.</p><h4>Audit: FCS_HTTPS_EXT.1</h4><p>
             The following actions should be auditable if FAU_GEN security audit data generation
@@ -8153,7 +8395,7 @@ The following sections list Common Criteria and technology terms used in this do
               <li>Failure of the certificate validity check.</li>
               <li>Issuer Name and Subject Name of certificate.</li>
               <li>
-                [<b>selection</b>: <span class="selectable-content" id="_s_334">User's authorization decision</span>, <span class="selectable-content" id="_s_335">No additional information</span>]</li>
+                [<b>selection</b>: <span class="selectable-content" id="_s_347">User's authorization decision</span>, <span class="selectable-content" id="_s_348">No additional information</span>]</li>
             </ul>
           </p><h4>FCS_HTTPS_EXT.1 HTTPS Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><span class="no-link">FCS_TLS_EXT.1</span> TLS Protocol<br/><span class="no-link">[FCS_TLSC_EXT.1 TLS Client Protocol or <br/>
               FCS_TLSS_EXT.1 TLS Server Protocol</span></td></tr></table><h4 id="ext-comp-FCS_HTTPS_EXT.1.1">FCS_HTTPS_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall  [<b>selection</b>: <span class="selectable-content" id="fcs_https_ext.1.1_1">invoke platform-provided functionality to implement</span>, <span class="selectable-content" id="fcs_https_ext.1.1_2">implement</span>]  the HTTPS protocol that complies with RFC 2818.<h4 id="ext-comp-FCS_HTTPS_EXT.1.2">FCS_HTTPS_EXT.1.2</h4>
@@ -8170,7 +8412,7 @@ The following sections list Common Criteria and technology terms used in this do
             secrets.</p><h4>Management: FCS_STG_EXT.1</h4><p>
             The following actions could be considered for the management functions in FMT.
             <ul>
-              <li>Import keys or secrets into the secure key storage (MDF Function 9)</li>
+              <li>Import keys or secrets into the secure key storage (MDF/GPOS Function 9)</li>
             </ul>
           </p><h4>Audit: FCS_STG_EXT.1</h4><p>There are no auditable events foreseen.</p><h4>FCS_STG_EXT.1 Cryptographic Key Storage</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies.</td></tr></table><h4 id="ext-comp-FCS_STG_EXT.1.1">FCS_STG_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use  [<b>selection</b>: <span class="selectable-content" id="fcs_stg_ext.1.1_1">platform-provided key storage</span>, <span class="selectable-content" id="fcs_stg_enc">encryption as specified in <a href="#FCS_STG_EXT.2">FCS_STG_EXT.2</a></span>]  for all persistent secrets and private keys.</div><h4>Management: FCS_STG_EXT.2</h4><p>There are no management activities foreseen.</p><h4>Audit: FCS_STG_EXT.2</h4><p>There are no auditable events foreseen.</p><h4>FCS_STG_EXT.2 Encrypted Cryptographic Key Storage</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies.</td></tr></table><h4 id="ext-comp-FCS_STG_EXT.2.1">FCS_STG_EXT.2.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall  [<b>selection</b>: <span class="selectable-content" id="fcs_stg_ext.2.1_1">invoke platform-provided functionality</span>, <span class="selectable-content" id="fcs_stg_ext.2.1_2">implement functionality</span>]  to encrypt all keys using AES in the  [<b>selection</b>: <span class="selectable-content" id="fcs_stg_ext.2.1_3">Key Wrap (KW) mode</span>, <span class="selectable-content" id="fcs_stg_ext.2.1_4">Key Wrap with Padding (KWP) mode</span>, <span class="selectable-content" id="fcs_stg_ext.2.1_5">GCM</span>, <span class="selectable-content" id="fcs_stg_ext.2.1_6">CCM</span>, <span class="selectable-content" id="fcs_stg_ext.2.1_7">CBC mode</span>].</div></div></span><span data-sortkey="Identification and Authentication (FIA)"><h3 id="ext-comp-FIA" class="indexable" data-level="3">B.2.3 Identification and Authentication (FIA)</h3>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the following extended components as part of the
 	 FIA class originally defined by <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2:
@@ -8241,7 +8483,7 @@ The following sections list Common Criteria and technology terms used in this do
             The following actions could be considered for the management functions in FMT.
             <ul>
               <li>Query the current version of the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> firmware or software.</li>
-              <li>Update system software (MDF Function 15).</li>
+              <li>Update system software (MDF/GPOS Function  15).</li>
             </ul>
           </p><h4>Audit: FPT_TUD_EXT.1</h4><p>
             The following action should be auditable if FAU_GEN security audit data generation
@@ -8275,8 +8517,8 @@ The following sections list Common Criteria and technology terms used in this do
                       [<b>assignment</b>: 
      <span class="assignable-content">other events</span>]</span>, <span class="selectable-content" id="fau_alt_ext.1.1_3">no other events</span>]</li>
               </ul>
-            </div></div><h3 id="ext-comp-FAU_CRP_EXT" class="indexable" data-level="4">B.2.5.2 FAU_CRP_EXT Support for Compliance Reporting of Mobile Device Configuration</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to provide an interface for the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server to convey information about MDs for other systems.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FAU_CRP_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FAU_CRP_EXT.1">FAU_CRP_EXT.1</a>,
-             Support for Compliance Reporting of Mobile Device Configuration,
+            </div></div><h3 id="ext-comp-FAU_CRP_EXT" class="indexable" data-level="4">B.2.5.2 FAU_CRP_EXT Support for Compliance Reporting of Managed Device Configuration</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to provide an interface for the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server to convey information about MDs for other systems.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FAU_CRP_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FAU_CRP_EXT.1">FAU_CRP_EXT.1</a>,
+             Support for Compliance Reporting of Managed Device Configuration,
              defines requirements for providing information to enrolled MDs
             through a secure channel.</p><h4>Management: FAU_CRP_EXT.1</h4><p>
             The following actions could be considered for the management functions in FMT.
@@ -8285,10 +8527,11 @@ The following sections list Common Criteria and technology terms used in this do
               <li>Query the current version of the hardware model of the device.</li>
               <li>Query the current version of installed applications.</li>
             </ul>
-          </p><h4>Audit: FAU_CRP_EXT.1</h4><p>There are no auditable events foreseen.</p><h4>FAU_CRP_EXT.1 Support for Compliance Reporting of Mobile Device Configuration</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><span class="no-link">FTP_ITC.1</span> Inter-TSF Trusted Channel</td></tr></table><h4 id="ext-comp-FAU_CRP_EXT.1.1">FAU_CRP_EXT.1.1</h4>
+          </p><h4>Audit: FAU_CRP_EXT.1</h4><p>There are no auditable events foreseen.</p><h4>FAU_CRP_EXT.1 Support for Compliance Reporting of Managed Device Configuration</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><span class="no-link">FTP_ITC.1</span> Inter-TSF Trusted Channel</td></tr></table><h4 id="ext-comp-FAU_CRP_EXT.1.1">FAU_CRP_EXT.1.1</h4>
                 The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide
                 [<b>assignment</b>: 
-     <span class="assignable-content">type of interface</span>]to authorized entities over a 
+     <span class="assignable-content">type of interface</span>]
+                to authorized entities over a 
                 channel that meets the secure channel requirements in FTP_ITC.1 The provided information for each enrolled <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> includes:
                 <ul>
                   <li>The current version of the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> firmware or software</li>
@@ -8371,7 +8614,8 @@ The following sections list Common Criteria and technology terms used in this do
                 [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC_AgentInTOE">an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent that is internal to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li><li style=""><span class="selectable-content" id="ITC_AgentOutTOE">an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent that is external to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li><li style=""><span class="selectable-content" id="ITC_DISTRIBUTED_TOE">other components comprising the distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li></ul>]
                 that is logically distinct from other communication channels, as specified in
                 [<b>assignment</b>: 
-     <span class="assignable-content">inter-TSF trusted channel or internal <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> data transfer type</span>]</div></div></span></span><h1 id="satisfiedreqs" class="indexable" data-level="A">Appendix C -  Implicitly Satisfied Requirements</h1><p>This appendix lists requirements that should be considered satisfied by products
+     <span class="assignable-content">inter-TSF trusted channel or internal <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> data transfer type</span>]
+              </div></div></span></span><h1 id="satisfiedreqs" class="indexable" data-level="A">Appendix C -  Implicitly Satisfied Requirements</h1><p>This appendix lists requirements that should be considered satisfied by products
 			successfully evaluated against this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. These requirements are not featured
 			explicitly as <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and should not be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. They are not included as 
 			standalone <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> because it would increase the time, cost, and complexity of evaluation.
