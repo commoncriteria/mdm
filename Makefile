@@ -1,5 +1,6 @@
 -include ~/commoncriteria/User.make
 -include User.make
 TRANS?=transforms
-DIFF_TAGS="v4.0-draft2"
+DIFF_DIR="diff"
+DIFF_TAGS="master"
 include $(TRANS)/Helper.make
