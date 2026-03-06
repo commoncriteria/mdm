@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
 <!-- <?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> -->
 <?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<!-- test
+<!--
 Partial mapping from old iteration to new
 FCS_COP.1(1) => FCS_COP.1/SKC
 FCS_COP.1(2) => FCS_COP.1/Hash
@@ -172,7 +172,7 @@ DONE:
     <tech-terms>
       <term full="Administrator">The person who is responsible for management activities, including setting the 
 				policy that is applied by the enterprise on the MD.</term>
-      <term full="API Application Programming Interface" abbr="API">A specification of routines, data structures,
+      <term full="API Application Programming Interface " abbr="API">A specification of routines, data structures,
 				object classes, and variables that allows an application to make use of services provided by another
 				software component, such as a library. APIs are often provided for a set of libraries included with 
 				the platform.</term>
@@ -445,7 +445,7 @@ DONE:
       </package-usage-list>
     </section>
   </sec:Introduction>
-  <sec:Conformance_Claims title="Conformance Claims" id="ccl" boilerplate="no">
+  <sec:Conformance_Claims boilerplate="no">
     <CClaimsInfo cc-version="cc-2022r1" cc-approach="direct-rationale">
       <cc-st-conf>exact</cc-st-conf>
       <cc-pt2-conf>extended</cc-pt2-conf>
@@ -459,9 +459,9 @@ DONE:
         <Mod-cc-ref>PP-Module for VPN Client, Version 3.0</Mod-cc-ref>
       </cc-pp-config-with>
       <cc-pkg-claim>
-        <FP-cc-ref conf="conformant">Functional Package for SSH, Version 2.0</FP-cc-ref>
-        <FP-cc-ref conf="conformant">Functional Package for TLS, Version 2.1</FP-cc-ref>
-        <FP-cc-ref conf="conformant">Functional Package for X.509, Version 1.0</FP-cc-ref>
+        <FP-cc-ref conf="conformant">Functional Package for Secure Shell Version 2.0</FP-cc-ref>
+        <FP-cc-ref conf="conformant">Functional Package for Transport Layer Security Version 2.1</FP-cc-ref>
+        <FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
       </cc-pkg-claim>
     </CClaimsInfo>
   </sec:Conformance_Claims>
@@ -930,7 +930,10 @@ DONE:
     <sec:Threats>
       <threats>
         <threat name="T.MALICIOUS_APPS">
-          <description>Malicious or flawed application threats exist because apps loaded onto anMD may include malicious or exploitable code. An administrator of the MDM or MD usermay inadvertently import malicious code, or an attacker may insert malicious code into the TOE, resulting in thecompromise of TOE or TOE data.</description>
+          <description>Malicious or flawed application threats exist because apps loaded onto an
+						MD may include malicious or exploitable code. An administrator of the MDM or MD user
+						may inadvertently import malicious code, or an attacker may insert malicious code into the TOE, resulting in the
+						compromise of TOE or TOE data.</description>
           <!-- New mapping to build updated threat mapping table. -->
           <addressed-by>FAU_ALT_EXT.1</addressed-by>
           <rationale>A conformant TOE mitigates the threat of malicious apps by generating an alert if application of a policy fails, as this may indicate that a mechanism used to prevent the execution of malicious apps was not able to be enforced.</rationale>
@@ -966,7 +969,8 @@ DONE:
           <rationale>A conformant TOE mitigates the threat of malicious apps by communicating its policy data to enrolled MDs securely over a trusted channel.</rationale>
         </threat>
         <threat name="T.NETWORK_ATTACK">
-          <description>An attacker may masquerade as an MDM server and attempt tocompromise the integrity of the MD by sending malicious management commands.</description>
+          <description>An attacker may masquerade as an MDM server and attempt to
+						compromise the integrity of the MD by sending malicious management commands.</description>
           <!-- New mapping to build updated threat mapping table. -->
           <addressed-by>FAU_GEN.1/AUDITGEN</addressed-by>
           <rationale>A conformant TOE mitigates the threat of network attack by generating audit records of activity which may indicate attempts of such attacks.</rationale>
@@ -1054,7 +1058,9 @@ DONE:
           <rationale>A conformant TOE mitigates the threat of network attack by implementing a trusted path for remote administration.</rationale>
         </threat>
         <threat name="T.NETWORK_EAVESDROP">
-          <description>An attacker is positioned on a communications channel or elsewhere on thenetwork infrastructure. Attackers may monitor and gain access to data exchangedbetween the MDM server and other endpoints.</description>
+          <description>An attacker is positioned on a communications channel or elsewhere on the
+						network infrastructure. Attackers may monitor and gain access to data exchanged
+						between the MDM server and other endpoints.</description>
           <!-- New mapping to build updated threat mapping table. -->
           <addressed-by>FCS_CKM_EXT.7 (Implementation-based)</addressed-by>
           <rationale>A conformant TOE mitigates the threat of network eavesdrop by ensuring that a third-party cannot obtain the key used by the TOE to communicate securely with a remote entity.</rationale>
@@ -1118,7 +1124,9 @@ DONE:
           <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a trusted path for remote administration.</rationale>
         </threat>
         <threat name="T.PHYSICAL_ACCESS">
-          <description>The MD may be lost or stolen, and an unauthorized individual mayattempt to access user data. Although these attacks are primarily directed against theMD platform, the TOE configures features on MDs that mitigate the this threat against them. Therefore, misuse or failure of the TOE may also compromise the MD, exposing it to this threat.</description>
+          <description>The MD may be lost or stolen, and an unauthorized individual may
+						attempt to access user data. Although these attacks are primarily directed against the
+						MD platform, the TOE configures features on MDs that mitigate the this threat against them. Therefore, misuse or failure of the TOE may also compromise the MD, exposing it to this threat.</description>
           <!-- New mapping to build updated threat mapping table. -->
           <addressed-by>FAU_ALT_EXT.1</addressed-by>
           <rationale>A conformant TOE mitigates the threat of physical access to the MD by generating an alert when a MD is unable to receive policy information or has its enrollment status altered (e.g. unenrollment may be evidence of physical compromise).</rationale>
@@ -1550,6 +1558,7 @@ DONE:
               <h:b>In item d above, "start up and shut down of the MDM system" must be selected if the TSF has a start up and shut down phase. 
         Additionally, if the TOE is distributed, this applies to all components. If the TOE is not distributed then MDM system is equivalent 
         to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required.</h:b>
+              <h:br/>
               <h:br/>
               Depending on the specific requirements selected by the ST author from SFR, optional requirements, selection-based
 				requirements, and objective requirements, the ST author should include the appropriate auditable
@@ -3510,8 +3519,7 @@ DONE:
                 <h:li>SHA-1 hash is no longer permitted to be used as a hash function, </h:li>
                 <h:li>SHA3 hashes may be used only for internal hardware functionality such as
                 boot integrity checks, and</h:li>
-                <h:li>SHA-256 is permitted only for use as a PRF or MAC as part of a key derivation function,
-                or as part of LMS or XMSS.</h:li>
+                <h:li>SHA-256 is permitted only for use as part of LMS or XMSS.</h:li>
               </h:ul>
               <h:p/>
               The hash selection should be consistent with the overall strength of the 
@@ -3595,7 +3603,8 @@ DONE:
                 For the Standard Monte Carlo test the message hashed is always three times the length of the
                 initial seed.
                 <h:p/>
-                <h:pre>For j = 0 to 99
+                <h:pre>
+                  For j = 0 to 99
                   A = B = C = SEED
                   For i = 0 to 999
                   MSG = A || B || C
@@ -3609,7 +3618,8 @@ DONE:
                 For the alternate version of the Monte Carlo Test, the hashed message is always the same length as
                 the seed.
                 <h:p/>
-                <h:pre>INITIAL_SEED_LENGTH = LEN(SEED)
+                <h:pre>
+                  INITIAL_SEED_LENGTH = LEN(SEED)
                   For j = 0 to 99
                   A = B = C = SEED
                   For i = 0 to 999
@@ -3666,7 +3676,8 @@ DONE:
                 <h:p/>
                 For this Monte Carlo Test, the hashed message is always the same length as the seed.
                 <h:p/>
-                <h:pre>MD[0] = SEED
+                <h:pre>
+                  MD[0] = SEED
                   INITIAL_SEED_LENGTH = LEN(SEED)
                   For 100 iterations
                   For i = 1 to 1000
@@ -3722,38 +3733,26 @@ DONE:
                     completion of the selection operations of FCS_COP.1/KeyedHash.
                   </reqtext>
                 </tabularize>
-                <selectable id="sel-fcs-cop-keyedhash-hmac-sha-256">
-                  <col>HMAC-SHA-256</col>
-                  <col>256 bits</col>
-                  <col>
-                    <selectables>
-                      <selectable id="fcs_cop.1.1_KeyedHash_3">
-                        <h:i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”)</h:i></selectable>
-                      <selectable id="fcs_cop.1.1_KeyedHash_4">
-                        <h:i>FIPS PUB 198-1</h:i></selectable>
-                    </selectables>
-                  </col>
-                </selectable>
                 <selectable id="sel-fcs-cop-keyedhash-hmac-sha-384">
                   <col>HMAC-SHA-384</col>
-                  <col><selectables><selectable id="fcs_cop.1.1_KeyedHash_5"><h:i>384 (ISO, FIPS)</h:i></selectable><selectable id="fcs_cop.1.1_KeyedHash_6"><h:i>256 (FIPS)</h:i></selectable></selectables> bits</col>
+                  <col><selectables><selectable id="fcs_cop.1.1_KeyedHash_3"><h:i>384 (ISO, FIPS)</h:i></selectable><selectable id="fcs_cop.1.1_KeyedHash_4"><h:i>256 (FIPS)</h:i></selectable></selectables> bits</col>
                   <col>
                     <selectables>
-                      <selectable id="fcs_cop.1.1_KeyedHash_7">
+                      <selectable id="fcs_cop.1.1_KeyedHash_5">
                         <h:i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”)</h:i></selectable>
-                      <selectable id="fcs_cop.1.1_KeyedHash_8">
+                      <selectable id="fcs_cop.1.1_KeyedHash_6">
                         <h:i>FIPS PUB 198-1</h:i></selectable>
                     </selectables>
                   </col>
                 </selectable>
                 <selectable id="sel-fcs-cop-keyedhash-hmac-sha-512">
                   <col>HMAC-SHA-512</col>
-                  <col><selectables><selectable id="fcs_cop.1.1_KeyedHash_9"><h:i>512 (ISO, FIPS)</h:i></selectable><selectable id="fcs_cop.1.1_KeyedHash_10"><h:i>384 (FIPS)</h:i></selectable><selectable id="fcs_cop.1.1_KeyedHash_11"><h:i>256 (FIPS)</h:i></selectable></selectables> bits</col>
+                  <col><selectables><selectable id="fcs_cop.1.1_KeyedHash_7"><h:i>512 (ISO, FIPS)</h:i></selectable><selectable id="fcs_cop.1.1_KeyedHash_8"><h:i>384 (FIPS)</h:i></selectable><selectable id="fcs_cop.1.1_KeyedHash_9"><h:i>256 (FIPS)</h:i></selectable></selectables> bits</col>
                   <col>
                     <selectables>
-                      <selectable id="fcs_cop.1.1_KeyedHash_12">
+                      <selectable id="fcs_cop.1.1_KeyedHash_10">
                         <h:i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”)</h:i></selectable>
-                      <selectable id="fcs_cop.1.1_KeyedHash_13">
+                      <selectable id="fcs_cop.1.1_KeyedHash_11">
                         <h:i>FIPS PUB 198-1</h:i></selectable>
                     </selectables>
                   </col>
@@ -3769,17 +3768,11 @@ DONE:
               FCS_COP.1/Hash.
               <h:br/>
               <h:br/>
-              IN accordance with CNSA 1.0 and 2.0, HMAC-SHA-256 may be used only as a PRF or MAC
-              step in a key derivation function.
             </note>
             <aactivity>
               <TSS>
                 The evaluator shall examine the TSS to ensure that the size of the key is sufficient for the desired
                 security strength of the output.
-                <h:br/>
-                <h:br/>
-                The evaluator shall examine the TSS to verify that if HMAC-SHA-256 is selected, that it is being 
-                used only as a PRF or MAC step in a key derivation function.
                 <h:br/>
                 <h:br/>
                 If "invoke platform-provided functionality" is selected:
@@ -3817,14 +3810,6 @@ DONE:
                     <h:td valign="top">Keyed Hash Algorithm</h:td>
                     <h:td valign="top">Cryptographic Key Sizes</h:td>
                     <h:td valign="top">List of Standards</h:td>
-                  </h:tr>
-                  <h:tr>
-                    <h:td valign="top">HMAC-SHA-256</h:td>
-                    <h:td valign="top">256 bits</h:td>
-                    <h:td valign="top">
-                      [<h:b>selection:</h:b>
-                      <h:i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”), FIPS PUB 198-1</h:i>]
-                    </h:td>
                   </h:tr>
                   <h:tr>
                     <h:td valign="top">HMAC-SHA-384</h:td>
@@ -4287,7 +4272,7 @@ DONE:
                   </h:tr>
                 </h:table>
                 <h:p/>
-                To test the TOE’s ability to perform RSA Digital Signature Generation using PKCS1-v1,5
+                To test the TOE’s ability to perform RSA Digital Signature Generation using PKCS1-v1_5
 						signature type, the evaluator shall perform the Generated Data Test using the following input
 						parameters:
                 <h:ul>
@@ -4459,7 +4444,8 @@ DONE:
                 <h:p/>
                 <h:b>ML-DSA-87 Test Cases for Rejection Cases</h:b>
                 <h:p/>
-                <h:pre>Test case 87-RC-01
+                <h:pre>
+		Test case 87-RC-01
 		Seed: 			E4F5AFCF697E0EC3C1BDEB66FAA903221E803902F9C3F716E1056A63D77DC250
 		Hash of Keys: 	61618E8DDA6998072C8EB36974E03880D741CAF0BD523356DFC161E7C9E63934
 		Message: 		F4F1C05004D5B946F69EAFE104C4020519086ADDB9582A20FDE887D13DFC36B1
@@ -4529,7 +4515,8 @@ DONE:
                 <h:p/>
                 <h:b>ML-DSA-87 Test Cases for Total Rejection Count</h:b>
                 <h:p/>
-                <h:pre>Test case 87-LN-01
+                <h:pre>
+		Test case 87-LN-01
 		Seed: 			98B6298051D92BF37293C93C97370747BF527B87B71F6C4264182F45155ADE4C
 		Hash of Keys: 	04A135B5C9B7020332C7B16E7108E8FF7FC1EAE1C23C5FA0B5D5CED0FEEE7424
 		Message: 		D7B0341269259083ABF3C8DC47559A19D57669B4486E0224F376DC43E577A3D8
@@ -4704,7 +4691,7 @@ DONE:
                   </h:tr>
                 </h:table>
                 <h:p/>
-                To test the TOE’s ability to perform RSA Digital Signature Verification using PKCS1-v1,5
+                To test the TOE’s ability to perform RSA Digital Signature Verification using PKCS1-v1_5
            signature type, the evaluator shall perform Generated Data Test using the following input
            parameters:
                 <h:ul>
@@ -5159,7 +5146,8 @@ DONE:
                   must process the test cases according to the following algorithm once for each combination of
                   direction and key size:
                 <h:p/>
-                <h:pre>Key[0] = Key
+                <h:pre>
+                    Key[0] = Key
                     IV[0] = IV
                     PT[0] = PT
                     for i = 0 to 99 {
@@ -5180,10 +5168,12 @@ DONE:
                     }</h:pre>
                 <h:p/>
                 where
-                <h:pre>AES_KEY_SHUFFLE</h:pre>
+                <h:pre>
+                AES_KEY_SHUFFLE</h:pre>
                 is defined as:
                 <h:p/>
-                <h:pre>If ( keylen = 128 )
+                <h:pre>
+                    If ( keylen = 128 )
                     Key[i+1] = Key[i] xor MSB(CT[j], 128)
                     If ( keylen = 192 )
                     Key[i+1] = Key[i] xor (LSB(CT[j-1], 64) || MSB(CT[j], 128))
@@ -5437,7 +5427,8 @@ DONE:
                 bits, and runs 100 iterations of the chained computation. MaxOutBytes and MinOutBytes are the
                 largest and smallest supported input and output sizes in bytes, respectively.
                 <h:p/>
-                <h:pre>Range = maxOutBytes - minOutBytes + 1
+                <h:pre>
+                  Range = maxOutBytes - minOutBytes + 1
                   OutputLen = maxOutBytes
                   For j = 0 to 99
                   MD[0] = SEED
@@ -5670,9 +5661,9 @@ DONE:
               <h:b>all</h:b>
               deterministic random bit generation services in accordance with NIST Special Publication 800-90A using
               <selectables linebreak="yes">
-                <selectable id="fcs_rbg.1.1_2">Hash_DRBG (any)</selectable>
-                <selectable id="fcs_rbg.1.1_3">HMAC_DRBG (any)</selectable>
-                <selectable id="fcs_rbg.1.1_4">CTR_DRBG (AES)</selectable>
+                <selectable id="fcs_rbg.1.1_2">Hash_DRBG (SHA-384 or SHA-512)</selectable>
+                <selectable id="fcs_rbg.1.1_3">HMAC_DRBG (HMAC-SHA-384 or HMAC-SHA-512)</selectable>
+                <selectable id="fcs_rbg.1.1_4">CTR_DRBG (AES-256)</selectable>
               </selectables>
               in accordance with [<h:i>NIST SP 800-90A</h:i>] after initialization with a seed.
             </title>
@@ -5898,6 +5889,7 @@ DONE:
                 <selectable id="fcs_rbg.3.1_1">TSF software-based noise source</selectable>
                 <selectable id="fcs_rbg.3.1_2">TSF hardware-based noise source</selectable>
               </selectables>
+              <assignable>name of noise source</assignable>
               with a minimum of
               <assignable>number of bits</assignable>
               bits of min-entropy.
@@ -7183,7 +7175,8 @@ DONE:
                 <selectable id="fpt_tst.1.1_3">at the request of the authorized user</selectable>
                 <selectable id="fpt_tst.1.1_4">at the conditions <assignable>conditions under which self-test should occur</assignable></selectable>
               </selectables>
-              to demonstrate the correct operation of [<h:i>TSF DRBG specified in FCS_RBG.1</h:i>].
+              to demonstrate the correct operation of [<h:i>TSF DRBG specified in FCS_RBG.1</h:i>]:
+              <assignable>DRBG health tests</assignable>.
             </title>
           </f-element>
           <f-element id="fel-tsf-ver-int-data">
@@ -7726,10 +7719,11 @@ DONE:
             <ext-comp-def-title>
               <title>
                 The TSF shall provide a communication channel between itself and
-                <comment>have to update this for subordinate MDM</comment>
                 <selectables linebreak="yes">
                   <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE</selectable>
                   <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE</selectable>
+                  <selectable>a subordinate MDM server</selectable>
+                  <selectable id="ITC_SUBORDINATE_MDM">a primary MDM server</selectable>
                   <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
                 </selectables>
                 that is logically distinct from other communication channels, as specified in
@@ -8401,7 +8395,7 @@ DONE:
           </a-element>
           <a-element type="C">
             <title>The flaw remediation procedures shall describe a means by which the developer receives
-              from TOE users reports and enquiries of suspected security flaws in the TOE.</title>
+              from TOE users reports and inquiries of suspected security flaws in the TOE.</title>
           </a-element>
           <a-element type="C">
             <title>The procedures for processing reported security flaws shall ensure that any reported
@@ -8808,7 +8802,6 @@ DONE:
     </section>
     <section title="Evaluator Actions for Assessing the Guidance Documentation" id="sec2">
       <h:b>Guidance</h:b>
-      w
       <!--   <Guidance>   -->
       The evaluator shall examine the description of the extra instances of TOE components in the guidance documentation to confirm that they are consistent with those
 	identified as allowed in the ST. This includes confirmation that the result of applying the guidance documentation to configure the extra component will leave the
