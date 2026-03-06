@@ -1,9 +1,5 @@
-* Error: Detected dangling id-reference to key-encap-support from attribute
-        on/PP[1]""/section[5]""/section[1]""/section[4]""/f-component[3]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to wlan-support from attribute
         on/PP[1]""/section[5]""/section[1]""/section[4]""/f-component[3]""/depends[2]""/on[1]""
-* Error: Detected dangling id-reference to key-agreement-support from attribute
-        on/PP[1]""/section[5]""/section[1]""/section[4]""/f-component[5]""/depends[1]""/on[1]""
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-attls'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
