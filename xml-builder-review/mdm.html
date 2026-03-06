@@ -629,7 +629,7 @@ function showTarget(id){
 	            img[src="images/collapsed.png"] { display:none;}
 
           }
-    </style></head><body onLoad="init()"><div id="commmentbox-"><a href="#Comment-1-">Comment: Comment-1-</a><br/></div><h1 class="title" style="page-break-before:auto;">Protection Profile for Mobile Device Management</h1><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><div class="center"><img src="images/niaplogo.png" alt="NIAP Logo"></img><br/>
+    </style></head><body onLoad="init()"><h1 class="title" style="page-break-before:auto;">Protection Profile for Mobile Device Management</h1><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><div class="center"><img src="images/niaplogo.png" alt="NIAP Logo"></img><br/>
       Version: 5.0-Draft<br/>2025-11-19<br/><b>National Information Assurance Partnership</b><br/></div><h2 style="page-break-before:always;">Revision History</h2><table><tr class="header"><th>Version</th><th>Date</th><th>Comment</th></tr><tr><td>1.0</td><td>2013-10-21</td><td>Initial Release</td></tr>
 <tr><td>1.1</td><td>2014-02-07</td><td>Typographical changes and clarifications to front-matter</td></tr>
 <tr><td>2.0</td><td>2014-12-31</td><td>Separation of <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr><br/>Updated cryptography, protocol, X.509 requirements.<br/> Updated management functions to match MDF <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> v2.0.<br/> Included SSH as a remote administration protocol.<br/> Removed IPsec as protocol to communicate to <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent.<br/> Added X509 enrollment objective requirement.<br/> Added Optional Mobile Application Store requirements.</td></tr>
@@ -680,7 +680,7 @@ The following sections list Common Criteria and technology terms used in this do
 <tr><td><div id="Target_of_Evaluation">Target of Evaluation (TOE)</div></td><td>The product under evaluation. </td></tr>
 <tr><td><div id="TOE_Security_Functionality">TOE Security Functionality (TSF)</div></td><td>The security functionality of the product under evaluation.</td></tr>
 <tr><td><div id="TOE_Summary_Specification">TOE Summary Specification (TSS)</div></td><td>A description of how a TOE satisfies the SFRs in an ST.</td></tr>
-</table><h3 id="tech-terms" class="indexable" data-level="3">1.2.2 Technical Terms</h3><table style="width: 100%"><tr><td><div id="API_Application_Programming_Interface">API Application Programming Interface (API)</div></td><td>A specification of routines, data structures,
+</table><h3 id="tech-terms" class="indexable" data-level="3">1.2.2 Technical Terms</h3><table style="width: 100%"><tr><td><div id="API_Application_Programming_Interface_">API Application Programming Interface  (API)</div></td><td>A specification of routines, data structures,
 				object classes, and variables that allows an application to make use of services provided by another
 				software component, such as a library. APIs are often provided for a set of libraries included with 
 				the platform.</td></tr>
@@ -889,9 +889,9 @@ The following sections list Common Criteria and technology terms used in this do
 				</dd><p></p><dd>The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a 
 					<abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>:
 					<ul><li>Protection Profile for Mobile Device Fundamentals, Version 4.0</li><li>Protection Profile for General Purpose Operating Systems, Version 5.0</li><li>Protection Profile for Application Software, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> Agents, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for VPN Client, Version 3.0</li></ul></dd><dt>Package Claim</dt><p></p><dd><ul><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is 
-					    Functional Package for SSH, Version 2.0 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is 
-					    Functional Package for TLS, Version 2.1 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is 
-					    Functional Package for X.509, Version 1.0 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not conform to any 
+					    Functional Package for Secure Shell Version 2.0 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is 
+					    Functional Package for Transport Layer Security Version 2.1 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is 
+					    Functional Package for X.509 Version 1.0 conformant.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not conform to any 
 						assurance packages.</li></ul></dd><p></p><dd>
 		The functional packages to which the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> conforms may include <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> that are not mandatory 
 		to claim for the sake of conformance. An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> that claims one or more of these functional 
@@ -1364,7 +1364,15 @@ The following sections list Common Criteria and technology terms used in this do
   <h1 class="indexable" data-level="1" id="Security_Problem_Definition">4 Security Problem Definition</h1>
     
     <h2 class="indexable" data-level="2" id="Threats">4.1 Threats</h2>
-      <dl><dt class="threat defined" id="T.MALICIOUS_APPS">T.MALICIOUS_APPS</dt><dd><span class="description">Malicious or flawed application threats exist because apps loaded onto anMD may include malicious or exploitable code. An administrator of the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> usermay inadvertently import malicious code, or an attacker may insert malicious code into the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, resulting in thecompromise of <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> data.</span></dd><dt class="threat defined" id="T.NETWORK_ATTACK">T.NETWORK_ATTACK</dt><dd><span class="description">An attacker may masquerade as an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and attempt tocompromise the integrity of the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> by sending malicious management commands.</span></dd><dt class="threat defined" id="T.NETWORK_EAVESDROP">T.NETWORK_EAVESDROP</dt><dd><span class="description">An attacker is positioned on a communications channel or elsewhere on thenetwork infrastructure. Attackers may monitor and gain access to data exchangedbetween the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and other endpoints.</span></dd><dt class="threat defined" id="T.PHYSICAL_ACCESS">T.PHYSICAL_ACCESS</dt><dd><span class="description">The <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> may be lost or stolen, and an unauthorized individual mayattempt to access user data. Although these attacks are primarily directed against theMD platform, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> configures features on MDs that mitigate the this threat against them. Therefore, misuse or failure of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may also compromise the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>, exposing it to this threat.</span></dd></dl>
+      <dl><dt class="threat defined" id="T.MALICIOUS_APPS">T.MALICIOUS_APPS</dt><dd><span class="description">Malicious or flawed application threats exist because apps loaded onto an
+						<abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> may include malicious or exploitable code. An administrator of the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> user
+						may inadvertently import malicious code, or an attacker may insert malicious code into the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, resulting in the
+						compromise of <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> data.</span></dd><dt class="threat defined" id="T.NETWORK_ATTACK">T.NETWORK_ATTACK</dt><dd><span class="description">An attacker may masquerade as an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and attempt to
+						compromise the integrity of the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> by sending malicious management commands.</span></dd><dt class="threat defined" id="T.NETWORK_EAVESDROP">T.NETWORK_EAVESDROP</dt><dd><span class="description">An attacker is positioned on a communications channel or elsewhere on the
+						network infrastructure. Attackers may monitor and gain access to data exchanged
+						between the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server and other endpoints.</span></dd><dt class="threat defined" id="T.PHYSICAL_ACCESS">T.PHYSICAL_ACCESS</dt><dd><span class="description">The <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> may be lost or stolen, and an unauthorized individual may
+						attempt to access user data. Although these attacks are primarily directed against the
+						<abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr> platform, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> configures features on MDs that mitigate the this threat against them. Therefore, misuse or failure of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may also compromise the <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>, exposing it to this threat.</span></dd></dl>
     
     
     <h2 class="indexable" data-level="2" id="Assumptions">4.2 Assumptions</h2>
@@ -1645,6 +1653,7 @@ The following sections list Common Criteria and technology terms used in this do
               <b>In item d above, "start up and shut down of the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> system" must be selected if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> has a start up and shut down phase. 
         Additionally, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is distributed, this applies to all components. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is not distributed then <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> system is equivalent 
         to <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required.</b>
+              <br/>
               <br/>
               Depending on the specific requirements selected by the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author from <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, optional requirements, selection-based
 				requirements, and objective requirements, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should include the appropriate auditable
@@ -3545,8 +3554,7 @@ The following sections list Common Criteria and technology terms used in this do
                 <li>SHA-1 hash is no longer permitted to be used as a hash function, </li>
                 <li>SHA3 hashes may be used only for internal hardware functionality such as
                 boot integrity checks, and</li>
-                <li>SHA-256 is permitted only for use as a PRF or MAC as part of a key derivation function,
-                or as part of LMS or XMSS.</li>
+                <li>SHA-256 is permitted only for use as part of LMS or XMSS.</li>
               </ul>
               <p></p>
               The hash selection should be consistent with the overall strength of the 
@@ -3633,7 +3641,8 @@ The following sections list Common Criteria and technology terms used in this do
                 For the Standard Monte Carlo test the message hashed is always three times the length of the
                 initial seed.
                 <p></p>
-                <pre>For j = 0 to 99
+                <pre>
+                  For j = 0 to 99
                   A = B = C = SEED
                   For i = 0 to 999
                   MSG = A || B || C
@@ -3647,7 +3656,8 @@ The following sections list Common Criteria and technology terms used in this do
                 For the alternate version of the Monte Carlo Test, the hashed message is always the same length as
                 the seed.
                 <p></p>
-                <pre>INITIAL_SEED_LENGTH = LEN(SEED)
+                <pre>
+                  INITIAL_SEED_LENGTH = LEN(SEED)
                   For j = 0 to 99
                   A = B = C = SEED
                   For i = 0 to 999
@@ -3704,7 +3714,8 @@ The following sections list Common Criteria and technology terms used in this do
                 <p></p>
                 For this Monte Carlo Test, the hashed message is always the same length as the seed.
                 <p></p>
-                <pre><abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0] = SEED
+                <pre>
+                  <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0] = SEED
                   INITIAL_SEED_LENGTH = LEN(SEED)
                   For 100 iterations
                   For i = 1 to 1000
@@ -3768,31 +3779,21 @@ The following sections list Common Criteria and technology terms used in this do
                 </tr>
 
                 <tr>
-                  <td>HMAC-SHA-256</td>
-                  <td>256 bits</td>
-                  <td>
-                    [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_3">
-                        <i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_4">
-                        <i>FIPS PUB 198-1</i></span>]
-                  </td>
-                </tr>
-
-                <tr>
                   <td>HMAC-SHA-384</td>
-                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_5"><i>384 (ISO, FIPS)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_6"><i>256 (FIPS)</i></span>] bits</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_3"><i>384 (ISO, FIPS)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_4"><i>256 (FIPS)</i></span>] bits</td>
                   <td>
-                    [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_7">
-                        <i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_8">
+                    [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_5">
+                        <i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_6">
                         <i>FIPS PUB 198-1</i></span>]
                   </td>
                 </tr>
 
                 <tr>
                   <td>HMAC-SHA-512</td>
-                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_9"><i>512 (ISO, FIPS)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_10"><i>384 (FIPS)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_11"><i>256 (FIPS)</i></span>] bits</td>
+                  <td>[<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_7"><i>512 (ISO, FIPS)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_8"><i>384 (FIPS)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_9"><i>256 (FIPS)</i></span>] bits</td>
                   <td>
-                    [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_12">
-                        <i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_13">
+                    [<b>selection</b>: <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_10">
+                        <i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”)</i></span>, <span class="selectable-content" id="fcs_cop.1.1_KeyedHash_11">
                         <i>FIPS PUB 198-1</i></span>]
                   </td>
                 </tr>
@@ -3808,8 +3809,6 @@ The following sections list Common Criteria and technology terms used in this do
               <a href="#FCS_COP.1/Hash">FCS_COP.1/Hash</a>.
               <br/>
               <br/>
-              IN accordance with CNSA 1.0 and 2.0, HMAC-SHA-256 may be used only as a PRF or MAC
-              step in a key derivation function.
             </span></div></div></div>
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/KeyedHash">FCS_COP.1/KeyedHash</a></div>
@@ -3819,10 +3818,6 @@ The following sections list Common Criteria and technology terms used in this do
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
                 The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that the size of the key is sufficient for the desired
                 security strength of the output.
-                <br/>
-                <br/>
-                The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that if HMAC-SHA-256 is selected, that it is being 
-                used only as a PRF or MAC step in a key derivation function.
                 <br/>
                 <br/>
                 If "invoke platform-provided functionality" is selected:
@@ -3859,14 +3854,6 @@ The following sections list Common Criteria and technology terms used in this do
                     <td valign="top">Keyed Hash Algorithm</td>
                     <td valign="top">Cryptographic Key Sizes</td>
                     <td valign="top">List of Standards</td>
-                  </tr>
-                  <tr>
-                    <td valign="top">HMAC-SHA-256</td>
-                    <td valign="top">256 bits</td>
-                    <td valign="top">
-                      [<b>selection:</b>
-                      <i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”), FIPS PUB 198-1</i>]
-                    </td>
                   </tr>
                   <tr>
                     <td valign="top">HMAC-SHA-384</td>
@@ -4383,7 +4370,7 @@ The following sections list Common Criteria and technology terms used in this do
                   </tr>
                 </table>
                 <p></p>
-                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to perform RSA Digital Signature Generation using PKCS1-v1,5
+                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to perform RSA Digital Signature Generation using PKCS1-v1_5
 						signature type, the evaluator shall perform the Generated Data Test using the following input
 						parameters:
                 <ul>
@@ -4555,7 +4542,8 @@ The following sections list Common Criteria and technology terms used in this do
                 <p></p>
                 <b>ML-DSA-87 Test Cases for Rejection Cases</b>
                 <p></p>
-                <pre>Test case 87-RC-01
+                <pre>
+		Test case 87-RC-01
 		Seed: 			E4F5AFCF697E0EC3C1BDEB66FAA903221E803902F9C3F716E1056A63D77DC250
 		Hash of Keys: 	61618E8DDA6998072C8EB36974E03880D741CAF0BD523356DFC161E7C9E63934
 		Message: 		F4F1C05004D5B946F69EAFE104C4020519086ADDB9582A20FDE887D13DFC36B1
@@ -4625,7 +4613,8 @@ The following sections list Common Criteria and technology terms used in this do
                 <p></p>
                 <b>ML-DSA-87 Test Cases for Total Rejection Count</b>
                 <p></p>
-                <pre>Test case 87-LN-01
+                <pre>
+		Test case 87-LN-01
 		Seed: 			98B6298051D92BF37293C93C97370747BF527B87B71F6C4264182F45155ADE4C
 		Hash of Keys: 	04A135B5C9B7020332C7B16E7108E8FF7FC1EAE1C23C5FA0B5D5CED0FEEE7424
 		Message: 		D7B0341269259083ABF3C8DC47559A19D57669B4486E0224F376DC43E577A3D8
@@ -4818,7 +4807,7 @@ The following sections list Common Criteria and technology terms used in this do
                   </tr>
                 </table>
                 <p></p>
-                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to perform RSA Digital Signature Verification using PKCS1-v1,5
+                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to perform RSA Digital Signature Verification using PKCS1-v1_5
            signature type, the evaluator shall perform Generated Data Test using the following input
            parameters:
                 <ul>
@@ -5290,7 +5279,8 @@ The following sections list Common Criteria and technology terms used in this do
                   must process the test cases according to the following algorithm once for each combination of
                   direction and key size:
                 <p></p>
-                <pre>Key[0] = Key
+                <pre>
+                    Key[0] = Key
                     IV[0] = IV
                     PT[0] = PT
                     for i = 0 to 99 {
@@ -5311,10 +5301,12 @@ The following sections list Common Criteria and technology terms used in this do
                     }</pre>
                 <p></p>
                 where
-                <pre>AES_KEY_SHUFFLE</pre>
+                <pre>
+                AES_KEY_SHUFFLE</pre>
                 is defined as:
                 <p></p>
-                <pre>If ( keylen = 128 )
+                <pre>
+                    If ( keylen = 128 )
                     Key[i+1] = Key[i] xor MSB(CT[j], 128)
                     If ( keylen = 192 )
                     Key[i+1] = Key[i] xor (LSB(CT[j-1], 64) || MSB(CT[j], 128))
@@ -5585,7 +5577,8 @@ The following sections list Common Criteria and technology terms used in this do
                 bits, and runs 100 iterations of the chained computation. MaxOutBytes and MinOutBytes are the
                 largest and smallest supported input and output sizes in bytes, respectively.
                 <p></p>
-                <pre>Range = maxOutBytes - minOutBytes + 1
+                <pre>
+                  Range = maxOutBytes - minOutBytes + 1
                   OutputLen = maxOutBytes
                   For j = 0 to 99
                   <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0] = SEED
@@ -5785,7 +5778,7 @@ The following sections list Common Criteria and technology terms used in this do
               perform
               <b>all</b>
               deterministic random bit generation services in accordance with NIST Special Publication 800-90A using
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fcs_rbg.1.1_2">Hash_DRBG (any)</span></li><li style=""><span class="selectable-content" id="fcs_rbg.1.1_3">HMAC_DRBG (any)</span></li><li style=""><span class="selectable-content" id="fcs_rbg.1.1_4">CTR_DRBG (AES)</span></li></ul>]
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fcs_rbg.1.1_2">Hash_DRBG (SHA-384 or SHA-512)</span></li><li style=""><span class="selectable-content" id="fcs_rbg.1.1_3">HMAC_DRBG (HMAC-SHA-384 or HMAC-SHA-512)</span></li><li style=""><span class="selectable-content" id="fcs_rbg.1.1_4">CTR_DRBG (AES-256)</span></li></ul>]
               in accordance with [<i>NIST SP 800-90A</i>] after initialization with a seed.
             <div class="appnote"><span class="note-header">Application
       Note:
@@ -6001,6 +5994,8 @@ The following sections list Common Criteria and technology terms used in this do
           <div class="element"><div class="reqid" id="FCS_RBG.3.1"><a href="#FCS_RBG.3.1" class="abbr">FCS_RBG.3.1</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using a
               [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="fcs_rbg.3.1_1"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise source</span>, <span class="selectable-content" id="fcs_rbg.3.1_2"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based noise source</span>]
+              [<b>assignment</b>: 
+     <span class="assignable-content">name of noise source</span>]
               with a minimum of
               [<b>assignment</b>: 
      <span class="assignable-content">number of bits</span>]
@@ -7150,7 +7145,9 @@ The following sections list Common Criteria and technology terms used in this do
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall run a suite of the following self-tests
               [<b>selection</b>: <span class="selectable-content" id="fpt_tst.1.1_1">during initial start-up</span>, <span class="selectable-content" id="fpt_tst.1.1_2">periodically during normal operation</span>, <span class="selectable-content" id="fpt_tst.1.1_3">at the request of the authorized user</span>, <span class="selectable-content" id="fpt_tst.1.1_4">at the conditions [<b>assignment</b>: 
      <span class="assignable-content">conditions under which self-test should occur</span>]</span>]
-              to demonstrate the correct operation of [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> DRBG specified in <a href="#FCS_RBG.1">FCS_RBG.1</a></i>].
+              to demonstrate the correct operation of [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> DRBG specified in <a href="#FCS_RBG.1">FCS_RBG.1</a></i>]:
+              [<b>assignment</b>: 
+     <span class="assignable-content">DRBG health tests</span>].
             </div></div>
           <div class="element"><div class="reqid" id="FPT_TST.1.2"><a href="#FPT_TST.1.2" class="abbr">FPT_TST.1.2</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide authorized users with the capability to verify the integrity of [<i>[DRBG seed and output data]</i>].
@@ -8395,7 +8392,7 @@ The following sections list Common Criteria and technology terms used in this do
               <li>Failure of the certificate validity check.</li>
               <li>Issuer Name and Subject Name of certificate.</li>
               <li>
-                [<b>selection</b>: <span class="selectable-content" id="_s_347">User's authorization decision</span>, <span class="selectable-content" id="_s_348">No additional information</span>]</li>
+                [<b>selection</b>: <span class="selectable-content" id="_s_344">User's authorization decision</span>, <span class="selectable-content" id="_s_345">No additional information</span>]</li>
             </ul>
           </p><h4>FCS_HTTPS_EXT.1 HTTPS Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><span class="no-link">FCS_TLS_EXT.1</span> TLS Protocol<br/><span class="no-link">[FCS_TLSC_EXT.1 TLS Client Protocol or <br/>
               FCS_TLSS_EXT.1 TLS Server Protocol</span></td></tr></table><h4 id="ext-comp-FCS_HTTPS_EXT.1.1">FCS_HTTPS_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall  [<b>selection</b>: <span class="selectable-content" id="fcs_https_ext.1.1_1">invoke platform-provided functionality to implement</span>, <span class="selectable-content" id="fcs_https_ext.1.1_2">implement</span>]  the HTTPS protocol that complies with RFC 2818.<h4 id="ext-comp-FCS_HTTPS_EXT.1.2">FCS_HTTPS_EXT.1.2</h4>
@@ -8610,8 +8607,7 @@ The following sections list Common Criteria and technology terms used in this do
             Trusted Path
           </td></tr></table><h4 id="ext-comp-FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</h4>
                 The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide a communication channel between itself and
-                <span style="" class="comment " id="Comment-1-">have to update this for subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr></span>
-                [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC_AgentInTOE">an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent that is internal to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li><li style=""><span class="selectable-content" id="ITC_AgentOutTOE">an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent that is external to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li><li style=""><span class="selectable-content" id="ITC_DISTRIBUTED_TOE">other components comprising the distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li></ul>]
+                [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="ITC_AgentInTOE">an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent that is internal to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li><li style=""><span class="selectable-content" id="ITC_AgentOutTOE">an <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agent that is external to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li><li style=""><span class="selectable-content" id="_s_616">a subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server</span></li><li style=""><span class="selectable-content" id="ITC_SUBORDINATE_MDM">a primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server</span></li><li style=""><span class="selectable-content" id="ITC_DISTRIBUTED_TOE">other components comprising the distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span></li></ul>]
                 that is logically distinct from other communication channels, as specified in
                 [<b>assignment</b>: 
      <span class="assignable-content">inter-TSF trusted channel or internal <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> data transfer type</span>]
@@ -8815,7 +8811,6 @@ The following sections list Common Criteria and technology terms used in this do
     
     <h2 class="indexable" data-level="2" id="sec2">E.2 Evaluator Actions for Assessing the Guidance Documentation</h2>
       <b>Guidance</b>
-      w
       
       The evaluator shall examine the description of the extra instances of <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components in the guidance documentation to confirm that they are consistent with those
 	identified as allowed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. This includes confirmation that the result of applying the guidance documentation to configure the extra component will leave the
@@ -9383,7 +9378,7 @@ The following sections list Common Criteria and technology terms used in this do
     
     <h2 class="indexable" data-level="2" id="usecase4">G.4 Personally-owned device for personal and limited enterprise use</h2>At this time no requirements are recommended for this use case.
   <h1 id="acronyms" class="indexable" data-level="A">Appendix H -  Acronyms</h1><table><caption><span class="ctr" data-myid="t-acronyms" data-counter-type="ct-Table" id="t-acronyms">Table <span class="counter">27</span></span>: Acronyms
-		</caption><tr class="header"><th>Acronym</th><th>Meaning</th></tr><tr><td><span class="term" id="abbr_API"><abbr class="dyn-abbr"><a href="#abbr_API">API</a></abbr></span></td><td><span id="long_abbr_API"><abbr class="dyn-abbr"><a href="#abbr_API">API</a></abbr> Application Programming Interface</span></td></tr>
+		</caption><tr class="header"><th>Acronym</th><th>Meaning</th></tr><tr><td><span class="term" id="abbr_API"><abbr class="dyn-abbr"><a href="#abbr_API">API</a></abbr></span></td><td><span id="long_abbr_API"><abbr class="dyn-abbr"><a href="#abbr_API">API</a></abbr> Application Programming Interface </span></td></tr>
 <tr><td><span class="term" id="abbr_Base-PP" data-plural="Base-PPs"><abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr></span></td><td><span id="long_abbr_Base-PP">Base Protection Profile</span></td></tr>
 <tr><td><span class="term" id="abbr_CC"><abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr></span></td><td><span id="long_abbr_CC">Common Criteria</span></td></tr>
 <tr><td><span class="term" id="abbr_CEM"><abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr></span></td><td><span id="long_abbr_CEM">Common Evaluation Methodology</span></td></tr>
