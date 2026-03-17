@@ -6387,7 +6387,7 @@ DONE:
           <f-element id="fmt-smf-1e1">
             <title>The TSF shall be capable of performing the following management functions.            
             <h:ol type="a">
-                 <h:li>Configure the <selectables>
+                 <h:li id="fmt-smf-1e1-li1">Configure the <selectables>
                     <selectable>devices specified by <selectables>
                         <selectable>IMEI</selectable>
                         <selectable><assignable>a unique device ID</assignable></selectable>
@@ -6415,46 +6415,47 @@ DONE:
                   </selectables></h:li>               
             </h:ol>
             </title>
-            <note role="application"> This requirement captures all the configuration functionality in the MDM server to configure 
-			the underlying MDM server. The ST author can add more commands and configuration policies by completing the assignment
-			statement.<h:br/><h:br/>
-              Function b1 is selection-based under the very limited circumstances when certificate management is both 
+            <note role="application"> 
+            <h:p>This requirement captures all the configuration functionality in the MDM server to configure 
+            the underlying MDM server. The ST author can add more commands and configuration policies by completing the assignment
+            statement.</h:p>
+            <h:p>The selection in section a <xref to="fmt-smf-1e1-li1"/> corresponds to the selection in <xref to="fel-enr-limit"/>.</h:p>
+            <h:p>Function b.1 is selection-based under the very limited circumstances when certificate management is both 
               performed solely by platform-provided functionality and the platform uses cloud services; for all other
               instances it is mandatory. This requirement will be made fully mandatory again in a future version of 
-              the PP. Function b1 can be met by relying on the platform to configure the certificates used by the MDM
+              the PP. Function b.1 can be met by relying on the platform to configure the certificates used by the MDM
               server, however, the MDM server must allow the administrator to choose which certificate is used for a 
-              specific functionality. The selection in a corresponds to the selection in <xref to="fel-enr-limit"/>.
-              The selection in b.2 includes a function that corresponds to the selection in <xref to="fel-x509-fail"/>.
-              Function b.4 allows the administrator to configure
+              specific functionality.</h:p>              
+            <h:p>The selection in b.2 includes a function that corresponds to the selection in <xref to="fel-x509-fail"/>.</h:p>
+            <h:p>Function b.4 allows the administrator to configure
 			        periodicity of assigned commands, for example "read audit logs kept by the MD." In this way the 
 			        administrator can configure the MDM system to retrieve audit logs from the MD on a periodic, such as
-			        daily, basis in order to ensure freshness of log data and to minimize loss of audit logs.
-			        Function b.5 allows the
+			        daily, basis in order to ensure freshness of log data and to minimize loss of audit logs.</h:p>
+			      <h:p>Function b.5 allows the
 			        administrator to configure the privacy-sensitive information that will and will not be collected from particular
 			        MDs to handle BYOD environments where some information may not be appropriate to collect. Privacy
 			        sensitive information may include items such as device physical location and lists of installed personal
 			        applications, and would vary depending on the particular capabilities of the TOE and MDM agent. The TOE should
 			        provide the capability to group enrolled devices into categories such as enterprise-owned and personal-owned and 
-			        define the information that will be collected from devices in each category. Function b.6 corresponds to 
-			        configuring the length of time the user authenticator for enrollment is valid in FMT_SAE_EXT.1. This function
-			        must be included in the ST if and only if FMT_SAE_EXT.1 is included in the ST.<h:br/><h:br/>            
-              For distributed TOEs, the interaction between TOE components will be configurable (see FCO_CPC_EXT.1). Therefore,
-			  the ST author includes the selection "Ability to configure the interaction between TOE components" for distributed 
-			  TOEs. A simple example would be the change of communication protocol according to FPT_ITT.1/INTER_XFER. Another
-			  example would be changing the management of a TOE component from direct remote administration to remote
-			  administration through another TOE component. A more complex use case would be if the realization of an SFR is 
-			  achieved through two or more TOE components and the responsibilities between the two or more components could 
-			  be modified.<h:br/><h:br/>
-
-              For distributed TOEs, that implement a registration channel (as described in <xref to="fel-cpc-func"/>), the ST
-			  author uses the selection "configure the cryptographic functionality" in this SFR, and its corresponding mapping 
-			  in the TSS, to describe the configuration of any cryptographic aspects of the registration channel that can be
-			  modified by the operational environment in order to improve the channel security.<h:br/><h:br/>
-              Functions b.9 and b.10 allow the administrator to configure the use of a subordinate MDM server to pass MDM policy files 
-              to an MDM agent on a managed device. This includes configuring the authentication and communication mechanisms 
-              necessary to establish secure channels between the primary MDM server and subordinate MDM server. If the TOE acts as the
-              primary MDM server, then <h:i>"Configure the interaction with the subordinate MDM server"</h:i> should be selected. If the
-              TOE acts as a subordinate MDM server then <h:i>"Configure the interaction with the primary MDM server" should be selected.</h:i>
+			        define the information that will be collected from devices in each category.</h:p>
+            <h:p>Function b.6 corresponds to configuring the length of time the user authenticator for enrollment is valid in FMT_SAE_EXT.1. This function
+			        must be included in the ST if and only if FMT_SAE_EXT.1 is included in the ST.</h:p>
+            <h:p>For distributed TOEs, the interaction between TOE components will be configurable (see FCO_CPC_EXT.1). Therefore,
+            the ST author includes the selection "Ability to configure the interaction between TOE components" for distributed 
+            TOEs. A simple example would be the change of communication protocol according to FPT_ITT.1/INTER_XFER. Another
+            example would be changing the management of a TOE component from direct remote administration to remote
+            administration through another TOE component. A more complex use case would be if the realization of an SFR is 
+            achieved through two or more TOE components and the responsibilities between the two or more components could 
+            be modified.</h:p>
+            <h:p>For distributed TOEs, that implement a registration channel (as described in <xref to="fel-cpc-func"/>), the ST
+            author uses the selection "configure the cryptographic functionality" in this SFR, and its corresponding mapping 
+            in the TSS, to describe the configuration of any cryptographic aspects of the registration channel that can be
+            modified by the operational environment in order to improve the channel security.</h:p>
+            <h:p>Functions b.9 and b.10 allow the administrator to configure the use of a subordinate MDM server to pass MDM policy files 
+            to an MDM agent on a managed device. This includes configuring the authentication and communication mechanisms 
+            necessary to establish secure channels between the primary MDM server and subordinate MDM server. If the TOE acts as the
+            primary MDM server, then <h:i>"Configure the interaction with the subordinate MDM server"</h:i> should be selected. If the
+            TOE acts as a subordinate MDM server then <h:i>"Configure the interaction with the primary MDM server"</h:i> should be selected.</h:p>
             </note>
             <aactivity>
               <TSS> The evaluator shall examine the TSS to ensure that it describes each management
