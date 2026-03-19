@@ -6831,12 +6831,13 @@ DONE:
       <depends on-sel="tsf-drbg"/>          
           <f-element id="fel-tsf-self-test">
             <title>
-              The TSF shall run a suite of the following self-tests <selectables>
-                <selectable>during initial start-up</selectable>
-                <selectable>periodically during normal operation</selectable>
-                <selectable>at the request of the authorized user</selectable>
-                <selectable>at the conditions <assignable>conditions under which self-test should occur</assignable></selectable>
-              </selectables>
+              The TSF shall run a suite of the following self-tests [<h:i>during initial start-up, 
+                <selectables>
+                  <selectable>periodically during normal operation</selectable>
+                  <selectable>at the request of the authorized user</selectable>
+                  <selectable>at the conditions <assignable>conditions under which self-test should occur</assignable></selectable>
+                  <selectable>at no other time</selectable>
+                </selectables></h:i>]
               to demonstrate the correct operation of [<h:i>TSF DRBG specified in FCS_RBG.1</h:i>]: <assignable>DRBG health tests</assignable>.            
             </title>
           </f-element>
@@ -6851,7 +6852,7 @@ DONE:
             <title>
               The TSF shall provide authorized users with the capability to verify the integrity of [<h:i>[TSF DRBG specified in FCS_RBG.1]</h:i>].
             </title>
-            <note role="application">This SFR is a required dependency of FCS_RBG.1. It is intended to require that any DRBG implemented by the TOE undergo health testing to ensure that the random bit generation functionality has not been degraded. If the TSF supports multiple DRBGs, this SFR should be iterated to describe the self-test behavior for each. The TSF's response to a DRBG health test failure is addressed by in FPT_FLS.1.</note>
+            <note role="application">This SFR is a required dependency of FCS_RBG.1. It is intended to require that any DRBG implemented by the TOE undergo health testing at startup (and optionally in other circumstances) to ensure that the random bit generation functionality has not been degraded. If the TSF supports multiple DRBGs, this SFR should be iterated to describe the self-test behavior for each. The TSF's response to a DRBG health test failure is addressed by in FPT_FLS.1.</note>
             <aactivity>
               <TSS>
                 <h:p>
@@ -8793,6 +8794,12 @@ DONE:
         <tag>CSA</tag>
         <description>
           <h:a href="http://csrc.nist.gov/groups/SMA/ispab/documents/csa_87.txt">Computer Security Act of 1987</h:a>, H.R. 145, June 11, 1987. </description>
+      </entry>
+      <entry id="bibCCerrata">
+        <tag>Errata</tag>
+        <description>
+          <h:a href="https://www.commoncriteriaportal.org/files/ccfiles/CCMB-2025-001-v1_2-Errata_Interpretation_CC_CEM_2022.pdf">Errata and Interpretation for CC:2022 (Release 1) and CEM:2022 (Release 1)</h:a>
+        </description>
       </entry>
       <entry id="bibOMB">
         <tag>OMB</tag>
