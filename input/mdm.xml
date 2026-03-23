@@ -5264,7 +5264,11 @@ DONE:
         <f-component cc-id="fcs_rbg.1" name="Random Bit Generation (RBG)" id="fel-rbg">          
    			<f-element id="fel-rbg-init-seed">
 				<title>
-					The TSF shall perform deterministic random bit generation services using   
+				  The TSF shall <h:b><selectables>
+				    <selectable>invoke platform-provided functionality</selectable>
+				    <selectable id="tsf-drbg">implement functionality</selectable>
+				  </selectables></h:b> <h:b>to</h:b> perform <h:b>all</h:b> 
+					deterministic random bit generation services using   
 					<selectables>
 						<tabularize id="fcs-rbg-1-sels" title="Allowable choices for FCS_RBG.1.1">
 							<textcol>Identifier</textcol>
@@ -5322,11 +5326,15 @@ DONE:
 					If "CTR_DRBG" is selected, then FCS_COP.1/SKC must be claimed.
 				</note>
 				<aactivity level="element">
-					<TSS>The evaluator shall verify that the TSS identifies the DRBGs used by the TOE.</TSS>
+				  Documentation will be produced - and the evaluator shall perform the
+				  activities - in accordance with <xref to="entropyappendix"/> and
+				  the
+				  <h:a href="https://niap-ccevs.org/Documents_and_Guidance/ccevs/Entropy%20Documentation%20and%20Assessment%20Clarification.pdf">Clarification to the Entropy Documentation and Assessment Annex</h:a>.
+				  <TSS>The evaluator shall verify that the TSS identifies the DRBGs used by the TOE amd whether they are implemented by the TSF or invoked from the underlying platform.</TSS>
 					<Guidance>If the DRBG functionality is configurable, the evaluator shall verify that the operational guidance includes instructions on how to configure this behavior.</Guidance>
 					<Tests>
 						<h:p>
-							The evaluator shall perform the following tests:
+							[conditional: "implement functionality" is selected in FCS_RBG.1.1] The evaluator shall perform the following tests:
 						</h:p><h:p>
 							The evaluator shall perform 15 trials for the DRBG implementation. If the DRBG
 							is configurable, the evaluator shall perform 15 trials for each configuration. The
@@ -5402,13 +5410,7 @@ DONE:
 					</h:p>
 				</note>
 				<aactivity level="element">
-					<no-tests>
-						Documentation will be produced - and the evaluator shall perform the
-						activities - in accordance with <xref to="entropyappendix"/> and
-						the
-						<h:a href="https://niap-ccevs.org/Documents_and_Guidance/ccevs/Entropy%20Documentation%20and%20Assessment%20Clarification.pdf">Clarification to the Entropy Documentation and Assessment Annex</h:a>.
-					</no-tests>
-					
+					<no-tests/>					
 				</aactivity>
 			</f-element>
 			<f-element id="fel-rbg-init-seed-when">
