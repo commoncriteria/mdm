@@ -1,5 +1,9 @@
 * Error: Detected dangling id-reference to wlan-support from attribute
         on/PP[1]""/section[5]""/section[1]""/section[4]""/f-component[3]""/depends[2]""/on[1]""
+* Error: Detected dangling id-reference to tsf-drbg from attribute
+        on-sel/PP[1]""/section[5]""/section[1]""/section[7]""/f-component[2]""/depends[1]""/on-sel[1]""
+* Error: Detected dangling id-reference to tsf-drbg from attribute
+        on-sel/PP[1]""/section[5]""/section[1]""/section[7]""/f-component[7]""/depends[1]""/on-sel[1]""
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-attls'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
@@ -416,6 +420,13 @@
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[14]""/f-element[1]""/aactivity[1]""/Tests[1]"The follo"/h:p[12]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[14]""/f-element[1]""/aactivity[1]""/Tests[1]"The follo"/h:p[13]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[14]""/f-element[1]""/aactivity[1]""/Tests[1]"The follo"/h:p[14]""
+* Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/title[1]"The TSF s"/selectables[1]""/tabularize[1]""/reqtext[3]"after ini"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/title[1]"The TSF s"/selectables[1]""/tabularize[1]""/reqtext[3]"after ini"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/note[1]"This SFR "/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/note[1]"This SFR "/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/note[1]"This SFR "/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/note[1]"This SFR "/h:p[4]""
+* Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/note[1]"This SFR "/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[2]"The Secur"/h:p[1]""
  Failed to find a reference to fel-x509-fail.
  Failed to find a reference to bibCEM.
