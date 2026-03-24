@@ -1,5 +1,3 @@
-* Error: Detected dangling id-reference to wlan-support from attribute
-        on/PP[1]""/section[5]""/section[1]""/section[4]""/f-component[3]""/depends[2]""/on[1]""
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-attls'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
@@ -423,6 +421,7 @@
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/note[1]"This SFR "/h:p[3]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/note[1]"This SFR "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/note[1]"This SFR "/h:p[5]""
+* Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[1]""/section[4]""/f-component[17]""/f-element[1]""/note[1]"This SFR "/h:p[6]""
 * Warning: Detected an empty _p_ element./PP[1]""/section[5]""/section[2]"The Secur"/h:p[1]""
  Failed to find a reference to fel-ckm-func.
  Failed to find a reference to fel-x509-fail.
