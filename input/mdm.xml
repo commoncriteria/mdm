@@ -661,8 +661,8 @@ DONE:
 			    <h:td>Feature Dependent</h:td> <!-- Good, Needed for Agent -->
 			  </h:tr>
 			  <h:tr>
-			    <h:td>FCS_COP.1/AEAD - Authenticated Encryption with Associated Data</h:td>
-			    <h:td>Cryptographic Operation - Hashing</h:td>
+			    <h:td>FCS_COP.1/AEAD</h:td>
+			    <h:td>Cryptographic Operation - Authenticated Encryption with Associated Data</h:td>
 			    <h:td>All</h:td> <!-- Good, Needed for Agent -->
 			  </h:tr> 
 				<h:tr>
@@ -2199,10 +2199,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               When generating ECC keys pairs for key agreement and if “ECDH” is claimed in FCS_CKM_EXT.7, then “ECC–ERB” or “ECC–RS” must be claimed. The sizes of the private key, which is a scalar, and the public key, which is a point on the elliptic curve, are determined by the choice of the curve.
 	      </h:p><h:p>
               When generating ECC key pairs for digital signature generation and if “ECDSA” is claimed in FCS_COP.1/SigGen, then “ECC–ERB” or “ECC–RS” must be claimed. The sizes of the private key, which is a scalar, and the public key, which is a point on the elliptic curve, are determined by the choice of the curve.
-              </h:p><h:p>
-	      If the TSF acts only as a receiver in the RSA key establishment scheme,
-	      the ST does not need to implement RSA key generation.
-	      </h:p>
+              </h:p>
             </note>
             <aactivity>
 	      <TSS>
@@ -2989,9 +2986,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
             <note role="application">
               This SFR is claimed if the TSF supports key agreement schemes as a method of key establishment for trusted channels. This will generally apply to all conformant TOEs, except in the rare (but possible) case where only key encapsulation is used.<h:p/>
               All of the above algorithms with the selectable parameters are CNSA compliant.<h:p/>
-              This SFR must be included in the ST if key agreement or transport is a service provided by the TOE to 
-              tenant software, or if they are used by the TOE itself to support or implement PP-specified security 
-              functionality.<h:p/> 
+       
             </note>
             <aactivity>
               <TSS>
@@ -4000,12 +3995,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 
               </selectables>
             </title>
-            <note role="application"> The ST author should choose the algorithm implemented to
-              perform digital signatures; if more than one algorithm is available, this requirement
-              should be iterated to specify the functionality. For the algorithm chosen, the ST
-              author should make the appropriate assignments and selections to specify the parameters
-              that are implemented for that algorithm.
-            </note>
+           
        <aactivity>
 	       <TSS>The evaluator shall examine the TSS and verify that any hash function is the appropriate security
 						strength for the signing algorithm.<h:p/>
@@ -4441,12 +4431,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 
               </selectables>
             </title>
-            <note role="application"> The ST author should choose the algorithm implemented to
-              perform digital signatures; if more than one algorithm is available, this requirement
-              should be iterated to specify the functionality. For the algorithm chosen, the ST
-              author should make the appropriate assignments and selections to specify the parameters
-              that are implemented for that algorithm.
-            </note>
+       
        <aactivity>
          <TSS>
            The evaluator shall examine the TSS to verify that any one-time values such as nonces or masks
@@ -5323,18 +5308,6 @@ In item d above, "start up and shut down of the audit functions" must be selecte
 						</selectable>
 					</selectables>           
 				</title>
-				<note role="application">
-					This SFR must be included in the ST if random bits are provided by the TOE to tenant software,
-					or if it is used by the TOE itself to support or implement PP-specified security functionality.<h:p/> 
-					This SFR is also needed if the following SFRs are included in the ST: FCS_IPSEC_EXT.1, 
-					FCS_CKM.1/AKG, FCS_CKM.1/SKG, and FCS_COP.1/SigGen.<h:p/>
-					Also, this SFR must be claimed if "<h:i>KDF-CTR</h:i>," "<h:i>KDF-FB</h:i>," or
-					"<h:i>KDF-DPI</h:i>" is selected in FCS_CKM.5.<h:p/>
-					If "implement functionality" is selected, then FPT_FLS.1 and FPT_TST.1 must be claimed.<h:p/>
-					If "HMAC_DRBG" is selected, then FCS_COP.1/KeyedHash must be claimed.<h:p/>
-					If "Hash_DRBG" is selected, then FCS_COP.1/Hash must be claimed.<h:p/>
-					If "CTR_DRBG" is selected, then FCS_COP.1/SKC must be claimed.
-				</note>
 				<aactivity level="element">
 				  Documentation will be produced - and the evaluator shall perform the
 				  activities - in accordance with <xref to="entropyappendix"/> and
@@ -5480,7 +5453,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
 				</note>
 				<aactivity>
 					<h:p>
-						The evaluator shall examine the entropy documentation required by FCS_RBG.1.2 to verify that it identifies, for each DRBG function implemented by the TOE, the TSF external interface that is used to seed the TOE's DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that the TSF can derive a seed from it that has the claimed amount of min-entropy. If the TSF uses an entropy source that can be assumed to have full entropy, the seed is the output data from the entropy source. If the TSF uses an entropy source where the min-entropy of the data is less than 1:1, the evaluator shall verify that the entropy documentation identifies how large the collected data sample is and how TSF derives this data into a seed that has the claimed min-entropy. 
+						The evaluator shall examine the entropy documentation required by FCS_RBG.1 to verify that it identifies, for each DRBG function implemented by the TOE, the TSF external interface that is used to seed the TOE's DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that the TSF can derive a seed from it that has the claimed amount of min-entropy. If the TSF uses an entropy source that can be assumed to have full entropy, the seed is the output data from the entropy source. If the TSF uses an entropy source where the min-entropy of the data is less than 1:1, the evaluator shall verify that the entropy documentation identifies how large the collected data sample is and how TSF derives this data into a seed that has the claimed min-entropy. 
 					</h:p>
 					<TSS/>
 					<Guidance/>
@@ -5517,7 +5490,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
 				</note>
 				<aactivity>
 					<h:p>
-						The evaluator shall examine the entropy documentation required by FCS_RBG.1.2 to verify that it identifies, for each DRBG function implemented by the TOE, the TSF entropy source that is used to seed the TOE's DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that the TSF can derive a seed from it that has the claimed amount of min-entropy. If the TSF uses an entropy source that can be assumed to have full entropy, the seed is the output data from the entropy source. If the TSF uses an entropy source where the min-entropy of the data is less than 1:1, the evaluator shall verify that the entropy documentation identifies how large the collected data sample is and how TSF derives this data into a seed that has the claimed min-entropy. 
+						The evaluator shall examine the entropy documentation required by FCS_RBG.1 to verify that it identifies, for each DRBG function implemented by the TOE, the TSF entropy source that is used to seed the TOE's DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that the TSF can derive a seed from it that has the claimed amount of min-entropy. If the TSF uses an entropy source that can be assumed to have full entropy, the seed is the output data from the entropy source. If the TSF uses an entropy source where the min-entropy of the data is less than 1:1, the evaluator shall verify that the entropy documentation identifies how large the collected data sample is and how TSF derives this data into a seed that has the claimed min-entropy. 
 					</h:p>
 					<TSS/>
 					<Guidance/>
@@ -5543,7 +5516,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
 				</note>
 				<aactivity>
 					<h:p>
-						The evaluator shall examine the entropy documentation required by FCS_RBG.1.2 to verify that it identifies, for each DRBG function implemented by the TOE, each TSF entropy source used to seed the TOE's DRBG. 
+						The evaluator shall examine the entropy documentation required by FCS_RBG.1 to verify that it identifies, for each DRBG function implemented by the TOE, each TSF entropy source used to seed the TOE's DRBG. 
 					</h:p>
 					<TSS/>
 					<Guidance/>
@@ -5580,7 +5553,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
 				</note>
 				<aactivity>
 					<h:p>
-						Using the entropy sources specified in FCS_RBG.4, the evaluator shall examine the entropy documentation required by FCS_RBG.1.2 to verify that it describes the method by which data from these sources are combined into a single seed. This should include an estimation of the rate at which each entropy source outputs data and whether this is dependent on any system-specific factors so that each source's relative contribution to the overall entropy is understood. The evaluator shall verify that the amount of sampled data, the min-entropy rate of the sampled data, and the method by which the multiple sampled data sources are combined can be used to determine that the TSF can derive a seed from it that has the claimed amount of min-entropy. This includes any description of how the TSF derives data larger than the seed value into a seed that has the claimed min-entropy.  
+						Using the entropy sources specified in FCS_RBG.4, the evaluator shall examine the entropy documentation required by FCS_RBG.1 to verify that it describes the method by which data from these sources are combined into a single seed. This should include an estimation of the rate at which each entropy source outputs data and whether this is dependent on any system-specific factors so that each source's relative contribution to the overall entropy is understood. The evaluator shall verify that the amount of sampled data, the min-entropy rate of the sampled data, and the method by which the multiple sampled data sources are combined can be used to determine that the TSF can derive a seed from it that has the claimed amount of min-entropy. This includes any description of how the TSF derives data larger than the seed value into a seed that has the claimed min-entropy.  
 					</h:p>
 					<TSS/>
 					<Guidance/>
@@ -6701,7 +6674,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> protect <h:b>all</h:b> data from [<h:i>disclosure and modification</h:i>] when it is <h:b>transferred</h:b> between
               separate parts of the TOE.</title>
             <note role="application">This requirement ensures that all communications between MDM server components of a distributed TOE are protected through the use of an encrypted communications channel. If the TOE boundary includes MDM agents, that is covered by FPT_ITT.1/INTRA_XFER_AGENT.<h:br/><h:br/> 
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. The ST author chooses the mechanism or mechanisms supported by the TOE. Where X.509 validation is needed (e.g. if the TOE acts as a TLS server), <xref to="X509"/> must be claimed. To distinguish internal communications from external communications (e.g. communication between TOE components versus communication to a remote IT entity in the operational environment), FIA_X509_EXT.1 from <xref to="X509"/> must be included in the ST and iterated as "FIA_X509_EXT.1/Internal" per the guidance in <xref to="package-usage"/>. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <xref to="fel-cpc-func"/>.<h:br/><h:br/>              
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. The ST author chooses the mechanism or mechanisms supported by the TOE. Where X.509 validation is needed (e.g. if the TOE acts as a TLS server that supports mutual authentication), <xref to="X509"/> must be claimed. To distinguish internal communications from external communications (e.g. communication between TOE components versus communication to a remote IT entity in the operational environment), FIA_X509_EXT.1 from <xref to="X509"/> must be included in the ST and iterated as "FIA_X509_EXT.1/Internal" per the guidance in <xref to="package-usage"/>. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <xref to="fel-cpc-func"/>.<h:br/><h:br/>              
               If the ST author selects that the TSF implements "IPsec as defined in the PP-Module for VPN Client" the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
               If the ST author selects that the TSF implements "SSH as defined in the Functional Package for Secure Shell," the TSF must be validated against the FP for Secure Shell with the MDM PP. It should be noted that due to constraints imposed by this PP that SHA-1 cannot be used.<h:br/><h:br/>
               If the ST author selects that the TSF implements "mutually authenticated TLS as defined in the Package for Transport Layer Security" or "mutually authenticated DTLS as defined in the Package for Transport Layer Security," the TSF must be validated against requirements from the Package for Transport Layer Security, with the following selections made:
@@ -7146,7 +7119,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               </selectables></h:b> that is logically distinct from other communication channels and provides assured identification of its endpoints
               and protection of the channel data from modification or disclosure.</title>
             <note role="application">This requirement ensures that all communications between the TOE and external IT entities other than MDM agents are protected through the use of an encrypted communications channel. If the TOE's operational environment includes MDM agents (i.e. they are not part of the TOE), that is covered by FPT_ITC.1/OE_XFER_AGENT. Protected communications for remote administration is covered by FTP_TRP.1/TRUSTPATH_ADMIN.<h:br/><h:br/>
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. The operational environment may or may not use mutual authentication, but if it does the TOE is expected to make use of it. The ST author chooses the mechanism or mechanisms supported by the TOE. Where X.509 validation is needed (e.g. if the TOE acts as a TLS server), <xref to="X509"/> must be claimed. To distinguish external communications from internal communications (e.g., communication with a remote IT entity in the operational environment versus communication between TOE components), FIA_X509_EXT.1 from <xref to="X509"/> must be included in the ST and iterated as "FIA_X509_EXT.1/External" per the guidance in <xref to="package-usage"/>.
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. The operational environment may or may not use mutual authentication, but if it does the TOE is expected to make use of it. The ST author chooses the mechanism or mechanisms supported by the TOE. Where X.509 validation is needed (e.g. if the TOE acts as a TLS server that supports mutual authentication), <xref to="X509"/> must be claimed. To distinguish external communications from internal communications (e.g., communication with a remote IT entity in the operational environment versus communication between TOE components), FIA_X509_EXT.1 from <xref to="X509"/> must be included in the ST and iterated as "FIA_X509_EXT.1/External" per the guidance in <xref to="package-usage"/>.
               <h:br/><h:br/> 
               Protection (by one of the listed protocols) is required at least for communications with the server that collects 
               the audit information. If it communicates with an authentication server (e.g., RADIUS), then the ST 
