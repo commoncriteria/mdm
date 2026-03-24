@@ -1075,8 +1075,8 @@ The following sections list Common Criteria and technology terms used in this do
 			    <td>Feature Dependent</td> 
 			  </tr>
 			  <tr>
-			    <td><a href="#FCS_COP.1/AEAD">FCS_COP.1/AEAD</a> - Authenticated Encryption with Associated Data</td>
-			    <td>Cryptographic Operation - Hashing</td>
+			    <td><a href="#FCS_COP.1/AEAD">FCS_COP.1/AEAD</a></td>
+			    <td>Cryptographic Operation - Authenticated Encryption with Associated Data</td>
 			    <td>All</td> 
 			  </tr> 
 				<tr>
@@ -2148,10 +2148,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               When generating ECC keys pairs for key agreement and if “ECDH” is claimed in <a href="#FCS_CKM_EXT.7">FCS_CKM_EXT.7</a>, then “ECC–ERB” or “ECC–RS” must be claimed. The sizes of the private key, which is a scalar, and the public key, which is a point on the elliptic curve, are determined by the choice of the curve.
 	      </p><p>
               When generating ECC key pairs for digital signature generation and if “ECDSA” is claimed in <a href="#FCS_COP.1/SigGen">FCS_COP.1/SigGen</a>, then “ECC–ERB” or “ECC–RS” must be claimed. The sizes of the private key, which is a scalar, and the public key, which is a point on the elliptic curve, are determined by the choice of the curve.
-              </p><p>
-	      If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> acts only as a receiver in the RSA key establishment scheme,
-	      the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> does not need to implement RSA key generation.
-	      </p>
+              </p>
             </span></div></div></div>
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_CKM.1/AKG">FCS_CKM.1/AKG</a></div>
@@ -2852,9 +2849,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
     </span><span class="note">
               This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports key agreement schemes as a method of key establishment for trusted channels. This will generally apply to all conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr>, except in the rare (but possible) case where only key encapsulation is used.<p></p>
               All of the above algorithms with the selectable parameters are CNSA compliant.<p></p>
-              This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> must be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if key agreement or transport is a service provided by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to 
-              tenant software, or if they are used by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> itself to support or implement <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security 
-              functionality.<p></p> 
+       
             </span></div></div></div>
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_CKM_EXT.7">FCS_CKM_EXT.7</a></div>
@@ -3792,14 +3787,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 <tr><td>ML-DSA</td><td>ML-DSA Signature Generation</td><td>Parameter set = ML-DSA-87</td><td>NIST FIPS 204 (Section 5.2)</td></tr>
 
                 
-              </table><div class="appnote"><span class="note-header">Application
-      Note:
-    </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should choose the algorithm implemented to
-              perform digital signatures; if more than one algorithm is available, this requirement
-              should be iterated to specify the functionality. For the algorithm chosen, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>
-              author should make the appropriate assignments and selections to specify the parameters
-              that are implemented for that algorithm.
-            </span></div></div></div>
+              </table></div></div>
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/SigGen">FCS_COP.1/SigGen</a></div>
 	       
@@ -4165,14 +4153,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
 
                 
                 
-              </table><div class="appnote"><span class="note-header">Application
-      Note:
-    </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should choose the algorithm implemented to
-              perform digital signatures; if more than one algorithm is available, this requirement
-              should be iterated to specify the functionality. For the algorithm chosen, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>
-              author should make the appropriate assignments and selections to specify the parameters
-              that are implemented for that algorithm.
-            </span></div></div></div>
+              </table></div></div>
           
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/SigVer">FCS_COP.1/SigVer</a></div>
          
@@ -5063,20 +5044,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
 						<tr><td>CTR_DRBG</td><td>CTR_DRBG with AES-CTR-256</td><td>[<b>selection</b>: <span class="selectable-content" id="_s_365">ISO/IEC 18031: 2011 (Section C.3.2)</span>, <span class="selectable-content" id="_s_366">NIST SP800-90A Revision 1 Section 10.2.1</span>]
 							</td></tr>
 
-					</table><div class="appnote"><span class="note-header">Application
-      Note:
-    </span><span class="note">
-					This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> must be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if random bits are provided by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to tenant software,
-					or if it is used by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> itself to support or implement <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality.<p></p> 
-					This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is also needed if the following <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> are included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: FCS_IPSEC_EXT.1, 
-					<a href="#FCS_CKM.1/AKG">FCS_CKM.1/AKG</a>, <a href="#FCS_CKM.1/SKG">FCS_CKM.1/SKG</a>, and <a href="#FCS_COP.1/SigGen">FCS_COP.1/SigGen</a>.<p></p>
-					Also, this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> must be claimed if "<i>KDF-CTR</i>," "<i>KDF-FB</i>," or
-					"<i>KDF-DPI</i>" is selected in FCS_CKM.5.<p></p>
-					If "implement functionality" is selected, then <a href="#FPT_FLS.1">FPT_FLS.1</a> and <a href="#FPT_TST.1">FPT_TST.1</a> must be claimed.<p></p>
-					If "HMAC_DRBG" is selected, then <a href="#FCS_COP.1/KeyedHash">FCS_COP.1/KeyedHash</a> must be claimed.<p></p>
-					If "Hash_DRBG" is selected, then <a href="#FCS_COP.1/Hash">FCS_COP.1/Hash</a> must be claimed.<p></p>
-					If "CTR_DRBG" is selected, then <a href="#FCS_COP.1/SKC">FCS_COP.1/SKC</a> must be claimed.
-				</span></div></div></div>
+					</table></div></div>
 			<div class="element"><div class="reqid" id="FCS_RBG.1.2"><a href="#FCS_RBG.1.2" class="abbr">FCS_RBG.1.2</a></div><div class="reqdesc">
 					The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use a [<b>selection</b>: <span class="selectable-content" id="internal-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source [<b>assignment</b>: 
      <span class="assignable-content">name of entropy source</span>]</span>, <span class="selectable-content" id="internal-seeds"><b>multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources [<b>assignment</b>: 
@@ -5206,7 +5174,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
 			
 		<div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_RBG.2">FCS_RBG.2</a></div>
 					<p>
-						The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> external interface that is used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can derive a seed from it that has the claimed amount of min-entropy. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses an entropy source that can be assumed to have full entropy, the seed is the output data from the entropy source. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses an entropy source where the min-entropy of the data is less than 1:1, the evaluator shall verify that the entropy documentation identifies how large the collected data sample is and how <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> derives this data into a seed that has the claimed min-entropy. 
+						The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1">FCS_RBG.1</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> external interface that is used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can derive a seed from it that has the claimed amount of min-entropy. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses an entropy source that can be assumed to have full entropy, the seed is the output data from the entropy source. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses an entropy source where the min-entropy of the data is less than 1:1, the evaluator shall verify that the entropy documentation identifies how large the collected data sample is and how <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> derives this data into a seed that has the claimed min-entropy. 
 					</p>
 					
 					
@@ -5242,7 +5210,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
 			
 		<div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_RBG.3">FCS_RBG.3</a></div>
 					<p>
-						The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source that is used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can derive a seed from it that has the claimed amount of min-entropy. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses an entropy source that can be assumed to have full entropy, the seed is the output data from the entropy source. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses an entropy source where the min-entropy of the data is less than 1:1, the evaluator shall verify that the entropy documentation identifies how large the collected data sample is and how <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> derives this data into a seed that has the claimed min-entropy. 
+						The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1">FCS_RBG.1</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source that is used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can derive a seed from it that has the claimed amount of min-entropy. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses an entropy source that can be assumed to have full entropy, the seed is the output data from the entropy source. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses an entropy source where the min-entropy of the data is less than 1:1, the evaluator shall verify that the entropy documentation identifies how large the collected data sample is and how <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> derives this data into a seed that has the claimed min-entropy. 
 					</p>
 					
 					
@@ -5270,7 +5238,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
 			
 		<div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_RBG.4">FCS_RBG.4</a></div>
 					<p>
-						The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, each <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. 
+						The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1">FCS_RBG.1</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, each <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. 
 					</p>
 					
 					
@@ -5307,7 +5275,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
 			
 		<div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_RBG.5">FCS_RBG.5</a></div>
 					<p>
-						Using the entropy sources specified in <a href="#FCS_RBG.4">FCS_RBG.4</a>, the evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it describes the method by which data from these sources are combined into a single seed. This should include an estimation of the rate at which each entropy source outputs data and whether this is dependent on any system-specific factors so that each source's relative contribution to the overall entropy is understood. The evaluator shall verify that the amount of sampled data, the min-entropy rate of the sampled data, and the method by which the multiple sampled data sources are combined can be used to determine that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can derive a seed from it that has the claimed amount of min-entropy. This includes any description of how the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> derives data larger than the seed value into a seed that has the claimed min-entropy.  
+						Using the entropy sources specified in <a href="#FCS_RBG.4">FCS_RBG.4</a>, the evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1">FCS_RBG.1</a> to verify that it describes the method by which data from these sources are combined into a single seed. This should include an estimation of the rate at which each entropy source outputs data and whether this is dependent on any system-specific factors so that each source's relative contribution to the overall entropy is understood. The evaluator shall verify that the amount of sampled data, the min-entropy rate of the sampled data, and the method by which the multiple sampled data sources are combined can be used to determine that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can derive a seed from it that has the claimed amount of min-entropy. This includes any description of how the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> derives data larger than the seed value into a seed that has the claimed min-entropy.  
 					</p>
 					
 					
@@ -6090,7 +6058,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
               separate parts of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">This requirement ensures that all communications between <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server components of a distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> are protected through the use of an encrypted communications channel. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary includes <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agents, that is covered by <a href="#FPT_ITT.1/INTRA_XFER_AGENT">FPT_ITT.1/INTRA_XFER_AGENT</a>.<br/><br/> 
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as the client or the server in this connection. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses the mechanism or mechanisms supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. Where X.509 validation is needed (e.g. if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as a TLS server), <a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509,
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as the client or the server in this connection. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses the mechanism or mechanisms supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. Where X.509 validation is needed (e.g. if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as a TLS server that supports mutual authentication), <a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509,
         version 
         1.0</a> must be claimed. To distinguish internal communications from external communications (e.g. communication between <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components versus communication to a remote IT entity in the operational environment), FIA_X509_EXT.1 from <a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509,
         version 
@@ -6442,7 +6410,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
               and protection of the channel data from modification or disclosure.<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">This requirement ensures that all communications between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and external IT entities other than <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agents are protected through the use of an encrypted communications channel. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s operational environment includes <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agents (i.e. they are not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>), that is covered by FPT_ITC.1/OE_XFER_AGENT. Protected communications for remote administration is covered by FTP_TRP.1/TRUSTPATH_ADMIN.<br/><br/>
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as the client or the server in this connection. The operational environment may or may not use mutual authentication, but if it does the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is expected to make use of it. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses the mechanism or mechanisms supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. Where X.509 validation is needed (e.g. if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as a TLS server), <a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509,
+              The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as the client or the server in this connection. The operational environment may or may not use mutual authentication, but if it does the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is expected to make use of it. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses the mechanism or mechanisms supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. Where X.509 validation is needed (e.g. if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as a TLS server that supports mutual authentication), <a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509,
         version 
         1.0</a> must be claimed. To distinguish external communications from internal communications (e.g., communication with a remote IT entity in the operational environment versus communication between <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components), FIA_X509_EXT.1 from <a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509,
         version 
