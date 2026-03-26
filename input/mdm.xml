@@ -1521,9 +1521,7 @@ DONE:
 				MDM server platform. Each audit data event may be written by the MDM system or may be dispatched to the operating system on which 
 				it runs. It is acceptable to select both "invoke platform-provided functionality" and "implement functionality." It should be specified
 				which auditable events are completed by the MDM system and which are completed by the MDM platform.<h:br/><h:br/>
-              
-				The ST author can include other auditable events in the assignment; they are not limited to the list presented. All audits must contain at least 
-				the information mentioned in <xref to="fel-gen-tsf-info"/>.<h:br/><h:br/> 
+<h:br/><h:br/> 
               
 				For distributed TOEs, each component must generate audit data for each of the SFRs that it implements. If more than one TOE component is
 				involved when an audit event is triggered, the event has to be audited on each component (e.g., rejection of a connection by one component
@@ -6404,13 +6402,13 @@ In item d above, "start up and shut down of the audit functions" must be selecte
             <note role="application"> This requirement captures all the configuration functionality the TSF provides the administrator to configure the MDM
 		    agent. This requirement is broken into two configurable areas: MDM agent commands and MDM agent policies. The ST author can add more
 		    commands and configuration policies by completing the appropriate assignment statements.<h:br/><h:br/> 
-              Function-specific Application Notes:<h:br/><h:br/> 
-              Function-specific application notes reference Mobile Device Fundamentals (PP_MDF) PP v4.0.<h:br/><h:br/> 
+              <h:b>Function-specific application notes:</h:b><h:br/><h:br/> 
               Function <xref to="smf12"/> may be satisfied for the BYOD use case by application denylisting or disabling. In the case of BYOD, an enterprise may not want to remove "personal" applications, thus for that use case disabling the application rather than removing it would allow the user to not lose any information they might have in the application.<h:br/><h:br/>
               Function <xref to="smf16"/> provides the MDM server to display an alert to the user of the MD.<h:br/><h:br/> 
               The audit data read according to Function <xref to="smf19"/> are to be transmitted to an external audit server according to FAU_STG.1. The MDM server is not expected to retain those logs.<h:br/><h:br/> 
               Function <xref to="smf34"/> provides the ability to enable and disable policy for the list of protocols where the device acts as a server, such as a mobile hotspot.<h:br/><h:br/>  
-              Function <xref to="smf56"/> corresponds to FPT_NET_EXT.1.1 in agent. If the MDM agent has not had a successful reachability event with the MDM server in the amount of time specified in 'a', then the agent must perform the action selected in 'b'. It is feasible, but not required, that if multiple actions are selected in 'b', each action could be associated with a different timeout in 'a'. If function <xref to="smf56"/> is included in the ST, than FPT_NET_EXT.1.1 must be included in the agent ST. </note>
+              Function <xref to="smf56"/> corresponds to FPT_NET_EXT.1.1 in agent. If the MDM agent has not had a successful reachability event with the MDM server in the amount of time specified in the first selection, then the agent must perform the action selected in the second selection. It is feasible, but not required, that if multiple actions are specified in the second selection, each action could be associated with a different condition in the first selection. If function <xref to="smf56"/> is included in the ST, then FPT_NET_EXT.1.1 in <xref to="mod-mdmagent"/> must be claimed for any MDM agent that the TOE manages.
+              </note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS to ensure that it describes each management function claimed. The evaluator shall examine the TSS to
 		      ensure that it identifies the management functions implemented for each supported MDM agent or platform, which are likely to be subsets of 
