@@ -1509,9 +1509,9 @@ DONE:
               <selectable id="sel-at2">Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
 					    <selectable id="sel-at3">Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
 					    <selectable id="sel-at4">Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
-					    <selectable id="sel-atssh">Auditable events for the <xref to="ssh"/></selectable>
-					    <selectable id="sel-attls">Auditable events for the <xref to="tls"/></selectable>
-					    <selectable id="sel-atssh">Auditable events for the <xref to="X509"/></selectable>
+					    <selectable id="sel-atssh">Auditable events for <xref to="ssh"/></selectable>
+					    <selectable id="sel-attls">Auditable events for <xref to="tls"/></selectable>
+					    <selectable id="sel-atssh">Auditable events for <xref to="X509"/></selectable>
               <selectable>no other events</selectable>
 					  </selectables></refinement>.</h:li>						
 					</h:ol>
@@ -5156,7 +5156,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               <selectables>
                 <selectable>invoke platform-provided functionality to implement</selectable>
                 <selectable>implement</selectable>
-              </selectables> HTTPS using TLS in accordance with the <xref to="tls"/>. 
+              </selectables> HTTPS using TLS in accordance with <xref to="tls"/>. 
             </title>
            <note role="application">
               The requirement is claimed if the TSF selects HTTPS  in any iteration of FPT_ITT.1, FTP_ITC.1, or FTP_TRP.1. It is expected that if the TOE invokes platform-provided functionality to perform HTTPS, that the platform implementation of HTTPS is conformant to the functional package. 
@@ -6699,18 +6699,18 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 <selectable id="ITT1_SSH_INVOKE">SSH</selectable>
               </selectables></h:b></selectable>
               <selectable><h:b>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITT1_IPSEC_IMPLEMENT">IPsec as defined in the <xref to="mod-vpnclient"/></selectable>
-                <selectable id="ITT1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the <xref to="tls"/></selectable>
-                <selectable id="ITT1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the <xref to="tls"/></selectable>
+                <selectable id="ITT1_IPSEC_IMPLEMENT">IPsec as defined in <xref to="mod-vpnclient"/></selectable>
+                <selectable id="ITT1_TLS_IMPLEMENT">mutually authenticated TLS as defined in <xref to="tls"/></selectable>
+                <selectable id="ITT1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in <xref to="tls"/></selectable>
                 <selectable id="ITT1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
-                <selectable id="ITT1_SSH_IMPLEMENT">SSH as defined in the <xref to="ssh"/></selectable>
+                <selectable id="ITT1_SSH_IMPLEMENT">SSH as defined in <xref to="ssh"/></selectable>
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> protect <h:b>all</h:b> data from [<h:i>disclosure and modification</h:i>] when it is <h:b>transferred</h:b> between
               separate parts of the TOE.</title>
             <note role="application">This requirement ensures that all communications between MDM server components of a distributed TOE are protected through the use of an encrypted communications channel. If the TOE boundary includes MDM agents, that is covered by FPT_ITT.1/INTRA_XFER_AGENT.<h:br/><h:br/> 
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. Where X.509 validation is needed (e.g., if the TOE acts as a TLS server that supports mutual authentication), <xref to="X509"/> must be claimed. To distinguish X.509 validation for internal communications from validation for external communications (e.g., communication between TOE components versus communication to a remote IT entity in the operational environment), FIA_X509_EXT.1 from <xref to="X509"/> must be iterated for this use as "FIA_X509_EXT.1/Internal" per the guidance in <xref to="package-usage"/>. This channel may also be used as the registration channel for the registration process, as described in section 3.1 and <xref to="fel-cpc-func"/>.<h:br/><h:br/>              
-              If the ST author selects that the TSF implements "IPsec as defined in the <xref to="mod-vpnclient"/>" the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
-              If the ST author selects that the TSF implements "SSH as defined in the Functional Package for Secure Shell," the TSF must be validated against the <xref to="ssh"/> with the MDM PP. It should be noted that due to constraints imposed by this PP that SHA-1 cannot be used.<h:br/><h:br/>
-              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in the <xref to="tls"/>" or "mutually authenticated DTLS as defined in the <xref to="tls"/>," the TSF must be validated against requirements from the <xref to="tls"/>, with the following selections made:
+              If the ST author selects that the TSF implements "IPsec as defined in <xref to="mod-vpnclient"/>," the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
+              If the ST author selects that the TSF implements "SSH as defined in <xref to="ssh"/>," the TSF must be validated against <xref to="ssh"/>.<h:br/><h:br/>
+              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in <xref to="tls"/>" or "mutually authenticated DTLS as defined in <xref to="tls"/>," the TSF must be validated against requirements from <xref to="tls"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
@@ -6720,13 +6720,13 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 </h:li>
                 <h:li>FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                     <h:li>mutual authentication must be selected</h:li>
                   </h:ul>
                   </h:li>
                 <h:li>FCS_DTLSC_EXT.1.1 or FCS_DTLSS_EXT.1.1 (as appropriate):
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                     <h:li>mutual authentication must be selected</h:li>
                   </h:ul>
                 </h:li>
@@ -6777,8 +6777,8 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 <selectable id="ITT2_HTTPS_INVOKE">HTTPS</selectable>
               </selectables></h:b></selectable>
               <selectable><h:b>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITT2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the <xref to="tls"/></selectable>                
-                <selectable id="ITT2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the <xref to="tls"/></selectable>
+                <selectable id="ITT2_TLS_IMPLEMENT">mutually authenticated TLS as defined in <xref to="tls"/></selectable>                
+                <selectable id="ITT2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in <xref to="tls"/></selectable>
                 <selectable id="ITT2_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> protect all data from [<h:i>disclosure and modification</h:i>] when it is <h:b>transferred</h:b>
               between <h:b>the TSF and MDM agent.</h:b></title>
@@ -6795,7 +6795,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               <h:br/><h:br/>
               For this particular use, only TLS, DTLS, or HTTPS is permitted. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. Where X.509 validation is needed (e.g., if the TOE acts as a TLS server supporting mutual authentication), <xref to="X509"/> must be claimed. To distinguish X.509 validation for internal communications from validation for external communications (e.g., communication between TOE components versus communication to a remote IT entity in the operational environment), FIA_X509_EXT.1 from <xref to="X509"/> must be iterated for this use as "FIA_X509_EXT.1/Internal" per the guidance in <xref to="package-usage"/>.
               <h:br/><h:br/>                           
-              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in the <xref to="tls"/>" or "mutually authenticated DTLS as defined in the <xref to="tls"/>," the TSF must be validated against requirements from the <xref to="tls"/>, with the following selections made:
+              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in <xref to="tls"/>" or "mutually authenticated DTLS as defined in <xref to="tls"/>," the TSF must be validated against requirements from <xref to="tls"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
@@ -6805,13 +6805,13 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 </h:li>
                 <h:li>FCS_TLSS_EXT.1.1 (as appropriate):
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                     <h:li>mutual authentication must be selected</h:li>
                   </h:ul>
                 </h:li>
                 <h:li>FCS_DTLSS_EXT.1.1 (as appropriate):
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                     <h:li>mutual authentication must be selected</h:li>
                   </h:ul>
                 </h:li>
@@ -7149,10 +7149,10 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 <selectable id="ITC1_HTTPS_INVOKE">HTTPS</selectable>
               </selectables></h:b></selectable>
               <selectable><h:b>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITC1_IPSEC_IMPLEMENT">IPsec as defined in the <xref to="mod-vpnclient"/></selectable>
-                <selectable id="ITC1_SSH_IMPLEMENT">SSH as defined in the <xref to="ssh"/></selectable>
-                <selectable id="ITC1_TLS_IMPLEMENT">mutually authenticated TLS as defined in the <xref to="tls"/></selectable>
-                <selectable id="ITC1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the <xref to="tls"/></selectable>
+                <selectable id="ITC1_IPSEC_IMPLEMENT">IPsec as defined in <xref to="mod-vpnclient"/></selectable>
+                <selectable id="ITC1_SSH_IMPLEMENT">SSH as defined in <xref to="ssh"/></selectable>
+                <selectable id="ITC1_TLS_IMPLEMENT">mutually authenticated TLS as defined in <xref to="tls"/></selectable>
+                <selectable id="ITC1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in <xref to="tls"/></selectable>
                 <selectable id="ITC1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> provide a <h:b>trusted</h:b>
               communication channel between itself and <h:b>authorized</h:b> IT <h:b>entities supporting the following capabilities: audit server,
@@ -7176,9 +7176,9 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               that are used to protect those connections).<h:br/><h:br/> 
              
               
-              If the ST author selects that the TSF implements "IPsec as defined in the <xref to="mod-vpnclient"/>," the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
-              If the ST author selects that the TSF implements "SSH as defined in the Functional Package for Secure Shell," the TSF must be validated against the <xref to="ssh"/> with the MDM PP. It should be noted that due to constraints imposed by this PP that SHA-1 cannot be used.<h:br/><h:br/>
-              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in the <xref to="tls"/>" or "mutually authenticated DTLS as defined in the <xref to="tls"/>," the TSF must be validated against requirements from the <xref to="tls"/>, with the following selections made:
+              If the ST author selects that the TSF implements "IPsec as defined in <xref to="mod-vpnclient"/>," the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
+              If the ST author selects that the TSF implements "SSH as defined in <xref to="ssh"/>," the TSF must be validated against <xref to="ssh"/>.<h:br/><h:br/>
+              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in <xref to="tls"/>" or "mutually authenticated DTLS as defined in <xref to="tls"/>," the TSF must be validated against requirements from <xref to="tls"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
@@ -7188,13 +7188,13 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 </h:li>
                 <h:li>FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                     <h:li>mutual authentication must be selected</h:li>
                   </h:ul>
                 </h:li>
                 <h:li>FCS_DTLSC_EXT.1.1 or FCS_DTLSS_EXT.1.1 (as appropriate):
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                     <h:li>mutual authentication must be selected</h:li>
                   </h:ul>
                 </h:li>
@@ -7273,8 +7273,8 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 <selectable id="ITC2_HTTPS_INVOKE">HTTPS</selectable>
               </selectables></h:b></selectable>
               <selectable><h:b>implement functionality using <selectables linebreak="yes">
-                <selectable id="ITC2_TLS_IMPLEMENT">mutually authenticated TLS as defined in the <xref to="tls"/></selectable> 
-                <selectable id="ITC2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in the <xref to="tls"/></selectable>
+                <selectable id="ITC2_TLS_IMPLEMENT">mutually authenticated TLS as defined in <xref to="tls"/></selectable> 
+                <selectable id="ITC2_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in <xref to="tls"/></selectable>
                 <selectable id="ITC2_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> provide a <h:b>trusted</h:b> communication channel between itself <h:b>(as a server) and the MDM agent</h:b>
               that is logically distinct from other communication channels, provides assured identification of its endpoints, <h:b>protects channel data from disclosure, and 
@@ -7291,7 +7291,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               <h:br/><h:br/> 
               For this particular use, only TLS, DTLS, or HTTPS is permitted.  If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. The environmental MDM agents are expected to support mutual authentication, so the TOE is expected to make use of it. Where X.509 validation is needed (e.g., if the TOE acts as a TLS server supporting mutual authentication), <xref to="X509"/> must be claimed. To distinguish X.509 validation from validation for external communications (e.g., communication with an MDM agent in the operational environment versus communication between TOE components), FIA_X509_EXT.1 from <xref to="X509"/> must be iterated for this use as "FIA_X509_EXT.1/Internal" per the guidance in <xref to="package-usage"/>.
               <h:br/><h:br/> 
-              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in the <xref to="tls"/>" or "mutually authenticated DTLS as defined in the <xref to="tls"/>," the TSF must be validated against requirements from the <xref to="tls"/>, with the following selections made:
+              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in <xref to="tls"/>" or "mutually authenticated DTLS as defined in <xref to="tls"/>," the TSF must be validated against requirements from <xref to="tls"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
@@ -7301,13 +7301,13 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 </h:li>
                 <h:li>FCS_TLSS_EXT.1.1 (as appropriate):
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                     <h:li>mutual authentication must be selected</h:li>
                   </h:ul>
                 </h:li>
                 <h:li>FCS_DTLSS_EXT.1.1 (as appropriate):
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                     <h:li>mutual authentication must be selected</h:li>
                   </h:ul>
                 </h:li>
@@ -7454,7 +7454,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 <selectable id="TRP2_HTTPS_INVOKE">HTTPS</selectable>
               </selectables></h:b></selectable>
               <selectable><h:b>implement functionality using <selectables linebreak="yes">
-                <selectable id="TRP2_TLS_IMPLEMENT">TLS as defined in the <xref to="tls"/></selectable>
+                <selectable id="TRP2_TLS_IMPLEMENT">TLS as defined in <xref to="tls"/></selectable>
                 <selectable id="TRP2_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></h:b></selectable>
             </selectables> <h:b>to</h:b> provide a <h:b>trusted</h:b> communication channel between
@@ -7483,7 +7483,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
             <note role="application">This requirement ensures that MDM agents are enrolled to the  
               TOE via a trusted path, and that all communications with the TOE by 
               MD users is performed over this path. MDM agent communications after enrollment is covered by either FPT_ITT.1/INTRA_XFER_AGENT or FPT_ITC.1/OE_XFER_AGENT, depending on whether or not the MDM agent is part of the TOE.<h:br/><h:br/>
-              If the ST author selects that the TSF implements "TLS as defined in the <xref to="tls"/>" the TSF must be validated against requirements from the <xref to="tls"/>, with the following selections made:
+              If the ST author selects that the TSF implements "TLS as defined in <xref to="tls"/>," the TSF must be validated against requirements from <xref to="tls"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
@@ -7493,7 +7493,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 </h:li>
                 <h:li>FCS_TLSS_EXT.1.1:
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                   </h:ul>
                 </h:li>
               </h:ul>
@@ -7586,10 +7586,10 @@ When creating the distributed TOE from the initial components, any of these comp
                 <selectable id="TRP1_SSH_INVOKE">SSH</selectable>
               </selectables></h:b></selectable>
               <selectable><h:b>implement functionality using <selectables linebreak="yes">
-                <selectable id="TRP1_IPSEC_IMPLEMENT">IPsec as defined in the <xref to="mod-vpnclient"/>t</selectable>
-                <selectable id="TRP1_TLS_IMPLEMENT">TLS as defined in the <xref to="tls"/></selectable>
+                <selectable id="TRP1_IPSEC_IMPLEMENT">IPsec as defined in <xref to="mod-vpnclient"/>t</selectable>
+                <selectable id="TRP1_TLS_IMPLEMENT">TLS as defined in <xref to="tls"/></selectable>
                 <selectable id="TRP1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
-                <selectable id="TRP1_SSH_IMPLEMENT">SSH as defined in the Functional Package for Secure Shell</selectable>
+                <selectable id="TRP1_SSH_IMPLEMENT">SSH as defined in <xref to="ssh"/></selectable>
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> provide a 
               communication path between itself <h:b>as a <selectables>
                 <selectable>server</selectable>
@@ -7609,9 +7609,9 @@ When creating the distributed TOE from the initial components, any of these comp
             <title>The TSF shall require the use of the trusted path for [<h:i>initial <h:b>administrator</h:b> authentication, [remote administration]</h:i>].</title>
             <note role="application">For this particular use, only IPsec, TLS, DTLS, or HTTPS is permitted. Where X.509 validation is needed (e.g., if the TOE acts as a TLS server supporting mutual authentication), <xref to="X509"/> must be claimed. To distinguish X.509 validation for external communications from validation for internal communications (e.g., communication with a remote administrator versus communication between TOE components), FIA_X509_EXT.1 from <xref to="X509"/> must be included in the ST and iterated as "FIA_X509_EXT.1/External" per the guidance in <xref to="package-usage"/>.
               <h:br/><h:br/>
-              If the ST author selects that the TSF implements "IPsec as defined in the <xref to="mod-vpnclient"/>t," the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
-              If the ST author selects that the TSF implements "SSH as defined in the Functional Package for Secure Shell," the TSF must be validated against the <xref to="ssh"/> with the MDM PP. It should be noted that due to constraints imposed by this PP that SHA-1 cannot be used.<h:br/><h:br/>
-              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in the <xref to="tls"/>," the TSF must be validated against requirements from the <xref to="tls"/>, with the following selections made:
+              If the ST author selects that the TSF implements "IPsec as defined in <xref to="mod-vpnclient"/>t," the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
+              If the ST author selects that the TSF implements "SSH as defined in <xref to="ssh"/>," the TSF must be validated against <xref to="ssh"/>.<h:br/><h:br/>
+              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in <xref to="tls"/>," the TSF must be validated against requirements from <xref to="tls"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
                   <h:ul>
@@ -7621,7 +7621,7 @@ When creating the distributed TOE from the initial components, any of these comp
                 </h:li>
                 <h:li>FCS_TLSS_EXT.1.1:
                   <h:ul>
-                    <h:li>The cipher suites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
                   </h:ul>
                 </h:li>
             </h:ul>
@@ -8724,7 +8724,7 @@ When creating the distributed TOE from the initial components, any of these comp
         </h:TR>
         -->
         <h:TR>
-          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 47 (configuration of unlock banner policY)</h:TD>
+          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 47 (configuration of unlock banner policy)</h:TD>
           <h:TD>Include in ST.</h:TD>
         </h:TR>
         <h:TR>
@@ -8827,7 +8827,7 @@ When creating the distributed TOE from the initial components, any of these comp
           <h:TD>Include in ST</h:TD>
         </h:TR>
         <h:TR>
-          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 30 (configuration of audio and visual colleciton devices)</h:TD>
+          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 30 (configuration of audio and visual collection devices)</h:TD>
           <h:TD>Select "on a per-app basis," "on a per-group of application processes basis," or both</h:TD>
         </h:TR>
         <h:TR>
