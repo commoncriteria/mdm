@@ -8207,7 +8207,7 @@ When creating the distributed TOE from the initial components, any of these comp
           There are two cases in which a user must be authenticated by the TSF per the application note in FIA_UAU.1: enrollment of a user’s 
           MD into management, and authentication of a user to the TOE’s management interface. FIA_ENR_EXT.1 requires authentication
           of the user using a method such as a directory server, which implicitly expects that the user must identify themselves as well as 
-          provide a credential associated with the claimed identity. For management, FMT_SMR.1(1) requires the TSF to maintain an administrator
+          provide a credential associated with the claimed identity. For management, FMT_SMR.1/SECMAN_ROLES requires the TSF to maintain an administrator
           role but it does not specify whether authentication to this role is role-based or identity-based. Therefore, the PP is not concerned 
           with the specific mechanism by which an administrator presents their identity to the TSF, only that there is a mechanism to validate
           and authorize whatever information they do present.
@@ -8223,7 +8223,7 @@ When creating the distributed TOE from the initial components, any of these comp
           The PP allows FAU_SEL.1 to be implemented either by the TSF or by the TOE platform because the TOE may rely on the audit functionality
           provided by the OS it runs on. If this is configured entirely through the platform, the administrator does not necessarily need to be 
           authenticated by the TOE to do this. Therefore, requiring FMT_MTD.1 does not make sense in this situation. If this is configured through
-          the TOE, it can be implied from a review of FMT_SMR.1(1) that the ‘MD user’ role cannot perform this function as they lack the authority
+          the TOE, it can be implied from a review of FMT_SMR.1/SECMAN_ROLES that the ‘MD user’ role cannot perform this function as they lack the authority
           to manage the TSF. It is therefore understood that this function can be performed by the ‘administrator’ role or potentially by one or 
           more roles specified by the ST author if the selection to specify additional roles is chosen. An additional SFR that explicitly identifies
           the roles permitted to manage this function is redundant in this context.
