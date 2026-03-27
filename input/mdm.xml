@@ -1429,7 +1429,7 @@ DONE:
             <title>The TSF shall provide <selectables>
             <selectable>an interface that provides responses to queries about the configuration of enrolled devices</selectable>
             <selectable>an interface that permits the export of data about the configuration of enrolled devices</selectable>
-            </selectables> to authorized entities over a channel that meets the secure channel requirements in FTP_ITC.1/OE_XFER_IT. The provided information for each enrolled MD includes:
+            </selectables> to authorized entities over a channel that meets the secure channel requirements in <h:b>FTP_ITC.1/OE_XFER_IT</h:b>. The provided information for each enrolled MD includes:
               <h:ul>
               <h:li>The current version of the MD firmware or software</h:li>
               <h:li>The current version of the hardware model of the device</h:li>
@@ -1951,13 +1951,13 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               (i.e., the registration channel can be used before the enablement step, but only in order to complete the registration process).<h:br/><h:br/>
               
               The channel selection (for the registration channel) in <xref to="fel-cpc-func"/> is essentially a choice between the use of a normal 
-		    secure channel that is equivalent to a channel used to communicate with external IT entities (FTP_ITC.1) or existing TOE components
+		    secure channel that is equivalent to a channel used to communicate with external IT entities (FTP_ITC.1/OE_XFER_IT) or existing TOE components
 		    (FPT_ITT.1/INTRA_XFER and FPT_ITT.1/INTRA_XFER_AGENT), or else a separate type of channel that is specific to registration 
 		    (FTP_TRP.1/TRUSTPATH_ENROLL or FTP_TRP.1/TRUSTPATH_JOIN). If the TOE does not require a communications channel for registration (e.g., because the registration is
 		    achieved entirely by configuration actions by an administrator at each of the components) then the main selection in
               <xref to="fel-cpc-func"/> is completed with the "No channel" option.<h:br/><h:br/>
               
-              If the ST author selects the FTP_ITC.1 or FPT_ITT.1/INTRA_XFER and FPT_ITT.1/INTRA_XFER_AGENT channel type in the main selection in 
+              If the ST author selects the FTP_ITC.1/OE_XFER_IT or FPT_ITT.1/INTRA_XFER and FPT_ITT.1/INTRA_XFER_AGENT channel type in the main selection in 
 		    <xref to="fel-cpc-func"/> then the TSS identifies the relevant SFR iteration that specifies the channel used. If the ST author
               selects the FTP_TRP.1/TRUSTPATH_ENROLL or FTP_TRP.1/TRUSTPATH_JOIN channel type, then the TSS (possibly 
               with support from the operational guidance) describes details of the channel and the mechanisms that it uses (and describes how the
@@ -1965,13 +1965,8 @@ In item d above, "start up and shut down of the audit functions" must be selecte
               FTP_TRP.1/TRUSTPATH_JOIN channel type may require support from security measures in the operational environment (see the definition of 
               FTP_TRP.1/TRUSTPATH_ENROLL or FTP_TRP.1/TRUSTPATH_JOIN for details).<h:br/><h:br/>
               
-              If the ST author selects the FTP_ITC.1 or FPT_ITT.1/INTRA_XFER / FPT_ITT.1/INTRA_XFER_AGENT channel type in the main selection in 
-		    <xref to="fel-cpc-func"/> then the ST identifies the registration channel as a separate iteration of FTP_ITC.1 or
-		    FPT_ITT.1/INTRA_XFER / FPT_ITT.1/INTRA_XFER_AGENT and gives the iteration identifier (e.g., "FPT_ITT.1/Join") in an ST Application Note for
-		    FCO_CPC_EXT.1.<h:br/><h:br/>
-              
               Note that the channel that is set up and used for registration may be adopted as a continuing internal communication channel (i.e., between
-		    different TOE components) provided that the channel meets the requirements of FTP_ITC.1 or FPT_ITT.1/INTRA_XFER / FPT_ITT.1/INTRA_XFER_AGENT.
+		    different TOE components) provided that the channel meets the requirements of FTP_ITC.1/OE_XFER_IT or FPT_ITT.1/INTRA_XFER / FPT_ITT.1/INTRA_XFER_AGENT.
 		    Otherwise the registration channel is closed after use and a separate channel is used for the internal communications.<h:br/><h:br/>
               
               Specific requirements for Preparative Procedures relating to FCO_CPC_EXT.1 are defined in the Evaluation Activities.
@@ -6569,7 +6564,7 @@ In item d above, "start up and shut down of the audit functions" must be selecte
           <f-element id="fel-smr-users-roles">
             <title>The TSF shall be able to associate users with roles.</title>
             <note role="application">It is envisioned that the MDM server will be configured and maintained by different user roles. The assignment is used by the ST author to list the roles that are supported. At a minimum, one administrative role must be supported. If no additional roles are supported, then "no additional roles" is selected. The MD user role is used for enrollment of MDs to the MDM according to FIA_ENR_EXT.1.<h:br/><h:br/>              
-              For distributed TOEs, not every TOE component is required to implement its own user management to fulfill this SFR. At least one component has to support authentication and identification of users according to FIA_UAU.1. For the other TOE components authentication can be realized through the use of a trusted channel (either according to FTP_ITC.1 or FPT_ITT.1/INTRA_XFER / FPT_ITT.1/INTRA_XFER_AGENT) from a component that supports the authentication of users according to FIA_UAU.1. The identification of users according to <xref to="fel-uau-func"/> and the association of users with roles according to <xref to="fel-smr-users-roles"/> is done through the components that support the authentication of users according to FIA_UAU.1.
+              For distributed TOEs, not every TOE component is required to implement its own user management to fulfill this SFR. At least one component has to support authentication and identification of users according to FIA_UAU.1. For the other TOE components authentication can be realized through the use of a trusted channel (either according to FTP_ITC.1/OE_XFER_IT or FPT_ITT.1/INTRA_XFER / FPT_ITT.1/INTRA_XFER_AGENT) from a component that supports the authentication of users according to FIA_UAU.1. The identification of users according to <xref to="fel-uau-func"/> and the association of users with roles according to <xref to="fel-smr-users-roles"/> is done through the components that support the authentication of users according to FIA_UAU.1.
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS to verify that it describes the administrator role and the powers granted to and limitations of the role.</TSS>
