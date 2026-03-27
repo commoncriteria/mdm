@@ -7377,11 +7377,11 @@ In item d above, "start up and shut down of the audit functions" must be selecte
           
           <f-element id="fel-itc-ext">
             <title>The TSF shall provide a communication channel between itself and <selectables linebreak="yes">              
-              <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE,</selectable>
-              <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE,</selectable>
-              <selectable>a subordinate MDM server,</selectable>
-              <selectable id="ITC_SUBORDINATE_MDM">a primary MDM server,</selectable>
-              <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
+              <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER</h:b>,</selectable>
+              <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER_AGENT</h:b>,</selectable>
+              <selectable>a subordinate MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
+              <selectable id="ITC_SUBORDINATE_MDM">a primary MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
+              <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER</h:b></selectable>
             </selectables>
               that is logically distinct from other communication channels, as specified in <selectables>
                 <selectable id="ITC_DISTRIBUTED_TOE_ITT1">FPT_ITT.1/INTRA_XFER</selectable>
@@ -7399,27 +7399,12 @@ In item d above, "start up and shut down of the audit functions" must be selecte
                 <selectable id="ITC_SUBORDINATE_MDM">a primary MDM server</selectable>
                 <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
               </selectables>
-                that is logically distinct from other communication channels, as specified in
-                <assignable>inter-TSF trusted channel or internal TOE TSF data transfer type</assignable>
+                that is logically distinct from other communication channels.
               </title>
             </ext-comp-def-title>
             <note role="Application">
-              This SFR describes the communication channels between the MDM server and an agent that may or may not be in the TOE, and optionally separate
-              components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST. <h:br/><h:br/>            
-              If the TOE includes an MDM agent, then the communication channel between the agent and TSF is internal to the TOE and thus "an MDM agent that is
-              internal to the TOE" must be selected in the first selection. Additionally FPT_ITT.1/INTRA_XFER_AGENT must be selected in the second selection and
-              FPT_ITT.1/INTRA_XFER_AGENT must be included in the ST. <h:br/><h:br/>
-
-              If the TOE interoperates with an evaluated MDM agent built into a MD (i.e., the TOE does not include an MDM agent), the communication channel 
-              between the agent and TSF is external to the TOE and thus "an MDM agent that is external to the TOE" must be selected in the first selection.
-              Additionally FTP_ITC.1/OE_XFER_AGENT must be selected in the second selection and FTP_ITC.1/OE_XFER_AGENT must be included in the ST. <h:br/><h:br/> 
-              If the TOE acts as a primary MDM server and interoperates with a subordinate MDM server to forward policies to a MDM agent on a managed device, then
-              <h:i>"a subordinate MDM server"</h:i> must be selected in the first selection. Additionally <h:i>"FTP_ITC.1/OE_XFER_IT"</h:i> must be selected in
-              the second selection.<h:br/><h:br/>              
-              If the TOE acts as a subordinate MDM server that can accept and forward signed policy files from a primary MDM server, and forward those policies to an MDM agent on a managed device, then <h:i>"a primary MDM server"</h:i> must be selected in the first selection. Additionally <h:i>"FTP_ITC.1/OE_XFER_IT"</h:i> must be selected in the second selection.<h:br/><h:br/>
-              If "other components comprising the distributed TOE" is selected in the first selection then FPT_ITT.1/INTRA_XFER must be selected in the second
-              selection. FPT_ITT.1/INTRA_XFER must be included in the ST for all internal channels used to transfer TSF data between TOE components other than an 
-              MDM agent.
+              This SFR describes the communication channels between the MDM server and an agent that may or may not be inside the TOE boundary, and optionally separate
+              components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST.            
             </note>
             <aactivity>
               <TSS>The evaluator shall ensure that the TSS contains whether the MDM server communication channel is internal or external to the TOE.</TSS>
