@@ -1418,7 +1418,7 @@ DONE:
           <management>The following actions could be considered for the management functions in FMT.
             <h:ul>
               <h:li>Query the current version of the MD firmware or software.</h:li>
-              <h:li>Query the current version of the hardware model of the device.</h:li>
+              <h:li>Query the hardware model of the MD.</h:li>
               <h:li>Query the current version of installed applications.</h:li>
             </h:ul></management>
           <audit>There are no auditable events foreseen.</audit>
@@ -1431,12 +1431,12 @@ DONE:
             </selectables> to authorized entities over a channel that meets the secure channel requirements in <h:b>FTP_ITC.1/OE_XFER_IT</h:b>. The provided information for each enrolled MD includes:
               <h:ul>
               <h:li>The current version of the MD firmware or software</h:li>
-              <h:li>The current version of the hardware model of the device</h:li>
+              <h:li>The hardware model of the MD</h:li>
               <h:li>
               <selectables linebreak="yes">
                 <selectable>The current version of installed mobile applications,</selectable>
                 <selectable>List of MD configuration policies that are in place on the device (as defined in <xref to="fel-smf-man-agnt"/>),</selectable>
-                <selectable><assignable>list of other available information about enrolled devices</assignable>,</selectable>
+                <selectable><assignable>list of other available information about enrolled MDs</assignable>,</selectable>
                 <selectable>no other information</selectable></selectables>.
               </h:li>
             </h:ul>
@@ -1444,29 +1444,34 @@ DONE:
             <ext-comp-def-title>
               <title>
                 The TSF shall provide <assignable>type of interface</assignable> to authorized entities over a 
-                channel that meets the secure channel requirements in FTP_ITC.1 The provided information for each enrolled MD includes:
+                channel that meets the secure channel requirements in FTP_ITC.1(1). The provided information for each enrolled MD includes:
                 <h:ul>
                   <h:li>The current version of the MD firmware or software</h:li>
-                  <h:li>The current version of the hardware model of the device</h:li>
+                  <h:li>The current version of the hardware model of the MD</h:li>
                   <h:li>
                   <selectables linebreak="yes">
                     <selectable>The current version of installed applications,</selectable>
                     <selectable>List of MD configuration policies that are in place on the device (as defined in <xref to="fel-smf-man-agnt"/>),</selectable>
-                    <selectable><assignable>list of other available information about enrolled devices</assignable>,</selectable>
+                    <selectable><assignable>list of other available information about enrolled MDs</assignable>,</selectable>
                     <selectable>no other information</selectable></selectables>.
                   </h:li>
                 </h:ul>
               </title>
             </ext-comp-def-title>
-            <note role="application">The intent of this requirement is that the MDM server be able to provide 
+            <note role="application">
+              <h:p>
+              The intent of this requirement is that the MDM server be able to provide 
               compliance information about enrolled MDs for use by other enterprise security infrastructure systems. 
               There are active standards efforts underway by the Internet Engineering Task Force (IETF) Security Automation and 
               Continuous Monitoring (SACM) Working Group and others to define protocols and standards to assess and report on 
               endpoint device posture. It is expected that this requirement will evolve in future versions of this Protection Profile 
-              as standards efforts mature.<h:br/><h:br/>
+              as standards efforts mature.
+              </h:p>
+              <h:p>
               If the TOE acts as a subordinate MDM server, then this SFR also ensures that there is a
               mechanism for the primary MDM server to query information about the devices managed by
               the subordinate MDM server.
+              </h:p>
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS to verify that it describes the TOE's compliance reporting capability with respect to whether it provides responses to queries about the configuration of enrolled devices or whether it permits the export of data about the configuration of these devices. The evaluator shall also verify that the TSS identifies the trusted channel used to protect data that is transmitted over this interface. Lastly, the evaluator shall verify that the TSS identifies the information that is provided for each enrolled device.</TSS>
