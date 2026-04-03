@@ -2295,7 +2295,7 @@ In item e above, "start up and shut down of the audit functions" must be selecte
 						
 						<h:br/><h:i><h:b>Testing for Random Provable Primes and Conditional Methods</h:b></h:i><h:p/> 
 						To test the key generation method for the random provable primes method and for
-						all the primes with conditions methods (methods 1, 3-5), the evaluator must seed 
+						all the primes with conditions methods (methods 1, 3-5), the evaluator shall seed 
 						the TSF key generation routine with sufficient data to deterministically 
 						generate the RSA key pair. <h:p/>
 						For each supported combination of the above input parameters, the evaluator
@@ -5349,50 +5349,59 @@ In item e above, "start up and shut down of the audit functions" must be selecte
 						<h:p>
 							[conditional: "implement functionality" is selected in FCS_RBG.1.1] The evaluator shall perform the following tests:
 						</h:p><h:p>
-							The evaluator shall perform 15 trials for the DRBG implementation. If the DRBG
-							is configurable, the evaluator shall perform 15 trials for each configuration. The
-							evaluator shall also confirm that the operational guidance contains appropriate
-							instructions for configuring the DRBG functionality.
+						  The evaluator shall perform 15 trials for the DRBG implementation. If the DRBG
+						  is configurable, the evaluator shall perform 15 trials for each configuration. The
+						  evaluator shall also confirm that the operational guidance contains appropriate
+						  instructions for configuring the DRBG functionality.
 						</h:p><h:p>
-							If the DRBG has  prediction resistance enabled, each trial consists of (1) instantiate DRBG, (2)
-							generate the first block of random bits (3) generate a second block of random bits
-							(4) uninstantiate. The evaluator verifies that the second block of random bits is
-							the expected value. The evaluator shall generate eight input values for each
-							trial. The first is a count (0 – 14). The next three are entropy input, nonce, and
-							personalization string for the instantiate operation. The next two are additional
-							input and entropy input for the first call to generate. The final two are
-							additional input and entropy input for the second call to generate. These values
-							are randomly generated. "generate one block of random bits" means to generate
-							random bits with number of returned bits equal to the Output Block Length (as
-							defined in NIST SP 800-90A).
+						  If the DRBG has  prediction resistance enabled, each trial consists of:<h:ol type="1">
+						    <h:li>Instantiate the DRBG.</h:li>
+						    <h:li>Generate a block of random bits.</h:li>
+						    <h:li>Generate a second block of random bits.</h:li>
+						    <h:li>Uninstantiate.</h:li>
+						  </h:ol>
+						  
+						  The evaluator shall verify that the second block of random bits is
+						  the expected value. The evaluator shall generate eight input values for each
+						  trial. The first is a count (0 – 14). The next three are entropy input, nonce, and
+						  personalization string for the instantiate operation. The next two are additional
+						  input and entropy input for the first call to generate. The final two are
+						  additional input and entropy input for the second call to generate. These values
+						  are randomly generated. "generate one block of random bits" means to generate
+						  random bits with number of returned bits equal to the Output Block Length (as
+						  defined in NIST SP 800-90A).
 						</h:p><h:p>
-							If the DRBG does not have prediction resistance,
-							each trial consists of (1) instantiate DRBG, (2) generate the first block of
-							random bits (3) reseed, (4) generate a second block of random bits (5)
-							uninstantiate. The evaluator verifies that the second block of random bits is the
-							expected value. The evaluator shall generate eight input values for each trial.
-							The first is a count (0 – 14). The next three are entropy input, nonce, and
-							personalization string for the instantiate operation. The fifth value is
-							additional input to the first call to generate. The sixth and seventh are
-							additional input and entropy input to the call to reseed. The final value is
-							additional input to the second generate call.
+						  If the DRBG does not have prediction resistance, each trial consists of:<h:ol type="1">
+						    <h:li>Instantiate the DRBG.</h:li>
+						    <h:li>Generate a block of random bits.</h:li>
+						    <h:li>Reseed.</h:li>
+						    <h:li>Generate a second block of random bits.</h:li>
+						    <h:li>Uninstantiate.</h:li>
+						  </h:ol>
+						  The evaluator shall verify that the second block of random bits is the
+						  expected value. The evaluator shall generate eight input values for each trial.
+						  The first is a count (0 – 14). The next three are entropy input, nonce, and
+						  personalization string for the instantiate operation. The fifth value is
+						  additional input to the first call to generate. The sixth and seventh are
+						  additional input and entropy input to the call to reseed. The final value is
+						  additional input to the second generate call.
 						</h:p><h:p>
-							The following list contains more information on some of the input values to be generated/selected by the evaluator.
-							<h:ul>
-								<h:li> <h:b>Entropy input:</h:b> The length of the entropy input value must equal the seed
-									length.</h:li>
-								
-								<h:li><h:b>Nonce:</h:b> If a nonce is supported (CTR_DRBG with no Derivation Function does
-									not use a nonce), the nonce bit length is one-half the seed length. </h:li>
-								<h:li><h:b>Personalization string:</h:b> The length of the personalization string must be
-									less than or equal to seed length. If the implementation only supports one
-									personalization string length, then the same length can be used for both values.
-									If more than one string length is support, the evaluator shall use personalization
-									strings of two different lengths. If the implementation does not use a
-									personalization string, no value needs to be supplied. </h:li>
-								<h:li><h:b>Additional input:</h:b> The additional input bit lengths have the same defaults
-									and restrictions as the personalization string lengths.</h:li>
-							</h:ul>
+						  The following list contains more information on some of the input values to be generated/selected by the evaluator.
+						  <h:ul>
+						    <h:li> <h:b>Entropy input:</h:b> The length of the entropy input value must equal the seed
+						      length.</h:li>
+						    
+						    <h:li><h:b>Nonce:</h:b> If a nonce is supported (CTR_DRBG with no Derivation Function does
+						      not use a nonce), the nonce bit length is one-half the seed length. </h:li>
+						    <h:li><h:b>Personalization string:</h:b> The length of the personalization string must be
+						      less than or equal to seed length. If the implementation only supports one
+						      personalization string length, then the same length can be used for both values.
+						      If more than one string length is support, the evaluator shall use personalization
+						      strings of two different lengths. If the implementation does not use a
+						      personalization string, no value needs to be supplied. </h:li>
+						    <h:li><h:b>Additional input:</h:b> The additional input bit lengths have the same defaults
+						      and restrictions as the personalization string lengths.</h:li>
+						  </h:ul>
 						</h:p>
 					</Tests>
 				</aactivity>
@@ -5404,7 +5413,7 @@ In item e above, "start up and shut down of the audit functions" must be selecte
 						<selectable id="internal-seeds"><h:b>multiple TSF entropy sources <assignable>names of entropy sources</assignable></h:b></selectable>
 						<selectable id="external-seed">TSF interface for obtaining entropy</selectable>
 					</selectables>
-					after initialization and reseeding.
+					for initialization and reseeding.
 				</title>
 				<note role="application">
 					<h:p>
@@ -5614,8 +5623,8 @@ In item e above, "start up and shut down of the audit functions" must be selecte
               If the TSF is an application, and not a dedicated server, then it should store its private keys in the platform-provided key storage.<h:br/><h:br/> 
               The ST author is responsible for selecting the manner in which the keys are stored and where they are stored in the selections above. </note>
             <aactivity>
-              <TSS>Regardless of whether this requirement is met by the TSF or the TOE platform, the evaluator will check the TSS to ensure that it lists each 
-			  persistent secret (credential, secret key) and private key needed to meet the requirements in the ST. For each of these items, the evaluator will 
+              <TSS>Regardless of whether this requirement is met by the TSF or the TOE platform, the evaluator shall check the TSS to ensure that it lists each 
+			  persistent secret (credential, secret key) and private key needed to meet the requirements in the ST. For each of these items, the evaluator shall 
 			  confirm that the TSS lists for what purpose it is used, and how it is stored. The evaluator then performs the following actions. <h:br/><h:br/>
               Persistent secrets and private keys manipulated by the TOE platform:<h:br/><h:br/> 
               <!-- TODO: -Do we still need this?? Old activity>For each platform listed in the ST, the evaluator shall examine the ST of the platform to ensure
@@ -8069,7 +8078,7 @@ When creating the distributed TOE from the initial components, any of these comp
 			  test plan covers all of the testing
 			  actions contained in the CEM and the body of this PP's Evaluation Activities. While it is not
 			  necessary to have
-			  one test case per test listed in an evaluation activity, the evaluator must document in the test plan that each 
+			  one test case per test listed in an evaluation activity, the evaluator shall document in the test plan that each 
 			  applicable testing requirement in the ST is covered.<h:br/><h:br/> 
                 The test plan identifies the platforms to be tested, and for those platforms not included in the test plan but
 				included in the ST, the test plan provides a justification for not testing the platforms. This justification
