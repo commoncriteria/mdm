@@ -2223,7 +2223,7 @@ In item e above, "start up and shut down of the audit functions" must be selecte
 						
 						<br/><i><b>Testing for Random Provable Primes and Conditional Methods</b></i><p></p> 
 						To test the key generation method for the random provable primes method and for
-						all the primes with conditions methods (methods 1, 3-5), the evaluator must seed 
+						all the primes with conditions methods (methods 1, 3-5), the evaluator shall seed 
 						the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> key generation routine with sufficient data to deterministically 
 						generate the RSA key pair. <p></p>
 						For each supported combination of the above input parameters, the evaluator
@@ -5059,7 +5059,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
 					The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use a [<b>selection</b>: <span class="selectable-content" id="internal-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source [<b>assignment</b>: 
      <span class="assignable-content">name of entropy source</span>]</span>, <span class="selectable-content" id="internal-seeds"><b>multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources [<b>assignment</b>: 
      <span class="assignable-content">names of entropy sources</span>]</b></span>, <span class="selectable-content" id="external-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for obtaining entropy</span>]
-					after initialization and reseeding.
+					for initialization and reseeding.
 				<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -5100,50 +5100,59 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
 						<p>
 							[conditional: "implement functionality" is selected in <a href="#FCS_RBG.1.1">FCS_RBG.1.1</a>] The evaluator shall perform the following tests:
 						</p><p>
-							The evaluator shall perform 15 trials for the DRBG implementation. If the DRBG
-							is configurable, the evaluator shall perform 15 trials for each configuration. The
-							evaluator shall also confirm that the operational guidance contains appropriate
-							instructions for configuring the DRBG functionality.
+						  The evaluator shall perform 15 trials for the DRBG implementation. If the DRBG
+						  is configurable, the evaluator shall perform 15 trials for each configuration. The
+						  evaluator shall also confirm that the operational guidance contains appropriate
+						  instructions for configuring the DRBG functionality.
 						</p><p>
-							If the DRBG has  prediction resistance enabled, each trial consists of (1) instantiate DRBG, (2)
-							generate the first block of random bits (3) generate a second block of random bits
-							(4) uninstantiate. The evaluator verifies that the second block of random bits is
-							the expected value. The evaluator shall generate eight input values for each
-							trial. The first is a count (0 – 14). The next three are entropy input, nonce, and
-							personalization string for the instantiate operation. The next two are additional
-							input and entropy input for the first call to generate. The final two are
-							additional input and entropy input for the second call to generate. These values
-							are randomly generated. "generate one block of random bits" means to generate
-							random bits with number of returned bits equal to the Output Block Length (as
-							defined in NIST SP 800-90A).
+						  If the DRBG has  prediction resistance enabled, each trial consists of:<ol type="1">
+						    <li>Instantiate the DRBG.</li>
+						    <li>Generate a block of random bits.</li>
+						    <li>Generate a second block of random bits.</li>
+						    <li>Uninstantiate.</li>
+						  </ol>
+						  
+						  The evaluator shall verify that the second block of random bits is
+						  the expected value. The evaluator shall generate eight input values for each
+						  trial. The first is a count (0 – 14). The next three are entropy input, nonce, and
+						  personalization string for the instantiate operation. The next two are additional
+						  input and entropy input for the first call to generate. The final two are
+						  additional input and entropy input for the second call to generate. These values
+						  are randomly generated. "generate one block of random bits" means to generate
+						  random bits with number of returned bits equal to the Output Block Length (as
+						  defined in NIST SP 800-90A).
 						</p><p>
-							If the DRBG does not have prediction resistance,
-							each trial consists of (1) instantiate DRBG, (2) generate the first block of
-							random bits (3) reseed, (4) generate a second block of random bits (5)
-							uninstantiate. The evaluator verifies that the second block of random bits is the
-							expected value. The evaluator shall generate eight input values for each trial.
-							The first is a count (0 – 14). The next three are entropy input, nonce, and
-							personalization string for the instantiate operation. The fifth value is
-							additional input to the first call to generate. The sixth and seventh are
-							additional input and entropy input to the call to reseed. The final value is
-							additional input to the second generate call.
+						  If the DRBG does not have prediction resistance, each trial consists of:<ol type="1">
+						    <li>Instantiate the DRBG.</li>
+						    <li>Generate a block of random bits.</li>
+						    <li>Reseed.</li>
+						    <li>Generate a second block of random bits.</li>
+						    <li>Uninstantiate.</li>
+						  </ol>
+						  The evaluator shall verify that the second block of random bits is the
+						  expected value. The evaluator shall generate eight input values for each trial.
+						  The first is a count (0 – 14). The next three are entropy input, nonce, and
+						  personalization string for the instantiate operation. The fifth value is
+						  additional input to the first call to generate. The sixth and seventh are
+						  additional input and entropy input to the call to reseed. The final value is
+						  additional input to the second generate call.
 						</p><p>
-							The following list contains more information on some of the input values to be generated/selected by the evaluator.
-							<ul>
-								<li> <b>Entropy input:</b> The length of the entropy input value must equal the seed
-									length.</li>
-								
-								<li><b>Nonce:</b> If a nonce is supported (CTR_DRBG with no Derivation Function does
-									not use a nonce), the nonce bit length is one-half the seed length. </li>
-								<li><b>Personalization string:</b> The length of the personalization string must be
-									less than or equal to seed length. If the implementation only supports one
-									personalization string length, then the same length can be used for both values.
-									If more than one string length is support, the evaluator shall use personalization
-									strings of two different lengths. If the implementation does not use a
-									personalization string, no value needs to be supplied. </li>
-								<li><b>Additional input:</b> The additional input bit lengths have the same defaults
-									and restrictions as the personalization string lengths.</li>
-							</ul>
+						  The following list contains more information on some of the input values to be generated/selected by the evaluator.
+						  <ul>
+						    <li> <b>Entropy input:</b> The length of the entropy input value must equal the seed
+						      length.</li>
+						    
+						    <li><b>Nonce:</b> If a nonce is supported (CTR_DRBG with no Derivation Function does
+						      not use a nonce), the nonce bit length is one-half the seed length. </li>
+						    <li><b>Personalization string:</b> The length of the personalization string must be
+						      less than or equal to seed length. If the implementation only supports one
+						      personalization string length, then the same length can be used for both values.
+						      If more than one string length is support, the evaluator shall use personalization
+						      strings of two different lengths. If the implementation does not use a
+						      personalization string, no value needs to be supplied. </li>
+						    <li><b>Additional input:</b> The additional input bit lengths have the same defaults
+						      and restrictions as the personalization string lengths.</li>
+						  </ul>
 						</p>
 					</div>
 				<div class="element-activity-header"><a href="#FCS_RBG.1.2">FCS_RBG.1.2</a></div>
@@ -5315,8 +5324,8 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
               
               
               
-            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">Regardless of whether this requirement is met by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform, the evaluator will check the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it lists each 
-			  persistent secret (credential, secret key) and private key needed to meet the requirements in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. For each of these items, the evaluator will 
+            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">Regardless of whether this requirement is met by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform, the evaluator shall check the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it lists each 
+			  persistent secret (credential, secret key) and private key needed to meet the requirements in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. For each of these items, the evaluator shall 
 			  confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> lists for what purpose it is used, and how it is stored. The evaluator then performs the following actions. <br/><br/>
               Persistent secrets and private keys manipulated by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform:<br/><br/> 
               
@@ -7184,7 +7193,7 @@ When creating the distributed <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a>
 			  test plan covers all of the testing
 			  actions contained in the <abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr> and the body of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>'s Evaluation Activities. While it is not
 			  necessary to have
-			  one test case per test listed in an evaluation activity, the evaluator must document in the test plan that each 
+			  one test case per test listed in an evaluation activity, the evaluator shall document in the test plan that each 
 			  applicable testing requirement in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> is covered.<br/><br/> 
                 The test plan identifies the platforms to be tested, and for those platforms not included in the test plan but
 				included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>, the test plan provides a justification for not testing the platforms. This justification
