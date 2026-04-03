@@ -2418,7 +2418,7 @@ In item e above, "start up and shut down of the audit functions" must be selecte
 						<h:br/><h:i><h:b>Safe Primes Verification Test</h:b></h:i><h:br/>
 						For each supported safe primes group, use a known good implementation to generate
 						10 key pairs. For each set of 10, the evaluator shall modify three so they are 
-						incorrect. The remaining values are left unmodified (i.e. correct). To
+						incorrect. The remaining values are left unmodified (i.e., correct). To
 						determine correctness, the evaluator shall submit the key pairs to the public 
 						key validation (PKV) function of the TOE and shall confirm that the results
 						correspond as expected for the modified and unmodified values.<h:p/>
@@ -3055,7 +3055,7 @@ In item e above, "start up and shut down of the audit functions" must be selecte
                   <h:li>RSA Private key format [Basic, Prime Factor, Chinese Remainder Theorem]</h:li>
                   <h:li>Modulo value [3072, 4096, 6144, 8192]</h:li>
                   <h:li>Role [initiator, responder]</h:li></h:ul><h:p/>
-                The evaluator shall generate a test group (i.e. set of tests) for each parameter
+                The evaluator shall generate a test group (i.e., set of tests) for each parameter
                 value of the above parameter type with the largest number of supported values.
                 For example, if the TOE supports all five Modulo values, then the evaluator 
                 shall generate five test groups. Each of the above supported parameter values
@@ -4612,9 +4612,9 @@ In item e above, "start up and shut down of the audit functions" must be selecte
            <h:br/><h:b>Algorithm Functional Test</h:b><h:p/>
            For each supported combination of the above parameters, the evaluator shall generate four test cases
            consisting of signed messages and keys, such that<h:ul>
-             <h:li>One test case is unmodified (i.e. correct)</h:li>
-             <h:li>For one test case modify the message, i.e. the message is different</h:li>
-             <h:li>For one test case modify the signature, i.e. signature is different</h:li>
+             <h:li>One test case is unmodified (i.e., correct)</h:li>
+             <h:li>For one test case modify the message, i.e., the message is different</h:li>
+             <h:li>For one test case modify the signature, i.e., signature is different</h:li>
              <h:li>For one test case modify the signature header so that it is a valid header for a different
                LMS parameter set.</h:li></h:ul><h:p/>
            The TOE must correctly verify the unmodified test case and fail to verify the modified test cases.<h:p/>
@@ -4646,9 +4646,9 @@ In item e above, "start up and shut down of the audit functions" must be selecte
            <h:br/><h:b>XMSS Digital Signature Verification Test</h:b><h:p/>
            For each supported combination of the above parameters, the evaluator shall generate four test
            cases consisting of signed messages and keys, such that<h:ul>
-             <h:li>One test case is unmodified (i.e. correct)</h:li>
-             <h:li>For one test case modify the message, i.e. the message is different</h:li>
-             <h:li>For one test case modify the signature, i.e. signature is different</h:li>
+             <h:li>One test case is unmodified (i.e., correct)</h:li>
+             <h:li>For one test case modify the message, i.e., the message is different</h:li>
+             <h:li>For one test case modify the signature, i.e., signature is different</h:li>
              <h:li>For one test case modify the signature header so that it is a valid header 
                for a different XMSS parameter set</h:li></h:ul><h:p/>
            The evaluator shall verify the correctness of the implementation by verifying that the TOE
@@ -5475,9 +5475,9 @@ In item e above, "start up and shut down of the audit functions" must be selecte
 			  </title>
 				<note role="application">
 					<h:p>
-						This SFR is claimed if "TSF interface for obtaining entropy" is selected in <xref to="fel-rbg-init-seed-how"/>, i.e. the TOE's entropy source is outside the TOE boundary.
+						This SFR is claimed if "TSF interface for obtaining entropy" is selected in <xref to="fel-rbg-init-seed-how"/>, i.e., the TOE's entropy source is outside the TOE boundary.
 					</h:p><h:p>
-						The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e. the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
+						The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e., the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
 					</h:p>
 					<h:p>
 						One should not apply NIST SP 800-90B (or AIS-31) statistical tests against
@@ -5515,9 +5515,9 @@ In item e above, "start up and shut down of the audit functions" must be selecte
 				</title>          
 				<note role="application">
 					<h:p>
-						This SFR is claimed if "TSF entropy source..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e. the TOE has a single entropy source that is inside the TOE boundary. If the TOE obtains seed material from an environmental component, this is specified using FCS_RBG.2.
+						This SFR is claimed if "TSF entropy source..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e., the TOE has a single entropy source that is inside the TOE boundary. If the TOE obtains seed material from an environmental component, this is specified using FCS_RBG.2.
 					</h:p><h:p>
-						The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the TSF entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e. the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
+						The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the TSF entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e., the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
 					</h:p>
 					<h:p>
 						One can apply NIST SP 800-90B (or AIS-31) statistical tests against internal entropy sources
@@ -5547,7 +5547,7 @@ In item e above, "start up and shut down of the audit functions" must be selecte
 				</title>
 				<note role="application">
 					<h:p>
-						This SFR is claimed if "multiple TSF entropy sources..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e. the TSF performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed. If the TOE has only a single entropy source, this is specified using FCS_RBG.3. FCS_RBG.5 defines the mechanism by which these sources are combined to ensure sufficient minimum entropy. 
+						This SFR is claimed if "multiple TSF entropy sources..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e., the TSF performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed. If the TOE has only a single entropy source, this is specified using FCS_RBG.3. FCS_RBG.5 defines the mechanism by which these sources are combined to ensure sufficient minimum entropy. 
 					</h:p>
 				</note>
 				<aactivity>
@@ -5576,10 +5576,10 @@ In item e above, "start up and shut down of the audit functions" must be selecte
 				</title>    
 				<note role="application">
 					<h:p>
-						This SFR is claimed if "multiple TSF entropy sources..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e. the TSF performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed. If the TOE has only a single entropy source, this is specified using FCS_RBG.3. 
+						This SFR is claimed if "multiple TSF entropy sources..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e., the TSF performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed. If the TOE has only a single entropy source, this is specified using FCS_RBG.3. 
 					</h:p>
 					<h:p>
-						The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e. the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
+						The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e., the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
 					</h:p>
 					<h:p>
 						One can apply NIST SP 800-90B (or AIS-31) statistical tests against internal entropy sources
@@ -7158,7 +7158,7 @@ In item e above, "start up and shut down of the audit functions" must be selecte
                 <selectable><assignable>other capabilities</assignable></selectable>
               </selectables></h:b> that is logically distinct from other communication channels and provides assured identification of its endpoints
               and protection of the channel data from modification or disclosure.</title>
-            <note role="application">This requirement ensures that all communications between the TOE and external IT entities other than MDM agents are protected through the use of an encrypted communications channel. If the TOE's operational environment includes MDM agents (i.e. they are not part of the TOE), that is covered by FPT_ITC.1/OE_XFER_AGENT. Protected communications for remote administration is covered by FTP_TRP.1/TRUSTPATH_ADMIN.<h:br/><h:br/>
+            <note role="application">This requirement ensures that all communications between the TOE and external IT entities other than MDM agents are protected through the use of an encrypted communications channel. If the TOE's operational environment includes MDM agents (i.e., they are not part of the TOE), that is covered by FPT_ITC.1/OE_XFER_AGENT. Protected communications for remote administration is covered by FTP_TRP.1/TRUSTPATH_ADMIN.<h:br/><h:br/>
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. The operational environment may or may not use mutual authentication, but the TOE is expected to make use of it if it does. Where X.509 validation is needed (e.g., if the TOE acts as a TLS client), <xref to="X509"/> must be claimed. To distinguish X.509 validation for external communications from validation for internal communications (e.g., communication with a remote IT entity in the operational environment versus communication between TOE components), FIA_X509_EXT.1 from <xref to="X509"/> must be included in the ST and iterated as "FIA_X509_EXT.1/External" per the guidance in <xref to="package-usage"/>.
               <h:br/><h:br/> 
               Protection (by one of the listed protocols) is required at least for communications with the server that collects 
