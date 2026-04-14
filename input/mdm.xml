@@ -6643,11 +6643,18 @@ In item e above, "start up and shut down of the audit functions" must be selecte
             <note role="application">
               This requirement applies to the APIs used when "invoke platform-provided
               functionality" is selected in an SFR. The definition of documented may vary depending on whether the MDM software is provided by a third-party 
-              (who relies on documented platform APIs) or by a platform vendor who may be able to guarantee support for platform APIs.
+              (who relies on documented platform APIs) or by a platform vendor who may be able to guarantee support for platform APIs. For cloud services, this can be completed with a reference to a non-public API document as an annex for those API's that are not or cannot be made public.
             </note>
             <aactivity>
-              <TSS>The evaluator shall verify that the TSS lists the platform APIs used by the MDM software. The evaluator shall then compare the list with the 
-			  supported APIs (available through e.g., developer accounts, platform developer groups) and ensure that all APIs listed in the TSS are supported.</TSS>
+              <TSS>
+                <h:p>
+                The evaluator shall verify that the TSS lists the platform APIs used by the MDM software. The evaluator shall then compare the list with the supported APIs (available through e.g., developer accounts, platform developer groups) and ensure that all APIs listed in the TSS are supported.
+                </h:p>
+                <h:p>
+                <h:b>Library Document</h:b><h:br/><h:br/>
+                (conditional: The TOE is a cloud MDM service) The evaluator shall verify that the non-public API document lists the API's used by the MDM service.
+                </h:p>
+              </TSS>
               <Guidance/>
               <Tests/>
             </aactivity>
