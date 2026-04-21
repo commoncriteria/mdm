@@ -344,7 +344,7 @@ DONE:
 		<section id="usec" title="Use Cases"> This PP defines four use cases:<h:br/>
 			<usecases>
 				<usecase title="Enterprise-owned device for general-purpose enterprise use" id="uc1">
-					<description>An enterprise-owned device for general-purpose business use is commonly
+					<description><h:p>An enterprise-owned device for general-purpose business use is commonly
 						called Corporate-Owned, Personally-Enabled (COPE). This use case entails a significant
 						degree of enterprise control over configuration and software inventory. Enterprise
 						administrators use an MDM product to establish policies on the MDs prior to user issuance. Users may use internet connectivity to browse the web, access corporate mail, or run enterprise 
@@ -353,10 +353,44 @@ DONE:
 						use applications for personal, non-enterprise use. The enterprise administrator uses the
 						MDM product to deploy security policies and query MD
 						status. The MDM may issue commands for remediation
-						actions.</description>
+						actions.</h:p>
+					  <h:p>
+					    A TOE that conforms to this use case is expected to make the following SFR claims:
+					  </h:p>
+					  <h:table>
+					    <h:TR>
+					      <h:TD><h:b>Requirement</h:b></h:TD>
+					      <h:TD><h:b>Action</h:b></h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 32 (configuration of radios)</h:TD>
+					      <h:TD>Include in ST and assign GPS.</h:TD>
+					    </h:TR>
+					    <!--
+        <h:TR>
+          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 34 (configuration of device server functions)</h:TD>
+          <h:TD>Include in ST. Assign personal hotspot connections (if feature
+            exists).</h:TD>
+        </h:TR>
+        -->
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 47 (configuration of unlock banner policy)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 49 (configuration of USB functions)</h:TD>
+					      <h:TD>Include in ST and select "USB mass storage mode."</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 51 (configuration of tethering)</h:TD>
+					      <h:TD>Include in ST. Select both options.</h:TD>
+					    </h:TR>
+					  </h:table>
+					  <h:p>If an SFR is not listed here, this use case does not mandate or prohibit any of its available selections or assignments.</h:p>
+					</description>
 				</usecase>
 				<usecase title="Enterprise-owned device for specialized, high-security use" id="uc2">
-					<description>An enterprise-owned device with intentionally limited network connectivity, tightly controlled configuration,
+					<description><h:p>An enterprise-owned device with intentionally limited network connectivity, tightly controlled configuration,
 						and limited software inventory is appropriate for specialized, high-security use cases. As in the previous use case, the MDM
 						product is used to establish such policies on MDs prior to issuance to users. The device may not be permitted
 						connectivity to any external
@@ -364,19 +398,87 @@ DONE:
 						the enterprise-run network, which may not even permit connectivity to the internet. Use
 						of the device may require compliance with usage policies that are more restrictive than
 						those in any general-purpose use case, yet may mitigate risks to highly sensitive
-						information. Based on the operational environment and the acceptable risk level of the
-						enterprise, those security functional requirements outlined in Section 5 of this
-						PP along with the selections in the Use Case 2 template defined in
-						Appendix G are sufficient for the high-security use case.</description>
+						information.
+					</h:p><h:p>
+					    A TOE that conforms to this use case is expected to make the following SFR claims:
+					  </h:p>
+					  <h:table>
+					    <h:TR>
+					      <h:TD><h:b>Requirement</h:b></h:TD>
+					      <h:TD><h:b>Action</h:b></h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 15 (removal of X.509 certificates from trust anchor database)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 16 (alert the user)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 31 (configuration of VPN policy)</h:TD>
+					      <h:TD>Include in ST and select "no other method."</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 32 (configuration of radios)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 33 (configuration of data signaling over external hardware)</h:TD>
+					      <h:TD>Include in ST. Assign at least USB.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 34 (configuration of device server functions)</h:TD>
+					      <h:TD>Include in ST. Assign all protocols where the device acts as a server.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 36 (policy for data-at-rest protection)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 37 (policy for removable media data-at-rest protection)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 40 (notifications in the locked state)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 42 (configuration of cellular protocols</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 47 (configuration of unlock banner policy)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 52 (configuration of location services)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 54 (configuration of always-on VPN)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_SERVER Function 'b.2' (configuration of X.509 behavior when revocation status is unknown)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_SERVER Function 'b.3' (configuration of the TOE unlock banner)</h:TD>
+					      <h:TD>Include in ST.</h:TD>
+					    </h:TR>
+					  </h:table>
+					  <h:p>If an SFR is not listed here, this use case does not mandate or prohibit any of its available selections or assignments.</h:p>
+					</description>
 				</usecase>
 				<usecase title="Personally-owned device for personal and enterprise use" id="uc3">
-					<description> A personally-owned device which is used for both personal activities and
+					<description><h:p>A personally-owned device which is used for both personal activities and
 						enterprise data is commonly called Bring Your Own Device (BYOD). The device may be
 						provisioned for access to enterprise resources after significant personal usage has
 						occurred. Unlike in the enterprise-owned cases, the enterprise is limited in what
 						security policies it can enforce because the user purchased the device primarily for
 						personal use and is unlikely to accept policies that limit the functionality of the
-						device.<h:br/><h:br/> 
+						device.</h:p><h:p> 
 						However, because the enterprise allows the user full (or nearly full)
 						access to the enterprise network, the enterprise will require certain security policies,
 						for example a password or screen lock policy and health reporting, such as the
@@ -386,18 +488,64 @@ DONE:
 						be enforced by a separation mechanism built-in to the device itself to distinguish
 						between enterprise and personal activities, or by a third-party application that
 						provides access to enterprise resources and leverages security capabilities provided by
-						the MD. Based on the operational environment and the acceptable risk level
-						of the enterprise, those security functional requirements outlined in Section 5 of this
-						PP along with the selections in the Use Case 3 template defined in
-						Appendix G are sufficient for the secure implementation of this BYOD use case.
+						the MD. </h:p>
+					  <h:p>
+					    A TOE that conforms to this use case is expected to make the following SFR claims:
+					  </h:p>
+					  <h:table>
+					    <h:TR>
+					      <h:TD><h:b>Requirement</h:b></h:TD>
+					      <h:TD><h:b>Action</h:b></h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 13 (remove enterprise applications)</h:TD>
+					      <h:TD>Include in ST</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 14 (wipe enterprise data)</h:TD>
+					      <h:TD>Include in ST</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 21 (approve exceptions for sharing data)</h:TD>
+					      <h:TD>Include in ST</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 22 (place applications into groups)</h:TD>
+					      <h:TD>Include in ST</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 30 (configuration of audio and visual collection devices)</h:TD>
+					      <h:TD>Select "on a per-app basis," "on a per-group of application processes basis," or both</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 31 (configuration of VPN policy)</h:TD>
+					      <h:TD>If included in ST, select "on a per-app basis," "on a per-group of application processes basis," or both</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 48 (configuration of USB storage)</h:TD>
+					      <h:TD>Include in ST</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 52 (configuration of location services)</h:TD>
+					      <h:TD>If included in ST, select "on a per-app basis," "on a per-group of application processes basis," or both</h:TD>
+					    </h:TR>
+					    <h:TR>
+					      <h:TD>FMT_SMF.1/SERVER_CONF_SERVER Function 'b.5' (configuration of privacy-sensitive information collected from devices)</h:TD>
+					      <h:TD>Include in ST</h:TD>
+					    </h:TR>
+					  </h:table>
+					  <h:p>If an SFR is not listed here, this use case does not mandate or prohibit any of its available selections or assignments.</h:p>
+					  
 					</description>
 				</usecase>
 				<usecase title="Personally-owned device for personal and limited enterprise use" id="uc4">
-					<description>A personally-owned device may also be given access to limited enterprise services such as enterprise email. The enterprise may not
+					<description>
+					  <h:p>A personally-owned device may also be given access to limited enterprise services such as enterprise email. The enterprise may not
 						need to enforce any security policies on this device because the user does not have full access to the enterprise or enterprise data.
 						However, the enterprise may want secure email and web browsing with assurance that the services being provided to those clients by the
-						device are not compromised. Based on the operational environment and the acceptable risk level of the enterprise, those security
-						functional requirements outlined in Section 5 of this PP are sufficient for the secure implementation of this BYOD use case.</description>
+						device are not compromised.</h:p>					
+					  <h:p>No specific SFR claims are mandated or prohibited for a TOE that meets this use case.</h:p>
+					</description>
 				</usecase>
 			</usecases>
 		</section>
@@ -8679,39 +8827,11 @@ When creating the distributed TOE from the initial components, any of these comp
     </section>
   </appendix>
 	
- 
+ <!-- 
   <appendix id="use-case" title="Use Case Templates"> 
     The following use case templates list those selections, assignments, and objective requirements that best support the use cases identified by this Protection Profile. Note that the templates assume that all SFRs listed in Section 5 are included in the ST, not just those listed in the templates. These templates and deviations from the template should be identified in the Security Target to assist customers with making risk-based purchasing decisions. Products that do not meet these templates are not precluded from use in the scenarios identified by this Protection Profile. Where selections for a particular requirement are not identified in a use case template, all available selections are equally applicable to the use case. 
     <section title="Enterprise-owned device for general-purpose enterprise use" id="usecase1">
-      <h:table>
-        <h:TR>
-          <h:TD><h:b>Requirement</h:b></h:TD>
-          <h:TD><h:b>Action</h:b></h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 32 (configuration of radios)</h:TD>
-          <h:TD>Include in ST and assign GPS.</h:TD>
-        </h:TR>
-        <!--
-        <h:TR>
-          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 34 (configuration of device server functions)</h:TD>
-          <h:TD>Include in ST. Assign personal hotspot connections (if feature
-            exists).</h:TD>
-        </h:TR>
-        -->
-        <h:TR>
-          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 47 (configuration of unlock banner policy)</h:TD>
-          <h:TD>Include in ST.</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 49 (configuration of USB functions)</h:TD>
-          <h:TD>Include in ST and select "USB mass storage mode."</h:TD>
-        </h:TR>
-        <h:TR>
-          <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 51 (configuration of tethering)</h:TD>
-          <h:TD>Include in ST. Select both options.</h:TD>
-        </h:TR>
-      </h:table> </section>   
+     </section>   
     <section title="Enterprise-owned device for specialized, high-security use" id="usecase2">
       <h:table>
         <h:TR>
@@ -8827,7 +8947,7 @@ When creating the distributed TOE from the initial components, any of these comp
     <section title="Personally-owned device for personal and limited enterprise use" id="usecase4">
       At this time no requirements are recommended for this use case. </section>
   </appendix>
-  
+  -->
     <bibliography>      
       <entry id="bibCCerrata">
         <tag>Errata</tag>
