@@ -4653,36 +4653,44 @@ The following sections list Common Criteria and technology terms used in this do
         2.1</a>,</span></li><li style=""><span class="selectable-content" id="ITC1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS),
         version 
         2.1</a>,</span></li><li style=""><span class="selectable-content" id="ITC1_HTTPS_IMPLEMENT">HTTPS in accordance with <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li></ul>]</b></span></li></ul>] <b>to</b> provide a <b>trusted</b>
-              communication channel between itself and <b>authorized</b> IT <b>entities supporting the following capabilities: audit server,
+              communication channel between itself and <b>authorized</b> IT <b>entities supporting the following capabilities: audit server, compliance server,
               [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_586">authentication server,</span></li><li style=""><span class="selectable-content" id="_s_587">primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server,</span></li><li style=""><span class="selectable-content" id="_s_588">subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server,</span></li><li style=""><span class="selectable-content" id="_s_589">[<b>assignment</b>: 
-     <span class="assignable-content">other capabilities</span>]</span></li></ul>]</b> that is logically distinct from other communication channels and provides assured identification of its endpoints
-              and protection of the channel data from modification or disclosure.<div class="appnote"><span class="note-header">Application
+     <span class="assignable-content">other capabilities</span>]</span></li></ul>]</b> that is logically distinct from other communication channels and provides assured identification of its endpoints and protection of the channel data from modification or disclosure.<div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">This requirement ensures that all communications between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and external IT entities other than <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agents are protected through the use of an encrypted communications channel. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s operational environment includes <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agents (i.e., they are not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>), that is covered by <a href="#FTP_ITC.1/OE_XFER_AGENT">FTP_ITC.1/OE_XFER_AGENT</a>. Protected communications for remote administration is covered by <a href="#FTP_TRP.1/TRUSTPATH_REM_ADMIN">FTP_TRP.1/TRUSTPATH_REM_ADMIN</a>.<br/><br/>
+    </span><span class="note">
+              <p>
+              This requirement ensures that all communications between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and external IT entities other than <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agents are protected through the use of an encrypted communications channel. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s operational environment includes <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> agents (i.e., they are not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>), that is covered by <a href="#FTP_ITC.1/OE_XFER_AGENT">FTP_ITC.1/OE_XFER_AGENT</a>. Protected communications for remote administration is covered by <a href="#FTP_TRP.1/TRUSTPATH_REM_ADMIN">FTP_TRP.1/TRUSTPATH_REM_ADMIN</a>.
+              </p>
+              <p>
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as the client or the server in this connection. The operational environment may or may not use mutual authentication, but the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is expected to make use of it if it does. Where X.509 validation is needed (e.g., if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as a TLS client), <a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509,
         version 
         1.0</a> must be claimed. To distinguish X.509 validation for external communications from validation for internal communications (e.g., communication with a remote IT entity in the operational environment versus communication between <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components), FIA_X509_EXT.1 from <a href="https://www.niap-ccevs.org/protectionprofiles/511">Functional Package for X.509,
         version 
         1.0</a> must be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> and iterated as "FIA_X509_EXT.1/External" per the guidance in <a href="#package-usage" class="dynref">Section 1.5 Package Usage</a>.
-              <br/><br/> 
-              Protection (by one of the listed protocols) is required at least for communications with the server that collects 
-              the audit information. If it communicates with an authentication server (e.g., RADIUS), then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> 
+              </p>
+              <p> 
+              Protection (by one of the listed protocols) is required at least for communications with the server(s) that collect 
+              the audit information (<a href="#FAU_STG.1.1">FAU_STG.1.1</a>) and/or compliance information (<a href="#FAU_CRP_EXT.1.1">FAU_CRP_EXT.1.1</a>). If it communicates with an authentication server (e.g., RADIUS), then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> 
               author chooses "authentication server" in <a href="#FTP_ITC.1.1/OE_XFER_IT">FTP_ITC.1.1/OE_XFER_IT</a> and this connection must be protected 
               by one of the listed protocols. Likewise if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as either a primary or subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server, then 
               "primary <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server" or "subordinate <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server" is selected for the device it communicates with and those 
               communications are protected by one of the listed protocols. If other authorized IT entities (e.g., NTP server) 
               are protected, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author makes the appropriate assignments (for those entities) and selections (for the protocols 
-              that are used to protect those connections).<br/><br/> 
-             
-              
+              that are used to protect those connections).
+              </p>
+              <p>       
               If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> implements "IPsec as defined in <a href="https://www.niap-ccevs.org/protectionprofiles/487">PP-Module for Virtual Private Network (VPN) Clients,
         version 
-        3.0</a>," the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must claim conformance to a <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> that includes the VPN Client <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.<br/><br/>
+        3.0</a>," the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must claim conformance to a <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> that includes the VPN Client <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.
+              </p>
+              <p>
               If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> implements "SSH as defined in <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH),
         version 
         2.0</a>," the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must be validated against <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH),
         version 
-        2.0</a>.<br/><br/>
+        2.0</a>.
+              </p>
+              <p>
               If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> implements "mutually authenticated TLS as defined in <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS),
         version 
         2.1</a>" or "mutually authenticated DTLS as defined in <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS),
@@ -4711,13 +4719,15 @@ The following sections list Common Criteria and technology terms used in this do
                 </li>
               </ul> 
               Protocol, DRBG, Certificate validation, algorithm, and similar services may be met with
-              platform-provided 
-              services.<br/><br/> 
+              platform-provided services.
+              </p>
+              <p> 
               The requirement implies that not only are communications protected when they are initially established, but 
               also on resumption after an outage. It may be the case that some part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> setup involves 
               manually setting up tunnels to protect other communication, and if after an outage the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> attempts 
               to re-establish the communication automatically with (the necessary) manual intervention, there may be a window created 
               where an attacker might be able to gain critical information or compromise a connection.
+              </p>
             </span></div></div></div>
           
           <div class="element"><div class="reqid" id="FTP_ITC.1.2/OE_XFER_IT"><a href="#FTP_ITC.1.2/OE_XFER_IT" class="abbr">FTP_ITC.1.2/OE_XFER_IT</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_590"><b>invoke platform-provided functionality</b></span>, <span class="selectable-content" id="_s_591"><b>implement functionality</b></span>] <b>to</b> permit <b>the <abbr class="dyn-abbr"><a href="#abbr_MDM">MDM</a></abbr> server or other authorized IT entities</b> to initiate communication via the trusted channel.</div></div>
