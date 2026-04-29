@@ -7310,29 +7310,37 @@ DONE:
                 <selectable id="ITC1_DTLS_IMPLEMENT">mutually authenticated DTLS as defined in <xref to="tls"/>,</selectable>
                 <selectable id="ITC1_HTTPS_IMPLEMENT">HTTPS in accordance with FCS_HTTPS_EXT.1</selectable>
               </selectables></h:b></selectable></selectables> <h:b>to</h:b> provide a <h:b>trusted</h:b>
-              communication channel between itself and <h:b>authorized</h:b> IT <h:b>entities supporting the following capabilities: audit server,
+              communication channel between itself and <h:b>authorized</h:b> IT <h:b>entities supporting the following capabilities: audit server, compliance server,
               <selectables linebreak="yes">
                 <selectable>authentication server,</selectable>
                 <selectable>primary MDM server,</selectable>
                 <selectable>subordinate MDM server,</selectable>
                 <selectable><assignable>other capabilities</assignable></selectable>
-              </selectables></h:b> that is logically distinct from other communication channels and provides assured identification of its endpoints
-              and protection of the channel data from modification or disclosure.</title>
-            <note role="application">This requirement ensures that all communications between the TOE and external IT entities other than MDM agents are protected through the use of an encrypted communications channel. If the TOE's operational environment includes MDM agents (i.e., they are not part of the TOE), that is covered by FTP_ITC.1/OE_XFER_AGENT. Protected communications for remote administration is covered by FTP_TRP.1/TRUSTPATH_REM_ADMIN.<h:br/><h:br/>
+              </selectables></h:b> that is logically distinct from other communication channels and provides assured identification of its endpoints and protection of the channel data from modification or disclosure.</title>
+            <note role="application">
+              <h:p>
+              This requirement ensures that all communications between the TOE and external IT entities other than MDM agents are protected through the use of an encrypted communications channel. If the TOE's operational environment includes MDM agents (i.e., they are not part of the TOE), that is covered by FTP_ITC.1/OE_XFER_AGENT. Protected communications for remote administration is covered by FTP_TRP.1/TRUSTPATH_REM_ADMIN.
+              </h:p>
+              <h:p>
               The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. The operational environment may or may not use mutual authentication, but the TOE is expected to make use of it if it does. Where X.509 validation is needed (e.g., if the TOE acts as a TLS client), <xref to="X509"/> must be claimed. To distinguish X.509 validation for external communications from validation for internal communications (e.g., communication with a remote IT entity in the operational environment versus communication between TOE components), FIA_X509_EXT.1 from <xref to="X509"/> must be included in the ST and iterated as "FIA_X509_EXT.1/External" per the guidance in <xref to="package-usage"/>.
-              <h:br/><h:br/> 
-              Protection (by one of the listed protocols) is required at least for communications with the server that collects 
-              the audit information. If it communicates with an authentication server (e.g., RADIUS), then the ST 
+              </h:p>
+              <h:p> 
+              Protection (by one of the listed protocols) is required at least for communications with the server(s) that collect 
+              the audit information (FAU_STG.1.1) and/or compliance information (FAU_CRP_EXT.1.1). If it communicates with an authentication server (e.g., RADIUS), then the ST 
               author chooses "authentication server" in FTP_ITC.1.1/OE_XFER_IT and this connection must be protected 
               by one of the listed protocols. Likewise if the TOE acts as either a primary or subordinate MDM server, then 
               "primary MDM server" or "subordinate MDM server" is selected for the device it communicates with and those 
               communications are protected by one of the listed protocols. If other authorized IT entities (e.g., NTP server) 
               are protected, the ST author makes the appropriate assignments (for those entities) and selections (for the protocols 
-              that are used to protect those connections).<h:br/><h:br/> 
-             
-              
-              If the ST author selects that the TSF implements "IPsec as defined in <xref to="mod-vpnclient"/>," the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.<h:br/><h:br/>
-              If the ST author selects that the TSF implements "SSH as defined in <xref to="ssh"/>," the TSF must be validated against <xref to="ssh"/>.<h:br/><h:br/>
+              that are used to protect those connections).
+              </h:p>
+              <h:p>       
+              If the ST author selects that the TSF implements "IPsec as defined in <xref to="mod-vpnclient"/>," the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.
+              </h:p>
+              <h:p>
+              If the ST author selects that the TSF implements "SSH as defined in <xref to="ssh"/>," the TSF must be validated against <xref to="ssh"/>.
+              </h:p>
+              <h:p>
               If the ST author selects that the TSF implements "mutually authenticated TLS as defined in <xref to="tls"/>" or "mutually authenticated DTLS as defined in <xref to="tls"/>," the TSF must be validated against requirements from <xref to="tls"/>, with the following selections made:
               <h:ul>
                 <h:li>FCS_TLS_EXT.1: 
@@ -7355,13 +7363,15 @@ DONE:
                 </h:li>
               </h:ul> 
               Protocol, DRBG, Certificate validation, algorithm, and similar services may be met with
-              platform-provided 
-              services.<h:br/><h:br/> 
+              platform-provided services.
+              </h:p>
+              <h:p> 
               The requirement implies that not only are communications protected when they are initially established, but 
               also on resumption after an outage. It may be the case that some part of the TOE setup involves 
               manually setting up tunnels to protect other communication, and if after an outage the TOE attempts 
               to re-establish the communication automatically with (the necessary) manual intervention, there may be a window created 
               where an attacker might be able to gain critical information or compromise a connection.
+              </h:p>
             </note>            
           </f-element>
           
