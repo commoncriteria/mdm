@@ -6246,7 +6246,7 @@ DONE:
 		</f-component> 
         
         <f-component cc-id="fmt_pol_ext.3" name="Subordinate MDM Trusted Policy Update" status="sel-based">
-          <depends on-sel="ITC_SUBORDINATE_MDM"/>
+          <depends on-sel="ITC_IS_SUBORDINATE_MDM"/>
           <consistency-rationale/>
           <comp-lev>defines requirements for using digitally signed policies and policy updates by the subordinate MDM server.</comp-lev>
           <management>There are no management activities foreseen.</management>
@@ -7042,7 +7042,7 @@ DONE:
         </f-component>   
         
         <f-component cc-id="fpt_tdc.1" name="Inter-TSF Basic TSF Data Consistency (Policy Data)" status="sel-based" iteration="Policy">
-          <depends on-sel="ITC_SUBORDINATE_MDM"/>          
+          <depends on-sel="ITC_IS_SUBORDINATE_MDM"/>          
           <f-element id="fpt-tdc-interpret">
             <title>
               The TSF shall provide the capability to consistently interpret <assignable>MDM policy</assignable> when shared between the primary MDM server and the MDM agent.              
@@ -7566,7 +7566,7 @@ DONE:
               <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER</h:b>,</selectable>
               <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER_AGENT</h:b>,</selectable>
               <selectable>a subordinate MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
-              <selectable id="ITC_SUBORDINATE_MDM">a primary MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
+              <selectable id="ITC_IS_SUBORDINATE_MDM">a primary MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
               <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER</h:b></selectable>
             </selectables>
               that is logically distinct from other communication channels, as specified in <selectables>
@@ -7581,16 +7581,21 @@ DONE:
               <title>The TSF shall provide a communication channel between itself and <selectables linebreak="yes">                              
                 <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE</selectable>
                 <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE</selectable>
-                <selectable>a subordinate MDM server</selectable>
-                <selectable id="ITC_SUBORDINATE_MDM">a primary MDM server</selectable>
+                <selectable id="ITC_IS_PRIMARY_MDM">a subordinate MDM server</selectable>
+                <selectable id="ITC_IS_SUBORDINATE_MDM">a primary MDM server</selectable>
                 <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
               </selectables>
                 that is logically distinct from other communication channels.
               </title>
             </ext-comp-def-title>
             <note role="Application">
+              <h:p>
               This SFR describes the communication channels between the MDM server and an agent that may or may not be inside the TOE boundary, and optionally separate
-              components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST.            
+              components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST.
+              </h:p>
+              <h:p>
+              <xref to="ITC_IS_SUBORDINATE_MDM"> is selected when the MDM is a subordinate MDM and communicates with a Primary MDM. If the MDM is a suborindate MDM then FMT_POL_EXT.3 and FPT_TDC.1 must be included in the ST. <xref to="ITC_IS_PRIMARY_MDM"> should be selected when the MDM is a primary MDM and communicates with a subordinate MDM. If the MDM is neither a primary nor a subordinate MDM, it only communicates with the MDM agents directly, then neither should be selected.  
+              </h:p>            
             </note>
             <aactivity>
               <TSS>The evaluator shall ensure that the TSS contains whether the MDM server communication channel is internal or external to the TOE.</TSS>
