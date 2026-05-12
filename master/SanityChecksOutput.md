@@ -425,3 +425,5 @@
                        
 * Warning: Since FIA_CLI_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
+* Warning: Since FMT_POL_EXT.1.3 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+                       
