@@ -5871,11 +5871,11 @@ DONE:
           <f-element>
             <title>The TSF shall require a unique <selectables>
               <selectable>certificate</selectable>
-              <selectable id="token">token as defined in FIA_TOK_EXT.1</selectable>
+              <selectable id="fia_cli_token">token as defined in FIA_TOK_EXT.1</selectable>
             </selectables> for each client device.</title>
             <note role="application">
               Token is used here in a generic way to be some form of unique identifier that is not certificate-based as defined in
-              FIA_TOK_EXT.1. If "token as defined in FIA_TOK_EXT.1" is selected, FIA_TOK_EXT.1 must be included in the ST.
+              FIA_TOK_EXT.1. If <xref to="fia_cli_token"/> is selected, FIA_TOK_EXT.1 must be included in the ST.
             </note>
               <aactivity>              
               <TSS>The evaluator shall ensure that the TSS describes how the client is uniquely identified.</TSS>
@@ -5958,7 +5958,7 @@ DONE:
 		</f-component> 
 		
 		    <f-component cc-id="fia_tok_ext.1" name="Client Tokens" status="sel-based">
-		      <depends on-sel="token"/>		        
+		      <depends on-sel="fia_cli_token"/>		        
 		      <consistency-rationale/>
 		      <comp-lev>defines requirements for generating unique tokens.</comp-lev>
 		      <management>There are no management activities foreseen.</management>
@@ -5976,7 +5976,7 @@ DONE:
 		          </selectables> to generate a unique token for each client device.
             </title>
 		        <note role="application">
-              This SFR is included in the ST if "token as defined in FIA_TOK_EXT.1" is selected in FIA_CLI_EXT.1.
+              This SFR is included in the ST if <xref to="fia_cli_token"/> is selected in FIA_CLI_EXT.1.
             </note>
             <aactivity>
               <TSS>
@@ -6217,16 +6217,14 @@ DONE:
           </note></f-element>
         <f-element id="fmt-pol-ext-1e3">
           <title>For each unique policy managed by the TSF, the TSF shall validate that the policy is appropriate for an 
-          MDM agent or subordinate MDM server using <selectables>
-            <selectable>client authentication via an X.509 certificate representing the agent or subordinate MDM server</selectable>
-            <selectable>a token issued to the MDM agent and associated with a policy signing key uniquely associated to the policy</selectable>
-            <selectable>a token issued to the subordinate MDM server and associated with a policy signing key uniquely associated to the policy</selectable>
+          MDM agent or subordinate MDM server using <selectables linebreak="yes">
+            <selectable id="fmt_pol_3_x509_agent">client authentication via an X.509 certificate representing the MDM agent</selectable>
+            <selectable id="fmt_pol_3_x509_sub">client authentication via an X.509 certificate representing the subordinate MDM server</selectable>
+            <selectable id="fmt_pol_3_token_agent">a token issued to the MDM agent and associated with a policy signing key uniquely associated to the policy</selectable>
+            <selectable id="fmt_pol_3_token_sub">a token issued to the subordinate MDM server and associated with a policy signing key uniquely associated to the policy</selectable>
           </selectables>.</title>
           <note role="application">
-            If "client authentication via an X.509 certificate representing the agent subordinate MDM server" is claimed, any corresponding protocols that use this are also claimed in FIA_X509_EXT.2.1 in <xref to="X509"/>. If "a token issued to the agent or subordinate MDM server and associated with a unique policy signing key uniquely associated to the policy" is claimed, "token as defined in FIA_TOK_EXT.1" is claimed in FIA_CLI_EXT.1.1 
-            and the TSF maintains the 
-            association of the key pairs and the agent or subordinate MDM server tokens. When multiple policies are supported, a unique policy signing
-            key for each policy is used.
+            If <xref to="fmt_pol_3_x509_agent"/> or <xref to="fmt_pol_3_x509_sub"/> is claimed, any corresponding protocols that use this are also claimed in FIA_X509_EXT.2.1 in <xref to="X509"/>. If <xref to="fmt_pol_3_token_agent"/> or <xref to="fmt_pol_3_token_sub"/> is claimed, <xref to="fia_cli_token"/> is claimed in FIA_CLI_EXT.1.1 and the TSF maintains the association of the key pairs and the agent or subordinate MDM server tokens. When multiple policies are supported, a unique policy signing key for each policy is used.
           </note>
             <aactivity>
               <TSS>The evaluator shall verify that the ST describes how policies are signed, to include whether the private 
