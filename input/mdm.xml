@@ -3422,7 +3422,7 @@ DONE:
                   </h:tr>
                   <h:tr>
                     <h:td valign="top">AES-CCM </h:td>
-                    <h:td valign="top">AES in CCM mode with nonrepeating nonce, minimum size
+                    <h:td valign="top">AES in CCM mode with non-repeating nonce, minimum size
                       of 64 bits</h:td>
                     <h:td valign="top">256 bits</h:td>
                     <h:td valign="top">
@@ -3477,7 +3477,7 @@ DONE:
                   </h:tr>
                   <h:tr>
                     <h:td valign="top">AES-GCM </h:td>
-                    <h:td valign="top">AES in GCM mode with nonrepeating IVs using 
+                    <h:td valign="top">AES in GCM mode with non-repeating IVs using 
                       [<h:b>selection:</h:b> deterministic, DRBG-based] IV construction; 
                       the tag must be of length [<h:b>selection:</h:b> 96, 104, 112, 120, or 128] bits.</h:td>
                     <h:td valign="top">256 bits</h:td>
@@ -6228,7 +6228,12 @@ DONE:
             <selectable id="fmt_pol_3_token_sub">a token issued to the subordinate MDM server and associated with a policy signing key uniquely associated to the policy</selectable>
           </selectables>.</title>
           <note role="application">
-            If "<xref to="fmt_pol_3_x509_agent"/>" or "<xref to="fmt_pol_3_x509_sub"/>" is claimed, any corresponding protocols that use this are also claimed in FIA_X509_EXT.2.1 in <xref to="X509"/>. If "<xref to="fmt_pol_3_token_agent"/>" or "<xref to="fmt_pol_3_token_sub"/>" is claimed, "<xref to="fia_cli_token"/>" is claimed in FIA_CLI_EXT.1.1 and the TSF maintains the association of the key pairs and the agent or subordinate MDM server tokens. When multiple policies are supported, a unique policy signing key for each policy is used.
+            <h:p>
+            If "<xref to="fmt_pol_3_x509_agent"/>" or "<xref to="fmt_pol_3_x509_sub"/>" is claimed, any corresponding protocols that use this are also claimed in FIA_X509_EXT.2.1 in <xref to="X509"/>. 
+            </h:p>
+            <h:p>
+            If "<xref to="fmt_pol_3_token_agent"/>" or "<xref to="fmt_pol_3_token_sub"/>" is claimed, "<xref to="fia_cli_token"/>" is claimed in FIA_CLI_EXT.1.1 and the TSF maintains the association of the key pairs and the agent or subordinate MDM server tokens. When multiple policies are supported, a unique policy signing key for each policy is used.
+            </h:p>
           </note>
             <aactivity>
               <TSS>The evaluator shall verify that the ST describes how policies are signed, to include whether the private 
@@ -6239,8 +6244,8 @@ DONE:
                 distributed to the agent or subordinate MDM server.</TSS>
               <Guidance>If applicable, the evaluator shall verify that the operational guidance
                 instructs administrators on configuring the enterprise certificate to be used for signing policies or signing the policies before applying them.</Guidance>
-              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the
-                TOE, in transmission, or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent or subordinate MDM server.
+              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy update, either at the
+                TOE, in transmission, or at the MDM agent or subordinate MDM server. The evaluator shall verify that the TSF signed the policy update and delivered it to the MDM agent or subordinate MDM server.
 	      </Tests>
             </aactivity>
           </f-element>
