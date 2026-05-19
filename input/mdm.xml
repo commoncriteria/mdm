@@ -258,10 +258,10 @@ DONE:
       <term full="Unlocked State">Device state where it is powered on and the user has been authenticated. The device functionality is available for use by the user.</term>
       <term full="Commercial National Security Algorithm Suite" abbr="CNSA"/>
     </tech-terms>
-    <section title="Compliant Targets of Evaluation" id="cte">
+    <section id="cte" title="Compliant Targets of Evaluation">
       The Mobile Device Management (MDM) system consists of two primary components: the MDM server software and the MDM agent. Optionally, the MDM system may
 			consist of a separate Mobile Application Store (MAS) server or a subordinate MDM server.
-      <sec:TOE_Boundary>
+      <section title="TOE Boundary" id="tb">
         The MDM system operational environment consists of the MD on which the MDM agent resides, 
 				the platform on which the MDM server runs, and an untrusted wireless network over which they communicate, as pictured below.
         <h:br/>
@@ -311,7 +311,7 @@ DONE:
         <figure entity="images/SubordinateMDMSystem.png" title="MDM System with Subordinate MDM" id="subordinateMDMDiagram"/>
         <h:br/>
         <h:br/>
-      </sec:TOE_Boundary>
+      </section>
     </section>
     <sec:Use_Cases>
       This PP defines four use cases:
@@ -340,20 +340,24 @@ DONE:
                 </h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 32 (configuration of radios)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf32"/> (configuration of radios)</h:TD>
                 <h:TD>Include in ST and assign GPS.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 47 (configuration of unlock banner policy)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf47"/> (configuration of unlock banner policy)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 49 (configuration of USB functions)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf49"/> (configuration of USB functions)</h:TD>
                 <h:TD>Include in ST and select "USB mass storage mode."</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 51 (configuration of tethering)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf51"/> (configuration of tethering)</h:TD>
                 <h:TD>Include in ST. Select both options.</h:TD>
+              </h:TR>
+              <h:TR>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf60"/> (configuration of wireless network bridging capability (e.g. hotspot))</h:TD>
+                <h:TD>Include in ST.</h:TD>
               </h:TR>
             </h:table>
             <h:p>If an SFR is not listed here, this use case does not mandate or prohibit any of its available selections or assignments.</h:p>
@@ -381,55 +385,55 @@ DONE:
                 </h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 15 (removal of X.509 certificates from trust anchor database)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf15"/> (removal of X.509 certificates from trust anchor database)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 16 (alert the user)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf16"/> (alert the user)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 31 (configuration of VPN policy)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf31"/> (configuration of VPN policy)</h:TD>
                 <h:TD>Include in ST and select "no other method."</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 32 (configuration of radios)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf32"/> (configuration of radios)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 33 (configuration of data signaling over external hardware)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf33"/> (configuration of data signaling over external hardware)</h:TD>
                 <h:TD>Include in ST. Assign at least USB.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 34 (configuration of device server functions)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf34"/> (configuration of device server functions)</h:TD>
                 <h:TD>Include in ST. Assign all protocols where the device acts as a server.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 36 (policy for data-at-rest protection)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf36"/> (policy for data-at-rest protection)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 37 (policy for removable media data-at-rest protection)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf37"/> (policy for removable media data-at-rest protection)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 40 (notifications in the locked state)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf40"/> (notifications in the locked state)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 42 (configuration of cellular protocols</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf42"/> (configuration of cellular protocols)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 47 (configuration of unlock banner policy)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf47"/> (configuration of unlock banner policy)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 52 (configuration of location services)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf52"/> (configuration of location services)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 54 (configuration of always-on VPN)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf54"/> (configuration of always-on VPN)</h:TD>
                 <h:TD>Include in ST.</h:TD>
               </h:TR>
               <h:TR>
@@ -474,35 +478,35 @@ DONE:
                 </h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 13 (remove enterprise applications)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf13"/> (remove enterprise applications)</h:TD>
                 <h:TD>Include in ST</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 14 (wipe enterprise data)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf14"/> (wipe enterprise data)</h:TD>
                 <h:TD>Include in ST</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 21 (approve exceptions for sharing data)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf21"/> (approve exceptions for sharing data)</h:TD>
                 <h:TD>Include in ST</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 22 (place applications into groups)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf22"/> (place applications into groups)</h:TD>
                 <h:TD>Include in ST</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 30 (configuration of audio and visual collection devices)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf30"/> (configuration of audio and visual collection devices)</h:TD>
                 <h:TD>Select "on a per-app basis," "on a per-group of application processes basis," or both</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 31 (configuration of VPN policy)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf31"/> (configuration of VPN policy)</h:TD>
                 <h:TD>If included in ST, select "on a per-app basis," "on a per-group of application processes basis," or both</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 48 (configuration of USB storage)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf49"/> (configuration of USB storage)</h:TD>
                 <h:TD>Include in ST</h:TD>
               </h:TR>
               <h:TR>
-                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function 52 (configuration of location services)</h:TD>
+                <h:TD>FMT_SMF.1/SERVER_CONF_AGENT Function <xref to="smf52"/> (configuration of location services)</h:TD>
                 <h:TD>If included in ST, select "on a per-app basis," "on a per-group of application processes basis," or both</h:TD>
               </h:TR>
               <h:TR>
@@ -1499,7 +1503,7 @@ DONE:
     <sec:Security_Objectives_Rationale/>
   </sec:Security_Objectives>
   <!-- 5.0 Security Requirements -->
-  <sec:req title="Security Requirements">
+  <sec:Security_Requirements title="Security Requirements">
     <h:br/>
     <h:br/>
     For a distributed TOE, the ST author should reference
@@ -1533,13 +1537,13 @@ DONE:
   	  necessary and relevant to explanations and testing, otherwise "MDM server" may be used when the distinction is not necessary and could reference either 
   	  a primary MDM server or subordinate MDM server.
     <!-- 5.1 Security Functional Requirements-->
-    <sec:SFRs title="Security Functional Requirements">
+    <section title="Security Functional Requirements" id="tsfr">
       <section id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
         <h:br/>
         <audit-table id="t-audit-mandatory" table="mandatory"/>
       </section>
       <!-- 5.1.1 Class FAU: Security Audit -->
-      <section id="" title="Class FAU: Security Audit">
+      <section id="fau" title="Class FAU: Security Audit">
         <ext-comp-def title="Server Alerts" fam-id="FAU_ALT_EXT">
           <fam-behavior>This family defines requirements for the TSF to alert administrators when a set of specified events occurs.</fam-behavior>
         </ext-comp-def>
@@ -1551,6 +1555,7 @@ DONE:
         </ext-comp-def>
         <!-- FAU_ALT_EXT.1 Server Alerts -->
         <f-component cc-id="fau_alt_ext.1" id="fau-alt-ext-1" name="Server Alerts">
+          <consistency-rationale/>
           <comp-lev>defines requirements for alerting the administrator to events.</comp-lev>
           <management>
             The following actions could be considered for the management functions in FMT.
@@ -1595,9 +1600,11 @@ DONE:
                 For each MDM agent or platform listed as supported in the ST:
                 <testlist>
                   <test>The evaluator shall enroll a device and ensure that the MDM server alerts the administrator of the change in enrollment status. The evaluator shall unenroll (retire) a device and ensure that the MDM server alerts the administrator of the change in enrollment status.</test>
+                  <h:br/>
                   <test>The evaluator shall configure policies, which the MDM agent should not be able to apply. These policies shall include: <h:ul><h:li>a setting which is configurable on the MDM server interface but not supported by the platform on which the MDM agent runs, if any
 			      such settings exist</h:li> <h:li>a valid configuration setting with an invalid parameter, which may require manual modification of the policy prior to transmission
 			      to the device</h:li></h:ul> The evaluator shall deploy such policies and verify that the MDM server alerts the administrator about the failed application of the policy. <h:br/> Alternate test: The evaluator shall configure a policy that the MDM agent can successfully apply. The evaluator blocks the response from the MDM agent of the successful application of the policy, resulting in the MDM server alerting of a failure of application. The evaluator shall verify that the MDM server alerts the administrator about the failed application of the policy.</test>
+                  <h:br/>
                   <test>[conditional) If any additional events are specified in the assignment, the evaluator shall trigger each of the events listed and ensure that the MDM server alerts the administrator.</test>
                 </testlist>
               </Tests>
@@ -1610,6 +1617,7 @@ DONE:
         </f-component>
         <!-- FAU_CRP_EXT.1 Support for Compliance Reporting of Managed Device Configuration -->
         <f-component cc-id="fau_crp_ext.1" id="fau-crp-ext-1" name="Support for Compliance Reporting of Managed Device Configuration">
+          <consistency-rationale/>
           <comp-lev>defines requirements for providing information to enrolled MDs
             through a secure channel.</comp-lev>
           <management>
@@ -1682,6 +1690,7 @@ DONE:
               <Tests>
                 <testlist>
                   <test>Using the operational guidance, the evaluator shall demonstrate the ability to access the compliance reporting interface from an authorized entity and successfully obtain information about enrolled devices.</test>
+                  <h:br/>
                   <test>The evaluator shall attempt to access the compliance reporting interface from an unauthorized entity and demonstrate that the attempt is denied.</test>
                 </testlist>
               </Tests>
@@ -1699,9 +1708,9 @@ DONE:
                 <selectable id="fau_gen.1.1_AUDITGEN_2">implement functionality</selectable>
               </selectables>
               to generate audit data of the following auditable events:
-              <h:ol type="a">
-                <h:li>All auditable events for the [<h:i>not specified</h:i>] level of audit;</h:li>
-                [<h:i><h:li>All administrative actions</h:li>
+              <h:li>All auditable events for the [<h:i>not specified</h:i>] level of audit;</h:li>
+              [<h:ol type="a"><h:i>
+                  <h:li>All administrative actions</h:li>
                   <h:li>
                     <selectables>
                       <selectable id="fau_gen.1.1_AUDITGEN_3">Commands issued to the MDM agent</selectable>
@@ -1743,7 +1752,7 @@ DONE:
             applied to the MDM agent, it is acceptable to not have any administrative actions to audit.
               </h:p>
               <h:p>Item c includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE server acts as a primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM server" must be selected. For distributed TOEs, if the TOE component directly interacts with a primary MDM server, subordinate MDM server, or MDM agent then the corresponding selection should be made for that component. If the TOE component does not directly interact with any of these entities, then it is acceptable to select "none".</h:p>
-              <h:p>In item e above, "start up and shut down of the audit functions" must be selected if the TSF has a start up and shut down phase. Additionally, if the TOE is distributed, this applies to all components. If the TOE is not distributed then MDM system is equivalent to MDM server. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required.</h:p>
+              <h:p>In item e above, "Start up and shut down of the audit functions" must be selected if the TSF has a start up and shut down phase. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required. Additionally, if the TOE is distributed, this applies to all components.</h:p>
               <h:p>
                 Depending on the specific requirements selected by the ST author from SFRs, optional requirements, selection-based requirements, and objective requirements, the ST author should include the appropriate auditable events from
                 <xref g="t-audit-optional"/>,
@@ -1896,6 +1905,7 @@ DONE:
         </f-component>
         <!-- FAU_NET_EXT.1 Network Reachability Review -->
         <f-component cc-id="fau_net_ext.1" id="fau-net-ext-1" name="Network Reachability Review">
+          <consistency-rationale/>
           <comp-lev>defines requirements for authorized administrators to read network connectivity
             status.</comp-lev>
           <management>
@@ -2018,13 +2028,15 @@ DONE:
                 The evaluator shall also perform the following tests:
                 <testlist>
                   <test>For each attribute listed in the requirement, the evaluator shall devise a test to show that selecting the attribute causes only audit events with that attribute (or those that are always recorded, as identified in the administrative guidance) to be recorded.</test>
+                  <h:br/>
                   <test>[conditional] If the TSF supports specification of more complex audit pre-selection criteria (e.g., multiple attributes, logical expressions using attributes) then the evaluator shall devise tests showing that this capability is correctly implemented. The evaluator shall also, in the test plan, provide a short narrative justifying the set of tests as representative and sufficient to exercise the capability.</test>
                 </testlist>
               </Tests>
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>All modifications to the audit configuration that occur while the audit collection functions are operating.</audit-event-descr>
+            <audit-event-descr>All modifications to the audit configuration that occur while the audit collection functions
+					are operating.</audit-event-descr>
           </audit-event>
         </f-component>
         <!-- FAU_STG.1 Audit Data Storage Location -->
@@ -2124,6 +2136,7 @@ DONE:
                 The evaluator shall perform the following tests:
                 <testlist>
                   <test>The evaluator shall access the audit trail as an unauthorized user and attempt to modify and delete the audit data. The evaluator shall verify that these attempts fail.</test>
+                  <h:br/>
                   <test>The evaluator shall access the audit trail as an authorized user and attempt to modify and delete the audit data. The evaluator shall verify that these attempts succeed. The evaluator shall verify that only the records intended for modification and deletion are modified and deleted.</test>
                 </testlist>
               </Tests>
@@ -2143,12 +2156,13 @@ DONE:
         </f-component>
       </section>
       <!-- 5.1.2 Class FCO: Communication -->
-      <section id="" title="Class FCO: Communication">
+      <section id="fco" title="Class FCO: Communication">
         <ext-comp-def title="Component Registration Channel Definition" fam-id="FCO_CPC_EXT">
           <fam-behavior>This family describes the registration process, including the capability for the administrator to enable or disable communications between a distributed TOE and other components of the TOE.</fam-behavior>
         </ext-comp-def>
         <!-- FCO_CPC_EXT.1 Component Registration Channel Definition -->
         <f-component cc-id="fco_cpc_ext.1" id="fco-cpc-ext-1" name="Component Registration Channel Definition" status="objective">
+          <consistency-rationale/>
           <comp-lev>defines requirements for the registration process for distributed TOEs.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>
@@ -2185,7 +2199,7 @@ DONE:
               </selectables>
               to implement a registration process in which components establish and use a communications channel that uses
               <selectables>
-                <selectable id="fco_cpc_ext.1.2_3">A channel that meets the secure channel requirements in <selectables><selectable id="fco_cpc_ext.1.2_4">FTP_ITC.1</selectable><selectable id="fco_cpc_ext.1.2_5">FPT_ITT.1/INTRA_XFER</selectable><selectable id="fco_cpc_ext.1.2_6">FPT_ITT.1/INTRA_XFER_AGENT</selectable></selectables>,</selectable>
+                <selectable id="fco_cpc_ext.1.2_3">A channel that meets the secure channel requirements in <selectables><selectable id="fco_cpc_ext.1.2_4">FTP_ITC.1/OE_XFER_IT</selectable><selectable id="fco_cpc_ext.1.2_5">FPT_ITT.1/INTRA_XFER</selectable><selectable id="fco_cpc_ext.1.2_6">FPT_ITT.1/INTRA_XFER_AGENT</selectable></selectables>,</selectable>
                 <selectable id="fco_cpc_ext.1.2_7">A channel that meets the secure registration channel requirements in <selectables><selectable id="fco_cpc_ext.1.2_8">FTP_TRP.1/TRUSTPATH_ENROLL</selectable><selectable id="fco_cpc_ext.1.2_9">FTP_TRP.1/TRUSTPATH_JOIN</selectable></selectables>,</selectable>
                 <selectable id="fco_cpc_ext.1.2_10">No channel</selectable>
               </selectables>
@@ -2250,7 +2264,9 @@ DONE:
               <Tests>
                 <testlist>
                   <test>The evaluator shall confirm that an IT entity that is not currently a member of the distributed TOE cannot communicate with any component of the TOE until the non-member entity is enabled by an administrator for each of the non-equivalent TOE components that it is required to communicate with (non-equivalent TOE components are as defined in the minimum configuration for the distributed TOE)</test>
+                  <h:br/>
                   <test>The evaluator shall confirm that after enablement, an IT entity can communicate only with the components that it has been enabled for. This includes testing that the enabled communication is successful for the enabled component pair, and that communication remains unsuccessful with any other component for which communication is possible but has not been explicitly enabled. <h:br/> Some TOEs may set up the registration channel before the enablement step is carried out, but in such a case the channel must not allow communications until after the enablement step has been completed.</test>
+                  <h:br/>
                   <test>The evaluator shall separately disable each TOE component in turn and ensure that the other TOE components cannot then communicate with the disabled component, whether by attempting to initiate communications with the disabled component or by responding to communication attempts from the disabled component. In situations where one component acts as the 'Gatekeeper' for all other components, the test would involve disabling the components in turn on the Gatekeeper and ensuring that the TOE no longer communicates with disabled components.</test>
                 </testlist>
               </Tests>
@@ -2263,7 +2279,7 @@ DONE:
         </f-component>
       </section>
       <!-- 5.1.3 Class FCS: Cryptographic Support -->
-      <section id="" title="Class FCS: Cryptographic Support">
+      <section id="fcs" title="Class FCS: Cryptographic Support">
         <ext-comp-def title="Cryptographic Key Management" fam-id="FCS_CKM_EXT">
           <fam-behavior>This family defines requirements for management of cryptographic keys using mechanisms beyond what are specified in CC Part 2.</fam-behavior>
         </ext-comp-def>
@@ -2315,13 +2331,13 @@ DONE:
                 <selectable id="sel-fcs-ckm-ak-ecdsa-erb">
                   <col>ECC-ERB</col>
                   <col>ECC-ERB - Extra Random Bits</col>
-                  <col>Elliptic Curve <selectables><selectable id="sel-exp-ak-edcsa-erb-P384">P-384</selectable><selectable id="sel-exp-ak-edcsa-erb-P521">P-521</selectable></selectables></col>
+                  <col>Elliptic Curve <selectables><selectable id="sel-exp-ak-ecdsa-erb-P384">P-384</selectable><selectable id="sel-exp-ak-ecdsa-erb-P521">P-521</selectable></selectables></col>
                   <col>FIPS PUB 186-5 (Section A.2.1)<h:p/>NIST SP 800-186 (Section 3) [NIST Curves]</col>
                 </selectable>
                 <selectable id="sel-fcs-ckm-ak-ecdsa-rs">
                   <col>ECC-RS</col>
                   <col>ECC-RS - Rejection Sampling</col>
-                  <col>Elliptic Curve <selectables><selectable id="sel-exp-ak-edcsa-rs-P384">P-384</selectable><selectable id="sel-exp-ak-edcsa-rs-P521">P-521</selectable></selectables></col>
+                  <col>Elliptic Curve <selectables><selectable id="sel-exp-ak-ecdsa-rs-P384">P-384</selectable><selectable id="sel-exp-ak-ecdsa-rs-P521">P-521</selectable></selectables></col>
                   <col>FIPS PUB 186-5 (Section A.2.2)<h:p/>NIST SP 800-186 (Section 3) [NIST Curves]</col>
                 </selectable>
                 <selectable id="sel-fcs-ckm-ak-ffc-erb">
@@ -3040,14 +3056,16 @@ DONE:
                         key from Step #1.</h:li> <h:li>Cause the TOE to clear the key.</h:li> <h:li>Cause the TOE to stop the execution but not exit.</h:li> <h:li>Cause the TOE to dump the entire memory of the TOE into a binary
                         file.</h:li> <h:li>Search the content of the binary file created in Step #5 for instances
                         of the known key value from Step #1.</h:li> <h:li>Break the key value from Step #1 into 3 similar sized pieces and
-                        perform a search using each piece.</h:li></h:ol>  <h:br/> Steps 1-6 ensure that the complete key does not exist anywhere in volatile memory. If a copy is found, then the test fails. <h:br/>  <h:br/> Step 7 ensures that partial key fragments do not remain in memory. If a fragment is found, there is a minuscule chance that it is not within the context of a key (e.g., some random bits that happen to match). If this is the case the test should be repeated with a different key in Step #1. If a fragment is found the test fails. <h:br/>  <h:br/></test>
+                        perform a search using each piece.</h:li></h:ol>  <h:br/> Steps 1-6 ensure that the complete key does not exist anywhere in volatile memory. If a copy is found, then the test fails. <h:br/>  <h:br/> Step 7 ensures that partial key fragments do not remain in memory. If a fragment is found, there is a minuscule chance that it is not within the context of a key (e.g., some random bits that happen to match). If this is the case the test should be repeated with a different key in Step #1. If a fragment is found the test fails. <h:br/></test>
+                  <h:br/>
                   <test>Applied to each key held in non-volatile memory and subject to destruction by overwrite by the TOE. The evaluator shall use special tools (as needed), provided by the TOE developer if necessary, to view the key storage location: <h:br/>  <h:ol><h:li>Record the value of the key in the TOE subject to clearing.</h:li> <h:li>Cause the TOE to perform a normal cryptographic processing with the
                         key from Step #1.</h:li> <h:li>Cause the TOE to clear the key.</h:li> <h:li>Search the non-volatile memory the key was stored in for instances of
                         the known key value from Step #1. If a copy is found, then the test
                         fails.</h:li> <h:li>Break the key value from Step #1 into 3 similar sized pieces and
                         perform a search using each piece. If a fragment is found then the test is
                         repeated (as described for test 1 above), and if a fragment is found in the
-                        repeated test then the test fails.</h:li></h:ol>  <h:br/>  <h:br/></test>
+                        repeated test then the test fails.</h:li></h:ol>  <h:br/></test>
+                  <h:br/>
                   <test>Applied to each key held as non-volatile memory and subject to destruction by overwrite by the TOE. The evaluator shall use special tools (as needed), provided by the TOE developer if necessary, to view the key storage location: <h:br/>  <h:ol><h:li>Record the storage location of the key in the TOE subject to
                         clearing.</h:li> <h:li>Cause the TOE to perform a normal cryptographic processing with the
                         key from Step #1.</h:li> <h:li>Cause the TOE to clear the key.</h:li> <h:li>Read the storage location in Step #1 of non-volatile memory to ensure
@@ -3069,7 +3087,9 @@ DONE:
         <!-- FCS_CKM_EXT.7 Cryptographic Key Agreement -->
         <f-component cc-id="fcs_ckm_ext.7" id="sfr-fcs-ckm-ext-7" name="Cryptographic Key Agreement" status="feat-based">
           <depends on="key-agreement-support"/>
+          <consistency-rationale/>
           <comp-lev>requires that cryptographic key agreement be performed in accordance with specified standards.</comp-lev>
+          <management/>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is
             included in the PP, PP-Module, functional package or ST:
@@ -3419,7 +3439,7 @@ DONE:
                   </h:tr>
                   <h:tr>
                     <h:td valign="top">AES-CCM </h:td>
-                    <h:td valign="top">AES in CCM mode with nonrepeating nonce, minimum size
+                    <h:td valign="top">AES in CCM mode with non-repeating nonce, minimum size
                       of 64 bits</h:td>
                     <h:td valign="top">256 bits</h:td>
                     <h:td valign="top">
@@ -3496,7 +3516,7 @@ DONE:
                   <h:tr>
                     <h:td valign="top">AES-GCM </h:td>
                     <h:td valign="top">
-                      AES in GCM mode with nonrepeating IVs using 
+                      AES in GCM mode with non-repeating IVs using 
                       [<h:b>selection:</h:b>
                       deterministic, DRBG-based] IV construction; 
                       the tag must be of length [<h:b>selection:</h:b>
@@ -4926,24 +4946,60 @@ DONE:
           Encryption/Decryption -->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-skc" name="Cryptographic Operation -
           Encryption/Decryption" iteration="SKC" status="sel-based">
-          <depends on-sel="fcs_tlsc_ext.1.2_7"/>
-          <depends on-sel="fcs_tlsc_ext.1.2_8"/>
-          <depends on-sel="fcs_tlsc_ext.1.2_14"/>
-          <depends on-sel="fcs_tlsc_ext.1.2_15"/>
-          <depends on-sel="fcs_tlsc_ext.1.2_18"/>
-          <depends on-sel="fcs_tlsc_ext.1.2_19"/>
-          <depends on-sel="fcs_tlsc_ext.1.2_20"/>
-          <depends on-sel="fcs_tlsc_ext.1.2_21"/>
-          <depends on-sel="fcs_tlsc_ext.1.2_22"/>
-          <depends on-sel="fcs_dtlsc_ext.1.2_7"/>
-          <depends on-sel="fcs_dtlsc_ext.1.2_8"/>
-          <depends on-sel="fcs_dtlsc_ext.1.2_14"/>
-          <depends on-sel="fcs_dtlsc_ext.1.2_15"/>
-          <depends on-sel="fcs_dtlsc_ext.1.2_18"/>
-          <depends on-sel="fcs_dtlsc_ext.1.2_19"/>
-          <depends on-sel="fcs_dtlsc_ext.1.2_20"/>
-          <depends on-sel="fcs_dtlsc_ext.1.2_21"/>
-          <depends on-sel="fcs_dtlsc_ext.1.2_22"/>
+          <depends on-sel="fcs_tlsc_ext.1.2_7">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_tlsc_ext.1.2_8">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_tlsc_ext.1.2_14">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_tlsc_ext.1.2_15">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_tlsc_ext.1.2_18">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_tlsc_ext.1.2_19">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_tlsc_ext.1.2_20">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_tlsc_ext.1.2_21">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_tlsc_ext.1.2_22">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_dtlsc_ext.1.2_7">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_dtlsc_ext.1.2_8">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_dtlsc_ext.1.2_14">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_dtlsc_ext.1.2_15">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_dtlsc_ext.1.2_18">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_dtlsc_ext.1.2_19">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_dtlsc_ext.1.2_20">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_dtlsc_ext.1.2_21">
+            <external-doc ref="tls"/>
+          </depends>
+          <depends on-sel="fcs_dtlsc_ext.1.2_22">
+            <external-doc ref="tls"/>
+          </depends>
           <f-element id="fel-encrypt-how">
             <title>
               The TSF shall perform [<h:i>symmetric-key encryption/decryption</h:i>] in accordance with a 
@@ -5340,6 +5396,7 @@ DONE:
           <depends on-sel="ITC2_HTTPS_INVOKE"/>
           <depends on-sel="ITT1_HTTPS_INVOKE"/>
           <depends on-sel="ITT2_HTTPS_INVOKE"/>
+          <consistency-rationale/>
           <comp-lev>defines requirements for the implementation of the HTTPS protocol.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>
@@ -5377,8 +5434,6 @@ DONE:
               <Tests>
                 <testlist>
                   <test>The evaluator shall attempt to establish an HTTPS connection with a web server, web a client, or both (depending on whether the TOE acts as a web client, a web server, or both), observe the traffic with a packet analyzer, and verify that the connection succeeds and that the traffic is identified as TLS or HTTPS.</test>
-                  <h:br/>
-                  <h:br/>
                   Other tests are performed in conjunction with the TLS evaluation activities.
                 </testlist>
               </Tests>
@@ -5398,6 +5453,7 @@ DONE:
         <!-- FCS_IV_EXT.1 Initialization Vector Generation -->
         <f-component cc-id="fcs_iv_ext.1" id="fcs-iv-ext-1" name="Initialization Vector Generation" status="sel-based">
           <depends on-sel="fcs_stg_enc"/>
+          <consistency-rationale/>
           <comp-lev>defines requirements for generating IVs.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>There are no auditable events foreseen.</audit>
@@ -5835,6 +5891,7 @@ DONE:
         </f-component>
         <!-- FCS_STG_EXT.1 Cryptographic Key Storage -->
         <f-component cc-id="fcs_stg_ext.1" id="fcs-stg-ext-1" name="Cryptographic Key Storage">
+          <consistency-rationale/>
           <comp-lev>defines requirements for the security of persistent secrets and private keys.</comp-lev>
           <management>
             The following actions could be considered for the management functions in FMT.
@@ -5890,6 +5947,7 @@ DONE:
         <!-- FCS_STG_EXT.2 Encrypted Cryptographic Key Storage -->
         <f-component cc-id="fcs_stg_ext.2" id="fcs-stg-ext-2" name="Encrypted Cryptographic Key Storage" status="sel-based">
           <depends on-sel="fcs_stg_enc"/>
+          <consistency-rationale/>
           <comp-lev>defines requirements for preventing access to private keys and persistent
             secrets.</comp-lev>
           <management>There are no management activities foreseen.</management>
@@ -5927,7 +5985,7 @@ DONE:
         </f-component>
       </section>
       <!-- 5.1.4 Class FIA: Identification and Authentication -->
-      <section id="" title="Class FIA: Identification and Authentication">
+      <section id="fia" title="Class FIA: Identification and Authentication">
         <ext-comp-def title="Client Authorization" fam-id="FIA_CLI_EXT">
           <fam-behavior>This family defines requirements for unique certificate or token use.</fam-behavior>
         </ext-comp-def>
@@ -5939,14 +5997,17 @@ DONE:
         </ext-comp-def>
         <!-- FIA_CLI_EXT.1 Client Authorization -->
         <f-component cc-id="fia_cli_ext.1" id="fia-cli-ext-1" name="Client Authorization">
+          <consistency-rationale/>
           <comp-lev>defines requirements for a unique certificate or token for each client device.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>No dependencies.</dependencies>
           <f-element id="fia_cli_ext-1-1">
-            <title>The TSF shall require a unique  <selectables><selectable id="fia_cli_ext.1.1_1">certificate</selectable><selectable id="token">token as defined in FIA_TOK_EXT.1</selectable></selectables>  for each client device.</title>
-            <note role="application">Token is used here in a generic way to be some form of unique identifier that is not certificate-based as defined in
-              FIA_TOK_EXT.1. If "token as defined in FIA_TOK_EXT.1" is selected, FIA_TOK_EXT.1 must be included in the ST.</note>
+            <title>The TSF shall require a unique  <selectables><selectable id="fia_cli_ext.1.1_1">certificate</selectable><selectable id="fia_cli_token">token as defined in FIA_TOK_EXT.1</selectable></selectables>  for each client device.</title>
+            <note role="application">
+              Token is used here in a generic way to be some form of unique identifier that is not certificate-based as defined in
+              FIA_TOK_EXT.1. If "<xref to="fia_cli_token"/>"" is selected, FIA_TOK_EXT.1 must be included in the ST.
+            </note>
             <aactivity>
               <TSS>The evaluator shall ensure that the TSS describes how the client is uniquely identified.</TSS>
               <Guidance>None.</Guidance>
@@ -5957,6 +6018,7 @@ DONE:
         </f-component>
         <!-- FIA_ENR_EXT.1 Enrollment -->
         <f-component cc-id="fia_enr_ext.1" id="fia-enr-ext-1" name="Enrollment">
+          <consistency-rationale/>
           <comp-lev>defines requirements for authenticating and limiting user actions.</comp-lev>
           <management>
             The following actions could be considered for the management functions in FMT.
@@ -5993,6 +6055,7 @@ DONE:
               <Tests>
                 <testlist>
                   <test>The evaluator shall attempt to enroll a device without providing correct credentials. The evaluator shall verify that the device is not enrolled and that the described enrollment actions are not taken.</test>
+                  <h:br/>
                   <test>The evaluator shall attempt to enroll the device providing correct credentials. The evaluator shall verify that the device is enrolled and that the described enrollment actions are taken.</test>
                 </testlist>
               </Tests>
@@ -6025,7 +6088,8 @@ DONE:
         </f-component>
         <!-- FIA_TOK_EXT.1 Client Tokens -->
         <f-component cc-id="fia_tok_ext.1" id="fia-tok-ext-1" name="Client Tokens" status="sel-based">
-          <depends on-sel="token"/>
+          <depends on-sel="fia_cli_token"/>
+          <consistency-rationale/>
           <comp-lev>defines requirements for generating unique tokens.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>There are no auditable events foreseen.</audit>
@@ -6045,7 +6109,9 @@ DONE:
               </selectables>
               to generate a unique token for each client device.
             </title>
-            <note role="application">This SFR is included in the ST if "token as defined in FIA_TOK_EXT.1" is selected in FIA_CLI_EXT.1.</note>
+            <note role="application">
+              This SFR is included in the ST if "<xref to="fia_cli_token"/>" is selected in FIA_CLI_EXT.1.
+            </note>
             <aactivity>
               <TSS>
                 The evaluator shall review the TSS and verify that the TSF uses either unique identifiers from the client device
@@ -6116,6 +6182,7 @@ DONE:
                 <h:br/>
                 <testlist>
                   <test>The evaluator shall attempt to perform the prohibited actions before authentication. The evaluator shall verify the actions cannot be performed.</test>
+                  <h:br/>
                   <test>The evaluator shall attempt to perform the prohibited actions after authentication. The evaluator shall verify the actions can be performed.</test>
                 </testlist>
               </Tests>
@@ -6160,7 +6227,7 @@ DONE:
         </f-component>
       </section>
       <!-- 5.1.5 Class FMT: Security Management -->
-      <section id="" title="Class FMT: Security Management">
+      <section id="fmt" title="Class FMT: Security Management">
         <ext-comp-def title="Trusted Policy Update" fam-id="FMT_POL_EXT">
           <fam-behavior>This family describes how to use digitally signed policies and updates by using private keys, and validating the policy is appropriate.</fam-behavior>
         </ext-comp-def>
@@ -6172,18 +6239,8 @@ DONE:
           <f-element id="fel-gen-mas">
             <title>The TSF shall restrict the ability to <h:b>perform</h:b> the functions <h:ul><h:li>enable/disable/modify/and monitor policies listed in FMT_SMF.1/SERVER_CONF_AGENT</h:li> <h:li>listed in FMT_SMF.1/SERVER_CONF_SERVER</h:li> <h:li> <selectables><selectable id="mas">enable/disable/modify policies listed in FMT_SMF.1/MAS</selectable><selectable id="fmt_mof.1.1_FUNCBE_1">no other functions</selectable></selectables></h:li></h:ul> to [<h:i>authorized administrators</h:i>].</title>
             <note role="application">
-              This requirement outlines the functions that administrators will have the power to enable, disable, modify, and monitor 
-			functions and policies listed in FMT_SMF.1/SERVER_CONF_AGENT. It also includes functions necessary to maintain and configure the MDM server itself, as described in FMT_SMF.1/SERVER_CONF_SERVER.
-              <h:br/>
-              <h:br/>
-              You must select "enable/disable/modify policies listed in FMT_SMF.1/MAS" if the TOE includes MAS functionality and FMT_SMF.1/MAS, 
-			  FAU_GEN.1/MAS_SERVER, FMT_MOF.1/MANAGEMENT_MAS, FMT_SMR.1/SECMAN_ROLES_MAS must be included in
-			  the ST.
-              <h:br/>
-              <h:br/>
-              If "enable/disable/modify policies listed in FMT_SMF.1/MAS" is chosen,
-              <xref to="fmt-smr-1e1-sr"/>
-              must be included in the ST.
+              <h:p>This requirement outlines the functions that administrators will have the power to enable, disable, modify, and monitor functions and policies listed in FMT_SMF.1/SERVER_CONF_AGENT. It also includes functions necessary to maintain and configure the MDM server itself, as described in FMT_SMF.1/SERVER_CONF_SERVER.</h:p>
+              <h:p>You must select "enable/disable/modify policies listed in FMT_SMF.1/MAS" if the TOE includes MAS functionality and FMT_SMF.1/MAS, FAU_GEN.1/MAS_SERVER, FMT_MOF.1/MANAGEMENT_MAS, FMT_SMR.1/SECMAN_ROLES_MAS must be included in the ST.</h:p>
             </note>
             <aactivity>
               <TSS>The evaluator shall examine the TSS to ensure that it describes what security management functions are restricted to the
@@ -6193,6 +6250,7 @@ DONE:
               <Tests>
                 <testlist>
                   <test>The evaluator shall attempt to access the functions and policies in FMT_SMF.1/SERVER_CONF_AGENT as an unauthorized user and verify that the attempt fails.</test>
+                  <h:br/>
                   <test>[conditional] If "enable/disable/and modify policies listed in FMT_SMF.1/MAS" is selected, the evaluator shall attempt to access the functions and policies in FMT_SMF.1/MAS as an unauthorized user and verify that the attempt fails.</test>
                 </testlist>
               </Tests>
@@ -6257,7 +6315,9 @@ DONE:
               <Tests>
                 <testlist>
                   <test>The evaluator shall ensure that the MAS server verifies that the MD is enrolled in the MDM server and is in a compliant state. The evaluator shall verify that either none, or only those applications needed for enrollment, can be downloaded from the MAS server prior to enrolling the MD with the MDM.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure that the MAS server verifies that the MD is enrolled in the MDM server and is in a compliant state. The evaluator shall make policy changes to make the enrolled MD non-compliant. The evaluator shall verify that either none, or only those applications needed to bring the MD back into compliance, are able to be downloaded.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure that the MAS server verifies that the MD is enrolled in the MDM server and is in a compliant state. The evaluator shall unenroll the MD and verify that an application can not be downloaded from the MAS server after unenrollment.</test>
                 </testlist>
               </Tests>
@@ -6267,6 +6327,7 @@ DONE:
         </f-component>
         <!-- FMT_POL_EXT.1 Trusted Policy Update -->
         <f-component cc-id="fmt_pol_ext.1" id="fmt-pol-ext-1" name="Trusted Policy Update">
+          <consistency-rationale/>
           <comp-lev>defines requirements for using digitally signed policies and policy updates.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>
@@ -6288,9 +6349,10 @@ DONE:
               The TSF shall sign policies and policy updates using a private key associated with
               <selectables>
                 <selectable id="fmt_pol_ext.1.2_1">an X.509 certificate</selectable>
-                <selectable id="fmt_pol_ext.1.2_2">a public key provisioned to the agent or subordinate MDM server</selectable>
+                <selectable id="fmt_pol_ext.1.2_2">a public key provisioned to the MDM agent</selectable>
+                <selectable id="fmt_pol_ext.1.2_3">a public key provisioned to the subordinate MDM server</selectable>
               </selectables>
-              trusted by the agent or subordinate MDM server for policy verification.
+              trusted by the MDM agent or subordinate MDM server for policy verification.
             </title>
             <note role="application">
               If "an X.509 certificate" is selected, the ST author includes "policy signing" in the assignment in FIA_X509_EXT.2.1 in
@@ -6300,18 +6362,22 @@ DONE:
           <f-element id="fmt-pol-ext-1e3">
             <title>
               For each unique policy managed by the TSF, the TSF shall validate that the policy is appropriate for an 
-          agent or subordinate MDM server using
-              <selectables>
-                <selectable id="fmt_pol_ext.1.3_1">client authentication via an X.509 certificate representing the agent or subordinate MDM server</selectable>
-                <selectable id="fmt_pol_ext.1.3_2">a token issued to the agent or subordinate MDM server and associated with a policy signing key uniquely associated to the policy</selectable>
+          MDM agent or subordinate MDM server using
+              <selectables linebreak="yes">
+                <selectable id="fmt_pol_3_x509_agent">client authentication via an X.509 certificate representing the MDM agent</selectable>
+                <selectable id="fmt_pol_3_x509_sub">client authentication via an X.509 certificate representing the subordinate MDM server</selectable>
+                <selectable id="fmt_pol_3_token_agent">a token issued to the MDM agent and associated with a policy signing key uniquely associated to the policy</selectable>
+                <selectable id="fmt_pol_3_token_sub">a token issued to the subordinate MDM server and associated with a policy signing key uniquely associated to the policy</selectable>
               </selectables>.
             </title>
             <note role="application">
-              If "client authentication via an X.509 certificate representing the agent subordinate MDM server" is claimed, any corresponding protocols that use this are also claimed in FIA_X509_EXT.2.1 in
-              <xref to="X509"/>. If "a token issued to the agent or subordinate MDM server and associated with a unique policy signing key uniquely associated to the policy" is claimed, "token as defined in FIA_TOK_EXT.1" is claimed in FIA_CLI_EXT.1.1 
-            and the TSF maintains the 
-            association of the key pairs and the agent or subordinate MDM server tokens. When multiple policies are supported, a unique policy signing
-            key for each policy is used.
+              <h:p>
+                If "<xref to="fmt_pol_3_x509_agent"/>" or "<xref to="fmt_pol_3_x509_sub"/>" is claimed, any corresponding protocols that use this are also claimed in FIA_X509_EXT.2.1 in
+                <xref to="X509"/>.
+              </h:p>
+              <h:p>
+                If "<xref to="fmt_pol_3_token_agent"/>" or "<xref to="fmt_pol_3_token_sub"/>" is claimed, "<xref to="fia_cli_token"/>" is claimed in FIA_CLI_EXT.1.1 and the TSF maintains the association of the key pairs and the agent or subordinate MDM server tokens. When multiple policies are supported, a unique policy signing key for each policy is used.
+              </h:p>
             </note>
             <aactivity>
               <TSS>The evaluator shall verify that the ST describes how policies are signed, to include whether the private 
@@ -6322,15 +6388,16 @@ DONE:
                 distributed to the agent or subordinate MDM server.</TSS>
               <Guidance>If applicable, the evaluator shall verify that the operational guidance
                 instructs administrators on configuring the enterprise certificate to be used for signing policies or signing the policies before applying them.</Guidance>
-              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy either at the
-                TOE, in transmission, or at the MDM agent, and verify the TSF signs the update and provides it to the MDM agent or subordinate MDM server.</Tests>
+              <Tests>The evaluator shall perform a policy update in accordance with FMT_SMF.1/SERVER_CONF_AGENT. The evaluator shall examine the policy update, either at the
+                TOE, in transmission, or at the MDM agent or subordinate MDM server. The evaluator shall verify that the TSF signed the policy update and delivered it to the MDM agent or subordinate MDM server.</Tests>
             </aactivity>
           </f-element>
           <audit-event/>
         </f-component>
         <!-- FMT_POL_EXT.3 Subordinate MDM Trusted Policy Update -->
         <f-component cc-id="fmt_pol_ext.3" id="fmt-pol-ext-3" name="Subordinate MDM Trusted Policy Update" status="sel-based">
-          <depends on-sel="ITC_SUBORDINATE_MDM"/>
+          <depends on-sel="ITC_IS_SUBORDINATE_MDM"/>
+          <consistency-rationale/>
           <comp-lev>defines requirements for using digitally signed policies and policy updates by the subordinate MDM server.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>
@@ -6357,6 +6424,7 @@ DONE:
                 <xref to="X509"/>.
                 <testlist>
                   <test>The evaluator shall perform a policy update from an available configuration interface (such as through a test primary MDM server). The evaluator shall verify the update is signed and is provided to the subordinate MDM server. The evaluator shall verify the subordinate MDM server accepts the digitally signed policy.</test>
+                  <h:br/>
                   <test>The evaluator shall perform a policy update from an available configuration interface (such as through a test primary MDM server). The evaluator shall provide an unsigned and an incorrectly signed policy to the subordinate MDM server. The evaluator shall verify the subordinate MDM server does not accept the digitally signed policy.</test>
                 </testlist>
               </Tests>
@@ -6366,6 +6434,7 @@ DONE:
         </f-component>
         <!-- FMT_SAE_EXT.1 Security Attribute Expiration -->
         <f-component cc-id="fmt_sae_ext.1" id="fmt-sae-ext-1" name="Security Attribute Expiration" status="objective">
+          <consistency-rationale/>
           <comp-lev>defines requirements for the expiration time for enrollment authentication.</comp-lev>
           <management>
             The following action could be considered for the management functions in FMT.
@@ -6399,8 +6468,8 @@ DONE:
               authenticator must only be valid for a configurable time limit. If the authenticator is expired, even if entered correctly, enrollment must not occur.
               <h:br/>
               <h:br/>
-              The length of the time the authenticator is valid for is configured per function c.5 in FMT_SMF.1/SERVER_CONF_SERVER. If FMT_SAE_EXT.1 is included in the ST, then 
-              function g must be selected in FMT_SMF.1/SERVER_CONF_SERVER.
+              The length of the time the authenticator is valid for is configured per function b.6 in FMT_SMF.1/SERVER_CONF_SERVER. If FMT_SAE_EXT.1 is included in the ST, then 
+              function b.6 must be selected in FMT_SMF.1/SERVER_CONF_SERVER.
             </note>
             <aactivity>
               <TSS>The evaluator shall verify that the TSS contains a description of the process of
@@ -6460,6 +6529,7 @@ DONE:
                 The evaluator shall perform the following tests:
                 <testlist>
                   <test>The evaluator shall ensure that the MAS client can only access the applications specified for the group they are enrolled in. The evaluator shall create a user group, making sure that the MAS client user is excluded from the group. The evaluator shall then verify that an application accessible to that group cannot be accessed.</test>
+                  <h:br/>
                   <test>The evaluator shall take the previous test scenario, but this time include the MAS client user in the group and verify that the application can now be accessed.</test>
                 </testlist>
               </Tests>
@@ -6529,7 +6599,7 @@ DONE:
                 <h:li><ctr id="smf30" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of audio or visual collection devices</assignable>  across device,  <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_30">on a per-app basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_31">on a per-group of applications processes basis</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_32">no other method</selectable></selectables>  (PP_MDF/PP_GPOS Function 5)</h:li>
                 <h:li><ctr id="smf47" ctr-type="mgmt" pre=""/>. The unlock banner policy (PP_MDF/PP_GPOS Function 36)</h:li>
               </h:ul>
-              <h:ul style="list-style-type:none"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_33"><ctr id="smf31" ctr-type="mgmt" pre=""/>. Enable and disable policy for the VPN protection across MD, <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_34">on a per-app basis,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-group of application processes basis,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_36">no other method</selectable></selectables> (PP_MDF/PP_GPOS Function 3),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_37"><ctr id="smf32" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of radios</assignable> (PP_MDF/PP_GPOS Function 4),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_39"><ctr id="smf33" ctr-type="mgmt" pre=""/>. Enable and disable policy for data signaling over <assignable>list of externally accessible hardware ports</assignable> (PP_MDF/PP_GPOS Function 24),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_41"><ctr id="smf34" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of protocols where the device acts as a server</assignable> (PP_MDF/PP_GPOS Function 25),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_43"><ctr id="smf35" ctr-type="mgmt" pre=""/>. Enable and disable policy for developer modes (PP_MDF/PP_GPOS Function 26),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_44"><ctr id="smf36" ctr-type="mgmt" pre=""/>. Enable policy for data-at-rest protection (PP_MDF/PP_GPOS Function 19),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_45"><ctr id="smf37" ctr-type="mgmt" pre=""/>. Enable policy for removable media's data-at-rest protection (PP_MDF/PP_GPOS Function 20),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_46"><ctr id="smf38" ctr-type="mgmt" pre=""/>. Enable and disable policy for local authentication bypass (PP_MDF/PP_GPOS Function 27),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_47"><ctr id="smf39" ctr-type="mgmt" pre=""/>. The Bluetooth trusted channel policy:<h:br/><h:ol type="a"><h:li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth PP-Module Function BT-1)</h:li><h:li>change the Bluetooth device name (Bluetooth PP-Module Function BT-2)</h:li><h:li> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_48">Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth PP-Module Function BT-3),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_49">allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth PP-Module Function BT-4),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_50">configure allowable methods of Out of Band pairing (Bluetooth PP-Module Function BT-5),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_51">disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth PP-Module Function BT-6),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_52">disable and enable the Connection mode (Bluetooth PP-Module Function BT-7),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_53">disable and enable the Bluetooth services or profiles available on the device (Bluetooth PP-Module Function BT-8),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_54">specify minimum level of security for each pairing (Bluetooth PP-Module Function BT-9),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_55">no other Bluetooth configuration</selectable></selectables></h:li></h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_56"><ctr id="smf40" ctr-type="mgmt" pre=""/>. Enable and disable policy for display notification in the locked state of: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_57">email notifications,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_58">calendar appointments,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_59">contact associated with phone call notification,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_60">text message notification,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_61">other application-based notifications</selectable></selectables> (PP_MDF/PP_GPOS Function 18),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_62"><ctr id="smf41" ctr-type="mgmt" pre=""/>. Policy for establishing a trusted channel or disallowing establishment if the MD cannot establish a connection to determine the validity of a certificate (PP_MDF/PP_GPOS Function 30),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_63"><ctr id="smf42" ctr-type="mgmt" pre=""/>. Enable and disable policy for the cellular protocols used to connect to cellular network base stations (PP_MDF/PP_GPOS Function 31),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_64"><ctr id="smf43" ctr-type="mgmt" pre=""/>. Policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database (PP_MDF/PP_GPOS Function 29),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_65"><ctr id="smf44" ctr-type="mgmt" pre=""/>. The: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_66">certificate,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_67">public key</selectable></selectables> used to validate digital signature on applications (PP_MDF/PP_GPOS Function 33),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_68"><ctr id="smf45" ctr-type="mgmt" pre=""/>. Policy for exceptions for shared use of keys or secrets by multiple applications (PP_MDF/PP_GPOS Function 34),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_69"><ctr id="smf46" ctr-type="mgmt" pre=""/>. Policy for exceptions for destruction of keys or secrets by applications that did not import the key or secret (PP_MDF/PP_GPOS Function 35),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_70"><ctr id="smf48" ctr-type="mgmt" pre=""/>. Configure the auditable items (PP_MDF/PP_GPOS Function 37),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_71"><ctr id="smf49" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_72">USB mass storage mode,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_73">USB data transfer without user authentication,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_74">USB data transfer without authentication of the connection system</selectable></selectables> (PP_MDF/PP_GPOS Function 39),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_75"><ctr id="smf50" ctr-type="mgmt" pre=""/>. Enable and disable backup of <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_76">all applications,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_77">selected applications,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_78">selected groups of applications,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_79">configuration data</selectable></selectables> to <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_80">locally connected system</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_81">remote system</selectable></selectables> (PP_MDF/PP_GPOS Function 40),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_82"><ctr id="smf51" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_83">Bluetooth tethering,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_84">USB tethering authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_85">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_86">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_87">no authentication</selectable></selectables> </selectable></selectables> (PP_MDF/PP_GPOS Function 41),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_88"><ctr id="smf52" ctr-type="mgmt" pre=""/>. Enable and disable location services: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_89">across device,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_90">on a per-app basis,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_91">on a per-group of application processes basis</selectable></selectables> (PP_MDF/PP_GPOS Function 21),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_92"><ctr id="smf53" ctr-type="mgmt" pre=""/>. Enable and disable policy for user unenrollment,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_93"><ctr id="smf54" ctr-type="mgmt" pre=""/>. Enable and disable policy for the Always-On VPN protection across device (PP_MDF/PP_GPOS Function 45),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_94"><ctr id="smf55" ctr-type="mgmt" pre=""/>. Enable and disable policy for use of Biometric Authentication Factor (PP_MDF/PP_GPOS Function 22),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_95"><ctr id="smf56" ctr-type="mgmt" pre=""/>. Connectivity timeout policy: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_96">allowed <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_97">number of missed reachability events</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_98">length of time without server connectivity</selectable></selectables>,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_99">when server connectivity timeout is exceeded agent shall <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_100">disable user password</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_101">wipe device</selectable></selectables> and <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_102"><assignable>other action</assignable></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_104">none</selectable></selectables> </selectable></selectables>,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_105"><ctr id="smf57" ctr-type="mgmt" pre=""/>. Enable and disable multi-user modes,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_106"><ctr id="smf58" ctr-type="mgmt" pre=""/>. Enable and disable automatic updates of system software,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_107"><ctr id="smf59" ctr-type="mgmt" pre=""/>. Enable and disable removable media,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_108"><ctr id="smf60" ctr-type="mgmt" pre=""/>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies</selectable></selectables>.</h:ul>
+              <h:ul style="list-style-type:none"> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_33"><ctr id="smf31" ctr-type="mgmt" pre=""/>. Enable and disable policy for the VPN protection across MD, <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_34">on a per-app basis,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_35">on a per-group of application processes basis,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_36">no other method</selectable></selectables> (PP_MDF/PP_GPOS Function 3),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_37"><ctr id="smf32" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of radios</assignable> (PP_MDF/PP_GPOS Function 4),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_39"><ctr id="smf33" ctr-type="mgmt" pre=""/>. Enable and disable policy for data signaling over <assignable>list of externally accessible hardware ports</assignable> (PP_MDF/PP_GPOS Function 24),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_41"><ctr id="smf34" ctr-type="mgmt" pre=""/>. Enable and disable policy for <assignable>list of protocols where the device acts as a server</assignable> (PP_MDF/PP_GPOS Function 25),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_43"><ctr id="smf35" ctr-type="mgmt" pre=""/>. Enable and disable policy for developer modes (PP_MDF/PP_GPOS Function 26),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_44"><ctr id="smf36" ctr-type="mgmt" pre=""/>. Enable policy for data-at-rest protection (PP_MDF/PP_GPOS Function 19),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_45"><ctr id="smf37" ctr-type="mgmt" pre=""/>. Enable policy for removable media's data-at-rest protection (PP_MDF/PP_GPOS Function 20),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_46"><ctr id="smf38" ctr-type="mgmt" pre=""/>. Enable and disable policy for local authentication bypass (PP_MDF/PP_GPOS Function 27),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_47"><ctr id="smf39" ctr-type="mgmt" pre=""/>. The Bluetooth trusted channel policy:<h:br/><h:ol type="a"><h:li>Disable/enable the Discoverable (for BR/EDR) and Advertising (for LE) modes (Bluetooth PP-Module Function BT-1)</h:li><h:li>change the Bluetooth device name (Bluetooth PP-Module Function BT-2)</h:li><h:li> <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_48">Provide separate controls for turning the BR/EDR and LE radios on and off (Bluetooth PP-Module Function BT-3),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_49">allow and disallow additional wireless technologies to be used with Bluetooth (Bluetooth PP-Module Function BT-4),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_50">configure allowable methods of Out of Band pairing (Bluetooth PP-Module Function BT-5),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_51">disable and enable Discoverable (for BR/EDR) and Advertising (for LE) modes separately (Bluetooth PP-Module Function BT-6),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_52">disable and enable the Connection mode (Bluetooth PP-Module Function BT-7),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_53">disable and enable the Bluetooth services or profiles available on the device (Bluetooth PP-Module Function BT-8),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_54">specify minimum level of security for each pairing (Bluetooth PP-Module Function BT-9),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_55">no other Bluetooth configuration</selectable></selectables></h:li></h:ol></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_56"><ctr id="smf40" ctr-type="mgmt" pre=""/>. Enable and disable policy for display notification in the locked state of: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_57">email notifications,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_58">calendar appointments,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_59">contact associated with phone call notification,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_60">text message notification,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_61">other application-based notifications</selectable></selectables> (PP_MDF/PP_GPOS Function 18),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_62"><ctr id="smf41" ctr-type="mgmt" pre=""/>. Policy for establishing a trusted channel or disallowing establishment if the MD cannot establish a connection to determine the validity of a certificate (PP_MDF/PP_GPOS Function 30),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_63"><ctr id="smf42" ctr-type="mgmt" pre=""/>. Enable and disable policy for the cellular protocols used to connect to cellular network base stations (PP_MDF/PP_GPOS Function 31),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_64"><ctr id="smf43" ctr-type="mgmt" pre=""/>. Policy for import and removal by applications of X.509v3 certificates in the Trust Anchor Database (PP_MDF/PP_GPOS Function 29),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_65"><ctr id="smf44" ctr-type="mgmt" pre=""/>. The: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_66">certificate,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_67">public key</selectable></selectables> used to validate digital signature on applications (PP_MDF/PP_GPOS Function 33),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_68"><ctr id="smf45" ctr-type="mgmt" pre=""/>. Policy for exceptions for shared use of keys or secrets by multiple applications (PP_MDF/PP_GPOS Function 34),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_69"><ctr id="smf46" ctr-type="mgmt" pre=""/>. Policy for exceptions for destruction of keys or secrets by applications that did not import the key or secret (PP_MDF/PP_GPOS Function 35),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_70"><ctr id="smf48" ctr-type="mgmt" pre=""/>. Configure the auditable items (PP_MDF/PP_GPOS Function 37),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_71"><ctr id="smf49" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_72">USB mass storage mode,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_73">USB data transfer without user authentication,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_74">USB data transfer without authentication of the connection system</selectable></selectables> (PP_MDF/PP_GPOS Function 39),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_75"><ctr id="smf50" ctr-type="mgmt" pre=""/>. Enable and disable backup of <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_76">all applications,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_77">selected applications,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_78">selected groups of applications,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_79">configuration data</selectable></selectables> to <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_80">locally connected system</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_81">remote system</selectable></selectables> (PP_MDF/PP_GPOS Function 40),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_82"><ctr id="smf51" ctr-type="mgmt" pre=""/>. Enable and disable <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_83">Bluetooth tethering,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_84">USB tethering authenticated by <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_85">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_86">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_87">no authentication</selectable></selectables> </selectable></selectables> (PP_MDF/PP_GPOS Function 41),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_88"><ctr id="smf52" ctr-type="mgmt" pre=""/>. Enable and disable location services: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_89">across device,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_90">on a per-app basis,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_91">on a per-group of application processes basis</selectable></selectables> (PP_MDF/PP_GPOS Function 21),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_92"><ctr id="smf53" ctr-type="mgmt" pre=""/>. Enable and disable policy for user unenrollment,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_93"><ctr id="smf54" ctr-type="mgmt" pre=""/>. Enable and disable policy for the Always-On VPN protection across device (PP_MDF/PP_GPOS Function 45),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_94"><ctr id="smf55" ctr-type="mgmt" pre=""/>. Enable and disable policy for use of Biometric Authentication Factor (PP_MDF/PP_GPOS Function 22),</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_95"><ctr id="smf56" ctr-type="mgmt" pre=""/>. Connectivity timeout policy: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_96">allowed <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_97">number of missed reachability events</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_98">length of time without server connectivity</selectable></selectables>,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_99">when server connectivity timeout is exceeded agent shall <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_100">disable user password</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_101">wipe device</selectable></selectables> and <selectables><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_102"><assignable>other action</assignable></selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_104">none</selectable></selectables> </selectable></selectables>,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_105"><ctr id="smf57" ctr-type="mgmt" pre=""/>. Enable and disable multi-user modes,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_106"><ctr id="smf58" ctr-type="mgmt" pre=""/>. Enable and disable automatic updates of system software,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_107"><ctr id="smf59" ctr-type="mgmt" pre=""/>. Enable and disable removable media,</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_108"><ctr id="smf60" ctr-type="mgmt" pre=""/>. Enable/disable wireless network bridging capability (e.g. hotspot) authenticated by: <selectables linebreak="yes"><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_109">pre-shared key</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_110">passcode</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_111">no authentication</selectable></selectables> (WLAN Client PP-Module Function WL-3)</selectable><selectable id="fmt_smf.1.1_SERVER_CONF_AGENT_112"><ctr id="smf61" ctr-type="mgmt" pre=""/>. <assignable>list of other policies to be provided by the MD</assignable>, no other policies</selectable></selectables>.</h:ul>
             </title>
             <note role="application">
               This requirement captures all the configuration functionality the TSF provides the administrator to configure the MDM
@@ -6661,16 +6731,27 @@ DONE:
                 The evaluator shall perform the following tests based on the supported functions:
                 <testlist>
                   <test>Testing for function 'a' (configuration of features allowed for enrollment) is performed in conjunction with the use of the function (FIA_ENR_EXT.1).</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.1' is claimed, the evaluator shall configure the TSF authentication certificates and verify that the correct certificate is used to established trusted connections for all claimed SFRs that require the TOE to present an X.509 certificate to an external entity (i.e., FPT_ITT.1/INTRA_XFER, FPT_ITT.1/INTRA_XFER_AGENT, FTP_ITC.1/OE_XFER_IT, and FTP_TRP.1/TRUSTPATH_ENROLL as necessary).</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.2' is claimed, the evaluator shall</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.3' is claimed, testing for configuration of the warning banner is performed in conjunction with the use of the function (FTA_TAB.1).</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.4' is claimed, the evaluator shall configure the TOE to transmit a representative set of commands to an enrolled agent. The evaluator shall then configure several different time intervals in series, demonstrating with each time interval that the TSF issues the configured commands over that interval.</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.5' is claimed, the evaluator shall configure the TOE to collect different sets of privacy-sensitive information from mobile devices based on whether they are enterprise-owned or personally-owned, enroll devices as those categories, and verify that only the configured attributes are collected from each.</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.6' is claimed, testing for configuration of how long the enrollment authenticator is valid is performed in conjunction with the use of the function (FMT_SAE_EXT.1).</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.7' is claimed, the evaluator shall configure the TOE to interact with its distributed components. This is performed in conjunction with the use of the function (FCO_CPC_EXT.1).</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.8' is claimed, the evaluator shall configure the TOE's cryptographic functionality with different settings and observe that the configured settings are applied each time (e.g., by configuring connection parameters for secure communications and observing that those communications use the configured settings).</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.9' is claimed, the evaluator shall configure the TOE as a subordinate MDM server and demonstrate that it can receive policies from a primary server.</test>
+                  <h:br/>
                   <test>[conditional] If function 'b.10' is claimed, the evaluator shall configure the TOE as a primary MDM server and demonstrate that it can transmit policies to a subordinate server.</test>
+                  <h:br/>
                   <test>[conditional] If any other functions are claimed in b.11, the evaluator shall verify that the functions can be performed in the manner described in the operational guidance.</test>
                 </testlist>
               </Tests>
@@ -6733,7 +6814,7 @@ DONE:
         </f-component>
       </section>
       <!-- 5.1.6 Class FPT: Protection of the TSF -->
-      <section id="" title="Class FPT: Protection of the TSF">
+      <section id="fpt" title="Class FPT: Protection of the TSF">
         <ext-comp-def title="Use of Supported Services and APIs" fam-id="FPT_API_EXT">
           <fam-behavior>This family describes document platform APIs when selecting "invoke platform-provided functionality."</fam-behavior>
         </ext-comp-def>
@@ -6748,6 +6829,7 @@ DONE:
         </ext-comp-def>
         <!-- FPT_API_EXT.1 Use of Supported Services and APIs -->
         <f-component cc-id="fpt_api_ext.1" id="fpt-api-ext-1" name="Use of Supported Services and APIs">
+          <consistency-rationale/>
           <comp-lev>defines requirements for API usage.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>There are no auditable events foreseen.</audit>
@@ -6888,6 +6970,7 @@ DONE:
               <Tests>
                 <testlist>
                   <test>The evaluator shall ensure that communications using each specified (in the operational guidance) communication method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure, for each method of communication, the channel data is not sent in plaintext.</test>
                 </testlist>
                 Further evaluation activities are associated with the specific protocols.
@@ -6996,6 +7079,7 @@ DONE:
               <Tests>
                 <testlist>
                   <test>The evaluator shall ensure that communications using each specified (in the operational guidance) communication method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure, for each method of communication, the channel data is not sent in plaintext.</test>
                 </testlist>
                 Further evaluation activities are associated with the specific protocols.
@@ -7010,6 +7094,7 @@ DONE:
         </f-component>
         <!-- FPT_LIB_EXT.1 Use of Third-Party Libraries -->
         <f-component cc-id="fpt_lib_ext.1" id="fpt-lib-ext-1" name="Use of Third-Party Libraries">
+          <consistency-rationale/>
           <comp-lev>defines requirements for third-party libraries.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>There are no auditable events foreseen.</audit>
@@ -7046,7 +7131,7 @@ DONE:
         </f-component>
         <!-- FPT_TDC.1/Policy Inter-TSF Basic TSF Data Consistency (Policy Data) -->
         <f-component cc-id="fpt_tdc.1" id="fpt-tdc-1-policy" name="Inter-TSF Basic TSF Data Consistency (Policy Data)" iteration="Policy" status="sel-based">
-          <depends on-sel="ITC_SUBORDINATE_MDM"/>
+          <depends on-sel="ITC_IS_SUBORDINATE_MDM"/>
           <f-element id="fpt-tdc-interpret">
             <title>
               The TSF shall provide the capability to consistently interpret
@@ -7118,6 +7203,7 @@ DONE:
         </f-component>
         <!-- FPT_TST_EXT.1 Functionality Testing -->
         <f-component cc-id="fpt_tst_ext.1" id="fpt-tst-ext-1" name="Functionality Testing">
+          <consistency-rationale/>
           <comp-lev>defines requirements for the integrity of self-testing.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>
@@ -7181,6 +7267,7 @@ DONE:
                 The evaluator shall perform the following tests:
                 <testlist>
                   <test>The evaluator performs the integrity check on a known good TSF executable and verifies that the check is successful.</test>
+                  <h:br/>
                   <test>The evaluator modifies the TSF executable, performs the integrity check on the modified TSF executable and verifies that the check fails.</test>
                 </testlist>
               </Tests>
@@ -7200,6 +7287,7 @@ DONE:
         </f-component>
         <!-- FPT_TUD_EXT.1 Trusted Update -->
         <f-component cc-id="fpt_tud_ext.1" id="fpt-tud-ext-1" name="Trusted Update">
+          <consistency-rationale/>
           <comp-lev>defines requirements for authorized administrators to manage software versions
             and updates.</comp-lev>
           <management>
@@ -7239,13 +7327,9 @@ DONE:
           <f-element id="fel-tud-func">
             <title>The TSF shall  <selectables><selectable id="fpt_tud_ext.1.3_1">invoke platform-provided functionality</selectable><selectable id="fpt_tud_ext.1.3_2">implement functionality</selectable></selectables>  to provide a means to verify software updates to the TSF using a digital signature mechanism prior to installing those updates.</title>
             <note role="application">
-              The software on the TSF will occasionally need to be updated. This requirement is intended to ensure that the TSF only installs updates provided by the vendor, as updates provided by another source may contain malicious code. If the server is not an appliance, the update will be verified by the platform on which the server software runs. If the server is an appliance, the update must be verified by the TSF.
-              <h:br/>
-              <h:br/>
-              For distributed TOEs, all TOE components must support Trusted Update. The verification of the signature or hash on the update must either be done by each TOE component itself (signature verification) or for each TOE component (hash verification).
-              <h:br/>
-              <h:br/>
-              Updating a distributed TOE might lead to the situation where different TOE components are running different software versions. Depending on the differences between the different software versions the impact of a mixture of different software versions might be no problem at all or critical to the proper functioning of the TOE. The TSS must detail the mechanisms that support the continuous proper functioning of the TOE during trusted update of distributed TOEs.
+              <h:p>The software on the TSF will occasionally need to be updated. This requirement is intended to ensure that the TSF only installs updates provided by the vendor, as updates provided by another source may contain malicious code.</h:p>
+              <h:p>For distributed TOEs, all TOE components must support Trusted Update. The verification of the signature or hash on the update must either be done by each TOE component itself (signature verification) or for each TOE component (hash verification).</h:p>
+              <h:p>Updating a distributed TOE might lead to the situation where different TOE components are running different software versions. Depending on the differences between the different software versions the impact of a mixture of different software versions might be no problem at all or critical to the proper functioning of the TOE. The TSS must detail the mechanisms that support the continuous proper functioning of the TOE during trusted update of distributed TOEs.</h:p>
             </note>
             <aactivity level="element">
               <TSS>
@@ -7259,6 +7343,7 @@ DONE:
                 The evaluator shall perform the following tests:
                 <testlist>
                   <test>The evaluator shall attempt to initiate an update digitally signed by the vendor and verify that the update is successfully installed.</test>
+                  <h:br/>
                   <test>The evaluator shall attempt to install an update not digitally signed by the vendor and verify that either the signature can be checked (allowing the update to be aborted) or the update is not installed.</test>
                 </testlist>
               </Tests>
@@ -7270,7 +7355,7 @@ DONE:
         </f-component>
       </section>
       <!-- 5.1.7 FTA: TOE Access -->
-      <section id="" title="FTA: TOE Access">
+      <section id="fta" title="FTA: TOE Access">
         <!-- FTA_TAB.1 Default TOE Access Banners -->
         <f-component cc-id="fta_tab.1" id="fta-tab-1" name="Default TOE Access Banners" status="optional">
           <f-element id="fta-tab-1e1">
@@ -7294,7 +7379,7 @@ DONE:
         </f-component>
       </section>
       <!-- 5.1.8 Class FTP: Trusted Path/Channels -->
-      <section id="" title="Class FTP: Trusted Path/Channels">
+      <section id="ftp" title="Class FTP: Trusted Path/Channels">
         <ext-comp-def title="Trusted Channel" fam-id="FTP_ITC_EXT">
           <fam-behavior>The family defines requirements for communication channels between itself and other communication channels.</fam-behavior>
         </ext-comp-def>
@@ -7412,7 +7497,9 @@ DONE:
               <Tests>
                 <testlist>
                   <test>The evaluator shall ensure that communications using each specified (in the operational guidance) agent-server communication method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure, for each method of agent-server communication, the channel data is not sent in plaintext.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure, for each communication channel with the MDM server, that a protocol analyzer identifies the traffic as the protocol under testing.</test>
                 </testlist>
                 Further evaluation activities are associated with the specific protocols.
@@ -7443,7 +7530,7 @@ DONE:
               <h:b>authorized</h:b>
               IT
               <h:b>
-                entities supporting the following capabilities: audit server,
+                entities supporting the following capabilities: audit server, compliance server,
                 <selectables linebreak="yes">
                   <selectable id="ftp_itc.1.1_OE_XFER_IT_3">authentication server,</selectable>
                   <selectable id="ftp_itc.1.1_OE_XFER_IT_4">primary MDM server,</selectable>
@@ -7451,77 +7538,71 @@ DONE:
                   <selectable id="ftp_itc.1.1_OE_XFER_IT_6">
                     <assignable>other capabilities</assignable></selectable>
                 </selectables></h:b>
-              that is logically distinct from other communication channels and provides assured identification of its endpoints
-              and protection of the channel data from modification or disclosure.
+              that is logically distinct from other communication channels and provides assured identification of its endpoints and protection of the channel data from modification or disclosure.
             </title>
             <note role="application">
-              This requirement ensures that all communications between the TOE and external IT entities other than MDM agents are protected through the use of an encrypted communications channel. If the TOE's operational environment includes MDM agents (i.e., they are not part of the TOE), that is covered by FTP_ITC.1/OE_XFER_AGENT. Protected communications for remote administration is covered by FTP_TRP.1/TRUSTPATH_REM_ADMIN.
-              <h:br/>
-              <h:br/>
-              The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. The operational environment may or may not use mutual authentication, but the TOE is expected to make use of it if it does. Where X.509 validation is needed (e.g., if the TOE acts as a TLS client),
-              <xref to="X509"/>
-              must be claimed. To distinguish X.509 validation for external communications from validation for internal communications (e.g., communication with a remote IT entity in the operational environment versus communication between TOE components), FIA_X509_EXT.1 from
-              <xref to="X509"/>
-              must be included in the ST and iterated as "FIA_X509_EXT.1/External" per the guidance in
-              <xref to="package-usage"/>.
-              <h:br/>
-              <h:br/>
-              Protection (by one of the listed protocols) is required at least for communications with the server that collects 
-              the audit information. If it communicates with an authentication server (e.g., RADIUS), then the ST 
+              <h:p>This requirement ensures that all communications between the TOE and external IT entities other than MDM agents are protected through the use of an encrypted communications channel. If the TOE's operational environment includes MDM agents (i.e., they are not part of the TOE), that is covered by FTP_ITC.1/OE_XFER_AGENT. Protected communications for remote administration is covered by FTP_TRP.1/TRUSTPATH_REM_ADMIN.</h:p>
+              <h:p>
+                The trusted channel uses secure protocols that preserve the confidentiality and integrity of MDM communications. For this particular use, any of IPsec, TLS, DTLS, HTTPS, or SSH can be used. If TLS or DTLS is used, mutual authentication must be supported regardless of whether the TOE acts as the client or the server in this connection. The operational environment may or may not use mutual authentication, but the TOE is expected to make use of it if it does. Where X.509 validation is needed (e.g., if the TOE acts as a TLS client),
+                <xref to="X509"/>
+                must be claimed. To distinguish X.509 validation for external communications from validation for internal communications (e.g., communication with a remote IT entity in the operational environment versus communication between TOE components), FIA_X509_EXT.1 from
+                <xref to="X509"/>
+                must be included in the ST and iterated as "FIA_X509_EXT.1/External" per the guidance in
+                <xref to="package-usage"/>.
+              </h:p>
+              <h:p>Protection (by one of the listed protocols) is required at least for communications with the server(s) that collect 
+              the audit information (FAU_STG.1.1) and/or compliance information (FAU_CRP_EXT.1.1). If it communicates with an authentication server (e.g., RADIUS), then the ST 
               author chooses "authentication server" in FTP_ITC.1.1/OE_XFER_IT and this connection must be protected 
               by one of the listed protocols. Likewise if the TOE acts as either a primary or subordinate MDM server, then 
               "primary MDM server" or "subordinate MDM server" is selected for the device it communicates with and those 
               communications are protected by one of the listed protocols. If other authorized IT entities (e.g., NTP server) 
               are protected, the ST author makes the appropriate assignments (for those entities) and selections (for the protocols 
-              that are used to protect those connections).
-              <h:br/>
-              <h:br/>
-              If the ST author selects that the TSF implements "IPsec as defined in
-              <xref to="mod-vpnclient"/>," the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.
-              <h:br/>
-              <h:br/>
-              If the ST author selects that the TSF implements "SSH as defined in
-              <xref to="ssh"/>," the TSF must be validated against
-              <xref to="ssh"/>.
-              <h:br/>
-              <h:br/>
-              If the ST author selects that the TSF implements "mutually authenticated TLS as defined in
-              <xref to="tls"/>" or "mutually authenticated DTLS as defined in
-              <xref to="tls"/>," the TSF must be validated against requirements from
-              <xref to="tls"/>, with the following selections made:
-              <h:ul>
-                <h:li>
-                  FCS_TLS_EXT.1:
-                  <h:ul>
-                    <h:li>either TLS or DTLS is selected depending on the selection made in FTP_ITC.1.1/OE_XFER_IT</h:li>
-                    <h:li>either client or server is selected as appropriate</h:li>
-                  </h:ul>
-                </h:li>
-                <h:li>
-                  FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
-                  <h:ul>
-                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
-                    <h:li>mutual authentication must be selected</h:li>
-                  </h:ul>
-                </h:li>
-                <h:li>
-                  FCS_DTLSC_EXT.1.1 or FCS_DTLSS_EXT.1.1 (as appropriate):
-                  <h:ul>
-                    <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
-                    <h:li>mutual authentication must be selected</h:li>
-                  </h:ul>
-                </h:li>
-              </h:ul>
-              Protocol, DRBG, Certificate validation, algorithm, and similar services may be met with
-              platform-provided 
-              services.
-              <h:br/>
-              <h:br/>
-              The requirement implies that not only are communications protected when they are initially established, but 
+              that are used to protect those connections).</h:p>
+              <h:p>
+                If the ST author selects that the TSF implements "IPsec as defined in
+                <xref to="mod-vpnclient"/>," the TSF must claim conformance to a PP-Configuration that includes the VPN Client PP-Module.
+              </h:p>
+              <h:p>
+                If the ST author selects that the TSF implements "SSH as defined in
+                <xref to="ssh"/>," the TSF must be validated against
+                <xref to="ssh"/>.
+              </h:p>
+              <h:p>
+                If the ST author selects that the TSF implements "mutually authenticated TLS as defined in
+                <xref to="tls"/>" or "mutually authenticated DTLS as defined in
+                <xref to="tls"/>," the TSF must be validated against requirements from
+                <xref to="tls"/>, with the following selections made:
+                <h:ul>
+                  <h:li>
+                    FCS_TLS_EXT.1:
+                    <h:ul>
+                      <h:li>either TLS or DTLS is selected depending on the selection made in FTP_ITC.1.1/OE_XFER_IT</h:li>
+                      <h:li>either client or server is selected as appropriate</h:li>
+                    </h:ul>
+                  </h:li>
+                  <h:li>
+                    FCS_TLSC_EXT.1.1 or FCS_TLSS_EXT.1.1 (as appropriate):
+                    <h:ul>
+                      <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                      <h:li>mutual authentication must be selected</h:li>
+                    </h:ul>
+                  </h:li>
+                  <h:li>
+                    FCS_DTLSC_EXT.1.1 or FCS_DTLSS_EXT.1.1 (as appropriate):
+                    <h:ul>
+                      <h:li>The ciphersuites selected must correspond with the algorithms and hash functions allowed in FCS_COP.1.</h:li>
+                      <h:li>mutual authentication must be selected</h:li>
+                    </h:ul>
+                  </h:li>
+                </h:ul>
+                Protocol, DRBG, Certificate validation, algorithm, and similar services may be met with
+              platform-provided services.
+              </h:p>
+              <h:p>The requirement implies that not only are communications protected when they are initially established, but 
               also on resumption after an outage. It may be the case that some part of the TOE setup involves 
               manually setting up tunnels to protect other communication, and if after an outage the TOE attempts 
               to re-establish the communication automatically with (the necessary) manual intervention, there may be a window created 
-              where an attacker might be able to gain critical information or compromise a connection.
+              where an attacker might be able to gain critical information or compromise a connection.</h:p>
             </note>
           </f-element>
           <f-element id="ftp-itc-1e2-ixi">
@@ -7566,7 +7647,9 @@ DONE:
               <Tests>
                 <testlist>
                   <test>The evaluator shall ensure that communications using each specified (in the operational guidance) communication method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure, for each method of communication, the channel data is not sent in plaintext.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure, for each communication channel with the MDM server, that a protocol analyzer identifies the traffic as the protocol under testing.</test>
                 </testlist>
                 Further evaluation activities are associated with the specific protocols.
@@ -7581,6 +7664,7 @@ DONE:
         </f-component>
         <!-- FTP_ITC_EXT.1 Trusted Channel -->
         <f-component cc-id="ftp_itc_ext.1" id="ftp-itc-ext-1" name="Trusted Channel">
+          <consistency-rationale/>
           <comp-lev>defines requirements for providing logically distinct communication channels.</comp-lev>
           <management>There are no management activities foreseen.</management>
           <audit>There are no auditable events foreseen.</audit>
@@ -7598,7 +7682,7 @@ DONE:
                 <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER</h:b>,</selectable>
                 <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER_AGENT</h:b>,</selectable>
                 <selectable id="ftp_itc_ext.1.1_1">a subordinate MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
-                <selectable id="ITC_SUBORDINATE_MDM">a primary MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
+                <selectable id="ITC_IS_SUBORDINATE_MDM">a primary MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
                 <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER</h:b></selectable>
               </selectables>
               that is logically distinct from other communication channels, as specified in
@@ -7615,15 +7699,22 @@ DONE:
                 <selectables linebreak="yes">
                   <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE</selectable>
                   <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE</selectable>
-                  <selectable>a subordinate MDM server</selectable>
-                  <selectable id="ITC_SUBORDINATE_MDM">a primary MDM server</selectable>
+                  <selectable id="ITC_IS_PRIMARY_MDM">a subordinate MDM server</selectable>
+                  <selectable id="ITC_IS_SUBORDINATE_MDM">a primary MDM server</selectable>
                   <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
                 </selectables>
                 that is logically distinct from other communication channels.
               </title>
             </ext-comp-def-title>
-            <note role="application">This SFR describes the communication channels between the MDM server and an agent that may or may not be inside the TOE boundary, and optionally separate
-              components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST.</note>
+            <note role="application">
+              <h:p>This SFR describes the communication channels between the MDM server and an agent that may or may not be inside the TOE boundary, and optionally separate
+              components comprising a distributed TOE, to determine which selection-based SFRs will need to be included in the ST.</h:p>
+              <h:p>
+                If
+                <xref to="ITC_IS_SUBORDINATE_MDM"/>
+                is selected, then the MDM is a subordinate MDM and communicates with a Primary MDM. If the MDM is a subordinate MDM then FMT_POL_EXT.3 and FPT_TDC.1/POLICY must be included in the ST. "<xref to="ITC_IS_PRIMARY_MDM"/>" should be selected when the MDM is a primary MDM and communicates with a subordinate MDM. If the MDM is neither a primary nor a subordinate MDM, it only communicates with the MDM agents directly, then neither should be selected.
+              </h:p>
+            </note>
             <aactivity>
               <TSS>The evaluator shall ensure that the TSS contains whether the MDM server communication channel is internal or external to the TOE.</TSS>
               <Guidance/>
@@ -7647,20 +7738,14 @@ DONE:
               <h:b>to</h:b>
               provide a
               <h:b>trusted</h:b>
-              communication channel between
-              itself and
-              <h:b>another trusted IT product</h:b>
-              that is logically distinct from other
-              communication
-              <h:b>channels</h:b>
-              and provides assured identification of its endpoints and
-              protection of the
-              <h:b>channel</h:b>
-              data from [<h:i>modification or disclosure</h:i>].
+              communication path between
+              itself and [<h:i>remote</h:i>] users that is logically distinct from other
+              communication paths and provides assured identification of its endpoints and
+              protection of the communicated data from [<h:i>modification, disclosure</h:i>].
             </title>
           </f-element>
           <f-element id="ftp-trp-1e2-te">
-            <title>The TSF shall  <selectables><selectable id="ftp_trp.1.2_TRUSTPATH_ENROLL_1"><h:b>invoke platform-provided functionality</h:b></selectable><selectable id="ftp_trp.1.2_TRUSTPATH_ENROLL_2"><h:b>implement functionality</h:b></selectable></selectables> <h:b>to</h:b> permit   <selectables><selectable id="ftp_trp.1.2_TRUSTPATH_ENROLL_3">the TSF</selectable><selectable id="ftp_trp.1.2_TRUSTPATH_ENROLL_4"><h:b>another trusted IT product</h:b></selectable></selectables>  to initiate communication via the trusted path.</title>
+            <title>The TSF shall  <selectables><selectable id="ftp_trp.1.2_TRUSTPATH_ENROLL_1"><h:b>invoke platform-provided functionality</h:b></selectable><selectable id="ftp_trp.1.2_TRUSTPATH_ENROLL_2"><h:b>implement functionality</h:b></selectable></selectables> <h:b>to</h:b> permit [<h:i>remote</h:i>] users to initiate communication via the trusted path.</title>
           </f-element>
           <f-element id="ftp-trp-1e3-te">
             <title>
@@ -7671,14 +7756,12 @@ DONE:
                 <selectable id="ftp_trp.1.3_TRUSTPATH_ENROLL_2">
                   <h:b>implement functionality</h:b></selectable>
               </selectables>
-              <h:b> to initiate communication via the trusted channel</h:b>
-              for
-              <h:b>
-                <assignable>list of functions for which a trusted channel is required</assignable></h:b>.
+              <h:b>to</h:b>
+              require the use of the trusted path for [<h:i>[user enrollment of device into management]</h:i>].
             </title>
             <note role="application">
-              This requirement ensures that MDM agents are enrolled to the  
-              TOE via a trusted path, and that all communications with the TOE by 
+              This requirement ensures that MD users enroll devices into management by the  
+              TOE (via MDM agent) using a trusted path, and that all communications with the TOE by 
               MD users is performed over this path. MDM agent communications after enrollment is covered by either FPT_ITT.1/INTRA_XFER_AGENT or FTP_ITC.1/OE_XFER_AGENT, depending on whether or not the MDM agent is part of the TOE.
               <h:br/>
               <h:br/>
@@ -7718,7 +7801,9 @@ DONE:
                 For each MDM agent or platform listed as supported in the ST:
                 <testlist>
                   <test>The evaluator shall ensure that communications using each specified (in the operational guidance) enrollment method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
+                  <h:br/>
                   <test>For each method of enrollment supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote user to establish enrollment sessions without invoking the trusted path.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure, for each method enrollment, the channel data is not sent in plaintext.</test>
                 </testlist>
                 Further evaluation activities are associated with the specific protocols.
@@ -7796,8 +7881,11 @@ DONE:
                 The evaluator shall also perform the following tests:
                 <testlist>
                   <test>The evaluator shall ensure that the communications path for joining components to the TSF is tested for each distinct (nonequivalent) component type, setting up the connections as described in the guidance documentation and ensuring that communication is successful. In particular the evaluator shall confirm that requirements on environment protection for the registration process are consistent with observations made on the test configuration (for example, a requirement to isolate the components from the Internet during registration might be inconsistent with the need for a component to contact a license server). If no requirements on the registration environment are identified as necessary to protect confidentiality, then the evaluator shall confirm that the key used for registration can be configured (following the instructions in the guidance documentation) to be at least the same length as the key used for the internal TSF channel that is being enabled. The evaluator shall confirm that the key used for the channel is unique to the pair of components (this is done by identifying the relevant key during the registration test: it is not necessary to examine the key value).</test>
+                  <h:br/>
                   <test>The evaluator shall follow the guidance documentation to ensure that in fact the communication channel can be enabled by an administrator for all the TOE components identified in the guidance documentation as capable of initiation.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure that if the guidance documentation states that the channel data is encrypted then the data observed on the channel is not plaintext.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure that, for each different pair of nonequivalent component types that can use the registration channel, the connection is physically interrupted during a joining attempt. The evaluator shall ensure that when physical connectivity is restored, communications are appropriately protected.</test>
                 </testlist>
                 Further evaluation activities are associated with the specific protocols.
@@ -7890,7 +7978,9 @@ DONE:
                 The evaluator shall also perform the following tests:
                 <testlist>
                   <test>The evaluator shall ensure that communications using each specified (in the operational guidance) remote administration method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
+                  <h:br/>
                   <test>For each method of remote administration supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote user to establish remote administrative sessions without invoking the trusted path.</test>
+                  <h:br/>
                   <test>The evaluator shall ensure, for each method of remote administration, the channel data is not sent in plaintext.</test>
                 </testlist>
                 Further evaluation activities are associated with the specific protocols.
@@ -7904,7 +7994,7 @@ DONE:
           </audit-event>
         </f-component>
       </section>
-    </sec:SFRs>
+    </section>
     <!-- 5.2 Security Assurance Requirements -->
     <section title="Security Assurance Requirements" id="SARs">
       The Security Objectives for the TOE in
@@ -8438,7 +8528,7 @@ DONE:
         </a-component>
       </section>
     </section>
-  </sec:req>
+  </sec:Security_Requirements>
   <appendix title="Implicitly Satisfied Requirements" id="satisfiedreqs">
     <!--   Boilerplate goes here   -->
     <!--  	This appendix lists requirements that should be considered satisfied by products successfully evaluated
