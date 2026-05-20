@@ -1530,7 +1530,7 @@ DONE:
     In addition to the above guidance, if the TOE server acts as a primary MDM server and interfaces with one or more subordinate MDM servers, then the ST 
   	  is required to list all of the supported subordinate MDM servers. All evaluation activity testing that includes the use of a subordinate MDM server should
   	  be completed for each of the subordinate MDM servers listed in the ST. MDM agent testing should be done for devices managed directly by the primary MDM 
-  	  Server, MDM agent testing with a subordinate MDM server will be done during the subordinate MDM server evaluation. If the TOE server acts as a subordinate
+  	  Server. MDM agent testing with a subordinate MDM server will be done during the subordinate MDM server evaluation. If the TOE server acts as a subordinate
   	  MDM server and interfaces with one or more primary MDM servers, then the ST is required to list all of the supported primary MDM servers, along with all
   	  of the supported MDM agents and MD platforms with which it operates. A test primary MDM server may be used for evaluation activity testing that requires
   	  the use of a primary MDM server. For clarification purposes "primary MDM server" and "subordinate MDM server" will be specified when the distinction is 
@@ -1751,8 +1751,8 @@ DONE:
             from those that require additional record content. If the TOE is distributed and the given component does not deal with setting the policy 
             applied to the MDM agent, it is acceptable to not have any administrative actions to audit.
               </h:p>
-              <h:p>Item c includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE server acts as a primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM server" must be selected. For distributed TOEs, if the TOE component directly interacts with a primary MDM server, subordinate MDM server, or MDM agent then the corresponding selection should be made for that component. If the TOE component does not directly interact with any of these entities, then it is acceptable to select "none".</h:p>
-              <h:p>In item e above, "Start up and shut down of the audit functions" must be selected if the TSF has a start up and shut down phase. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required. Additionally, if the TOE is distributed, this applies to all components.</h:p>
+              <h:p>Item b includes those commands, which may be performed automatically based on triggers or on a schedule. If the TOE server acts as a primary MDM server and interfaces with a subordinate MDM server, then "Commands issued to the subordinate MDM server" must be selected. If the TOE server acts as a subordinate MDM server and interfaces with a primary MDM server, then "Status updates provided to the primary MDM server" must be selected. For distributed TOEs, if the TOE component directly interacts with a primary MDM server, subordinate MDM server, or MDM agent then the corresponding selection should be made for that component. If the TOE component does not directly interact with any of these entities, then it is acceptable to select "none".</h:p>
+              <h:p>In item d above, "Start up and shut down of the audit functions" must be selected if the TSF has a start up and shut down phase. If the TSF does not have a distinct start up or shut down phase (e.g., a cloud service), this selection is not required. Additionally, if the TOE is distributed, this applies to all components.</h:p>
               <h:p>
                 Depending on the specific requirements selected by the ST author from SFRs, optional requirements, selection-based requirements, and objective requirements, the ST author should include the appropriate auditable events from
                 <xref g="t-audit-optional"/>,
@@ -7681,15 +7681,15 @@ DONE:
               <selectables linebreak="yes">
                 <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER</h:b>,</selectable>
                 <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER_AGENT</h:b>,</selectable>
-                <selectable id="ftp_itc_ext.1.1_1">a subordinate MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
+                <selectable id="ITC_IS_PRIMARY_MDM">a subordinate MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
                 <selectable id="ITC_IS_SUBORDINATE_MDM">a primary MDM server <h:b>as specified in FTP_ITC.1/OE_XFER_IT</h:b>,</selectable>
                 <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE <h:b>as specified in FPT_ITT.1/INTRA_XFER</h:b></selectable>
               </selectables>
               that is logically distinct from other communication channels, as specified in
               <selectables>
-                <selectable id="ITC_DISTRIBUTED_TOE_ITT1">FPT_ITT.1/INTRA_XFER</selectable>
-                <selectable id="ITC_AgentInTOE_ITT2">FPT_ITT.1/INTRA_XFER_AGENT</selectable>
-                <selectable id="ITC_AgentOutTOE_ITC">FTP_ITC.1/OE_XFER_AGENT</selectable>
+                <selectable id="ITC_DISTRIBUTED_TOE_ITT1">FPT_ITT.1/INTRA_XFER,</selectable>
+                <selectable id="ITC_AgentInTOE_ITT2">FPT_ITT.1/INTRA_XFER_AGENT,</selectable>
+                <selectable id="ITC_AgentOutTOE_ITC">FTP_ITC.1/OE_XFER_AGENT,</selectable>
                 <selectable id="ITC_OE_XFER_IT">FTP_ITC.1/OE_XFER_IT</selectable>
               </selectables>.
             </title>
@@ -7697,11 +7697,11 @@ DONE:
               <title>
                 The TSF shall provide a communication channel between itself and
                 <selectables linebreak="yes">
-                  <selectable id="ITC_AgentInTOE">an MDM agent that is internal to the TOE</selectable>
-                  <selectable id="ITC_AgentOutTOE">an MDM agent that is external to the TOE</selectable>
-                  <selectable id="ITC_IS_PRIMARY_MDM">a subordinate MDM server</selectable>
-                  <selectable id="ITC_IS_SUBORDINATE_MDM">a primary MDM server</selectable>
-                  <selectable id="ITC_DISTRIBUTED_TOE">other components comprising the distributed TOE</selectable>
+                  <selectable>an MDM agent that is internal to the TOE,</selectable>
+                  <selectable>an MDM agent that is external to the TOE,</selectable>
+                  <selectable>a subordinate MDM server,</selectable>
+                  <selectable>a primary MDM server,</selectable>
+                  <selectable>other components comprising the distributed TOE</selectable>
                 </selectables>
                 that is logically distinct from other communication channels.
               </title>
