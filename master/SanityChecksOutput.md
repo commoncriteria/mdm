@@ -8,14 +8,6 @@
 * Error: Detected multiple elements with an id of 'sel-exp-skg-256'.
 * Error: Detected multiple elements with an id of 'fel-sign-how'.
 * Error: Detected multiple elements with an id of 'fel-sign-how'.
-* Error: Detected multiple elements with an id of 'ITC_AgentInTOE'.
-* Error: Detected multiple elements with an id of 'ITC_AgentOutTOE'.
-* Error: Detected multiple elements with an id of 'ITC_IS_SUBORDINATE_MDM'.
-* Error: Detected multiple elements with an id of 'ITC_DISTRIBUTED_TOE'.
-* Error: Detected multiple elements with an id of 'ITC_AgentInTOE'.
-* Error: Detected multiple elements with an id of 'ITC_AgentOutTOE'.
-* Error: Detected multiple elements with an id of 'ITC_IS_SUBORDINATE_MDM'.
-* Error: Detected multiple elements with an id of 'ITC_DISTRIBUTED_TOE'.
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
 	  /PP[1]""/section[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"dummy-ref"
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
