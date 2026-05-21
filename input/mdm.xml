@@ -657,6 +657,380 @@ DONE:
       </cc-pkg-claim>
     </CClaimsInfo>
   </sec:Conformance_Claims>
+  <sec:Security_Problem_Definition>
+    <!-- 3.1 Threats -->
+    <sec:Threats>
+      <threats>
+        <threat name="T.MALICIOUS_APPS">
+          <description>Malicious or flawed application threats exist because apps loaded onto an
+						MD may include malicious or exploitable code. An administrator of the MDM or MD user
+						may inadvertently import malicious code, or an attacker may insert malicious code into the TOE, resulting in the
+						compromise of TOE or TOE data.</description>
+          <!-- New mapping to build updated threat mapping table. -->
+          <addressed-by>FAU_ALT_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by generating an alert if application of a policy fails, as this may indicate that a mechanism used to prevent the execution of malicious apps was not able to be enforced.</rationale>
+          <addressed-by>FAU_CRP_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by allowing MDs to report on their configuration status so it can be determined whether they have any unauthorized (and potentially malicious) apps installed.</rationale>
+          <addressed-by>FAU_NET_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates this threat by providing network status information so that an inaccessible MD can be flagged as potentially non-conformant to an MDM policy (and therefore potentially subject to the threat of executing malicious apps)</rationale>
+          <addressed-by>FCS_COP.1/Hash</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by implementing cryptographic algorithms which may be used to verify the integrity of apps (if the TOE includes its own MAS).</rationale>
+          <addressed-by>FCS_COP.1/SigGen</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by generating asymmetric cryptographic keys to protect data in transit.</rationale>
+          <addressed-by>FCS_COP.1/SigVer</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by implementing cryptographic algorithms which may be used to verify the authenticity of apps (if the TOE includes its own MAS).</rationale>
+          <addressed-by>FIA_ENR_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by providing a means to enroll MDs into management, where policies prohibiting the installation of potential malicious apps can be enforced.</rationale>
+          <addressed-by>FIA_TOK_EXT.1 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threats of malicious apps by providing a mechanism to securely enroll a unique MD into management.</rationale>
+          <addressed-by>FIA_UAU.4/ENROLLMENT (Objective)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by limiting reuse of authentication credentials used to enroll MDs to provide assurance that MDs are properly enrolled into management.</rationale>
+          <addressed-by>FMT_MOF.1/FUNCBE</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by implementing mechanisms to control the apps that can be installed on an enrolled MD.</rationale>
+          <addressed-by>FMT_MOF.1/MANAGEMENT_MAS (Selection-based)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of malicious apps by implementing a MAS server that limits the apps that can be installed on enrolled MDs to those hosted by the TOE.</rationale>
+          <addressed-by>FMT_POL_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by providing signed policy updates that can prohibit the execution of potentially malicious apps.</rationale>
+          <addressed-by>FMT_SAE_EXT.1 (Objective)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by limiting the validity period of an enrollment request to provide assurance that MDs are properly enrolled into management.</rationale>
+          <addressed-by>FMT_SMF.1/MAS (Selection-based)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of malicious apps by implementing a MAS server that limits the apps that can be installed on enrolled MDs to those hosted by the TOE.</rationale>
+          <addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by implementing mechanisms to control the apps that can be installed on an enrolled MD.</rationale>
+          <addressed-by>FTP_ITC_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of malicious apps by communicating its policy data to enrolled MDs securely over a trusted channel.</rationale>
+        </threat>
+        <threat name="T.NETWORK_ATTACK">
+          <description>An attacker may masquerade as an MDM server and attempt to
+						compromise the integrity of the MD by sending malicious management commands.</description>
+          <!-- New mapping to build updated threat mapping table. -->
+          <addressed-by>FAU_GEN.1/AUDITGEN</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by generating audit records of activity which may indicate attempts of such attacks.</rationale>
+          <addressed-by>FAU_SAR.1 (Optional)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism within the TOE boundary to review audit data that may indicate attempted network attacks.</rationale>
+          <addressed-by>FAU_SEL.1 (Optional)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism to specify the events that are audited by the TOE, which could include activities suggestive of a potential network attack.</rationale>
+          <addressed-by>FAU_STG.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by retaining audit records of activity which may indicate attempts of such attacks.</rationale>
+          <addressed-by>FAU_STG.2 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by preventing unauthorized modification of locally stored audit records of activity which may indicate attempts of such attacks.</rationale>
+          <addressed-by>FCO_CPC_EXT.1 (Objective)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism to register distributed TOE components so that individual endpoints are protected against impersonation.</rationale>
+          <addressed-by>FCS_CKM_EXT.7 (Implementation-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of a network attack by implementing secure methods to perform key agreement for trusted communications.</rationale>
+          <addressed-by>FCS_CKM.1/AKG</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by ensuring the generation of strong asymmetric keys used for trusted communications.</rationale>
+          <addressed-by>FCS_CKM.1/SKG</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by ensuring the generation of strong symmetric keys used for trusted communications.</rationale>
+          <addressed-by>FCS_CKM.2 (Implementation-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing secure key establishment functions that prevent impersonation of the TOE.</rationale>
+          <addressed-by>FCS_CKM.6</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by securely destroying cryptographic keys to prevent their malicious reuse.</rationale>
+          <addressed-by>FCS_COP.1/AEAD</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by enforcing the use of secure authenticated encryption algorithms when wireless functionality is implemented by the TOE.</rationale>
+          <addressed-by>FCS_COP.1/Hash</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing hash algorithms to maintain integrity of data in transit.</rationale>
+          <addressed-by>FCS_COP.1/KeyedHash</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing HMAC algorithms to maintain authenticity and integrity of data in transit.</rationale>
+          <addressed-by>FCS_COP.1/KeyEncap (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of a network attack by using a secure key encapsulation method to transmit a symmetric key to a third party as part of key establishment for trusted communications.</rationale>
+          <addressed-by>FCS_COP.1/KeyWrap (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of a network attack by using a secure key wrap method to distribute key material to a third party for use in trusted communications.</rationale>
+          <addressed-by>FCS_COP.1/SigGen</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by generating strong asymmetric cryptographic keys to protect data in	transit.</rationale>
+          <addressed-by>FCS_COP.1/SigVer</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by generating strong symmetric cryptographic keys to protect data in	transit.</rationale>
+          <addressed-by>FCS_COP.1/SKC (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing encryption algorithms to maintain confidentiality of data in transit.</rationale>
+          <addressed-by>FCS_COP.1/XOF (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of a network attack by supporting extendable output function implementations that are dependencies of some secure key generation and signature verification algorithms.</rationale>
+          <addressed-by>FCS_HTTPS_EXT.1 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of network attack by implementing the HTTPS protocol to protect data in transit.</rationale>
+          <addressed-by>FCS_IV_EXT.1 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of network attack by implementing functionality for appropriate IV generation based on the encryption algorithms it supports.</rationale>
+          <addressed-by>FCS_RBG.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a cryptographically strong DRBG to ensure generation of strong cryptographic keys.</rationale>
+          <addressed-by>FCS_RBG.2 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
+          <addressed-by>FCS_RBG.3 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
+          <addressed-by>FCS_RBG.4 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
+          <addressed-by>FCS_RBG.5 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
+          <addressed-by>FCS_STG_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing protected storage for secret and private keys that must be stored persistently for use in trusted communications and in proving the authenticity of policy information.</rationale>
+          <addressed-by>FCS_STG_EXT.2 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by using a particular method to protect persistently stored key data used for network communications.</rationale>
+          <addressed-by>FIA_CLI_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the MD being enrolled is genuine.</rationale>
+          <addressed-by>FIA_ENR_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the MD is enrolled via a trusted channel.</rationale>
+          <addressed-by>FMT_POL_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure the authenticity of policies issued by the TOE.</rationale>
+          <addressed-by>FPT_FLS.1 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to fail into a secure state if it cannot generate strong random numbers.</rationale>
+          <addressed-by>FPT_ITT.1/INTRA_XFER (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a protected channel to protect data in transit between separate parts of the TOE.</rationale>
+          <addressed-by>FPT_ITT.1/INTRA_XFER_AGENT (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a protected channel to protect data in transit between separate parts of the TOE, specifically in the case where an MDM agent is also part of the TOE.</rationale>
+          <addressed-by>FPT_TST.1 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to self-test its ability to generate strong random numbers.</rationale>
+          <addressed-by>FTP_ITC_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by specifying the channels over which data in transit is protected.</rationale>
+          <addressed-by>FTP_ITC.1/OE_XFER_AGENT (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a protected channel to protect data in transit between the TOE and an environmental MDM agent.</rationale>
+          <addressed-by>FTP_ITC.1/OE_XFER_IT</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to protect data in transit between the TOE and external IT entities that support its operation.</rationale>
+          <addressed-by>FTP_TRP.1/TRUSTPATH_ENROLL</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a trusted path for enrollment of MDs.</rationale>
+          <addressed-by>FTP_TRP.1/TRUSTPATH_JOIN (Objective)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism to securely join distributed TOE components to one another using a trusted path.</rationale>
+          <addressed-by>FTP_TRP.1/TRUSTPATH_REM_ADMIN</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a trusted path for remote administration.</rationale>
+        </threat>
+        <threat name="T.NETWORK_EAVESDROP">
+          <description>An attacker is positioned on a communications channel or elsewhere on the
+						network infrastructure. Attackers may monitor and gain access to data exchanged
+						between the MDM server and other endpoints.</description>
+          <!-- New mapping to build updated threat mapping table. -->
+          <addressed-by>FCS_CKM_EXT.7 (Implementation-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by ensuring that a third-party cannot obtain the key used by the TOE to communicate securely with a remote entity.</rationale>
+          <addressed-by>FCS_CKM.1/AKG</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing secure key generation functions that prevent impersonation of the TOE.</rationale>
+          <addressed-by>FCS_CKM.1/SKG</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing secure key generation functions that prevent impersonation of the TOE.</rationale>
+          <addressed-by>FCS_CKM.2 (Implementation-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing secure key establishment functions that prevent impersonation of the TOE.</rationale>
+          <addressed-by>FCS_CKM.6</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by securely destroying cryptographic keys to prevent their malicious reuse.</rationale>
+          <addressed-by>FCS_COP.1/AEAD</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by enforcing the use of a cryptographic algorithm to protect data in transit that includes assurance of both authenticity and confidentiality.</rationale>
+          <addressed-by>FCS_COP.1/KeyEncap (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using a key encapsulation algorithm to protect data in transit</rationale>
+          <addressed-by>FCS_COP.1/KeyWrap (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using a key wrap algorithm to protect data in transit.</rationale>
+          <addressed-by>FCS_COP.1/SKC (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing encryption algorithms to maintain confidentiality of data in transit.</rationale>
+          <addressed-by>FCS_COP.1/XOF (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by supporting extendable output function implementations that are dependencies of algorithms used for protection of data in transit.</rationale>
+          <addressed-by>FCS_HTTPS_EXT.1 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of network eavesdrop by implementing the HTTPS protocol to protect data in transit.</rationale>
+          <addressed-by>FCS_IV_EXT.1 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of network eavesdrop by implementing functionality for appropriate IV generation based on the encryption algorithms it supports.</rationale>
+          <addressed-by>FCS_RBG.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a cryptographically strong DRBG to ensure generation of strong cryptographic keys.</rationale>
+          <addressed-by>FCS_RBG.2 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
+          <addressed-by>FCS_RBG.3 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
+          <addressed-by>FCS_RBG.4 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
+          <addressed-by>FCS_RBG.5 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
+          <addressed-by>FCS_STG_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing protected storage for secret and private keys that must be stored persistently for use in trusted communications and in proving the authenticity of policy information.</rationale>
+          <addressed-by>FCS_STG_EXT.2 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using a particular method to protect persistently stored key data used for network communications.</rationale>
+          <addressed-by>FIA_ENR_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the MD is enrolled via a trusted channel.</rationale>
+          <addressed-by>FPT_FLS.1 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a mechanism to fail into a secure state if it cannot generate strong random numbers.</rationale>
+          <addressed-by>FPT_ITT.1/INTRA_XFER (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a protected channel to protect data in transit between separate parts of the TOE.</rationale>
+          <addressed-by>FPT_ITT.1/INTRA_XFER_AGENT (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a protected channel to protect data in transit between separate parts of the TOE, specifically in the case where an MDM agent is also part of the TOE.</rationale>
+          <addressed-by>FPT_TST.1 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a mechanism to self-test its ability to generate strong random numbers.</rationale>
+          <addressed-by>FTP_ITC_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by specifying the channels over which data in transit is protected.</rationale>
+          <addressed-by>FTP_ITC.1/OE_XFER_AGENT (Selection-based)</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a protected channel to protect data in transit between the TOE and an environmental MDM agent.</rationale>
+          <addressed-by>FTP_ITC.1/OE_XFER_IT</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a mechanism to protect data in transit between the TOE and external IT entities that support its operation.</rationale>
+          <addressed-by>FTP_TRP.1/TRUSTPATH_ENROLL</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a trusted path for enrollment of MDs.</rationale>
+          <addressed-by>FTP_TRP.1/TRUSTPATH_JOIN (Objective)</addressed-by>
+          <rationale>A conformant TOE may mitigate the threat of network eavesdrop by implementing a mechanism to securely join distributed TOE components to one another using a trusted path.</rationale>
+          <addressed-by>FTP_TRP.1/TRUSTPATH_REM_ADMIN</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a trusted path for remote administration.</rationale>
+        </threat>
+        <threat name="T.PHYSICAL_ACCESS">
+          <description>The MD may be lost or stolen, and an unauthorized individual may
+						attempt to access user data. Although these attacks are primarily directed against the
+						MD platform, the TOE configures features on MDs that mitigate the this threat against them. Therefore, misuse or failure of the TOE may also compromise the MD, exposing it to this threat.</description>
+          <!-- New mapping to build updated threat mapping table. -->
+          <addressed-by>FAU_ALT_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by generating an alert when a MD is unable to receive policy information or has its enrollment status altered (e.g., unenrollment may be evidence of physical compromise).</rationale>
+          <addressed-by>FAU_GEN.1/AUDITGEN</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by generating audit records of the management activities performed on the TOE that are applied to that device.</rationale>
+          <addressed-by>FAU_GEN.1/MAS_SERVER (Selection-based)</addressed-by>
+          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism on the TOE that logs a failure of the TSF to affect an enrolled MD's installed apps.</rationale>
+          <addressed-by>FAU_SAR.1 (Optional)</addressed-by>
+          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a review mechanism for audit records of the management activities performed on the TOE that are applied to that device (to detect potential misconfiguration of the device).</rationale>
+          <addressed-by>FAU_SEL.1 (Optional)</addressed-by>
+          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism to specify audit records of the specific management activities performed on the TOE that are applied to that device (to detect potential misconfiguration of the device).</rationale>
+          <addressed-by>FAU_STG.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by retaining audit logs that may indicate potential misuse of the TOE to misconfigure a MD.</rationale>
+          <addressed-by>FAU_STG.2 (Selection-based)</addressed-by>
+          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism on the TOE that protects audit records of configuration of that device from unauthorized modification or destruction.</rationale>
+          <addressed-by>FIA_UAU.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by enforcing user authentication on the TOE so that MDs cannot be configured without authorization.</rationale>
+          <addressed-by>FMT_MOF.1/FUNCBE</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
+          <addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
+          <addressed-by>FMT_MOF.1/MANAGEMENT_MAS (Selection-based)</addressed-by>
+          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to download and install applications.</rationale>
+          <addressed-by>FMT_SMF.1/MAS (Selection-based)</addressed-by>
+          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by implementing management functions for its MAS server functionality that allow the TSF to securely configure enrolled devices.</rationale>
+          <addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
+          <addressed-by>FMT_SMF.1/SERVER_CONF_SERVER</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow the TSF to ensure its own secure operation with respect to applying policies.</rationale>
+          <addressed-by>FMT_SMR.1/SECMAN_ROLES</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing roles for its own management that allow the TSF to ensure its own secure operation with respect to applying policies.</rationale>
+          <addressed-by>FMT_SMR.1/SECMAN_ROLES_MAS (Selection-based)</addressed-by>
+          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by implementing roles for its own management that allow the TSF to ensure its own secure operation with respect to applying MAS server policies.</rationale>
+          <addressed-by>FPT_API_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF is not subject to compromise through improper API usage.</rationale>
+          <addressed-by>FPT_LIB_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF is not subject to compromise through insecure library usage.</rationale>
+          <addressed-by>FPT_TST_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF performs self-tests to verify its own integrity so that it can be trusted as a management platform.</rationale>
+          <addressed-by>FPT_TUD_EXT.1</addressed-by>
+          <rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF uses a trusted update mechanism to verify its own integrity so that it can be trusted as a management platform.</rationale>
+          <addressed-by>FTA_TAB.1 (Optional)</addressed-by>
+          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism on the TOE that advises of actionable consequences for its misuse in configuration of MDs.</rationale>
+        </threat>
+      </threats>
+    </sec:Threats>
+    <!-- 3.2 Assumptions -->
+    <sec:Assumptions>
+      <assumptions>
+        <assumption name="A.COMPONENTS_RUNNING">
+          <description>This assumption applies to distributed TOEs only.
+						For distributed TOEs, it is assumed that the availability of all TOE components is checked as
+						appropriate to reduce the risk of an undetected attack on (or failure of) one or more TOE components. It is also assumed that in addition to the
+						availability of all components it is also checked as appropriate that the audit functionality is running properly on all TOE components.</description>
+          <objective-refer ref="OE.COMPONENTS_RUNNING">
+            <rationale>The operational environment objective OE.COMPONENTS_RUNNING is realized through A.COMPONENTS_RUNNING.</rationale>
+          </objective-refer>
+        </assumption>
+        <assumption name="A.CONNECTIVITY">
+          <description>The TOE relies on network connectivity to carry out its
+						management activities. The TOE will robustly handle instances when
+						connectivity is unavailable or unreliable.</description>
+          <objective-refer ref="OE.WIRELESS_NETWORK">
+            <rationale>The operational environment objective OE.WIRELESS_NETWORK is realized through
+							A.CONNECTIVITY.</rationale>
+          </objective-refer>
+        </assumption>
+        <assumption name="A.MDM_SERVER_PLATFORM">
+          <description>
+            The MDM server relies on a trustworthy platform and
+						local network from which it provides administrative capabilities.
+            <h:br/>
+            <h:br/>
+            The MDM server relies on this platform to provide a range of
+						security-related services including reliable timestamps, user and group account
+						management, logon and logout services via a local or network directory service, remote
+						access control, and audit log management services to include offloading of audit logs to
+						other servers. The platform is expected to be configured specifically to provide 
+						MDM services, employing features such as a host-based firewall, which
+						limits its network role to providing MDM functionality.
+          </description>
+          <objective-refer ref="OE.TIMESTAMP">
+            <rationale>The operational environment objective OE.TIMESTAMP is realized through A.MDM_SERVER_PLATFORM.</rationale>
+          </objective-refer>
+        </assumption>
+        <assumption name="A.PROPER_ADMIN">
+          <description>One or more competent, trusted personnel who are not careless, willfully
+						negligent, or hostile, are assigned and authorized as the TOE
+						Administrators, and do so using and abiding by guidance documentation.</description>
+          <objective-refer ref="OE.PROPER_ADMIN">
+            <rationale>The operational environment objective OE.PROPER_ADMIN is realized through
+							A.PROPER_ADMIN.</rationale>
+          </objective-refer>
+        </assumption>
+        <assumption name="A.PROPER_USER">
+          <description>MD users are not willfully negligent or hostile, and use the
+						device within compliance of a reasonable enterprise security policy.</description>
+          <objective-refer ref="OE.PROPER_USER">
+            <rationale>The operational environment objective OE.PROPER_USER is realized through
+							A.PROPER_USER.</rationale>
+          </objective-refer>
+        </assumption>
+      </assumptions>
+    </sec:Assumptions>
+    <!-- 3.3 Organizational Security Policies -->
+    <sec:Organizational_Security_Policies>
+      <OSPs>
+        <OSP name="P.ACCOUNTABILITY">
+          <description>Personnel operating the TOE shall be accountable for their actions within the TOE.</description>
+          <objective-refer ref="OE.PROPER_ADMIN">
+            <rationale>Part of ensuring that administrators are trusted is having the ability to enforce accountability measures on malicious or negligent administrators.</rationale>
+          </objective-refer>
+        </OSP>
+        <OSP name="P.ADMIN">
+          <description>The configuration of the MD security functions must adhere to the
+						enterprise security policy.</description>
+          <objective-refer ref="OE.PROPER_ADMIN">
+            <rationale>The organizational security policy P.ADMIN is realized through
+							OE.PROPER_ADMIN.</rationale>
+          </objective-refer>
+        </OSP>
+        <OSP name="P.DEVICE_ENROLL">
+          <description>A MD must be enrolled for a specific user by the administrator of
+						the MDM prior to being used in the enterprise network by the user.</description>
+          <objective-refer ref="OE.IT_ENTERPRISE">
+            <rationale>The organizational security policy P.DEVICE_ENROLL is realized through
+							OE.IT_ENTERPRISE.</rationale>
+          </objective-refer>
+        </OSP>
+        <OSP name="P.NOTIFY">
+          <description>The MD user must immediately notify the administrator if a MD
+						is lost or stolen so that the administrator may apply remediation actions via the 
+						MDM system.</description>
+          <objective-refer ref="OE.PROPER_USER">
+            <rationale>The organizational security policy P.NOTIFY is realized through
+							OE.PROPER_USER.</rationale>
+          </objective-refer>
+        </OSP>
+      </OSPs>
+    </sec:Organizational_Security_Policies>
+  </sec:Security_Problem_Definition>
+  <sec:Security_Objectives>
+    <!-- 4.1 Security Objectives for the TOE -->
+    <!-- 4.2 Security Objctives for the Operational Environment -->
+    <sec:Security_Objectives_for_the_Operational_Environment>
+      <SOEs>
+        <SOE name="OE.COMPONENTS_RUNNING">
+          <description>For distributed TOEs, the administrator ensures that the availability of every TOE component is checked as appropriate to reduce the 
+		  risk of an undetected attack on (or failure of) one or more TOE components. The administrator also ensures that it is checked as appropriate 
+		  for every TOE component that the audit functionality is running properly.</description>
+        </SOE>
+        <SOE name="OE.IT_ENTERPRISE">
+          <description>The enterprise IT infrastructure provides security for a network that is available to the TOE and MDs that prevents 
+		  unauthorized access.</description>
+        </SOE>
+        <SOE name="OE.PROPER_ADMIN">
+          <description>TOE Administrators are trusted to follow and apply all administrator guidance in a trusted manner.</description>
+        </SOE>
+        <SOE name="OE.PROPER_USER">
+          <description>Users of the MD are trained to securely use the MD and apply all guidance in a trusted manner.</description>
+        </SOE>
+        <SOE name="OE.TIMESTAMP">
+          <description>Reliable timestamps are provided by the operational environment for the TOE.</description>
+        </SOE>
+        <SOE name="OE.WIRELESS_NETWORK">
+          <description>A wireless network will be available to the MDs.</description>
+        </SOE>
+      </SOEs>
+    </sec:Security_Objectives_for_the_Operational_Environment>
+    <!-- 4.3 Security Objectives Rationale -->
+    <sec:Security_Objectives_Rationale/>
+  </sec:Security_Objectives>
   <section title="Security Requirements" id="req">
     <h:br/>
     <h:br/>
@@ -7683,381 +8057,7 @@ DONE:
     </section>
   </section>
   <!-- 3.0 Security Problem Definition-->
-  <sec:Security_Problem_Definition>
-    <!-- 3.1 Threats -->
-    <sec:Threats>
-      <threats>
-        <threat name="T.MALICIOUS_APPS">
-          <description>Malicious or flawed application threats exist because apps loaded onto an
-						MD may include malicious or exploitable code. An administrator of the MDM or MD user
-						may inadvertently import malicious code, or an attacker may insert malicious code into the TOE, resulting in the
-						compromise of TOE or TOE data.</description>
-          <!-- New mapping to build updated threat mapping table. -->
-          <addressed-by>FAU_ALT_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by generating an alert if application of a policy fails, as this may indicate that a mechanism used to prevent the execution of malicious apps was not able to be enforced.</rationale>
-          <addressed-by>FAU_CRP_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by allowing MDs to report on their configuration status so it can be determined whether they have any unauthorized (and potentially malicious) apps installed.</rationale>
-          <addressed-by>FAU_NET_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates this threat by providing network status information so that an inaccessible MD can be flagged as potentially non-conformant to an MDM policy (and therefore potentially subject to the threat of executing malicious apps)</rationale>
-          <addressed-by>FCS_COP.1/Hash</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by implementing cryptographic algorithms which may be used to verify the integrity of apps (if the TOE includes its own MAS).</rationale>
-          <addressed-by>FCS_COP.1/SigGen</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by generating asymmetric cryptographic keys to protect data in transit.</rationale>
-          <addressed-by>FCS_COP.1/SigVer</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by implementing cryptographic algorithms which may be used to verify the authenticity of apps (if the TOE includes its own MAS).</rationale>
-          <addressed-by>FIA_ENR_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by providing a means to enroll MDs into management, where policies prohibiting the installation of potential malicious apps can be enforced.</rationale>
-          <addressed-by>FIA_TOK_EXT.1 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threats of malicious apps by providing a mechanism to securely enroll a unique MD into management.</rationale>
-          <addressed-by>FIA_UAU.4/ENROLLMENT (Objective)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by limiting reuse of authentication credentials used to enroll MDs to provide assurance that MDs are properly enrolled into management.</rationale>
-          <addressed-by>FMT_MOF.1/FUNCBE</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by implementing mechanisms to control the apps that can be installed on an enrolled MD.</rationale>
-          <addressed-by>FMT_MOF.1/MANAGEMENT_MAS (Selection-based)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of malicious apps by implementing a MAS server that limits the apps that can be installed on enrolled MDs to those hosted by the TOE.</rationale>
-          <addressed-by>FMT_POL_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by providing signed policy updates that can prohibit the execution of potentially malicious apps.</rationale>
-          <addressed-by>FMT_SAE_EXT.1 (Objective)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by limiting the validity period of an enrollment request to provide assurance that MDs are properly enrolled into management.</rationale>
-          <addressed-by>FMT_SMF.1/MAS (Selection-based)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of malicious apps by implementing a MAS server that limits the apps that can be installed on enrolled MDs to those hosted by the TOE.</rationale>
-          <addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by implementing mechanisms to control the apps that can be installed on an enrolled MD.</rationale>
-          <addressed-by>FTP_ITC_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of malicious apps by communicating its policy data to enrolled MDs securely over a trusted channel.</rationale>
-        </threat>
-        <threat name="T.NETWORK_ATTACK">
-          <description>An attacker may masquerade as an MDM server and attempt to
-						compromise the integrity of the MD by sending malicious management commands.</description>
-          <!-- New mapping to build updated threat mapping table. -->
-          <addressed-by>FAU_GEN.1/AUDITGEN</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by generating audit records of activity which may indicate attempts of such attacks.</rationale>
-          <addressed-by>FAU_SAR.1 (Optional)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism within the TOE boundary to review audit data that may indicate attempted network attacks.</rationale>
-          <addressed-by>FAU_SEL.1 (Optional)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism to specify the events that are audited by the TOE, which could include activities suggestive of a potential network attack.</rationale>
-          <addressed-by>FAU_STG.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by retaining audit records of activity which may indicate attempts of such attacks.</rationale>
-          <addressed-by>FAU_STG.2 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by preventing unauthorized modification of locally stored audit records of activity which may indicate attempts of such attacks.</rationale>
-          <addressed-by>FCO_CPC_EXT.1 (Objective)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism to register distributed TOE components so that individual endpoints are protected against impersonation.</rationale>
-          <addressed-by>FCS_CKM_EXT.7 (Implementation-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of a network attack by implementing secure methods to perform key agreement for trusted communications.</rationale>
-          <addressed-by>FCS_CKM.1/AKG</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by ensuring the generation of strong asymmetric keys used for trusted communications.</rationale>
-          <addressed-by>FCS_CKM.1/SKG</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by ensuring the generation of strong symmetric keys used for trusted communications.</rationale>
-          <addressed-by>FCS_CKM.2 (Implementation-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing secure key establishment functions that prevent impersonation of the TOE.</rationale>
-          <addressed-by>FCS_CKM.6</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by securely destroying cryptographic keys to prevent their malicious reuse.</rationale>
-          <addressed-by>FCS_COP.1/AEAD</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by enforcing the use of secure authenticated encryption algorithms when wireless functionality is implemented by the TOE.</rationale>
-          <addressed-by>FCS_COP.1/Hash</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing hash algorithms to maintain integrity of data in transit.</rationale>
-          <addressed-by>FCS_COP.1/KeyedHash</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing HMAC algorithms to maintain authenticity and integrity of data in transit.</rationale>
-          <addressed-by>FCS_COP.1/KeyEncap (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of a network attack by using a secure key encapsulation method to transmit a symmetric key to a third party as part of key establishment for trusted communications.</rationale>
-          <addressed-by>FCS_COP.1/KeyWrap (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of a network attack by using a secure key wrap method to distribute key material to a third party for use in trusted communications.</rationale>
-          <addressed-by>FCS_COP.1/SigGen</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by generating strong asymmetric cryptographic keys to protect data in	transit.</rationale>
-          <addressed-by>FCS_COP.1/SigVer</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by generating strong symmetric cryptographic keys to protect data in	transit.</rationale>
-          <addressed-by>FCS_COP.1/SKC (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing encryption algorithms to maintain confidentiality of data in transit.</rationale>
-          <addressed-by>FCS_COP.1/XOF (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of a network attack by supporting extendable output function implementations that are dependencies of some secure key generation and signature verification algorithms.</rationale>
-          <addressed-by>FCS_HTTPS_EXT.1 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of network attack by implementing the HTTPS protocol to protect data in transit.</rationale>
-          <addressed-by>FCS_IV_EXT.1 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of network attack by implementing functionality for appropriate IV generation based on the encryption algorithms it supports.</rationale>
-          <addressed-by>FCS_RBG.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a cryptographically strong DRBG to ensure generation of strong cryptographic keys.</rationale>
-          <addressed-by>FCS_RBG.2 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
-          <addressed-by>FCS_RBG.3 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
-          <addressed-by>FCS_RBG.4 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
-          <addressed-by>FCS_RBG.5 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
-          <addressed-by>FCS_STG_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing protected storage for secret and private keys that must be stored persistently for use in trusted communications and in proving the authenticity of policy information.</rationale>
-          <addressed-by>FCS_STG_EXT.2 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by using a particular method to protect persistently stored key data used for network communications.</rationale>
-          <addressed-by>FIA_CLI_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the MD being enrolled is genuine.</rationale>
-          <addressed-by>FIA_ENR_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the MD is enrolled via a trusted channel.</rationale>
-          <addressed-by>FMT_POL_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure the authenticity of policies issued by the TOE.</rationale>
-          <addressed-by>FPT_FLS.1 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to fail into a secure state if it cannot generate strong random numbers.</rationale>
-          <addressed-by>FPT_ITT.1/INTRA_XFER (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a protected channel to protect data in transit between separate parts of the TOE.</rationale>
-          <addressed-by>FPT_ITT.1/INTRA_XFER_AGENT (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a protected channel to protect data in transit between separate parts of the TOE, specifically in the case where an MDM agent is also part of the TOE.</rationale>
-          <addressed-by>FPT_TST.1 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to self-test its ability to generate strong random numbers.</rationale>
-          <addressed-by>FTP_ITC_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by specifying the channels over which data in transit is protected.</rationale>
-          <addressed-by>FTP_ITC.1/OE_XFER_AGENT (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a protected channel to protect data in transit between the TOE and an environmental MDM agent.</rationale>
-          <addressed-by>FTP_ITC.1/OE_XFER_IT</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to protect data in transit between the TOE and external IT entities that support its operation.</rationale>
-          <addressed-by>FTP_TRP.1/TRUSTPATH_ENROLL</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a trusted path for enrollment of MDs.</rationale>
-          <addressed-by>FTP_TRP.1/TRUSTPATH_JOIN (Objective)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of network attack by implementing a mechanism to securely join distributed TOE components to one another using a trusted path.</rationale>
-          <addressed-by>FTP_TRP.1/TRUSTPATH_REM_ADMIN</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a trusted path for remote administration.</rationale>
-        </threat>
-        <threat name="T.NETWORK_EAVESDROP">
-          <description>An attacker is positioned on a communications channel or elsewhere on the
-						network infrastructure. Attackers may monitor and gain access to data exchanged
-						between the MDM server and other endpoints.</description>
-          <!-- New mapping to build updated threat mapping table. -->
-          <addressed-by>FCS_CKM_EXT.7 (Implementation-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by ensuring that a third-party cannot obtain the key used by the TOE to communicate securely with a remote entity.</rationale>
-          <addressed-by>FCS_CKM.1/AKG</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing secure key generation functions that prevent impersonation of the TOE.</rationale>
-          <addressed-by>FCS_CKM.1/SKG</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing secure key generation functions that prevent impersonation of the TOE.</rationale>
-          <addressed-by>FCS_CKM.2 (Implementation-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing secure key establishment functions that prevent impersonation of the TOE.</rationale>
-          <addressed-by>FCS_CKM.6</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by securely destroying cryptographic keys to prevent their malicious reuse.</rationale>
-          <addressed-by>FCS_COP.1/AEAD</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by enforcing the use of a cryptographic algorithm to protect data in transit that includes assurance of both authenticity and confidentiality.</rationale>
-          <addressed-by>FCS_COP.1/KeyEncap (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using a key encapsulation algorithm to protect data in transit</rationale>
-          <addressed-by>FCS_COP.1/KeyWrap (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using a key wrap algorithm to protect data in transit.</rationale>
-          <addressed-by>FCS_COP.1/SKC (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing encryption algorithms to maintain confidentiality of data in transit.</rationale>
-          <addressed-by>FCS_COP.1/XOF (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by supporting extendable output function implementations that are dependencies of algorithms used for protection of data in transit.</rationale>
-          <addressed-by>FCS_HTTPS_EXT.1 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of network eavesdrop by implementing the HTTPS protocol to protect data in transit.</rationale>
-          <addressed-by>FCS_IV_EXT.1 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of network eavesdrop by implementing functionality for appropriate IV generation based on the encryption algorithms it supports.</rationale>
-          <addressed-by>FCS_RBG.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a cryptographically strong DRBG to ensure generation of strong cryptographic keys.</rationale>
-          <addressed-by>FCS_RBG.2 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
-          <addressed-by>FCS_RBG.3 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
-          <addressed-by>FCS_RBG.4 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
-          <addressed-by>FCS_RBG.5 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using sufficient entropy data to seed its DRBG to ensure a uniform keyspace of cryptographic key generation.</rationale>
-          <addressed-by>FCS_STG_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing protected storage for secret and private keys that must be stored persistently for use in trusted communications and in proving the authenticity of policy information.</rationale>
-          <addressed-by>FCS_STG_EXT.2 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by using a particular method to protect persistently stored key data used for network communications.</rationale>
-          <addressed-by>FIA_ENR_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network attack by implementing a mechanism to ensure that the MD is enrolled via a trusted channel.</rationale>
-          <addressed-by>FPT_FLS.1 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a mechanism to fail into a secure state if it cannot generate strong random numbers.</rationale>
-          <addressed-by>FPT_ITT.1/INTRA_XFER (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a protected channel to protect data in transit between separate parts of the TOE.</rationale>
-          <addressed-by>FPT_ITT.1/INTRA_XFER_AGENT (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a protected channel to protect data in transit between separate parts of the TOE, specifically in the case where an MDM agent is also part of the TOE.</rationale>
-          <addressed-by>FPT_TST.1 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a mechanism to self-test its ability to generate strong random numbers.</rationale>
-          <addressed-by>FTP_ITC_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by specifying the channels over which data in transit is protected.</rationale>
-          <addressed-by>FTP_ITC.1/OE_XFER_AGENT (Selection-based)</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a protected channel to protect data in transit between the TOE and an environmental MDM agent.</rationale>
-          <addressed-by>FTP_ITC.1/OE_XFER_IT</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a mechanism to protect data in transit between the TOE and external IT entities that support its operation.</rationale>
-          <addressed-by>FTP_TRP.1/TRUSTPATH_ENROLL</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a trusted path for enrollment of MDs.</rationale>
-          <addressed-by>FTP_TRP.1/TRUSTPATH_JOIN (Objective)</addressed-by>
-          <rationale>A conformant TOE may mitigate the threat of network eavesdrop by implementing a mechanism to securely join distributed TOE components to one another using a trusted path.</rationale>
-          <addressed-by>FTP_TRP.1/TRUSTPATH_REM_ADMIN</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of network eavesdrop by implementing a trusted path for remote administration.</rationale>
-        </threat>
-        <threat name="T.PHYSICAL_ACCESS">
-          <description>The MD may be lost or stolen, and an unauthorized individual may
-						attempt to access user data. Although these attacks are primarily directed against the
-						MD platform, the TOE configures features on MDs that mitigate the this threat against them. Therefore, misuse or failure of the TOE may also compromise the MD, exposing it to this threat.</description>
-          <!-- New mapping to build updated threat mapping table. -->
-          <addressed-by>FAU_ALT_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by generating an alert when a MD is unable to receive policy information or has its enrollment status altered (e.g., unenrollment may be evidence of physical compromise).</rationale>
-          <addressed-by>FAU_GEN.1/AUDITGEN</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by generating audit records of the management activities performed on the TOE that are applied to that device.</rationale>
-          <addressed-by>FAU_GEN.1/MAS_SERVER (Selection-based)</addressed-by>
-          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism on the TOE that logs a failure of the TSF to affect an enrolled MD's installed apps.</rationale>
-          <addressed-by>FAU_SAR.1 (Optional)</addressed-by>
-          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a review mechanism for audit records of the management activities performed on the TOE that are applied to that device (to detect potential misconfiguration of the device).</rationale>
-          <addressed-by>FAU_SEL.1 (Optional)</addressed-by>
-          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism to specify audit records of the specific management activities performed on the TOE that are applied to that device (to detect potential misconfiguration of the device).</rationale>
-          <addressed-by>FAU_STG.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by retaining audit logs that may indicate potential misuse of the TOE to misconfigure a MD.</rationale>
-          <addressed-by>FAU_STG.2 (Selection-based)</addressed-by>
-          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism on the TOE that protects audit records of configuration of that device from unauthorized modification or destruction.</rationale>
-          <addressed-by>FIA_UAU.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by enforcing user authentication on the TOE so that MDs cannot be configured without authorization.</rationale>
-          <addressed-by>FMT_MOF.1/FUNCBE</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
-          <addressed-by>FMT_MOF.1/MANAGEMENT_ENROLL</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
-          <addressed-by>FMT_MOF.1/MANAGEMENT_MAS (Selection-based)</addressed-by>
-          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to download and install applications.</rationale>
-          <addressed-by>FMT_SMF.1/MAS (Selection-based)</addressed-by>
-          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by implementing management functions for its MAS server functionality that allow the TSF to securely configure enrolled devices.</rationale>
-          <addressed-by>FMT_SMF.1/SERVER_CONF_AGENT</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow for the TOE to place it into a secure configuration.</rationale>
-          <addressed-by>FMT_SMF.1/SERVER_CONF_SERVER</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing management functions that allow the TSF to ensure its own secure operation with respect to applying policies.</rationale>
-          <addressed-by>FMT_SMR.1/SECMAN_ROLES</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by implementing roles for its own management that allow the TSF to ensure its own secure operation with respect to applying policies.</rationale>
-          <addressed-by>FMT_SMR.1/SECMAN_ROLES_MAS (Selection-based)</addressed-by>
-          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by implementing roles for its own management that allow the TSF to ensure its own secure operation with respect to applying MAS server policies.</rationale>
-          <addressed-by>FPT_API_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF is not subject to compromise through improper API usage.</rationale>
-          <addressed-by>FPT_LIB_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF is not subject to compromise through insecure library usage.</rationale>
-          <addressed-by>FPT_TST_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF performs self-tests to verify its own integrity so that it can be trusted as a management platform.</rationale>
-          <addressed-by>FPT_TUD_EXT.1</addressed-by>
-          <rationale>A conformant TOE mitigates the threat of physical access to the MD by ensuring that the TSF uses a trusted update mechanism to verify its own integrity so that it can be trusted as a management platform.</rationale>
-          <addressed-by>FTA_TAB.1 (Optional)</addressed-by>
-          <rationale>A conformant TOE potentially mitigates the threat of physical access to the MD by providing a mechanism on the TOE that advises of actionable consequences for its misuse in configuration of MDs.</rationale>
-        </threat>
-      </threats>
-    </sec:Threats>
-    <!-- 3.2 Assumptions -->
-    <sec:Assumptions>
-      <assumptions>
-        <assumption name="A.COMPONENTS_RUNNING">
-          <description>This assumption applies to distributed TOEs only.
-						For distributed TOEs, it is assumed that the availability of all TOE components is checked as
-						appropriate to reduce the risk of an undetected attack on (or failure of) one or more TOE components. It is also assumed that in addition to the
-						availability of all components it is also checked as appropriate that the audit functionality is running properly on all TOE components.</description>
-          <objective-refer ref="OE.COMPONENTS_RUNNING">
-            <rationale>The operational environment objective OE.COMPONENTS_RUNNING is realized through A.COMPONENTS_RUNNING.</rationale>
-          </objective-refer>
-        </assumption>
-        <assumption name="A.CONNECTIVITY">
-          <description>The TOE relies on network connectivity to carry out its
-						management activities. The TOE will robustly handle instances when
-						connectivity is unavailable or unreliable.</description>
-          <objective-refer ref="OE.WIRELESS_NETWORK">
-            <rationale>The operational environment objective OE.WIRELESS_NETWORK is realized through
-							A.CONNECTIVITY.</rationale>
-          </objective-refer>
-        </assumption>
-        <assumption name="A.MDM_SERVER_PLATFORM">
-          <description>
-            The MDM server relies on a trustworthy platform and
-						local network from which it provides administrative capabilities.
-            <h:br/>
-            <h:br/>
-            The MDM server relies on this platform to provide a range of
-						security-related services including reliable timestamps, user and group account
-						management, logon and logout services via a local or network directory service, remote
-						access control, and audit log management services to include offloading of audit logs to
-						other servers. The platform is expected to be configured specifically to provide 
-						MDM services, employing features such as a host-based firewall, which
-						limits its network role to providing MDM functionality.
-          </description>
-          <objective-refer ref="OE.TIMESTAMP">
-            <rationale>The operational environment objective OE.TIMESTAMP is realized through A.MDM_SERVER_PLATFORM.</rationale>
-          </objective-refer>
-        </assumption>
-        <assumption name="A.PROPER_ADMIN">
-          <description>One or more competent, trusted personnel who are not careless, willfully
-						negligent, or hostile, are assigned and authorized as the TOE
-						Administrators, and do so using and abiding by guidance documentation.</description>
-          <objective-refer ref="OE.PROPER_ADMIN">
-            <rationale>The operational environment objective OE.PROPER_ADMIN is realized through
-							A.PROPER_ADMIN.</rationale>
-          </objective-refer>
-        </assumption>
-        <assumption name="A.PROPER_USER">
-          <description>MD users are not willfully negligent or hostile, and use the
-						device within compliance of a reasonable enterprise security policy.</description>
-          <objective-refer ref="OE.PROPER_USER">
-            <rationale>The operational environment objective OE.PROPER_USER is realized through
-							A.PROPER_USER.</rationale>
-          </objective-refer>
-        </assumption>
-      </assumptions>
-    </sec:Assumptions>
-    <!-- 3.3 Organizational Security Policies -->
-    <sec:Organizational_Security_Policies>
-      <OSPs>
-        <OSP name="P.ACCOUNTABILITY">
-          <description>Personnel operating the TOE shall be accountable for their actions within the TOE.</description>
-          <objective-refer ref="OE.PROPER_ADMIN">
-            <rationale>Part of ensuring that administrators are trusted is having the ability to enforce accountability measures on malicious or negligent administrators.</rationale>
-          </objective-refer>
-        </OSP>
-        <OSP name="P.ADMIN">
-          <description>The configuration of the MD security functions must adhere to the
-						enterprise security policy.</description>
-          <objective-refer ref="OE.PROPER_ADMIN">
-            <rationale>The organizational security policy P.ADMIN is realized through
-							OE.PROPER_ADMIN.</rationale>
-          </objective-refer>
-        </OSP>
-        <OSP name="P.DEVICE_ENROLL">
-          <description>A MD must be enrolled for a specific user by the administrator of
-						the MDM prior to being used in the enterprise network by the user.</description>
-          <objective-refer ref="OE.IT_ENTERPRISE">
-            <rationale>The organizational security policy P.DEVICE_ENROLL is realized through
-							OE.IT_ENTERPRISE.</rationale>
-          </objective-refer>
-        </OSP>
-        <OSP name="P.NOTIFY">
-          <description>The MD user must immediately notify the administrator if a MD
-						is lost or stolen so that the administrator may apply remediation actions via the 
-						MDM system.</description>
-          <objective-refer ref="OE.PROPER_USER">
-            <rationale>The organizational security policy P.NOTIFY is realized through
-							OE.PROPER_USER.</rationale>
-          </objective-refer>
-        </OSP>
-      </OSPs>
-    </sec:Organizational_Security_Policies>
-  </sec:Security_Problem_Definition>
   <!-- 4.0 Security Objectives -->
-  <sec:Security_Objectives>
-    <!-- 4.1 Security Objectives for the TOE -->
-    <!-- 4.2 Security Objctives for the Operational Environment -->
-    <sec:Security_Objectives_for_the_Operational_Environment>
-      <SOEs>
-        <SOE name="OE.COMPONENTS_RUNNING">
-          <description>For distributed TOEs, the administrator ensures that the availability of every TOE component is checked as appropriate to reduce the 
-		  risk of an undetected attack on (or failure of) one or more TOE components. The administrator also ensures that it is checked as appropriate 
-		  for every TOE component that the audit functionality is running properly.</description>
-        </SOE>
-        <SOE name="OE.IT_ENTERPRISE">
-          <description>The enterprise IT infrastructure provides security for a network that is available to the TOE and MDs that prevents 
-		  unauthorized access.</description>
-        </SOE>
-        <SOE name="OE.PROPER_ADMIN">
-          <description>TOE Administrators are trusted to follow and apply all administrator guidance in a trusted manner.</description>
-        </SOE>
-        <SOE name="OE.PROPER_USER">
-          <description>Users of the MD are trained to securely use the MD and apply all guidance in a trusted manner.</description>
-        </SOE>
-        <SOE name="OE.TIMESTAMP">
-          <description>Reliable timestamps are provided by the operational environment for the TOE.</description>
-        </SOE>
-        <SOE name="OE.WIRELESS_NETWORK">
-          <description>A wireless network will be available to the MDs.</description>
-        </SOE>
-      </SOEs>
-    </sec:Security_Objectives_for_the_Operational_Environment>
-    <!-- 4.3 Security Objectives Rationale -->
-    <sec:Security_Objectives_Rationale/>
-  </sec:Security_Objectives>
   <!-- 5.0 Security Requirements -->
   <appendix title="Implicitly Satisfied Requirements" id="satisfiedreqs">
     <!--   Boilerplate goes here   -->
