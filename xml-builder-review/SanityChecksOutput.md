@@ -1,3 +1,20 @@
+* Error: Detected multiple elements with an id of 'mdm-intro'.
+* Error: Detected multiple elements with an id of 'approach'.
+* Error: Detected multiple elements with an id of 'modelequiv'.
+* Error: Detected multiple elements with an id of 'modeleq'.
+* Error: Detected multiple elements with an id of 'versionequiv'.
+* Error: Detected multiple elements with an id of 'versioneq'.
+* Error: Detected multiple elements with an id of 'platformequiv'.
+* Error: Detected multiple elements with an id of 'hardware-equiv'.
+* Error: Detected multiple elements with an id of 'hwplateq'.
+* Error: Detected multiple elements with an id of 'os-equiv'.
+* Error: Detected multiple elements with an id of 'osplateq'.
+* Error: Detected multiple elements with an id of 'software-equiv'.
+* Error: Detected multiple elements with an id of 'swplateq'.
+* Error: Detected multiple elements with an id of 'specificity'.
+* Error: Detected multiple elements with an id of 'sec1'.
+* Error: Detected multiple elements with an id of 'sec2'.
+* Error: Detected multiple elements with an id of 'sec3'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-attls'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
@@ -10,6 +27,23 @@
 * Error: Detected multiple elements with an id of 'fcs-cop-1-keyedhash'.
 * Error: Detected multiple elements with an id of 'fel-sign-how'.
 * Error: Detected multiple elements with an id of 'fel-sign-how'.
+* Error: Detected multiple elements with an id of 'sec1'.
+* Error: Detected multiple elements with an id of 'sec2'.
+* Error: Detected multiple elements with an id of 'sec3'.
+* Error: Detected multiple elements with an id of 'mdm-intro'.
+* Error: Detected multiple elements with an id of 'approach'.
+* Error: Detected multiple elements with an id of 'modelequiv'.
+* Error: Detected multiple elements with an id of 'modeleq'.
+* Error: Detected multiple elements with an id of 'versionequiv'.
+* Error: Detected multiple elements with an id of 'versioneq'.
+* Error: Detected multiple elements with an id of 'platformequiv'.
+* Error: Detected multiple elements with an id of 'hardware-equiv'.
+* Error: Detected multiple elements with an id of 'hwplateq'.
+* Error: Detected multiple elements with an id of 'os-equiv'.
+* Error: Detected multiple elements with an id of 'osplateq'.
+* Error: Detected multiple elements with an id of 'software-equiv'.
+* Error: Detected multiple elements with an id of 'swplateq'.
+* Error: Detected multiple elements with an id of 'specificity'.
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
 	  /PP[1]""/sec:Introduction[1]""/section[3]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"dummy-ref"
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
