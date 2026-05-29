@@ -2852,28 +2852,30 @@ The following sections list Common Criteria and technology terms used in this do
                 The second mode is the bit-oriented mode<a id="period_585" href="#period_585">. </a>In this mode the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hashes messages of
                   arbitrary length<a id="period_586" href="#period_586">. </a>As there are different tests for each mode, an indication is given
                   in the following sections for the bit-oriented vs<a id="period_587" href="#period_587">. </a>byte-oriented TestMAC<a id="period_588" href="#period_588">. </a>              </div></div><div class="eacategory">Guidance</div><div class="ea">
-			There are no additional Guidance evaluation activities for this component<a id="period_589" href="#period_589">. </a><br></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                The following tests may require the developer to provide access to a test platform that
-                provides the evaluator with tools that are typically not found on factory products<a id="period_590" href="#period_590">. </a>                The following tests are conditional based upon the selections made in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr><a id="period_591" href="#period_591">. </a>The
+			There are no additional Guidance evaluation activities for this component<a id="period_589" href="#period_589">. </a><br></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"><p>The following tests may require the developer to provide access to a test platform that
+                provides the evaluator with tools that are typically not found on factory products<a id="period_590" href="#period_590">. </a><p></p>
+                The following tests are conditional based upon the selections made in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr><a id="period_591" href="#period_591">. </a>The
                 evaluator shall perform the following test or witness respective tests executed by
                 the developer<a id="period_592" href="#period_592">. </a>The tests must be executed on a platform that is as close as practically
                 possible to the operational platform (but which may be instrumented in terms of,
                 for example, use of a debug mode)<a id="period_593" href="#period_593">. </a>Where the test is not carried out on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
                 itself, the test platform shall be identified and the differences between test
-                environment and <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> execution environment shall be described<a id="period_594" href="#period_594">. </a>                <br>
-                <b>SHA-256, SHA-384, SHA-512</b>
-                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>&#8217;s ability to generate hash digests using SHA2 the evaluator shall
+                environment and <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> execution environment shall be described<a id="period_594" href="#period_594">. </a><p></p><br>
+                <b>SHA-256, SHA-384, SHA-512</b><br>
+                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s ability to generate hash digests using SHA2 the evaluator shall
                 perform the Algorithm Functional Test, Monte Carlo Test, and Large Data Test for each claimed
-                SHA2 algorithm<a id="period_595" href="#period_595">. </a>                <br>
-                <b>Algorithm Functional Test</b>
+                SHA2 algorithm<a id="period_595" href="#period_595">. </a><p></p><br>
+                <b>Algorithm Functional Test</b><br>
                 The evaluator shall generate a number of test cases equal to the block size of the hash (512 for
-                SHA2-256; 1024 for the other SHA2 algorithms)<a id="period_596" href="#period_596">. </a>                Each test case is to consist of random data of a random length between 0 and 65536 bits, or the
-                largest size supported<a id="period_597" href="#period_597">. </a>                Each test case is to consist of random data of a random length between 0 and 65536 bits, or the
-                largest size supported<a id="period_598" href="#period_598">. </a>                <br>
-                <b>Monte Carlo Test</b>
-                Monte Carlo tests begin with a single seed and run 100 iterations of the chained computation<a id="period_599" href="#period_599">. </a>                There are two versions of the Monte Carlo test for SHA-1 and SHA-2<a id="period_600" href="#period_600">. </a>Either one is acceptable<a id="period_601" href="#period_601">. </a>                For the Standard Monte Carlo test the message hashed is always three times the length of the
-                initial seed<a id="period_602" href="#period_602">. </a><pre>
-                  For j = 0 to 99
+                SHA2-256; 1024 for the other SHA2 algorithms)<a id="period_596" href="#period_596">. </a><p></p>
+                Each test case is to consist of random data of a random length between 0 and 65536 bits, or the
+                largest size supported<a id="period_597" href="#period_597">. </a><p></p>
+                Each test case is to consist of random data of a random length between 0 and 65536 bits, or the
+                largest size supported<a id="period_598" href="#period_598">. </a><p></p><br>
+                <b>Monte Carlo Test</b><br>
+                Monte Carlo tests begin with a single seed and run 100 iterations of the chained computation<a id="period_599" href="#period_599">. </a><p></p>
+                There are two versions of the Monte Carlo test for SHA-1 and SHA-2<a id="period_600" href="#period_600">. </a>Either one is acceptable<a id="period_601" href="#period_601">. </a>                For the Standard Monte Carlo test the message hashed is always three times the length of the
+                initial seed<a id="period_602" href="#period_602">. </a></p><pre><code>                  For j = 0 to 99
                   A = B = C = SEED
                   For i = 0 to 999
                   MSG = A || B || C
@@ -2883,10 +2885,8 @@ The following sections list Common Criteria and technology terms used in this do
                   C = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
                   Output <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
                   SEED = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
-                </pre>
-                For the alternate version of the Monte Carlo Test, the hashed message is always the same length as
-                the seed<a id="period_603" href="#period_603">. </a><pre>
-                  INITIAL_SEED_LENGTH = LEN(SEED)
+                </code></pre><p>For the alternate version of the Monte Carlo Test, the hashed message is always the same length as
+                the seed<a id="period_603" href="#period_603">. </a></p><pre><code>                  INITIAL_SEED_LENGTH = LEN(SEED)
                   For j = 0 to 99
                   A = B = C = SEED
                   For i = 0 to 999
@@ -2901,31 +2901,30 @@ The following sections list Common Criteria and technology terms used in this do
                   C = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
                   Output <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
                   SEED = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>	
-                </pre>
-                The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input<a id="period_604" href="#period_604">. </a>                <br>
-                <b>Large Data Test</b>
+                </code></pre><p>The evaluator shall compare the output against results generated by a known-good
+                implementation with the same input<a id="period_604" href="#period_604">. </a><p></p><br>
+                <b>Large Data Test</b><br>
                 The implementation must be tested against one test case each on large data messages of 1GB,
                 2GB, 4GB, and 8GB of data as supported<a id="period_605" href="#period_605">. </a>The data need not be random<a id="period_606" href="#period_606">. </a>It may, for example,
-                consist of a repeated pattern of 64 bits<a id="period_607" href="#period_607">. </a>                The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input<a id="period_608" href="#period_608">. </a>                <br>
-                <b>SHA3-384, SHA3-512</b>
-                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>&#8217;s ability to generate hash digests using SHA3 the evaluator shall perform the
+                consist of a repeated pattern of 64 bits<a id="period_607" href="#period_607">. </a><p></p>
+                The evaluator shall compare the output against results generated by a known-good
+                implementation with the same input<a id="period_608" href="#period_608">. </a><p></p><br>
+                <b>SHA3-384, SHA3-512</b><br>
+                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s ability to generate hash digests using SHA3 the evaluator shall perform the
                 Algorithm Functional Test, Monte Carlo Test, and Large Data Tests for each claimed SHA3
-                algorithm<a id="period_609" href="#period_609">. </a>                <br>
-                <b>Algorithm Functional Test</b>
+                algorithm<a id="period_609" href="#period_609">. </a><p></p><br>
+                <b>Algorithm Functional Test</b><br>
                 Generate a test case consisting of random data for every message length from 0 bits (or the
-                smallest supported message size) to rate bits, where rate equals
-                <ul>
-                  <li>832 for SHA3-384 and</li>
-                  <li>576 for SHA3-512<a id="period_610" href="#period_610">. </a></li>
-                </ul>
+                smallest supported message size) to rate bits, where rate equals</p><ul>
+                  <li><p>832 for SHA3-384 and</p></li>
+                  <li><p>576 for SHA3-512<a id="period_610" href="#period_610">. </a></p></li></ul><p>
                 Additionally, generate tests cases of random data for messages of every multiple of (rate+1) bits
-                starting at length rate, and continuing until 65535 is exceeded<a id="period_611" href="#period_611">. </a>                The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input<a id="period_612" href="#period_612">. </a>                <br>
-                <b>Monte Carlo Test</b>
-                Monte Carlo tests begin with a single seed and run 100 iterations of the chained computation<a id="period_613" href="#period_613">. </a>                For this Monte Carlo Test, the hashed message is always the same length as the seed<a id="period_614" href="#period_614">. </a><pre>
-                  <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0] = SEED
+                starting at length rate, and continuing until 65535 is exceeded<a id="period_611" href="#period_611">. </a><p></p>
+                The evaluator shall compare the output against results generated by a known-good
+                implementation with the same input<a id="period_612" href="#period_612">. </a><p></p><br>
+                <b>Monte Carlo Test</b><br>
+                Monte Carlo tests begin with a single seed and run 100 iterations of the chained computation<a id="period_613" href="#period_613">. </a><p></p>
+                For this Monte Carlo Test, the hashed message is always the same length as the seed<a id="period_614" href="#period_614">. </a></p><pre><code>                  <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0] = SEED
                   INITIAL_SEED_LENGTH = LEN(SEED)
                   For 100 iterations
                   For i = 1 to 1000
@@ -2937,14 +2936,15 @@ The following sections list Common Criteria and technology terms used in this do
                   <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[i] = SHA3(MSG)
                   <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0] = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[1000]
                   Output <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0]
-                </pre>
-                The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input<a id="period_615" href="#period_615">. </a>                <br>
-                <b>Large Data Test</b>
+                </code></pre><p>The evaluator shall compare the output against results generated by a known-good
+                implementation with the same input<a id="period_615" href="#period_615">. </a><p></p><br>
+                <b>Large Data Test</b><br>
                 The implementation must be tested against one test case each on large data messages of 1GB,
                 2GB, 4GB, and 8GB of data as supported<a id="period_616" href="#period_616">. </a>The data need not be random<a id="period_617" href="#period_617">. </a>It may, for example,
-                consist of a repeated pattern of 64 bits<a id="period_618" href="#period_618">. </a>                The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input<a id="period_619" href="#period_619">. </a>              </div></div></div></div></div>
+                consist of a repeated pattern of 64 bits<a id="period_618" href="#period_618">. </a><p></p>
+                The evaluator shall compare the output against results generated by a known-good
+                implementation with the same input<a id="period_619" href="#period_619">. </a></p>
+			  </div></div></div></div></div>
         
         <div class="comp" id="FCS_COP.1/KeyedHash"><h4>FCS_COP.1/KeyedHash Cryptographic Operation - Keyed-Hash</h4>
           <div class="element"><div class="reqid" id="FCS_COP.1.1/KeyedHash"><a href="#FCS_COP.1.1/KeyedHash" class="abbr">FCS_COP.1.1/KeyedHash</a></div><div class="reqdesc">
