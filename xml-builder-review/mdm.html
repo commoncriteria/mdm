@@ -3518,31 +3518,7 @@ The following sections list Common Criteria and technology terms used in this do
                   arbitrary length. As there are different tests for each mode, an indication is given
                   in the following sections for the bit-oriented vs. byte-oriented TestMAC.
               </div></div><div class="eacategory">Guidance</div><div class="ea">
-			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"><p>The following tests may require the developer to provide access to a test platform that
-                provides the evaluator with tools that are typically not found on factory products.<p></p>
-                The following tests are conditional based upon the selections made in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>. The
-                evaluator shall perform the following test or witness respective tests executed by
-                the developer. The tests must be executed on a platform that is as close as practically
-                possible to the operational platform (but which may be instrumented in terms of,
-                for example, use of a debug mode). Where the test is not carried out on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
-                itself, the test platform shall be identified and the differences between test
-                environment and <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> execution environment shall be described.<p></p><br/>
-                <b>SHA-256, SHA-384, SHA-512</b><br/>
-                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s ability to generate hash digests using SHA2 the evaluator shall
-                perform the Algorithm Functional Test, Monte Carlo Test, and Large Data Test for each claimed
-                SHA2 algorithm.<p></p><br/>
-                <b>Algorithm Functional Test</b><br/>
-                The evaluator shall generate a number of test cases equal to the block size of the hash (512 for
-                SHA2-256; 1024 for the other SHA2 algorithms).<p></p>
-                Each test case is to consist of random data of a random length between 0 and 65536 bits, or the
-                largest size supported.<p></p>
-                Each test case is to consist of random data of a random length between 0 and 65536 bits, or the
-                largest size supported.<p></p><br/>
-                <b>Monte Carlo Test</b><br/>
-                Monte Carlo tests begin with a single seed and run 100 iterations of the chained computation.<p></p>
-                There are two versions of the Monte Carlo test for SHA-1 and SHA-2. Either one is acceptable.
-                For the Standard Monte Carlo test the message hashed is always three times the length of the
-                initial seed.</p><pre><code>                  For j = 0 to 99
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"><p>The following tests may require the developer to provide access to a test platform that provides the evaluator with tools that are typically not found on factory products.<p></p>The following tests are conditional based upon the selections made in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>. The evaluator shall perform the following test or witness respective tests executed by the developer. The tests must be executed on a platform that is as close as practically possible to the operational platform (but which may be instrumented in terms of, for example, use of a debug mode). Where the test is not carried out on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> itself, the test platform shall be identified and the differences between test environment and <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> execution environment shall be described.<p></p><br/><b>SHA-256, SHA-384, SHA-512</b><br/>To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to generate hash digests using SHA2 the evaluator shall perform the Algorithm Functional Test, Monte Carlo Test, and Large Data Test for each claimed SHA2 algorithm.<p></p><br/><b>Algorithm Functional Test</b><br/>The evaluator shall generate a number of test cases equal to the block size of the hash (512 for SHA2-256; 1024 for the other SHA2 algorithms).<p></p>Each test case is to consist of random data of a random length between 0 and 65536 bits, or the largest size supported.<p></p>Each test case is to consist of random data of a random length between 0 and 65536 bits, or the largest size supported.<p></p><br/><b>Monte Carlo Test</b><br/>Monte Carlo tests begin with a single seed and run 100 iterations of the chained computation.<p></p>There are two versions of the Monte Carlo test for SHA-1 and SHA-2. Either one is acceptable. For the Standard Monte Carlo test the message hashed is always three times the length of the initial seed.</p><pre><code>                  For j = 0 to 99
                   A = B = C = SEED
                   For i = 0 to 999
                   MSG = A || B || C
@@ -3552,8 +3528,7 @@ The following sections list Common Criteria and technology terms used in this do
                   C = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
                   Output <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
                   SEED = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
-                </code></pre><p>For the alternate version of the Monte Carlo Test, the hashed message is always the same length as
-                the seed.</p><pre><code>                  INITIAL_SEED_LENGTH = LEN(SEED)
+                </code></pre><p>For the alternate version of the Monte Carlo Test, the hashed message is always the same length as the seed.</p><pre><code>                  INITIAL_SEED_LENGTH = LEN(SEED)
                   For j = 0 to 99
                   A = B = C = SEED
                   For i = 0 to 999
@@ -3568,30 +3543,7 @@ The following sections list Common Criteria and technology terms used in this do
                   C = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
                   Output <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>
                   SEED = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>	
-                </code></pre><p>The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input.<p></p><br/>
-                <b>Large Data Test</b><br/>
-                The implementation must be tested against one test case each on large data messages of 1GB,
-                2GB, 4GB, and 8GB of data as supported. The data need not be random. It may, for example,
-                consist of a repeated pattern of 64 bits.<p></p>
-                The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input.<p></p><br/>
-                <b>SHA3-384, SHA3-512</b><br/>
-                To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s ability to generate hash digests using SHA3 the evaluator shall perform the
-                Algorithm Functional Test, Monte Carlo Test, and Large Data Tests for each claimed SHA3
-                algorithm.<p></p><br/>
-                <b>Algorithm Functional Test</b><br/>
-                Generate a test case consisting of random data for every message length from 0 bits (or the
-                smallest supported message size) to rate bits, where rate equals</p><ul>
-                  <li><p>832 for SHA3-384 and</p></li>
-                  <li><p>576 for SHA3-512.</p></li></ul><p>
-                Additionally, generate tests cases of random data for messages of every multiple of (rate+1) bits
-                starting at length rate, and continuing until 65535 is exceeded.<p></p>
-                The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input.<p></p><br/>
-                <b>Monte Carlo Test</b><br/>
-                Monte Carlo tests begin with a single seed and run 100 iterations of the chained computation.<p></p>
-                For this Monte Carlo Test, the hashed message is always the same length as the seed.</p><pre><code>                  <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0] = SEED
+                </code></pre><p>The evaluator shall compare the output against results generated by a known-good implementation with the same input.<p></p><br/><b>Large Data Test</b><br/>The implementation must be tested against one test case each on large data messages of 1GB, 2GB, 4GB, and 8GB of data as supported. The data need not be random. It may, for example, consist of a repeated pattern of 64 bits.<p></p>The evaluator shall compare the output against results generated by a known-good implementation with the same input.<p></p><br/><b>SHA3-384, SHA3-512</b><br/>To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to generate hash digests using SHA3 the evaluator shall perform the Algorithm Functional Test, Monte Carlo Test, and Large Data Tests for each claimed SHA3 algorithm.<p></p><br/><b>Algorithm Functional Test</b><br/>Generate a test case consisting of random data for every message length from 0 bits (or the smallest supported message size) to rate bits, where rate equals</p><ul><li><p>832 for SHA3-384 and</p></li><li><p>576 for SHA3-512.</p></li></ul><p>Additionally, generate tests cases of random data for messages of every multiple of (rate+1) bits starting at length rate, and continuing until 65535 is exceeded.<p></p>The evaluator shall compare the output against results generated by a known-good implementation with the same input.<p></p><br/><b>Monte Carlo Test</b><br/>Monte Carlo tests begin with a single seed and run 100 iterations of the chained computation.<p></p>For this Monte Carlo Test, the hashed message is always the same length as the seed.</p><pre><code>                  <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0] = SEED
                   INITIAL_SEED_LENGTH = LEN(SEED)
                   For 100 iterations
                   For i = 1 to 1000
@@ -3603,15 +3555,7 @@ The following sections list Common Criteria and technology terms used in this do
                   <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[i] = SHA3(MSG)
                   <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0] = <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[1000]
                   Output <abbr class="dyn-abbr"><a href="#abbr_MD">MD</a></abbr>[0]
-                </code></pre><p>The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input.<p></p><br/>
-                <b>Large Data Test</b><br/>
-                The implementation must be tested against one test case each on large data messages of 1GB,
-                2GB, 4GB, and 8GB of data as supported. The data need not be random. It may, for example,
-                consist of a repeated pattern of 64 bits.<p></p>
-                The evaluator shall compare the output against results generated by a known-good
-                implementation with the same input.</p>
-			  </div></div></div></div></div>
+                </code></pre><p>The evaluator shall compare the output against results generated by a known-good implementation with the same input.<p></p><br/><b>Large Data Test</b><br/>The implementation must be tested against one test case each on large data messages of 1GB, 2GB, 4GB, and 8GB of data as supported. The data need not be random. It may, for example, consist of a repeated pattern of 64 bits.<p></p>The evaluator shall compare the output against results generated by a known-good implementation with the same input.</p></div></div></div></div></div>
         
         <div class="comp" id="FCS_COP.1/KeyedHash"><h4>FCS_COP.1/KeyedHash Cryptographic Operation - Keyed-Hash</h4>
           <div class="element"><div class="reqid" id="FCS_COP.1.1/KeyedHash"><a href="#FCS_COP.1.1/KeyedHash" class="abbr">FCS_COP.1.1/KeyedHash</a></div><div class="reqdesc">
@@ -5327,10 +5271,9 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
               
             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s HTTPS functionality is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or invoked from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements HTTPS, the evaluator shall verify that the corresponding claims from the TLS Functional Package (client, server, or both) are present.</div></div><div class="eacategory">Guidance</div><div class="ea">
 			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                <span class="testlist-">
-                  Other tests are performed in conjunction with the TLS evaluation activities.
-                <ul><li class="test-"><a id="_t_17" class="defined" href="#_t_17">Test FCS_HTTPS_EXT.1:1</a>:
+                <span class="testlist-"><ul><li class="test-"><a id="_t_17" class="defined" href="#_t_17">Test FCS_HTTPS_EXT.1:1</a>:
       The evaluator shall attempt to establish an HTTPS connection with a web server, web a client, or both (depending on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> acts as a web client, a web server, or both), observe the traffic with a packet analyzer, and verify that the connection succeeds and that the traffic is identified as TLS or HTTPS.</li></ul></span>
+                Other tests are performed in conjunction with the TLS evaluation activities.
               </div></div></div></div></div>
         
         <div class="comp" id="FCS_IV_EXT.1"><h4>FCS_IV_EXT.1 Initialization Vector Generation</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
