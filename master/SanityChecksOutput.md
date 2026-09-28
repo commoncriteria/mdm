@@ -1,3 +1,9 @@
+* Error: Detected dangling id-reference to s-ftp_ssh from attribute
+        on/PP[1]""/section[2]""/CClaimsInfo[1]""/cc-pkg-claim[1]""/FP-cc-ref[1]""/cc-doc-ref[1]""/depends[1]""/on[1]""
+* Error: Detected dangling id-reference to s-uau-ssh from attribute
+        also/PP[1]""/section[2]""/CClaimsInfo[1]""/cc-pkg-claim[1]""/FP-cc-ref[1]""/cc-doc-ref[1]""/depends[1]""/also[1]""
+* Error: Detected dangling id-reference to fcs-eap-ext-1 from attribute
+        on/PP[1]""/section[2]""/CClaimsInfo[1]""/cc-pkg-claim[1]""/FP-cc-ref[2]""/cc-doc-ref[1]""/depends[1]""/on[1]""
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-attls'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
